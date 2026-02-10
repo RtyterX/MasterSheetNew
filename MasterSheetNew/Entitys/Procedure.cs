@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 public enum ActivityType
 {
     BLD,
+    BLDcomBGP,
     MPLS,
     VOZ,
     SDWAN,
