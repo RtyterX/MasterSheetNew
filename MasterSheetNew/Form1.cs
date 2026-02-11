@@ -218,9 +218,8 @@ namespace MasterSheetNew
         public void LoadRoutersInfo()
         {
             // ------------------------ Cisco Voz ------------------------ 
-            routerList.Add(new Router(RouterType.Cisco, "1905", "-", "c1900-universalk9-mz.SPA.152-4.M1.bin ou superior", 0, 0, 0, "IOS apenas para BROADSOFT"));
-            routerList.Add(new Router(RouterType.Cisco, "2801", "-", "c2801-advipservicesk9-mz.151-4.M10.bin", 0, 0, 0, "(R2/ISDN)"));
-            routerList.Add(new Router(RouterType.Cisco, "2801", "-", "c2801-adventerprisek9-mz.124-24.T5.bin", 0, 0, 0, "(R2/ISDN)"));
+            routerList.Add(new Router(RouterType.Cisco, "1905", "-", "c1900-universalk9-mz.SPA.152-4.M1.bin ou superior", 100, 60, 0, "IOS apenas para BROADSOFT"));
+            routerList.Add(new Router(RouterType.Cisco, "2801", "-", "c2801-advipservicesk9-mz.151-4.M10.bin", 30, 20, 0, "(R2/ISDN)"));
             routerList.Add(new Router(RouterType.Cisco, "2811-2821", "-", "c2800nm-adventerprisek9-mz.151-4.M.bin", 0, 0, 0, "(R2/ISDN)"));
             routerList.Add(new Router(RouterType.Cisco, "2851", "-", "c2800nm-advipservicesk9-mz.151-4.M10.bin", 0, 0, 0, "(R2/ISDN)"));
             routerList.Add(new Router(RouterType.Cisco, "3825", "-", "c3825-advipservicesk9-mz.151-4.M10.bin", 0, 0, 0, "(R2/ISDN)"));
@@ -566,7 +565,7 @@ namespace MasterSheetNew
         {
             if (routerType == RouterType.Nokia && activityType == ActivityType.BLDcomBGP && backboneOrNot == true && logOrNot == true)
             {
-                label6.Show();
+                Script_RouteLabelHint.Show();
                 Script_VarRouteI1.Show();
                 Script_VarRouteI2.Show();
                 Script_VarRouteE1.Show();
@@ -582,7 +581,7 @@ namespace MasterSheetNew
             }
             else
             {
-                label6.Hide();
+                Script_RouteLabelHint.Hide();
                 Script_VarRouteI1.Hide();
                 Script_VarRouteI2.Hide();
                 Script_VarRouteE1.Hide();
@@ -2981,6 +2980,7 @@ namespace MasterSheetNew
                     "#\r\n" +
                     "#########################\r\n";
                 }
+                else
                 {
                     intLan = "#\r\n";
                 }
@@ -3611,7 +3611,7 @@ namespace MasterSheetNew
                     "y\r\n" +
                     "#\r\n" +
                     "########################################\r\n" +
-                    "# CONFIGURACOES r\n" +
+                    "# CONFIGURACOES \r\n" +
                     "########################################\r\n" +
                     "#\r\n" +
                     "#\r\n" +
@@ -3623,7 +3623,7 @@ namespace MasterSheetNew
                     "#\r\n" +
                     "#\r\n" +
                     "########################################\r\n" +
-                    "# INTERFACES r\n" +
+                    "# INTERFACES \r\n" +
                     "########################################\r\n" +
                     "#\r\n" +
                     "display ip interface brief\r\n" +
@@ -4566,7 +4566,7 @@ namespace MasterSheetNew
                 " \r\n" +
                 " \r\n" +
                 "!#######################################\r\n" +
-                "!# ROTA ESTATICA r\n" +
+                "!# ROTA ESTATICA \r\n" +
                 "!#######################################\r\n" +
                 " \r\n" +
                 "show running-config | inc " + Script_Var8.Text + "\r\n" +
@@ -6752,9 +6752,9 @@ namespace MasterSheetNew
             {
                 LTFechamento_CheckBox3.Checked = !LTFechamento_CheckBox3.Checked;
             }
-            if (LTFechamento_CheckBox5.Checked)
+            if (LTFechamento_CheckBox6.Checked)
             {
-                LTFechamento_CheckBox5.Checked = !LTFechamento_CheckBox5.Checked;
+                LTFechamento_CheckBox6.Checked = !LTFechamento_CheckBox3.Checked;
             }
             ApplyFechamento();
         }
@@ -6777,6 +6777,10 @@ namespace MasterSheetNew
             {
                 LTFechamento_CheckBox5.Checked = !LTFechamento_CheckBox5.Checked;
             }
+            if (LTFechamento_CheckBox6.Checked)
+            {
+                LTFechamento_CheckBox6.Checked = !LTFechamento_CheckBox3.Checked;
+            }
             ApplyFechamento();
         }
 
@@ -6797,6 +6801,10 @@ namespace MasterSheetNew
             if (LTFechamento_CheckBox5.Checked)
             {
                 LTFechamento_CheckBox5.Checked = !LTFechamento_CheckBox5.Checked;
+            }
+            if (LTFechamento_CheckBox6.Checked)
+            {
+                LTFechamento_CheckBox6.Checked = !LTFechamento_CheckBox3.Checked;
             }
             ApplyFechamento();
         }
@@ -6819,6 +6827,10 @@ namespace MasterSheetNew
             {
                 LTFechamento_CheckBox5.Checked = !LTFechamento_CheckBox5.Checked;
             }
+            if (LTFechamento_CheckBox6.Checked)
+            {
+                LTFechamento_CheckBox6.Checked = !LTFechamento_CheckBox3.Checked;
+            }
             ApplyFechamento();
         }
 
@@ -6839,6 +6851,35 @@ namespace MasterSheetNew
             if (LTFechamento_CheckBox3.Checked)
             {
                 LTFechamento_CheckBox3.Checked = !LTFechamento_CheckBox3.Checked;
+            }
+            if (LTFechamento_CheckBox6.Checked)
+            {
+                LTFechamento_CheckBox6.Checked = !LTFechamento_CheckBox3.Checked;
+            }
+            ApplyFechamento();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (LTFechamento_CheckBox0.Checked)
+            {
+                LTFechamento_CheckBox0.Checked = !LTFechamento_CheckBox0.Checked;
+            }
+            if (LTFechamento_CheckBox1.Checked)
+            {
+                LTFechamento_CheckBox1.Checked = !LTFechamento_CheckBox1.Checked;
+            }
+            if (LTFechamento_CheckBox2.Checked)
+            {
+                LTFechamento_CheckBox2.Checked = !LTFechamento_CheckBox2.Checked;
+            }
+            if (LTFechamento_CheckBox3.Checked)
+            {
+                LTFechamento_CheckBox3.Checked = !LTFechamento_CheckBox3.Checked;
+            }
+            if (LTFechamento_CheckBox5.Checked)
+            {
+                LTFechamento_CheckBox5.Checked = !LTFechamento_CheckBox3.Checked;
             }
             ApplyFechamento();
         }
@@ -6865,6 +6906,10 @@ namespace MasterSheetNew
             if (LTFechamento_CheckBox5.Checked)
             {
                 fechamentoSubInfo = "Cliente não Autorizou o Teste de Certidão" + "\r\n" + "\r\n";
+            }
+            if (LTFechamento_CheckBox6.Checked)
+            {
+                fechamentoSubInfo = "Técnico não possui equipamento para realizar Teste de Certidão de Nascimento" + "\r\n" + "\r\n";
             }
 
             // --------------------------------------------------------------
@@ -7061,7 +7106,7 @@ namespace MasterSheetNew
         {
             darkTheme = !darkTheme;
             ApplyDarkTheme(this, darkTheme);
-            Button_DarkMode.Text = darkTheme ? "Dark Theme" : "Light Theme";
+            Button_DarkMode.Text = !darkTheme ? "Night Mode" : "Light Mode";
 
             Properties.Settings.Default.darkMode = darkTheme;
             Properties.Settings.Default.Save();
@@ -7080,22 +7125,28 @@ namespace MasterSheetNew
                         tabControl2.BackColor = Color.FromArgb(30, 30, 30);
                         tabControl2.ForeColor = Color.White;
 
-                        ctr.BackColor = Color.FromArgb(60, 60, 60);
+                        ctr.BackColor = Color.FromArgb(30, 27, 27);
                         ctr.ForeColor = Color.White;
                     }
                     else
                     {
-                        ctr.BackColor = Color.DarkGray;
+                        ctr.BackColor = Color.FromArgb(50,50,50);
                         ctr.ForeColor = Color.White;
                     }
                 }
             }
             else
             {
-                // ------ LIGHT THEME ------
-                if (!ctr.Name.Contains("pictureBox2") && !ctr.Name.Contains("MainTitle") && !ctr.Name.Contains("TemplatesLabel"))
+                // ------ LIGHT THEME -----
+                if (!ctr.Name.Contains("pictureBox2") || !ctr.Name.Contains("MainTitle") || !ctr.Name.Contains("TemplatesLabel"))
                 {
+             
                     ctr.BackColor = SystemColors.Control;
+                    ctr.ForeColor = SystemColors.ControlText;
+                }
+                if (ctr.Name.Contains("TextBox") || ctr.Name.Contains("ComboBox"))
+                { 
+                    ctr.BackColor = Color.White;
                     ctr.ForeColor = SystemColors.ControlText;
                 }
             }

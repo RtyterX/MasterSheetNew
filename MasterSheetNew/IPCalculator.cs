@@ -195,7 +195,7 @@ namespace MasterSheetNew
                     t = t + ($"Range de IPs Disponiveis: \n") +
                             ($"Inicio: {ToIP(network + 1)}\n") +
                             ($"Fim: {ToIP(broadcast - 1)}\n") +
-                            ($"Número Total: {(broadcast + 1) - network}\n");
+                            ($"Número Total: {(broadcast - 1) - network}\n");
                 }
                 else
                 {
