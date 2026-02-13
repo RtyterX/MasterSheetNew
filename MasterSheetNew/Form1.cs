@@ -56,6 +56,7 @@ namespace MasterSheetNew
         string suporteTitle;
         string commandStr;
         string fechamentoSubInfo;
+        string pendenciaRestore;
         IPCalculator ipCalculator = new IPCalculator();
 
         // Log de Ligacao
@@ -65,12 +66,12 @@ namespace MasterSheetNew
         bool enableEdit = false;
 
 
-        // - Sound Teste -
-        SoundPlayer player = new SoundPlayer(Properties.Resources.Perdemo); // Use your resource name
-
-
         // --- Scripts ---
         List<Script> scripts = new List<Script>();
+        List<Label> varName = new List<Label>();
+        List<TextBox> varText = new List<TextBox>();
+        List<Button> varDelete = new List<Button>();
+        List<Label> varEx = new List<Label>();
 
         // BLD
         string ciscoBLD;
@@ -117,6 +118,11 @@ namespace MasterSheetNew
         string wizgatNokiaMPLS;
         string wizgatNokiaVOZ;
         string wizgatNokiaBGP;
+
+
+        // - Sound Teste -
+        SoundPlayer player = new SoundPlayer(Properties.Resources.Perdemo); // Use your resource name
+
 
 
         // -------------------------------------------------------------------------------------------------------------------------------------------
@@ -172,10 +178,17 @@ namespace MasterSheetNew
             //---------------------
 
             darkTheme = Properties.Settings.Default.darkMode;
+            
+            // Comeca com Logs Iniciais no WizGat
+            Script_ComboBox.SelectedIndex = 0;
+            Script_ISRBox.SelectedIndex = 1;
+            Script_XRBox.SelectedIndex = 1;
 
             LoadRoutersInfo();
             ApplyRouteMapNokia();
-            Script test = new Script("Teste", "");
+            ListAllScriptVars();
+
+            Script test = new Script("Teste", "", "", 11/02/2026);
             scripts = test.AddScripts();
 
             TextBox Script_Var12 = new TextBox();
@@ -213,7 +226,77 @@ namespace MasterSheetNew
             ApplyDarkTheme(this, darkTheme);
         }
 
-      
+        public void ListAllScriptVars()
+        {
+            varName.Add(Script_VarName00);
+            varName.Add(Script_VarName01);
+            varName.Add(Script_VarName02);
+            varName.Add(Script_VarName03);
+            varName.Add(Script_VarName04);
+            varName.Add(Script_VarName05);
+            varName.Add(Script_VarName06);
+            varName.Add(Script_VarName07);
+            varName.Add(Script_VarName08);
+            varName.Add(Script_VarName09);
+            varName.Add(Script_VarName10);
+            varName.Add(Script_VarName11);
+            varName.Add(Script_VarName12);
+            varName.Add(Script_VarName13);
+            varName.Add(Script_VarName14);
+            varName.Add(Script_VarName15);
+
+            varText.Add(Script_Var00);
+            varText.Add(Script_Var01);
+            varText.Add(Script_Var02);
+            varText.Add(Script_Var03);
+            varText.Add(Script_Var04);
+            varText.Add(Script_Var05);
+            varText.Add(Script_Var06);
+            varText.Add(Script_Var07);
+            varText.Add(Script_Var08);
+            varText.Add(Script_Var09);
+            varText.Add(Script_Var10);
+            varText.Add(Script_Var11);
+            varText.Add(Script_Var12);
+            varText.Add(Script_Var13);
+            varText.Add(Script_Var14);
+            varText.Add(Script_Var15);
+
+            varDelete.Add(Script_DeleteVar00);
+            varDelete.Add(Script_DeleteVar01);
+            varDelete.Add(Script_DeleteVar02);
+            varDelete.Add(Script_DeleteVar03);
+            varDelete.Add(Script_DeleteVar04);
+            varDelete.Add(Script_DeleteVar05);
+            varDelete.Add(Script_DeleteVar06);
+            varDelete.Add(Script_DeleteVar07);
+            varDelete.Add(Script_DeleteVar08);
+            varDelete.Add(Script_DeleteVar09);
+            varDelete.Add(Script_DeleteVar10);
+            varDelete.Add(Script_DeleteVar11);
+            varDelete.Add(Script_DeleteVar12);
+            varDelete.Add(Script_DeleteVar13);
+            varDelete.Add(Script_DeleteVar14);
+            varDelete.Add(Script_DeleteVar15);
+
+            varEx.Add(Script_VarEx00);
+            varEx.Add(Script_VarEx01);
+            varEx.Add(Script_VarEx02);
+            varEx.Add(Script_VarEx03);
+            varEx.Add(Script_VarEx04);
+            varEx.Add(Script_VarEx05);
+            varEx.Add(Script_VarEx06);
+            varEx.Add(Script_VarEx07);
+            varEx.Add(Script_VarEx08);
+            varEx.Add(Script_VarEx09);
+            varEx.Add(Script_VarEx10);
+            varEx.Add(Script_VarEx11);
+            varEx.Add(Script_VarEx12);
+            varEx.Add(Script_VarEx13);
+            varEx.Add(Script_VarEx14);
+            varEx.Add(Script_VarEx15);
+        }
+
 
         public void LoadRoutersInfo()
         {
@@ -269,7 +352,7 @@ namespace MasterSheetNew
 
 
             // ------------------------ Digistar ------------------------ 
-            routerList.Add(new Router(RouterType.Digistar, "AG30", "-", "system_ag30plus_v1.12.img \r\n sip_ag30plus_v1.15.img \r\n xilinx_ag30plus_v2.5.img", 0, 0, 0, "-"));
+            routerList.Add(new Router(RouterType.Digistar, "AG30", "-", "system_ag30plus_v1.12.img \n sip_ag30plus_v1.15.img \r\n xilinx_ag30plus_v2.5.img", 0, 0, 0, "-"));
             routerList.Add(new Router(RouterType.Digistar, "RCG5211", "-", "firmware_rcg5000_v1.16h_1dsp.img", 0, 0, 0, "-"));
             routerList.Add(new Router(RouterType.Digistar, "RCG5220", "-", "firmware_rcg5000_v1.16h_2dsp.img", 0, 0, 0, "-"));
             routerList.Add(new Router(RouterType.Digistar, "AG30_Plus_novo", "-", "firmware_ag30plus_v2.3b \r\n xilinx_ag30plus_v2.3", 0, 0, 0, "-"));
@@ -291,7 +374,7 @@ namespace MasterSheetNew
             routerList.Add(new Router(RouterType.Huawei, "AR5710", "V600R024C00SPC100", "-", 0, 0, 0, "-"));
 
 
-            dataGridRouters.DataSource = routerList;
+            DataGridRouters.DataSource = routerList;
         }
 
 
@@ -423,6 +506,7 @@ namespace MasterSheetNew
             logOrNot = false;
 
             ApplyVariebleToScript(routerType);
+           // ApplyScriptNew(scripts[0], "Cisco sem VLAN");
         }
 
         private void HPE_Button_Click(object sender, EventArgs e)
@@ -467,6 +551,35 @@ namespace MasterSheetNew
             logOrNot = false;
 
             ApplyVariebleToScript(routerType);
+
+        }
+
+        private void Logs_VOZ_Cisco_Click_1(object sender, EventArgs e)
+        {
+            tabControl2.SelectedTab = tabScript;
+
+            activityType = ActivityType.VOZ;
+            routerType = RouterType.Cisco;
+            backboneOrNot = false;
+            logOrNot = true;
+
+            ApplyVariebleToScript(routerType);
+        }
+
+        // Outras Configs
+        private void buttonOC_SNMP_Click(object sender, EventArgs e)
+        {
+            tabControl2.SelectedTab = tabOutros;
+            OutrosTitle.Text = "SNMP";
+
+            Outros_VarName4.Hide();
+            Outros_VarName3.Hide();
+            Outros_VarText03.Hide();
+            Outros_VarText04.Hide();
+            Outros_VarDelete3.Hide();
+            Outros_VarDelete4.Hide();
+            Outros_VarEx3.Hide();
+            Outros_VarEx4.Hide();
 
         }
 
@@ -601,27 +714,27 @@ namespace MasterSheetNew
         {
             if (logOrNot == true)
             {
-                Script_VarName4.Text = "Interface Logica WAN: ";
+                Script_VarName04.Text = "Interface Logica WAN: ";
             }
             else
             {
-                Script_VarName4.Text = "N da Vlan: ";
+                Script_VarName04.Text = "N da Vlan: ";
             }
-            
+
         }
 
         public void ChangeLANIPTextBoxSize()
         {
             if (logOrNot == false)
             {
-                Script_Var9.Size = new System.Drawing.Size(102, 25);
-                Script_VarName4.Text = "Número VLAN na WAN:";
+                Script_Var09.Size = new System.Drawing.Size(102, 25);
+                Script_VarName04.Text = "Número VLAN na WAN:";
                 Script_LANMascara.Show();
             }
             else
             {
-                Script_Var9.Size = new System.Drawing.Size(162, 25);
-                Script_VarName4.Text = "Interface Logica WAN:";
+                Script_Var09.Size = new System.Drawing.Size(162, 25);
+                Script_VarName04.Text = "Interface Logica WAN:";
                 Script_LANMascara.Hide();
             }
         }
@@ -630,84 +743,157 @@ namespace MasterSheetNew
         {
             if (Script_FortigateModel.SelectedIndex == 0)
             {
-                Script_Var3.Text = "wan";
-                Script_Var5.Text = "lan1";
+                Script_Var03.Text = "wan";
+                Script_Var05.Text = "lan1";
             }
             if (Script_FortigateModel.SelectedIndex == 1)
             {
-                Script_Var3.Text = "wan1";
-                Script_Var5.Text = "internal1";
+                Script_Var03.Text = "wan1";
+                Script_Var05.Text = "internal1";
             }
             if (Script_FortigateModel.SelectedIndex == 2)
             {
-                Script_Var3.Text = "x1";
-                Script_Var5.Text = "port1";
+                Script_Var03.Text = "x1";
+                Script_Var05.Text = "port1";
             }
         }
 
         public void VarScriptDisplayControl(string numberOfVar)
-        {
-            List<Label> varName = new List<Label>();
-            varName.Add(Script_VarName0);
-            varName.Add(Script_VarName1);
-            varName.Add(Script_VarName2);
-            varName.Add(Script_VarName3);
-            varName.Add(Script_VarName4);
-            varName.Add(Script_VarName5);
-
-            List<TextBox> varText = new List<TextBox>();
-            varText.Add(Script_Var0);
-            varText.Add(Script_Var1);
-            varText.Add(Script_Var2);
-            varText.Add(Script_Var3);
-            varText.Add(Script_Var4);
-            varText.Add(Script_Var5);
-
-            List<Button> varDelete = new List<Button>();
-            varDelete.Add(Script_DeleteVar0);
-            varDelete.Add(Script_DeleteVar1);
-            varDelete.Add(Script_DeleteVar2);
-            varDelete.Add(Script_DeleteVar3);
-            varDelete.Add(Script_DeleteVar4);
-            varDelete.Add(Script_DeleteVar5);
-
+        {    
             string[] split = numberOfVar.Split(',');
+     
+            int anterior = 99;
 
-            for (int i = 0; i < split.Length; i++)
+            for (int i = 0; i < varName.Count; i++)
             {
-                MessageBox.Show(varText[i].Name);
-
-                if (varName[i].Name == split[i])
+     
+                foreach (string s in split)
                 {
-                    varDelete[i].Show();
-                }
+             
+                    if (varName[i].Name.Contains(s))
+                    {
+                       
+                        varName[i].Show();
+                        if (anterior == 99)
+                        {
+                            varName[i].Location = new System.Drawing.Point(varName[i].Location.X, 120);
 
-                if (i == 0)
+                        }
+                        else
+                        {
+                            varName[i].Location = new System.Drawing.Point(varName[i].Location.X, varName[anterior].Location.Y + 30);
+                        }
+
+                        anterior = i;
+                        break;
+                    }
+
+                    else
+                    {
+                        varName[i].Hide();
+                    }
+                }
+            }
+
+            anterior = 99;
+
+            for (int i = 0; i < varText.Count; i++)
+            {
+
+                foreach (string s in split)
                 {
-                   // split[0]_VarName.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_ComboBox.Location.Y);
-                   // split[0]_Var.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_ComboBox.Location.Y);
-                   // split[0]_Delete.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_ComboBox.Location.Y);
+
+                    if (varText[i].Name.Contains(s))
+                    {
+                        varText[i].Show();
+                        if (s == "09")
+                        {
+                            Script_LANMascara.Location = new System.Drawing.Point(258, varText[anterior].Location.Y + 30);
+                        }
+                        if (anterior == 99)
+                        {
+                            varText[i].Location = new System.Drawing.Point(varText[i].Location.X, 120);
+                        }
+                        else
+                        {
+                            varText[i].Location = new System.Drawing.Point(varText[i].Location.X, varText[anterior].Location.Y + 30);
+                        }
+
+                        anterior = i;
+                        break;
+                    }
+                    else
+                    {
+                        varText[i].Hide();
+                    }
                 }
-                else
+            }
+
+
+            anterior = 99;
+
+            for (int i = 0; i < varDelete.Count; i++)
+            {
+
+                foreach (string s in split)
                 {
-                   // string anterior = split[i] - 1;
 
-                    // --- Cluster Only the Usable Variables ---
-                    //split[i]_VarName.Location = new System.Drawing.Point(Script_VarName4.Location.X, anterior.Location.X + 30);
-                   // split[i]_Var.Location = new System.Drawing.Point(Script_Var4.Location.X, anterior.Location.X + 30);
-                    //split[i]_Delete.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, anterior.Location.X + 30);
+                    if (varDelete[i].Name.Contains(s))
+                    {
+                        varDelete[i].Show();
+                        if (anterior == 99)
+                        {
+                            varDelete[i].Location = new System.Drawing.Point(varDelete[i].Location.X, 120);
+                        }
+                        else
+                        {
+                            varDelete[i].Location = new System.Drawing.Point(varDelete[i].Location.X, varDelete[anterior].Location.Y + 30);
+                        }
 
-                    
-
+                        anterior = i;
+                        break;
+                    }
+                    else
+                    {
+                        varDelete[i].Hide();
+                    }
                 }
+            }
 
-                // --- Show/Hide Variebles ---
+            anterior = 99;
+
+            for (int i = 0; i < varEx.Count; i++)
+            {
+
+                foreach (string s in split)
+                {
+
+                    if (varEx[i].Name.Contains(s))
+                    {
+                        varEx[i].Show();
+
+                        if (anterior == 99)
+                        {
+                            varEx[i].Location = new System.Drawing.Point(varEx[i].Location.X, 120);
+                        }
+                        else
+                        {
+                            varEx[i].Location = new System.Drawing.Point(varEx[i].Location.X, varEx[anterior].Location.Y + 30);
+                        }
+
+                        anterior = i;
+                        break;
+                    }
+                    else
+                    {
+                        varEx[i].Hide();
+                    }
+                }
 
             }
 
-            
+            // Script_Hint1.Location = new System.Drawing.Point(54, varEx[anterior].Location.Y + 40);
         }
-
 
         public void ApplyVariebleToScript(RouterType type)
         {
@@ -715,7 +901,7 @@ namespace MasterSheetNew
             ApplyLogType();
             ChangeMascaraLAN();
             ChangeVlanNaWANVar();
-            GetDesignacao(Script_Var1.Text);
+            GetDesignacao(Script_Var01.Text);
             ChangeLANIPTextBoxSize();
 
             if (Script_ComboBox.Text == null)
@@ -728,89 +914,12 @@ namespace MasterSheetNew
 
             if (type == RouterType.Cisco && activityType == ActivityType.VOZ && logOrNot == true && backboneOrNot == false)
             {
-                ProcedureName.Text = "Teste";
+                Script_ProcedureName.Text = "Teste";
 
                 // --- Cluster Only the Usable Variables ---
-                Script_VarName0.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_ComboBox.Location.Y);
-                Script_VarName1.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName0.Location.Y + 30);
-                Script_VarName2.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName1.Location.Y + 30);
-                Script_VarName3.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName2.Location.Y + 30);
-                Script_VarName5.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName3.Location.Y + 30);
-                Script_VarName7.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName5.Location.Y + 30);
-                Script_VarName9.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName7.Location.Y + 30);
-                Script_VarName10.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName9.Location.Y + 30);
 
-                Script_Var0.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_ComboBox.Location.Y);
-                Script_Var1.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var0.Location.Y + 30);
-                Script_Var2.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var1.Location.Y + 30);
-                Script_Var3.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var2.Location.Y + 30);
-                Script_Var5.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var3.Location.Y + 30);
-                Script_Var7.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var5.Location.Y + 30);
-                Script_Var9.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var7.Location.Y + 30);
-                Script_LANMascara.Location = new System.Drawing.Point(260, Script_Var7.Location.Y + 30);
-                Script_Var10.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var9.Location.Y + 30);
-
-                Script_DeleteVar0.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_ComboBox.Location.Y);
-                Script_DeleteVar1.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar0.Location.Y + 30);
-                Script_DeleteVar2.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar1.Location.Y + 30);
-                Script_DeleteVar3.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar2.Location.Y + 30);
-                Script_DeleteVar5.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar3.Location.Y + 30);
-                Script_DeleteVar7.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar5.Location.Y + 30);
-                Script_DeleteVar9.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar7.Location.Y + 30);
-                Script_DeleteVar10.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar9.Location.Y + 30);
-
-
-                // --- Show/Hide Variebles ---
-                Script_Var0.Show();
-                Script_Var1.Show();
-                Script_Var2.Show();
-                Script_Var3.Show();
-                Script_Var4.Hide();
-                Script_Var5.Show();
-                Script_Var6.Hide();
-                Script_Var7.Show();
-                Script_Var8.Hide();
-                Script_Var9.Show();
-                Script_Var10.Show();
-                Script_Var11.Hide();
-                Script_Var12.Hide();
-                Script_Var13.Hide();
-                Script_Var14.Hide();
-                Script_Var15.Hide();
-
-                Script_VarName0.Show();
-                Script_VarName1.Show();
-                Script_VarName2.Show();
-                Script_VarName3.Show();
-                Script_VarName4.Hide();
-                Script_VarName5.Show();
-                Script_VarName6.Hide();
-                Script_VarName7.Show();
-                Script_VarName8.Hide();
-                Script_VarName9.Show();
-                Script_VarName10.Show();
-                Script_VarName11.Hide();
-                Script_VarName12.Hide();
-                Script_VarName13.Hide();
-                Script_VarName14.Hide();
-                Script_VarName15.Hide();
-
-                Script_DeleteVar0.Show();
-                Script_DeleteVar1.Show();
-                Script_DeleteVar2.Show();
-                Script_DeleteVar3.Show();
-                Script_DeleteVar4.Hide();
-                Script_DeleteVar5.Show();
-                Script_DeleteVar6.Hide();
-                Script_DeleteVar7.Show();
-                Script_DeleteVar8.Hide();
-                Script_DeleteVar9.Show();
-                Script_DeleteVar10.Show();
-                Script_DeleteVar11.Hide();
-                Script_DeleteVar12.Hide();
-                Script_DeleteVar13.Hide();
-                Script_DeleteVar14.Hide();
-                Script_DeleteVar15.Hide();
+                VarScriptDisplayControl("0,1,3,5");
+                ChangeMascaraLAN();
 
                 Script_TypeLabel.Hide();
                 Script_ComboBox.Hide();
@@ -828,13 +937,13 @@ namespace MasterSheetNew
 
                 buttonSwitchScriptLog.Hide();
 
-                string testeStr = scripts[0].scriptString.Replace("var0", Script_Var0.Text);
-                testeStr = testeStr.Replace("var1", Script_Var1.Text);
-                testeStr = testeStr.Replace("var2", Script_Var2.Text);
-                testeStr = testeStr.Replace("var3", Script_Var3.Text);
-                testeStr = testeStr.Replace("var5", Script_Var5.Text);
-                testeStr = testeStr.Replace("var7", Script_Var7.Text);
-                testeStr = testeStr.Replace("var9", Script_Var9.Text);
+                string testeStr = scripts[0].scriptString.Replace("var0", Script_Var00.Text);
+                testeStr = testeStr.Replace("var1", Script_Var01.Text);
+                testeStr = testeStr.Replace("var2", Script_Var02.Text);
+                testeStr = testeStr.Replace("var3", Script_Var03.Text);
+                testeStr = testeStr.Replace("var5", Script_Var05.Text);
+                testeStr = testeStr.Replace("var7", Script_Var07.Text);
+                testeStr = testeStr.Replace("var9", Script_Var09.Text);
                 testeStr = testeStr.Replace("mascara", mascaraStr);
                 testeStr = testeStr.Replace("var10", Script_Var10.Text);
 
@@ -845,92 +954,9 @@ namespace MasterSheetNew
 
             else if (type == RouterType.Cisco && activityType == ActivityType.BLD && logOrNot == false)
             {
-                ProcedureName.Text = "CONFIG - CISCO - BLD";
+                Script_ProcedureName.Text = "CONFIG - CISCO - BLD";
 
-                // --- Cluster Only the Usable Variables ---
-                Script_VarName0.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_ComboBox.Location.Y);
-                Script_VarName1.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName0.Location.Y + 30);
-                Script_VarName2.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName1.Location.Y + 30);
-                Script_VarName3.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName2.Location.Y + 30);
-                Script_VarName4.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName3.Location.Y + 30);
-                Script_VarName5.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName4.Location.Y + 30);
-                Script_VarName7.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName5.Location.Y + 30);
-                Script_VarName9.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName7.Location.Y + 30);
-                Script_VarName10.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName9.Location.Y + 30);
-
-                Script_Var0.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_ComboBox.Location.Y);
-                Script_Var1.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var0.Location.Y + 30);
-                Script_Var2.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var1.Location.Y + 30);
-                Script_Var3.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var2.Location.Y + 30);
-                Script_Var4.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var3.Location.Y + 30);
-                Script_Var5.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var4.Location.Y + 30);
-                Script_Var7.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var5.Location.Y + 30);
-                Script_Var9.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var7.Location.Y + 30);
-                Script_LANMascara.Location = new System.Drawing.Point(260, Script_Var7.Location.Y + 30);
-                Script_Var10.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var9.Location.Y + 30);
-
-                Script_DeleteVar0.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_ComboBox.Location.Y);
-                Script_DeleteVar1.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar0.Location.Y + 30);
-                Script_DeleteVar2.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar1.Location.Y + 30);
-                Script_DeleteVar3.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar2.Location.Y + 30);
-                Script_DeleteVar4.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar3.Location.Y + 30);
-                Script_DeleteVar5.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar4.Location.Y + 30);
-                Script_DeleteVar7.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar5.Location.Y + 30);
-                Script_DeleteVar9.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar7.Location.Y + 30);
-                Script_DeleteVar10.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar9.Location.Y + 30);
-
-
-                // --- Show/Hide Variebles ---
-                Script_Var0.Show();
-                Script_Var1.Show();
-                Script_Var2.Show();
-                Script_Var3.Show();
-                Script_Var4.Show();
-                Script_Var5.Show();
-                Script_Var6.Hide();
-                Script_Var7.Show();
-                Script_Var8.Hide();
-                Script_Var9.Show();
-                Script_Var10.Show();
-                Script_Var11.Hide();
-                Script_Var12.Hide();
-                Script_Var13.Hide();
-                Script_Var14.Hide();
-                Script_Var15.Hide();
-
-                Script_VarName0.Show();
-                Script_VarName1.Show();
-                Script_VarName2.Show();
-                Script_VarName3.Show();
-                Script_VarName4.Show();
-                Script_VarName5.Show();
-                Script_VarName6.Hide();
-                Script_VarName7.Show();
-                Script_VarName8.Hide();
-                Script_VarName9.Show();
-                Script_VarName10.Show();
-                Script_VarName11.Hide();
-                Script_VarName12.Hide();
-                Script_VarName13.Hide();
-                Script_VarName14.Hide();
-                Script_VarName15.Hide();
-
-                Script_DeleteVar0.Show();
-                Script_DeleteVar1.Show();
-                Script_DeleteVar2.Show();
-                Script_DeleteVar3.Show();
-                Script_DeleteVar4.Show();
-                Script_DeleteVar5.Show();
-                Script_DeleteVar6.Hide();
-                Script_DeleteVar7.Show();
-                Script_DeleteVar8.Hide();
-                Script_DeleteVar9.Show();
-                Script_DeleteVar10.Show();
-                Script_DeleteVar11.Hide();
-                Script_DeleteVar12.Hide();
-                Script_DeleteVar13.Hide();
-                Script_DeleteVar14.Hide();
-                Script_DeleteVar15.Hide();
+                VarScriptDisplayControl("00,01,02,03,04,05,07,09,10");
 
                 Script_TypeLabel.Hide();
                 Script_ComboBox.Hide();
@@ -951,14 +977,14 @@ namespace MasterSheetNew
                 // --- Others ---
                 string vlanNTP = "";
 
-                if (Script_Var4.Text != string.Empty)
+                if (Script_Var04.Text != string.Empty)
                 {
-                    withVlan = "interface " + Script_Var3.Text + "." + Script_Var4.Text + "\r\n" +
-                    "description " + Script_Var1.Text + "\r\n" +
-                    "bandwidth " + Script_Var2.Text + "\r\n" +
-                    "encapsulation dot1Q " + Script_Var4.Text + "\r\n";
+                    withVlan = "interface " + Script_Var03.Text + "." + Script_Var04.Text + "\r\n" +
+                    "description " + Script_Var01.Text + "\r\n" +
+                    "bandwidth " + Script_Var02.Text + "\r\n" +
+                    "encapsulation dot1Q " + Script_Var04.Text + "\r\n";
 
-                    vlanNTP = "." + Script_Var4.Text;
+                    vlanNTP = "." + Script_Var04.Text;
 
                     MessageBox.Show("Com Vlan");
                 }
@@ -972,7 +998,7 @@ namespace MasterSheetNew
                 Script_TextBox.Text = "conf t \r\n" +
                 "!\r\n" +
                 "!\r\n" +
-                "hostname " + Script_Var0.Text + "\r\n" +
+                "hostname " + Script_Var00.Text + "\r\n" +
                 "!\r\n" +
                 "ip domain name embratel \r\n" +
                 "!\r\n" +
@@ -1072,8 +1098,8 @@ namespace MasterSheetNew
                 "permit ip any host " + Script_Var10.Text + "\r\n" +
                 "!\r\n" +
                 "remark IP PE - CCTO\r\n" +
-                "permit ip host " + Script_Var7.Text + " any\r\n" +
-                "permit ip any host " + Script_Var7.Text + "\r\n" +
+                "permit ip host " + Script_Var07.Text + " any\r\n" +
+                "permit ip any host " + Script_Var07.Text + "\r\n" +
                 "!\r\n" +
                 "remark IP GERENCIA GCPE\r\n" +
                 "permit ip any 200.255.156.192 0.0.0.63\r\n" +
@@ -1093,7 +1119,7 @@ namespace MasterSheetNew
                 "!\r\n" +
                 "policy-map SHAPE_OUT\r\n" +
                 "class class-default\r\n" +
-                " shape average " + Script_Var2.Text + "000\r\n" +
+                " shape average " + Script_Var02.Text + "000\r\n" +
                 "!\r\n" +
                 "!\r\n" +
                 "!\r\n" +
@@ -1101,9 +1127,9 @@ namespace MasterSheetNew
                 "!# CONFIGURACOES DE INTERFACES \r\n" +
                 "!###################################################### \r\n" +
                 "!\r\n" +
-                "interface " + Script_Var3.Text + "\r\n" +
-                " description " + Script_Var1.Text + "\r\n" +
-                " bandwidth " + Script_Var2.Text + "\r\n" +
+                "interface " + Script_Var03.Text + "\r\n" +
+                " description " + Script_Var01.Text + "\r\n" +
+                " bandwidth " + Script_Var02.Text + "\r\n" +
                 " service-policy output SHAPE_OUT\r\n" +
                 " no shut\r\n" +
                 "!\r\n" +
@@ -1113,9 +1139,9 @@ namespace MasterSheetNew
                 "!\r\n" +
                 "!\r\n" +
                 "!\r\n" +
-                "interface " + Script_Var5.Text + "\r\n" +
+                "interface " + Script_Var05.Text + "\r\n" +
                 " description ** LAN **\r\n" +
-                " ip address " + Script_Var9.Text + " " + mascaraStr + "\r\n" +
+                " ip address " + Script_Var09.Text + " " + mascaraStr + "\r\n" +
                 " no ip redirects\r\n" +
                 " no ip unreachables\r\n" +
                 " no ip proxy-arp\r\n" +
@@ -1131,7 +1157,7 @@ namespace MasterSheetNew
                 "!# ROTA ESTATICA \r\n" +
                 "!###################################################### \r\n" +
                 "!\r\n" +
-                "ip route 0.0.0.0 0.0.0.0 " + Script_Var7.Text + "\r\n" +
+                "ip route 0.0.0.0 0.0.0.0 " + Script_Var07.Text + "\r\n" +
                 "!\r\n" +
                 "!\r\n" +
                 "!\r\n" +
@@ -1158,8 +1184,8 @@ namespace MasterSheetNew
                 "!# CONFIGURACOES DE NTP \r\n" +
                 "!###################################################### \r\n" +
                 "!\r\n" +
-                "ntp server 200.20.186.75 prefer source " + Script_Var3.Text + vlanNTP + "\r\n" +
-                "ntp server 200.20.186.94 source " + Script_Var3.Text + vlanNTP + "\r\n" +
+                "ntp server 200.20.186.75 prefer source " + Script_Var03.Text + vlanNTP + "\r\n" +
+                "ntp server 200.20.186.94 source " + Script_Var03.Text + vlanNTP + "\r\n" +
                 "!\r\n" +
                 "!\r\n" +
                 "!\r\n" +
@@ -1213,92 +1239,9 @@ namespace MasterSheetNew
 
             else if ((type == RouterType.HPE) && (activityType == ActivityType.BLD) && backboneOrNot == false && logOrNot == false)
             {
-                ProcedureName.Text = "CONFIG - HPE - BLD";
+                Script_ProcedureName.Text = "CONFIG - HPE - BLD";
 
-                // --- Cluster Only the Usable Variables ---
-                Script_VarName0.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_ComboBox.Location.Y);
-                Script_VarName1.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName0.Location.Y + 30);
-                Script_VarName2.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName1.Location.Y + 30);
-                Script_VarName3.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName2.Location.Y + 30);
-                Script_VarName4.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName3.Location.Y + 30);
-                Script_VarName5.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName4.Location.Y + 30);
-                Script_VarName7.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName5.Location.Y + 30);
-                Script_VarName9.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName7.Location.Y + 30);
-                Script_VarName10.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName9.Location.Y + 30);
-
-                Script_Var0.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_ComboBox.Location.Y);
-                Script_Var1.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var0.Location.Y + 30);
-                Script_Var2.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var1.Location.Y + 30);
-                Script_Var3.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var2.Location.Y + 30);
-                Script_Var4.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var3.Location.Y + 30);
-                Script_Var5.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var4.Location.Y + 30);
-                Script_Var7.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var5.Location.Y + 30);
-                Script_Var9.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var7.Location.Y + 30);
-                Script_LANMascara.Location = new System.Drawing.Point(260, Script_Var7.Location.Y + 30);
-                Script_Var10.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var9.Location.Y + 30);
-
-                Script_DeleteVar0.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_ComboBox.Location.Y);
-                Script_DeleteVar1.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar0.Location.Y + 30);
-                Script_DeleteVar2.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar1.Location.Y + 30);
-                Script_DeleteVar3.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar2.Location.Y + 30);
-                Script_DeleteVar4.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar3.Location.Y + 30);
-                Script_DeleteVar5.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar4.Location.Y + 30);
-                Script_DeleteVar7.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar5.Location.Y + 30);
-                Script_DeleteVar9.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar7.Location.Y + 30);
-                Script_DeleteVar10.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar9.Location.Y + 30);
-
-
-                // --- Show/Hide Variebles ---
-                Script_Var0.Show();
-                Script_Var1.Show();
-                Script_Var2.Show();
-                Script_Var3.Show();
-                Script_Var4.Show();
-                Script_Var5.Show();
-                Script_Var6.Hide();
-                Script_Var7.Show();
-                Script_Var8.Hide();
-                Script_Var9.Show();
-                Script_Var10.Show();
-                Script_Var11.Hide();
-                Script_Var12.Hide();
-                Script_Var13.Hide();
-                Script_Var14.Hide();
-                Script_Var15.Hide();
-
-                Script_VarName0.Show();
-                Script_VarName1.Show();
-                Script_VarName2.Show();
-                Script_VarName3.Show();
-                Script_VarName4.Show();
-                Script_VarName5.Show();
-                Script_VarName6.Hide();
-                Script_VarName7.Show();
-                Script_VarName8.Hide();
-                Script_VarName9.Show();
-                Script_VarName10.Show();
-                Script_VarName11.Hide();
-                Script_VarName12.Hide();
-                Script_VarName13.Hide();
-                Script_VarName14.Hide();
-                Script_VarName15.Hide();
-
-                Script_DeleteVar0.Show();
-                Script_DeleteVar1.Show();
-                Script_DeleteVar2.Show();
-                Script_DeleteVar3.Show();
-                Script_DeleteVar4.Show();
-                Script_DeleteVar5.Show();
-                Script_DeleteVar6.Hide();
-                Script_DeleteVar7.Show();
-                Script_DeleteVar8.Hide();
-                Script_DeleteVar9.Show();
-                Script_DeleteVar10.Show();
-                Script_DeleteVar11.Hide();
-                Script_DeleteVar12.Hide();
-                Script_DeleteVar13.Hide();
-                Script_DeleteVar14.Hide();
-                Script_DeleteVar15.Hide();
+                VarScriptDisplayControl("00,01,02,03,04,05,07,09,10");
 
                 Script_TypeLabel.Hide();
                 Script_ComboBox.Hide();
@@ -1318,12 +1261,12 @@ namespace MasterSheetNew
                 Script_XRLabel.Hide();
 
                 // --- Others ---
-                if (Script_Var4.Text != string.Empty)
+                if (Script_Var04.Text != string.Empty)
                 {
-                    withVlan = "interface " + Script_Var3.Text + "." + Script_Var4.Text + "\r\n" +
-                    "description " + Script_Var1.Text + "\r\n" +
-                    "bandwidth " + Script_Var2.Text + "\r\n" +
-                    "vlan-type dot1q vid " + Script_Var4.Text + "\r\n";
+                    withVlan = "interface " + Script_Var03.Text + "." + Script_Var04.Text + "\r\n" +
+                    "description " + Script_Var01.Text + "\r\n" +
+                    "bandwidth " + Script_Var02.Text + "\r\n" +
+                    "vlan-type dot1q vid " + Script_Var04.Text + "\r\n";
 
                     MessageBox.Show("Com Vlan");
                 }
@@ -1337,7 +1280,7 @@ namespace MasterSheetNew
                     "system-view\r\n" +
                     "#\r\n" +
                     "#\r\n" +
-                    "sysname " + Script_Var0.Text + "\r\n" +
+                    "sysname " + Script_Var00.Text + "\r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     "###################################################### \r\n" +
@@ -1392,12 +1335,12 @@ namespace MasterSheetNew
                     "# CONFIGURACOES DE INTERFACES # \r\n" +
                     "###################################################### \r\n" +
                     "#\r\n" +
-                    "interface " + Script_Var3.Text + "\r\n" +
+                    "interface " + Script_Var03.Text + "\r\n" +
                     "port link-mode route\r\n" +
                     "undo virtualbaudrate\r\n" +
-                    "description " + Script_Var1.Text + "\r\n" +
-                    "bandwidth " + Script_Var2.Text + "\r\n" +
-                    "qos gts any cir " + Script_Var2.Text + "\r\n" +
+                    "description " + Script_Var01.Text + "\r\n" +
+                    "bandwidth " + Script_Var02.Text + "\r\n" +
+                    "qos gts any cir " + Script_Var02.Text + "\r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
@@ -1405,11 +1348,11 @@ namespace MasterSheetNew
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
-                    "interface " + Script_Var5.Text + "\r\n" +
+                    "interface " + Script_Var05.Text + "\r\n" +
                     "port link-mode route\r\n" +
                     "y\r\n" +
                     "description ** LAN **\r\n" +
-                    "ip address " + Script_Var9.Text + " " + mascaraStr + "\r\n" +
+                    "ip address " + Script_Var09.Text + " " + mascaraStr + "\r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
@@ -1418,7 +1361,7 @@ namespace MasterSheetNew
                     "# ROTA ESTATICA # \r\n" +
                     "###################################################### \r\n" +
                     "#\r\n" +
-                    "ip route-static 0.0.0.0 0.0.0.0 " + Script_Var7.Text + "\r\n" +
+                    "ip route-static 0.0.0.0 0.0.0.0 " + Script_Var07.Text + "\r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
@@ -1433,8 +1376,8 @@ namespace MasterSheetNew
                     "rule 10 permit ip destination " + Script_Var10.Text + " 0\r\n" +
                     "rule 10 comment IP LOOPBACK PE\r\n" +
                     "#\r\n" +
-                    "rule 15 permit ip source " + Script_Var7.Text + " 0\r\n" +
-                    "rule 20 permit ip destination " + Script_Var7.Text + " 0\r\n" +
+                    "rule 15 permit ip source " + Script_Var07.Text + " 0\r\n" +
+                    "rule 20 permit ip destination " + Script_Var07.Text + " 0\r\n" +
                     "rule 20 comment IP PE - CCTO\r\n" +
                     "#\r\n" +
                     "rule 25 permit ip destination 200.255.156.192 0.0.0.63\r\n" +
@@ -1467,8 +1410,8 @@ namespace MasterSheetNew
                     "###################################################### \r\n" +
                     "#\r\n" +
                     "ntp-service enable\r\n" +
-                    "ntp-service unicast-server 200.20.186.75 priority source " + Script_Var5.Text + "\r\n" +
-                    "ntp-service unicast-server 200.20.186.94 source " + Script_Var5.Text + "\r\n" +
+                    "ntp-service unicast-server 200.20.186.75 priority source " + Script_Var05.Text + "\r\n" +
+                    "ntp-service unicast-server 200.20.186.94 source " + Script_Var05.Text + "\r\n" +
                     "ntp-service refclock-master 12\r\n" +
                     "#\r\n" +
                     "clock protocol ntp\r\n" +
@@ -1532,92 +1475,10 @@ namespace MasterSheetNew
 
             else if ((type == RouterType.Fortigate) && (activityType == ActivityType.BLD) && backboneOrNot == false && logOrNot == false)
             {
-                ProcedureName.Text = "CONFIG - FORTIGATE - BLD";
-
-                // --- Cluster Only the Usable Variables ---
-                Script_VarName0.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_ComboBox.Location.Y);
-                Script_VarName1.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName0.Location.Y + 30);
-                Script_VarName2.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName1.Location.Y + 30);
-                Script_VarName3.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName2.Location.Y + 30);
-                Script_VarName4.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName3.Location.Y + 30);
-                Script_VarName5.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName4.Location.Y + 30);
-                Script_VarName7.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName5.Location.Y + 30);
-                Script_VarName9.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName7.Location.Y + 30);
-                Script_VarName10.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName9.Location.Y + 30);
-
-                Script_Var0.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_ComboBox.Location.Y);
-                Script_Var1.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var0.Location.Y + 30);
-                Script_Var2.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var1.Location.Y + 30);
-                Script_Var3.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var2.Location.Y + 30);
-                Script_Var4.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var3.Location.Y + 30);
-                Script_Var5.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var4.Location.Y + 30);
-                Script_Var7.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var5.Location.Y + 30);
-                Script_Var9.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var7.Location.Y + 30);
-                Script_LANMascara.Location = new System.Drawing.Point(260, Script_Var7.Location.Y + 30);
-                Script_Var10.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var9.Location.Y + 30);
-
-                Script_DeleteVar0.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_ComboBox.Location.Y);
-                Script_DeleteVar1.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar0.Location.Y + 30);
-                Script_DeleteVar2.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar1.Location.Y + 30);
-                Script_DeleteVar3.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar2.Location.Y + 30);
-                Script_DeleteVar4.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar3.Location.Y + 30);
-                Script_DeleteVar5.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar4.Location.Y + 30);
-                Script_DeleteVar7.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar5.Location.Y + 30);
-                Script_DeleteVar9.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar7.Location.Y + 30);
-                Script_DeleteVar10.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar9.Location.Y + 30);
+                Script_ProcedureName.Text = "CONFIG - FORTIGATE - BLD";
 
 
-                // --- Show/Hide Variebles ---
-                Script_Var0.Show();
-                Script_Var1.Show();
-                Script_Var2.Show();
-                Script_Var3.Show();
-                Script_Var4.Show();
-                Script_Var5.Show();
-                Script_Var6.Hide();
-                Script_Var7.Show();
-                Script_Var8.Hide();
-                Script_Var9.Show();
-                Script_Var10.Show();
-                Script_Var11.Hide();
-                Script_Var12.Hide();
-                Script_Var13.Hide();
-                Script_Var14.Hide();
-                Script_Var15.Hide();
-
-                Script_VarName0.Show();
-                Script_VarName1.Show();
-                Script_VarName2.Show();
-                Script_VarName3.Show();
-                Script_VarName4.Show();
-                Script_VarName5.Show();
-                Script_VarName6.Hide();
-                Script_VarName7.Show();
-                Script_VarName8.Hide();
-                Script_VarName9.Show();
-                Script_VarName10.Show();
-                Script_VarName11.Hide();
-                Script_VarName12.Hide();
-                Script_VarName13.Hide();
-                Script_VarName14.Hide();
-                Script_VarName15.Hide();
-
-                Script_DeleteVar0.Show();
-                Script_DeleteVar1.Show();
-                Script_DeleteVar2.Show();
-                Script_DeleteVar3.Show();
-                Script_DeleteVar4.Show();
-                Script_DeleteVar5.Show();
-                Script_DeleteVar6.Hide();
-                Script_DeleteVar7.Show();
-                Script_DeleteVar8.Hide();
-                Script_DeleteVar9.Show();
-                Script_DeleteVar10.Show();
-                Script_DeleteVar11.Hide();
-                Script_DeleteVar12.Hide();
-                Script_DeleteVar13.Hide();
-                Script_DeleteVar14.Hide();
-                Script_DeleteVar15.Hide();
+                VarScriptDisplayControl("00,01,02,03,04,05,07,09,10");
 
                 Script_TypeLabel.Hide();
                 Script_ComboBox.Hide();
@@ -1639,23 +1500,23 @@ namespace MasterSheetNew
                 vlanNaWAN = "# \r\n";
                 sourceLan = "";
 
-                if (Script_Var4.Text != string.Empty)
+                if (Script_Var04.Text != string.Empty)
                 {
                     vlanNaWAN = "################# Configuracao VLAN na WAN  #################### \r\n" +
                         "#\r\n" +
-                        "    edit " + '"' + Script_Var3.Text + "." + Script_Var4.Text + '"' + "\r\n" +
+                        "    edit " + '"' + Script_Var03.Text + "." + Script_Var04.Text + '"' + "\r\n" +
                         "       set vdom " + '"' + "root" + '"' + "\r\n" +
                         "       set allowaccess ping https ssh telnet snmp\r\n" +
-                        "       set description " + '"' + Script_Var1.Text + '"' + "\r\n" +
+                        "       set description " + '"' + Script_Var01.Text + '"' + "\r\n" +
                         "       set alias " + '"' + "WAN" + '"' + "\r\n" +
                         "       set role wan\r\n" +
-                        "       set interface " + Script_Var3.Text + "\r\n" +
-                        "       set vlanid " + Script_Var4.Text + "\r\n" +
+                        "       set interface " + Script_Var03.Text + "\r\n" +
+                        "       set vlanid " + Script_Var04.Text + "\r\n" +
                         "   next\r\n" +
                         "#\r\n" +
                         "#\r\n" +
                         "#\r\n";
-                    sourceLan = "." + Script_Var4.Text;
+                    sourceLan = "." + Script_Var04.Text;
 
                     MessageBox.Show("Com Vlan");
                 }
@@ -1672,7 +1533,7 @@ namespace MasterSheetNew
                     "################# Configs - Hostname/Horario ############# \r\n" +
                     "#\r\n" +
                     "config system global\r\n" +
-                    "    set hostname " + '"' + Script_Var0.Text + '"' + "\r\n" +
+                    "    set hostname " + '"' + Script_Var00.Text + '"' + "\r\n" +
                     "   set timezone 18\r\n" +
                     "   set dst disable\r\n" +
                     "end\r\n" +
@@ -1755,7 +1616,7 @@ namespace MasterSheetNew
                     "       set trusthost3 200.255.122.0 255.255.255.0\r\n" +
                     "       set trusthost5 200.244.28.61 255.255.255.255\r\n" +
                     "       set trusthost6 200.244.27.26 255.255.255.255\r\n" +
-                    "       set trusthost7 " + Script_Var7.Text + " 255.255.255.255\r\n" +
+                    "       set trusthost7 " + Script_Var07.Text + " 255.255.255.255\r\n" +
                     "       set trusthost8 " + Script_Var10.Text + " 255.255.255.255\r\n" +
                     "       set accprofile " + '"' + "super_admin" + '"' + "\r\n" +
                     "    next\r\n" +
@@ -1813,7 +1674,7 @@ namespace MasterSheetNew
                     "       set vdom " + '"' + "root" + '"' + "\r\n" +
                     "       set allowaccess ping https ssh telnet snmp\r\n" +
                     "       set role wan\r\n" +
-                    "       set description " + '"' + Script_Var1.Text + '"' + "\r\n" +
+                    "       set description " + '"' + Script_Var01.Text + '"' + "\r\n" +
                     "       set alias " + '"' + "WAN" + '"' + "\r\n" +
                     "    next\r\n" +
                     "#\r\n" +
@@ -1824,7 +1685,7 @@ namespace MasterSheetNew
                     "#\r\n" +
                     "    edit " + '"' + "lan1" + '"' + "\r\n" +
                     "       set vdom " + '"' + "root" + '"' + "\r\n" +
-                    "       set ip " + Script_Var9.Text + " " + mascaraStr + "\r\n" +
+                    "       set ip " + Script_Var09.Text + " " + mascaraStr + "\r\n" +
                     "       set allowaccess ping fgfm snmp \r\n" +
                     "       set description " + '"' + "CONEXAO LAN" + '"' + "\r\n" +
                     "       set alias " + '"' + "LAN" + '"' + "\r\n" +
@@ -1839,8 +1700,8 @@ namespace MasterSheetNew
                     "config firewall policy\r\n" +
                     "     edit 1\r\n" +
                     "       set name " + '"' + "LAN_WAN" + '"' + "\r\n" +
-                    "       set srcintf " + '"' + Script_Var5.Text + '"' + "\r\n" +
-                    "       set dstintf " + '"' + Script_Var3.Text + sourceLan + '"' + "\r\n" +
+                    "       set srcintf " + '"' + Script_Var05.Text + '"' + "\r\n" +
+                    "       set dstintf " + '"' + Script_Var03.Text + sourceLan + '"' + "\r\n" +
                     "       set srcaddr " + '"' + "all" + '"' + "\r\n" +
                     "       set dstaddr " + '"' + "all" + '"' + "\r\n" +
                     "      set action accept\r\n" +
@@ -1851,8 +1712,8 @@ namespace MasterSheetNew
                     "    next\r\n" +
                     "    edit 2\r\n" +
                     "       set name " + '"' + "WAN_LAN" + '"' + "\r\n" +
-                    "       set srcintf " + '"' + Script_Var3.Text + sourceLan + '"' + "\r\n" +
-                    "       set dstintf " + '"' + Script_Var5.Text + '"' + "\r\n" +
+                    "       set srcintf " + '"' + Script_Var03.Text + sourceLan + '"' + "\r\n" +
+                    "       set dstintf " + '"' + Script_Var05.Text + '"' + "\r\n" +
                     "       set srcaddr " + '"' + "all" + '"' + "\r\n" +
                     "       set dstaddr " + '"' + "all" + '"' + "\r\n" +
                     "       set action accept\r\n" +
@@ -1869,8 +1730,8 @@ namespace MasterSheetNew
                     "#\r\n" +
                     "config router static\r\n" +
                     "    edit 1\r\n" +
-                    "       set gateway " + Script_Var7.Text + "\r\n" +
-                    "       set device " + Script_Var3.Text + sourceLan + "\r\n" +
+                    "       set gateway " + Script_Var07.Text + "\r\n" +
+                    "       set device " + Script_Var03.Text + sourceLan + "\r\n" +
                     "    next\r\n" +
                     "end\r\n" +
                     "#\r\n" +
@@ -1884,92 +1745,10 @@ namespace MasterSheetNew
 
             else if ((type == RouterType.Huawei) && (activityType == ActivityType.BLD) && backboneOrNot == false && logOrNot == false)
             {
-                ProcedureName.Text = "CONFIG - HUAWEI - BLD";
+                Script_ProcedureName.Text = "CONFIG - HUAWEI - BLD";
 
-                // --- Cluster Only the Usable Variables ---
-                Script_VarName0.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_ComboBox.Location.Y);
-                Script_VarName1.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName0.Location.Y + 30);
-                Script_VarName2.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName1.Location.Y + 30);
-                Script_VarName3.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName2.Location.Y + 30);
-                Script_VarName4.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName3.Location.Y + 30);
-                Script_VarName5.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName4.Location.Y + 30);
-                Script_VarName7.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName5.Location.Y + 30);
-                Script_VarName9.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName7.Location.Y + 30);
-                Script_VarName10.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName9.Location.Y + 30);
+                VarScriptDisplayControl("00,01,02,03,04,05,07,09,10");
 
-                Script_Var0.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_ComboBox.Location.Y);
-                Script_Var1.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var0.Location.Y + 30);
-                Script_Var2.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var1.Location.Y + 30);
-                Script_Var3.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var2.Location.Y + 30);
-                Script_Var4.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var3.Location.Y + 30);
-                Script_Var5.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var4.Location.Y + 30);
-                Script_Var7.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var5.Location.Y + 30);
-                Script_Var9.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var7.Location.Y + 30);
-                Script_LANMascara.Location = new System.Drawing.Point(260, Script_Var7.Location.Y + 30);
-                Script_Var10.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var9.Location.Y + 30);
-
-                Script_DeleteVar0.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_ComboBox.Location.Y);
-                Script_DeleteVar1.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar0.Location.Y + 30);
-                Script_DeleteVar2.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar1.Location.Y + 30);
-                Script_DeleteVar3.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar2.Location.Y + 30);
-                Script_DeleteVar4.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar3.Location.Y + 30);
-                Script_DeleteVar5.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar4.Location.Y + 30);
-                Script_DeleteVar7.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar5.Location.Y + 30);
-                Script_DeleteVar9.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar7.Location.Y + 30);
-                Script_DeleteVar10.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar9.Location.Y + 30);
-
-
-                // --- Show/Hide Variebles ---
-                Script_Var0.Show();
-                Script_Var1.Show();
-                Script_Var2.Show();
-                Script_Var3.Show();
-                Script_Var4.Show();
-                Script_Var5.Show();
-                Script_Var6.Hide();
-                Script_Var7.Show();
-                Script_Var8.Hide();
-                Script_Var9.Show();
-                Script_Var10.Show();
-                Script_Var11.Hide();
-                Script_Var12.Hide();
-                Script_Var13.Hide();
-                Script_Var14.Hide();
-                Script_Var15.Hide();
-
-                Script_VarName0.Show();
-                Script_VarName1.Show();
-                Script_VarName2.Show();
-                Script_VarName3.Show();
-                Script_VarName4.Show();
-                Script_VarName5.Show();
-                Script_VarName6.Hide();
-                Script_VarName7.Show();
-                Script_VarName8.Hide();
-                Script_VarName9.Show();
-                Script_VarName10.Show();
-                Script_VarName11.Hide();
-                Script_VarName12.Hide();
-                Script_VarName13.Hide();
-                Script_VarName14.Hide();
-                Script_VarName15.Hide();
-
-                Script_DeleteVar0.Show();
-                Script_DeleteVar1.Show();
-                Script_DeleteVar2.Show();
-                Script_DeleteVar3.Show();
-                Script_DeleteVar4.Show();
-                Script_DeleteVar5.Show();
-                Script_DeleteVar6.Hide();
-                Script_DeleteVar7.Show();
-                Script_DeleteVar8.Hide();
-                Script_DeleteVar9.Show();
-                Script_DeleteVar10.Show();
-                Script_DeleteVar11.Hide();
-                Script_DeleteVar12.Hide();
-                Script_DeleteVar13.Hide();
-                Script_DeleteVar14.Hide();
-                Script_DeleteVar15.Hide();
 
                 Script_TypeLabel.Hide();
                 Script_ComboBox.Hide();
@@ -1986,15 +1765,15 @@ namespace MasterSheetNew
                 Script_XRLabel.Hide();
 
                 // --- Others ---
-                if (Script_Var4.Text != string.Empty)
+                if (Script_Var04.Text != string.Empty)
                 {
-                    withVlan = "interface " + Script_Var3.Text + "." + Script_Var4.Text + "\r\n" +
-                        " description " + Script_Var1.Text + "\r\n" +
-                        " dot1q termination vid " + Script_Var4.Text + "\r\n" +
-                        " bandwidth " + Script_Var2.Text + "\r\n";
+                    withVlan = "interface " + Script_Var03.Text + "." + Script_Var04.Text + "\r\n" +
+                        " description " + Script_Var01.Text + "\r\n" +
+                        " dot1q termination vid " + Script_Var04.Text + "\r\n" +
+                        " bandwidth " + Script_Var02.Text + "\r\n";
 
                     MessageBox.Show("Com Vlan");
-                    sourceLan = "." + Script_Var4.Text;
+                    sourceLan = "." + Script_Var04.Text;
                 }
                 else
                 {
@@ -2009,7 +1788,7 @@ namespace MasterSheetNew
                 Script_TextBox.Text = "SYS\r\n" +
                     "#\r\n" +
                     "#\r\n" +
-                    "sysname " + Script_Var0.Text + "\r\n" +
+                    "sysname " + Script_Var00.Text + "\r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
@@ -2036,6 +1815,7 @@ namespace MasterSheetNew
                     "local-user EBT password irreversible-cipher PRO1AN@1\r\n" +
                     "PRO1AN@1\r\n" +
                     "local-user EBT service-type telnet terminal ssh\r\n" +
+                    "y\r\n" +
                     "local-user EBT privilege level 15 \r\n" +
                     "#\r\n" +
                     "undo local-user admin\r\n" +
@@ -2052,7 +1832,6 @@ namespace MasterSheetNew
                     "#\r\n" +
                     "#\r\n" +
                     "undo http server permit interface\r\n" +
-                    "y\r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
@@ -2066,8 +1845,8 @@ namespace MasterSheetNew
                     "rule permit ip source " + Script_Var10.Text + " 0\r\n" +
                     "rule permit ip destination " + Script_Var10.Text + " 0\r\n" +
                     "#\r\n" +
-                    "rule permit ip source " + Script_Var7.Text + " 0\r\n" +
-                    "rule permit ip destination " + Script_Var7.Text + " 0\r\n" +
+                    "rule permit ip source " + Script_Var07.Text + " 0\r\n" +
+                    "rule permit ip destination " + Script_Var07.Text + " 0\r\n" +
                     "#\r\n" +
                     "rule permit ip destination 200.255.156.192 0.0.0.63\r\n" +
                     "rule permit ip source 200.255.156.192 0.0.0.63\r\n" +
@@ -2075,24 +1854,24 @@ namespace MasterSheetNew
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
-                    "traffic classifier " + Script_Var2.Text + " operator or\r\n" +
+                    "traffic classifier " + Script_Var02.Text + " operator or\r\n" +
                     "if-match any\r\n" +
                     "# \r\n" +
-                    "traffic behavior " + Script_Var2.Text + "\r\n" +
-                    "car cir " + Script_Var2.Text + "\r\n" +
+                    "traffic behavior " + Script_Var02.Text + "\r\n" +
+                    "car cir " + Script_Var02.Text + "\r\n" +
                     "#\r\n" +
-                    "traffic policy " + Script_Var2.Text + "\r\n" +
-                    "classifier " + Script_Var2.Text + " behavior " + Script_Var2.Text + " precedence 5\r\n" +
+                    "traffic policy " + Script_Var02.Text + "\r\n" +
+                    "classifier " + Script_Var02.Text + " behavior " + Script_Var02.Text + " precedence 5\r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
-                    "interface " + Script_Var3.Text + "\r\n" +
-                    " description  " + Script_Var1.Text + "\r\n" +
-                    " bandwidth " + Script_Var2.Text + "\r\n" +
-                    " qos gts cir " + Script_Var2.Text + "\r\n" +
+                    "interface " + Script_Var03.Text + "\r\n" +
+                    " description  " + Script_Var01.Text + "\r\n" +
+                    " bandwidth " + Script_Var02.Text + "\r\n" +
+                    " qos gts cir " + Script_Var02.Text + "\r\n" +
                     " undo virtualbaudrate\r\n" +
-                    " traffic-policy " + Script_Var2.Text + " inbound\r\n" +
-                    " traffic-policy " + Script_Var2.Text + " outbound\r\n" +
+                    " traffic-policy " + Script_Var02.Text + " inbound\r\n" +
+                    " traffic-policy " + Script_Var02.Text + " outbound\r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
@@ -2100,14 +1879,14 @@ namespace MasterSheetNew
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
-                    "interface " + Script_Var5.Text + "\r\n" +
+                    "interface " + Script_Var05.Text + "\r\n" +
                     " description  **LAN**\r\n" +
-                    " ip address " + Script_Var9.Text + " " + mascaraStr + "\r\n" +
+                    " ip address " + Script_Var09.Text + " " + mascaraStr + "\r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
-                    "ip route-static 0.0.0.0 0.0.0.0 " + Script_Var7.Text + "\r\n" +
+                    "ip route-static 0.0.0.0 0.0.0.0 " + Script_Var07.Text + "\r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
@@ -2116,9 +1895,9 @@ namespace MasterSheetNew
                     "y\r\n" +
                     "#\r\n" +
                     "#\r\n" +
-                    "info-center loghost source " + Script_Var3.Text + sourceLan + "\r\n" +
-                    "info-center loghost " + Script_Var7.Text + "\r\n" +
-                    "info-center loghost " + Script_Var9.Text + "\r\n" +
+                    "info-center loghost source " + Script_Var03.Text + sourceLan + "\r\n" +
+                    "info-center loghost " + Script_Var07.Text + "\r\n" +
+                    "info-center loghost " + Script_Var09.Text + "\r\n" +
                     "info-center logbuffer size 1024\r\n" +
                     "#\r\n" +
                     "#\r\n" +
@@ -2127,7 +1906,7 @@ namespace MasterSheetNew
                     "#\r\n" +
                     "#\r\n" +
                     "telnet server enable\r\n" +
-                    "telnet server permit interface " + Script_Var3.Text + sourceLan + "\r\n" +
+                    "telnet server permit interface " + Script_Var03.Text + sourceLan + "\r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
@@ -2142,8 +1921,8 @@ namespace MasterSheetNew
                     "#\r\n" +
                     "#\r\n" +
                     "ntp-service refclock-master 12\r\n" +
-                    "ntp-service unicast-server 200.20.186.94 source-interface " + Script_Var5.Text + "\r\n" +
-                    "ntp-service unicast-server 200.20.186.75 source-interface " + Script_Var5.Text + " preference\r\n" +
+                    "ntp-service unicast-server 200.20.186.94 source-interface " + Script_Var05.Text + "\r\n" +
+                    "ntp-service unicast-server 200.20.186.75 source-interface " + Script_Var05.Text + " preference\r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
@@ -2155,95 +1934,10 @@ namespace MasterSheetNew
 
             else if ((type == RouterType.Fortigate) && (activityType == ActivityType.MPLS) && backboneOrNot == false && logOrNot == false)
             {
-                ProcedureName.Text = "CONFIG - FORTIGATE - MPLS";
-
-                // --- Cluster Only the Usable Variables ---
-                Script_VarName0.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_ComboBox.Location.Y);
-                Script_VarName1.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName0.Location.Y + 30);
-                Script_VarName2.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName1.Location.Y + 30);
-                Script_VarName3.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName2.Location.Y + 30);
-                Script_VarName4.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName3.Location.Y + 30);
-                Script_VarName5.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName4.Location.Y + 30);
-                Script_VarName7.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName5.Location.Y + 30);
-                Script_VarName9.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName7.Location.Y + 30);
-                Script_VarName11.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName9.Location.Y + 30);
-                Script_VarName12.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName11.Location.Y + 30);
-
-                Script_Var0.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_ComboBox.Location.Y);
-                Script_Var1.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var0.Location.Y + 30);
-                Script_Var2.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var1.Location.Y + 30);
-                Script_Var3.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var2.Location.Y + 30);
-                Script_Var4.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var3.Location.Y + 30);
-                Script_Var5.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var4.Location.Y + 30);
-                Script_Var7.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var5.Location.Y + 30);
-                Script_Var9.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var7.Location.Y + 30);
-                Script_LANMascara.Location = new System.Drawing.Point(260, Script_Var7.Location.Y + 30);
-                Script_Var11.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var9.Location.Y + 30);
-                Script_Var12.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var11.Location.Y + 30);
-
-                Script_DeleteVar0.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_ComboBox.Location.Y);
-                Script_DeleteVar1.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar0.Location.Y + 30);
-                Script_DeleteVar2.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar1.Location.Y + 30);
-                Script_DeleteVar3.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar2.Location.Y + 30);
-                Script_DeleteVar4.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar3.Location.Y + 30);
-                Script_DeleteVar5.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar4.Location.Y + 30);
-                Script_DeleteVar7.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar5.Location.Y + 30);
-                Script_DeleteVar9.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar7.Location.Y + 30);
-                Script_DeleteVar11.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar9.Location.Y + 30);
-                Script_DeleteVar12.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar11.Location.Y + 30);
+                Script_ProcedureName.Text = "CONFIG - FORTIGATE - MPLS";
 
 
-                // --- Show/Hide Variebles ---
-                Script_Var0.Show();
-                Script_Var1.Show();
-                Script_Var2.Show();
-                Script_Var3.Show();
-                Script_Var4.Show();
-                Script_Var5.Show();
-                Script_Var6.Hide();
-                Script_Var7.Show();
-                Script_Var8.Hide();
-                Script_Var9.Show();
-                Script_Var10.Hide();
-                Script_Var11.Show();
-                Script_Var12.Show();
-                Script_Var13.Hide();
-                Script_Var14.Hide();
-                Script_Var15.Hide();
-
-                Script_VarName0.Show();
-                Script_VarName1.Show();
-                Script_VarName2.Show();
-                Script_VarName3.Show();
-                Script_VarName4.Show();
-                Script_VarName5.Show();
-                Script_VarName6.Hide();
-                Script_VarName7.Show();
-                Script_VarName8.Hide();
-                Script_VarName9.Show();
-                Script_VarName10.Hide();
-                Script_VarName11.Show();
-                Script_VarName12.Show();
-                Script_VarName13.Hide();
-                Script_VarName14.Hide();
-                Script_VarName15.Hide();
-
-                Script_DeleteVar0.Show();
-                Script_DeleteVar1.Show();
-                Script_DeleteVar2.Show();
-                Script_DeleteVar3.Show();
-                Script_DeleteVar4.Show();
-                Script_DeleteVar5.Show();
-                Script_DeleteVar6.Hide();
-                Script_DeleteVar7.Show();
-                Script_DeleteVar8.Hide();
-                Script_DeleteVar9.Show();
-                Script_DeleteVar10.Hide();
-                Script_DeleteVar11.Show();
-                Script_DeleteVar12.Show();
-                Script_DeleteVar13.Hide();
-                Script_DeleteVar14.Hide();
-                Script_DeleteVar15.Hide();
+                VarScriptDisplayControl("00,01,02,03,04,05,07,09,11,12");
 
                 Script_TypeLabel.Hide();
                 Script_ComboBox.Hide();
@@ -2264,18 +1958,18 @@ namespace MasterSheetNew
                 // --- Others ---
                 vlanNaWAN = "# \r\n";
 
-                if (Script_Var4.Text != string.Empty)
+                if (Script_Var04.Text != string.Empty)
                 {
                     vlanNaWAN = "################# Configuracao VLAN na WAN  ##################### \r\n" +
                         "#\r\n" +
-                        "    edit " + '"' + Script_Var3.Text + "." + Script_Var4.Text + '"' + "\r\n" +
+                        "    edit " + '"' + Script_Var03.Text + "." + Script_Var04.Text + '"' + "\r\n" +
                         "       set vdom " + '"' + "root" + '"' + "\r\n" +
                         "       set allowaccess ping https ssh telnet snmp\r\n" +
-                        "       set description " + '"' + Script_Var1.Text + '"' + "\r\n" +
+                        "       set description " + '"' + Script_Var01.Text + '"' + "\r\n" +
                         "       set alias " + '"' + "WAN" + '"' + "\r\n" +
                         "       set role wan\r\n" +
-                        "       set interface " + Script_Var3.Text + "\r\n" +
-                        "       set vlanid " + Script_Var4.Text + "\r\n" +
+                        "       set interface " + Script_Var03.Text + "\r\n" +
+                        "       set vlanid " + Script_Var04.Text + "\r\n" +
                         "   next\r\n" +
                         "#\r\n" +
                         "#\r\n" +
@@ -2313,7 +2007,7 @@ namespace MasterSheetNew
                     "################# Configs - Hostname/Horario ################# \r\n" +
                     "#\r\n" +
                     "config system global\r\n" +
-                    "   set hostname " + '"' + Script_Var0.Text + '"' + "\r\n" +
+                    "   set hostname " + '"' + Script_Var00.Text + '"' + "\r\n" +
                     "   set timezone 18\r\n" +
                     "   set dst disable\r\n" +
                     "end\r\n" +
@@ -2416,10 +2110,10 @@ namespace MasterSheetNew
                     "config system interface\r\n" +
                     "    edit " + '"' + "wan" + '"' + "\r\n" +
                     "       set vdom " + '"' + "root" + '"' + "\r\n" +
-                    "       set description " + '"' + Script_Var1.Text + '"' + "\r\n" +
+                    "       set description " + '"' + Script_Var01.Text + '"' + "\r\n" +
                     "       set allowaccess ping https ssh snmp http telnet\r\n" +
-                    "       set inbandwidth " + Script_Var2.Text + "\r\n" +
-                    "       set outbandwidth " + Script_Var2.Text + "\r\n" +
+                    "       set inbandwidth " + Script_Var02.Text + "\r\n" +
+                    "       set outbandwidth " + Script_Var02.Text + "\r\n" +
                     "       set alias " + '"' + "WAN" + '"' + "\r\n" +
                     "       set type physical\r\n" +
                     "       set role wan\r\n" +
@@ -2433,7 +2127,7 @@ namespace MasterSheetNew
                     "        set vdom " + '"' + "root" + '"' + "\r\n" +
                     "        set speed auto\r\n" +
                     "        set description " + '"' + "CONEXAO LAN" + '"' + "\r\n" +
-                    "        set ip " + Script_Var9.Text + " " + mascaraStr + "\r\n" +
+                    "        set ip " + Script_Var09.Text + " " + mascaraStr + "\r\n" +
                     "        set allowaccess ping https ssh snmp http telnet\r\n" +
                     "        set type physical\r\n" +
                     "        set role lan\r\n" +
@@ -2448,9 +2142,9 @@ namespace MasterSheetNew
                     "config router bgp\r\n" +
                     "    set as " + Script_Var12.Text + "\r\n" +
                     "    set log-neighbour-changes enable\r\n" +
-                    "    set router-id " + Script_Var7.Text + "\r\n" +
+                    "    set router-id " + Script_Var07.Text + "\r\n" +
                     "    config neighbor\r\n" +
-                    "    edit " + '"' + Script_Var8.Text + '"' + "\r\n" +
+                    "    edit " + '"' + Script_Var08.Text + '"' + "\r\n" +
                     "        set allowas-in-enable enable\r\n" +
                     "        set description " + '"' + designacao + '"' + "\r\n" +
                     "        set soft-reconfiguration enable\r\n" +
@@ -2491,79 +2185,9 @@ namespace MasterSheetNew
 
             else if ((type == RouterType.Cisco) && (activityType == ActivityType.BLD) && backboneOrNot == false && logOrNot == true)
             {
-                ProcedureName.Text = "LOGS - CISCO - BLD";
+                Script_ProcedureName.Text = "LOGS - CISCO - BLD";
 
-                // --- Cluster Only the Usable Variables ---
-                Script_VarName3.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_ComboBox.Location.Y);
-                Script_VarName4.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName3.Location.Y + 30);
-                Script_VarName5.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName4.Location.Y + 30);
-                Script_VarName6.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName5.Location.Y + 30);
-                Script_VarName7.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName6.Location.Y + 30);
-
-                Script_Var3.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_ComboBox.Location.Y);
-                Script_Var4.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var3.Location.Y + 30);
-                Script_Var5.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var4.Location.Y + 30);
-                Script_Var6.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var5.Location.Y + 30);
-                Script_Var7.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var6.Location.Y + 30);
-
-                Script_DeleteVar3.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_ComboBox.Location.Y);
-                Script_DeleteVar4.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar3.Location.Y + 30);
-                Script_DeleteVar5.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar4.Location.Y + 30);
-                Script_DeleteVar6.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar5.Location.Y + 30);
-                Script_DeleteVar7.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar6.Location.Y + 30);
-
-
-                // --- Show/Hide Variebles ---
-                Script_Var0.Hide();
-                Script_Var1.Hide();
-                Script_Var2.Hide();
-                Script_Var3.Show();
-                Script_Var4.Show();
-                Script_Var5.Show();
-                Script_Var6.Show();
-                Script_Var7.Show();
-                Script_Var8.Hide();
-                Script_Var9.Hide();
-                Script_Var10.Hide();
-                Script_Var11.Hide();
-                Script_Var12.Hide();
-                Script_Var13.Hide();
-                Script_Var14.Hide();
-                Script_Var15.Hide();
-
-                Script_VarName0.Hide();
-                Script_VarName1.Hide();
-                Script_VarName2.Hide();
-                Script_VarName3.Show();
-                Script_VarName4.Show();
-                Script_VarName5.Show();
-                Script_VarName6.Show();
-                Script_VarName7.Show();
-                Script_VarName8.Hide();
-                Script_VarName9.Hide();
-                Script_VarName10.Hide();
-                Script_VarName11.Hide();
-                Script_VarName12.Hide();
-                Script_VarName13.Hide();
-                Script_VarName14.Hide();
-                Script_VarName15.Hide();
-
-                Script_DeleteVar0.Hide();
-                Script_DeleteVar1.Hide();
-                Script_DeleteVar2.Hide();
-                Script_DeleteVar3.Show();
-                Script_DeleteVar4.Show();
-                Script_DeleteVar5.Show();
-                Script_DeleteVar6.Show();
-                Script_DeleteVar7.Show();
-                Script_DeleteVar8.Hide();
-                Script_DeleteVar9.Hide();
-                Script_DeleteVar10.Hide();
-                Script_DeleteVar11.Hide();
-                Script_DeleteVar12.Hide();
-                Script_DeleteVar13.Hide();
-                Script_DeleteVar14.Hide();
-                Script_DeleteVar15.Hide();
+                VarScriptDisplayControl("03,04,05,06,07");
 
                 Script_TypeLabel.Hide();
                 Script_ComboBox.Hide();
@@ -2587,14 +2211,14 @@ namespace MasterSheetNew
                 string intLan = "!\r\n";
                 string vlanLan = "!\r\n";
                 string policyLan = "!\r\n";
-                
-                if (Script_Var5.Text != string.Empty)
+
+                if (Script_Var05.Text != string.Empty)
                 {
-                    sourceLan = "source " + Script_Var5.Text;
-                    intLan = "show interface " + Script_Var5.Text + "\r\n" +
+                    sourceLan = "source " + Script_Var05.Text;
+                    intLan = "show interface " + Script_Var05.Text + "\r\n" +
                         "!\r\n" +
                         "!######################## \r\n";
-                    policyLan = "show policy-map interface " + Script_Var5.Text + "\r\n" + "!\r\n" + "!\r\n";
+                    policyLan = "show policy-map interface " + Script_Var05.Text + "\r\n" + "!\r\n" + "!\r\n";
                 }
                 else
                 {
@@ -2602,9 +2226,9 @@ namespace MasterSheetNew
                     sourceLan = "";
                     intLan = "!\r\n";
                 }
-                if (Script_Var4.Text != string.Empty)
+                if (Script_Var04.Text != string.Empty)
                 {
-                    vlanWan = "show interface " + Script_Var4.Text + "\r\n" +
+                    vlanWan = "show interface " + Script_Var04.Text + "\r\n" +
                         "!\r\n" +
                         "!######################## \r\n"; ;
                 }
@@ -2612,9 +2236,9 @@ namespace MasterSheetNew
                 {
                     vlanWan = "!\r\n";
                 }
-                if (Script_Var6.Text != string.Empty)
+                if (Script_Var06.Text != string.Empty)
                 {
-                    vlanLan = "show interface " + Script_Var6.Text + "\r\n";
+                    vlanLan = "show interface " + Script_Var06.Text + "\r\n";
                 }
                 else
                 {
@@ -2649,10 +2273,10 @@ namespace MasterSheetNew
                     "!\r\n" +
                     "!\r\n" +
                     "!#######################################\r\n" +
-                    "!#            INTERFACES               #\r\n" + 
+                    "!#            INTERFACES               #\r\n" +
                     "!#######################################\r\n" +
                     "!\r\n" +
-                    "show interface " + Script_Var3.Text + "\r\n" +
+                    "show interface " + Script_Var03.Text + "\r\n" +
                     "!\r\n" +
                     "!######################## \r\n" +
                     "!\r\n" +
@@ -2687,7 +2311,7 @@ namespace MasterSheetNew
                     "!\r\n" +
                     "!\r\n" +
                     "!\r\n" +
-                    "show policy-map interface " + Script_Var3.Text + "\r\n" +
+                    "show policy-map interface " + Script_Var03.Text + "\r\n" +
                     "!\r\n" +
                     "!\r\n" +
                     policyLan +
@@ -2703,7 +2327,7 @@ namespace MasterSheetNew
                     "!#                PING                 #\r\n" +
                     "!#######################################\r\n" +
                     "!\r\n" +
-                    "ping " + Script_Var7.Text + " repeat 200 size 1500 data 5050 " + sourceLan + "\r\n" +
+                    "ping " + Script_Var07.Text + " repeat 200 size 1500 data 5050 " + sourceLan + "\r\n" +
                     "!\r\n" +
                     "!\r\n" +
                     "!\r\n" +
@@ -2858,82 +2482,9 @@ namespace MasterSheetNew
 
             else if ((type == RouterType.HPE) && (activityType == ActivityType.BLD) && backboneOrNot == false && logOrNot == true)
             {
-                ProcedureName.Text = "LOGS - HPE - BLD";
+                Script_ProcedureName.Text = "LOGS - HPE - BLD";
 
-                // --- Cluster Only the Usable Variables ---
-                Script_VarName3.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_ComboBox.Location.Y);
-                Script_VarName4.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName3.Location.Y + 30);
-                Script_VarName5.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName4.Location.Y + 30);
-                Script_VarName6.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName5.Location.Y + 30);
-                Script_VarName7.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName6.Location.Y + 30);
-                Script_VarName9.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName7.Location.Y + 30);
-
-                Script_Var3.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_ComboBox.Location.Y);
-                Script_Var4.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var3.Location.Y + 30);
-                Script_Var5.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var4.Location.Y + 30);
-                Script_Var6.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var5.Location.Y + 30);
-                Script_Var7.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var6.Location.Y + 30);
-                Script_Var9.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var7.Location.Y + 30);
-
-                Script_DeleteVar3.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_ComboBox.Location.Y);
-                Script_DeleteVar4.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar3.Location.Y + 30);
-                Script_DeleteVar5.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar4.Location.Y + 30);
-                Script_DeleteVar6.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar5.Location.Y + 30);
-                Script_DeleteVar7.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar6.Location.Y + 30);
-                Script_DeleteVar9.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar7.Location.Y + 30);
-
-
-                // --- Show/Hide Variebles ---
-                Script_Var0.Hide();
-                Script_Var1.Hide();
-                Script_Var2.Hide();
-                Script_Var3.Show();
-                Script_Var4.Show();
-                Script_Var5.Show();
-                Script_Var6.Show();
-                Script_Var7.Show();
-                Script_Var8.Hide();
-                Script_Var9.Show();
-                Script_Var10.Hide();
-                Script_Var11.Hide();
-                Script_Var12.Hide();
-                Script_Var13.Hide();
-                Script_Var14.Hide();
-                Script_Var15.Hide();
-
-                Script_VarName0.Hide();
-                Script_VarName1.Hide();
-                Script_VarName2.Hide();
-                Script_VarName3.Show();
-                Script_VarName4.Show();
-                Script_VarName5.Show();
-                Script_VarName6.Show();
-                Script_VarName7.Show();
-                Script_VarName8.Hide();
-                Script_VarName9.Show();
-                Script_VarName10.Hide();
-                Script_VarName11.Hide();
-                Script_VarName12.Hide();
-                Script_VarName13.Hide();
-                Script_VarName14.Hide();
-                Script_VarName15.Hide();
-
-                Script_DeleteVar0.Hide();
-                Script_DeleteVar1.Hide();
-                Script_DeleteVar2.Hide();
-                Script_DeleteVar3.Show();
-                Script_DeleteVar4.Show();
-                Script_DeleteVar5.Show();
-                Script_DeleteVar6.Show();
-                Script_DeleteVar7.Show();
-                Script_DeleteVar8.Hide();
-                Script_DeleteVar9.Show();
-                Script_DeleteVar10.Hide();
-                Script_DeleteVar11.Hide();
-                Script_DeleteVar12.Hide();
-                Script_DeleteVar13.Hide();
-                Script_DeleteVar14.Hide();
-                Script_DeleteVar15.Hide();
+                VarScriptDisplayControl("03,04,05,06,07,09");
 
                 Script_TypeLabel.Hide();
                 Script_ComboBox.Hide();
@@ -2956,17 +2507,17 @@ namespace MasterSheetNew
                 string intLan = "#\r\n";
                 string vlanLan = "#\r\n";
 
-                if (Script_Var9.Text != string.Empty)
+                if (Script_Var09.Text != string.Empty)
                 {
-                    sourceLan = " -a " + Script_Var9.Text;
+                    sourceLan = " -a " + Script_Var09.Text;
                 }
                 else
                 {
-                    sourceLan = "# \r\n";
+                    sourceLan = "";
                 }
-                if (Script_Var4.Text != string.Empty)
+                if (Script_Var04.Text != string.Empty)
                 {
-                    vlanWan = "display interface " + Script_Var4.Text + "\r\n" +
+                    vlanWan = "display interface " + Script_Var04.Text + "\r\n" +
                     "#\r\n" +
                     "#########################\r\n";
                 }
@@ -2974,9 +2525,9 @@ namespace MasterSheetNew
                 {
                     vlanWan = "#\r\n";
                 }
-                if (Script_Var5.Text != string.Empty)
+                if (Script_Var05.Text != string.Empty)
                 {
-                    intLan = "display interface " + Script_Var5.Text + "\r\n" +
+                    intLan = "display interface " + Script_Var05.Text + "\r\n" +
                     "#\r\n" +
                     "#########################\r\n";
                 }
@@ -2984,9 +2535,9 @@ namespace MasterSheetNew
                 {
                     intLan = "#\r\n";
                 }
-                if (Script_Var6.Text != string.Empty)
+                if (Script_Var06.Text != string.Empty)
                 {
-                    vlanLan = "display interface " + Script_Var6.Text + "\r\n";
+                    vlanLan = "display interface " + Script_Var06.Text + "\r\n";
                 }
                 else
                 {
@@ -3020,7 +2571,7 @@ namespace MasterSheetNew
                     "#             INTERFACES               #\r\n" +
                     "########################################\r\n" +
                     "#\r\n" +
-                    "display interface " + Script_Var3.Text + "\r\n" +
+                    "display interface " + Script_Var03.Text + "\r\n" +
                     "#\r\n" +
                     "######################## \r\n" +
                     "#\r\n" +
@@ -3060,7 +2611,7 @@ namespace MasterSheetNew
                     "#                 PING                 # \r\n" +
                     "########################################\r\n" +
                     "#\r\n" +
-                    "ping -s 1500 -c 20" + sourceLan + " " + Script_Var7.Text + "\r\n" +
+                    "ping -s 1500 -c 20" + sourceLan + " " + Script_Var07.Text + "\r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n";
@@ -3112,7 +2663,7 @@ namespace MasterSheetNew
                 // ---------------------------------------------------
                 scriptLimpeza = "system-view\r\n" +
                     "#\r\n" +
-                    "undo local-user admin\r\n" +
+                    "undo local-user admin class manage\r\n" +
                     "undo snmp-agent\r\n" +
                     "#\r\n" +
                     "#\r\n" +
@@ -3144,7 +2695,6 @@ namespace MasterSheetNew
                     "#\r\n" +
                     "user-interface con 0\r\n" +
                     "user-interface tty 13\r\n" +
-                    "user-interface aux 0\r\n" +
                     "user-interface vty 0 4\r\n" +
                     "authentication-mode scheme\r\n" +
                     "#\r\n" +
@@ -3163,9 +2713,9 @@ namespace MasterSheetNew
                     "                                             \r\n" +
                     "||========================================|| \r\n" +
                     "%\r\n" +
-                    "%\r\n" +
-                    "%\r\n" +
-                    "%\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
                     "quit\r\n";
             }
 
@@ -3173,76 +2723,9 @@ namespace MasterSheetNew
 
             else if ((type == RouterType.Fortigate) && (activityType == ActivityType.BLD) && backboneOrNot == false && logOrNot == true)
             {
-                ProcedureName.Text = "LOGS - FORTIGATE - BLD";
+                Script_ProcedureName.Text = "LOGS - FORTIGATE - BLD";
 
-                // --- Cluster Only the Usable Variables ---
-                Script_VarName3.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_ComboBox.Location.Y);
-                Script_VarName5.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName3.Location.Y + 30);
-                Script_VarName7.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName5.Location.Y + 30);
-                Script_VarName9.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName7.Location.Y + 30);
-
-                Script_Var3.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_ComboBox.Location.Y);
-                Script_Var5.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var3.Location.Y + 30);
-                Script_Var7.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var5.Location.Y + 30);
-                Script_Var9.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var7.Location.Y + 30);
-
-                Script_DeleteVar3.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_ComboBox.Location.Y);
-                Script_DeleteVar5.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar3.Location.Y + 30);
-                Script_DeleteVar7.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar5.Location.Y + 30);
-                Script_DeleteVar9.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar7.Location.Y + 30);
-
-
-                // --- Show/Hide Variebles ---
-                Script_Var0.Hide();
-                Script_Var1.Hide();
-                Script_Var2.Hide();
-                Script_Var3.Show();
-                Script_Var4.Hide();
-                Script_Var5.Show();
-                Script_Var6.Hide();
-                Script_Var7.Show();
-                Script_Var8.Hide();
-                Script_Var9.Show();
-                Script_Var10.Hide();
-                Script_Var11.Hide();
-                Script_Var12.Hide();
-                Script_Var13.Hide();
-                Script_Var14.Hide();
-                Script_Var15.Hide();
-
-                Script_VarName0.Hide();
-                Script_VarName1.Hide();
-                Script_VarName2.Hide();
-                Script_VarName3.Show();
-                Script_VarName4.Hide();
-                Script_VarName5.Show();
-                Script_VarName6.Hide();
-                Script_VarName7.Show();
-                Script_VarName8.Hide();
-                Script_VarName9.Show();
-                Script_VarName10.Hide();
-                Script_VarName11.Hide();
-                Script_VarName12.Hide();
-                Script_VarName13.Hide();
-                Script_VarName14.Hide();
-                Script_VarName15.Hide();
-
-                Script_DeleteVar0.Hide();
-                Script_DeleteVar1.Hide();
-                Script_DeleteVar2.Hide();
-                Script_DeleteVar3.Show();
-                Script_DeleteVar4.Hide();
-                Script_DeleteVar5.Show();
-                Script_DeleteVar6.Hide();
-                Script_DeleteVar7.Show();
-                Script_DeleteVar8.Hide();
-                Script_DeleteVar9.Show();
-                Script_DeleteVar10.Hide();
-                Script_DeleteVar11.Hide();
-                Script_DeleteVar12.Hide();
-                Script_DeleteVar13.Hide();
-                Script_DeleteVar14.Hide();
-                Script_DeleteVar15.Hide();
+                VarScriptDisplayControl("03,05,07,09");
 
                 Script_TypeLabel.Hide();
                 Script_ComboBox.Hide();
@@ -3261,9 +2744,9 @@ namespace MasterSheetNew
                 buttonSwitchScriptLog.Show();
 
                 // --- Others ---
-                if (Script_Var9.Text != string.Empty)
+                if (Script_Var09.Text != string.Empty)
                 {
-                    sourceLan = "execute ping-options source " + Script_Var9.Text + "\r\n";
+                    sourceLan = "execute ping-options source " + Script_Var09.Text + "\r\n";
                 }
                 else
                 {
@@ -3386,10 +2869,10 @@ namespace MasterSheetNew
                     "show system interface\r\n" +
                     "#\r\n" +
                     "#\r\n" +
-                    "get hardware nic " + Script_Var3.Text + "\r\n" +
+                    "get hardware nic " + Script_Var03.Text + "\r\n" +
                     "#\r\n" +
                     "#\r\n" +
-                    "get hardware nic " + Script_Var5.Text + "\r\n" +
+                    "get hardware nic " + Script_Var05.Text + "\r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
@@ -3423,7 +2906,7 @@ namespace MasterSheetNew
                     "#\r\n" +
                     "execute ping-options repeat 20\r\n" +
                     "#\r\n" +
-                    "execute ping " + Script_Var7.Text + "\r\n" +
+                    "execute ping " + Script_Var07.Text + "\r\n" +
                     "#\r\n" +
                     "execute ping-options data 1400\r\n" +
                     "#\r\n" +
@@ -3441,81 +2924,9 @@ namespace MasterSheetNew
 
             else if ((type == RouterType.Huawei) && (activityType == ActivityType.BLD) && backboneOrNot == false && logOrNot == true)
             {
-                ProcedureName.Text = "LOGS - HUAWEI - BLD";
+                Script_ProcedureName.Text = "LOGS - HUAWEI - BLD";
 
-                Script_VarName3.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_ComboBox.Location.Y);
-                Script_VarName4.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName3.Location.Y + 30);
-                Script_VarName5.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName4.Location.Y + 30);
-                Script_VarName6.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName5.Location.Y + 30);
-                Script_VarName7.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName6.Location.Y + 30);
-                Script_VarName9.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName7.Location.Y + 30);
-
-                Script_Var3.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_ComboBox.Location.Y);
-                Script_Var4.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var3.Location.Y + 30);
-                Script_Var5.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var4.Location.Y + 30);
-                Script_Var6.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var5.Location.Y + 30);
-                Script_Var7.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var6.Location.Y + 30);
-                Script_Var9.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var7.Location.Y + 30);
-
-                Script_DeleteVar3.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_ComboBox.Location.Y);
-                Script_DeleteVar4.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar3.Location.Y + 30);
-                Script_DeleteVar5.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar4.Location.Y + 30);
-                Script_DeleteVar6.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar5.Location.Y + 30);
-                Script_DeleteVar7.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar6.Location.Y + 30);
-                Script_DeleteVar9.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar7.Location.Y + 30);
-
-
-                // --- Show/Hide Variebles ---
-                Script_Var0.Hide();
-                Script_Var1.Hide();
-                Script_Var2.Hide();
-                Script_Var3.Show();
-                Script_Var4.Show();
-                Script_Var5.Show();
-                Script_Var6.Show();
-                Script_Var7.Show();
-                Script_Var8.Hide();
-                Script_Var9.Show();
-                Script_Var10.Hide();
-                Script_Var11.Hide();
-                Script_Var12.Hide();
-                Script_Var13.Hide();
-                Script_Var14.Hide();
-                Script_Var15.Hide();
-
-                Script_VarName0.Hide();
-                Script_VarName1.Hide();
-                Script_VarName2.Hide();
-                Script_VarName3.Show();
-                Script_VarName4.Show();
-                Script_VarName5.Show();
-                Script_VarName6.Show();
-                Script_VarName7.Show();
-                Script_VarName8.Hide();
-                Script_VarName9.Show();
-                Script_VarName10.Hide();
-                Script_VarName11.Hide();
-                Script_VarName12.Hide();
-                Script_VarName13.Hide();
-                Script_VarName14.Hide();
-                Script_VarName15.Hide();
-
-                Script_DeleteVar0.Hide();
-                Script_DeleteVar1.Hide();
-                Script_DeleteVar2.Hide();
-                Script_DeleteVar3.Show();
-                Script_DeleteVar4.Show();
-                Script_DeleteVar5.Show();
-                Script_DeleteVar6.Show();
-                Script_DeleteVar7.Show();
-                Script_DeleteVar8.Hide();
-                Script_DeleteVar9.Show();
-                Script_DeleteVar10.Hide();
-                Script_DeleteVar11.Hide();
-                Script_DeleteVar12.Hide();
-                Script_DeleteVar13.Hide();
-                Script_DeleteVar14.Hide();
-                Script_DeleteVar15.Hide();
+                VarScriptDisplayControl("03,04,05,06,07,09");
 
                 Script_TypeLabel.Hide();
                 Script_ComboBox.Hide();
@@ -3537,9 +2948,9 @@ namespace MasterSheetNew
                 string intLan = "#\r\n";
 
                 // --- Others ---
-                if (Script_Var4.Text != string.Empty)
+                if (Script_Var04.Text != string.Empty)
                 {
-                    vlanNaWAN = "display interface " + Script_Var4.Text + "\r\n" +
+                    vlanNaWAN = "display interface " + Script_Var04.Text + "\r\n" +
                     "#\r\n" +
                     "#########################\r\n";
                 }
@@ -3547,9 +2958,9 @@ namespace MasterSheetNew
                 {
                     vlanNaWAN = "#\r\n";
                 }
-                if (Script_Var5.Text != string.Empty)
+                if (Script_Var05.Text != string.Empty)
                 {
-                    intLan = "display interface " + Script_Var5.Text + "\r\n" +
+                    intLan = "display interface " + Script_Var05.Text + "\r\n" +
                     "#\r\n" +
                     "#########################\r\n";
                 }
@@ -3557,9 +2968,9 @@ namespace MasterSheetNew
                     intLan = "#\r\n";
                 }
 
-                if (Script_Var6.Text != string.Empty)
+                if (Script_Var06.Text != string.Empty)
                 {
-                    vlanLan = "display interface " + Script_Var6.Text + "\r\n" +
+                    vlanLan = "display interface " + Script_Var06.Text + "\r\n" +
                     "#\r\n" +
                     "#########################\r\n";
                 }
@@ -3568,9 +2979,9 @@ namespace MasterSheetNew
                     vlanLan = "#\r\n";
                 }
 
-                if (Script_Var9.Text != string.Empty)
+                if (Script_Var09.Text != string.Empty)
                 {
-                    sourceLan = "-a " + Script_Var9.Text + " ";
+                    sourceLan = "-a " + Script_Var09.Text + " ";
                 }
                 else
                 {
@@ -3630,13 +3041,13 @@ namespace MasterSheetNew
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
-                    "display interface " + Script_Var3.Text + "\r\n" +
+                    "display interface " + Script_Var03.Text + "\r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     vlanNaWAN +
                     "#\r\n" +
                     "#\r\n" +
-                    "display interface " + Script_Var5.Text + "\r\n" +
+                    "display interface " + Script_Var05.Text + "\r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     vlanLan +
@@ -3666,7 +3077,7 @@ namespace MasterSheetNew
                     "display traffic-policy applied-record\r\n" +
                     "#\r\n" +
                     "#\r\n" +
-                    "display traffic policy statistics interface " + Script_Var3.Text + " outbound \r\n" +
+                    "display traffic policy statistics interface " + Script_Var03.Text + " outbound \r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     "display traffic policy user-defined\r\n" +
@@ -3691,7 +3102,7 @@ namespace MasterSheetNew
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
-                    "ping -s 1500 -c 20 " + sourceLan + Script_Var7.Text + "\r\n" +
+                    "ping -s 1500 -c 20 " + sourceLan + Script_Var07.Text + "\r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
@@ -3705,76 +3116,9 @@ namespace MasterSheetNew
 
             else if ((type == RouterType.Fortigate) && (activityType == ActivityType.MPLS) && backboneOrNot == false && logOrNot == true)
             {
-                ProcedureName.Text = "LOGS - FORTIGATE - MPLS";
+                Script_ProcedureName.Text = "LOGS - FORTIGATE - MPLS";
 
-                // --- Cluster Only the Usable Variables ---
-                Script_VarName3.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_ComboBox.Location.Y);
-                Script_VarName5.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName3.Location.Y + 30);
-                Script_VarName7.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName5.Location.Y + 30);
-                Script_VarName9.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName7.Location.Y + 30);
-
-                Script_Var3.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_ComboBox.Location.Y);
-                Script_Var5.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var3.Location.Y + 30);
-                Script_Var7.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var5.Location.Y + 30);
-                Script_Var9.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var7.Location.Y + 30);
-
-                Script_DeleteVar3.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_ComboBox.Location.Y);
-                Script_DeleteVar5.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar3.Location.Y + 30);
-                Script_DeleteVar7.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar5.Location.Y + 30);
-                Script_DeleteVar9.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar7.Location.Y + 30);
-
-
-                // --- Show/Hide Variebles ---
-                Script_Var0.Hide();
-                Script_Var1.Hide();
-                Script_Var2.Hide();
-                Script_Var3.Show();
-                Script_Var4.Hide();
-                Script_Var5.Show();
-                Script_Var6.Hide();
-                Script_Var7.Show();
-                Script_Var8.Hide();
-                Script_Var9.Show();
-                Script_Var10.Hide();
-                Script_Var11.Hide();
-                Script_Var12.Hide();
-                Script_Var13.Hide();
-                Script_Var14.Hide();
-                Script_Var15.Hide();
-
-                Script_VarName0.Hide();
-                Script_VarName1.Hide();
-                Script_VarName2.Hide();
-                Script_VarName3.Show();
-                Script_VarName4.Hide();
-                Script_VarName5.Show();
-                Script_VarName6.Hide();
-                Script_VarName7.Show();
-                Script_VarName8.Hide();
-                Script_VarName9.Show();
-                Script_VarName10.Hide();
-                Script_VarName11.Hide();
-                Script_VarName12.Hide();
-                Script_VarName13.Hide();
-                Script_VarName14.Hide();
-                Script_VarName15.Hide();
-
-                Script_DeleteVar0.Hide();
-                Script_DeleteVar1.Hide();
-                Script_DeleteVar2.Hide();
-                Script_DeleteVar3.Show();
-                Script_DeleteVar4.Hide();
-                Script_DeleteVar5.Show();
-                Script_DeleteVar6.Hide();
-                Script_DeleteVar7.Show();
-                Script_DeleteVar8.Hide();
-                Script_DeleteVar9.Show();
-                Script_DeleteVar10.Hide();
-                Script_DeleteVar11.Hide();
-                Script_DeleteVar12.Hide();
-                Script_DeleteVar13.Hide();
-                Script_DeleteVar14.Hide();
-                Script_DeleteVar15.Hide();
+                VarScriptDisplayControl("03,05,07,09");
 
                 Script_TypeLabel.Hide();
                 Script_ComboBox.Hide();
@@ -3793,9 +3137,9 @@ namespace MasterSheetNew
                 buttonSwitchScriptLog.Show();
 
                 // --- Others ---
-                if (Script_Var9.Text != "")
+                if (Script_Var09.Text != "")
                 {
-                    sourceLan = "execute ping-options source " + Script_Var9.Text + "\r\n";
+                    sourceLan = "execute ping-options source " + Script_Var09.Text + "\r\n";
                 }
                 else
                 {
@@ -3919,10 +3263,10 @@ namespace MasterSheetNew
                     "show system interface\r\n" +
                     "#\r\n" +
                     "#\r\n" +
-                    "get hardware nic " + Script_Var3.Text + "\r\n" +
+                    "get hardware nic " + Script_Var03.Text + "\r\n" +
                     "#\r\n" +
                     "#\r\n" +
-                    "get hardware nic " + Script_Var5.Text + "\r\n" +
+                    "get hardware nic " + Script_Var05.Text + "\r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
@@ -3948,7 +3292,7 @@ namespace MasterSheetNew
                     "show firewall address\r\n" +
                     "#\r\n" +
                     "#\r\n" +
-                    "diagnose netlink interface list " + Script_Var3.Text + "\r\n" +
+                    "diagnose netlink interface list " + Script_Var03.Text + "\r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
@@ -3979,10 +3323,10 @@ namespace MasterSheetNew
                     "get router info bgp summary\r\n" +
                     "#\r\n" +
                     "#\r\n" +
-                    "get router info bgp neighbors " + Script_Var7.Text + "  advertised\r\n" +
+                    "get router info bgp neighbors " + Script_Var07.Text + "  advertised\r\n" +
                     "#\r\n" +
                     "#\r\n" +
-                    "get router info bgp neighbors " + Script_Var7.Text + " routes | grep Total\r\n" +
+                    "get router info bgp neighbors " + Script_Var07.Text + " routes | grep Total\r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
@@ -3997,7 +3341,7 @@ namespace MasterSheetNew
                     "#\r\n" +
                     "execute ping-options repeat 20\r\n" +
                     "#\r\n" +
-                    "execute ping " + Script_Var7.Text + "\r\n" +
+                    "execute ping " + Script_Var07.Text + "\r\n" +
                     "#\r\n" +
                     "#\r\n" +
                     "#\r\n" +
@@ -4011,65 +3355,9 @@ namespace MasterSheetNew
 
             else if ((type == RouterType.Aligera) && (activityType == ActivityType.VOZ) && backboneOrNot == false && logOrNot == true)
             {
-                ProcedureName.Text = "LOGS - ALIGERA - VOZ";
+                Script_ProcedureName.Text = "LOGS - ALIGERA - VOZ";
 
-                // --- Cluster Only the Usable Variables ---
-                Script_VarName7.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_ComboBox.Location.Y);
-                Script_Var7.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_ComboBox.Location.Y);
-                Script_DeleteVar7.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_ComboBox.Location.Y);
-
-
-                // --- Show/Hide Variebles ---
-                Script_Var0.Hide();
-                Script_Var1.Hide();
-                Script_Var2.Hide();
-                Script_Var3.Hide();
-                Script_Var4.Hide();
-                Script_Var5.Hide();
-                Script_Var6.Hide();
-                Script_Var7.Show();
-                Script_Var8.Hide();
-                Script_Var9.Hide();
-                Script_Var10.Hide();
-                Script_Var11.Hide();
-                Script_Var12.Hide();
-                Script_Var13.Hide();
-                Script_Var14.Hide();
-                Script_Var15.Hide();
-
-                Script_VarName0.Hide();
-                Script_VarName1.Hide();
-                Script_VarName2.Hide();
-                Script_VarName3.Hide();
-                Script_VarName4.Hide();
-                Script_VarName5.Hide();
-                Script_VarName6.Hide();
-                Script_VarName7.Show();
-                Script_VarName8.Hide();
-                Script_VarName9.Hide();
-                Script_VarName10.Hide();
-                Script_VarName11.Hide();
-                Script_VarName12.Hide();
-                Script_VarName13.Hide();
-                Script_VarName14.Hide();
-                Script_VarName15.Hide();
-
-                Script_DeleteVar0.Hide();
-                Script_DeleteVar1.Hide();
-                Script_DeleteVar2.Hide();
-                Script_DeleteVar3.Hide();
-                Script_DeleteVar4.Hide();
-                Script_DeleteVar5.Hide();
-                Script_DeleteVar6.Hide();
-                Script_DeleteVar7.Show();
-                Script_DeleteVar8.Hide();
-                Script_DeleteVar9.Hide();
-                Script_DeleteVar10.Hide();
-                Script_DeleteVar11.Hide();
-                Script_DeleteVar12.Hide();
-                Script_DeleteVar13.Hide();
-                Script_DeleteVar14.Hide();
-                Script_DeleteVar15.Hide();
+                VarScriptDisplayControl("07");
 
                 Script_TypeLabel.Hide();
                 Script_ComboBox.Hide();
@@ -4110,7 +3398,7 @@ namespace MasterSheetNew
                     "!# PING \r\n" +
                     "!#######################################\r\n" +
                     "!\r\n" +
-                    "tools ping -c 20 -s 1500 " + Script_Var7.Text + "\r\n" +
+                    "tools ping -c 20 -s 1500 " + Script_Var07.Text + "\r\n" +
                     "!\r\n" +
                     "!\r\n" +
                     "!\r\n" +
@@ -4139,70 +3427,9 @@ namespace MasterSheetNew
 
             else if ((type == RouterType.Cisco) && (activityType == ActivityType.BLD) && backboneOrNot == true && logOrNot == true)
             {
-                ProcedureName.Text = "LOG BACKBONE - CISCO - BLD";
+                Script_ProcedureName.Text = "LOG BACKBONE - CISCO - BLD";
 
-                // --- Cluster Only the Usable Variables ---
-                Script_VarName3.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_VarName8.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName3.Location.Y + 30);
-
-                Script_Var3.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_Var8.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var3.Location.Y + 30);
-
-                Script_DeleteVar3.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_DeleteVar8.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar3.Location.Y + 30);
-
-
-                // --- Show/Hide Variebles ---
-                Script_Var0.Hide();
-                Script_Var1.Hide();
-                Script_Var2.Hide();
-                Script_Var3.Show();
-                Script_Var4.Hide();
-                Script_Var5.Hide();
-                Script_Var6.Hide();
-                Script_Var7.Hide();
-                Script_Var8.Show();
-                Script_Var9.Hide();
-                Script_Var10.Hide();
-                Script_Var11.Hide();
-                Script_Var12.Hide();
-                Script_Var13.Hide();
-                Script_Var14.Hide();
-                Script_Var15.Hide();
-
-                Script_VarName0.Hide();
-                Script_VarName1.Hide();
-                Script_VarName2.Hide();
-                Script_VarName3.Show();
-                Script_VarName4.Hide();
-                Script_VarName5.Hide();
-                Script_VarName6.Hide();
-                Script_VarName7.Hide();
-                Script_VarName8.Show();
-                Script_VarName9.Hide();
-                Script_VarName10.Hide();
-                Script_VarName11.Hide();
-                Script_VarName12.Hide();
-                Script_VarName13.Hide();
-                Script_VarName14.Hide();
-                Script_VarName15.Hide();
-
-                Script_DeleteVar0.Hide();
-                Script_DeleteVar1.Hide();
-                Script_DeleteVar2.Hide();
-                Script_DeleteVar3.Show();
-                Script_DeleteVar4.Hide();
-                Script_DeleteVar5.Hide();
-                Script_DeleteVar6.Hide();
-                Script_DeleteVar7.Hide();
-                Script_DeleteVar8.Show();
-                Script_DeleteVar9.Hide();
-                Script_DeleteVar10.Hide();
-                Script_DeleteVar11.Hide();
-                Script_DeleteVar12.Hide();
-                Script_DeleteVar13.Hide();
-                Script_DeleteVar14.Hide();
-                Script_DeleteVar15.Hide();
+                VarScriptDisplayControl("03,08");
 
                 Script_LANMascara.Hide();
                 Script_TypeLabel.Show();
@@ -4228,10 +3455,10 @@ namespace MasterSheetNew
                 "!# INTERFACE  \r\n" +
                 "!#######################################\r\n" +
                 " \r\n" +
-                "show running-config interface " + Script_Var3.Text + "\r\n" +
+                "show running-config interface " + Script_Var03.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
-                "show interface " + Script_Var3.Text + "\r\n" +
+                "show interface " + Script_Var03.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -4239,10 +3466,10 @@ namespace MasterSheetNew
                 "!# ROTA ESTATICA  \r\n" +
                 "!#######################################\r\n" +
                 " \r\n" +
-                "show running-config | inc " + Script_Var8.Text + "\r\n" +
+                "show running-config | inc " + Script_Var08.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
-                "show running-config | inc " + Script_Var3.Text + "\r\n" +
+                "show running-config | inc " + Script_Var03.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -4250,7 +3477,7 @@ namespace MasterSheetNew
                 "!# POLICY-MAP  \r\n" +
                 "!#######################################\r\n" +
                 " \r\n" +
-                "show policy-map interface " + Script_Var3.Text + "\r\n" +
+                "show policy-map interface " + Script_Var03.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -4260,7 +3487,7 @@ namespace MasterSheetNew
                 " \r\n" +
                 "ping\r\n" +
                 " \r\n" +
-                Script_Var8.Text + "\r\n" +
+                Script_Var08.Text + "\r\n" +
                 "15\r\n" +
                 "1500\r\n" +
                 " \r\n" +
@@ -4272,73 +3499,10 @@ namespace MasterSheetNew
 
             else if ((type == RouterType.Cisco) && (activityType == ActivityType.MPLS) && backboneOrNot == true && logOrNot == true)
             {
-                ProcedureName.Text = "LOG BACKBONE - CISCO - MPLS";
-
-                // --- Cluster Only the Usable Variables ---
-                Script_VarName3.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_VarName8.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName3.Location.Y + 30);
-                Script_VarName14.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName8.Location.Y + 30);
-
-                Script_Var3.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_Var8.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var3.Location.Y + 30);
-                Script_Var14.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var8.Location.Y + 30);
-
-                Script_DeleteVar3.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_DeleteVar8.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar3.Location.Y + 30);
-                Script_DeleteVar14.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar8.Location.Y + 30);
+                Script_ProcedureName.Text = "LOG BACKBONE - CISCO - MPLS";
 
 
-                // --- Show/Hide Variebles ---
-                Script_Var0.Hide();
-                Script_Var1.Hide();
-                Script_Var2.Hide();
-                Script_Var3.Show();
-                Script_Var4.Hide();
-                Script_Var5.Hide();
-                Script_Var6.Hide();
-                Script_Var7.Hide();
-                Script_Var8.Show();
-                Script_Var9.Hide();
-                Script_Var10.Hide();
-                Script_Var11.Hide();
-                Script_Var12.Hide();
-                Script_Var13.Hide();
-                Script_Var14.Show();
-                Script_Var15.Hide();
-
-                Script_VarName0.Hide();
-                Script_VarName1.Hide();
-                Script_VarName2.Hide();
-                Script_VarName3.Show();
-                Script_VarName4.Hide();
-                Script_VarName5.Hide();
-                Script_VarName6.Hide();
-                Script_VarName7.Hide();
-                Script_VarName8.Show();
-                Script_VarName9.Hide();
-                Script_VarName10.Hide();
-                Script_VarName11.Hide();
-                Script_VarName12.Hide();
-                Script_VarName13.Hide();
-                Script_VarName14.Show();
-                Script_VarName15.Hide();
-
-                Script_DeleteVar0.Hide();
-                Script_DeleteVar1.Hide();
-                Script_DeleteVar2.Hide();
-                Script_DeleteVar3.Show();
-                Script_DeleteVar4.Hide();
-                Script_DeleteVar5.Hide();
-                Script_DeleteVar6.Hide();
-                Script_DeleteVar7.Hide();
-                Script_DeleteVar8.Show();
-                Script_DeleteVar9.Hide();
-                Script_DeleteVar10.Hide();
-                Script_DeleteVar11.Hide();
-                Script_DeleteVar12.Hide();
-                Script_DeleteVar13.Hide();
-                Script_DeleteVar14.Show();
-                Script_DeleteVar15.Hide();
+                VarScriptDisplayControl("03,08,14");
 
                 Script_LANMascara.Hide();
                 Script_TypeLabel.Show();
@@ -4379,10 +3543,10 @@ namespace MasterSheetNew
                 "!# INTERFACE  \r\n" +
                 "!#######################################\r\n" +
                 " \r\n" +
-                "show running-config interface " + Script_Var3.Text + " \r\n" +
+                "show running-config interface " + Script_Var03.Text + " \r\n" +
                 " \r\n" +
                 " \r\n" +
-                "show interface " + Script_Var3.Text + "\r\n" +
+                "show interface " + Script_Var03.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -4398,10 +3562,10 @@ namespace MasterSheetNew
                 "!# ROTA ESTATICA \r\n" +
                 "!#######################################\r\n" +
                 " \r\n" +
-                "show running-config | inc " + Script_Var8.Text + "\r\n" +
+                "show running-config | inc " + Script_Var08.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
-                "show running-config | inc " + Script_Var3.Text + "\r\n" +
+                "show running-config | inc " + Script_Var03.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -4409,7 +3573,7 @@ namespace MasterSheetNew
                 "!# POLICY-MAP \r\n" +
                 "!#######################################\r\n" +
                 " \r\n" +
-                "show policy-map interface " + Script_Var3.Text + "\r\n" +
+                "show policy-map interface " + Script_Var03.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -4417,7 +3581,7 @@ namespace MasterSheetNew
                 "!# BGP  \r\n" +
                 "!#######################################\r\n" +
                 " \r\n" +
-                "show running-config router bgp 4230 vrf " + Script_Var14.Text + " neighbor " + Script_Var8.Text + "\r\n" +
+                "show running-config router bgp 4230 vrf " + Script_Var14.Text + " neighbor " + Script_Var08.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -4428,17 +3592,17 @@ namespace MasterSheetNew
                 " \r\n" +
                 "!################################## \r\n" +
                 " \r\n" +
-                "show ip bgp " + xr + "vrf " + Script_Var14.Text + " sum | inc " + Script_Var8.Text + "\r\n" +
+                "show ip bgp " + xr + "vrf " + Script_Var14.Text + " sum | inc " + Script_Var08.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
                 "!################################## \r\n" +
                 " \r\n" +
-                "show ip bgp " + xr + "vrf " + Script_Var14.Text + " nei " + Script_Var8.Text + " advertised-r | i xes r\n" +
+                "show ip bgp " + xr + "vrf " + Script_Var14.Text + " nei " + Script_Var08.Text + " advertised-r | i xes r\n" +
                 " \r\n" +
                 " \r\n" +
                 "!################################## \r\n" +
                 " \r\n" +
-                "show ip bgp " + xr + "vrf " + Script_Var14.Text + " nei " + Script_Var8.Text + " ro\r\n" +
+                "show ip bgp " + xr + "vrf " + Script_Var14.Text + " nei " + Script_Var08.Text + " ro\r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -4449,7 +3613,7 @@ namespace MasterSheetNew
                 " \r\n" +
                 "ping vrf " + Script_Var14.Text + "\r\n" +
                 "\r\n" +
-                Script_Var8.Text + "\r\n" +
+                Script_Var08.Text + "\r\n" +
                 "15\r\n" +
                 "1500\r\n" +
                 " \r\n" +
@@ -4461,70 +3625,9 @@ namespace MasterSheetNew
 
             else if ((type == RouterType.Cisco) && (activityType == ActivityType.VOZ) && backboneOrNot == true && logOrNot == true)
             {
-                ProcedureName.Text = "LOG BACKBONE - CISCO - VOZ";
+                Script_ProcedureName.Text = "LOG BACKBONE - CISCO - VOZ";
 
-                // --- Cluster Only the Usable Variables ---
-                Script_VarName3.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_VarName8.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName3.Location.Y + 30);
-
-                Script_Var3.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_Var8.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var3.Location.Y + 30);
-
-                Script_DeleteVar3.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_DeleteVar8.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar3.Location.Y + 30);
-
-
-                // --- Show/Hide Variebles ---
-                Script_Var0.Hide();
-                Script_Var1.Hide();
-                Script_Var2.Hide();
-                Script_Var3.Show();
-                Script_Var4.Hide();
-                Script_Var5.Hide();
-                Script_Var6.Hide();
-                Script_Var7.Hide();
-                Script_Var8.Show();
-                Script_Var9.Hide();
-                Script_Var10.Hide();
-                Script_Var11.Hide();
-                Script_Var12.Hide();
-                Script_Var13.Hide();
-                Script_Var14.Hide();
-                Script_Var15.Hide();
-
-                Script_VarName0.Hide();
-                Script_VarName1.Hide();
-                Script_VarName2.Hide();
-                Script_VarName3.Show();
-                Script_VarName4.Hide();
-                Script_VarName5.Hide();
-                Script_VarName6.Hide();
-                Script_VarName7.Hide();
-                Script_VarName8.Show();
-                Script_VarName9.Hide();
-                Script_VarName10.Hide();
-                Script_VarName11.Hide();
-                Script_VarName12.Hide();
-                Script_VarName13.Hide();
-                Script_VarName14.Hide();
-                Script_VarName15.Hide();
-
-                Script_DeleteVar0.Hide();
-                Script_DeleteVar1.Hide();
-                Script_DeleteVar2.Hide();
-                Script_DeleteVar3.Show();
-                Script_DeleteVar4.Hide();
-                Script_DeleteVar5.Hide();
-                Script_DeleteVar6.Hide();
-                Script_DeleteVar7.Hide();
-                Script_DeleteVar8.Show();
-                Script_DeleteVar9.Hide();
-                Script_DeleteVar10.Hide();
-                Script_DeleteVar11.Hide();
-                Script_DeleteVar12.Hide();
-                Script_DeleteVar13.Hide();
-                Script_DeleteVar14.Hide();
-                Script_DeleteVar15.Hide();
+                VarScriptDisplayControl("03,08");
 
                 Script_LANMascara.Hide();
                 Script_TypeLabel.Show();
@@ -4550,10 +3653,10 @@ namespace MasterSheetNew
                 "!# INTERFACE  \r\n" +
                 "!#######################################\r\n" +
                 " \r\n" +
-                "show running-config interface " + Script_Var3.Text + "\r\n" +
+                "show running-config interface " + Script_Var03.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
-                "show interface " + Script_Var3.Text + "\r\n" +
+                "show interface " + Script_Var03.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -4569,10 +3672,10 @@ namespace MasterSheetNew
                 "!# ROTA ESTATICA \r\n" +
                 "!#######################################\r\n" +
                 " \r\n" +
-                "show running-config | inc " + Script_Var8.Text + "\r\n" +
+                "show running-config | inc " + Script_Var08.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
-                "show running-config | inc " + Script_Var3.Text + "\r\n" +
+                "show running-config | inc " + Script_Var03.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -4580,7 +3683,7 @@ namespace MasterSheetNew
                 "!# POLICY-MAP  \r\n" +
                 "!#######################################\r\n" +
                 " \r\n" +
-                "show policy-map interface " + Script_Var3.Text + "\r\n" +
+                "show policy-map interface " + Script_Var03.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -4591,7 +3694,7 @@ namespace MasterSheetNew
                 " \r\n" +
                 "ping vrf REALIP_CLIENTE:5581\r\n" +
                 " \r\n" +
-                Script_Var8.Text + "\r\n" +
+                Script_Var08.Text + "\r\n" +
                 "15\r\n" +
                 "1500\r\n" +
                 " \r\n" +
@@ -4604,70 +3707,9 @@ namespace MasterSheetNew
 
             else if ((type == RouterType.Cisco) && (activityType == ActivityType.BLDcomBGP) && backboneOrNot == true && logOrNot == true)
             {
-                ProcedureName.Text = "LOG BACKBONE - CISCO - BLD com BGP";
+                Script_ProcedureName.Text = "LOG BACKBONE - CISCO - BLD com BGP";
 
-                // --- Cluster Only the Usable Variables ---
-                Script_VarName3.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_VarName8.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName3.Location.Y + 30);
-
-                Script_Var3.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_Var8.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var3.Location.Y + 30);
-
-                Script_DeleteVar3.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_DeleteVar8.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar3.Location.Y + 30);
-
-
-                // --- Show/Hide Variebles ---
-                Script_Var0.Hide();
-                Script_Var1.Hide();
-                Script_Var2.Hide();
-                Script_Var3.Show();
-                Script_Var4.Hide();
-                Script_Var5.Hide();
-                Script_Var6.Hide();
-                Script_Var7.Hide();
-                Script_Var8.Show();
-                Script_Var9.Hide();
-                Script_Var10.Hide();
-                Script_Var11.Hide();
-                Script_Var12.Hide();
-                Script_Var13.Hide();
-                Script_Var14.Hide();
-                Script_Var15.Hide();
-
-                Script_VarName0.Hide();
-                Script_VarName1.Hide();
-                Script_VarName2.Hide();
-                Script_VarName3.Show();
-                Script_VarName4.Hide();
-                Script_VarName5.Hide();
-                Script_VarName6.Hide();
-                Script_VarName7.Hide();
-                Script_VarName8.Show();
-                Script_VarName9.Hide();
-                Script_VarName10.Hide();
-                Script_VarName11.Hide();
-                Script_VarName12.Hide();
-                Script_VarName13.Hide();
-                Script_VarName14.Hide();
-                Script_VarName15.Hide();
-
-                Script_DeleteVar0.Hide();
-                Script_DeleteVar1.Hide();
-                Script_DeleteVar2.Hide();
-                Script_DeleteVar3.Show();
-                Script_DeleteVar4.Hide();
-                Script_DeleteVar5.Hide();
-                Script_DeleteVar6.Hide();
-                Script_DeleteVar7.Hide();
-                Script_DeleteVar8.Show();
-                Script_DeleteVar9.Hide();
-                Script_DeleteVar10.Hide();
-                Script_DeleteVar11.Hide();
-                Script_DeleteVar12.Hide();
-                Script_DeleteVar13.Hide();
-                Script_DeleteVar14.Hide();
-                Script_DeleteVar15.Hide();
+                VarScriptDisplayControl("03,08");
 
                 Script_LANMascara.Hide();
                 Script_TypeLabel.Show();
@@ -4693,10 +3735,10 @@ namespace MasterSheetNew
                 "!# INTERFACE  \r\n" +
                 "!#######################################\r\n" +
                 " \r\n" +
-                "show running-config interface " + Script_Var3.Text + "\r\n" +
+                "show running-config interface " + Script_Var03.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
-                "show interface " + Script_Var3.Text + "\r\n" +
+                "show interface " + Script_Var03.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -4704,10 +3746,10 @@ namespace MasterSheetNew
                 "!# ROTA ESTATICA  \r\n" +
                 "!#######################################\r\n" +
                 " \r\n" +
-                "show running-config | inc " + Script_Var8.Text + "\r\n" +
+                "show running-config | inc " + Script_Var08.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
-                "show running-config | inc " + Script_Var3.Text + "\r\n" +
+                "show running-config | inc " + Script_Var03.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -4715,7 +3757,7 @@ namespace MasterSheetNew
                 "!# POLICY-MAP  \r\n" +
                 "!#######################################\r\n" +
                 " \r\n" +
-                "show policy-map interface " + Script_Var3.Text + "\r\n" +
+                "show policy-map interface " + Script_Var03.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -4723,16 +3765,16 @@ namespace MasterSheetNew
                 "!# BGP  \r\n" +
                 "!#######################################\r\n" +
                 " \r\n" +
-                "show running-config router bgp 4230 neighbor " + Script_Var8.Text + "\r\n" +
+                "show running-config router bgp 4230 neighbor " + Script_Var08.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
-                "show bgp sum | inc " + Script_Var8.Text + "\r\n" +
+                "show bgp sum | inc " + Script_Var08.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
-                "show bgp neighbor " + Script_Var8.Text + " routes\r\n" +
+                "show bgp neighbor " + Script_Var08.Text + " routes\r\n" +
                 " \r\n" +
                 " \r\n" +
-                "show bgp neig " + Script_Var8.Text + " advertised-routes | inc xes\r\n" +
+                "show bgp neig " + Script_Var08.Text + " advertised-routes | inc xes\r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -4743,7 +3785,7 @@ namespace MasterSheetNew
                 " \r\n" +
                 "ping\r\n" +
                 " \r\n" +
-                Script_Var8.Text + "\r\n" +
+                Script_Var08.Text + "\r\n" +
                 "15\r\n" +
                 "1500\r\n" +
                 " \r\n" +
@@ -4761,76 +3803,9 @@ namespace MasterSheetNew
 
             else if ((type == RouterType.Nokia) && (activityType == ActivityType.BLD) && backboneOrNot == true && logOrNot == true)
             {
-                ProcedureName.Text = "LOG BACKBONE - NOKIA - BLD";
+                Script_ProcedureName.Text = "LOG BACKBONE - NOKIA - BLD";
 
-                // --- Cluster Only the Usable Variables ---
-                Script_VarName3.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_VarName7.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName3.Location.Y + 30);
-                Script_VarName8.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName7.Location.Y + 30);
-                Script_VarName13.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName8.Location.Y + 30);
-
-                Script_Var3.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_Var7.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var3.Location.Y + 30);
-                Script_Var8.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var7.Location.Y + 30);
-                Script_Var13.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var8.Location.Y + 30);
-
-                Script_DeleteVar3.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_DeleteVar7.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar3.Location.Y + 30);
-                Script_DeleteVar8.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar7.Location.Y + 30);
-                Script_DeleteVar13.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar8.Location.Y + 30);
-
-
-                // --- Show/Hide Variebles ---
-                Script_Var0.Hide();
-                Script_Var1.Hide();
-                Script_Var2.Hide();
-                Script_Var3.Show();
-                Script_Var4.Hide();
-                Script_Var5.Hide();
-                Script_Var6.Hide();
-                Script_Var7.Show();
-                Script_Var8.Show();
-                Script_Var9.Hide();
-                Script_Var10.Hide();
-                Script_Var11.Hide();
-                Script_Var12.Hide();
-                Script_Var13.Show();
-                Script_Var14.Hide();
-                Script_Var15.Hide();
-
-                Script_VarName0.Hide();
-                Script_VarName1.Hide();
-                Script_VarName2.Hide();
-                Script_VarName3.Show();
-                Script_VarName4.Hide();
-                Script_VarName5.Hide();
-                Script_VarName6.Hide();
-                Script_VarName7.Show();
-                Script_VarName8.Show();
-                Script_VarName9.Hide();
-                Script_VarName10.Hide();
-                Script_VarName11.Hide();
-                Script_VarName12.Hide();
-                Script_VarName13.Show();
-                Script_VarName14.Hide();
-                Script_VarName15.Hide();
-
-                Script_DeleteVar0.Hide();
-                Script_DeleteVar1.Hide();
-                Script_DeleteVar2.Hide();
-                Script_DeleteVar3.Show();
-                Script_DeleteVar4.Hide();
-                Script_DeleteVar5.Hide();
-                Script_DeleteVar6.Hide();
-                Script_DeleteVar7.Show();
-                Script_DeleteVar8.Show();
-                Script_DeleteVar9.Hide();
-                Script_DeleteVar10.Hide();
-                Script_DeleteVar11.Hide();
-                Script_DeleteVar12.Hide();
-                Script_DeleteVar13.Show();
-                Script_DeleteVar14.Hide();
-                Script_DeleteVar15.Hide();
+                VarScriptDisplayControl("03,07,08,13");
 
                 Script_LANMascara.Hide();
                 Script_TypeLabel.Show();
@@ -4857,14 +3832,14 @@ namespace MasterSheetNew
                 "# INTERFACE  \r\n" +
                 "########################################\r\n" +
                 " \r\n" +
-                "admin display-config | match " + Script_Var7.Text + " context all\r\n" +
+                "admin display-config | match " + Script_Var07.Text + " context all\r\n" +
                 " \r\n" +
                 " \r\n" +
-                "admin display-config | match expression " + Script_Var3.Text + "[^0-9] context all\r\n" +
+                "admin display-config | match expression " + Script_Var03.Text + "[^0-9] context all\r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
-                "show router interface " + Script_Var3.Text + "\r\n" +
+                "show router interface " + Script_Var03.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -4884,13 +3859,13 @@ namespace MasterSheetNew
                 "# ROTA ESTATICA  \r\n" +
                 "########################################\r\n" +
                 " \r\n" +
-                "admin display-config | match " + Script_Var8.Text + " context all\r\n" +
+                "admin display-config | match " + Script_Var08.Text + " context all\r\n" +
                 " \r\n" +
                 " \r\n" +
-                "show router static-route next-hop " + Script_Var8.Text + "\r\n" +
+                "show router static-route next-hop " + Script_Var08.Text + "\r\n" +
                 " \r\n" +
                 " \r\n" +
-                "admin display-config | match " + Script_Var8.Text + " pre-line 1 post-lines 5\r\n" +
+                "admin display-config | match " + Script_Var08.Text + " pre-line 1 post-lines 5\r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -4899,7 +3874,7 @@ namespace MasterSheetNew
                 "# PING  \r\n" +
                 "########################################\r\n" +
                 " \r\n" +
-                "ping " + Script_Var8.Text + " size 1500 count 15 interface " + Script_Var3.Text + " rapid\r\n" +
+                "ping " + Script_Var08.Text + " size 1500 count 15 interface " + Script_Var03.Text + " rapid\r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n";
@@ -4908,84 +3883,9 @@ namespace MasterSheetNew
 
             else if ((type == RouterType.Nokia) && (activityType == ActivityType.MPLS) && backboneOrNot == true && logOrNot == true)
             {
-                ProcedureName.Text = "LOG BACKBONE - NOKIA - MPLS";
+                Script_ProcedureName.Text = "LOG BACKBONE - NOKIA - MPLS";
 
-
-                // --- Cluster Only the Usable Variables ---
-                Script_VarName3.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_VarName7.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName3.Location.Y + 30);
-                Script_VarName8.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName7.Location.Y + 30);
-                Script_VarName13.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName8.Location.Y + 30);
-                Script_VarName14.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName13.Location.Y + 30);
-                Script_VarName15.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName14.Location.Y + 30);
-
-
-                Script_Var3.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_Var7.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var3.Location.Y + 30);
-                Script_Var8.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var7.Location.Y + 30);
-                Script_Var13.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var8.Location.Y + 30);
-                Script_Var14.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var13.Location.Y + 30);
-                Script_Var15.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var14.Location.Y + 30);
-
-                Script_DeleteVar3.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_DeleteVar7.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar3.Location.Y + 30);
-                Script_DeleteVar8.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar7.Location.Y + 30);
-                Script_DeleteVar13.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar8.Location.Y + 30);
-                Script_DeleteVar14.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar13.Location.Y + 30);
-                Script_DeleteVar15.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar14.Location.Y + 30);
-
-
-                // --- Show/Hide Variebles ---
-                Script_Var0.Hide();
-                Script_Var1.Hide();
-                Script_Var2.Hide();
-                Script_Var3.Show();
-                Script_Var4.Hide();
-                Script_Var5.Hide();
-                Script_Var6.Hide();
-                Script_Var7.Show();
-                Script_Var8.Show();
-                Script_Var9.Hide();
-                Script_Var10.Hide();
-                Script_Var11.Hide();
-                Script_Var12.Hide();
-                Script_Var13.Show();
-                Script_Var14.Show();
-                Script_Var15.Show();
-
-                Script_VarName0.Hide();
-                Script_VarName1.Hide();
-                Script_VarName2.Hide();
-                Script_VarName3.Show();
-                Script_VarName4.Hide();
-                Script_VarName5.Hide();
-                Script_VarName6.Hide();
-                Script_VarName7.Show();
-                Script_VarName8.Show();
-                Script_VarName9.Hide();
-                Script_VarName10.Hide();
-                Script_VarName11.Hide();
-                Script_VarName12.Hide();
-                Script_VarName13.Show();
-                Script_VarName14.Show();
-                Script_VarName15.Show();
-
-                Script_DeleteVar0.Hide();
-                Script_DeleteVar1.Hide();
-                Script_DeleteVar2.Hide();
-                Script_DeleteVar3.Show();
-                Script_DeleteVar4.Hide();
-                Script_DeleteVar5.Hide();
-                Script_DeleteVar6.Hide();
-                Script_DeleteVar7.Show();
-                Script_DeleteVar8.Show();
-                Script_DeleteVar9.Hide();
-                Script_DeleteVar10.Hide();
-                Script_DeleteVar11.Hide();
-                Script_DeleteVar12.Hide();
-                Script_DeleteVar13.Show();
-                Script_DeleteVar14.Show();
-                Script_DeleteVar15.Show();
+                VarScriptDisplayControl("03,07,08,13,14,15");
 
                 Script_LANMascara.Hide();
                 Script_TypeLabel.Show();
@@ -5021,10 +3921,10 @@ namespace MasterSheetNew
                 "# INTERFACE  \r\n" +
                 "########################################\r\n" +
                 " \r\n" +
-                "admin display-config | match " + Script_Var7.Text + " context all \r\n" +
+                "admin display-config | match " + Script_Var07.Text + " context all \r\n" +
                 " \r\n" +
                 " \r\n" +
-                "admin display-config | match expression " + Script_Var3.Text + "[^0-9] context all \r\n" +
+                "admin display-config | match expression " + Script_Var03.Text + "[^0-9] context all \r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -5035,7 +3935,7 @@ namespace MasterSheetNew
                 "admin display-config | match expression " + '"' + "route-distinguisher " + "4230:" + vrfAS + '"' + " pre-line 8 post-lines 10" + "\r\n" +
                 " \r\n" +
                 " \r\n" +
-                "show router service-name " + Script_Var15.Text + " interface " + Script_Var3.Text + " \r\n" +
+                "show router service-name " + Script_Var15.Text + " interface " + Script_Var03.Text + " \r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -5055,10 +3955,10 @@ namespace MasterSheetNew
                 "# ROTA ESTATICA  \r\n" +
                 "########################################\r\n" +
                 " \r\n" +
-                "show router service-name " + Script_Var15.Text + " static-route next-hop " + Script_Var8.Text + " \r\n" +
+                "show router service-name " + Script_Var15.Text + " static-route next-hop " + Script_Var08.Text + " \r\n" +
                 " \r\n" +
                 " \r\n" +
-                "admin display-config | match " + Script_Var8.Text + " pre-line 1 post-lines 6 \r\n" +
+                "admin display-config | match " + Script_Var08.Text + " pre-line 1 post-lines 6 \r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -5066,23 +3966,23 @@ namespace MasterSheetNew
                 "# BGP  \r\n" +
                 "########################################\r\n" +
                 " \r\n" +
-                "admin display-config | match " + Script_Var8.Text + " context all \r\n" +
+                "admin display-config | match " + Script_Var08.Text + " context all \r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
                 "################################# \r\n" +
                 "\r\n" +
-                "show router service-name " + Script_Var15.Text + " bgp summary | match " + Script_Var8.Text + " post-lines 3 \r\n" +
+                "show router service-name " + Script_Var15.Text + " bgp summary | match " + Script_Var08.Text + " post-lines 3 \r\n" +
                 " \r\n" +
                 " \r\n" +
                 "################################# \r\n" +
                 " \r\n" +
-                "show router service-name " + Script_Var15.Text + " bgp neighbor " + Script_Var8.Text + " received-routes \r\n" +
+                "show router service-name " + Script_Var15.Text + " bgp neighbor " + Script_Var08.Text + " received-routes \r\n" +
                 " \r\n" +
                 " \r\n" +
                 "################################# \r\n" +
                 " \r\n" +
-                "show router service-name " + Script_Var15.Text + " bgp neighbor " + Script_Var8.Text + " advertised-routes | match Routes \r\n" +
+                "show router service-name " + Script_Var15.Text + " bgp neighbor " + Script_Var08.Text + " advertised-routes | match Routes \r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -5092,7 +3992,7 @@ namespace MasterSheetNew
                 "# PING  \r\n" +
                 "########################################\r\n" +
                 " \r\n" +
-                "ping service-name " + Script_Var15.Text + " " + Script_Var8.Text + " size 1500 count 15 interface " + Script_Var3.Text + " rapid \r\n" +
+                "ping service-name " + Script_Var15.Text + " " + Script_Var08.Text + " size 1500 count 15 interface " + Script_Var03.Text + " rapid \r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n";
@@ -5100,77 +4000,9 @@ namespace MasterSheetNew
 
             else if ((type == RouterType.Nokia) && (activityType == ActivityType.VOZ) && backboneOrNot == true && logOrNot == true)
             {
-                ProcedureName.Text = "LOG BACKBONE - NOKIA - VOZ";
+                Script_ProcedureName.Text = "LOG BACKBONE - NOKIA - VOZ";
 
-
-                // --- Cluster Only the Usable Variables ---
-                Script_VarName3.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_VarName7.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName3.Location.Y + 30);
-                Script_VarName8.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName7.Location.Y + 30);
-                Script_VarName13.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName8.Location.Y + 30);
-
-                Script_Var3.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_Var7.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var3.Location.Y + 30);
-                Script_Var8.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var7.Location.Y + 30);
-                Script_Var13.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var8.Location.Y + 30);
-
-                Script_DeleteVar3.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_DeleteVar7.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar3.Location.Y + 30);
-                Script_DeleteVar8.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar7.Location.Y + 30);
-                Script_DeleteVar13.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar8.Location.Y + 30);
-
-
-                // --- Show/Hide Variebles ---
-                Script_Var0.Hide();
-                Script_Var1.Hide();
-                Script_Var2.Hide();
-                Script_Var3.Show();
-                Script_Var4.Hide();
-                Script_Var5.Hide();
-                Script_Var6.Hide();
-                Script_Var7.Show();
-                Script_Var8.Show();
-                Script_Var9.Hide();
-                Script_Var10.Hide();
-                Script_Var11.Hide();
-                Script_Var12.Hide();
-                Script_Var13.Show();
-                Script_Var14.Hide();
-                Script_Var15.Hide();
-
-                Script_VarName0.Hide();
-                Script_VarName1.Hide();
-                Script_VarName2.Hide();
-                Script_VarName3.Show();
-                Script_VarName4.Hide();
-                Script_VarName5.Hide();
-                Script_VarName6.Hide();
-                Script_VarName7.Show();
-                Script_VarName8.Show();
-                Script_VarName9.Hide();
-                Script_VarName10.Hide();
-                Script_VarName11.Hide();
-                Script_VarName12.Hide();
-                Script_VarName13.Show();
-                Script_VarName14.Hide();
-                Script_VarName15.Hide();
-
-                Script_DeleteVar0.Hide();
-                Script_DeleteVar1.Hide();
-                Script_DeleteVar2.Hide();
-                Script_DeleteVar3.Show();
-                Script_DeleteVar4.Hide();
-                Script_DeleteVar5.Hide();
-                Script_DeleteVar6.Hide();
-                Script_DeleteVar7.Show();
-                Script_DeleteVar8.Show();
-                Script_DeleteVar9.Hide();
-                Script_DeleteVar10.Hide();
-                Script_DeleteVar11.Hide();
-                Script_DeleteVar12.Hide();
-                Script_DeleteVar13.Show();
-                Script_DeleteVar14.Hide();
-                Script_DeleteVar15.Hide();
+                VarScriptDisplayControl("03,07,08,13");
 
                 Script_LANMascara.Hide();
                 Script_TypeLabel.Show();
@@ -5197,10 +4029,10 @@ namespace MasterSheetNew
                 "# INTERFACE  \r\n" +
                 "########################################\r\n" +
                 " \r\n" +
-                "admin display-config | match " + Script_Var7.Text + " context all \r\n" +
+                "admin display-config | match " + Script_Var07.Text + " context all \r\n" +
                 " \r\n" +
                 " \r\n" +
-                "admin display-config | match expression " + Script_Var3.Text + "[^0-9] context all \r\n" +
+                "admin display-config | match expression " + Script_Var03.Text + "[^0-9] context all \r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -5211,7 +4043,7 @@ namespace MasterSheetNew
                 "admin display-config | match expression " + '"' + "route-distinguisher " + "4230:5581" + '"' + " pre-line 6 post-lines 6" + " \r\n" +
                 " \r\n" +
                 " \r\n" +
-                "show router service-name 1000 interface " + Script_Var3.Text + " \r\n" +
+                "show router service-name 1000 interface " + Script_Var03.Text + " \r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -5230,13 +4062,13 @@ namespace MasterSheetNew
                 "# ROTA ESTATICA  \r\n" +
                 "########################################\r\n" +
                 " \r\n" +
-                "admin display-config | match " + Script_Var8.Text + " context all \r\n" +
+                "admin display-config | match " + Script_Var08.Text + " context all \r\n" +
                 " \r\n" +
                 " \r\n" +
-                "show router service-name 1000 static-route next-hop " + Script_Var8.Text + " \r\n" +
+                "show router service-name 1000 static-route next-hop " + Script_Var08.Text + " \r\n" +
                 " \r\n" +
                 " \r\n" +
-                "admin display-config | match " + Script_Var8.Text + " pre-line 1 post-lines 5 \r\n" +
+                "admin display-config | match " + Script_Var08.Text + " pre-line 1 post-lines 5 \r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -5245,7 +4077,7 @@ namespace MasterSheetNew
                 "# PING  \r\n" +
                 "########################################\r\n" +
                 " \r\n" +
-                "ping service-name 1000 " + Script_Var8.Text + " size 1500 count 15 interface " + Script_Var3.Text + " rapid \r\n" +
+                "ping service-name 1000 " + Script_Var08.Text + " size 1500 count 15 interface " + Script_Var03.Text + " rapid \r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n";
@@ -5253,77 +4085,9 @@ namespace MasterSheetNew
 
             else if ((type == RouterType.Nokia) && (activityType == ActivityType.BLDcomBGP) && backboneOrNot == true && logOrNot == true)
             {
-                ProcedureName.Text = "LOG BACKBONE - NOKIA - BLD com BGP";
+                Script_ProcedureName.Text = "LOG BACKBONE - NOKIA - BLD com BGP";
 
-
-                // --- Cluster Only the Usable Variables ---
-                Script_VarName3.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_VarName7.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName3.Location.Y + 30);
-                Script_VarName8.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName7.Location.Y + 30);
-                Script_VarName13.Location = new System.Drawing.Point(Script_VarName4.Location.X, Script_VarName8.Location.Y + 30);
-
-                Script_Var3.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_Var7.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var3.Location.Y + 30);
-                Script_Var8.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var7.Location.Y + 30);
-                Script_Var13.Location = new System.Drawing.Point(Script_Var4.Location.X, Script_Var8.Location.Y + 30);
-
-                Script_DeleteVar3.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_ComboBox.Location.Y + 30);
-                Script_DeleteVar7.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar3.Location.Y + 30);
-                Script_DeleteVar8.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar7.Location.Y + 30);
-                Script_DeleteVar13.Location = new System.Drawing.Point(Script_DeleteVar0.Location.X, Script_DeleteVar8.Location.Y + 30);
-
-
-                // --- Show/Hide Variebles ---
-                Script_Var0.Hide();
-                Script_Var1.Hide();
-                Script_Var2.Hide();
-                Script_Var3.Show();
-                Script_Var4.Hide();
-                Script_Var5.Hide();
-                Script_Var6.Hide();
-                Script_Var7.Show();
-                Script_Var8.Show();
-                Script_Var9.Hide();
-                Script_Var10.Hide();
-                Script_Var11.Hide();
-                Script_Var12.Hide();
-                Script_Var13.Show();
-                Script_Var14.Hide();
-                Script_Var15.Hide();
-
-                Script_VarName0.Hide();
-                Script_VarName1.Hide();
-                Script_VarName2.Hide();
-                Script_VarName3.Show();
-                Script_VarName4.Hide();
-                Script_VarName5.Hide();
-                Script_VarName6.Hide();
-                Script_VarName7.Show();
-                Script_VarName8.Show();
-                Script_VarName9.Hide();
-                Script_VarName10.Hide();
-                Script_VarName11.Hide();
-                Script_VarName12.Hide();
-                Script_VarName13.Show();
-                Script_VarName14.Hide();
-                Script_VarName15.Hide();
-
-                Script_DeleteVar0.Hide();
-                Script_DeleteVar1.Hide();
-                Script_DeleteVar2.Hide();
-                Script_DeleteVar3.Show();
-                Script_DeleteVar4.Hide();
-                Script_DeleteVar5.Hide();
-                Script_DeleteVar6.Hide();
-                Script_DeleteVar7.Show();
-                Script_DeleteVar8.Show();
-                Script_DeleteVar9.Hide();
-                Script_DeleteVar10.Hide();
-                Script_DeleteVar11.Hide();
-                Script_DeleteVar12.Hide();
-                Script_DeleteVar13.Show();
-                Script_DeleteVar14.Hide();
-                Script_DeleteVar15.Hide();
+                VarScriptDisplayControl("03,07,08,13");
 
                 Script_LANMascara.Hide();
                 Script_TypeLabel.Show();
@@ -5365,14 +4129,14 @@ namespace MasterSheetNew
                 "# INTERFACE  \r\n" +
                 "########################################\r\n" +
                 " \r\n" +
-                "admin display-config | match " + Script_Var7.Text + " context all \r\n" +
+                "admin display-config | match " + Script_Var07.Text + " context all \r\n" +
                 " \r\n" +
                 " \r\n" +
-                "admin display-config | match expression " + Script_Var3.Text + "[^0-9] context all \r\n" +
+                "admin display-config | match expression " + Script_Var03.Text + "[^0-9] context all \r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
-                "show router interface " + Script_Var3.Text + " \r\n" +
+                "show router interface " + Script_Var03.Text + " \r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -5392,10 +4156,10 @@ namespace MasterSheetNew
                 "# ROTA ESTATICA  \r\n" +
                 "########################################\r\n" +
                 " \r\n" +
-                "show router static-route next-hop " + Script_Var8.Text + " \r\n" +
+                "show router static-route next-hop " + Script_Var08.Text + " \r\n" +
                 " \r\n" +
                 " \r\n" +
-                "admin display-config | match " + Script_Var8.Text + " pre-line 1 post-lines 56 \r\n" +
+                "admin display-config | match " + Script_Var08.Text + " pre-line 1 post-lines 56 \r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -5403,7 +4167,7 @@ namespace MasterSheetNew
                 "# BGP   \r\n" +
                 "########################################\r\n" +
                 " \r\n" +
-                "admin display-config | match " + Script_Var8.Text + " context all \r\n" +
+                "admin display-config | match " + Script_Var08.Text + " context all \r\n" +
                 " \r\n" +
                 " \r\n" +
                 "######## BGP - ROUTE MAPS ######## \r\n" +
@@ -5419,16 +4183,16 @@ namespace MasterSheetNew
                 " \r\n" +
                 policyExport2 +
                 " \r\n" +
-                " \r\n" + 
+                " \r\n" +
                 "######## BGP - NEIGHBORS ######## \r\n" +
                 " \r\n" +
-                "show router bgp neighbor " + Script_Var8.Text + " advertised-routes | match Routes\r\n" +
+                "show router bgp neighbor " + Script_Var08.Text + " advertised-routes | match Routes\r\n" +
                 " \r\n" +
                 " \r\n" +
-                "show router bgp summary | match " + Script_Var8.Text + " post-lines 3\r\n" +
+                "show router bgp summary | match " + Script_Var08.Text + " post-lines 3\r\n" +
                 " \r\n" +
                 " \r\n" +
-                "show router bgp neighbor " + Script_Var8.Text + " received-routes\r\n" +
+                "show router bgp neighbor " + Script_Var08.Text + " received-routes\r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -5437,7 +4201,7 @@ namespace MasterSheetNew
                 "# PING  \r\n" +
                 "########################################\r\n" +
                 " \r\n" +
-                "ping " + Script_Var8.Text + " size 1500 count 15 interface " + Script_Var3.Text + " rapid \r\n" +
+                "ping " + Script_Var08.Text + " size 1500 count 15 interface " + Script_Var03.Text + " rapid \r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n";
@@ -5449,18 +4213,18 @@ namespace MasterSheetNew
                 player.Play();
                 MessageBox.Show("Not Implemented");
 
-                ProcedureName.Text = "ERROR";
+                Script_ProcedureName.Text = "ERROR";
 
-                Script_VarName0.Hide();
-                Script_VarName1.Hide();
-                Script_VarName2.Hide();
-                Script_VarName3.Hide();
-                Script_VarName4.Hide();
-                Script_VarName5.Hide();
-                Script_VarName6.Hide();
-                Script_VarName7.Hide();
-                Script_VarName8.Hide();
-                Script_VarName9.Hide();
+                Script_VarName00.Hide();
+                Script_VarName01.Hide();
+                Script_VarName02.Hide();
+                Script_VarName03.Hide();
+                Script_VarName04.Hide();
+                Script_VarName05.Hide();
+                Script_VarName06.Hide();
+                Script_VarName07.Hide();
+                Script_VarName08.Hide();
+                Script_VarName09.Hide();
                 Script_VarName10.Hide();
                 Script_VarName11.Hide();
                 Script_VarName12.Hide();
@@ -5468,16 +4232,16 @@ namespace MasterSheetNew
                 Script_VarName14.Hide();
                 Script_VarName15.Hide();
 
-                Script_Var0.Hide();
-                Script_Var1.Hide();
-                Script_Var2.Hide();
-                Script_Var3.Hide();
-                Script_Var4.Hide();
-                Script_Var5.Hide();
-                Script_Var6.Hide();
-                Script_Var7.Hide();
-                Script_Var8.Hide();
-                Script_Var9.Hide();
+                Script_Var00.Hide();
+                Script_Var01.Hide();
+                Script_Var02.Hide();
+                Script_Var03.Hide();
+                Script_Var04.Hide();
+                Script_Var05.Hide();
+                Script_Var06.Hide();
+                Script_Var07.Hide();
+                Script_Var08.Hide();
+                Script_Var09.Hide();
                 Script_Var10.Hide();
                 Script_Var11.Hide();
                 Script_Var12.Hide();
@@ -5485,16 +4249,16 @@ namespace MasterSheetNew
                 Script_Var14.Hide();
                 Script_Var15.Hide();
 
-                Script_DeleteVar0.Hide();
-                Script_DeleteVar1.Hide();
-                Script_DeleteVar2.Hide();
-                Script_DeleteVar3.Hide();
-                Script_DeleteVar4.Hide();
-                Script_DeleteVar5.Hide();
-                Script_DeleteVar6.Hide();
-                Script_DeleteVar7.Hide();
-                Script_DeleteVar8.Hide();
-                Script_DeleteVar9.Hide();
+                Script_DeleteVar00.Hide();
+                Script_DeleteVar01.Hide();
+                Script_DeleteVar02.Hide();
+                Script_DeleteVar03.Hide();
+                Script_DeleteVar04.Hide();
+                Script_DeleteVar05.Hide();
+                Script_DeleteVar06.Hide();
+                Script_DeleteVar07.Hide();
+                Script_DeleteVar08.Hide();
+                Script_DeleteVar09.Hide();
                 Script_DeleteVar10.Hide();
                 Script_DeleteVar11.Hide();
                 Script_DeleteVar12.Hide();
@@ -5804,16 +4568,16 @@ namespace MasterSheetNew
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
-            Script_Var0.Text = string.Empty;
-            Script_Var1.Text = string.Empty;
-            Script_Var2.Text = string.Empty;
-            Script_Var3.Text = string.Empty;
-            Script_Var4.Text = string.Empty;
-            Script_Var5.Text = string.Empty;
-            Script_Var6.Text = string.Empty;
-            Script_Var7.Text = string.Empty;
-            Script_Var8.Text = string.Empty;
-            Script_Var9.Text = string.Empty;
+            Script_Var00.Text = string.Empty;
+            Script_Var01.Text = string.Empty;
+            Script_Var02.Text = string.Empty;
+            Script_Var03.Text = string.Empty;
+            Script_Var04.Text = string.Empty;
+            Script_Var05.Text = string.Empty;
+            Script_Var06.Text = string.Empty;
+            Script_Var07.Text = string.Empty;
+            Script_Var08.Text = string.Empty;
+            Script_Var09.Text = string.Empty;
             Script_Var10.Text = string.Empty;
             Script_Var11.Text = string.Empty;
             Script_Var12.Text = string.Empty;
@@ -5825,7 +4589,7 @@ namespace MasterSheetNew
             Script_VarRouteI2.Text = string.Empty;
             Script_VarRouteE1.Text = string.Empty;
             Script_VarRouteE2.Text = string.Empty;
-            
+
 
             ApplyVariebleToScript(routerType);
         }
@@ -6010,11 +4774,6 @@ namespace MasterSheetNew
             player.Play();
         }
 
-        private void Logs_WizGat_Click(object sender, EventArgs e)
-        {
-            tabControl2.SelectedTab = tabWizGat;
-        }
-
         private void Logs_Ligacao_Click(object sender, EventArgs e)
         {
             tabControl2.SelectedTab = tabLigacoes;
@@ -6073,52 +4832,52 @@ namespace MasterSheetNew
 
         private void Script_DeleteVar0_Click(object sender, EventArgs e)
         {
-            Script_Var0.Text = string.Empty;
+            Script_Var00.Text = string.Empty;
         }
 
         private void Script_DeleteVar1_Click(object sender, EventArgs e)
         {
-            Script_Var1.Text = string.Empty;
+            Script_Var01.Text = string.Empty;
         }
 
         private void Script_DeleteVar2_Click(object sender, EventArgs e)
         {
-            Script_Var2.Text = string.Empty;
+            Script_Var02.Text = string.Empty;
         }
 
         private void Script_DeleteVar3_Click(object sender, EventArgs e)
         {
-            Script_Var3.Text = string.Empty;
+            Script_Var03.Text = string.Empty;
         }
 
         private void Script_DeleteVar4_Click(object sender, EventArgs e)
         {
-            Script_Var4.Text = string.Empty;
+            Script_Var04.Text = string.Empty;
         }
 
         private void Script_DeleteVar5_Click(object sender, EventArgs e)
         {
-            Script_Var5.Text = string.Empty;
+            Script_Var05.Text = string.Empty;
         }
 
         private void Script_DeleteVar6_Click(object sender, EventArgs e)
         {
-            Script_Var6.Text = string.Empty;
+            Script_Var06.Text = string.Empty;
         }
 
         private void Script_DeleteVar7_Click(object sender, EventArgs e)
         {
-            Script_Var7.Text = string.Empty;
+            Script_Var07.Text = string.Empty;
         }
 
         private void Script_DeleteVar8_Click(object sender, EventArgs e)
         {
-            Script_Var8.Text = string.Empty;
+            Script_Var08.Text = string.Empty;
         }
 
         private void Script_DeleteVar9_Click(object sender, EventArgs e)
         {
-            Script_Var9.Text = string.Empty;
+            Script_Var09.Text = string.Empty;
         }
 
         private void Script_DeleteVar10_Click(object sender, EventArgs e)
@@ -6310,7 +5069,7 @@ namespace MasterSheetNew
 
         private void Ligacoes_BCopy_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(Ligacoes_TBFinal.Text);
+            Clipboard.SetText(Ligacoes_FinalTextBox.Text);
             ApplyLogsDeLigacao();
         }
 
@@ -6321,18 +5080,18 @@ namespace MasterSheetNew
 
         private void Ligacoes_BRestore_Click(object sender, EventArgs e)
         {
-            Ligacoes_TBFinal.Text = ligacaoRestore;
+            Ligacoes_FinalTextBox.Text = ligacaoRestore;
         }
         private void Ligacoes_BClear_Click(object sender, EventArgs e)
         {
             ApplyLigacoesRestore();
 
-            Ligacoes_TB1.Text = string.Empty;
-            Ligacoes_TB2.Text = string.Empty;
-            Ligacoes_TB3.Text = string.Empty;
-            Ligacoes_TB4.Text = string.Empty;
-            Ligacoes_TB5.Text = string.Empty;
-            Ligacoes_TB6.Text = string.Empty;
+            Ligacoes_TextBox1.Text = string.Empty;
+            Ligacoes_TextBox2.Text = string.Empty;
+            Ligacoes_TextBox3.Text = string.Empty;
+            Ligacoes_TextBox4.Text = string.Empty;
+            Ligacoes_TextBox5.Text = string.Empty;
+            Ligacoes_TextBox6.Text = string.Empty;
 
             ApplyLogsDeLigacao();
         }
@@ -6532,7 +5291,7 @@ namespace MasterSheetNew
 
         public void ApplyLigacoesRestore()
         {
-            ligacaoRestore = Ligacoes_TBFinal.Text;
+            ligacaoRestore = Ligacoes_FinalTextBox.Text;
         }
 
         public void ApplyLogsDeLigacao()
@@ -6544,44 +5303,44 @@ namespace MasterSheetNew
             string digitos3 = "";
             string entrada = "";
 
-            if (Ligacoes_TB1.Text != string.Empty)
+            if (Ligacoes_TextBox1.Text != string.Empty)
             {
                 local = "########################### SAÍDA LOCAL ###########################\r\n" +
                     "\r\n" +
-                    Ligacoes_TB1.Text + "\r\n" + "\r\n" + "\r\n";
+                    Ligacoes_TextBox1.Text + "\r\n" + "\r\n" + "\r\n";
             }
-            if (Ligacoes_TB2.Text != string.Empty)
+            if (Ligacoes_TextBox2.Text != string.Empty)
             {
                 ddd = "########################### DDD ###########################\r\n" +
                     "\r\n" +
-                    Ligacoes_TB2.Text + "\r\n" + "\r\n" + "\r\n";
+                    Ligacoes_TextBox2.Text + "\r\n" + "\r\n" + "\r\n";
             }
-            if (Ligacoes_TB3.Text != string.Empty)
+            if (Ligacoes_TextBox3.Text != string.Empty)
             {
                 celular = "########################### CELULAR ###########################\r\n" +
                     "\r\n" +
-                    Ligacoes_TB3.Text + "\r\n" + "\r\n" + "\r\n";
+                    Ligacoes_TextBox3.Text + "\r\n" + "\r\n" + "\r\n";
             }
-            if (Ligacoes_TB4.Text != string.Empty)
+            if (Ligacoes_TextBox4.Text != string.Empty)
             {
                 zero800 = "########################### 0800 ###########################\r\n" +
                     "\r\n" +
-                    Ligacoes_TB4.Text + "\r\n" + "\r\n" + "\r\n";
+                    Ligacoes_TextBox4.Text + "\r\n" + "\r\n" + "\r\n";
             }
-            if (Ligacoes_TB5.Text != string.Empty)
+            if (Ligacoes_TextBox5.Text != string.Empty)
             {
                 digitos3 = "########################### 3 DÍGITOS ###########################\r\n" +
                     "\r\n" +
-                    Ligacoes_TB5.Text + "\r\n" + "\r\n" + "\r\n";
+                    Ligacoes_TextBox5.Text + "\r\n" + "\r\n" + "\r\n";
             }
-            if (Ligacoes_TB6.Text != string.Empty)
+            if (Ligacoes_TextBox6.Text != string.Empty)
             {
                 entrada = "########################### ENTRADA ###########################\r\n" +
                     "\r\n" +
-                    Ligacoes_TB6.Text + "\r\n" + "\r\n" + "\r\n";
+                    Ligacoes_TextBox6.Text + "\r\n" + "\r\n" + "\r\n";
             }
 
-            Ligacoes_TBFinal.Text = "*************************************************************************** \r\n" +
+            Ligacoes_FinalTextBox.Text = "*************************************************************************** \r\n" +
                 "************************ LOGS DE LIGAÇÕES *********************************\r\n" +
                 "***************************************************************************\r\n" +
                 "\r\n" +
@@ -6596,31 +5355,31 @@ namespace MasterSheetNew
 
         private void Ligacoes_Clear1_Click(object sender, EventArgs e)
         {
-            Ligacoes_TB1.Text = string.Empty;
+            Ligacoes_TextBox1.Text = string.Empty;
         }
 
         private void Ligacoes_Clear2_Click(object sender, EventArgs e)
         {
-            Ligacoes_TB2.Text = string.Empty;
+            Ligacoes_TextBox2.Text = string.Empty;
         }
         private void Ligacoes_Clear3_Click(object sender, EventArgs e)
         {
-            Ligacoes_TB3.Text = string.Empty;
+            Ligacoes_TextBox3.Text = string.Empty;
         }
 
         private void Ligacoes_Clear4_Click(object sender, EventArgs e)
         {
-            Ligacoes_TB4.Text = string.Empty;
+            Ligacoes_TextBox4.Text = string.Empty;
         }
 
         private void Ligacoes_Clear5_Click(object sender, EventArgs e)
         {
-            Ligacoes_TB5.Text = string.Empty;
+            Ligacoes_TextBox5.Text = string.Empty;
         }
 
         private void Ligacoes_Clear6_Click(object sender, EventArgs e)
         {
-            Ligacoes_TB6.Text = string.Empty;
+            Ligacoes_TextBox6.Text = string.Empty;
         }
 
 
@@ -6669,8 +5428,18 @@ namespace MasterSheetNew
             Clipboard.SetText(Log_FinalTextBox.Text);
         }
 
+        private void Log_ButtonRestore_Click(object sender, EventArgs e)
+        {
+            if (pendenciaRestore != string.Empty)
+            {
+                Log_FinalTextBox.Text = pendenciaRestore;
+            }
+        }
+
         private void Log_Clear_Click(object sender, EventArgs e)
         {
+            pendenciaRestore = Log_FinalTextBox.Text;
+
             Log_TextBox1.Text = "";
             Log_TextBox2.Text = "";
             Log_TextBox3.Text = "";
@@ -6714,7 +5483,7 @@ namespace MasterSheetNew
 
         private void LTFechamento_ButtonClear_Click(object sender, EventArgs e)
         {
-            LTFechamento_ValidacaoText.Text = "";
+            LTFechamento_ValidacaoTextBox.Text = "";
             LTFechamento_TextBox.Text = "";
             LTFechamento_TextBoxObs.Text = "";
             fechamentoSubInfo = "";
@@ -6918,7 +5687,7 @@ namespace MasterSheetNew
             "\r\n" +
             "\r\n" +
             "Responsável do cliente pela Validação: \r\n" +
-            LTFechamento_ValidacaoText.Text +
+            LTFechamento_ValidacaoTextBox.Text +
             "\r\n" +
             "\r\n" +
             fechamentoSubInfo +
@@ -6929,7 +5698,7 @@ namespace MasterSheetNew
 
         private void LTFechamento_ButtonClear1_Click(object sender, EventArgs e)
         {
-            LTFechamento_ValidacaoText.Text = string.Empty;
+            LTFechamento_ValidacaoTextBox.Text = string.Empty;
         }
 
         private void LTFechamento_ButtonClear2_Click(object sender, EventArgs e)
@@ -6960,15 +5729,16 @@ namespace MasterSheetNew
 
         private void ButtonLogTools_Suporte_Click(object sender, EventArgs e)
         {
-            commandStr = LT_SuporteCom.Text;
+            commandStr = LT_SuporteComTextBox.Text;
             ApplySuporteLog();
+            Clipboard.SetText(LT_SuporteComTextBox.Text);
         }
 
         private void Button_LTSup_Limpar_Click(object sender, EventArgs e)
         {
             LTSuporteFinalTextBox.Text = "";
-            LT_SuporteTitle.Text = "";
-            LT_SuporteCom.Text = "";
+            LT_SuporteTitleTextBox.Text = "";
+            LT_SuporteComTextBox.Text = "";
         }
 
         private void LTSup_buttonForm_Click(object sender, EventArgs e)
@@ -6979,11 +5749,11 @@ namespace MasterSheetNew
         private void ButtonLT_AdcCommand_Click(object sender, EventArgs e)
         {
 
-            if (LT_SuporteTitle.Text == string.Empty)
+            if (LT_SuporteTitleTextBox.Text == string.Empty)
             {
                 LTSuporteFinalTextBox.Text = "===================================================\r\n" +
                     "\r\n" +
-                    "# " + LT_SuporteTitle.Text + " # \r\n" +
+                    "# " + LT_SuporteTitleTextBox.Text + " # \r\n" +
                     "\r\n" +
                     "===================================================\r\n " +
                     "\r\n ";
@@ -6995,7 +5765,7 @@ namespace MasterSheetNew
             }
             else
             {
-                commandStr = LT_SuporteCom.Text;
+                commandStr = LT_SuporteComTextBox.Text;
 
                 LTSuporteFinalTextBox.Text = LTSuporteFinalTextBox.Text +
                     "\r\n " +
@@ -7018,12 +5788,12 @@ namespace MasterSheetNew
         {
             commandStr = "";
             ApplySuporteLog();
-            
+
         }
 
         private void ButtonLT_ClearCommand_Click(object sender, EventArgs e)
         {
-            LT_SuporteCom.Text = "";
+            LT_SuporteComTextBox.Text = "";
         }
 
         private void LTSup_buttonCopy_Click(object sender, EventArgs e)
@@ -7035,7 +5805,7 @@ namespace MasterSheetNew
         {
             suporteTitle = "===================================================\r\n" +
                 "\r\n" +
-                "# " + LT_SuporteTitle.Text + " # \r\n" +
+                "# " + LT_SuporteTitleTextBox.Text + " # \r\n" +
                 "\r\n" +
                 "===================================================\r\n " +
                 "\r\n ";
@@ -7074,6 +5844,129 @@ namespace MasterSheetNew
         // ---------------------------------------------------------------------------
         // ---------------------------------------------------------------------------
 
+        public void ApplyScriptOutros()
+        {
+            if (Outros_TypeComboBox.SelectedIndex == 0)
+            {
+                if (Outros_VarText01.Text == string.Empty)
+                {
+                    Outros_FinalTextBox.Text = scripts[65].scriptString.Replace("VarCom", Outros_VarText00.Text);
+                    Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarTipo", Outros_VarText02.Text);
+                }
+                else
+                {
+                    Outros_FinalTextBox.Text = scripts[66].scriptString.Replace("VarCom", Outros_VarText00.Text);
+                    Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarHost", Outros_VarText01.Text);
+                    Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarTipo", Outros_VarText02.Text);
+                }
+
+            }
+            if (Outros_TypeComboBox.SelectedIndex == 1)
+            {
+                string typeSNMP = "read";
+
+                if (Outros_VarText02.Text == "RO")
+                {
+                    typeSNMP = "read";
+                }
+                if (Outros_VarText02.Text == "RW")
+                {
+                    typeSNMP = "write";
+                }
+                if (Outros_VarText01.Text == string.Empty)
+                {
+                    Outros_FinalTextBox.Text = scripts[67].scriptString.Replace("VarCom", Outros_VarText00.Text);
+                    Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarTipo", typeSNMP);
+                }
+                else
+                {
+                    Outros_FinalTextBox.Text = scripts[68].scriptString.Replace("VarCom", Outros_VarText00.Text);
+                    Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarHost", Outros_VarText01.Text);
+                    Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarTipo", typeSNMP);
+                }
+
+            }
+            if (Outros_TypeComboBox.SelectedIndex == 2)
+            {
+                if (Outros_VarText01.Text == string.Empty)
+                {
+                    Outros_FinalTextBox.Text = scripts[69].scriptString.Replace("VarCom", Outros_VarText00.Text);
+                }
+                else
+                {
+                    Outros_FinalTextBox.Text = scripts[70].scriptString.Replace("VarCom", Outros_VarText00.Text);
+                    Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarHost", Outros_VarText01.Text);
+                }
+            }
+            if (Outros_TypeComboBox.SelectedIndex == 3)
+            {
+                Outros_FinalTextBox.Text = scripts[71].scriptString.Replace("VarCom", Outros_VarText00.Text);
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarHost", Outros_VarText01.Text);
+            }
+        }
+
+        private void Outros_VarDelete0_Click(object sender, EventArgs e)
+        {
+            Outros_VarText00.Text = string.Empty;
+        }
+
+        private void Outros_VarDelete1_Click(object sender, EventArgs e)
+        {
+            Outros_VarText01.Text = string.Empty;
+        }
+
+        private void Outros_VarDelete2_Click(object sender, EventArgs e)
+        {
+            Outros_VarText02.Text = string.Empty;
+        }
+
+        private void Outros_VarDelete3_Click(object sender, EventArgs e)
+        {
+            Outros_VarText03.Text = string.Empty;
+        }
+
+        private void Outros_VarDelete4_Click(object sender, EventArgs e)
+        {
+            Outros_VarText04.Text = string.Empty;
+        }
+
+        private void Outros_VarDeleteAll_Click(object sender, EventArgs e)
+        {
+            Outros_VarText00.Text = string.Empty;
+            Outros_VarText01.Text = string.Empty;
+            Outros_VarText02.Text = string.Empty;
+            Outros_VarText03.Text = string.Empty;
+            Outros_VarText04.Text = string.Empty;
+        }
+
+        private void Outros_TypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ApplyScriptOutros();
+        }
+
+        private void Outros_ButtonForCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(Outros_FinalTextBox.Text);
+            ApplyScriptOutros();
+        }
+
+        private void Outros_ButtonFormat_Click(object sender, EventArgs e)
+        {
+            ApplyScriptOutros();
+        }
+
+        private void Outros_ButtonCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(Outros_FinalTextBox.Text);
+        }
+
+        // ---------------------------------------------------------------------------
+        // ---------------------------------------------------------------------------
+        // ------------------------------ MISC ---------------------------------------
+        // ---------------------------------------------------------------------------
+        // ---------------------------------------------------------------------------
+
+
         // ----------------------
         // Versionamento
         // ----------------------
@@ -7110,7 +6003,7 @@ namespace MasterSheetNew
 
             Properties.Settings.Default.darkMode = darkTheme;
             Properties.Settings.Default.Save();
-            
+
         }
 
         public void ApplyDarkTheme(Control ctr, bool darkMode)
@@ -7120,7 +6013,7 @@ namespace MasterSheetNew
                 // ------ DARK THEME ------
                 if (!ctr.Name.Contains("pictureBox2") && !ctr.Name.Contains("MainTitle") && !ctr.Name.Contains("TemplatesLabel"))
                 {
-                    if (!ctr.Name.Contains("TextBox"))
+                    if (!ctr.Name.Contains("TextBox") || !ctr.Name.Contains("Script_Var"))
                     {
                         tabControl2.BackColor = Color.FromArgb(30, 30, 30);
                         tabControl2.ForeColor = Color.White;
@@ -7128,10 +6021,11 @@ namespace MasterSheetNew
                         ctr.BackColor = Color.FromArgb(30, 27, 27);
                         ctr.ForeColor = Color.White;
                     }
-                    else
+
+                    if (ctr.Name == "DataGridRouters")
                     {
-                        ctr.BackColor = Color.FromArgb(50,50,50);
-                        ctr.ForeColor = Color.White;
+                        DataGridRouters.DefaultCellStyle.BackColor = Color.FromArgb(30, 27, 27);
+                        DataGridRouters.DefaultCellStyle.ForeColor = Color.White;
                     }
                 }
             }
@@ -7140,15 +6034,40 @@ namespace MasterSheetNew
                 // ------ LIGHT THEME -----
                 if (!ctr.Name.Contains("pictureBox2") || !ctr.Name.Contains("MainTitle") || !ctr.Name.Contains("TemplatesLabel"))
                 {
-             
                     ctr.BackColor = SystemColors.Control;
                     ctr.ForeColor = SystemColors.ControlText;
                 }
-                if (ctr.Name.Contains("TextBox") || ctr.Name.Contains("ComboBox"))
-                { 
+                if (ctr.Name.Contains("TextBox") || ctr.Name.Contains("ComboBox") || ctr.Name.Contains("Script_Var"))
+                {
                     ctr.BackColor = Color.White;
                     ctr.ForeColor = SystemColors.ControlText;
                 }
+                if (ctr.Name == "DataGridRouters")
+                {
+                    DataGridRouters.DefaultCellStyle.BackColor = Color.White;
+                    DataGridRouters.DefaultCellStyle.ForeColor = Color.Black;
+                }
+            }
+
+            if (ctr.Name.Contains("BackButton"))
+            {
+                ctr.BackColor = Color.DodgerBlue;
+                ctr.ForeColor = Color.White;
+            }
+            if (ctr.Name.Contains("MainTitle"))
+            {
+                ctr.BackColor = Color.Red;
+                ctr.ForeColor = Color.White;
+            }
+            if (ctr.Name.Contains("pictureBox2"))
+            {
+                ctr.BackColor = Color.DodgerBlue;
+                ctr.ForeColor = Color.White;
+            }
+            if (ctr.Name.Contains("TemplatesLabel"))
+            {
+                ctr.BackColor = Color.DodgerBlue;
+                ctr.ForeColor = Color.White;
             }
 
             // ------------------------------------------------------------------------------
@@ -7158,7 +6077,7 @@ namespace MasterSheetNew
             {
                 ApplyDarkTheme(child, darkTheme);
             }
-            
+
         }
 
 
@@ -7238,5 +6157,69 @@ namespace MasterSheetNew
             Teste_ScriptFinal.Text = string.Empty;
         }
 
+        private void ApplyScriptNew(Script script, string title)
+        {
+            ApplyRouteMapNokia();
+            ApplyLogType();
+            ChangeVlanNaWANVar();
+            GetDesignacao(Script_Var01.Text);
+            ChangeLANIPTextBoxSize();
+
+            if (Script_ComboBox.Text == null)
+            {
+                Script_ComboBox.Text = "INICIAIS";
+            }
+
+            Script_ProcedureName.Text = title;
+
+            VarScriptDisplayControl(script.variables);
+
+            ChangeMascaraLAN();
+
+            Script_TypeLabel.Hide();
+            Script_ComboBox.Hide();
+            Script_LANMascara.Show();
+
+            ButtonParte2.Hide();
+            ButtonLimpeza.Hide();
+
+            Script_FortigateModel.Hide();
+            Script_ModelLabel.Hide();
+            Script_ISRBox.Show();
+            Script_ISRLabel.Show();
+            Script_XRBox.Hide();
+            Script_XRLabel.Hide();
+
+            buttonSwitchScriptLog.Hide();
+
+            string[] split = script.variables.Split(',');
+
+            Script_TextBox.Text = script.scriptString;
+
+            foreach (string s in split)
+            {
+                foreach (TextBox v in varText)
+                {
+                    if (v.Name.Contains(s))
+                    {
+                        MessageBox.Show("VarName: " + v + " | variable split: " + s);
+                        Script_TextBox.Text = Script_TextBox.Text.Replace(s, v.Text);
+                    }
+
+                }
+
+            }
+
+
+            // ------------------------------------------------------------------
+            if (Script_Var04.Text != string.Empty)
+            {
+                ApplyScriptNew(scripts[1], "Config Cisco com VLAN");
+            }
+            else
+            {
+                ApplyScriptNew(scripts[0], "Config Cisco SEM VLAN");
+            }
+        }
     }
 }

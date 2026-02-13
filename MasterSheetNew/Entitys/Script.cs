@@ -11,11 +11,15 @@ namespace WindowsFormsApp1.Entitys
     {
         public string name;
         public string scriptString;
+        public string variables;
+        public DateTimePickerFormat alterDate;
 
-        public Script(string Name, string ScriptString)
+        public Script(string Name, string ScriptString, string Variables, DateTimePickerFormat AlterDate)
         {
             name = Name;
             scriptString = ScriptString;
+            variables = Variables;
+            alterDate = AlterDate;
         }
 
 
@@ -722,7 +726,47 @@ namespace WindowsFormsApp1.Entitys
             //--------------------------------------------------- Outros ---------------------------------------------------------------------
             //--------------------------------------------------------------------------------------------------------------------------------
 
+            string snmpv2Cisco = "snmp-server community VarCom VarTipo";
 
+            string snmpv2CiscoHost = "snmp - server community VarCom VarTipo \r\nsnmp-server host VarHost VarCom\r\n";
+
+            string snmpv2HPE = "snmp-agent\r\n" +
+                "snmp-agent local-engineid\r\n" +
+                "snmp-agent community VarTipo VarCom\r\n" +
+                "snmp-agent sys-info version all\r\n";
+
+            string snmpv2HPEcomHost = "snmp-agent\r\n" +
+                "snmp-agent local-engineid\r\n" +
+                "snmp-agent community VarTipo VarCom\r\n" +
+                "snmp-agent sys-info version all\r\n" +
+                "snmp-agent target-host trap address udp-domain VarHost params securityname VarCom\r\n";
+
+            string snmpv2Huawei = "snmp-agent target-host trap-paramsname SNMPV1 v1 securityname VarCom\r\n" +
+                "snmp-agent target-host trap-paramsname SNMPV2 v2c securityname VarCom\r\n";
+
+            string snmpv2HuaweicomHost = "snmp-agent target-host trap-paramsname SNMPV1 v1 securityname VarCom\r\n" +
+                "snmp-agent target-host trap-paramsname SNMPV2 v2c securityname VarCom\r\n" +
+                "snmp-agent target-host trap-hostname host1 address VarHost trap-paramsnam SNMPV1\r\n" +
+                "snmp-agent target-host trap-hostname host2 address VarHost trap-paramsnam SNMPV2\r\n";
+
+            string snmpv2Fortgate = "config system snmp community\r\n" +
+                "    edit 0\r\n" +
+                "        set name " + '"' + "EBT" + '"' + "\r\n" +
+                "        config hosts\r\n" +
+                "        edit 0\r\n" +
+                "          set ip VarHost 255.255.255.255\r\n" +
+                "          next\r\n" +
+                "        end\r\n" +
+                "    next\r\n" +
+                "    end\r\n" +
+                "config system snmp sysinfo\r\n" +
+                "    set status enable\r\n" +
+                "end\r\n" +
+                "config system admin\r\n" +
+                "    edit " + '"' + "EBT" + '"' + "\r\n" +
+                "       set trusthost4 VarHost 255.255.255.2555\r\n" +
+                "    next\r\n" +
+                "end\r\n";
 
 
 
@@ -733,16 +777,16 @@ namespace WindowsFormsApp1.Entitys
             List<Script> scriptList = new List<Script>();
 
             // Config
-            Script scriptCiscoBLDsemVlan = new Script("CiscoBLDsemVlan", ciscoBLDsemVlan);
-            Script scriptCiscoBLDcomVlan = new Script("CiscoBLDcomVlan", ciscoBLDcomVlan);
-            Script scriptHpeBLDcomVlan = new Script("HPEBLDcomVlan", hpeBLDcomVlan);
-            Script scriptHpeBLDsemVlan = new Script("HPEBLDsemVlan", hpeBLDsemVlan);
-            Script scriptFortigateBLDsemVLAN = new Script("fortigateBLDsemVLAN", fortigateBLDsemVLAN);
-            Script scriptFortigateBLDcomVLAN = new Script("fortigateBLDcomVLAN", fortigateBLDcomVLAN);
-            Script scriptHuaweiBLDcomVLAN = new Script("huaweiBLDcomVLAN", huaweiBLDcomVLAN);
-            Script scriptHuaweiBLDsemVLAN = new Script("huaweiBLDsemVLAN", huaweiBLDsemVLAN);
-            Script scriptFortigateMPLScomVLAN = new Script("fortigateMPLScomVLAN", fortigateMPLScomVLAN);
-            Script scriptFortigateMPLsemVLAN = new Script("fortigateMPLsemVLAN", fortigateMPLsemVLAN);
+            Script scriptCiscoBLDsemVlan = new Script("CiscoBLDsemVlan", ciscoBLDsemVlan, "var0,var1,var2,var3,var4,var5,var7,var9,var10", 11/02/2026);
+            Script scriptCiscoBLDcomVlan = new Script("CiscoBLDcomVlan", ciscoBLDcomVlan, "var0,var1,var2,var3,var4,var5,var7,var9,var10", 11 / 02 / 2026);
+            Script scriptHpeBLDcomVlan = new Script("HPEBLDcomVlan", hpeBLDcomVlan, "00,01,02,03,04,05,07,09,10", 11 / 02 / 2026);
+            Script scriptHpeBLDsemVlan = new Script("HPEBLDsemVlan", hpeBLDsemVlan, "00,01,02,03,04,05,07,09,10", 11 / 02 / 2026);
+            Script scriptFortigateBLDsemVLAN = new Script("fortigateBLDsemVLAN", fortigateBLDsemVLAN, "00,01,02,03,04,05,07,09,10", 11 / 02 / 2026);
+            Script scriptFortigateBLDcomVLAN = new Script("fortigateBLDcomVLAN", fortigateBLDcomVLAN, "00,01,02,03,04,05,07,09,10", 11 / 02 / 2026);
+            Script scriptHuaweiBLDcomVLAN = new Script("huaweiBLDcomVLAN", huaweiBLDcomVLAN, "00,01,02,03,04,05,07,09,10", 11 / 02 / 2026);
+            Script scriptHuaweiBLDsemVLAN = new Script("huaweiBLDsemVLAN", huaweiBLDsemVLAN, "00,01,02,03,04,05,07,09,10", 11 / 02 / 2026);
+            Script scriptFortigateMPLScomVLAN = new Script("fortigateMPLScomVLAN", fortigateMPLScomVLAN, "00,01,02,03,04,05,07,09,11,12", 11 / 02 / 2026);
+            Script scriptFortigateMPLsemVLAN = new Script("fortigateMPLsemVLAN", fortigateMPLsemVLAN, "00,01,02,03,04,05,07,09,11,12", 11 / 02 / 2026);
 
             scriptList.Add(scriptCiscoBLDsemVlan);
             scriptList.Add(scriptCiscoBLDcomVlan);
@@ -757,12 +801,12 @@ namespace WindowsFormsApp1.Entitys
 
 
             // Logs
-            Script scriptCiscoLogsBLDsemLAN = new Script("ciscoLogsBLDsemLAN", ciscoLogsBLDsemLAN);
-            Script scriptCiscoLogsBLDsemLANcomVLANnaWAN = new Script("ciscoLogsBLDsemLANcomVLANnaWAN", ciscoLogsBLDsemLANcomVLANnaWAN);
-            Script scriptCiscoLogsBLDcomLAN = new Script("ciscoLogsBLDcomLAN", ciscoLogsBLDcomLAN);
-            Script scriptCiscoLogsBLDcomLANeVLANnaWAN = new Script("ciscoLogsBLDcomLANeVLANnaWAN", ciscoLogsBLDcomLANeVLANnaWAN);
-            Script scriptCiscoLogsBLDcomVLANnaLANeSemVLANnaWAN = new Script("ciscoLogsBLDcomVLANnaLANeSemVLANnaWAN", ciscoLogsBLDcomVLANnaLANeSemVLANnaWAN);
-            Script scriptCiscoLogsBLDcomVLANnasDuas = new Script("ciscoLogsBLDcomVLANnasDuas", ciscoLogsBLDcomVLANnasDuas);
+            Script scriptCiscoLogsBLDsemLAN = new Script("ciscoLogsBLDsemLAN", ciscoLogsBLDsemLAN, "03,04,05,06,07", 11 / 02 / 2026);
+            Script scriptCiscoLogsBLDsemLANcomVLANnaWAN = new Script("ciscoLogsBLDsemLANcomVLANnaWAN", ciscoLogsBLDsemLANcomVLANnaWAN, "03,04,05,06,07", 11 / 02 / 2026);
+            Script scriptCiscoLogsBLDcomLAN = new Script("ciscoLogsBLDcomLAN", ciscoLogsBLDcomLAN, "03,04,05,06,07", 11 / 02 / 2026);
+            Script scriptCiscoLogsBLDcomLANeVLANnaWAN = new Script("ciscoLogsBLDcomLANeVLANnaWAN", ciscoLogsBLDcomLANeVLANnaWAN, "03,04,05,06,07", 11 / 02 / 2026);
+            Script scriptCiscoLogsBLDcomVLANnaLANeSemVLANnaWAN = new Script("ciscoLogsBLDcomVLANnaLANeSemVLANnaWAN", ciscoLogsBLDcomVLANnaLANeSemVLANnaWAN, "03,04,05,06,07", 11 / 02 / 2026);
+            Script scriptCiscoLogsBLDcomVLANnasDuas = new Script("ciscoLogsBLDcomVLANnasDuas", ciscoLogsBLDcomVLANnasDuas, "03,04,05,06,07", 11 / 02 / 2026);
 
             scriptList.Add(scriptCiscoLogsBLDsemLAN);
             scriptList.Add(scriptCiscoLogsBLDsemLANcomVLANnaWAN);
@@ -772,12 +816,12 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptCiscoLogsBLDcomVLANnasDuas);
 
 
-            Script scriptHpeLogsBLDsemLAN = new Script("hpeLogsBLDsemLAN", hpeLogsBLDsemLAN);
-            Script scriptHpeLogsBLDsemLANcomVLANnaWAN = new Script("hpeLogsBLDsemLANcomVLANnaWAN", hpeLogsBLDsemLANcomVLANnaWAN);
-            Script scriptHpeLogsBLDcomLAN = new Script("hpeLogsBLDcomLAN", hpeLogsBLDcomLAN);
-            Script scriptHpeLogsBLDcomLANeVLANnaWAN = new Script("hpeLogsBLDcomLANeVLANnaWAN", hpeLogsBLDcomLANeVLANnaWAN);
-            Script scriptHpeLogsBLDcomVLANnaLANeSemVLANnaWAN = new Script("hpeLogsBLDcomVLANnaLANeSemVLANnaWAN", hpeLogsBLDcomVLANnaLANeSemVLANnaWAN);
-            Script scriptHpeLogsBLDcomVLANnasDuas = new Script("hpeLogsBLDcomVLANnasDuas", hpeLogsBLDcomVLANnasDuas);
+            Script scriptHpeLogsBLDsemLAN = new Script("hpeLogsBLDsemLAN", hpeLogsBLDsemLAN, "03,04,05,06,07,09", 11 / 02 / 2026);
+            Script scriptHpeLogsBLDsemLANcomVLANnaWAN = new Script("hpeLogsBLDsemLANcomVLANnaWAN", hpeLogsBLDsemLANcomVLANnaWAN, "03,04,05,06,07,09", 11 / 02 / 2026);
+            Script scriptHpeLogsBLDcomLAN = new Script("hpeLogsBLDcomLAN", hpeLogsBLDcomLAN, "03,04,05,06,07,09", 11 / 02 / 2026);
+            Script scriptHpeLogsBLDcomLANeVLANnaWAN = new Script("hpeLogsBLDcomLANeVLANnaWAN", hpeLogsBLDcomLANeVLANnaWAN, "03,04,05,06,07,09", 11 / 02 / 2026);
+            Script scriptHpeLogsBLDcomVLANnaLANeSemVLANnaWAN = new Script("hpeLogsBLDcomVLANnaLANeSemVLANnaWAN", hpeLogsBLDcomVLANnaLANeSemVLANnaWAN, "03,04,05,06,07,09", 11 / 02 / 2026);
+            Script scriptHpeLogsBLDcomVLANnasDuas = new Script("hpeLogsBLDcomVLANnasDuas", hpeLogsBLDcomVLANnasDuas, "03,04,05,06,07,09", 11 / 02 / 2026);
 
             scriptList.Add(scriptHpeLogsBLDsemLAN);
             scriptList.Add(scriptHpeLogsBLDsemLANcomVLANnaWAN);
@@ -787,19 +831,19 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptHpeLogsBLDcomVLANnasDuas);
 
 
-            Script scriptFortigateBLDsemSource = new Script("fortigateBLDsemSource", fortigateBLDsemSource);
-            Script scriptFortigateBLDcomSource = new Script("fortigateBLDcomSource", fortigateBLDcomSource);
+            Script scriptFortigateBLDsemSource = new Script("fortigateBLDsemSource", fortigateBLDsemSource, "03,05,07,09", 11 / 02 / 2026);
+            Script scriptFortigateBLDcomSource = new Script("fortigateBLDcomSource", fortigateBLDcomSource, "03,05,07,09", 11 / 02 / 2026);
 
             scriptList.Add(scriptFortigateBLDsemSource);
             scriptList.Add(scriptFortigateBLDcomSource);
 
 
-            Script scriptHuaweiLogsBLDsemLAN = new Script("huaweiLogsBLDsemLAN", huaweiLogsBLDsemLAN);
-            Script scriptHuaweiLogsBLDsemLANcomVLANnaWAN = new Script("huaweiLogsBLDsemLANcomVLANnaWAN", huaweiLogsBLDsemLANcomVLANnaWAN);
-            Script scriptHuaweiLogsBLDcomLAN = new Script("huaweiLogsBLDcomLAN", huaweiLogsBLDcomLAN);
-            Script scriptHuaweiLogsBLDcomLANeVLANnaWAN = new Script("huaweiLogsBLDcomLANeVLANnaWAN", huaweiLogsBLDcomLANeVLANnaWAN);
-            Script scriptHuaweiLogsBLDcomVLANnaLANeSemVLANnaWAN = new Script("huaweiLogsBLDcomVLANnaLANeSemVLANnaWAN", huaweiLogsBLDcomVLANnaLANeSemVLANnaWAN);
-            Script scriptHuaweiLogsBLDcomVLANnasDuas = new Script("huaweiLogsBLDcomVLANnasDuas", huaweiLogsBLDcomVLANnasDuas);
+            Script scriptHuaweiLogsBLDsemLAN = new Script("huaweiLogsBLDsemLAN", huaweiLogsBLDsemLAN, "03,04,05,06,07,09", 11 / 02 / 2026);
+            Script scriptHuaweiLogsBLDsemLANcomVLANnaWAN = new Script("huaweiLogsBLDsemLANcomVLANnaWAN", huaweiLogsBLDsemLANcomVLANnaWAN, "03,04,05,06,07,09", 11 / 02 / 2026);
+            Script scriptHuaweiLogsBLDcomLAN = new Script("huaweiLogsBLDcomLAN", huaweiLogsBLDcomLAN, "03,04,05,06,07,09", 11 / 02 / 2026);
+            Script scriptHuaweiLogsBLDcomLANeVLANnaWAN = new Script("huaweiLogsBLDcomLANeVLANnaWAN", huaweiLogsBLDcomLANeVLANnaWAN, "03,04,05,06,07,09", 11 / 02 / 2026);
+            Script scriptHuaweiLogsBLDcomVLANnaLANeSemVLANnaWAN = new Script("huaweiLogsBLDcomVLANnaLANeSemVLANnaWAN", huaweiLogsBLDcomVLANnaLANeSemVLANnaWAN, "03,04,05,06,07,09", 11 / 02 / 2026);
+            Script scriptHuaweiLogsBLDcomVLANnasDuas = new Script("huaweiLogsBLDcomVLANnasDuas", huaweiLogsBLDcomVLANnasDuas, "03,04,05,06,07,09", 11 / 02 / 2026);
 
             scriptList.Add(scriptHuaweiLogsBLDsemLAN);
             scriptList.Add(scriptHuaweiLogsBLDsemLANcomVLANnaWAN);
@@ -809,12 +853,12 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptHuaweiLogsBLDcomVLANnasDuas);
 
 
-            Script scriptCiscoLogsMPLSsemLAN = new Script("ciscoLogsMPLSsemLAN", ciscoLogsMPLSsemLAN);
-            Script scriptCiscoLogsMPLSsemLANcomVLANnaWAN = new Script("ciscoLogsMPLSsemLANcomVLANnaWAN", ciscoLogsMPLSsemLANcomVLANnaWAN);
-            Script scriptCiscoLogsMPLScomLAN = new Script("ciscoLogsMPLScomLAN", ciscoLogsMPLScomLAN);
-            Script scriptCiscoLogsMPLScomLANeVLANnaWAN = new Script("ciscoLogsMPLScomLANeVLANnaWAN", ciscoLogsMPLScomLANeVLANnaWAN);
-            Script scriptCiscoLogsMPLScomVLANnaLANeSemVLANnaWAN = new Script("ciscoLogsMPLScomVLANnaLANeSemVLANnaWAN", ciscoLogsMPLScomVLANnaLANeSemVLANnaWAN);
-            Script scriptCiscoLogsMPLScomVLANnasDuas = new Script("ciscoLogsMPLScomVLANnasDuas", ciscoLogsMPLScomVLANnasDuas);
+            Script scriptCiscoLogsMPLSsemLAN = new Script("ciscoLogsMPLSsemLAN", ciscoLogsMPLSsemLAN, "03,04,05,06,07", 11 / 02 / 2026);
+            Script scriptCiscoLogsMPLSsemLANcomVLANnaWAN = new Script("ciscoLogsMPLSsemLANcomVLANnaWAN", ciscoLogsMPLSsemLANcomVLANnaWAN, "03,04,05,06,07", 11 / 02 / 2026);
+            Script scriptCiscoLogsMPLScomLAN = new Script("ciscoLogsMPLScomLAN", ciscoLogsMPLScomLAN, "03,04,05,06,07", 11 / 02 / 2026);
+            Script scriptCiscoLogsMPLScomLANeVLANnaWAN = new Script("ciscoLogsMPLScomLANeVLANnaWAN", ciscoLogsMPLScomLANeVLANnaWAN, "03,04,05,06,07", 11 / 02 / 2026);
+            Script scriptCiscoLogsMPLScomVLANnaLANeSemVLANnaWAN = new Script("ciscoLogsMPLScomVLANnaLANeSemVLANnaWAN", ciscoLogsMPLScomVLANnaLANeSemVLANnaWAN, "03,04,05,06,07", 11 / 02 / 2026);
+            Script scriptCiscoLogsMPLScomVLANnasDuas = new Script("ciscoLogsMPLScomVLANnasDuas", ciscoLogsMPLScomVLANnasDuas, "03,04,05,06,07", 11 / 02 / 2026);
 
             scriptList.Add(scriptCiscoLogsMPLSsemLAN);
             scriptList.Add(scriptCiscoLogsMPLSsemLANcomVLANnaWAN);
@@ -824,12 +868,12 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptCiscoLogsMPLScomVLANnasDuas);
 
 
-            Script scriptHpeLogsMPLSsemLAN = new Script("hpeLogsMPLSsemLAN", hpeLogsMPLSsemLAN);
-            Script scriptHpeLogsMPLSsemLANcomVLANnaWAN = new Script("hpeLogsMPLSsemLANcomVLANnaWAN", hpeLogsMPLSsemLANcomVLANnaWAN);
-            Script scriptHpeLogsMPLScomLAN = new Script("hpeLogsMPLScomLAN", hpeLogsMPLScomLAN);
-            Script scriptHpeLogsMPLScomLANeVLANnaWAN = new Script("hpeLogsMPLScomLANeVLANnaWAN", hpeLogsMPLScomLANeVLANnaWAN);
-            Script scriptHpeLogsMPLScomVLANnaLANeSemVLANnaWAN = new Script("hpeLogsMPLScomVLANnaLANeSemVLANnaWAN", hpeLogsMPLScomVLANnaLANeSemVLANnaWAN);
-            Script scriptHpeLogsMPLScomVLANnasDuas = new Script("hpeLogsMPLScomVLANnasDuas", hpeLogsMPLScomVLANnasDuas);
+            Script scriptHpeLogsMPLSsemLAN = new Script("hpeLogsMPLSsemLAN", hpeLogsMPLSsemLAN, "03,04,05,06,07,09", 11 / 02 / 2026);
+            Script scriptHpeLogsMPLSsemLANcomVLANnaWAN = new Script("hpeLogsMPLSsemLANcomVLANnaWAN", hpeLogsMPLSsemLANcomVLANnaWAN, "03,04,05,06,07,09", 11 / 02 / 2026);
+            Script scriptHpeLogsMPLScomLAN = new Script("hpeLogsMPLScomLAN", hpeLogsMPLScomLAN, "03,04,05,06,07,09", 11 / 02 / 2026);
+            Script scriptHpeLogsMPLScomLANeVLANnaWAN = new Script("hpeLogsMPLScomLANeVLANnaWAN", hpeLogsMPLScomLANeVLANnaWAN, "03,04,05,06,07,09", 11 / 02 / 2026);
+            Script scriptHpeLogsMPLScomVLANnaLANeSemVLANnaWAN = new Script("hpeLogsMPLScomVLANnaLANeSemVLANnaWAN", hpeLogsMPLScomVLANnaLANeSemVLANnaWAN, "03,04,05,06,07,09", 11 / 02 / 2026);
+            Script scriptHpeLogsMPLScomVLANnasDuas = new Script("hpeLogsMPLScomVLANnasDuas", hpeLogsMPLScomVLANnasDuas, "03,04,05,06,07,09", 11 / 02 / 2026);
 
             scriptList.Add(scriptHpeLogsMPLSsemLAN);
             scriptList.Add(scriptCiscoBLDcomVlan);
@@ -838,18 +882,18 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptHpeLogsMPLScomVLANnaLANeSemVLANnaWAN);
             scriptList.Add(scriptHpeLogsMPLScomVLANnasDuas);
 
-            Script scriptFortigateMPLSsemSource = new Script("fortigateMPLSsemSource", fortigateMPLSsemSource);
-            Script scriptFortigateMPLScomSource = new Script("fortigateMPLScomSource", fortigateMPLScomSource);
+            Script scriptFortigateMPLSsemSource = new Script("fortigateMPLSsemSource", fortigateMPLSsemSource, "03,05,07,09", 11 / 02 / 2026);
+            Script scriptFortigateMPLScomSource = new Script("fortigateMPLScomSource", fortigateMPLScomSource, "03,05,07,09", 11 / 02 / 2026);
 
             scriptList.Add(scriptFortigateMPLSsemSource);
             scriptList.Add(scriptFortigateMPLScomSource);
 
-            Script scriptHuaweiLogsMPLSsemLAN = new Script("huaweiLogsMPLSsemLAN", huaweiLogsMPLSsemLAN);
-            Script scriptHuaweiLogsMPLSsemLANcomVLANnaWAN = new Script("huaweiLogsMPLSsemLANcomVLANnaWAN", huaweiLogsMPLSsemLANcomVLANnaWAN);
-            Script scriptHuaweiLogsMPLScomLAN = new Script("huaweiLogsMPLScomLAN", huaweiLogsMPLScomLAN);
-            Script scriptHuaweiLogsMPLScomLANeVLANnaWAN = new Script("huaweiLogsMPLScomLANeVLANnaWAN", huaweiLogsMPLScomLANeVLANnaWAN);
-            Script scriptHuaweiLogsMPLScomVLANnaLANeSemVLANnaWAN = new Script("huaweiLogsMPLScomVLANnaLANeSemVLANnaWAN", huaweiLogsMPLScomVLANnaLANeSemVLANnaWAN);
-            Script scriptHuaweiLogsMPLScomVLANnasDuas = new Script("huaweiLogsMPLScomVLANnasDuas", huaweiLogsMPLScomVLANnasDuas);
+            Script scriptHuaweiLogsMPLSsemLAN = new Script("huaweiLogsMPLSsemLAN", huaweiLogsMPLSsemLAN, "03,04,05,06,07,09", 11 / 02 / 2026);
+            Script scriptHuaweiLogsMPLSsemLANcomVLANnaWAN = new Script("huaweiLogsMPLSsemLANcomVLANnaWAN", huaweiLogsMPLSsemLANcomVLANnaWAN, "03,04,05,06,07,09", 11 / 02 / 2026);
+            Script scriptHuaweiLogsMPLScomLAN = new Script("huaweiLogsMPLScomLAN", huaweiLogsMPLScomLAN, "03,04,05,06,07,09", 11 / 02 / 2026);
+            Script scriptHuaweiLogsMPLScomLANeVLANnaWAN = new Script("huaweiLogsMPLScomLANeVLANnaWAN", huaweiLogsMPLScomLANeVLANnaWAN, "03,04,05,06,07,09", 11 / 02 / 2026);
+            Script scriptHuaweiLogsMPLScomVLANnaLANeSemVLANnaWAN = new Script("huaweiLogsMPLScomVLANnaLANeSemVLANnaWAN", huaweiLogsMPLScomVLANnaLANeSemVLANnaWAN, "03,04,05,06,07,09", 11 / 02 / 2026);
+            Script scriptHuaweiLogsMPLScomVLANnasDuas = new Script("huaweiLogsMPLScomVLANnasDuas", huaweiLogsMPLScomVLANnasDuas, "03,04,05,06,07,09", 11 / 02 / 2026);
 
             scriptList.Add(scriptHuaweiLogsMPLSsemLAN);
             scriptList.Add(scriptHuaweiLogsMPLSsemLANcomVLANnaWAN);
@@ -858,14 +902,14 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptHuaweiLogsMPLScomVLANnaLANeSemVLANnaWAN);
             scriptList.Add(scriptHuaweiLogsMPLScomVLANnasDuas);
 
-            Script scriptCiscoLogsVOZ_R2 = new Script("ciscoLogsVOZ_R2", ciscoLogsVOZ_R2);
-            Script scriptCiscoLogsVOZ_PABXIP = new Script("ciscoLogsVOZ_PABXIP", ciscoLogsVOZ_PABXIP);
+            Script scriptCiscoLogsVOZ_R2 = new Script("ciscoLogsVOZ_R2", ciscoLogsVOZ_R2, "03,04,05,07", 11 / 02 / 2026);
+            Script scriptCiscoLogsVOZ_PABXIP = new Script("ciscoLogsVOZ_PABXIP", ciscoLogsVOZ_PABXIP, "03,04,05,07", 11 / 02 / 2026);
 
-            Script scriptHpeLogsVOZ_R2 = new Script("hpeLogsVOZ_R2", hpeLogsVOZ_R2);
-            Script scriptHpeLogsVOZ_PABXIP = new Script("hpeLogsVOZ_PABXIP", hpeLogsVOZ_PABXIP);
+            Script scriptHpeLogsVOZ_R2 = new Script("hpeLogsVOZ_R2", hpeLogsVOZ_R2, "03,04,05,07,09", 11 / 02 / 2026);
+            Script scriptHpeLogsVOZ_PABXIP = new Script("hpeLogsVOZ_PABXIP", hpeLogsVOZ_PABXIP, "03,04,05,07,09", 11 / 02 / 2026);
 
-            Script scriptAligeraLogs = new Script("aligeraLogs", aligeraLogs);
-            Script scriptDigistarLogs = new Script("digistarLogs", digistarLogs);
+            Script scriptAligeraLogs = new Script("aligeraLogs", aligeraLogs, "07", 11 / 02 / 2026);
+            Script scriptDigistarLogs = new Script("digistarLogs", digistarLogs, "07, 03, 04", 11 / 02 / 2026);
 
             scriptList.Add(scriptCiscoBLDsemVlan);
             scriptList.Add(scriptCiscoBLDcomVlan);
@@ -875,15 +919,15 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptHpeBLDsemVlan);
 
             // WizardGat
-            Script scriptGatCiscoBLD = new Script("gatCiscoBLD", gatCiscoBLD);
-            Script scriptGatCiscoMPLS = new Script("gatCiscoMPLS", gatCiscoMPLS);
-            Script scriptGatCiscoVOZ = new Script("gatCiscoVOZ", gatCiscoVOZ);
-            Script scriptGatCiscoBLDcomBGP = new Script("gatCiscoBLDcomBGP", gatCiscoBLDcomBGP);
-            Script scriptGatNOKIABLD = new Script("gatNOKIABLD", gatNOKIABLD);
-            Script scriptGatNOKIAMPLS = new Script("gatNOKIAMPLS", gatNOKIAMPLS);
-            Script scriptGatNOKIAVOZ = new Script("gatNOKIAVOZ", gatNOKIAVOZ);
-            Script scriptGatNOKIABLDcomBGP = new Script("gatNOKIABLDcomBGP", gatNOKIABLDcomBGP);
-            Script scriptGatNOKIABLDcomBGProutemap2 = new Script("gatNOKIABLDcomBGProutemap2", gatNOKIABLDcomBGProutemap2);
+            Script scriptGatCiscoBLD = new Script("gatCiscoBLD", gatCiscoBLD, "03,08", 11 / 02 / 2026);
+            Script scriptGatCiscoMPLS = new Script("gatCiscoMPLS", gatCiscoMPLS, "03,08,14,15", 11 / 02 / 2026);
+            Script scriptGatCiscoVOZ = new Script("gatCiscoVOZ", gatCiscoVOZ, "03,08", 11 / 02 / 2026);
+            Script scriptGatCiscoBLDcomBGP = new Script("gatCiscoBLDcomBGP", gatCiscoBLDcomBGP, "03,08", 11 / 02 / 2026);
+            Script scriptGatNOKIABLD = new Script("gatNOKIABLD", gatNOKIABLD, "03,08,14,15", 11 / 02 / 2026);
+            Script scriptGatNOKIAMPLS = new Script("gatNOKIAMPLS", gatNOKIAMPLS, "03,07,08,13,14,15", 11 / 02 / 2026);
+            Script scriptGatNOKIAVOZ = new Script("gatNOKIAVOZ", gatNOKIAVOZ, "03,07,08,13", 11 / 02 / 2026);
+            Script scriptGatNOKIABLDcomBGP = new Script("gatNOKIABLDcomBGP", gatNOKIABLDcomBGP, "03,07,08,13", 11 / 02 / 2026);
+            Script scriptGatNOKIABLDcomBGProutemap2 = new Script("gatNOKIABLDcomBGProutemap2", gatNOKIABLDcomBGProutemap2, "03,07,08,13", 11 / 02 / 2026);
 
             scriptList.Add(scriptGatCiscoBLD);
             scriptList.Add(scriptGatCiscoMPLS);
@@ -894,6 +938,26 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptGatNOKIAVOZ);
             scriptList.Add(scriptGatNOKIABLDcomBGP);
             scriptList.Add(scriptGatNOKIABLDcomBGProutemap2);
+
+
+            // Outros
+
+            Script scriptSnmpv2Cisco = new Script("snmpv2Cisco", snmpv2Cisco, "Outros_VarText00,Outros_VarText01, Outros_VarText03", 11 / 02 / 2026);
+            Script scriptSnmpv2CiscoHost = new Script("snmpv2CiscoHost", snmpv2CiscoHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", 11 / 02 / 2026);
+            Script scriptSnmpv2HPE = new Script("snmpv2HPE", snmpv2HPE, "Outros_VarText00,Outros_VarText01, Outros_VarText03", 11 / 02 / 2026);
+            Script scriptSnmpv2HPEcomHost = new Script("snmpv2HPEcomHost", snmpv2HPEcomHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", 11 / 02 / 2026);
+            Script scriptSnmpv2Huawei = new Script("snmpv2Huawei", snmpv2Huawei, "Outros_VarText00,Outros_VarText01, Outros_VarText03", 11 / 02 / 2026);
+            Script scriptSnmpv2HuaweicomHost = new Script("snmpv2HuaweicomHost", snmpv2HuaweicomHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", 11 / 02 / 2026);
+            Script scriptSnmpv2Fortgate = new Script("snmpv2Fortgate", snmpv2Fortgate, "Outros_VarText00,Outros_VarText01, Outros_VarText03", 11 / 02 / 2026);
+
+            scriptList.Add(scriptSnmpv2Cisco);
+            scriptList.Add(scriptSnmpv2CiscoHost);
+            scriptList.Add(scriptSnmpv2HPE);
+            scriptList.Add(scriptSnmpv2HPEcomHost);
+            scriptList.Add(scriptSnmpv2Huawei);
+            scriptList.Add(scriptSnmpv2HuaweicomHost);
+            scriptList.Add(scriptSnmpv2Fortgate);
+
 
 
             return scriptList;
