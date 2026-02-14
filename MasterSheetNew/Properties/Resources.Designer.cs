@@ -61,6 +61,26 @@ namespace MasterSheetNew.Properties {
         }
         
         /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo_hitss_black {
+            get {
+                object obj = ResourceManager.GetObject("logo-hitss-black", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo_hitss_white {
+            get {
+                object obj = ResourceManager.GetObject("logo-hitss-white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Consulta um recurso localizado do tipo System.IO.UnmanagedMemoryStream semelhante a System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream Perdemo {
