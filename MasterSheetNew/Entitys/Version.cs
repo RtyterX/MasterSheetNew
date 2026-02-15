@@ -8,15 +8,15 @@ namespace WindowsFormsApp1.Entitys
 {
     internal class Version
     {
-        public string name;
-        public string description;
-        public DateTime createDate;
+        public string Versao { get; set; }
+        public string Descricao { get; set; }
+        public DateTime CreateDate { get; set; }
 
         public Version(string name, string description, DateTime createDate)
         {
-            this.name = name;
-            this.description = description;
-            this.createDate = createDate;
+            Versao = name;
+            Descricao = description;
+            CreateDate = createDate;
         }
     }
 }

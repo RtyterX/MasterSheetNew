@@ -561,107 +561,896 @@ namespace WindowsFormsApp1.Entitys
 
             // ------------------------------------------- Log - Cisco - BLD ------------------------------------------------------
 
-            string ciscoLogsBLDsemLAN = "";
+            string ciscoLogsBLD = "terminal length 0 \r\n" +
+                    "!\r\n" +
+                    "!\r\n" +
+                    "undebug all\r\n" +
+                    "wr memory\r\n" +
+                    "!\r\n" +
+                    "!\r\n" +
+                    "!############## CONFIGURACOES logType DO CPE ################ \r\n" +
+                    "!\r\n" +
+                    "!\r\n" +
+                    "!#######################################\r\n" +
+                    "!#            CONFIGURACOES            #\r\n" +
+                    "!#######################################\r\n" +
+                    "!\r\n" +
+                    "show startup-config\r\n" +
+                    "!\r\n" +
+                    "!\r\n" +
+                    "show ip int brief\r\n" +
+                    "!\r\n" +
+                    "!\r\n" +
+                    "!\r\n" +
+                    "!#######################################\r\n" +
+                    "!#            INTERFACES               #\r\n" +
+                    "!#######################################\r\n" +
+                    "!\r\n" +
+                    "show interface var03\r\n" +
+                    "!\r\n" +
+                    "!######################## \r\n" +
+                    "!\r\n" +
+                    "vlanWan" +
+                    "!\r\n" +
+                    "!######################## \r\n" +
+                    "!\r\n" +
+                    "intLan" +
+                    "!\r\n" +
+                    "!######################## \r\n" +
+                    "!\r\n" +
+                    "vlanLan" +
+                    "!\r\n" +
+                    "!\r\n" +
+                    "!\r\n" +
+                    "!#######################################\r\n" +
+                    "!#            SYSTEM INFO              #\r\n" +
+                    "!#######################################\r\n" +
+                    "!\r\n" +
+                    "show version\r\n" +
+                    "!\r\n" +
+                    "!\r\n" +
+                    "show invent\r\n" +
+                    "!\r\n" +
+                    "!\r\n" +
+                    "!\r\n" +
+                    "!#######################################\r\n" +
+                    "!#              POLICY-MAP             #\r\n" +
+                    "!#######################################\r\n" +
+                    "!\r\n" +
+                    "show policy-map\r\n" +
+                    "!\r\n" +
+                    "!\r\n" +
+                    "!\r\n" +
+                    "show policy-map interface var03\r\n" +
+                    "!\r\n" +
+                    "!\r\n" +
+                    "policyLan" +
+                    "!#######################################\r\n" +
+                    "!#          TABELA DE ROTEAMENTO       #\r\n" +
+                    "!#######################################\r\n" +
+                    "!\r\n" +
+                    "show ip route summary\r\n" +
+                    "!\r\n" +
+                    "!\r\n" +
+                    "!\r\n" +
+                    "!#######################################\r\n" +
+                    "!#                PING                 #\r\n" +
+                    "!#######################################\r\n" +
+                    "!\r\n" +
+                    "ping var07 repeat 200 size 1500 data 5050 sourceLan \r\n" +
+                    "!\r\n" +
+                    "!\r\n" +
+                    "!\r\n" +
+                    "!\r\n";
 
-            string ciscoLogsBLDsemLANcomVLANnaWAN = "";
+            string ciscoLogsParte2 = "##### Configuracoes logType no CPE - Parte II ##### \r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!################ HSRP ################\r\n" +
+                "!\r\n" +
+                "sh standby bri\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!################ VRRP ################\r\n" +
+                "!\r\n" +
+                "sh vrrp bri\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!################ GLBP ################\r\n" +
+                "!\r\n" +
+                "sh glbp standby detail active\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!################ NAT ################\r\n" +
+                "!\r\n" +
+                "sh ip nat trans\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!################ OSPF ################\r\n" +
+                "!\r\n" +
+                "show ip ospf neighbor\r\n" +
+                "!\r\n" +
+                "show ip ospf interface brief\r\n" +
+                "!\r\n" +
+                "show ip ospf database\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!################ RIP ################\r\n" +
+                "!\r\n" +
+                "show ip rip database\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!################ EIGRP ################\r\n" +
+                "!\r\n" +
+                "show ip eigrp neighbors\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!\r\n";
 
-            string ciscoLogsBLDcomLAN = "";
+            string ciscoLogsBLDLimpeza = "!\r\n" +
+                "conf t\r\n" +
+                "!\r\n" +
+                "no ip dhcp excluded-address 10.10.10.1\r\n" +
+                "!\r\n" +
+                "no ip dhcp pool ccp-pool\r\n" +
+                "!\r\n" +
+                "no ip domain name yourdomain.com\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "no crypto pki trustpoint TP-self-signed-4256465151\r\n" +
+                "!\r\n" +
+                "yes\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "no crypto pki certificate chain TP-self-signed-4256465151\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "default interface Vlan1\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "service password-encryption\r\n" +
+                "username EBT privilege 10 password CQMR\r\n" +
+                "enable secret PRO1AN\r\n" +
+                "logging buffered 4096 debugging\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "no ip http server\r\n" +
+                "no ip http access-class 23\r\n" +
+                "no ip http authentication local\r\n" +
+                "no ip http secure-server\r\n" +
+                "no ip http timeout-policy idle 60 life 86400 requests 10000\r\n" +
+                "no logging trap notifications\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "no access-list 23 permit 10.10.10.0 0.0.0.7\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "no banner exec ^C\r\n" +
+                "no banner login ^C\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "line con 0\r\n" +
+                " no password\r\n" +
+                " exec-timeout 15 0\r\n" +
+                "login local\r\n" +
+                "line aux 0\r\n" +
+                " no password\r\n" +
+                "login local\r\n" +
+                " transport input none\r\n" +
+                "line vty 0 4\r\n" +
+                " no password\r\n" +
+                " exec-timeout 15 0\r\n" +
+                " login local\r\n" +
+                " transport input telnet ssh\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "banner motd ^C\r\n" +
+                "||========================================|| \r\n" +
+                "||===========CLARO Brasil S.A.============|| \r\n" +
+                "||========================================||  \r\n" +
+                "                                             \r\n" +
+                "        SOMENTE USUARIOS AUTORIZADOS         \r\n" +
+                "           AUTHORIZED USERS ONLY             \r\n" +
+                "                                             \r\n" +
+                "        OS ACESSOS SERAO MONITORADOS         \r\n" +
+                "         ACCESSES WILL BE MONITORED          \r\n" +
+                "                                             \r\n" +
+                "||========================================||^\r\n" +
+                "end\r\n" +
+                "!\r\n" +
+                "!\r\n" +
+                "!\r\n";
 
-            string ciscoLogsBLDcomLANeVLANnaWAN = "";
-
-            string ciscoLogsBLDcomVLANnaLANeSemVLANnaWAN = "";
-
-            string ciscoLogsBLDcomVLANnasDuas = "";
+            string ciscoLogsMPLSLimpeza = "";
 
 
             // ------------------------------------------- Log - HPE - BLD --------------------------------------------------------
 
-            string hpeLogsBLDsemLAN = "";
+            string hpeLogsBLD = "screen-length disable\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "############## CONFIGURAÇÕES logType DO CPE ################ \r\n" +
+                    "#\r\n" +
+                    "sys\r\n" +
+                    "save f\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "#            CONFIGURACOES             #\r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "display saved-configuration\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "display ip interface brief\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "#             INTERFACES               #\r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "display interface var03\r\n" +
+                    "#\r\n" +
+                    "######################## \r\n" +
+                    "#\r\n" +
+                    "vlanWan" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "intLan" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "vlanLan" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "!#######################################\r\n" +
+                    "#            SYSTEM INFO               #\r\n" +
+                    "!#######################################\r\n" +
+                    "#\r\n" +
+                    "display version\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "display device manuinfo\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "#         TABELA DE ROTEAMENTO         #\r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "display ip routing-table\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "display ip routing-table statistics\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "#                 PING                 # \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "ping -s 1500 -c 20 sourceLan var07 \r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n";
+            ;
 
-            string hpeLogsBLDsemLANcomVLANnaWAN = "";
+            string hpeLogsParte2 = "##### Configuracoes logType no CPE - Parte II ##### \r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "################ VRRP ################\r\n" +
+                    "# \r\n" +
+                    "display vrrp\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "################ NAT ################\r\n" +
+                    "# \r\n" +
+                    "display nat session\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "################ OSPF ################\r\n" +
+                    "#\r\n" +
+                    "display ospf peer\r\n" +
+                    "#\r\n" +
+                    "display ospf interface\r\n" +
+                    "#\r\n" +
+                    "display ospf lsdb\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "################ RIP ################\r\n" +
+                    "#\r\n" +
+                    "display rip 1 neighbor\r\n" +
+                    "#\r\n" +
+                    "display rip 1 database\r\n" +
+                    "#\r\n" +
+                    "display rip 1 route\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n";
 
-            string hpeLogsBLDcomLAN = "";
+            string hpeLogsBLDLimpeza = "system-view\r\n" +
+                    "#\r\n" +
+                    "undo local-user admin class manage\r\n" +
+                    "undo snmp-agent\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "domain system\r\n" +
+                    "access-limit disable\r\n" +
+                    "state active\r\n" +
+                    "idle-cut disable\r\n" +
+                    "self-service-url disable\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "telnet server enable\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "local-user EBT\r\n" +
+                    "password cipher PRO1AN\r\n" +
+                    "authorization-attribute level 3\r\n" +
+                    "service-type telnet\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "interface Vlan-interface1\r\n" +
+                    " undo ip address\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "undo interface Vlan-interface1 \r\n" +
+                    "# \r\n" +
+                    "# \r\n" +
+                    "undo dhcp server ip-pool lan1\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "user-interface con 0\r\n" +
+                    "user-interface tty 13\r\n" +
+                    "user-interface vty 0 4\r\n" +
+                    "authentication-mode scheme\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "header motd %\r\n" +
+                    "||========================================|| \r\n" +
+                    "||===========CLARO Brasil S.A.============|| \r\n" +
+                    "||========================================|| \r\n" +
+                    "                                             \r\n" +
+                    "        SOMENTE USUARIOS AUTORIZADOS         \r\n" +
+                    "           AUTHORIZED USERS ONLY             \r\n" +
+                    "                                             \r\n" +
+                    "        OS ACESSOS SERAO MONITORADOS         \r\n" +
+                    "         ACCESSES WILL BE MONITORED          \r\n" +
+                    "                                             \r\n" +
+                    "||========================================|| \r\n" +
+                    "%\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "quit\r\n";
 
-            string hpeLogsBLDcomLANeVLANnaWAN = "";
-
-            string hpeLogsBLDcomVLANnaLANeSemVLANnaWAN = "";
-
-            string hpeLogsBLDcomVLANnasDuas = "";
+            string hpeLogsMPLSLimpeza = "";
 
 
             // ------------------------------------------- Log - Fortigate - BLD --------------------------------------------------
 
-            string fortigateBLDsemSource = "";
-
-            string fortigateBLDcomSource = "";
-
+            string fortigateBLD = "############ CONFIGURACOES logType ############\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# SDWAN \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "########### Ver health-check #####################\r\n" +
+                    "#\r\n" +
+                    "diagnose sys sdwan health-check status\r\n" +
+                    "#\r\n" +
+                    "########### Ver regras SDWAN ###################\r\n" +
+                    "#\r\n" +
+                    "diagnose sys sdwan service\r\n" +
+                    "#\r\n" +
+                    "########### Ver membros SDWAN #################\r\n" +
+                    "#\r\n" +
+                    "diagnose sys sdwan member\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# SNMP \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "show system snmp community\r\n" +
+                    "#\r\n" +
+                    "show system snmp user\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# DHCP \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "show system dhcp server\r\n" +
+                    "#\r\n" +
+                    "execute dhcp lease-list\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# NTP \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "show system ntp\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# VRRP \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "get router info vrrp\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# OSPF \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "get router info ospf interface\r\n" +
+                    "#\r\n" +
+                    "get router info ospf database brief\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# HA \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "get system ha status\r\n" +
+                    "#\r\n" +
+                    "diagnose sys ha status\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# VPN \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "diagnose vpn ike gateway list\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "config system console\r\n" +
+                    "set output standard\r\n" +
+                    "end\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# CONFIGURAÇÕES DO SYSTEMA \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "show system global\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "show system admin\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "get system status\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "show vpn certificate local\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# INTERFACES \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "show system interface\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "get hardware nic var03\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "get hardware nic var05\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# FIREWALL POLICY \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "sho firewall policy\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# TABELA DE ROTEAMENTO \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "get system arp\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "show router static\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# PING \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "sourceLan" +
+                    "#\r\n" +
+                    "execute ping-options data 1500\r\n" +
+                    "#\r\n" +
+                    "execute ping-options repeat 20\r\n" +
+                    "#\r\n" +
+                    "execute ping var07\r\n" +
+                    "#\r\n" +
+                    "execute ping-options data 1400\r\n" +
+                    "#\r\n" +
+                    "execute ping 8.8.8.8\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n";
 
             // ------------------------------------------- Log - Huawei - BLD -----------------------------------------------------
 
 
-            string huaweiLogsBLDsemLAN = "";
-
-            string huaweiLogsBLDsemLANcomVLANnaWAN = "";
-
-            string huaweiLogsBLDcomLAN = "";
-
-            string huaweiLogsBLDcomLANeVLANnaWAN = "";
-
-            string huaweiLogsBLDcomVLANnaLANeSemVLANnaWAN = "";
-
-            string huaweiLogsBLDcomVLANnasDuas = "";
-
+            string huaweiLogsBLD = "########### Configuracoes logType ############\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "screen-length 0 temporary\r\n" +
+                    "#\r\n" +
+                    "########################################################\r\n" +
+                    "#\r\n" +
+                    "display vrrp brief\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "display nat session all\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "display ospf peer\r\n" +
+                    "#\r\n" +
+                    "display ospf interface\r\n" +
+                    "#\r\n" +
+                    "display ospf lsdb\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "display rip 1 neighbor\r\n" +
+                    "#\r\n" +
+                    "display rip 1 database\r\n" +
+                    "#\r\n" +
+                    "display rip 1 route\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "save\r\n" +
+                    "y\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# CONFIGURACOES \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "display saved-configuration\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# INTERFACES \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "display ip interface brief\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "display interface var03\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "vlanNaWAN" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "display interface var05\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "vlanLan" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# SYSTEM \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "display version\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "display sn\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# POLICIES \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "display traffic-policy applied-record\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "display traffic policy statistics interface var03 outbound\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "display traffic policy user-defined\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# Tabela de Roteamento \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "display ip routing-table protocol static\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "display ip routing-table\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "display ip routing-table statistics\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "ping -s 1500 -c 20 sourceLan var07\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n";
 
             // ------------------------------------------- Log - Cisco - MPLS ------------------------------------------------------
 
-            string ciscoLogsMPLSsemLAN = "";
+            string ciscoLogsMPLS = "";
 
-            string ciscoLogsMPLSsemLANcomVLANnaWAN = "";
-
-            string ciscoLogsMPLScomLAN = "";
-
-            string ciscoLogsMPLScomLANeVLANnaWAN = "";
-
-            string ciscoLogsMPLScomVLANnaLANeSemVLANnaWAN = "";
-
-            string ciscoLogsMPLScomVLANnasDuas = "";
 
 
             // ------------------------------------------- Log - HPE - MPLS -------------------------------------------------------
 
-            string hpeLogsMPLSsemLAN = "";
+            string hpeLogsMPLS = "";
 
-            string hpeLogsMPLSsemLANcomVLANnaWAN = "";
-
-            string hpeLogsMPLScomLAN = "";
-
-            string hpeLogsMPLScomLANeVLANnaWAN = "";
-
-            string hpeLogsMPLScomVLANnaLANeSemVLANnaWAN = "";
-
-            string hpeLogsMPLScomVLANnasDuas = "";
 
 
             // ------------------------------------------- Log - Fortigate - MPLS --------------------------------------------------
             
-            string fortigateMPLSsemSource = "";
-
-            string fortigateMPLScomSource = "";
-
+            string fortigateMPLS = "############ CONFIGURACOES logType ############\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# SDWAN \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "########### Ver health-check #####################\r\n" +
+                    "#\r\n" +
+                    "diagnose sys sdwan health-check status\r\n" +
+                    "#\r\n" +
+                    "########### Ver regras SDWAN ###################\r\n" +
+                    "#\r\n" +
+                    "diagnose sys sdwan service\r\n" +
+                    "#\r\n" +
+                    "########### Ver membros SDWAN #################\r\n" +
+                    "#\r\n" +
+                    "diagnose sys sdwan member\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# SNMP \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "show system snmp community\r\n" +
+                    "#\r\n" +
+                    "show system snmp user\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# DHCP \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "show system dhcp server\r\n" +
+                    "#\r\n" +
+                    "execute dhcp lease-list\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# NTP \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "show system ntp\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# VRRP \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "get router info vrrp\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# OSPF \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "get router info ospf interface\r\n" +
+                    "#\r\n" +
+                    "get router info ospf database brief\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# HA \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "get system ha status\r\n" +
+                    "#\r\n" +
+                    "diagnose sys ha status\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# VPN \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "diagnose vpn ike gateway list\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "###########################################################\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "config system console\r\n" +
+                    "set output standard\r\n" +
+                    "end\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# CONFIGURAÇÕES DO SYSTEMA \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "show system global\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "show system admin\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "get system status\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "show vpn certificate local\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# INTERFACES \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "show system interface\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "get hardware nic var03\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "get hardware nic var05\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# FIREWALL \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "sho firewall policy\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "show firewall traffic-class\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "show firewall shaping-profile\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "show system dscp-based-priority\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "show firewall service custom\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "show firewall address\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "diagnose netlink interface list var03\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# TABELA DE ROTEAMENTO \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "get system arp\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "show router static\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "get router info routing-table all\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "show router route-map\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# BGP \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "show router bgp\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "get router info bgp summary\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "get router info bgp neighbors var07 advertised\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "get router info bgp neighbors var07 routes | grep Total\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "########################################\r\n" +
+                    "# PING \r\n" +
+                    "########################################\r\n" +
+                    "#\r\n" +
+                    "sourceLan" +
+                    "#\r\n" +
+                    "execute ping-options data 1500\r\n" +
+                    "#\r\n" +
+                    "execute ping-options repeat 20\r\n" +
+                    "#\r\n" +
+                    "execute ping var07\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n";
 
             // ------------------------------------------- Log - Hauwei - MPLS -----------------------------------------------------
 
-            string huaweiLogsMPLSsemLAN = "";
+            string huaweiLogsMPLS = "";
 
-            string huaweiLogsMPLSsemLANcomVLANnaWAN = "";
-
-            string huaweiLogsMPLScomLAN = "";
-
-            string huaweiLogsMPLScomLANeVLANnaWAN = "";
-
-            string huaweiLogsMPLScomVLANnaLANeSemVLANnaWAN = "";
-
-            string huaweiLogsMPLScomVLANnasDuas = "";
 
 
             // ------------------------------------------- Log - Cisco - VOZ -------------------------------------------------------
@@ -681,7 +1470,7 @@ namespace WindowsFormsApp1.Entitys
 
             // ------------------------------------------- Log - Aligera - VOZ -----------------------------------------------------
 
-            string aligeraLogs = "!######### CONFIGURACOES INICIAIS DO CPE ######### \r\n!\r\nconfig apply\r\nconfig save\r\n!\r\n!\r\n!#######################################\r\n!# SYSTEM INFO \r\n!#######################################\r\n!\r\nstatus network\r\n!\r\n!\r\nsystem info\r\n!\r\n!\r\n!\r\n!#######################################\r\n!# PING \r\n!#######################################\r\n!\r\ntools ping -c 20 -s 1500 var7\r\n!\r\n!\r\n!\r\n!#######################################\r\n!# STATUS E1 \r\n!#######################################\r\n!\r\nstatus tdm\r\n!\r\n!\r\n!\r\n!#######################################\r\n!# CONFIGURACOES \r\n!#######################################\r\n!\r\nconfig show\r\n!\r\n!\r\n!\r\n";
+            string aligeraLogs = "!######### CONFIGURACOES logType DO CPE ######### \r\n!\r\nconfig apply\r\nconfig save\r\n!\r\n!\r\n!#######################################\r\n!# SYSTEM INFO \r\n!#######################################\r\n!\r\nstatus network\r\n!\r\n!\r\nsystem info\r\n!\r\n!\r\n!\r\n!#######################################\r\n!# PING \r\n!#######################################\r\n!\r\ntools ping -c 20 -s 1500 var7\r\n!\r\n!\r\n!\r\n!#######################################\r\n!# STATUS E1 \r\n!#######################################\r\n!\r\nstatus tdm\r\n!\r\n!\r\n!\r\n!#######################################\r\n!# CONFIGURACOES \r\n!#######################################\r\n!\r\nconfig show\r\n!\r\n!\r\n!\r\n";
 
 
             // ------------------------------------------- Log - Digistar - VOZ ----------------------------------------------------
@@ -698,44 +1487,564 @@ namespace WindowsFormsApp1.Entitys
 
             // ------------------------------------------- WizGat - Cisco - BLD -------------------------------------------------------
 
-            string gatCiscoBLD = "";
+            string gatCiscoBLD = "!######## CONFIGURACOES logType ######## \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "!#######################################\r\n" +
+                "!# INTERFACE  \r\n" +
+                "!#######################################\r\n" +
+                " \r\n" +
+                "show running-config interface var03\r\n" +
+                " \r\n" +
+                " \r\n" +
+                "show interface var03\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "!#######################################\r\n" +
+                "!# ROTA ESTATICA  \r\n" +
+                "!#######################################\r\n" +
+                " \r\n" +
+                "show running-config | inc var08\r\n" +
+                " \r\n" +
+                " \r\n" +
+                "show running-config | inc var03\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "!#######################################\r\n" +
+                "!# POLICY-MAP  \r\n" +
+                "!#######################################\r\n" +
+                " \r\n" +
+                "show policy-map interface var03\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "!#######################################\r\n" +
+                "!# PING  \r\n" +
+                "!#######################################\r\n" +
+                " \r\n" +
+                "ping\r\n" +
+                " \r\n" +
+                "var08\r\n" +
+                "15\r\n" +
+                "1500\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n";
 
 
             // ------------------------------------------- WizGat - Cisco - MPLS ------------------------------------------------------
 
-            string gatCiscoMPLS = "";
+            string gatCiscoMPLS = "!######## CONFIGURACOES logType ######## \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "!#######################################\r\n" +
+                "!# INTERFACE  \r\n" +
+                "!#######################################\r\n" +
+                " \r\n" +
+                "show running-config interface var03\r\n" +
+                " \r\n" +
+                " \r\n" +
+                "show interface var03\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "!#######################################\r\n" +
+                "!# VRF \r\n" +
+                "!#######################################\r\n" +
+                " \r\n" +
+                "show running-config vrf var14\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "!#######################################\r\n" +
+                "!# ROTA ESTATICA \r\n" +
+                "!#######################################\r\n" +
+                " \r\n" +
+                "show running-config | inc var08\r\n" +
+                " \r\n" +
+                " \r\n" +
+                "show running-config | inc var03\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "!#######################################\r\n" +
+                "!# POLICY-MAP \r\n" +
+                "!#######################################\r\n" +
+                " \r\n" +
+                "show policy-map interface var03\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "!#######################################\r\n" +
+                "!# BGP  \r\n" +
+                "!#######################################\r\n" +
+                " \r\n" +
+                "show running-config router bgp 4230 vrf var14 neighbor var08\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "!################################## \r\n" +
+                " \r\n" +
+                "show ip bgp xr vrf var14.Text\r\n" +
+                " \r\n" +
+                " \r\n" +
+                "!################################## \r\n" +
+                " \r\n" +
+                "show ip bgp xr vrf var14 sum | inc var08\r\n" +
+                " \r\n" +
+                " \r\n" +
+                "!################################## \r\n" +
+                " \r\n" +
+                "show ip bgp xr vrf var14 nei var08 advertised-r | i xes r\n" +
+                " \r\n" +
+                " \r\n" +
+                "!################################## \r\n" +
+                " \r\n" +
+                "show ip bgp xr vrf var14 nei var08 ro\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "!#######################################\r\n" +
+                "!# PING  \r\n" +
+                "!#######################################\r\n" +
+                " \r\n" +
+                "ping vrf var14\r\n" +
+                "\r\n" +
+                "var08\r\n" +
+                "15\r\n" +
+                "1500\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n";
 
 
             // ------------------------------------------- WizGat - Cisco - VOZ -------------------------------------------------------
 
-            string gatCiscoVOZ = "";
+            string gatCiscoVOZ = "!######## CONFIGURACOES logType ######## \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "!#######################################\r\n" +
+                "!# INTERFACE  \r\n" +
+                "!#######################################\r\n" +
+                " \r\n" +
+                "show running-config interface var03\r\n" +
+                " \r\n" +
+                " \r\n" +
+                "show interface var03\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "!#######################################\r\n" +
+                "!# VRF  \r\n" +
+                "!#######################################\r\n" +
+                " \r\n" +
+                "show running-config vrf REALIP_CLIENTE:5581\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "!#######################################\r\n" +
+                "!# ROTA ESTATICA \r\n" +
+                "!#######################################\r\n" +
+                " \r\n" +
+                "show running-config | inc var08\r\n" +
+                " \r\n" +
+                " \r\n" +
+                "show running-config | inc var03\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "!#######################################\r\n" +
+                "!# POLICY-MAP  \r\n" +
+                "!#######################################\r\n" +
+                " \r\n" +
+                "show policy-map interface var03.Text\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "!#######################################\r\n" +
+                "!# PING  \r\n" +
+                "!#######################################\r\n" +
+                " \r\n" +
+                "ping vrf REALIP_CLIENTE:5581\r\n" +
+                " \r\n" +
+                "var08\r\n" +
+                "15\r\n" +
+                "1500\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n";
 
 
             // ------------------------------------------- WizGat - Cisco - BLD com BGP -----------------------------------------------
 
-            string gatCiscoBLDcomBGP = "";
+            string gatCiscoBLDcomBGP = "!######## CONFIGURACOES logType ######## \r\n" +
+            " \r\n" +
+            " \r\n" +
+            "!#######################################\r\n" +
+            "!# INTERFACE  \r\n" +
+            "!#######################################\r\n" +
+            " \r\n" +
+            "show running-config interface var03\r\n" +
+            " \r\n" +
+            " \r\n" +
+            "show interface var03\r\n" +
+            " \r\n" +
+            " \r\n" +
+            " \r\n" +
+            "!#######################################\r\n" +
+            "!# ROTA ESTATICA  \r\n" +
+            "!#######################################\r\n" +
+            " \r\n" +
+            "show running-config | inc var08\r\n" +
+            " \r\n" +
+            " \r\n" +
+            "show running-config | inc var03\r\n" +
+            " \r\n" +
+            " \r\n" +
+            " \r\n" +
+            "!#######################################\r\n" +
+            "!# POLICY-MAP  \r\n" +
+            "!#######################################\r\n" +
+            " \r\n" +
+            "show policy-map interface var03\r\n" +
+            " \r\n" +
+            " \r\n" +
+            " \r\n" +
+            "!#######################################\r\n" +
+            "!# BGP  \r\n" +
+            "!#######################################\r\n" +
+            " \r\n" +
+            "show running-config router bgp 4230 neighbor var08\r\n" +
+            " \r\n" +
+            " \r\n" +
+            "show bgp sum | inc var08\r\n" +
+            " \r\n" +
+            " \r\n" +
+            "show bgp neighbor var08 routes\r\n" +
+            " \r\n" +
+            " \r\n" +
+            "show bgp neig var08 advertised-routes | inc xes\r\n" +
+            " \r\n" +
+            " \r\n" +
+            " \r\n" +
+            " \r\n" +
+            "!#######################################\r\n" +
+            "!# PING  \r\n" +
+            "!#######################################\r\n" +
+            " \r\n" +
+            "ping\r\n" +
+            " \r\n" +
+            "var03\r\n" +
+            "15\r\n" +
+            "1500\r\n" +
+            " \r\n" +
+            " \r\n" +
+            " \r\n" +
+            " \r\n" +
+            " \r\n";
 
 
             // ------------------------------------------- WizGat - Nokia - BLD -------------------------------------------------------
             
-            string gatNOKIABLD = "";
+            string gatNOKIABLD = "######## CONFIGURACOES logType ######## \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "########################################\r\n" +
+                "# INTERFACE  \r\n" +
+                "########################################\r\n" +
+                " \r\n" +
+                "admin display-config | match var07 context all\r\n" +
+                " \r\n" +
+                " \r\n" +
+                "admin display-config | match expression var03[^0-9] context all\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "show router interface var03\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "########################################\r\n" +
+                "# QoS  \r\n" +
+                "########################################\r\n" +
+                " \r\n" +
+                "show qos sap-ingress var13\r\n" +
+                " \r\n" +
+                " \r\n" +
+                "show qos sap-egress var13\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "########################################\r\n" +
+                "# ROTA ESTATICA  \r\n" +
+                "########################################\r\n" +
+                " \r\n" +
+                "admin display-config | match var08 context all\r\n" +
+                " \r\n" +
+                " \r\n" +
+                "show router static-route next-hop var08\r\n" +
+                " \r\n" +
+                " \r\n" +
+                "admin display-config | match var08 pre-line 1 post-lines 5\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "########################################\r\n" +
+                "# PING  \r\n" +
+                "########################################\r\n" +
+                " \r\n" +
+                "ping var08 size 1500 count 15 interface var03 rapid\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n";
 
 
             // ------------------------------------------- WizGat - Nokia - MPLS ------------------------------------------------------
-            
-            string gatNOKIAMPLS = "";
-           
-            
+
+            string gatNOKIAMPLS = "######## CONFIGURACOES logType ######## \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "########################################\r\n" +
+                "# INTERFACE  \r\n" +
+                "########################################\r\n" +
+                " \r\n" +
+                "admin display-config | match var07 context all \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "admin display-config | match expression var03[^0-9] context all \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "########################################\r\n" +
+                "# VRF  \r\n" +
+                "########################################\r\n" +
+                " \r\n" +
+                "admin display-config | match expression " + '"' + "route-distinguisher " + "4230:vrfAS" + '"' + " pre-line 8 post-lines 10" + "\r\n" +
+                " \r\n" +
+                " \r\n" +
+                "show router service-name var015 interface var03 \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "########################################\r\n" +
+                "# QoS  \r\n" +
+                "########################################\r\n" +
+                " \r\n" +
+                "show qos sap-ingress var13 \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "show qos sap-egress var13 \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "########################################\r\n" +
+                "# ROTA ESTATICA  \r\n" +
+                "########################################\r\n" +
+                " \r\n" +
+                "show router service-name var15 static-route next-hop var08 \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "admin display-config | match var08 pre-line 1 post-lines 6 \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "########################################\r\n" +
+                "# BGP  \r\n" +
+                "########################################\r\n" +
+                " \r\n" +
+                "admin display-config | match var08 context all \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "################################# \r\n" +
+                "\r\n" +
+                "show router service-name var15 bgp summary | match var08 post-lines 3 \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "################################# \r\n" +
+                " \r\n" +
+                "show router service-name var15 bgp neighbor var08 received-routes \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "################################# \r\n" +
+                " \r\n" +
+                "show router service-name var15 bgp neighbor var08 advertised-routes | match Routes \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "########################################\r\n" +
+                "# PING  \r\n" +
+                "########################################\r\n" +
+                " \r\n" +
+                "ping service-name var15 var08 size 1500 count 15 interface var03 rapid \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n";
+
+
             // ------------------------------------------- WizGat - Nokia - VOZ -------------------------------------------------------
 
-            string gatNOKIAVOZ = "";
+            string gatNOKIAVOZ = "######## CONFIGURACOES logType ######## \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "########################################\r\n" +
+                "# INTERFACE  \r\n" +
+                "########################################\r\n" +
+                " \r\n" +
+                "admin display-config | match var07 context all \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "admin display-config | match expression var03[^0-9] context all \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "########################################\r\n" +
+                "# VRF  \r\n" +
+                "########################################\r\n" +
+                " \r\n" +
+                "admin display-config | match expression " + '"' + "route-distinguisher " + "4230:5581" + '"' + " pre-line 6 post-lines 6" + " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "show router service-name 1000 interface var03\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "########################################\r\n" +
+                "# QoS  \r\n" +
+                "########################################\r\n" +
+                " \r\n" +
+                "show qos sap-ingress var13\r\n" +
+                " \r\n" +
+                " \r\n" +
+                "show qos sap-egress var13\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "########################################\r\n" +
+                "# ROTA ESTATICA  \r\n" +
+                "########################################\r\n" +
+                " \r\n" +
+                "admin display-config | match var08 context all \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "show router service-name 1000 static-route next-hop var08 \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "admin display-config | match var08 pre-line 1 post-lines 5 \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "########################################\r\n" +
+                "# PING  \r\n" +
+                "########################################\r\n" +
+                " \r\n" +
+                "ping service-name 1000 var08 size 1500 count 15 interface var03 rapid\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n";
 
 
             // ------------------------------------------- WizGat - Nokia - BLD com BGP -----------------------------------------------
 
-            string gatNOKIABLDcomBGP = "";
-
-            string gatNOKIABLDcomBGProutemap2 = "";
+            string gatNOKIABLDcomBGP = "######## CONFIGURACOES logType ######## \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "########################################\r\n" +
+                "# INTERFACE  \r\n" +
+                "########################################\r\n" +
+                " \r\n" +
+                "admin display-config | match var07 context all \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "admin display-config | match expression var03[^0-9] context all \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "show router interface var03\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "########################################\r\n" +
+                "# QoS  \r\n" +
+                "########################################\r\n" +
+                " \r\n" +
+                "show qos sap-ingress var13\r\n" +
+                " \r\n" +
+                " \r\n" +
+                "show qos sap-egress var13\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "########################################\r\n" +
+                "# ROTA ESTATICA  \r\n" +
+                "########################################\r\n" +
+                " \r\n" +
+                "show router static-route next-hop var08\r\n" +
+                " \r\n" +
+                " \r\n" +
+                "admin display-config | match var08 pre-line 1 post-lines 56 \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "########################################\r\n" +
+                "# BGP   \r\n" +
+                "########################################\r\n" +
+                " \r\n" +
+                "admin display-config | match var08 context all \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "######## BGP - ROUTE MAPS ######## \r\n" +
+                " \r\n" +
+                "show router policy VarRouteI1\r\n" +
+                " \r\n" +
+                " \r\n" +
+                "show router policy VarRouteI2\r\n" +
+                " \r\n" +
+                " \r\n" +
+                "show router policy VarRouteE1\r\n" +
+                " \r\n" +
+                " \r\n" +
+                "policyExport2" +
+                " \r\n" +
+                " \r\n" +
+                "######## BGP - NEIGHBORS ######## \r\n" +
+                " \r\n" +
+                "show router bgp neighbor var08 advertised-routes | match Routes\r\n" +
+                " \r\n" +
+                " \r\n" +
+                "show router bgp summary | match var08 post-lines 3\r\n" +
+                " \r\n" +
+                " \r\n" +
+                "show router bgp neighbor var08 received-routes\r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n" +
+                "########################################\r\n" +
+                "# PING  \r\n" +
+                "########################################\r\n" +
+                " \r\n" +
+                "ping var08 size 1500 count 15 interface var03 rapid \r\n" +
+                " \r\n" +
+                " \r\n" +
+                " \r\n"; ;
 
 
             //--------------------------------------------------------------------------------------------------------------------------------
@@ -785,7 +2094,6 @@ namespace WindowsFormsApp1.Entitys
                 "end\r\n";
 
 
-
             // -------------------------------------------------------------------------------
             // -------------------------------------------------------------------------------
             // -------------------------------------------------------------------------------
@@ -793,14 +2101,14 @@ namespace WindowsFormsApp1.Entitys
             List<Script> scriptList = new List<Script>();
 
             // Config
-            Script scriptCiscoBLDsemVlan = new Script(1, "CiscoBLDsemVlan", ciscoBLDsemVlan, "var0,var1,var2,var3,var4,var5,var7,var9,var10", DateTime.Parse("11/02/2026"));
-            Script scriptCiscoBLDcomVlan = new Script(2, "CiscoBLDcomVlan", ciscoBLDcomVlan, "var0,var1,var2,var3,var4,var5,var7,var9,var10", DateTime.Parse("11/02/2026"));
-            Script scriptHpeBLDcomVlan = new Script(3, "HPEBLDcomVlan", hpeBLDcomVlan, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
-            Script scriptHpeBLDsemVlan = new Script(4, "HPEBLDsemVlan", hpeBLDsemVlan, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
-            Script scriptFortigateBLDsemVLAN = new Script(5, "fortigateBLDsemVLAN", fortigateBLDsemVLAN, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
-            Script scriptFortigateBLDcomVLAN = new Script(6,"fortigateBLDcomVLAN", fortigateBLDcomVLAN, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
-            Script scriptHuaweiBLDcomVLAN = new Script(7, "huaweiBLDcomVLAN", huaweiBLDcomVLAN, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
-            Script scriptHuaweiBLDsemVLAN = new Script(8, "huaweiBLDsemVLAN", huaweiBLDsemVLAN, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
+            Script scriptCiscoBLDsemVlan = new Script(0, "CiscoBLDsemVlan", ciscoBLDsemVlan, "var0,var1,var2,var3,var4,var5,var7,var9,var10", DateTime.Parse("11/02/2026"));
+            Script scriptCiscoBLDcomVlan = new Script(1, "CiscoBLDcomVlan", ciscoBLDcomVlan, "var0,var1,var2,var3,var4,var5,var7,var9,var10", DateTime.Parse("11/02/2026"));
+            Script scriptHpeBLDcomVlan = new Script(2, "HPEBLDcomVlan", hpeBLDcomVlan, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
+            Script scriptHpeBLDsemVlan = new Script(3, "HPEBLDsemVlan", hpeBLDsemVlan, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
+            Script scriptFortigateBLDsemVLAN = new Script(4, "fortigateBLDsemVLAN", fortigateBLDsemVLAN, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
+            Script scriptFortigateBLDcomVLAN = new Script(5,"fortigateBLDcomVLAN", fortigateBLDcomVLAN, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
+            Script scriptHuaweiBLDcomVLAN = new Script(6, "huaweiBLDcomVLAN", huaweiBLDcomVLAN, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
+            Script scriptHuaweiBLDsemVLAN = new Script(7, "huaweiBLDsemVLAN", huaweiBLDsemVLAN, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
             Script scriptFortigateMPLScomVLAN = new Script(8, "fortigateMPLScomVLAN", fortigateMPLScomVLAN, "00,01,02,03,04,05,07,09,11,12", DateTime.Parse("11/02/2026"));
             Script scriptFortigateMPLsemVLAN = new Script(9, "fortigateMPLsemVLAN", fortigateMPLsemVLAN, "00,01,02,03,04,05,07,09,11,12", DateTime.Parse("11/02/2026"));
 
@@ -815,65 +2123,40 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptFortigateMPLScomVLAN);
             scriptList.Add(scriptFortigateMPLsemVLAN);
 
-
             // Logs
-            Script scriptCiscoLogsBLDsemLAN = new Script(10, "ciscoLogsBLDsemLAN", ciscoLogsBLDsemLAN, "03,04,05,06,07", DateTime.Parse("11/02/2026"));
+            Script scriptCiscoLogsBLD = new Script(10, "ciscoLogsBLD", ciscoLogsBLD, "03,04,05,06,07", DateTime.Parse("11/02/2026"));
+            Script scriptHpeLogsBLD = new Script(11, "hpeLogsBLD", hpeLogsBLD, "03,04,05,06,07,09", DateTime.Parse("11/02/2026"));
+            Script scriptFortigateBLD = new Script(12, "fortigateBLD", fortigateBLD, "03,05,07,09", DateTime.Parse("11/02/2026"));
+            Script scriptHuaweiLogsBLD = new Script(13, "huaweiLogsBLD", huaweiLogsBLD, "03,04,05,06,07,09", DateTime.Parse("11/02/2026"));
 
-            scriptList.Add(scriptCiscoLogsBLDsemLAN);
+            scriptList.Add(scriptCiscoLogsBLD);
+            scriptList.Add(scriptHpeLogsBLD);
+            scriptList.Add(scriptFortigateBLD);
+            scriptList.Add(scriptHuaweiLogsBLD);
 
+            Script scriptCiscoLogsMPLS = new Script(14, "ciscoLogsMPLS", ciscoLogsMPLS, "03,04,05,06,07", DateTime.Parse("11/02/2026"));
+            Script scriptHpeLogsMPLS = new Script(15, "hpeLogsMPLS", hpeLogsMPLS, "03,04,05,06,07,09", DateTime.Parse("11/02/2026"));
+            Script scriptFortigateMPLS = new Script(16, "fortigateMPLS", fortigateMPLS, "03,05,07,09", DateTime.Parse("11/02/2026"));
+            Script scriptHuaweiLogsMPLS = new Script(17, "huaweiLogsMPLS", huaweiLogsMPLS, "03,04,05,06,07,09", DateTime.Parse("11/02/2026"));
 
-
-            Script scriptHpeLogsBLDsemLAN = new Script(11, "hpeLogsBLDsemLAN", hpeLogsBLDsemLAN, "03,04,05,06,07,09", DateTime.Parse("11/02/2026"));
-
-            scriptList.Add(scriptHpeLogsBLDsemLAN);
-
-
-
-            Script scriptFortigateBLDsemSource = new Script(12, "fortigateBLDsemSource", fortigateBLDsemSource, "03,05,07,09", DateTime.Parse("11/02/2026"));
-
-            scriptList.Add(scriptFortigateBLDsemSource);
-
-
-            Script scriptHuaweiLogsBLDsemLAN = new Script(13, "huaweiLogsBLDsemLAN", huaweiLogsBLDsemLAN, "03,04,05,06,07,09", DateTime.Parse("11/02/2026"));
-
-            scriptList.Add(scriptHuaweiLogsBLDsemLAN);
-
-
-
-            Script scriptCiscoLogsMPLSsemLAN = new Script(14, "ciscoLogsMPLSsemLAN", ciscoLogsMPLSsemLAN, "03,04,05,06,07", DateTime.Parse("11/02/2026"));
-
-            scriptList.Add(scriptCiscoLogsMPLSsemLAN);
-
-
-
-            Script scriptHpeLogsMPLSsemLAN = new Script(15, "hpeLogsMPLSsemLAN", hpeLogsMPLSsemLAN, "03,04,05,06,07,09", DateTime.Parse("11/02/2026"));
-
-            scriptList.Add(scriptHpeLogsMPLSsemLAN);
-
-
-            Script scriptFortigateMPLSsemSource = new Script(16, "fortigateMPLSsemSource", fortigateMPLSsemSource, "03,05,07,09", DateTime.Parse("11/02/2026"));
-
-            scriptList.Add(scriptFortigateMPLSsemSource);
-
-            Script scriptHuaweiLogsMPLSsemLAN = new Script(17, "huaweiLogsMPLSsemLAN", huaweiLogsMPLSsemLAN, "03,04,05,06,07,09", DateTime.Parse("11/02/2026"));
-
-            scriptList.Add(scriptHuaweiLogsMPLSsemLAN);
+            scriptList.Add(scriptCiscoLogsMPLS);
+            scriptList.Add(scriptHpeLogsMPLS);
+            scriptList.Add(scriptFortigateMPLS);
+            scriptList.Add(scriptHuaweiLogsMPLS);
 
             Script scriptCiscoLogsVOZ_R2 = new Script(18, "ciscoLogsVOZ_R2", ciscoLogsVOZ_R2, "03,04,05,07", DateTime.Parse("11/02/2026"));
             Script scriptCiscoLogsVOZ_PABXIP = new Script(19, "ciscoLogsVOZ_PABXIP", ciscoLogsVOZ_PABXIP, "03,04,05,07", DateTime.Parse("11/02/2026"));
-
             Script scriptHpeLogsVOZ_R2 = new Script(20, "hpeLogsVOZ_R2", hpeLogsVOZ_R2, "03,04,05,07,09", DateTime.Parse("11/02/2026"));
             Script scriptHpeLogsVOZ_PABXIP = new Script(21, "hpeLogsVOZ_PABXIP", hpeLogsVOZ_PABXIP, "03,04,05,07,09", DateTime.Parse("11/02/2026"));
-
             Script scriptAligeraLogs = new Script(22, "aligeraLogs", aligeraLogs, "07", DateTime.Parse("11/02/2026"));
             Script scriptDigistarLogs = new Script(23, "digistarLogs", digistarLogs, "07, 03, 04", DateTime.Parse("11/02/2026"));
 
-            scriptList.Add(scriptCiscoBLDsemVlan);
-            scriptList.Add(scriptCiscoBLDcomVlan);
-            scriptList.Add(scriptHpeBLDcomVlan);
-            scriptList.Add(scriptHpeBLDsemVlan);
-            scriptList.Add(scriptHpeBLDsemVlan);
-            scriptList.Add(scriptHpeBLDsemVlan);
+            scriptList.Add(scriptCiscoLogsVOZ_R2);
+            scriptList.Add(scriptCiscoLogsVOZ_PABXIP);
+            scriptList.Add(scriptHpeLogsVOZ_R2);
+            scriptList.Add(scriptHpeLogsVOZ_PABXIP);
+            scriptList.Add(scriptAligeraLogs);
+            scriptList.Add(scriptDigistarLogs);
 
             // WizardGat
             Script scriptGatCiscoBLD = new Script(24, "gatCiscoBLD", gatCiscoBLD, "03,08", DateTime.Parse("11/02/2026"));
@@ -884,7 +2167,6 @@ namespace WindowsFormsApp1.Entitys
             Script scriptGatNOKIAMPLS = new Script(29, "gatNOKIAMPLS", gatNOKIAMPLS, "03,07,08,13,14,15", DateTime.Parse("11/02/2026"));
             Script scriptGatNOKIAVOZ = new Script(30, "gatNOKIAVOZ", gatNOKIAVOZ, "03,07,08,13", DateTime.Parse("11/02/2026"));
             Script scriptGatNOKIABLDcomBGP = new Script(31, "gatNOKIABLDcomBGP", gatNOKIABLDcomBGP, "03,07,08,13", DateTime.Parse("11/02/2026"));
-            Script scriptGatNOKIABLDcomBGProutemap2 = new Script(32, "gatNOKIABLDcomBGProutemap2", gatNOKIABLDcomBGProutemap2, "03,07,08,13", DateTime.Parse("11/02/2026"));
 
             scriptList.Add(scriptGatCiscoBLD);
             scriptList.Add(scriptGatCiscoMPLS);
@@ -894,18 +2176,15 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptGatNOKIAMPLS);
             scriptList.Add(scriptGatNOKIAVOZ);
             scriptList.Add(scriptGatNOKIABLDcomBGP);
-            scriptList.Add(scriptGatNOKIABLDcomBGProutemap2);
-
 
             // Outros
-
-            Script scriptSnmpv2Cisco = new Script(33, "snmpv2Cisco", snmpv2Cisco, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2CiscoHost = new Script(34, "snmpv2CiscoHost", snmpv2CiscoHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2HPE = new Script(35, "snmpv2HPE", snmpv2HPE, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2HPEcomHost = new Script(36, "snmpv2HPEcomHost", snmpv2HPEcomHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2Huawei = new Script(37, "snmpv2Huawei", snmpv2Huawei, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2HuaweicomHost = new Script(38, "snmpv2HuaweicomHost", snmpv2HuaweicomHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2Fortgate = new Script(39, "snmpv2Fortgate", snmpv2Fortgate, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2Cisco = new Script(32, "snmpv2Cisco", snmpv2Cisco, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2CiscoHost = new Script(33, "snmpv2CiscoHost", snmpv2CiscoHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2HPE = new Script(34, "snmpv2HPE", snmpv2HPE, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2HPEcomHost = new Script(35, "snmpv2HPEcomHost", snmpv2HPEcomHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2Huawei = new Script(36, "snmpv2Huawei", snmpv2Huawei, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2HuaweicomHost = new Script(37, "snmpv2HuaweicomHost", snmpv2HuaweicomHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2Fortgate = new Script(38, "snmpv2Fortgate", snmpv2Fortgate, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
 
             scriptList.Add(scriptSnmpv2Cisco);
             scriptList.Add(scriptSnmpv2CiscoHost);
@@ -915,8 +2194,19 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptSnmpv2HuaweicomHost);
             scriptList.Add(scriptSnmpv2Fortgate);
 
+            // Extras
+            Script scriptCiscoLogsParte2 = new Script(39, "ciscoLogsParte2", ciscoLogsParte2, "", DateTime.Parse("11/02/2026"));
+            Script scriptCiscoLogsBLDLimpeza = new Script(40, "ciscoLogsBLDLimpeza", ciscoLogsBLDLimpeza, "", DateTime.Parse("11/02/2026"));
+            Script scriptHPELogsParte2 = new Script(41, "hpeLogsParte2", hpeLogsParte2, "", DateTime.Parse("11/02/2026"));
+            Script scriptHPELogsBLDLimpeza = new Script(42, "hpeLogsBLDLimpeza", hpeLogsBLDLimpeza, "", DateTime.Parse("11/02/2026"));
+
+            scriptList.Add(scriptCiscoLogsParte2);
+            scriptList.Add(scriptCiscoLogsBLDLimpeza);
+            scriptList.Add(scriptHPELogsParte2);
+            scriptList.Add(scriptHPELogsBLDLimpeza);
 
 
+            // -----------------------------------------------------
             return scriptList;
         }
     }

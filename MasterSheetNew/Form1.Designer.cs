@@ -44,7 +44,7 @@ namespace MasterSheetNew
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabMaster = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.tabSelectProcedure = new System.Windows.Forms.TabPage();
+            this.tabMainPage = new System.Windows.Forms.TabPage();
             this.Button_EditScript = new System.Windows.Forms.Button();
             this.CreatedLabel = new System.Windows.Forms.Label();
             this.buttonOC_QoS = new System.Windows.Forms.Button();
@@ -80,11 +80,15 @@ namespace MasterSheetNew
             this.LogsSubTitle = new System.Windows.Forms.Label();
             this.ClientesSubTitle = new System.Windows.Forms.Label();
             this.TemplatesLabel = new System.Windows.Forms.Label();
+            this.TemplatesLabelBG = new System.Windows.Forms.PictureBox();
             this.Version = new System.Windows.Forms.Label();
             this.VOZ_Button = new System.Windows.Forms.Button();
+            this.ImageLogo = new System.Windows.Forms.PictureBox();
             this.MPLS_button = new System.Windows.Forms.Button();
             this.BLD_button = new System.Windows.Forms.Button();
             this.tabScript = new System.Windows.Forms.TabPage();
+            this.Script_AlterDate = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.Script_ISRBox = new System.Windows.Forms.ComboBox();
             this.SwitchLabel = new System.Windows.Forms.Label();
             this.Button_SwitchLog = new System.Windows.Forms.Button();
@@ -241,6 +245,9 @@ namespace MasterSheetNew
             this.Logs_HomeButton = new System.Windows.Forms.Button();
             this.Logs_Title = new System.Windows.Forms.Label();
             this.Logs_Cisco_BLD = new System.Windows.Forms.Button();
+            this.row6 = new System.Windows.Forms.PictureBox();
+            this.LogsRow1 = new System.Windows.Forms.PictureBox();
+            this.LogsRow0 = new System.Windows.Forms.PictureBox();
             this.tabVelocloud = new System.Windows.Forms.TabPage();
             this.veloDeleteButton4 = new System.Windows.Forms.Button();
             this.veloDeleteButton3 = new System.Windows.Forms.Button();
@@ -410,6 +417,7 @@ namespace MasterSheetNew
             this.LTFechamento_CheckBox0 = new System.Windows.Forms.CheckBox();
             this.LTFechamento_Title = new System.Windows.Forms.Label();
             this.LTFechamento_ContatoLabel = new System.Windows.Forms.Label();
+            this.row3 = new System.Windows.Forms.PictureBox();
             this.tabCalculadoraDeIP = new System.Windows.Forms.TabPage();
             this.LTCalc_SubTitle = new System.Windows.Forms.Label();
             this.LTCalc_buttonCalc = new System.Windows.Forms.Button();
@@ -431,6 +439,7 @@ namespace MasterSheetNew
             this.LT_SuporteTitleTextBox = new System.Windows.Forms.RichTextBox();
             this.LT_SuporteComTextBox = new System.Windows.Forms.RichTextBox();
             this.LTSuporteFinalTextBox = new System.Windows.Forms.RichTextBox();
+            this.row4 = new System.Windows.Forms.PictureBox();
             this.tabTroubleShoot = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -450,15 +459,6 @@ namespace MasterSheetNew
             this.Teste_ScriptBanco = new System.Windows.Forms.TextBox();
             this.Teste_ScriptFinal = new System.Windows.Forms.TextBox();
             this.mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
-            this.TemplatesLabelBG = new System.Windows.Forms.PictureBox();
-            this.ImageLogo = new System.Windows.Forms.PictureBox();
-            this.row6 = new System.Windows.Forms.PictureBox();
-            this.LogsRow1 = new System.Windows.Forms.PictureBox();
-            this.LogsRow0 = new System.Windows.Forms.PictureBox();
-            this.row3 = new System.Windows.Forms.PictureBox();
-            this.row4 = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.Script_AlterDate = new System.Windows.Forms.Label();
             tabControl3 = new System.Windows.Forms.TabControl();
             tabControl3.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -467,11 +467,16 @@ namespace MasterSheetNew
             this.tabControl1.SuspendLayout();
             this.tabMaster.SuspendLayout();
             this.tabControl2.SuspendLayout();
-            this.tabSelectProcedure.SuspendLayout();
+            this.tabMainPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TemplatesLabelBG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageLogo)).BeginInit();
             this.tabScript.SuspendLayout();
             this.tabSelectRouter.SuspendLayout();
             this.tabWizGat.SuspendLayout();
             this.tabLogs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.row6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogsRow1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogsRow0)).BeginInit();
             this.tabVelocloud.SuspendLayout();
             this.tabLigacoes.SuspendLayout();
             this.tabOutros.SuspendLayout();
@@ -480,16 +485,11 @@ namespace MasterSheetNew
             this.tabControlLogTools.SuspendLayout();
             this.tabPendencia.SuspendLayout();
             this.tabFechamento.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.row3)).BeginInit();
             this.tabCalculadoraDeIP.SuspendLayout();
             this.tabSuporte.SuspendLayout();
-            this.tabTroubleShoot.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TemplatesLabelBG)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ImageLogo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.row6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LogsRow1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LogsRow0)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.row3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.row4)).BeginInit();
+            this.tabTroubleShoot.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl3
@@ -627,7 +627,7 @@ namespace MasterSheetNew
             // tabControl2
             // 
             this.tabControl2.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
-            this.tabControl2.Controls.Add(this.tabSelectProcedure);
+            this.tabControl2.Controls.Add(this.tabMainPage);
             this.tabControl2.Controls.Add(this.tabScript);
             this.tabControl2.Controls.Add(this.tabSelectRouter);
             this.tabControl2.Controls.Add(this.ClientStepsPage);
@@ -646,58 +646,58 @@ namespace MasterSheetNew
             this.tabControl2.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl2.TabIndex = 0;
             // 
-            // tabSelectProcedure
+            // tabMainPage
             // 
-            this.tabSelectProcedure.BackColor = System.Drawing.SystemColors.Control;
-            this.tabSelectProcedure.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tabSelectProcedure.Controls.Add(this.Button_EditScript);
-            this.tabSelectProcedure.Controls.Add(this.CreatedLabel);
-            this.tabSelectProcedure.Controls.Add(this.buttonOC_QoS);
-            this.tabSelectProcedure.Controls.Add(this.buttonOC_IOSInstal);
-            this.tabSelectProcedure.Controls.Add(this.buttonOC_Balanceamento);
-            this.tabSelectProcedure.Controls.Add(this.buttonOC_EIGRP);
-            this.tabSelectProcedure.Controls.Add(this.buttonOC_GLBP);
-            this.tabSelectProcedure.Controls.Add(this.buttonOC_IPFlow);
-            this.tabSelectProcedure.Controls.Add(this.buttonOC_NTP);
-            this.tabSelectProcedure.Controls.Add(this.buttonOC_HSRP);
-            this.tabSelectProcedure.Controls.Add(this.buttonOC_VRRP);
-            this.tabSelectProcedure.Controls.Add(this.buttonOC_OSPF);
-            this.tabSelectProcedure.Controls.Add(this.buttonOC_RIP);
-            this.tabSelectProcedure.Controls.Add(this.buttonOC_User);
-            this.tabSelectProcedure.Controls.Add(this.buttonOC_DHCP);
-            this.tabSelectProcedure.Controls.Add(this.buttonOC_IPsecundario);
-            this.tabSelectProcedure.Controls.Add(this.buttonOC_RotaEstatica);
-            this.tabSelectProcedure.Controls.Add(this.buttonOC_Tacacs);
-            this.tabSelectProcedure.Controls.Add(this.buttonOC_SNMP);
-            this.tabSelectProcedure.Controls.Add(this.buttonOC_BlocPort);
-            this.tabSelectProcedure.Controls.Add(this.buttonOC_VLAN);
-            this.tabSelectProcedure.Controls.Add(this.WizGat_Open);
-            this.tabSelectProcedure.Controls.Add(this.WizardGatLabel);
-            this.tabSelectProcedure.Controls.Add(this.OutrasConfigs);
-            this.tabSelectProcedure.Controls.Add(this.AllClients);
-            this.tabSelectProcedure.Controls.Add(this.ClienteButton_Test4);
-            this.tabSelectProcedure.Controls.Add(this.ClienteButton_Test3);
-            this.tabSelectProcedure.Controls.Add(this.ClienteButton_Test2);
-            this.tabSelectProcedure.Controls.Add(this.ClienteButton_Teste1);
-            this.tabSelectProcedure.Controls.Add(this.Logs_Finais);
-            this.tabSelectProcedure.Controls.Add(this.Logs_Iniciais);
-            this.tabSelectProcedure.Controls.Add(this.ScriptsSubTitle);
-            this.tabSelectProcedure.Controls.Add(this.LogsSubTitle);
-            this.tabSelectProcedure.Controls.Add(this.ClientesSubTitle);
-            this.tabSelectProcedure.Controls.Add(this.TemplatesLabel);
-            this.tabSelectProcedure.Controls.Add(this.TemplatesLabelBG);
-            this.tabSelectProcedure.Controls.Add(this.Version);
-            this.tabSelectProcedure.Controls.Add(this.VOZ_Button);
-            this.tabSelectProcedure.Controls.Add(this.ImageLogo);
-            this.tabSelectProcedure.Controls.Add(this.MPLS_button);
-            this.tabSelectProcedure.Controls.Add(this.BLD_button);
-            this.tabSelectProcedure.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
-            this.tabSelectProcedure.Location = new System.Drawing.Point(4, 5);
-            this.tabSelectProcedure.Name = "tabSelectProcedure";
-            this.tabSelectProcedure.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSelectProcedure.Size = new System.Drawing.Size(1105, 482);
-            this.tabSelectProcedure.TabIndex = 0;
-            this.tabSelectProcedure.Text = "tabPage4";
+            this.tabMainPage.BackColor = System.Drawing.SystemColors.Control;
+            this.tabMainPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tabMainPage.Controls.Add(this.Button_EditScript);
+            this.tabMainPage.Controls.Add(this.CreatedLabel);
+            this.tabMainPage.Controls.Add(this.buttonOC_QoS);
+            this.tabMainPage.Controls.Add(this.buttonOC_IOSInstal);
+            this.tabMainPage.Controls.Add(this.buttonOC_Balanceamento);
+            this.tabMainPage.Controls.Add(this.buttonOC_EIGRP);
+            this.tabMainPage.Controls.Add(this.buttonOC_GLBP);
+            this.tabMainPage.Controls.Add(this.buttonOC_IPFlow);
+            this.tabMainPage.Controls.Add(this.buttonOC_NTP);
+            this.tabMainPage.Controls.Add(this.buttonOC_HSRP);
+            this.tabMainPage.Controls.Add(this.buttonOC_VRRP);
+            this.tabMainPage.Controls.Add(this.buttonOC_OSPF);
+            this.tabMainPage.Controls.Add(this.buttonOC_RIP);
+            this.tabMainPage.Controls.Add(this.buttonOC_User);
+            this.tabMainPage.Controls.Add(this.buttonOC_DHCP);
+            this.tabMainPage.Controls.Add(this.buttonOC_IPsecundario);
+            this.tabMainPage.Controls.Add(this.buttonOC_RotaEstatica);
+            this.tabMainPage.Controls.Add(this.buttonOC_Tacacs);
+            this.tabMainPage.Controls.Add(this.buttonOC_SNMP);
+            this.tabMainPage.Controls.Add(this.buttonOC_BlocPort);
+            this.tabMainPage.Controls.Add(this.buttonOC_VLAN);
+            this.tabMainPage.Controls.Add(this.WizGat_Open);
+            this.tabMainPage.Controls.Add(this.WizardGatLabel);
+            this.tabMainPage.Controls.Add(this.OutrasConfigs);
+            this.tabMainPage.Controls.Add(this.AllClients);
+            this.tabMainPage.Controls.Add(this.ClienteButton_Test4);
+            this.tabMainPage.Controls.Add(this.ClienteButton_Test3);
+            this.tabMainPage.Controls.Add(this.ClienteButton_Test2);
+            this.tabMainPage.Controls.Add(this.ClienteButton_Teste1);
+            this.tabMainPage.Controls.Add(this.Logs_Finais);
+            this.tabMainPage.Controls.Add(this.Logs_Iniciais);
+            this.tabMainPage.Controls.Add(this.ScriptsSubTitle);
+            this.tabMainPage.Controls.Add(this.LogsSubTitle);
+            this.tabMainPage.Controls.Add(this.ClientesSubTitle);
+            this.tabMainPage.Controls.Add(this.TemplatesLabel);
+            this.tabMainPage.Controls.Add(this.TemplatesLabelBG);
+            this.tabMainPage.Controls.Add(this.Version);
+            this.tabMainPage.Controls.Add(this.VOZ_Button);
+            this.tabMainPage.Controls.Add(this.ImageLogo);
+            this.tabMainPage.Controls.Add(this.MPLS_button);
+            this.tabMainPage.Controls.Add(this.BLD_button);
+            this.tabMainPage.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
+            this.tabMainPage.Location = new System.Drawing.Point(4, 5);
+            this.tabMainPage.Name = "tabMainPage";
+            this.tabMainPage.Padding = new System.Windows.Forms.Padding(3);
+            this.tabMainPage.Size = new System.Drawing.Size(1105, 482);
+            this.tabMainPage.TabIndex = 0;
+            this.tabMainPage.Text = "tabPage4";
             // 
             // Button_EditScript
             // 
@@ -1083,6 +1083,16 @@ namespace MasterSheetNew
             this.TemplatesLabel.TabIndex = 10;
             this.TemplatesLabel.Text = "Templates";
             // 
+            // TemplatesLabelBG
+            // 
+            this.TemplatesLabelBG.BackColor = System.Drawing.Color.DodgerBlue;
+            this.TemplatesLabelBG.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TemplatesLabelBG.Location = new System.Drawing.Point(3, 3);
+            this.TemplatesLabelBG.Name = "TemplatesLabelBG";
+            this.TemplatesLabelBG.Size = new System.Drawing.Size(1099, 81);
+            this.TemplatesLabelBG.TabIndex = 9;
+            this.TemplatesLabelBG.TabStop = false;
+            // 
             // Version
             // 
             this.Version.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -1091,7 +1101,7 @@ namespace MasterSheetNew
             this.Version.Name = "Version";
             this.Version.Size = new System.Drawing.Size(110, 17);
             this.Version.TabIndex = 7;
-            this.Version.Text = "Versão: 1.7.1";
+            this.Version.Text = "Versão: 1.7.0";
             this.Version.Click += new System.EventHandler(this.Version_Click);
             // 
             // VOZ_Button
@@ -1104,6 +1114,17 @@ namespace MasterSheetNew
             this.VOZ_Button.Text = "VOZ";
             this.VOZ_Button.UseVisualStyleBackColor = true;
             this.VOZ_Button.Click += new System.EventHandler(this.NotImplemented);
+            // 
+            // ImageLogo
+            // 
+            this.ImageLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ImageLogo.Image = ((System.Drawing.Image)(resources.GetObject("ImageLogo.Image")));
+            this.ImageLogo.InitialImage = null;
+            this.ImageLogo.Location = new System.Drawing.Point(824, 394);
+            this.ImageLogo.Name = "ImageLogo";
+            this.ImageLogo.Size = new System.Drawing.Size(275, 85);
+            this.ImageLogo.TabIndex = 4;
+            this.ImageLogo.TabStop = false;
             // 
             // MPLS_button
             // 
@@ -1246,6 +1267,24 @@ namespace MasterSheetNew
             this.tabScript.Size = new System.Drawing.Size(1105, 482);
             this.tabScript.TabIndex = 1;
             this.tabScript.Text = "tabScript";
+            // 
+            // Script_AlterDate
+            // 
+            this.Script_AlterDate.AutoSize = true;
+            this.Script_AlterDate.Location = new System.Drawing.Point(737, 503);
+            this.Script_AlterDate.Name = "Script_AlterDate";
+            this.Script_AlterDate.Size = new System.Drawing.Size(30, 13);
+            this.Script_AlterDate.TabIndex = 120;
+            this.Script_AlterDate.Text = "Data";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(649, 503);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(90, 13);
+            this.label5.TabIndex = 119;
+            this.label5.Text = "Ultima Alteração: ";
             // 
             // Script_ISRBox
             // 
@@ -2266,7 +2305,7 @@ namespace MasterSheetNew
             this.Script_ProcedureName.Margin = new System.Windows.Forms.Padding(0);
             this.Script_ProcedureName.Name = "Script_ProcedureName";
             this.Script_ProcedureName.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Script_ProcedureName.Size = new System.Drawing.Size(426, 45);
+            this.Script_ProcedureName.Size = new System.Drawing.Size(392, 45);
             this.Script_ProcedureName.TabIndex = 5;
             this.Script_ProcedureName.Text = "Procedure Name";
             this.Script_ProcedureName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2960,6 +2999,33 @@ namespace MasterSheetNew
             this.Logs_Cisco_BLD.Text = "Cisco";
             this.Logs_Cisco_BLD.UseVisualStyleBackColor = true;
             this.Logs_Cisco_BLD.Click += new System.EventHandler(this.Logs_Cisco_BLD_Click);
+            // 
+            // row6
+            // 
+            this.row6.BackColor = System.Drawing.Color.Gray;
+            this.row6.Location = new System.Drawing.Point(762, 121);
+            this.row6.Name = "row6";
+            this.row6.Size = new System.Drawing.Size(1, 303);
+            this.row6.TabIndex = 23;
+            this.row6.TabStop = false;
+            // 
+            // LogsRow1
+            // 
+            this.LogsRow1.BackColor = System.Drawing.Color.Gray;
+            this.LogsRow1.Location = new System.Drawing.Point(555, 121);
+            this.LogsRow1.Name = "LogsRow1";
+            this.LogsRow1.Size = new System.Drawing.Size(1, 303);
+            this.LogsRow1.TabIndex = 12;
+            this.LogsRow1.TabStop = false;
+            // 
+            // LogsRow0
+            // 
+            this.LogsRow0.BackColor = System.Drawing.Color.Gray;
+            this.LogsRow0.Location = new System.Drawing.Point(340, 121);
+            this.LogsRow0.Name = "LogsRow0";
+            this.LogsRow0.Size = new System.Drawing.Size(1, 303);
+            this.LogsRow0.TabIndex = 11;
+            this.LogsRow0.TabStop = false;
             // 
             // tabVelocloud
             // 
@@ -4881,6 +4947,15 @@ namespace MasterSheetNew
             this.LTFechamento_ContatoLabel.TabIndex = 8;
             this.LTFechamento_ContatoLabel.Text = "Contato de Validação";
             // 
+            // row3
+            // 
+            this.row3.BackColor = System.Drawing.Color.Gray;
+            this.row3.Location = new System.Drawing.Point(444, 125);
+            this.row3.Name = "row3";
+            this.row3.Size = new System.Drawing.Size(1, 320);
+            this.row3.TabIndex = 19;
+            this.row3.TabStop = false;
+            // 
             // tabCalculadoraDeIP
             // 
             this.tabCalculadoraDeIP.Controls.Add(this.LTCalc_SubTitle);
@@ -5116,6 +5191,15 @@ namespace MasterSheetNew
             this.LTSuporteFinalTextBox.TabIndex = 17;
             this.LTSuporteFinalTextBox.Text = "";
             // 
+            // row4
+            // 
+            this.row4.BackColor = System.Drawing.Color.Gray;
+            this.row4.Location = new System.Drawing.Point(468, 113);
+            this.row4.Name = "row4";
+            this.row4.Size = new System.Drawing.Size(1, 370);
+            this.row4.TabIndex = 8;
+            this.row4.TabStop = false;
+            // 
             // tabTroubleShoot
             // 
             this.tabTroubleShoot.Controls.Add(this.label1);
@@ -5315,90 +5399,6 @@ namespace MasterSheetNew
             this.mySqlCommand1.EnableCaching = false;
             this.mySqlCommand1.Transaction = null;
             // 
-            // TemplatesLabelBG
-            // 
-            this.TemplatesLabelBG.BackColor = System.Drawing.Color.DodgerBlue;
-            this.TemplatesLabelBG.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TemplatesLabelBG.Location = new System.Drawing.Point(3, 3);
-            this.TemplatesLabelBG.Name = "TemplatesLabelBG";
-            this.TemplatesLabelBG.Size = new System.Drawing.Size(1099, 81);
-            this.TemplatesLabelBG.TabIndex = 9;
-            this.TemplatesLabelBG.TabStop = false;
-            // 
-            // ImageLogo
-            // 
-            this.ImageLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ImageLogo.Image = ((System.Drawing.Image)(resources.GetObject("ImageLogo.Image")));
-            this.ImageLogo.InitialImage = null;
-            this.ImageLogo.Location = new System.Drawing.Point(824, 394);
-            this.ImageLogo.Name = "ImageLogo";
-            this.ImageLogo.Size = new System.Drawing.Size(275, 85);
-            this.ImageLogo.TabIndex = 4;
-            this.ImageLogo.TabStop = false;
-            // 
-            // row6
-            // 
-            this.row6.BackColor = System.Drawing.Color.Gray;
-            this.row6.Location = new System.Drawing.Point(762, 121);
-            this.row6.Name = "row6";
-            this.row6.Size = new System.Drawing.Size(1, 303);
-            this.row6.TabIndex = 23;
-            this.row6.TabStop = false;
-            // 
-            // LogsRow1
-            // 
-            this.LogsRow1.BackColor = System.Drawing.Color.Gray;
-            this.LogsRow1.Location = new System.Drawing.Point(555, 121);
-            this.LogsRow1.Name = "LogsRow1";
-            this.LogsRow1.Size = new System.Drawing.Size(1, 303);
-            this.LogsRow1.TabIndex = 12;
-            this.LogsRow1.TabStop = false;
-            // 
-            // LogsRow0
-            // 
-            this.LogsRow0.BackColor = System.Drawing.Color.Gray;
-            this.LogsRow0.Location = new System.Drawing.Point(340, 121);
-            this.LogsRow0.Name = "LogsRow0";
-            this.LogsRow0.Size = new System.Drawing.Size(1, 303);
-            this.LogsRow0.TabIndex = 11;
-            this.LogsRow0.TabStop = false;
-            // 
-            // row3
-            // 
-            this.row3.BackColor = System.Drawing.Color.Gray;
-            this.row3.Location = new System.Drawing.Point(444, 125);
-            this.row3.Name = "row3";
-            this.row3.Size = new System.Drawing.Size(1, 320);
-            this.row3.TabIndex = 19;
-            this.row3.TabStop = false;
-            // 
-            // row4
-            // 
-            this.row4.BackColor = System.Drawing.Color.Gray;
-            this.row4.Location = new System.Drawing.Point(468, 113);
-            this.row4.Name = "row4";
-            this.row4.Size = new System.Drawing.Size(1, 370);
-            this.row4.TabIndex = 8;
-            this.row4.TabStop = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(649, 503);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 13);
-            this.label5.TabIndex = 119;
-            this.label5.Text = "Ultima Alteração: ";
-            // 
-            // Script_AlterDate
-            // 
-            this.Script_AlterDate.AutoSize = true;
-            this.Script_AlterDate.Location = new System.Drawing.Point(737, 503);
-            this.Script_AlterDate.Name = "Script_AlterDate";
-            this.Script_AlterDate.Size = new System.Drawing.Size(30, 13);
-            this.Script_AlterDate.TabIndex = 120;
-            this.Script_AlterDate.Text = "Data";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5418,8 +5418,10 @@ namespace MasterSheetNew
             this.tabControl1.ResumeLayout(false);
             this.tabMaster.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
-            this.tabSelectProcedure.ResumeLayout(false);
-            this.tabSelectProcedure.PerformLayout();
+            this.tabMainPage.ResumeLayout(false);
+            this.tabMainPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TemplatesLabelBG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageLogo)).EndInit();
             this.tabScript.ResumeLayout(false);
             this.tabScript.PerformLayout();
             this.tabSelectRouter.ResumeLayout(false);
@@ -5427,6 +5429,9 @@ namespace MasterSheetNew
             this.tabWizGat.ResumeLayout(false);
             this.tabLogs.ResumeLayout(false);
             this.tabLogs.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.row6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogsRow1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogsRow0)).EndInit();
             this.tabVelocloud.ResumeLayout(false);
             this.tabVelocloud.PerformLayout();
             this.tabLigacoes.ResumeLayout(false);
@@ -5440,19 +5445,14 @@ namespace MasterSheetNew
             this.tabPendencia.PerformLayout();
             this.tabFechamento.ResumeLayout(false);
             this.tabFechamento.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.row3)).EndInit();
             this.tabCalculadoraDeIP.ResumeLayout(false);
             this.tabCalculadoraDeIP.PerformLayout();
             this.tabSuporte.ResumeLayout(false);
             this.tabSuporte.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.row4)).EndInit();
             this.tabTroubleShoot.ResumeLayout(false);
             this.tabTroubleShoot.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TemplatesLabelBG)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ImageLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.row6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LogsRow1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LogsRow0)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.row3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.row4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5468,7 +5468,7 @@ namespace MasterSheetNew
         private TabPage tabMaster;
         private TabPage tabRouters;
         private TabControl tabControl2;
-        private TabPage tabSelectProcedure;
+        private TabPage tabMainPage;
         private Button BLD_button;
         private Label Version;
         private Button VOZ_Button;
