@@ -87,6 +87,7 @@ namespace MasterSheetNew
             this.MPLS_button = new System.Windows.Forms.Button();
             this.BLD_button = new System.Windows.Forms.Button();
             this.tabScript = new System.Windows.Forms.TabPage();
+            this.Button_ApplyTestValues = new System.Windows.Forms.Button();
             this.Script_AlterDate = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.Script_ISRBox = new System.Windows.Forms.ComboBox();
@@ -166,7 +167,7 @@ namespace MasterSheetNew
             this.Script_VarName08 = new System.Windows.Forms.Label();
             this.Script_VarText07 = new System.Windows.Forms.TextBox();
             this.Script_VarName07 = new System.Windows.Forms.Label();
-            this.Script_LANMascaraText = new System.Windows.Forms.ComboBox();
+            this.Script_LANMascaraBox = new System.Windows.Forms.ComboBox();
             this.BackButton_Script3 = new System.Windows.Forms.Button();
             this.BackButton_Script2 = new System.Windows.Forms.Button();
             this.Script_TypeLabel = new System.Windows.Forms.Label();
@@ -459,6 +460,7 @@ namespace MasterSheetNew
             this.Teste_ScriptBanco = new System.Windows.Forms.TextBox();
             this.Teste_ScriptFinal = new System.Windows.Forms.TextBox();
             this.mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
+            this.Button_ImportSAIP = new System.Windows.Forms.Button();
             tabControl3 = new System.Windows.Forms.TabControl();
             tabControl3.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1101,7 +1103,7 @@ namespace MasterSheetNew
             this.Version.Name = "Version";
             this.Version.Size = new System.Drawing.Size(110, 17);
             this.Version.TabIndex = 7;
-            this.Version.Text = "Versão: 1.7.0";
+            this.Version.Text = "Versão: 1.7.1";
             this.Version.Click += new System.EventHandler(this.Version_Click);
             // 
             // VOZ_Button
@@ -1153,6 +1155,8 @@ namespace MasterSheetNew
             this.tabScript.AutoScroll = true;
             this.tabScript.AutoScrollMinSize = new System.Drawing.Size(0, 100);
             this.tabScript.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.tabScript.Controls.Add(this.Button_ImportSAIP);
+            this.tabScript.Controls.Add(this.Button_ApplyTestValues);
             this.tabScript.Controls.Add(this.Script_AlterDate);
             this.tabScript.Controls.Add(this.label5);
             this.tabScript.Controls.Add(this.Script_ISRBox);
@@ -1232,7 +1236,7 @@ namespace MasterSheetNew
             this.tabScript.Controls.Add(this.Script_VarName08);
             this.tabScript.Controls.Add(this.Script_VarText07);
             this.tabScript.Controls.Add(this.Script_VarName07);
-            this.tabScript.Controls.Add(this.Script_LANMascaraText);
+            this.tabScript.Controls.Add(this.Script_LANMascaraBox);
             this.tabScript.Controls.Add(this.BackButton_Script3);
             this.tabScript.Controls.Add(this.BackButton_Script2);
             this.tabScript.Controls.Add(this.Script_TypeLabel);
@@ -1267,6 +1271,17 @@ namespace MasterSheetNew
             this.tabScript.Size = new System.Drawing.Size(1105, 482);
             this.tabScript.TabIndex = 1;
             this.tabScript.Text = "tabScript";
+            // 
+            // Button_ApplyTestValues
+            // 
+            this.Button_ApplyTestValues.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_ApplyTestValues.Location = new System.Drawing.Point(488, 509);
+            this.Button_ApplyTestValues.Name = "Button_ApplyTestValues";
+            this.Button_ApplyTestValues.Size = new System.Drawing.Size(84, 47);
+            this.Button_ApplyTestValues.TabIndex = 121;
+            this.Button_ApplyTestValues.Text = "Apply Test Values";
+            this.Button_ApplyTestValues.UseVisualStyleBackColor = true;
+            this.Button_ApplyTestValues.Click += new System.EventHandler(this.Button_ApplyTestValues_Click);
             // 
             // Script_AlterDate
             // 
@@ -1344,9 +1359,9 @@ namespace MasterSheetNew
             this.Script_VarEx13.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Script_VarEx13.Location = new System.Drawing.Point(349, 542);
             this.Script_VarEx13.Name = "Script_VarEx13";
-            this.Script_VarEx13.Size = new System.Drawing.Size(31, 15);
+            this.Script_VarEx13.Size = new System.Drawing.Size(38, 15);
             this.Script_VarEx13.TabIndex = 114;
-            this.Script_VarEx13.Text = "1001";
+            this.Script_VarEx13.Text = "12001";
             // 
             // Script_VarEx14
             // 
@@ -1364,9 +1379,9 @@ namespace MasterSheetNew
             this.Script_VarEx15.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Script_VarEx15.Location = new System.Drawing.Point(349, 601);
             this.Script_VarEx15.Name = "Script_VarEx15";
-            this.Script_VarEx15.Size = new System.Drawing.Size(38, 15);
+            this.Script_VarEx15.Size = new System.Drawing.Size(52, 15);
             this.Script_VarEx15.TabIndex = 112;
-            this.Script_VarEx15.Text = "10921";
+            this.Script_VarEx15.Text = "1003921";
             // 
             // Script_VarEx12
             // 
@@ -1394,9 +1409,9 @@ namespace MasterSheetNew
             this.Script_VarEx10.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Script_VarEx10.Location = new System.Drawing.Point(349, 452);
             this.Script_VarEx10.Name = "Script_VarEx10";
-            this.Script_VarEx10.Size = new System.Drawing.Size(50, 15);
+            this.Script_VarEx10.Size = new System.Drawing.Size(80, 15);
             this.Script_VarEx10.TabIndex = 109;
-            this.Script_VarEx10.Text = "201.1.1.1";
+            this.Script_VarEx10.Text = "172.40.165.37";
             // 
             // Script_VarEx09
             // 
@@ -1404,9 +1419,9 @@ namespace MasterSheetNew
             this.Script_VarEx09.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Script_VarEx09.Location = new System.Drawing.Point(349, 422);
             this.Script_VarEx09.Name = "Script_VarEx09";
-            this.Script_VarEx09.Size = new System.Drawing.Size(50, 15);
+            this.Script_VarEx09.Size = new System.Drawing.Size(73, 15);
             this.Script_VarEx09.TabIndex = 108;
-            this.Script_VarEx09.Text = "201.1.1.1";
+            this.Script_VarEx09.Text = "182.63.2.131";
             // 
             // Script_VarEx08
             // 
@@ -1454,9 +1469,9 @@ namespace MasterSheetNew
             this.Script_VarEx04.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Script_VarEx04.Location = new System.Drawing.Point(350, 270);
             this.Script_VarEx04.Name = "Script_VarEx04";
-            this.Script_VarEx04.Size = new System.Drawing.Size(19, 15);
+            this.Script_VarEx04.Size = new System.Drawing.Size(14, 15);
             this.Script_VarEx04.TabIndex = 103;
-            this.Script_VarEx04.Text = "21";
+            this.Script_VarEx04.Text = "5";
             // 
             // Script_VarEx03
             // 
@@ -2073,21 +2088,23 @@ namespace MasterSheetNew
             this.Script_VarName07.TabIndex = 33;
             this.Script_VarName07.Text = "IP do PE:";
             // 
-            // Script_LANMascaraText
+            // Script_LANMascaraBox
             // 
-            this.Script_LANMascaraText.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Script_LANMascaraText.FormattingEnabled = true;
-            this.Script_LANMascaraText.Items.AddRange(new object[] {
+            this.Script_LANMascaraBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_LANMascaraBox.FormattingEnabled = true;
+            this.Script_LANMascaraBox.Items.AddRange(new object[] {
             "/30",
             "/29",
             "/28",
+            "/27",
             "/26",
+            "/25",
             "/24"});
-            this.Script_LANMascaraText.Location = new System.Drawing.Point(258, 413);
-            this.Script_LANMascaraText.Name = "Script_LANMascaraText";
-            this.Script_LANMascaraText.Size = new System.Drawing.Size(54, 25);
-            this.Script_LANMascaraText.TabIndex = 31;
-            this.Script_LANMascaraText.SelectedIndexChanged += new System.EventHandler(this.Script_LANMascara_SelectedIndexChanged);
+            this.Script_LANMascaraBox.Location = new System.Drawing.Point(258, 413);
+            this.Script_LANMascaraBox.Name = "Script_LANMascaraBox";
+            this.Script_LANMascaraBox.Size = new System.Drawing.Size(54, 25);
+            this.Script_LANMascaraBox.TabIndex = 31;
+            this.Script_LANMascaraBox.SelectedIndexChanged += new System.EventHandler(this.Script_LANMascara_SelectedIndexChanged);
             // 
             // BackButton_Script3
             // 
@@ -2271,9 +2288,9 @@ namespace MasterSheetNew
             this.Script_VarName04.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Script_VarName04.Location = new System.Drawing.Point(23, 268);
             this.Script_VarName04.Name = "Script_VarName04";
-            this.Script_VarName04.Size = new System.Drawing.Size(76, 17);
+            this.Script_VarName04.Size = new System.Drawing.Size(82, 17);
             this.Script_VarName04.TabIndex = 10;
-            this.Script_VarName04.Text = "N da VLAN:";
+            this.Script_VarName04.Text = "Nº da VLAN:";
             // 
             // Script_VarName02
             // 
@@ -2301,11 +2318,11 @@ namespace MasterSheetNew
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Script_ProcedureName.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Script_ProcedureName.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Script_ProcedureName.Location = new System.Drawing.Point(259, 8);
+            this.Script_ProcedureName.Location = new System.Drawing.Point(284, 8);
             this.Script_ProcedureName.Margin = new System.Windows.Forms.Padding(0);
             this.Script_ProcedureName.Name = "Script_ProcedureName";
             this.Script_ProcedureName.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Script_ProcedureName.Size = new System.Drawing.Size(392, 45);
+            this.Script_ProcedureName.Size = new System.Drawing.Size(514, 45);
             this.Script_ProcedureName.TabIndex = 5;
             this.Script_ProcedureName.Text = "Procedure Name";
             this.Script_ProcedureName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -5399,6 +5416,17 @@ namespace MasterSheetNew
             this.mySqlCommand1.EnableCaching = false;
             this.mySqlCommand1.Transaction = null;
             // 
+            // Button_ImportSAIP
+            // 
+            this.Button_ImportSAIP.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_ImportSAIP.Location = new System.Drawing.Point(814, 25);
+            this.Button_ImportSAIP.Name = "Button_ImportSAIP";
+            this.Button_ImportSAIP.Size = new System.Drawing.Size(125, 37);
+            this.Button_ImportSAIP.TabIndex = 122;
+            this.Button_ImportSAIP.Text = "Import SAIP";
+            this.Button_ImportSAIP.UseVisualStyleBackColor = true;
+            this.Button_ImportSAIP.Click += new System.EventHandler(this.Button_ImportSAIP_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5560,7 +5588,7 @@ namespace MasterSheetNew
         private Label Script_VarName08;
         private TextBox Script_VarText07;
         private Label Script_VarName07;
-        private ComboBox Script_LANMascaraText;
+        private ComboBox Script_LANMascaraBox;
         private Button BackButton_Script3;
         private Button BackButton_Script2;
         private Label Script_TypeLabel;
@@ -5887,6 +5915,8 @@ namespace MasterSheetNew
         private Button Button_EditScript;
         private Label Script_AlterDate;
         private Label label5;
+        private Button Button_ApplyTestValues;
+        private Button Button_ImportSAIP;
     }
 }
 
