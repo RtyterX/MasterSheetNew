@@ -27,6 +27,8 @@ namespace MasterSheetNew
                 if(PasswordTextBox.Text == "Nicholas67")
                 {
                     mainPage.enableEdit = true;
+                    mainPage.canImportSAIP = true;
+                    mainPage.CheckCanImportFromSAIP();
                     MessageBox.Show("Edição de Scripts Habilitada");
                     this.Close();
 

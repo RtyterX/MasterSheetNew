@@ -35,6 +35,7 @@ namespace MasterSheetNew
 
         // Enable Edit
         public bool enableEdit = false;
+        public bool canImportSAIP = false;
 
         // Scripts
         string scriptParte2;
@@ -118,6 +119,7 @@ namespace MasterSheetNew
             Script_ISRBox.SelectedIndex = 1;
             Script_XRBox.SelectedIndex = 1;
 
+            CheckCanImportFromSAIP();
 
             // --------------------------------------------------------------------------------------
 
@@ -162,6 +164,18 @@ namespace MasterSheetNew
 
             // Set Router List in Data Grid
             DataGridRouters.DataSource = routerList;
+        }
+
+        public void CheckCanImportFromSAIP()
+        {
+            if (canImportSAIP) 
+            {
+                Button_ImportSAIP.Show();
+            }
+            else
+            {
+                Button_ImportSAIP.Hide();
+            }
         }
 
         public void ListAllScriptVars()
@@ -744,6 +758,11 @@ namespace MasterSheetNew
             ScriptDispatch(routerType, activityType, true, false);
         }
 
+        private void Script_ButtonRegraAdc_Click(object sender, EventArgs e)
+        {
+
+        }
+
         // --- Delete Individually ---
         #region
         private void Script_DeleteVar0_Click(object sender, EventArgs e)
@@ -838,6 +857,7 @@ namespace MasterSheetNew
         #region
         public void ScriptDispatch(RouterType routerType, ActivityType activityType, bool logOrNot, bool backboneOrNot)
         {
+            ApplyVozVariables();
             ApplyRouteMapNokia();
             ChangeMascaraLAN();
             ChangeVlanNaWANVar();
@@ -1913,6 +1933,80 @@ namespace MasterSheetNew
             }
         }
 
+        public void ApplyVozVariables()
+        {
+            if (activityType == ActivityType.VOZ)
+            {
+                Script_VozTitleLabel.Show();
+                Script_SinalizSubTitle.Show();
+                Script_SinalizBox.Show();
+                Script_ButtonRegraAdc.Show();
+
+                Script_VarName16.Show();
+                Script_VarName17.Show();
+                Script_VarName18.Show();
+                Script_VarName19.Show();
+                Script_VarName20.Show();
+                Script_VarName21.Show();
+
+                Script_VarText16.Show();
+                Script_VarText17.Show();
+                Script_VarText18.Show();
+                Script_VarText19.Show();
+                Script_VarText20.Show();
+                Script_VarText21.Show();
+
+                Script_VarDelete16.Show();
+                Script_VarDelete17.Show();
+                Script_VarDelete18.Show();
+                Script_VarDelete19.Show();
+                Script_VarDelete20.Show();
+                Script_VarDelete21.Show();
+
+                Script_VarEx16.Show();
+                Script_VarEx17.Show();
+                Script_VarEx18.Show();
+                Script_VarEx19.Show();
+                Script_VarEx20.Show();
+                Script_VarEx21.Show();
+            }
+            else
+            {
+                Script_VozTitleLabel.Hide();
+                Script_SinalizSubTitle.Hide();
+                Script_SinalizBox.Hide();
+                Script_ButtonRegraAdc.Hide();
+
+                Script_VarName16.Hide();
+                Script_VarName17.Hide();
+                Script_VarName18.Hide();
+                Script_VarName19.Hide();
+                Script_VarName20.Hide();
+                Script_VarName21.Hide();
+
+                Script_VarText16.Hide();
+                Script_VarText17.Hide();
+                Script_VarText18.Hide();
+                Script_VarText19.Hide();
+                Script_VarText20.Hide();
+                Script_VarText21.Hide();
+
+                Script_VarDelete16.Hide();
+                Script_VarDelete17.Hide();
+                Script_VarDelete18.Hide();
+                Script_VarDelete19.Hide();
+                Script_VarDelete20.Hide();
+                Script_VarDelete21.Hide();
+
+                Script_VarEx16.Hide();
+                Script_VarEx17.Hide();
+                Script_VarEx18.Hide();
+                Script_VarEx19.Hide();
+                Script_VarEx20.Hide();
+                Script_VarEx21.Hide();
+            }
+        }
+
         public void ApplyRouteMapNokia()
         {
             if (routerType == RouterType.Nokia && activityType == ActivityType.BLDcomBGP && backboneOrNot == true && logOrNot == true)
@@ -2024,7 +2118,7 @@ namespace MasterSheetNew
                     split[37] = split[37].Replace("IP Serial Usuário (IPv4)  ", string.Empty).Trim();
                     string[] ipPE = split[37].Split('/');
                     Script_VarText07.Text = GetBackboneInterfaceIP(ipPE[0], true);               // IP da Porta
-                    Script_VarText08.Text = ipPE[0];                                            // IP da Porta + 1 (bloco /30)
+                    Script_VarText08.Text = ipPE[0];                                             // IP da Porta + 1 (bloco /30)
 
                     // IP de LAN
                     split[54] = split[54].Replace("Blocos IPv4  ", string.Empty).Trim();
@@ -2049,8 +2143,8 @@ namespace MasterSheetNew
                     // IPs do PE
                     split[38] = split[38].Replace("IP Serial Usuário (IPv4)  ", string.Empty).Trim();
                     string[] ipPE = split[54].Split('/');
-                    Script_VarText07.Text = GetBackboneInterfaceIP(ipPE[0], true);       // IP da Porta
-                    Script_VarText08.Text = ipPE[0];                                     // IP da Porta + 1 (bloco /30)
+                    Script_VarText07.Text = GetBackboneInterfaceIP(ipPE[0], true);              // IP da Porta
+                    Script_VarText08.Text = ipPE[0];                                            // IP da Porta + 1 (bloco /30)
 
                     // IP de LAN
                     split[55] = split[55].Replace("Blocos IPv4  ", string.Empty).Trim();
@@ -2081,8 +2175,8 @@ namespace MasterSheetNew
                     // IPs do PE
                     split[40] = split[40].Replace("IP Wan:  ", string.Empty).Trim();
                     string[] ipPE = split[40].Split('/');
-                    Script_VarText07.Text = GetBackboneInterfaceIP(ipPE[0], true).Trim();     // IP da Porta
-                    Script_VarText08.Text = ipPE[0];                                          // IP da Porta + 1 (bloco /30)
+                    Script_VarText07.Text = GetBackboneInterfaceIP(ipPE[0], true).Trim();      // IP da Porta
+                    Script_VarText08.Text = ipPE[0];                                           // IP da Porta + 1 (bloco /30)
 
                     // IP de LAN
                     split[41] = split[41].Replace("IP PABX:  ", string.Empty).Trim();
@@ -2090,7 +2184,24 @@ namespace MasterSheetNew
                     Script_VarText09.Text = GetBackboneInterfaceIP(ipLan[0], false).Trim();
 
                     // IP do SIP Server
-                    // Script_VarText16.Text = split[43].Replace("IP SIP Acesso: 	", string.Empty);
+                    Script_VarText16.Text = split[43].Replace("IP SIP Acesso: 	", string.Empty);
+                    Script_VarText17.Text = numero[2];
+                    Script_VarText18.Text = numero[2].Remove(2, 8);
+                    Script_VarText19.Text = numero[2];
+                    
+                    // N de Canais
+                    if (int.Parse(Script_VarText02.Text) >= 1500)
+                    {
+                        if (Script_SinalizBox.SelectedIndex == 0)
+                        {
+                            Script_VarText18.Text = "1-5,17-31";
+                        }
+                        else
+                        {
+                            Script_VarText18.Text = "1-31";
+                        }
+                    }
+                    
                 }
             }
             catch (Exception exc)
@@ -3572,9 +3683,10 @@ namespace MasterSheetNew
             Script_VarText15.Text = "100395";
             Script_LANMascaraBox.SelectedIndex = 2;
         }
+
         #endregion
 
-       
+
     }
 
 }

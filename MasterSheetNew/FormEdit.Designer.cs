@@ -35,6 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Script_AlterDate = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.Script_SelectName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // SaveButton
@@ -52,9 +53,9 @@
             // 
             this.Scripts_BoxList.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Scripts_BoxList.FormattingEnabled = true;
-            this.Scripts_BoxList.Location = new System.Drawing.Point(479, 221);
+            this.Scripts_BoxList.Location = new System.Drawing.Point(386, 221);
             this.Scripts_BoxList.Name = "Scripts_BoxList";
-            this.Scripts_BoxList.Size = new System.Drawing.Size(228, 26);
+            this.Scripts_BoxList.Size = new System.Drawing.Size(423, 26);
             this.Scripts_BoxList.TabIndex = 1;
             this.Scripts_BoxList.SelectedIndexChanged += new System.EventHandler(this.Scripts_BoxList_SelectedIndexChanged);
             // 
@@ -106,11 +107,21 @@
             this.label5.TabIndex = 121;
             this.label5.Text = "Ultima Alteração: ";
             // 
+            // Script_SelectName
+            // 
+            this.Script_SelectName.AutoSize = true;
+            this.Script_SelectName.Location = new System.Drawing.Point(50, 157);
+            this.Script_SelectName.Name = "Script_SelectName";
+            this.Script_SelectName.Size = new System.Drawing.Size(35, 13);
+            this.Script_SelectName.TabIndex = 123;
+            this.Script_SelectName.Text = "label2";
+            // 
             // FormEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(821, 619);
+            this.Controls.Add(this.Script_SelectName);
             this.Controls.Add(this.Script_AlterDate);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
@@ -134,5 +145,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label Script_AlterDate;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label Script_SelectName;
     }
 }

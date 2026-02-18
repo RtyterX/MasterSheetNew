@@ -87,6 +87,34 @@ namespace MasterSheetNew
             this.MPLS_button = new System.Windows.Forms.Button();
             this.BLD_button = new System.Windows.Forms.Button();
             this.tabScript = new System.Windows.Forms.TabPage();
+            this.Script_SinalizBox = new System.Windows.Forms.ComboBox();
+            this.Script_SinalizSubTitle = new System.Windows.Forms.Label();
+            this.Script_VarEx21 = new System.Windows.Forms.Label();
+            this.Script_VarDelete21 = new System.Windows.Forms.Button();
+            this.Script_VarText21 = new System.Windows.Forms.TextBox();
+            this.Script_VarName21 = new System.Windows.Forms.Label();
+            this.Script_VozTitleLabel = new System.Windows.Forms.Label();
+            this.Script_VarDelete16 = new System.Windows.Forms.Button();
+            this.Script_VarEx18 = new System.Windows.Forms.Label();
+            this.Script_VarEx19 = new System.Windows.Forms.Label();
+            this.Script_VarEx20 = new System.Windows.Forms.Label();
+            this.Script_VarEx17 = new System.Windows.Forms.Label();
+            this.Script_VarEx16 = new System.Windows.Forms.Label();
+            this.Script_VarDelete20 = new System.Windows.Forms.Button();
+            this.Script_VarText20 = new System.Windows.Forms.TextBox();
+            this.Script_VarName20 = new System.Windows.Forms.Label();
+            this.Script_VarDelete19 = new System.Windows.Forms.Button();
+            this.Script_VarText19 = new System.Windows.Forms.TextBox();
+            this.Script_VarName19 = new System.Windows.Forms.Label();
+            this.Script_VarDelete18 = new System.Windows.Forms.Button();
+            this.Script_VarText18 = new System.Windows.Forms.TextBox();
+            this.Script_VarName18 = new System.Windows.Forms.Label();
+            this.Script_VarDelete17 = new System.Windows.Forms.Button();
+            this.Script_VarText17 = new System.Windows.Forms.TextBox();
+            this.Script_VarName17 = new System.Windows.Forms.Label();
+            this.Script_VarText16 = new System.Windows.Forms.TextBox();
+            this.Script_VarName16 = new System.Windows.Forms.Label();
+            this.Button_ImportSAIP = new System.Windows.Forms.Button();
             this.Button_ApplyTestValues = new System.Windows.Forms.Button();
             this.Script_AlterDate = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -460,7 +488,7 @@ namespace MasterSheetNew
             this.Teste_ScriptBanco = new System.Windows.Forms.TextBox();
             this.Teste_ScriptFinal = new System.Windows.Forms.TextBox();
             this.mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
-            this.Button_ImportSAIP = new System.Windows.Forms.Button();
+            this.Script_ButtonRegraAdc = new System.Windows.Forms.Button();
             tabControl3 = new System.Windows.Forms.TabControl();
             tabControl3.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1155,6 +1183,34 @@ namespace MasterSheetNew
             this.tabScript.AutoScroll = true;
             this.tabScript.AutoScrollMinSize = new System.Drawing.Size(0, 100);
             this.tabScript.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.tabScript.Controls.Add(this.Script_ButtonRegraAdc);
+            this.tabScript.Controls.Add(this.Script_SinalizBox);
+            this.tabScript.Controls.Add(this.Script_SinalizSubTitle);
+            this.tabScript.Controls.Add(this.Script_VarEx21);
+            this.tabScript.Controls.Add(this.Script_VarDelete21);
+            this.tabScript.Controls.Add(this.Script_VarText21);
+            this.tabScript.Controls.Add(this.Script_VarName21);
+            this.tabScript.Controls.Add(this.Script_VozTitleLabel);
+            this.tabScript.Controls.Add(this.Script_VarDelete16);
+            this.tabScript.Controls.Add(this.Script_VarEx18);
+            this.tabScript.Controls.Add(this.Script_VarEx19);
+            this.tabScript.Controls.Add(this.Script_VarEx20);
+            this.tabScript.Controls.Add(this.Script_VarEx17);
+            this.tabScript.Controls.Add(this.Script_VarEx16);
+            this.tabScript.Controls.Add(this.Script_VarDelete20);
+            this.tabScript.Controls.Add(this.Script_VarText20);
+            this.tabScript.Controls.Add(this.Script_VarName20);
+            this.tabScript.Controls.Add(this.Script_VarDelete19);
+            this.tabScript.Controls.Add(this.Script_VarText19);
+            this.tabScript.Controls.Add(this.Script_VarName19);
+            this.tabScript.Controls.Add(this.Script_VarDelete18);
+            this.tabScript.Controls.Add(this.Script_VarText18);
+            this.tabScript.Controls.Add(this.Script_VarName18);
+            this.tabScript.Controls.Add(this.Script_VarDelete17);
+            this.tabScript.Controls.Add(this.Script_VarText17);
+            this.tabScript.Controls.Add(this.Script_VarName17);
+            this.tabScript.Controls.Add(this.Script_VarText16);
+            this.tabScript.Controls.Add(this.Script_VarName16);
             this.tabScript.Controls.Add(this.Button_ImportSAIP);
             this.tabScript.Controls.Add(this.Button_ApplyTestValues);
             this.tabScript.Controls.Add(this.Script_AlterDate);
@@ -1271,6 +1327,276 @@ namespace MasterSheetNew
             this.tabScript.Size = new System.Drawing.Size(1105, 482);
             this.tabScript.TabIndex = 1;
             this.tabScript.Text = "tabScript";
+            // 
+            // Script_SinalizBox
+            // 
+            this.Script_SinalizBox.FormattingEnabled = true;
+            this.Script_SinalizBox.Items.AddRange(new object[] {
+            "Sim",
+            "Não"});
+            this.Script_SinalizBox.Location = new System.Drawing.Point(987, 189);
+            this.Script_SinalizBox.Name = "Script_SinalizBox";
+            this.Script_SinalizBox.Size = new System.Drawing.Size(58, 21);
+            this.Script_SinalizBox.TabIndex = 149;
+            // 
+            // Script_SinalizSubTitle
+            // 
+            this.Script_SinalizSubTitle.AutoSize = true;
+            this.Script_SinalizSubTitle.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Script_SinalizSubTitle.Location = new System.Drawing.Point(978, 169);
+            this.Script_SinalizSubTitle.Name = "Script_SinalizSubTitle";
+            this.Script_SinalizSubTitle.Size = new System.Drawing.Size(75, 17);
+            this.Script_SinalizSubTitle.TabIndex = 148;
+            this.Script_SinalizSubTitle.Text = "Sinalização:";
+            // 
+            // Script_VarEx21
+            // 
+            this.Script_VarEx21.AutoSize = true;
+            this.Script_VarEx21.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_VarEx21.Location = new System.Drawing.Point(1017, 398);
+            this.Script_VarEx21.Name = "Script_VarEx21";
+            this.Script_VarEx21.Size = new System.Drawing.Size(39, 15);
+            this.Script_VarEx21.TabIndex = 147;
+            this.Script_VarEx21.Text = "0/1:15";
+            // 
+            // Script_VarDelete21
+            // 
+            this.Script_VarDelete21.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_VarDelete21.Location = new System.Drawing.Point(995, 393);
+            this.Script_VarDelete21.Name = "Script_VarDelete21";
+            this.Script_VarDelete21.Size = new System.Drawing.Size(20, 25);
+            this.Script_VarDelete21.TabIndex = 146;
+            this.Script_VarDelete21.Text = "-";
+            this.Script_VarDelete21.UseVisualStyleBackColor = true;
+            // 
+            // Script_VarText21
+            // 
+            this.Script_VarText21.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_VarText21.Location = new System.Drawing.Point(896, 393);
+            this.Script_VarText21.Name = "Script_VarText21";
+            this.Script_VarText21.Size = new System.Drawing.Size(93, 25);
+            this.Script_VarText21.TabIndex = 145;
+            // 
+            // Script_VarName21
+            // 
+            this.Script_VarName21.AutoSize = true;
+            this.Script_VarName21.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Script_VarName21.Location = new System.Drawing.Point(807, 396);
+            this.Script_VarName21.Name = "Script_VarName21";
+            this.Script_VarName21.Size = new System.Drawing.Size(60, 17);
+            this.Script_VarName21.TabIndex = 144;
+            this.Script_VarName21.Text = "Porta E1:";
+            // 
+            // Script_VozTitleLabel
+            // 
+            this.Script_VozTitleLabel.AutoSize = true;
+            this.Script_VozTitleLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_VozTitleLabel.Location = new System.Drawing.Point(881, 213);
+            this.Script_VozTitleLabel.Name = "Script_VozTitleLabel";
+            this.Script_VozTitleLabel.Size = new System.Drawing.Size(150, 25);
+            this.Script_VozTitleLabel.TabIndex = 143;
+            this.Script_VozTitleLabel.Text = "Variáveis de Voz";
+            // 
+            // Script_VarDelete16
+            // 
+            this.Script_VarDelete16.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_VarDelete16.Location = new System.Drawing.Point(995, 243);
+            this.Script_VarDelete16.Name = "Script_VarDelete16";
+            this.Script_VarDelete16.Size = new System.Drawing.Size(20, 25);
+            this.Script_VarDelete16.TabIndex = 142;
+            this.Script_VarDelete16.Text = "-";
+            this.Script_VarDelete16.UseVisualStyleBackColor = true;
+            // 
+            // Script_VarEx18
+            // 
+            this.Script_VarEx18.AutoSize = true;
+            this.Script_VarEx18.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_VarEx18.Location = new System.Drawing.Point(1017, 309);
+            this.Script_VarEx18.Name = "Script_VarEx18";
+            this.Script_VarEx18.Size = new System.Drawing.Size(19, 15);
+            this.Script_VarEx18.TabIndex = 141;
+            this.Script_VarEx18.Text = "21";
+            // 
+            // Script_VarEx19
+            // 
+            this.Script_VarEx19.AutoSize = true;
+            this.Script_VarEx19.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_VarEx19.Location = new System.Drawing.Point(1017, 338);
+            this.Script_VarEx19.Name = "Script_VarEx19";
+            this.Script_VarEx19.Size = new System.Drawing.Size(91, 13);
+            this.Script_VarEx19.TabIndex = 140;
+            this.Script_VarEx19.Text = "000000[0-9][0-9]";
+            // 
+            // Script_VarEx20
+            // 
+            this.Script_VarEx20.AutoSize = true;
+            this.Script_VarEx20.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_VarEx20.Location = new System.Drawing.Point(1017, 368);
+            this.Script_VarEx20.Name = "Script_VarEx20";
+            this.Script_VarEx20.Size = new System.Drawing.Size(60, 15);
+            this.Script_VarEx20.TabIndex = 139;
+            this.Script_VarEx20.Text = "1-15,17-31";
+            // 
+            // Script_VarEx17
+            // 
+            this.Script_VarEx17.AutoSize = true;
+            this.Script_VarEx17.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_VarEx17.Location = new System.Drawing.Point(1017, 279);
+            this.Script_VarEx17.Name = "Script_VarEx17";
+            this.Script_VarEx17.Size = new System.Drawing.Size(63, 15);
+            this.Script_VarEx17.TabIndex = 138;
+            this.Script_VarEx17.Text = "00000000";
+            // 
+            // Script_VarEx16
+            // 
+            this.Script_VarEx16.AutoSize = true;
+            this.Script_VarEx16.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_VarEx16.Location = new System.Drawing.Point(1017, 249);
+            this.Script_VarEx16.Name = "Script_VarEx16";
+            this.Script_VarEx16.Size = new System.Drawing.Size(76, 15);
+            this.Script_VarEx16.TabIndex = 137;
+            this.Script_VarEx16.Text = "189.55.37.89";
+            // 
+            // Script_VarDelete20
+            // 
+            this.Script_VarDelete20.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_VarDelete20.Location = new System.Drawing.Point(995, 363);
+            this.Script_VarDelete20.Name = "Script_VarDelete20";
+            this.Script_VarDelete20.Size = new System.Drawing.Size(20, 25);
+            this.Script_VarDelete20.TabIndex = 136;
+            this.Script_VarDelete20.Text = "-";
+            this.Script_VarDelete20.UseVisualStyleBackColor = true;
+            // 
+            // Script_VarText20
+            // 
+            this.Script_VarText20.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_VarText20.Location = new System.Drawing.Point(896, 363);
+            this.Script_VarText20.Name = "Script_VarText20";
+            this.Script_VarText20.Size = new System.Drawing.Size(93, 25);
+            this.Script_VarText20.TabIndex = 135;
+            // 
+            // Script_VarName20
+            // 
+            this.Script_VarName20.AutoSize = true;
+            this.Script_VarName20.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Script_VarName20.Location = new System.Drawing.Point(807, 366);
+            this.Script_VarName20.Name = "Script_VarName20";
+            this.Script_VarName20.Size = new System.Drawing.Size(87, 17);
+            this.Script_VarName20.TabIndex = 134;
+            this.Script_VarName20.Text = "N° de Canais:";
+            // 
+            // Script_VarDelete19
+            // 
+            this.Script_VarDelete19.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_VarDelete19.Location = new System.Drawing.Point(995, 332);
+            this.Script_VarDelete19.Name = "Script_VarDelete19";
+            this.Script_VarDelete19.Size = new System.Drawing.Size(20, 25);
+            this.Script_VarDelete19.TabIndex = 133;
+            this.Script_VarDelete19.Text = "-";
+            this.Script_VarDelete19.UseVisualStyleBackColor = true;
+            // 
+            // Script_VarText19
+            // 
+            this.Script_VarText19.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_VarText19.Location = new System.Drawing.Point(896, 332);
+            this.Script_VarText19.Name = "Script_VarText19";
+            this.Script_VarText19.Size = new System.Drawing.Size(93, 25);
+            this.Script_VarText19.TabIndex = 132;
+            // 
+            // Script_VarName19
+            // 
+            this.Script_VarName19.AutoSize = true;
+            this.Script_VarName19.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Script_VarName19.Location = new System.Drawing.Point(807, 336);
+            this.Script_VarName19.Name = "Script_VarName19";
+            this.Script_VarName19.Size = new System.Drawing.Size(86, 17);
+            this.Script_VarName19.TabIndex = 131;
+            this.Script_VarName19.Text = "Regra Ramal:";
+            // 
+            // Script_VarDelete18
+            // 
+            this.Script_VarDelete18.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_VarDelete18.Location = new System.Drawing.Point(995, 302);
+            this.Script_VarDelete18.Name = "Script_VarDelete18";
+            this.Script_VarDelete18.Size = new System.Drawing.Size(20, 25);
+            this.Script_VarDelete18.TabIndex = 130;
+            this.Script_VarDelete18.Text = "-";
+            this.Script_VarDelete18.UseVisualStyleBackColor = true;
+            // 
+            // Script_VarText18
+            // 
+            this.Script_VarText18.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_VarText18.Location = new System.Drawing.Point(896, 302);
+            this.Script_VarText18.Name = "Script_VarText18";
+            this.Script_VarText18.Size = new System.Drawing.Size(93, 25);
+            this.Script_VarText18.TabIndex = 129;
+            // 
+            // Script_VarName18
+            // 
+            this.Script_VarName18.AutoSize = true;
+            this.Script_VarName18.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Script_VarName18.Location = new System.Drawing.Point(807, 306);
+            this.Script_VarName18.Name = "Script_VarName18";
+            this.Script_VarName18.Size = new System.Drawing.Size(38, 17);
+            this.Script_VarName18.TabIndex = 128;
+            this.Script_VarName18.Text = "DDD:";
+            // 
+            // Script_VarDelete17
+            // 
+            this.Script_VarDelete17.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_VarDelete17.Location = new System.Drawing.Point(995, 272);
+            this.Script_VarDelete17.Name = "Script_VarDelete17";
+            this.Script_VarDelete17.Size = new System.Drawing.Size(20, 25);
+            this.Script_VarDelete17.TabIndex = 127;
+            this.Script_VarDelete17.Text = "-";
+            this.Script_VarDelete17.UseVisualStyleBackColor = true;
+            // 
+            // Script_VarText17
+            // 
+            this.Script_VarText17.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_VarText17.Location = new System.Drawing.Point(896, 272);
+            this.Script_VarText17.Name = "Script_VarText17";
+            this.Script_VarText17.Size = new System.Drawing.Size(93, 25);
+            this.Script_VarText17.TabIndex = 126;
+            // 
+            // Script_VarName17
+            // 
+            this.Script_VarName17.AutoSize = true;
+            this.Script_VarName17.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Script_VarName17.Location = new System.Drawing.Point(807, 276);
+            this.Script_VarName17.Name = "Script_VarName17";
+            this.Script_VarName17.Size = new System.Drawing.Size(91, 17);
+            this.Script_VarName17.TabIndex = 125;
+            this.Script_VarName17.Text = "Tronco-Chave:";
+            // 
+            // Script_VarText16
+            // 
+            this.Script_VarText16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_VarText16.Location = new System.Drawing.Point(896, 242);
+            this.Script_VarText16.Name = "Script_VarText16";
+            this.Script_VarText16.Size = new System.Drawing.Size(93, 25);
+            this.Script_VarText16.TabIndex = 124;
+            // 
+            // Script_VarName16
+            // 
+            this.Script_VarName16.AutoSize = true;
+            this.Script_VarName16.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Script_VarName16.Location = new System.Drawing.Point(807, 246);
+            this.Script_VarName16.Name = "Script_VarName16";
+            this.Script_VarName16.Size = new System.Drawing.Size(87, 17);
+            this.Script_VarName16.TabIndex = 123;
+            this.Script_VarName16.Text = "IP SIP Acesso:";
+            // 
+            // Button_ImportSAIP
+            // 
+            this.Button_ImportSAIP.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_ImportSAIP.Location = new System.Drawing.Point(801, 25);
+            this.Button_ImportSAIP.Name = "Button_ImportSAIP";
+            this.Button_ImportSAIP.Size = new System.Drawing.Size(138, 37);
+            this.Button_ImportSAIP.TabIndex = 122;
+            this.Button_ImportSAIP.Text = "Importar SAIP";
+            this.Button_ImportSAIP.UseVisualStyleBackColor = true;
+            this.Button_ImportSAIP.Click += new System.EventHandler(this.Button_ImportSAIP_Click);
             // 
             // Button_ApplyTestValues
             // 
@@ -2322,7 +2648,7 @@ namespace MasterSheetNew
             this.Script_ProcedureName.Margin = new System.Windows.Forms.Padding(0);
             this.Script_ProcedureName.Name = "Script_ProcedureName";
             this.Script_ProcedureName.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Script_ProcedureName.Size = new System.Drawing.Size(514, 45);
+            this.Script_ProcedureName.Size = new System.Drawing.Size(556, 45);
             this.Script_ProcedureName.TabIndex = 5;
             this.Script_ProcedureName.Text = "Procedure Name";
             this.Script_ProcedureName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -5416,16 +5742,16 @@ namespace MasterSheetNew
             this.mySqlCommand1.EnableCaching = false;
             this.mySqlCommand1.Transaction = null;
             // 
-            // Button_ImportSAIP
+            // Script_ButtonRegraAdc
             // 
-            this.Button_ImportSAIP.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button_ImportSAIP.Location = new System.Drawing.Point(814, 25);
-            this.Button_ImportSAIP.Name = "Button_ImportSAIP";
-            this.Button_ImportSAIP.Size = new System.Drawing.Size(125, 37);
-            this.Button_ImportSAIP.TabIndex = 122;
-            this.Button_ImportSAIP.Text = "Import SAIP";
-            this.Button_ImportSAIP.UseVisualStyleBackColor = true;
-            this.Button_ImportSAIP.Click += new System.EventHandler(this.Button_ImportSAIP_Click);
+            this.Script_ButtonRegraAdc.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_ButtonRegraAdc.Location = new System.Drawing.Point(950, 109);
+            this.Script_ButtonRegraAdc.Name = "Script_ButtonRegraAdc";
+            this.Script_ButtonRegraAdc.Size = new System.Drawing.Size(128, 42);
+            this.Script_ButtonRegraAdc.TabIndex = 150;
+            this.Script_ButtonRegraAdc.Text = "Regra Adicional";
+            this.Script_ButtonRegraAdc.UseVisualStyleBackColor = true;
+            this.Script_ButtonRegraAdc.Click += new System.EventHandler(this.Script_ButtonRegraAdc_Click);
             // 
             // Form1
             // 
@@ -5917,6 +6243,34 @@ namespace MasterSheetNew
         private Label label5;
         private Button Button_ApplyTestValues;
         private Button Button_ImportSAIP;
+        private Label Script_VarEx18;
+        private Label Script_VarEx19;
+        private Label Script_VarEx20;
+        private Label Script_VarEx17;
+        private Label Script_VarEx16;
+        private Button Script_VarDelete20;
+        private TextBox Script_VarText20;
+        private Label Script_VarName20;
+        private Button Script_VarDelete19;
+        private TextBox Script_VarText19;
+        private Label Script_VarName19;
+        private Button Script_VarDelete18;
+        private TextBox Script_VarText18;
+        private Label Script_VarName18;
+        private Button Script_VarDelete17;
+        private TextBox Script_VarText17;
+        private Label Script_VarName17;
+        private TextBox Script_VarText16;
+        private Label Script_VarName16;
+        private ComboBox Script_SinalizBox;
+        private Label Script_SinalizSubTitle;
+        private Label Script_VarEx21;
+        private Button Script_VarDelete21;
+        private TextBox Script_VarText21;
+        private Label Script_VarName21;
+        private Label Script_VozTitleLabel;
+        private Button Script_VarDelete16;
+        private Button Script_ButtonRegraAdc;
     }
 }
 

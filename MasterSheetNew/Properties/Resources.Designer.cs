@@ -61,6 +61,35 @@ namespace MasterSheetNew.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a conf t 
+        ///!
+        ///!
+        ///hostname var00 
+        ///!
+        ///ip domain name embratel 
+        ///!
+        ///!
+        ///###################################################### 
+        ///# CONFIGURACOES DE USUARIO # 
+        ///###################################################### 
+        ///!
+        ///service password-encryption
+        ///username EBT privilege 10 password CQMR
+        ///enable secret PRO1AN
+        ///logging buffered 4096 debugging
+        ///service tcp-keepalives-in
+        ///service tcp-keepalives-out
+        ///no enable password
+        ///service timestamps debug datetime msec localtime show-timezone
+        ///service timestamps log datetime m [o restante da cadeia de caracteres foi truncado]&quot;;.
+        /// </summary>
+        internal static string Cisco_Config_BLD {
+            get {
+                return ResourceManager.GetString("Cisco-Config-BLD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap logo_hitss_black {

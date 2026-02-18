@@ -28,6 +28,7 @@ namespace MasterSheetNew
         private void Form1_Load(object sender, EventArgs e)
         {
             GetAllScripts();
+            selectedScript = allScripts[0];
         }
 
         public void GetAllScripts()
@@ -35,7 +36,7 @@ namespace MasterSheetNew
             allScripts = scriptClass.AddScripts();
 
             Scripts_BoxList.DataSource = allScripts;
-            Scripts_BoxList.DisplayMember = "Name";
+            Scripts_BoxList.DisplayMember = "name";
         }
 
 
@@ -53,6 +54,7 @@ namespace MasterSheetNew
             selectedScript = Scripts_BoxList.SelectedItem as Script;
 
             Script_TextBox.Text = selectedScript.scriptString;
+            Script_SelectName.Text = selectedScript.name;
             Script_AlterDate.Text = selectedScript.alterDate.ToString("dd/MM/yyyy");
         }
     }
