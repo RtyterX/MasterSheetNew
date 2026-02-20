@@ -30,6 +30,8 @@ namespace MasterSheetNew
         public void GetAllVersionsList()
         {
             // Versions
+            versionList.Add(new WindowsFormsApp1.Entitys.Version("1.7.3", "Adicionado Scripts de MPLS e Coleta de Logs", DateTime.Parse("19/02/2026")));
+            versionList.Add(new WindowsFormsApp1.Entitys.Version("1.7.2", "Adicionado Importar do SAIP na tela de Scripts", DateTime.Parse("16/02/2026")));
             versionList.Add(new WindowsFormsApp1.Entitys.Version("1.7.1", "Script Dispatcher Bug Fix", DateTime.Parse("15/02/2026")));
             versionList.Add(new WindowsFormsApp1.Entitys.Version("1.7.0", "Habilitar Edição + Reorganização Total do Código Principal", DateTime.Parse("14/02/2026")));
             versionList.Add(new WindowsFormsApp1.Entitys.Version("1.6.3", "Minor Fixes", DateTime.Parse("13/02/2026")));

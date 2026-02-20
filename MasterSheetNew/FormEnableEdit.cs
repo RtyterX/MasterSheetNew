@@ -36,6 +36,7 @@ namespace MasterSheetNew
                 else
                 {
                     MessageBox.Show("Senha Incorreta");
+                    PasswordTextBox.Text = string.Empty;
                 }
 
             }

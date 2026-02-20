@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEdit));
             this.SaveButton = new System.Windows.Forms.Button();
             this.Scripts_BoxList = new System.Windows.Forms.ComboBox();
             this.MainTitle = new System.Windows.Forms.Label();
@@ -129,8 +130,10 @@
             this.Controls.Add(this.MainTitle);
             this.Controls.Add(this.Scripts_BoxList);
             this.Controls.Add(this.SaveButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormEdit";
-            this.Text = "FormEdit";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Edição de Script";
             this.ResumeLayout(false);
             this.PerformLayout();
 

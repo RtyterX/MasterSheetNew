@@ -46,7 +46,6 @@ namespace MasterSheetNew
             scriptClass.AlterScript(selectedScript);
 
             GetAllScripts();
-
         }
 
         private void Scripts_BoxList_SelectedIndexChanged(object sender, EventArgs e)

@@ -489,7 +489,7 @@ namespace WindowsFormsApp1.Entitys
             #endregion
             // ------------------------------------------- Config - Fortigate - BLD --------------------------------------------------
             #region
-            string fortigateBLD = "# \r\n# Jogar as configurações em blocos do 'edit' até o 'end' (Salva). \r\n#\r\n################# Configs - Hostname/Horario ############# \r\n#\r\nconfig system global\r\n    set hostname \"var00\"\r\n   set timezone 18\r\n   set dst disable\r\nend\r\n#\r\n#\r\n################# Deleta DHCP na LAN ################# \r\n#\r\nconfig system dhcp server\r\n   delete 1\r\n   delete 2\r\nend\r\n#\r\n#\r\n################# Limpar Firewall Policy ######################## \r\n#\r\nconfig firewall policy\r\n    purge\r\n    y\r\nend\r\n#\r\n#\r\n################# Remove as Interfaces do Virtual-Switch ############ \r\n# \r\nconfig system virtual-switch\r\n    edit lan\r\n        set physical-switch \"sw0\"\r\n        config port\r\n            delete lan1\r\n            delete lan2\r\n            delete lan3\r\n            #\r\n        end\r\n    next\r\nend\r\n#\r\n#\r\n#\r\n############## Limpeza Interface LAN ##################### \r\n# \r\nconfig system interface\r\n    edit lan\r\n       unset ip\r\n    next\r\nend\r\n#\r\n#\r\n#\r\n################# Config - BANER ################ \r\n#\r\nconfig system replacemsg admin pre_admin-disclaimer-text\r\nset buffer \"\r\n||========================================||  \r\n||========== CLARO Brasil S.A. ===========||  \r\n||========================================||  \r\n                                              \r\n        SOMENTE USUARIOS AUTORIZADOS          \r\n           AUTHORIZED USERS ONLY              \r\n                                              \r\n        OS ACESSOS SERAO MONITORADOS          \r\n         ACCESSES WILL BE MONITORED           \r\n                                              \r\n||========================================||  \r\n\"\r\nend\r\nconfig system global\r\n     set pre-login-banner enable\r\nend\r\n#\r\n#\r\n#\r\n################# Config - Usuário/Trusthost ################### \r\n#\r\nconfig system admin\r\n    edit \"EBT\"\r\n       set accprofile \"super_admin\"\r\n       set vdom \"root\"\r\n       set password PRO1AN\r\n       set trusthost1 169.248.255.254 255.255.255.255\r\n       set trusthost2 200.255.156.192 255.255.255.192\r\n       set trusthost3 200.255.122.0 255.255.255.0\r\n       set trusthost5 200.244.28.61 255.255.255.255\r\n       set trusthost6 200.244.27.26 255.255.255.255\r\n       set trusthost7 var07 255.255.255.255\r\n       set trusthost8 var10 255.255.255.255\r\n       set accprofile \"super_admin\"\r\n    next\r\n#\r\n    delete \"admin\"\r\nend\r\n#\r\n#\r\n#\r\n################# Config - NTP Embratel ################ \r\n#\r\nconfig system ntp\r\n    set ntpsync enable\r\n    set type custom\r\n    set syncinterval 1\r\n    config ntpserver\r\n        edit 0\r\n            set server \"200.20.186.75\"\r\n            set server \"200.20.186.94\"\r\n        next\r\n    end\r\n    set server-mode enable\r\n    set interface \"fortilink\"\r\nend\r\n#\r\n#\r\n#\r\n################# Config - SNMP Embratel ################### \r\n#\r\nconfig system snmp community\r\n    edit 0\r\n    set name \"LIDER RO\"\r\n    config hosts\r\n      edit 0\r\n        set ip 200.255.156.194 255.255.255.255\r\n      next\r\n    end\r\n    next\r\n    end\r\n    config system snmp sysinfo\r\n      set status enable\r\nend\r\n#\r\n#\r\n#\r\n################# Config - Interfaces LAN / WAN ############### \r\n#\r\n#\r\n################# Configuracao de WAN ################## \r\n#\r\nconfig system interface \r\n    edit \"var03\"\r\n       set mode static\r\n       set vdom \"root\"\r\n       set allowaccess ping https ssh telnet snmp\r\n       set role wan\r\n       set description \"var01\"\r\n       set alias \"WAN\"\r\n    next\r\n#\r\n#\r\n#\r\nwithVlan\r\n#\r\n#\r\n#\r\n################# Configuracao de LAN ####################### \r\n#\r\n    edit \"var05\"\r\n       set vdom \"root\"\r\n       set ip var09 mascaraLAN\r\n       set allowaccess ping fgfm snmp \r\n       set description \"CONEXAO LAN\"\r\n       set alias \"LAN\"\r\n       set role lan\r\n    next\r\nend\r\n#\r\n#\r\n#\r\n################## Config - Policies Entrada/Saida ############# \r\n# \r\nconfig firewall policy\r\n     edit 1\r\n       set name \"LAN_WAN\"\r\n       set srcintf \"var05\"\r\n       set dstintf \"var03\"\r\n       set srcaddr \"all\"\r\n       set dstaddr \"all\"\r\n      set action accept\r\n      set schedule \"always\"\r\n       set service \"ALL\"\r\n       set fsso disable\r\n       set nat disable\r\n    next\r\n    edit 2\r\n       set name \"WAN_LAN\"\r\n       set srcintf \"var03\"\r\n       set dstintf \"var05\"\r\n       set srcaddr \"all\"\r\n       set dstaddr \"all\"\r\n       set action accept\r\n       set schedule \"always\"\r\n       set service \"ALL\"\r\n       set fsso disable\r\n      set nat disable\r\n    next\r\nend\r\n#\r\n#\r\n#\r\n################# Config - Rota Estatica ############################## \r\n#\r\nconfig router static\r\n    edit 1\r\n       set gateway var07\r\n       set device var03sourceLan\r\n    next\r\nend\r\n#\r\n#\r\n#\r\n#\r\n\r\n";
+            string fortigateBLD = "# \r\n# Jogar as configurações em blocos do 'edit' até o 'end' (Salva). \r\n#\r\n################# Configs - Hostname/Horario ############# \r\n#\r\nconfig system global\r\n    set hostname \"var00\"\r\n   set timezone 18\r\n   set dst disable\r\nend\r\n#\r\n#\r\n################# Deleta DHCP na LAN ################# \r\n#\r\nconfig system dhcp server\r\n   delete 1\r\n   delete 2\r\nend\r\n#\r\n#\r\n################# Limpar Firewall Policy ######################## \r\n#\r\nconfig firewall policy\r\n    purge\r\n    y\r\nend\r\n#\r\n#\r\n################# Remove as Interfaces do Virtual-Switch ############ \r\n# \r\nconfig system virtual-switch\r\n    edit lan\r\n        set physical-switch \"sw0\"\r\n        config port\r\n            delete lan1\r\n            delete lan2\r\n            delete lan3\r\n            #\r\n        end\r\n    next\r\nend\r\n#\r\n#\r\n#\r\n############## Limpeza Interface LAN ##################### \r\n# \r\nconfig system interface\r\n    edit lan\r\n       unset ip\r\n    next\r\nend\r\n#\r\n#\r\n#\r\n################# Config - BANER ################ \r\n#\r\nconfig system replacemsg admin pre_admin-disclaimer-text\r\nset buffer \"\r\n||========================================||  \r\n||========== CLARO Brasil S.A. ===========||  \r\n||========================================||  \r\n                                              \r\n        SOMENTE USUARIOS AUTORIZADOS          \r\n           AUTHORIZED USERS ONLY              \r\n                                              \r\n        OS ACESSOS SERAO MONITORADOS          \r\n         ACCESSES WILL BE MONITORED           \r\n                                              \r\n||========================================||  \r\n\"\r\nend\r\nconfig system global\r\n     set pre-login-banner enable\r\nend\r\n#\r\n#\r\n#\r\n################# Config - Usuário/Trusthost ################### \r\n#\r\nconfig system admin\r\n    edit \"EBT\"\r\n       set accprofile \"super_admin\"\r\n       set vdom \"root\"\r\n       set password PRO1AN\r\n       set trusthost1 169.248.255.254 255.255.255.255\r\n       set trusthost2 200.255.156.192 255.255.255.192\r\n       set trusthost3 200.255.122.0 255.255.255.0\r\n       set trusthost5 200.244.28.61 255.255.255.255\r\n       set trusthost6 200.244.27.26 255.255.255.255\r\n       set trusthost7 var07 255.255.255.255\r\n       set trusthost8 var10 255.255.255.255\r\n       set accprofile \"super_admin\"\r\n    next\r\n#\r\n    delete \"admin\"\r\nend\r\n#\r\n#\r\n#\r\n################# Config - NTP Embratel ################ \r\n#\r\nconfig system ntp\r\n    set ntpsync enable\r\n    set type custom\r\n    set syncinterval 1\r\n    config ntpserver\r\n        edit 0\r\n            set server \"200.20.186.75\"\r\n            set server \"200.20.186.94\"\r\n        next\r\n    end\r\n    set server-mode enable\r\n    set interface \"fortilink\"\r\nend\r\n#\r\n#\r\n#\r\n################# Config - SNMP Embratel ################### \r\n#\r\nconfig system snmp community\r\n    edit 0\r\n    set name \"LIDER RO\"\r\n    config hosts\r\n      edit 0\r\n        set ip 200.255.156.194 255.255.255.255\r\n      next\r\n    end\r\n    next\r\n    end\r\n    config system snmp sysinfo\r\n      set status enable\r\nend\r\n#\r\n#\r\n#\r\n################# Config - Interfaces LAN / WAN ############### \r\n#\r\n#\r\n################# Configuracao de WAN ################## \r\n#\r\nconfig system interface \r\n    edit \"var03\"\r\n       set mode static\r\n       set vdom \"root\"\r\n       set allowaccess ping https ssh telnet snmp\r\n       set role wan\r\n       set description \"var01\"\r\n       set alias \"WAN\"\r\n    next\r\n#\r\n#\r\n#\r\nwithVlan\r\n#\r\n#\r\n#\r\n################# Configuracao de LAN ####################### \r\n#\r\n    edit \"var05\"\r\n       set vdom \"root\"\r\n       set ip var09 mascaraLAN\r\n       set allowaccess ping fgfm snmp \r\n       set description \"CONEXAO LAN\"\r\n       set alias \"LAN\"\r\n       set role lan\r\n    next\r\nend\r\n#\r\n#\r\n#\r\n################## Config - Policies Entrada/Saida ############# \r\n# \r\nconfig firewall policy\r\n     edit 1\r\n       set name \"LAN_WAN\"\r\n       set srcintf \"var05\"\r\n       set dstintf \"var03sourceLan\"\r\n       set srcaddr \"all\"\r\n       set dstaddr \"all\"\r\n      set action accept\r\n      set schedule \"always\"\r\n       set service \"ALL\"\r\n       set fsso disable\r\n       set nat disable\r\n    next\r\n    edit 2\r\n       set name \"WAN_LAN\"\r\n       set srcintf \"var03sourceLan\"\r\n       set dstintf \"var05\"\r\n       set srcaddr \"all\"\r\n       set dstaddr \"all\"\r\n       set action accept\r\n       set schedule \"always\"\r\n       set service \"ALL\"\r\n       set fsso disable\r\n      set nat disable\r\n    next\r\nend\r\n#\r\n#\r\n#\r\n################# Config - Rota Estatica ############################## \r\n#\r\nconfig router static\r\n    edit 1\r\n       set gateway var07\r\n       set device var03sourceLan\r\n    next\r\nend\r\n#\r\n#\r\n#\r\n#\r\n\r\n";
             #endregion
             // ------------------------------------------- Config - Huawei - BLD -----------------------------------------------------
             #region
@@ -497,11 +497,11 @@ namespace WindowsFormsApp1.Entitys
             #endregion
             // ------------------------------------------- Config - Cisco - MPLS -----------------------------------------------------
             #region
-            string ciscoMPLS = "";
+            string ciscoMPLS = "conf t\r\n!\r\nhostname var00\r\n!\r\n!\r\n!###################################################### \r\n!# CONFIGURAÇÃO DE USUARIO # \r\n!###################################################### \r\n!\r\nservice password-encryption \r\nusername EBT privilege 10 password CQMR \r\nenable secret PRO1AN \r\nlogging buffered 4096 debugging \r\nservice tcp-keepalives-in \r\nservice tcp-keepalives-out \r\nno enable password \r\nservice timestamps debug datetime msec localtime show-timezone \r\nservice timestamps log datetime msec localtime show-timezone \r\n!\r\n!\r\nno username cisco\r\nno username admin\r\n!\r\n!\r\n!\r\n!###################################################### \r\n!# LIMPEZA \r\n!###################################################### \r\n!\r\nno ip domain name yourdomain.com\r\nno ip domain lookup \r\n!\r\n!\r\nconfig-register 0x2102\r\nno username cisco\r\nno username admin\r\n!\r\n!\r\nno ip dhcp excluded-address 10.10.10.1\r\nno ip dhcp pool ccp-pool\r\n!\r\n!\r\nno access-list 23 permit 10.10.10.0 0.0.0.7\r\n!\r\n!\r\nip forward-protocol nd \r\n!\r\nno ip http server\r\nno ip http secure-server\r\nno ip http access-class 23\r\nno ip http authentication local\r\nno ip http timeout-policy idle 60 life 86400 requests 10000\r\nlogging buffered 51200 warnings \r\nno logging console \r\nno logging trap notifications\r\n!\r\n!\r\n!\r\nno crypto pki trustpoint TP-self-signed-4256465151\r\nyes\r\n!\r\n!\r\nno crypto pki certificate chain TP-self-signed-4256465151\r\n!\r\n!\r\n!\r\nConfig-Register 0x2102\r\n!\r\n!\r\n!\r\n!\r\n!###################################################### \r\n!# CONFIGURACOES DE INTERFACES \r\n!###################################################### \r\n!\r\ninterface var03\r\n description var01\r\n bandwidth var02\r\n no shut\r\n!\r\n!\r\nwithVlan\r\n!\r\ninterface var05\r\n description ** LAN **\r\nip address var09 mascaraLAN\r\n no shutdown\r\n no ip redirects\r\n no ip unreachables\r\n no ip proxy-arp\r\n duplex auto\r\n speed auto\r\n no cdp enable\r\n no auto-summary \r\n!\r\n!\r\n!\r\n!\r\n!######################################################\r\n!### REMOCAO DE ROTA ESTATICA ### \r\n!###################################################### \r\n!\r\nno ip route 0.0.0.0 0.0.0.0 var07\r\n!\r\n!\r\n!\r\n!###################################################### \r\n!# BGP\r\n!######################################################\r\n!\r\nrouter bgp var12\r\nno synchronization \r\nbgp log-neighbor-changes \r\nredistribute connected \r\nneighbor var07 remote-as 4230\r\nneighbor var07 send-community\r\nneighbor var07 allowas-in\r\nneighbor var07 description designacao\r\nneighbor var07 soft-reconfiguration inbound\r\nno auto-summary \r\n! \r\n! \r\n! \r\n!###################################################### \r\n!# BANNER - USER INTERFACE \r\n!###################################################### \r\n!\r\nbanner motd ^\r\n||========================================||\r\n||========== CLARO Brasil S.A. ===========||\r\n||========================================||\r\n\r\n        SOMENTE USUARIOS AUTORIZADOS\r\n           AUTHORIZED USERS ONLY\r\n\r\n        OS ACESSOS SERAO MONITORADOS\r\n         ACCESSES WILL BE MONITORED\r\n\r\n||========================================||^\r\n!\r\n!\r\n!\r\nno banner exec ^C \r\nno banner login ^C \r\n!\r\n!\r\n!\r\nline con 0\r\n no password\r\n login local\r\nline aux 0\r\n no password\r\n login local\r\nline vty 0 4\r\n no privilege level 15\r\n no password\r\n no access-class 23 in\r\n login local\r\n transport input all\r\n!\r\n!\r\n!\r\n!\r\nend";
             #endregion
             // ------------------------------------------- Config - HPE - MPLS -------------------------------------------------------
             #region
-            string hpeMPLS = "";
+            string hpeMPLS = "system-view\r\n#\r\n#\r\nSysname var00\r\n#\r\n#\r\n#\r\n###################################################### \r\n# CONFIGURACAO DE USUARIO # \r\n###################################################### \r\n#\r\nlocal-user EBT class manage \r\npassword simple PRO1AN \r\nPRO1AN\r\n service-type telnet \r\n service-type telnet terminal \r\n service-type ftp \r\n authorization-attribute user-role network-admin \r\n authorization-attribute user-role network-operator \r\n#\r\n#\r\ntelnet server enable \r\npassword-recovery enable \r\ninfo-center logbuffer size 1024 \r\n#\r\n#\r\n#\r\n###################################################### \r\n# LIMPEZA # \r\n######################################################\r\n#\r\nundo ip http enable\r\nundo local-user admin class manage\r\nundo interface Vlan-interface1\r\nundo dhcp enable\r\nundo dhcp server always-broadcast\r\nundo dhcp server ip-pool lan1\r\nundo dns proxy enable\r\n#\r\n#\r\ninterface GigabitEthernet0/0\r\nundo ip address dhcp-alloc\r\n#\r\n#\r\n#\r\n###################################################### \r\n# CONFIGURACAO DE INTERFACES # \r\n######################################################\r\n#\r\ninterface var03\r\ndescription  var01\r\nport link-mode route\r\nundo virtualbaudrate\r\nbandwidth var02\r\n#\r\n#\r\nwithVlan\r\n#\r\ninterface var05\r\nport link-mode route\r\ndescription ** LAN **\r\nip address var09 mascaraLAN\r\n#\r\n#\r\n#\r\n###################################################### \r\n# REMOCAO DE ROTA ESTATICA\r\n###################################################### \r\n#\r\nundo ip route-static 0.0.0.0 0.0.0.0 var07\r\n#\r\n#\r\n#\r\n#\r\n###################################################### \r\n# BGP \r\n###################################################### \r\n#\r\nbgp var12\r\npeer var07 as-number 4230\r\npeer var07 description designacao\r\n#\r\naddress-family ipv4 unicast\r\nimport-route direct\r\npeer var07 enable\r\npeer var07 allow-as-loop 10\r\npeer var07 advertise-community\r\n#\r\n#\r\n#\r\n###################################################### \r\n# BANNER - USER INTERFACE \r\n###################################################### \r\n#\r\n header motd %\r\n||=============CLARO Brasil S.A.============||\r\n||========================================||\r\n\r\n        SOMENTE USUARIOS AUTORIZADOS\r\n           AUTHORIZED USERS ONLY\r\n\r\n        OS ACESSOS SERAO MONITORADOS\r\n         ACCESSES WILL BE MONITORED\r\n\r\n||========================================||\r\n%\r\n#\r\n#\r\n#\r\nreturn\r\n#";
             #endregion
             // ------------------------------------------- Config - HPE Old - MPLS ---------------------------------------------------
             #region
@@ -509,7 +509,7 @@ namespace WindowsFormsApp1.Entitys
             #endregion
             // ------------------------------------------- Config - Huawei - MPLS ----------------------------------------------------
             #region
-            string huaweiMPLS = "";
+            string huaweiMPLS = "#\r\nsys\r\n#\r\n#\r\nsysname var00\r\n#\r\n#\r\n#\r\n#\r\nheader login information \"\r\n||========================================||\r\n||=============CLARO Brasil S.A.============||\r\n||========================================||\r\n\r\n        SOMENTE USUARIOS AUTORIZADOS\r\n           AUTHORIZED USERS ONLY\r\n\r\n        OS ACESSOS SERAO MONITORADOS\r\n         ACCESSES WILL BE MONITORED\r\n\r\n||========================================||\r\n\"\r\n#\r\n#\r\n#\r\n#\r\naaa\r\nundo local-aaa-user password policy access-user\r\nundo local-aaa-user password policy administrator\r\nlocal-user EBT password irreversible-cipher PRO1AN@1\r\nPRO1AN@1\r\nlocal-user EBT service-type telnet terminal ssh\r\ny\r\nlocal-user EBT privilege level 15\r\n#\r\nundo local-user admin\r\nquit\r\n#\r\n#\r\n#\r\nundo http secure-server ssl-policy\r\ny\r\n#\r\n#\r\nundo http secure-server enable\r\ny\r\n#\r\n#\r\nundo http server permit interface\r\n#\r\n#\r\n#\r\ninterface Vlanif1\r\n undo ip address\r\n#\r\n#\r\n#\r\ndns resolve\r\ndns proxy enable\r\ny\r\n#\r\ndhcp enable\r\n#\r\n#\r\n#\r\ndrop illegal-mac alarm\r\n#\r\n#\r\nauthentication-profile name default_authen_profile\r\nauthentication-profile name dot1x_authen_profile\r\nauthentication-profile name dot1xmac_authen_profile\r\nauthentication-profile name mac_authen_profile\r\nauthentication-profile name multi_authen_profile\r\nauthentication-profile name portal_authen_profile\r\nquit\r\n#\r\n#\r\n#\r\nradius-server template default\r\nquit\r\n#\r\n#\r\npki realm default\r\n certificate-check none\r\nquit\r\n#\r\n#\r\n#\r\nike proposal default\r\n#\r\n#\r\nssl policy default_policy type server\r\n pki-realm default\r\n version tls1.2\r\n ciphersuite rsa_aes_128_sha256 rsa_aes_256_sha256 ecdhe_rsa_aes128_gcm_sha256 ecdhe_rsa_aes256_gcm_sha384\r\ny\r\nquit\r\n encryption-algorithm aes-256 aes-192 aes-128\r\n dh group14\r\n authentication-algorithm sha2-512 sha2-384 sha2-256\r\n authentication-method pre-share\r\n integrity-algorithm hmac-sha2-256\r\n prf hmac-sha2-256\r\nquit\r\n#\r\n#\r\n#\r\nfree-rule-template name default_free_rule\r\n#\r\nportal-access-profile name portal_access_profile\r\nquit\r\n#\r\nweb\r\n set fast-configuration state disable\r\n#\r\n#\r\n#\r\ncellular profile default\r\n modem auto-recovery dial action modem-reboot fail-times 128\r\n modem auto-recovery icmp-unreachable action modem-reboot\r\n modem auto-recovery services-unavailable action modem-reboot test-times 0 interval 3600\r\n#\r\n#\r\n#\r\n# \r\n# \r\ninterface var03\r\ndescription var01\r\nbandwidth var02\r\n# \r\n# \r\nwithVlan\r\n# \r\ninterface var05\r\ndescription  **LAN**\r\nip address var09 mascaraLAN\r\n#\r\n#\r\n# \r\n#\r\n#\r\n#\r\nbgp var12\r\n router-id var08\r\n peer var07 as-number 4230\r\n peer var07 description designacao\r\n #\r\n ipv4-family unicast\r\n  undo synchronization\r\n  import-route direct\r\n  import-route static\r\n  peer var07 enable\r\n  peer var07 allow-as-loop 10\r\n#\r\n#\r\n#\r\n#\r\nfib regularly-refresh disable\r\ny\r\n#\r\n#\r\ninfo-center loghost source var03VlanInfo\r\ninfo-center loghost var07\r\ninfo-center loghost var07\r\ninfo-center logbuffer size 1024\r\n#\r\n#\r\nundo icmp name timestamp-request receive\r\n#\r\n#\r\n#\r\ntelnet server enable\r\ntelnet server permit interface var03VlanTelnet\r\n#\r\n#\r\n#\r\nuser-interface con 0 \r\n authentication-mode aaa \r\nuser-interface vty 0 4 \r\n acl 3000 inbound \r\n authentication-mode aaa \r\n user privilege level 15\r\n protocol inbound telnet \r\n#\r\n#\r\n# \r\n#\r\n#\r\nreturn";
             #endregion
             // ------------------------------------------- Config - Fortigate - MPLS -------------------------------------------------
             #region
@@ -587,20 +587,9 @@ namespace WindowsFormsApp1.Entitys
                     "!\r\n" +
                     "show interface var03\r\n" +
                     "!\r\n" +
-                    "!######################## \r\n" +
-                    "!\r\n" +
                     "vlanWan" +
-                    "!\r\n" +
-                    "!######################## \r\n" +
-                    "!\r\n" +
                     "intLan" +
-                    "!\r\n" +
-                    "!######################## \r\n" +
-                    "!\r\n" +
                     "vlanLan" +
-                    "!\r\n" +
-                    "!\r\n" +
-                    "!\r\n" +
                     "!#######################################\r\n" +
                     "!#            SYSTEM INFO              #\r\n" +
                     "!#######################################\r\n" +
@@ -620,10 +609,6 @@ namespace WindowsFormsApp1.Entitys
                     "!\r\n" +
                     "!\r\n" +
                     "!\r\n" +
-                    "show policy-map interface var03\r\n" +
-                    "!\r\n" +
-                    "!\r\n" +
-                    "policyLan" +
                     "!#######################################\r\n" +
                     "!#          TABELA DE ROTEAMENTO       #\r\n" +
                     "!#######################################\r\n" +
@@ -636,7 +621,7 @@ namespace WindowsFormsApp1.Entitys
                     "!#                PING                 #\r\n" +
                     "!#######################################\r\n" +
                     "!\r\n" +
-                    "ping var07 repeat 200 size 1500 data 5050 sourceLan \r\n" +
+                    "ping var07 repeat 200 size 1500 isrdata 5050 sourceLan \r\n" +
                     "!\r\n" +
                     "!\r\n" +
                     "!\r\n" +
@@ -810,18 +795,10 @@ namespace WindowsFormsApp1.Entitys
                     "#\r\n" +
                     "display interface var03\r\n" +
                     "#\r\n" +
-                    "######################## \r\n" +
                     "#\r\n" +
                     "vlanWan" +
-                    "#\r\n" +
-                    "#\r\n" +
                     "intLan" +
-                    "#\r\n" +
-                    "#\r\n" +
                     "vlanLan" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
                     "!#######################################\r\n" +
                     "#            SYSTEM INFO               #\r\n" +
                     "!#######################################\r\n" +
@@ -1243,11 +1220,11 @@ namespace WindowsFormsApp1.Entitys
 
             // ------------------------------------------- Log - Cisco - MPLS --------------------------------------------------------
             #region
-            string ciscoLogsMPLS = "";
+            string ciscoLogsMPLS = "terminal length 0 \r\n!\r\n!\r\nundebug all\r\nwr memory\r\n!\r\n!\r\n!############## CONFIGURACOES logType DO CPE ################ \r\n!\r\n!\r\n!#######################################\r\n!#            CONFIGURACOES            #\r\n!#######################################\r\n!\r\nshow startup-config\r\n!\r\n!\r\nshow ip interface brief\r\n!\r\n!\r\n!\r\n!#######################################\r\n!#            INTERFACES               #\r\n!#######################################\r\n!\r\nshow ip interface brief\r\n!\r\n!\r\n!\r\nshow interface var03\r\n!\r\n!\r\nwithVlan\r\nwithLan\r\nLanWithVlan\r\n!#######################################\r\n!#            SYSTEM INFO              #\r\n!#######################################\r\n!\r\nshow version\r\n!\r\n!\r\nshow inventory\r\n!\r\n!\r\n!\r\n!#######################################\r\n!#              POLICY-MAP             #\r\n!#######################################\r\n!\r\nshow policy-map\r\n!\r\n!\r\n!\r\nshow policy-map interface\r\n!\r\n!\r\n!\r\n!#######################################\r\n!#                BGP                  #\r\n!#######################################\r\n!\r\nshow ip route summary\r\n!\r\n!\r\n!#############################\r\n!\r\nshow ip bgp summary\r\n!\r\n!\r\n!#############################\r\n!\r\nshow ip bgp neighbors  var07 advertised-routes\r\n!\r\n!\r\n!\r\n!#######################################\r\n!#                PING                 #\r\n!#######################################\r\n!\r\nping var07 repeat 200 size 1500 isrdata 5050 sourceLan\r\n!\r\n!\r\n!\r\n!\r\n\r\n";
             #endregion
             // ------------------------------------------- Log - HPE - MPLS ----------------------------------------------------------
             #region
-            string hpeLogsMPLS = "";
+            string hpeLogsMPLS = "screen-length disable\r\n#\r\n#\r\n############## CONFIGURAÇÕES logType DO CPE ################ \r\n#\r\nsys\r\n#\r\n#\r\n########################################\r\n#            CONFIGURACOES             #\r\n########################################\r\n#\r\ndisplay saved-configuration\r\n#\r\n#\r\n#\r\n########################################\r\n#             INTERFACES               #\r\n########################################\r\n#\r\ndisplay ip interface brief\r\n#\r\n#\r\n#\r\ndisplay interface var03\r\n#\r\n#\r\n#\r\nwithVlan\r\nwithLan\r\nLanWithVlan\r\n!#######################################\r\n#            SYSTEM INFO               #\r\n!#######################################\r\n#\r\ndisplay version\r\n#\r\n#\r\ndisplay device manuinfo\r\n#\r\n#\r\n#\r\n########################################\r\n#            QoS POLICY                #\r\n########################################\r\n#\r\ndisplay qos policy interface\r\n#\r\n#\r\n#\r\n#\r\n########################################\r\n#                BGP                   #\r\n########################################\r\n#\r\ndisplay bgp peer ipv4\r\n#\r\n#\r\n#\r\n#################################################\r\n#\r\ndis bgp routing-table ipv4 peer var07 ad\r\n#\r\n#\r\n#\r\n#################################################\r\n#\r\ndisplay ip routing-table protocol static\r\n#\r\n#\r\n#\r\n#################################################\r\n#\r\ndisplay ip routing-table statistics\r\n#\r\n#\r\n#\r\n#\r\n########################################\r\n#                 PING                 # \r\n########################################\r\n#\r\nping var07 -s 1500 -c 20 sourceLan\r\n#\r\n#\r\n#\r\n";
             #endregion
             // ------------------------------------------- Log - Fortigate - MPLS ----------------------------------------------------
             #region
@@ -1453,24 +1430,16 @@ namespace WindowsFormsApp1.Entitys
             #endregion
             // ------------------------------------------- Log - Hauwei - MPLS -------------------------------------------------------
             #region
-            string huaweiLogsMPLS = "";
+            string huaweiLogsMPLS = "########### CONFIGURACOES logType DO CPE ############\r\n#\r\n#\r\nscreen-length 0 temporary\r\n#\r\n########################################################\r\n#\r\ndisplay vrrp brief\r\n#\r\n#\r\ndisplay nat session all\r\n#\r\n#\r\ndisplay ospf peer\r\n#\r\ndisplay ospf interface\r\n#\r\ndisplay ospf lsdb\r\n#\r\n#\r\n#\r\ndisplay rip 1 neighbor\r\n#\r\ndisplay rip 1 database\r\n#\r\ndisplay rip 1 route\r\n#\r\n#\r\n#\r\nsave\r\ny\r\n#\r\n#\r\n########################################\r\n# CONFIGURACOES \r\n########################################\r\n#\r\n#\r\n#\r\n#\r\ndisplay saved-configuration\r\n#\r\n#\r\n#\r\n#\r\n########################################\r\n# INTERFACES \r\n########################################\r\n#\r\ndisplay ip interface brief\r\n#\r\n#\r\n#\r\ndisplay interface \r\n#\r\n#\r\n#\r\nwithVlan\r\nwithLan\r\nLanWithVlan\r\n########################################\r\n# SYSTEM \r\n########################################\r\n#\r\n#\r\n#\r\ndisplay version\r\n#\r\n#\r\ndisplay sn\r\n#\r\n#\r\n#\r\n#\r\n########################################\r\n# POLICIES \r\n########################################\r\n#\r\n#\r\n#\r\ndisplay traffic-policy applied-record\r\n#\r\n#\r\ndisplay traffic policy statistics interface var03 outbound\r\n#\r\n#\r\ndisplay traffic policy user-defined\r\n#\r\n#\r\n#\r\n########################################\r\n# BGP\r\n########################################\r\n#\r\ndisplay bgp peer\r\n#\r\n#\r\n#\r\n###################################\r\n#\r\ndisplay bgp routing-table peer var07 advertised-routes\r\n#\r\n#\r\n#\r\n########################################\r\n# Tabela de Roteamento \r\n########################################\r\n#\r\n#\r\n#\r\ndisplay ip routing-table protocol static\r\n#\r\n#\r\ndisplay ip routing-table\r\n#\r\n#\r\ndisplay ip routing-table statistics\r\n#\r\n#\r\n#\r\n#\r\nping var07 -s 1500 -c 20 sourceLAN  \r\n#\r\n#\r\n#\r\n#";
             #endregion
 
             // ------------------------------------------- Log - Cisco - VOZ ---------------------------------------------------------
             #region
-            string ciscoLogsVOZ_R2 = "";
-            #endregion
-            // -------------------------------------------------
-            #region
-            string ciscoLogsVOZ_PABXIP = "";
+            string ciscoLogsVOZ = "terminal length 0 \r\n!\r\n!\r\nundebug all\r\nwr memory\r\n!\r\n!\r\n!############## CONFIGURACOES logType DO CPE ################ \r\n!\r\n!\r\n!#######################################\r\n!#            CONFIGURACOES            #\r\n!#######################################\r\n!\r\nshow startup-config\r\n!\r\n!\r\n!\r\n!#######################################\r\n!#            INTERFACES               #\r\n!#######################################\r\n!\r\nshow ip int brief\r\n!\r\n!\r\n!\r\nshow interface var03\r\n!\r\n!\r\nwithVlan\r\npabxip\r\nsinalizacao\r\n!#######################################\r\n!#            SYSTEM INFO              #\r\n!#######################################\r\n!\r\nshow version\r\n!\r\n!\r\nshow inventory\r\n!\r\n!\r\n!\r\n!#######################################\r\n!#              POLICY-MAP             #\r\n!#######################################\r\n!\r\nshow policy-map\r\n!\r\n!\r\n!\r\nshow policy-map interface \r\n!\r\n!\r\n!\r\n!#######################################\r\n!#         TABELA DE ROTEAMENTO        #\r\n!#######################################\r\n!\r\nshow ip route summary\r\n!\r\n!\r\n!\r\n!#######################################\r\n!#                PING                 #\r\n!#######################################\r\n!\r\nping var07 repeat 200 size 1500 isrdata 5050 sourceLan\r\n!\r\n!\r\n!\r\n!\r\n\r\n";
             #endregion
             // ------------------------------------------- Log - HPE - VOZ -----------------------------------------------------------
             #region
-            string hpeLogsVOZ_R2 = "";
-            #endregion
-            // -------------------------------------------------
-            #region
-            string hpeLogsVOZ_PABXIP = "";
+            string hpeLogsVOZ = "screen-length disable\r\n#\r\n#\r\n############## CONFIGURAÇÕES logType DO CPE ################ \r\n#\r\nsave f\r\n#\r\n#\r\n########################################\r\n#            CONFIGURACOES             #\r\n########################################\r\n#\r\ndisplay saved-configuration\r\n#\r\n#\r\n#\r\n########################################\r\n#             INTERFACES               #\r\n########################################\r\n#\r\ndisplay ip interface brief\r\n#\r\n#\r\n#\r\ndisplay interface var03\r\n#\r\n#\r\nwithVlan\r\npabxip\r\nsinalizacao\r\n########################################\r\n#            SYSTEM INFO               #\r\n########################################\r\n#\r\ndisplay version\r\n#\r\n#\r\ndisplay device manuinfo\r\n#\r\n#\r\n#\r\n########################################\r\n#            QoS POLICY                #\r\n########################################\r\n#\r\ndisplay qos policy interface\r\n#\r\n#\r\n#\r\n#\r\n########################################\r\n#         TABELA DE ROTEAMENTO         #\r\n########################################\r\n#\r\ndisplay ip routing-table\r\n#\r\n#\r\n#\r\n########################################\r\n#                 PING                 # \r\n########################################\r\n#\r\nping var07 -s 1500 -c 20 sourceLan\r\n#\r\n#\r\n#\r\n#\r\n\r\n";
             #endregion
             // ------------------------------------------- Log - Aligera - VOZ -------------------------------------------------------
             #region
@@ -1478,7 +1447,7 @@ namespace WindowsFormsApp1.Entitys
             #endregion
             // ------------------------------------------- Log - Digistar - VOZ ------------------------------------------------------
             #region
-            string digistarLogs = "";
+            string digistarLogs = "!\r\nwr\r\nterminal length 0\r\n!\r\n!\r\n!####### CONFIGURACOES logType DO CPE ################\r\n!\r\n!#######################################\r\n!#            CONFIGURACOES            #\r\n!#######################################\r\n!\r\nshow startup-config\r\n!\r\n!\r\n!\r\n!#######################################\r\n!#              INTERFACE              #\r\n!#######################################\r\n!\r\nshow ip interface brief\r\n!\r\n!\r\n!\r\nshow interface ethernet 1\r\n!\r\n!\r\nwithVlan\r\n!#######################################\r\n!#             STATUS E1               #\r\n!#######################################\r\n!\r\nshow pbx digital-line status\r\n!\r\n!\r\n!\r\n!#######################################\r\n!#            SYSTEM INFO              #\r\n!#######################################\r\n!\r\nshow tech\r\n!\r\n!\r\n!\r\n!#######################################\r\n!#         TABELA DE ROTEAMENTO        #\r\n!#######################################\r\n!\r\nshow ip route\r\n!\r\n!\r\n!\r\n!#######################################\r\n!#                PING                 #\r\n!#######################################\r\n!\r\nping var07 rep 20 size 1472\r\n!\r\n!\r\n!\r\n\r\n";
             #endregion
             // ------------------------------------------- Log - Broadsoft - VOZ -----------------------------------------------------
             // Not Implemented
@@ -1664,7 +1633,7 @@ namespace WindowsFormsApp1.Entitys
                 "!# POLICY-MAP  \r\n" +
                 "!#######################################\r\n" +
                 " \r\n" +
-                "show policy-map interface var03.Text\r\n" +
+                "show policy-map interface var03\r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -1743,7 +1712,7 @@ namespace WindowsFormsApp1.Entitys
             " \r\n" +
             "ping\r\n" +
             " \r\n" +
-            "var03\r\n" +
+            "var08\r\n" +
             "15\r\n" +
             "1500\r\n" +
             " \r\n" +
@@ -1831,7 +1800,7 @@ namespace WindowsFormsApp1.Entitys
                 "admin display-config | match expression " + '"' + "route-distinguisher " + "4230:vrfAS" + '"' + " pre-line 8 post-lines 10" + "\r\n" +
                 " \r\n" +
                 " \r\n" +
-                "show router service-name var015 interface var03 \r\n" +
+                "show router service-name var15 interface var03 \r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -2113,11 +2082,11 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptHuaweiBLD);
             scriptList.Add(scriptFortigateBLD);
 
-            Script scriptCiscoMPLS = new Script(5, "Cisco-Config-MPLS", ciscoMPLS, "00,01,02,03,04,05,07,09,11,12", DateTime.Parse("11/02/2026"));
-            Script scriptHpeMPLS = new Script(6, "HPE-Config-MPLS", hpeMPLS, "00,01,02,03,04,05,07,09,11,12", DateTime.Parse("11/02/2026"));
-            Script scriptHPEoldMPLS = new Script(7, "HPE_old-Config-MPLS", hpeOldMPLS, "00,01,02,03,04,05,07,09,11,12", DateTime.Parse("11/02/2026"));
-            Script scriptHuaweiMPLS = new Script(8, "Huawei-Config-MPLS", huaweiMPLS, "00,01,02,03,04,05,07,09,11,12", DateTime.Parse("11/02/2026"));
-            Script scriptFortigateMPLS = new Script(9, "Fortigate-Config-MPLS", fortigateMPLS, "00,01,02,03,04,05,07,09,11,12", DateTime.Parse("11/02/2026"));
+            Script scriptCiscoMPLS = new Script(5, "Cisco-Config-MPLS", ciscoMPLS, "00,01,02,03,04,05,07,09,12", DateTime.Parse("18/02/2026"));
+            Script scriptHpeMPLS = new Script(6, "HPE-Config-MPLS", hpeMPLS, "00,01,02,03,04,05,07,09,12", DateTime.Parse("18/02/2026"));
+            Script scriptHPEoldMPLS = new Script(7, "HPE_old-Config-MPLS", hpeOldMPLS, "00,01,02,03,04,05,07,09,12", DateTime.Parse("18/02/2026"));
+            Script scriptHuaweiMPLS = new Script(8, "Huawei-Config-MPLS", huaweiMPLS, "00,01,02,03,04,05,07,08,09,12", DateTime.Parse("18/02/2026"));
+            Script scriptFortigateMPLS = new Script(9, "Fortigate-Config-MPLS", fortigateMPLS, "00,01,02,03,04,05,07,09,11,12", DateTime.Parse("18/02/2026"));
 
             scriptList.Add(scriptCiscoMPLS);
             scriptList.Add(scriptHpeMPLS);
@@ -2125,15 +2094,15 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptHuaweiMPLS);
             scriptList.Add(scriptFortigateMPLS);
 
-            Script scriptCiscoR2 = new Script(10, "Cisco-Config-VOZ-R2", ciscoR2, "", DateTime.Parse("11/02/1999"));
-            Script scriptCiscoR2ISR = new Script(11, "Cisco-Config-VOZ-R2 (ISR)", ciscoR2ISR, "", DateTime.Parse("11/02/1999"));
-            Script scriptCiscoPABX = new Script(12, "Cisco-Config-VOZ-PABXIP", ciscoPABX, "", DateTime.Parse("11/02/1999"));
-            Script scriptHpeR2 = new Script(13, "HPE-Config-VOZ-R2", hpeR2, "", DateTime.Parse("11/02/1999"));
-            Script scriptHpePABX = new Script(14, "HPE-Config-VOZ-PABXIP", hpePABX, "", DateTime.Parse("11/02/1999"));
-            Script scriptHpeOldR2 = new Script(15, "HPE_old-Config-VOZ-R2", hpeOldR2, "", DateTime.Parse("11/02/1999"));
-            Script scriptDigistar = new Script(16, "Digistar-Config-VOZ", digistar, "", DateTime.Parse("11/02/1999"));
-            Script scriptAligera561 = new Script(17, "Aligera561-Config-VOZ", aligera561, "", DateTime.Parse("11/02/1999"));
-            Script scriptAligera1600 = new Script(18, "Aligera1600-Config-VOZ", aligera1600, "", DateTime.Parse("11/02/1999"));
+            Script scriptCiscoR2 = new Script(10, "Cisco-Config-VOZ-R2", ciscoR2, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
+            Script scriptCiscoR2ISR = new Script(11, "Cisco-Config-VOZ-R2 (ISR)", ciscoR2ISR, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
+            Script scriptCiscoPABX = new Script(12, "Cisco-Config-VOZ-PABXIP", ciscoPABX, "00,01,02,03,04,05,07,09", DateTime.Parse("18/02/2026"));
+            Script scriptHpeR2 = new Script(13, "HPE-Config-VOZ-R2", hpeR2, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
+            Script scriptHpePABX = new Script(14, "HPE-Config-VOZ-PABXIP", hpePABX, "00,01,02,03,04,05,07,09", DateTime.Parse("18/02/2026"));
+            Script scriptHpeOldR2 = new Script(15, "HPE_old-Config-VOZ-R2", hpeOldR2, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
+            Script scriptDigistar = new Script(16, "Digistar-Config-VOZ", digistar, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
+            Script scriptAligera561 = new Script(17, "Aligera561-Config-VOZ", aligera561, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
+            Script scriptAligera1600 = new Script(18, "Aligera1600-Config-VOZ", aligera1600, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
 
             scriptList.Add(scriptCiscoR2);
             scriptList.Add(scriptCiscoR2ISR);
@@ -2156,39 +2125,35 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptFortigateLogsBLD);
             scriptList.Add(scriptHuaweiLogsBLD);
 
-            Script scriptCiscoLogsMPLS = new Script(23, "Cisco-Log-MPLS", ciscoLogsMPLS, "03,04,05,06,07", DateTime.Parse("11/02/2026"));
-            Script scriptHpeLogsMPLS = new Script(24, "HPE-Log-MPLS", hpeLogsMPLS, "03,04,05,06,07,09", DateTime.Parse("11/02/2026"));
-            Script scriptFortigateLogsMPLS = new Script(25, "Fortigate-Log-MPLS", fortigateLogsMPLS, "03,05,07,09", DateTime.Parse("11/02/2026"));
-            Script scriptHuaweiLogsMPLS = new Script(26, "Huawei-Log-MPLS", huaweiLogsMPLS, "03,04,05,06,07,09", DateTime.Parse("11/02/2026"));
+            Script scriptCiscoLogsMPLS = new Script(23, "Cisco-Log-MPLS", ciscoLogsMPLS, "03,04,05,06,07", DateTime.Parse("18/02/2026"));
+            Script scriptHpeLogsMPLS = new Script(24, "HPE-Log-MPLS", hpeLogsMPLS, "03,04,05,06,07,09", DateTime.Parse("18/02/2026"));
+            Script scriptFortigateLogsMPLS = new Script(25, "Fortigate-Log-MPLS", fortigateLogsMPLS, "03,05,07,09", DateTime.Parse("18/02/2026"));
+            Script scriptHuaweiLogsMPLS = new Script(26, "Huawei-Log-MPLS", huaweiLogsMPLS, "03,04,05,06,07,09", DateTime.Parse("18/02/2026"));
 
             scriptList.Add(scriptCiscoLogsMPLS);
             scriptList.Add(scriptHpeLogsMPLS);
             scriptList.Add(scriptFortigateLogsMPLS);
             scriptList.Add(scriptHuaweiLogsMPLS);
 
-            Script scriptCiscoLogsVOZ_R2 = new Script(27, "Cisco-Log-VOZ-R2", ciscoLogsVOZ_R2, "03,04,05,07", DateTime.Parse("11/02/2026"));
-            Script scriptCiscoLogsVOZ_PABXIP = new Script(28, "Cisco-Log-VOZ-PABXIP", ciscoLogsVOZ_PABXIP, "03,04,05,07", DateTime.Parse("11/02/2026"));
-            Script scriptHpeLogsVOZ_R2 = new Script(29, "HPE-Log-VOZ-R2", hpeLogsVOZ_R2, "03,04,05,07,09", DateTime.Parse("11/02/2026"));
-            Script scriptHpeLogsVOZ_PABXIP = new Script(30, "HPE-Log-VOZ-PABXIP", hpeLogsVOZ_PABXIP, "03,04,05,07,09", DateTime.Parse("11/02/2026"));
-            Script scriptAligeraLogs = new Script(31, "Aligera-Log-VOZ", aligeraLogs, "07", DateTime.Parse("11/02/2026"));
-            Script scriptDigistarLogs = new Script(32, "Digistar-Log-VOZ", digistarLogs, "07, 03, 04", DateTime.Parse("11/02/2026"));
+            Script scriptCiscoLogsVOZ_R2 = new Script(27, "Cisco-Log-VOZ-R2", ciscoLogsVOZ, "03,04,05,07", DateTime.Parse("18/02/2026"));
+            Script scriptHpeLogsVOZ_R2 = new Script(28, "HPE-Log-VOZ-R2", hpeLogsVOZ, "03,04,05,07,09", DateTime.Parse("18/02/2026"));
+            Script scriptAligeraLogs = new Script(29, "Aligera-Log-VOZ", aligeraLogs, "07", DateTime.Parse("18/02/2026"));
+            Script scriptDigistarLogs = new Script(30, "Digistar-Log-VOZ", digistarLogs, "07,03,04", DateTime.Parse("18/02/2026"));
 
             scriptList.Add(scriptCiscoLogsVOZ_R2);
-            scriptList.Add(scriptCiscoLogsVOZ_PABXIP);
             scriptList.Add(scriptHpeLogsVOZ_R2);
-            scriptList.Add(scriptHpeLogsVOZ_PABXIP);
             scriptList.Add(scriptAligeraLogs);
             scriptList.Add(scriptDigistarLogs);
 
             // WizardGat
-            Script scriptGatCiscoBLD = new Script(33, "Gat-Cisco-BLD", gatCiscoBLD, "03,08", DateTime.Parse("11/02/2026"));
-            Script scriptGatCiscoMPLS = new Script(34, "Gat-Cisco-MPLS", gatCiscoMPLS, "03,08,14,15", DateTime.Parse("11/02/2026"));
-            Script scriptGatCiscoVOZ = new Script(35, "Gat-Cisco-VOZ", gatCiscoVOZ, "03,08", DateTime.Parse("11/02/2026"));
-            Script scriptGatCiscoBLDcomBGP = new Script(36, "Gat-Cisco-BLDcomBGP", gatCiscoBLDcomBGP, "03,08", DateTime.Parse("11/02/2026"));
-            Script scriptGatNOKIABLD = new Script(37, "Gat-NOKIA-BLD", gatNOKIABLD, "03,08,14,15", DateTime.Parse("11/02/2026"));
-            Script scriptGatNOKIAMPLS = new Script(38, "Gat-NOKIA-MPLS", gatNOKIAMPLS, "03,07,08,13,14,15", DateTime.Parse("11/02/2026"));
-            Script scriptGatNOKIAVOZ = new Script(39, "Gat-NOKIA-VOZ", gatNOKIAVOZ, "03,07,08,13", DateTime.Parse("11/02/2026"));
-            Script scriptGatNOKIABLDcomBGP = new Script(40, "Gat-NOKIA-BLDcomBGP", gatNOKIABLDcomBGP, "03,07,08,13", DateTime.Parse("11/02/2026"));
+            Script scriptGatCiscoBLD = new Script(31, "Gat-Cisco-BLD", gatCiscoBLD, "03,08", DateTime.Parse("11/02/2026"));
+            Script scriptGatCiscoMPLS = new Script(32, "Gat-Cisco-MPLS", gatCiscoMPLS, "03,08,14,15", DateTime.Parse("11/02/2026"));
+            Script scriptGatCiscoVOZ = new Script(33, "Gat-Cisco-VOZ", gatCiscoVOZ, "03,08", DateTime.Parse("11/02/2026"));
+            Script scriptGatCiscoBLDcomBGP = new Script(34, "Gat-Cisco-BLDcomBGP", gatCiscoBLDcomBGP, "03,08", DateTime.Parse("11/02/2026"));
+            Script scriptGatNOKIABLD = new Script(35, "Gat-NOKIA-BLD", gatNOKIABLD, "03,07,08,13", DateTime.Parse("11/02/2026"));
+            Script scriptGatNOKIAMPLS = new Script(36, "Gat-NOKIA-MPLS", gatNOKIAMPLS, "03,07,08,13,14,15", DateTime.Parse("11/02/2026"));
+            Script scriptGatNOKIAVOZ = new Script(37, "Gat-NOKIA-VOZ", gatNOKIAVOZ, "03,07,08,13", DateTime.Parse("11/02/2026"));
+            Script scriptGatNOKIABLDcomBGP = new Script(38, "Gat-NOKIA-BLDcomBGP", gatNOKIABLDcomBGP, "03,07,08,13", DateTime.Parse("11/02/2026"));
 
             scriptList.Add(scriptGatCiscoBLD);
             scriptList.Add(scriptGatCiscoMPLS);
@@ -2200,13 +2165,13 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptGatNOKIABLDcomBGP);
 
             // Outros
-            Script scriptSnmpv2Cisco = new Script(41, "snmpv2-Cisco", snmpv2Cisco, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2CiscoHost = new Script(42, "snmpv2-Cisco-Host", snmpv2CiscoHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2HPE = new Script(43, "snmpv2-HPE", snmpv2HPE, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2HPEcomHost = new Script(44, "snmpv2-HPE-ComHost", snmpv2HPEcomHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2Huawei = new Script(45, "snmpv2-Huawei", snmpv2Huawei, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2HuaweicomHost = new Script(46, "snmpv2-Huawei-ComHost", snmpv2HuaweicomHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2Fortgate = new Script(47, "snmpv2-Fortgate", snmpv2Fortgate, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2Cisco = new Script(39, "snmpv2-Cisco", snmpv2Cisco, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2CiscoHost = new Script(40, "snmpv2-Cisco-Host", snmpv2CiscoHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2HPE = new Script(41, "snmpv2-HPE", snmpv2HPE, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2HPEcomHost = new Script(42, "snmpv2-HPE-ComHost", snmpv2HPEcomHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2Huawei = new Script(43, "snmpv2-Huawei", snmpv2Huawei, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2HuaweicomHost = new Script(44, "snmpv2-Huawei-ComHost", snmpv2HuaweicomHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2Fortgate = new Script(45, "snmpv2-Fortgate", snmpv2Fortgate, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
 
             scriptList.Add(scriptSnmpv2Cisco);
             scriptList.Add(scriptSnmpv2CiscoHost);
@@ -2217,10 +2182,10 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptSnmpv2Fortgate);
 
             // Extras
-            Script scriptCiscoLogsParte2 = new Script(48, "Cisco-Logs-Parte2", ciscoLogsParte2, "", DateTime.Parse("11/02/2026"));
-            Script scriptCiscoLogsBLDLimpeza = new Script(49, "Cisco-Logs-LimpezaBLD", ciscoLogsBLDLimpeza, "", DateTime.Parse("11/02/2026"));
-            Script scriptHPELogsParte2 = new Script(50, "HPE-Logs-Parte2", hpeLogsParte2, "", DateTime.Parse("11/02/2026"));
-            Script scriptHPELogsBLDLimpeza = new Script(51, "HPE-Logs-LimpezaBLD", hpeLogsBLDLimpeza, "", DateTime.Parse("11/02/2026"));
+            Script scriptCiscoLogsParte2 = new Script(46, "Cisco-Logs-Parte2", ciscoLogsParte2, "", DateTime.Parse("11/02/2026"));
+            Script scriptCiscoLogsBLDLimpeza = new Script(47, "Cisco-Logs-LimpezaBLD", ciscoLogsBLDLimpeza, "", DateTime.Parse("11/02/2026"));
+            Script scriptHPELogsParte2 = new Script(48, "HPE-Logs-Parte2", hpeLogsParte2, "", DateTime.Parse("11/02/2026"));
+            Script scriptHPELogsBLDLimpeza = new Script(49, "HPE-Logs-LimpezaBLD", hpeLogsBLDLimpeza, "", DateTime.Parse("11/02/2026"));
 
             scriptList.Add(scriptCiscoLogsParte2);
             scriptList.Add(scriptCiscoLogsBLDLimpeza);

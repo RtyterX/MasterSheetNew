@@ -119,6 +119,8 @@ namespace MasterSheetNew
             Script_ISRBox.SelectedIndex = 1;
             Script_XRBox.SelectedIndex = 1;
 
+            tabControl2.SelectedTab = tabMainPage;
+
             CheckCanImportFromSAIP();
 
             // --------------------------------------------------------------------------------------
@@ -171,10 +173,14 @@ namespace MasterSheetNew
             if (canImportSAIP) 
             {
                 Button_ImportSAIP.Show();
+                Button_ApplyTestValues.Show();
+                button_TesteImport.Show();
             }
             else
             {
                 Button_ImportSAIP.Hide();
+                Button_ApplyTestValues.Hide();
+                button_TesteImport.Hide();
             }
         }
 
@@ -269,6 +275,8 @@ namespace MasterSheetNew
 
         private void BLD_button_Click(object sender, EventArgs e)
         {
+            backboneOrNot = false;
+            logOrNot = false;
             tabControl2.SelectedTab = tabSelectRouter;
 
             BackButton_Script.Visible = true;
@@ -282,6 +290,8 @@ namespace MasterSheetNew
 
         private void MPLS_button_Click(object sender, EventArgs e)
         {
+            backboneOrNot = false;
+            logOrNot = false;
             tabControl2.SelectedTab = tabSelectRouter;
 
             BackButton_Script.Visible = true;
@@ -293,6 +303,21 @@ namespace MasterSheetNew
             activityType = ActivityType.MPLS;
         }
 
+        private void VOZ_Button_Click(object sender, EventArgs e)
+        {
+            backboneOrNot = false;
+            logOrNot = false;
+            tabControl2.SelectedTab = tabSelectRouter;
+
+            BackButton_Script.Visible = true;
+            BackButton_Script2.Hide();
+            BackButton_Script3.Hide();
+
+            ConfiguracaoCPE_SubTitle.Text = "VOZ";
+
+            activityType = ActivityType.VOZ;
+        }
+
         // ------------------------
         // Logs
         // ------------------------
@@ -300,16 +325,16 @@ namespace MasterSheetNew
         private void Logs_Iniciais_Click(object sender, EventArgs e)
         {
             finalsOrNot = false;
-            ApplyFinalsOrNot();
+            ApplyLogType();
         }
 
         private void Logs_Finais_Click(object sender, EventArgs e)
         {
             finalsOrNot = true;
-            ApplyFinalsOrNot();
+            ApplyLogType();
         }
 
-        public void ApplyFinalsOrNot()
+        public void ApplyLogType()
         {
             tabControl2.SelectedTab = tabLogs;
 
@@ -336,6 +361,8 @@ namespace MasterSheetNew
             BackButton_Script2.Visible = true;
             BackButton_Script.Hide();
             BackButton_Script3.Hide();
+
+            backboneOrNot = true;
         }
 
         // ------------------------
@@ -384,6 +411,8 @@ namespace MasterSheetNew
             Outros_VarEx3.Hide();
             Outros_VarEx4.Hide();
 
+            Outros_NumDaRegra.Hide();
+            Outros_NumRegraLabel.Hide();
         }
 
 
@@ -420,7 +449,6 @@ namespace MasterSheetNew
             routerType = RouterType.HPE;
             backboneOrNot = false;
             logOrNot = false;
-            tabControl2.SelectedTab = tabScript;
             ScriptDispatch(routerType, activityType, false, false);
         }
 
@@ -429,7 +457,6 @@ namespace MasterSheetNew
             routerType = RouterType.HPE_old;
             backboneOrNot = false;
             logOrNot = false;
-            tabControl2.SelectedTab = tabScript;
             ScriptDispatch(routerType, activityType, false, false);
         }
 
@@ -438,7 +465,6 @@ namespace MasterSheetNew
             routerType = RouterType.Huawei;
             backboneOrNot = false;
             logOrNot = false;
-            tabControl2.SelectedTab = tabScript;
             ScriptDispatch(routerType, activityType, false, false);
         }
 
@@ -447,7 +473,6 @@ namespace MasterSheetNew
             routerType = RouterType.Fortigate;
             backboneOrNot = false;
             logOrNot = false;
-            tabControl2.SelectedTab = tabScript;
             ScriptDispatch(routerType, activityType, false, false);
 
         }
@@ -463,7 +488,6 @@ namespace MasterSheetNew
 
         public void OpenScriptLogTab(RouterType RouterType, ActivityType ActivityType)
         {
-            tabControl2.SelectedTab = tabScript;
             ScriptDispatch(RouterType, ActivityType, true, false);
             logOrNot = true;
             backboneOrNot = false;
@@ -577,7 +601,7 @@ namespace MasterSheetNew
         }
         private void WizGat_LogButton_Click(object sender, EventArgs e)
         {
-            ApplyFinalsOrNot();
+            ApplyLogType();
         }
 
         #endregion
@@ -696,6 +720,9 @@ namespace MasterSheetNew
                 t.Text = string.Empty;
             }
 
+            Script_LANMascaraBox.SelectedIndex = -1;
+            Script_VarText03b.Text = string.Empty;
+
             Script_VarRouteI1.Text = string.Empty;
             Script_VarRouteI2.Text = string.Empty;
             Script_VarRouteE1.Text = string.Empty;
@@ -760,7 +787,10 @@ namespace MasterSheetNew
 
         private void Script_ButtonRegraAdc_Click(object sender, EventArgs e)
         {
+            tabControl2.SelectedTab = tabOutros;
+            OutrosTitle.Text = "Regras Adicionais - VOZ";
 
+            ApplyOutrosRegraAdc();
         }
 
         // --- Delete Individually ---
@@ -1055,6 +1085,9 @@ namespace MasterSheetNew
 
             }
 
+            // ----------------------------------------------------------------------------------------------------------------------
+            // -------------------------------------------------- MPLS --------------------------------------------------------------
+            // ----------------------------------------------------------------------------------------------------------------------
             // ------------------------------------------- Config - Cisco - MPLS ----------------------------------------------------
             else if (routerType == RouterType.Cisco && activityType == ActivityType.MPLS && backboneOrNot == false && logOrNot == false)
             {
@@ -1074,14 +1107,11 @@ namespace MasterSheetNew
                     "bandwidth " + Script_VarText02.Text + "\r\n" +
                     "encapsulation dot1Q " + Script_VarText04.Text + "\r\n");
 
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("vlanNTP", "." + Script_VarText04.Text);
-
                     MessageBox.Show("Com Vlan");
                 }
                 else
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "!\r\n");
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("vlanNTP", "");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "!");
                 }
 
             }
@@ -1162,11 +1192,13 @@ namespace MasterSheetNew
                         " bandwidth " + Script_VarText02.Text + "\r\n");
 
                     MessageBox.Show("Com Vlan");
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "." + Script_VarText04.Text);
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("VlanTelnet", "." + Script_VarText04.Text);
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("VlanInfo", "." + Script_VarText04.Text);
                 }
                 else
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("VlanTelnet", "");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("VlanInfo", "");
                     Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "#\r\n");
                 }
 
@@ -1237,6 +1269,60 @@ namespace MasterSheetNew
             }
 
             // ----------------------------------------------------------------------------------------------------------------------
+            // -------------------------------------------------- VOZ ---------------------------------------------------------------
+            // ----------------------------------------------------------------------------------------------------------------------
+            // ------------------------------------------- Config - Cisco - VOZ -----------------------------------------------------
+            else if ((routerType == RouterType.Cisco) && (activityType == ActivityType.VOZ) && backboneOrNot == false && logOrNot == false)
+            {
+                Script_ProcedureName.Text = "CONFIG - CISCO - VOZ";
+
+                VarScriptDisplayControl(scripts[10].variables);
+
+                ExtraVariablesControl(true, false, true, false, false, false);
+
+                ApplyScript(scripts[10]);
+
+                MessageBox.Show("Teste");
+
+
+                // Vlan na WAN
+                if (Script_VarText04.Text != string.Empty)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "!######################## \r\n" +
+                        "!\r\n" +
+                        "show interface " + Script_VarText04.Text + "\r\n" +
+                        "!\r\n" +
+                        "!\r\n" +
+                        "!\r\n");
+                }
+                else
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("vlanWan", "!\r\n");
+                }
+
+                // Sinalização
+                if (Script_SinalizBox.SelectedIndex == 0 || Script_SinalizBox.SelectedIndex == 1)
+                {
+                    string sinalizacao = "\r\n!#######################################\r\n!#             STATUS E1               #\r\n!#######################################\r\n!\r\nshow controller e1\r\n!\r\n!\r\n!";
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("sinalizacao", sinalizacao);
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "");
+
+                }
+                else if (Script_SinalizBox.SelectedIndex == 2)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("pabxip", "!######################## \r\n" +
+                        "!\r\n" +
+                        "show interface " + Script_VarText05.Text + "\r\n" +
+                        "!\r\n" +
+                        "!\r\n" +
+                        "!\r\n");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "source " + Script_VarText05.Text);
+                }
+
+                // ARRUMAR
+            }
+
+            // ----------------------------------------------------------------------------------------------------------------------
             // ------------------------------------------------- LOGS ---------------------------------------------------------------
             // ----------------------------------------------------------------------------------------------------------------------
             // ------------------------------------------- Logs - Cisco - BLD -------------------------------------------------------
@@ -1251,37 +1337,55 @@ namespace MasterSheetNew
                 ApplyScript(scripts[19]);
 
                 // Extra Options
+                // LAN
                 if (Script_VarText05.Text != string.Empty)
                 {
                     Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "source " + Script_VarText05.Text);
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("intLan", "show interface " + Script_VarText05.Text + "\r\n" +
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("intLan", "!######################## \r\n" +
                         "!\r\n" +
-                        "!######################## \r\n");
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("policyLan", "show policy-map interface " + Script_VarText05.Text + "\r\n" + "!\r\n" + "!\r\n");
+                        "show interface " + Script_VarText05.Text + "\r\n" +
+                        "!\r\n" +
+                        "!\r\n");
                 }
                 else
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("policyLan", "!\r\n");
                     Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "");
                     Script_TextBox.Text = Script_TextBox.Text.Replace("intLan", "!\r\n");
                 }
+                // VLAN na WAN
                 if (Script_VarText04.Text != string.Empty)
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("vlanWan", "show interface " + Script_VarText04.Text + "\r\n" +
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("vlanWan", "!######################## \r\n" +
                         "!\r\n" +
-                        "!######################## \r\n");
+                        "show interface " + Script_VarText04.Text + "\r\n" +
+                        "!\r\n" +
+                        "!\r\n");
                 }
                 else
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("vlanWan","!\r\n");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("vlanWan", "!\r\n");
                 }
+                // VLan na LAN
                 if (Script_VarText06.Text != string.Empty)
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("vlanLan", "show interface " + Script_VarText06.Text + "\r\n");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("vlanLan", "!######################## \r\n" +
+                        "!\r\n" +
+                        "show interface " + Script_VarText06.Text + "\r\n" +
+                        "!\r\n" +
+                        "!\r\n");
                 }
                 else
                 {
                     Script_TextBox.Text = Script_TextBox.Text.Replace("vlanLan", "!\r\n");
+                }
+                // ISR - Extended Data
+                if (Script_ISRBox.SelectedIndex == 0)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("isr", "extended-");
+                }
+                else
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("isr", "");
                 }
 
                 //--------------------------------------------------------------------------------
@@ -1289,12 +1393,12 @@ namespace MasterSheetNew
                 // ---------------------------------------------------
                 // Parte 2
                 // ---------------------------------------------------
-                scriptParte2 = scripts[39].scriptString;
+                scriptParte2 = scripts[46].scriptString;
 
                 // ---------------------------------------------------
                 // Limpeza
                 // ---------------------------------------------------
-                scriptLimpeza = scripts[40].scriptString;
+                scriptLimpeza = scripts[47].scriptString;
             }
 
             // ------------------------------------------- Logs - HPE - BLD ---------------------------------------------------------
@@ -1319,9 +1423,11 @@ namespace MasterSheetNew
                 }
                 if (Script_VarText04.Text != string.Empty)
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("vlanWan", "display interface " + Script_VarText04.Text + "\r\n" +
-                    "#\r\n" +
-                    "#########################\r\n");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("vlanWan", "######################### \r\n" +
+                        "#\r\n" +
+                        "display interface " + Script_VarText04.Text + "\r\n" +
+                        "#\r\n" +
+                        "#\r\n");
                 }
                 else
                 {
@@ -1329,9 +1435,11 @@ namespace MasterSheetNew
                 }
                 if (Script_VarText05.Text != string.Empty)
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("intLan", "display interface " + Script_VarText05.Text + "\r\n" +
-                    "#\r\n" +
-                    "#########################\r\n");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("intLan", "######################### \r\n" +
+                        "#\r\n" +
+                        "display interface " + Script_VarText05.Text + "\r\n" +
+                        "#\r\n" +
+                        "#\r\n");
                 }
                 else
                 {
@@ -1339,7 +1447,11 @@ namespace MasterSheetNew
                 }
                 if (Script_VarText06.Text != string.Empty)
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("vlanLan", "display interface " + Script_VarText06.Text + "\r\n");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("vlanLan", "######################### \r\n" +
+                        "#\r\n" +
+                        "display interface " + Script_VarText06.Text + "\r\n" +
+                        "#\r\n" +
+                        "#\r\n");
                 }
                 else
                 {
@@ -1351,12 +1463,12 @@ namespace MasterSheetNew
                 // ---------------------------------------------------
                 // Parte 2
                 // ---------------------------------------------------
-                scriptParte2 = scripts[41].scriptString;
+                scriptParte2 = scripts[48].scriptString;
 
                 // ---------------------------------------------------
                 // Limpeza
                 // ---------------------------------------------------
-                scriptLimpeza = scripts[42].scriptString;
+                scriptLimpeza = scripts[49].scriptString;
             }
 
             // ------------------------------------------- Log - Fortigate - BLD ----------------------------------------------------
@@ -1394,6 +1506,7 @@ namespace MasterSheetNew
                 ApplyScript(scripts[22]);
 
                 // Extra Options
+                // Vlan na WAN
                 if (Script_VarText04.Text != string.Empty)
                 {
                     Script_TextBox.Text = Script_TextBox.Text.Replace("vlanNaWAN", "display interface " + Script_VarText04.Text + "\r\n" +
@@ -1404,6 +1517,7 @@ namespace MasterSheetNew
                 {
                     Script_TextBox.Text = Script_TextBox.Text.Replace("vlanNaWAN", "#\r\n");
                 }
+                // Porta LAN
                 if (Script_VarText05.Text != string.Empty)
                 {
                     Script_TextBox.Text = Script_TextBox.Text.Replace("intLan", "display interface " + Script_VarText05.Text + "\r\n" +
@@ -1413,7 +1527,7 @@ namespace MasterSheetNew
                 {
                     Script_TextBox.Text = Script_TextBox.Text.Replace("intLan", "#\r\n");
                 }
-
+                // VLAN na LAN
                 if (Script_VarText06.Text != string.Empty)
                 {
                     Script_TextBox.Text = Script_TextBox.Text.Replace("vlanLan", "display interface " + Script_VarText06.Text + "\r\n" +
@@ -1424,7 +1538,7 @@ namespace MasterSheetNew
                 {
                     Script_TextBox.Text = Script_TextBox.Text.Replace("vlanLan", "#\r\n");
                 }
-
+                // Source LAN
                 if (Script_VarText09.Text != string.Empty)
                 {
                     Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "-a " + Script_VarText09.Text + " ");
@@ -1434,6 +1548,225 @@ namespace MasterSheetNew
                     Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "");
                 }
 
+            }
+
+            // ----------------------------------------------------------------------------------------------------------------------
+            // ------------------------------------------- Log - Cisco - MPLS -------------------------------------------------------
+            else if ((routerType == RouterType.Cisco) && (activityType == ActivityType.MPLS) && backboneOrNot == false && logOrNot == true)
+            {
+                Script_ProcedureName.Text = "LOGS - CISCO - MPLS";
+
+                VarScriptDisplayControl(scripts[23].variables);
+
+                ExtraVariablesControl(false, false, true, true, true, false);
+
+                ApplyScript(scripts[23]);
+
+                // Extra Options
+                // Vlan na WAN
+                if (Script_VarText04.Text != string.Empty)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "!########################\r\n" +
+                        "show interface " + Script_VarText04.Text + "\r\n" +
+                        "!\r\n" +
+                        "!\r\n" +
+                        "!");
+                }
+                else
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "!");
+                }
+
+                // Interface LAN
+                if (Script_VarText05.Text != string.Empty)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "source " + Script_VarText05.Text);
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withLan", "!########################\r\n" +
+                        "show interface " + Script_VarText05.Text + "\r\n" +
+                        "!\r\n" +
+                        "!\r\n" +
+                        "!");
+                }
+                else
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withLan", "!");
+                }
+
+                // Vlan na LAN
+                if (Script_VarText06.Text != string.Empty)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("LanWithVlan", "!########################\r\n" +
+                        "show interface " + Script_VarText06.Text + "\r\n" +
+                        "!\r\n" +
+                        "!\r\n" +
+                        "!");
+                }
+                else
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("LanWithVlan", "!");
+                }
+                // ISR - Extended Data
+                if (Script_ISRBox.SelectedIndex == 0)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("isr", "extended-");
+                }
+                else
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("isr", "");
+                }
+
+                //--------------------------------------------------------------------------------
+
+                // ---------------------------------------------------
+                // Parte 2
+                // ---------------------------------------------------
+                scriptParte2 = scripts[46].scriptString;
+
+                // ---------------------------------------------------
+                // Limpeza
+                // ---------------------------------------------------
+                scriptLimpeza = scripts[47].scriptString;
+            }
+
+            // ------------------------------------------- Log - HPE - MPLS ---------------------------------------------------------
+            else if ((routerType == RouterType.HPE) && (activityType == ActivityType.MPLS) && backboneOrNot == false && logOrNot == true)
+            {
+                Script_ProcedureName.Text = "LOGS - HPE - MPLS";
+
+                VarScriptDisplayControl(scripts[24].variables);
+
+                ExtraVariablesControl(false, false, false, true, false, true);
+
+                ApplyScript(scripts[24]);
+
+                // Extra Options
+                if (Script_VarText09.Text != string.Empty)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", " -a " + Script_VarText09.Text);
+                }
+                else
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "");
+                }
+                // Vlan na WAN
+                if (Script_VarText04.Text != string.Empty)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "#########################\r\n" +
+                        "display interface " + Script_VarText04.Text + "\r\n" +
+                        "#\r\n" +
+                        "#\r\n" +
+                        "#");
+                }
+                else
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "");
+                }
+
+                // Interface LAN
+                if (Script_VarText05.Text != string.Empty)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withLan", "#########################\r\n" +
+                        "display interface " + Script_VarText05.Text + "\r\n" +
+                        "#\r\n" +
+                        "#\r\n" +
+                        "#");
+                }
+                else
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withLan", "#");
+                }
+
+                // Vlan na LAN
+                if (Script_VarText06.Text != string.Empty)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("LanWithVlan", "#########################\r\n" +
+                        "display interface " + Script_VarText06.Text + "\r\n" +
+                        "#\r\n" +
+                        "#\r\n" +
+                        "#");
+                }
+                else
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("LanWithVlan", "#");
+                }
+
+                //--------------------------------------------------------------------------------
+
+                // ---------------------------------------------------
+                // Parte 2
+                // ---------------------------------------------------
+                scriptParte2 = scripts[48].scriptString;
+
+                // ---------------------------------------------------
+                // Limpeza
+                // ---------------------------------------------------
+                scriptLimpeza = scripts[49].scriptString;
+            }
+
+            // ------------------------------------------- Log - Huawei - MPLS ------------------------------------------------------
+            else if ((routerType == RouterType.Huawei) && (activityType == ActivityType.MPLS) && backboneOrNot == false && logOrNot == true)
+            {
+
+                Script_ProcedureName.Text = "LOGS - HUAWEI - MPLS";
+
+                VarScriptDisplayControl(scripts[24].variables);
+
+                ExtraVariablesControl(false, false, false, false, false, false);
+
+                ApplyScript(scripts[24]);
+
+                // Extra Options
+                // Vlan na WAN
+                if (Script_VarText04.Text != string.Empty)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "#########################\r\n" +
+                        "display interface " + Script_VarText04.Text + "\r\n" +
+                        "#\r\n" +
+                        "#\r\n" +
+                        "#");
+                }
+                else
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "#");
+                }
+
+                // Possui Interface LAN
+                if (Script_VarText05.Text != string.Empty)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withLan", "#########################\r\n" +
+                        "display interface " + Script_VarText05.Text + "\r\n" +
+                        "#\r\n" +
+                        "#\r\n" +
+                        "#");
+                }
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withLan", "#");
+                }
+
+                // Vlan na LAN
+                if (Script_VarText06.Text != string.Empty)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("LanWithVlan", "#########################\r\n" +
+                        "display interface " + Script_VarText06.Text + "\r\n" +
+                        "#\r\n" +
+                        "#\r\n" +
+                        "#");
+                }
+                else
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("LanWithVlan", "#");
+                }
+
+                // Source da Lan no Ping 
+                if (Script_VarText09.Text != string.Empty)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "-a " + Script_VarText09.Text + " ");
+                }
+                else
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "");
+                }
             }
 
             // ------------------------------------------- Log - Fortigate - MPLS ---------------------------------------------------
@@ -1459,16 +1792,150 @@ namespace MasterSheetNew
 
             }
 
+            // ----------------------------------------------------------------------------------------------------------------------
+            // ------------------------------------------- Log - Cisco - VOZ --------------------------------------------------------
+            else if ((routerType == RouterType.Cisco) && (activityType == ActivityType.VOZ) && backboneOrNot == false && logOrNot == true)
+            {
+                Script_ProcedureName.Text = "LOGS - CISCO - VOZ";
+
+                VarScriptDisplayControl(scripts[27].variables);
+
+                ExtraVariablesControl(false, false, false, false, false, false);
+
+                ApplyScript(scripts[27]);
+
+                // Vlan na WAN
+                if (Script_VarText04.Text != string.Empty)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "!######################## \r\n" +
+                        "!\r\n" +
+                        "show interface " + Script_VarText04.Text + "\r\n" +
+                        "!\r\n" +
+                        "!\r\n" +
+                        "!");
+                }
+                else
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "!");
+                }
+
+                // Sinalização
+                if (Script_VarText05.Text != string.Empty)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("pabxip", "!######################## \r\n" +
+                        "!\r\n" +
+                        "show interface " + Script_VarText05.Text + "\r\n" +
+                        "!\r\n" +
+                        "!\r\n" +
+                        "!");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("sinalizacao", "!");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "source " + Script_VarText05.Text);
+                }
+                else
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("pabxip", "!");
+                    string sinalizacao = "\r\n!#######################################\r\n!#             STATUS E1               #\r\n!#######################################\r\n!\r\nshow controller e1\r\n!\r\n!\r\n!";
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("sinalizacao", sinalizacao);
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "");
+                }
+
+                // ISR - Extended Data
+                if (Script_ISRBox.SelectedIndex == 0)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("isr", "extended-");
+                }
+                else
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("isr", "");
+                }
+
+            }
+
+            // ------------------------------------------- Log - HPE - VOZ ----------------------------------------------------------
+            else if ((routerType == RouterType.HPE) && (activityType == ActivityType.VOZ) && backboneOrNot == false && logOrNot == true)
+            {
+                Script_ProcedureName.Text = "LOGS - HPE - VOZ";
+
+                VarScriptDisplayControl(scripts[28].variables);
+
+                ExtraVariablesControl(false, false, false, false, false, false);
+
+                ApplyScript(scripts[28]);
+
+                // Vlan na WAN
+                if (Script_VarText04.Text != string.Empty)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "######################### \r\n" +
+                        "#\r\n" +
+                        "display interface " + Script_VarText04.Text + "\r\n" +
+                        "#\r\n" +
+                        "#\r\n" +
+                        "#\r\n");
+                }
+                else
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("vlanWan", "!\r\n");
+                }
+
+                // Sinalização
+                if (Script_VarText05.Text != string.Empty)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("pabxip", "######################### \r\n" +
+                        "#\r\n" +
+                        "display interface " + Script_VarText05.Text + "\r\n" +
+                        "#\r\n" +
+                        "#\r\n" +
+                        "#");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "-a " + Script_VarText09.Text);
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("sinalizacao", "");
+                }
+                else
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("pabxip", "!");
+                    string sinalizacao = "########################################\r\n#              STATUS E1               #\r\n########################################\r\n#\r\ndisplay controller e1\r\n#\r\n#\r\n#";
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("sinalizacao", sinalizacao);
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "");
+                }
+
+            }
+
             // ------------------------------------------- Log CPE Aligera ----------------------------------------------------------
             else if ((routerType == RouterType.Aligera) && (activityType == ActivityType.VOZ) && backboneOrNot == false && logOrNot == true)
             {
                 Script_ProcedureName.Text = "LOGS - ALIGERA - VOZ";
 
-                VarScriptDisplayControl(scripts[31].variables);
+                VarScriptDisplayControl(scripts[29].variables);
 
                 ExtraVariablesControl(false, false, false, false, false, false);
 
-                ApplyScript(scripts[31]);
+                ApplyScript(scripts[29]);
+            }
+
+            // ------------------------------------------- Log CPE Digistar ----------------------------------------------------------
+            else if ((routerType == RouterType.Digistar) && (activityType == ActivityType.VOZ) && backboneOrNot == false && logOrNot == true)
+            {
+                Script_ProcedureName.Text = "LOGS - DIGISTAR - VOZ";
+
+                VarScriptDisplayControl(scripts[30].variables);
+
+                ExtraVariablesControl(false, false, false, false, false, false);
+
+                ApplyScript(scripts[30]);
+
+                // Vlan na WAN
+                if (Script_VarText04.Text != string.Empty)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "!######################## \r\n" +
+                        "!\r\n" +
+                        "show interface " + Script_VarText04.Text + "\r\n" +
+                        "!\r\n" +
+                        "!\r\n" +
+                        "!\r\n");
+                }
+                else
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "!\r\n");
+                }
             }
 
             // ----------------------------------------------------------------------------------------------------------------------
@@ -1478,22 +1945,22 @@ namespace MasterSheetNew
             {
                 Script_ProcedureName.Text = "LOG BACKBONE - CISCO - BLD";
 
-                VarScriptDisplayControl(scripts[33].variables);
+                VarScriptDisplayControl(scripts[31].variables);
 
                 ExtraVariablesControl(false, false, false, false, false, true);
 
-                ApplyScript(scripts[33]);
+                ApplyScript(scripts[31]);
             }
             // ----------------------------------------------------------------------------------------------------------------------
             else if ((routerType == RouterType.Cisco) && (activityType == ActivityType.MPLS) && backboneOrNot == true && logOrNot == true)
             {
                 Script_ProcedureName.Text = "LOG BACKBONE - CISCO - MPLS";
 
-                VarScriptDisplayControl(scripts[34].variables);
+                VarScriptDisplayControl(scripts[32].variables);
 
                 ExtraVariablesControl(false, true, false, false, false, true);
 
-                ApplyScript(scripts[34]);
+                ApplyScript(scripts[32]);
 
                 // Extra Options
                 if (Script_XRBox.SelectedIndex == 0)
@@ -1510,22 +1977,22 @@ namespace MasterSheetNew
             {
                 Script_ProcedureName.Text = "LOG BACKBONE - CISCO - VOZ";
 
-                VarScriptDisplayControl(scripts[35].variables);
+                VarScriptDisplayControl(scripts[33].variables);
 
                 ExtraVariablesControl(false, true, false, false, false, true);
 
-                ApplyScript(scripts[35]);
+                ApplyScript(scripts[33]);
             }
             // ----------------------------------------------------------------------------------------------------------------------
             else if ((routerType == RouterType.Cisco) && (activityType == ActivityType.BLDcomBGP) && backboneOrNot == true && logOrNot == true)
             {
                 Script_ProcedureName.Text = "LOG BACKBONE - CISCO - BLD com BGP";
 
-                VarScriptDisplayControl(scripts[36].variables);
+                VarScriptDisplayControl(scripts[34].variables);
 
                 ExtraVariablesControl(false, false, false, false, false, true);
 
-                ApplyScript(scripts[36]);
+                ApplyScript(scripts[34]);
             }
 
             // ----------------------------------------------------------------------------------------------------------------------
@@ -1535,22 +2002,22 @@ namespace MasterSheetNew
             {
                 Script_ProcedureName.Text = "LOG BACKBONE - NOKIA - BLD";
 
-                VarScriptDisplayControl(scripts[37].variables);
+                VarScriptDisplayControl(scripts[35].variables);
 
                 ExtraVariablesControl(false, false, false, false, false, true);
 
-                ApplyScript(scripts[37]);
+                ApplyScript(scripts[35]);
             }
             // ----------------------------------------------------------------------------------------------------------------------
             else if ((routerType == RouterType.Nokia) && (activityType == ActivityType.MPLS) && backboneOrNot == true && logOrNot == true)
             {
                 Script_ProcedureName.Text = "LOG BACKBONE - NOKIA - MPLS";
 
-                VarScriptDisplayControl(scripts[38].variables);
+                VarScriptDisplayControl(scripts[36].variables);
 
                 ExtraVariablesControl(false, false, false, false, false, true);
 
-                ApplyScript(scripts[38]);
+                ApplyScript(scripts[36]);
 
                 // Extra Options
                 if (Script_VarText14.Text.Contains(':'))
@@ -1567,24 +2034,48 @@ namespace MasterSheetNew
             {
                 Script_ProcedureName.Text = "LOG BACKBONE - NOKIA - VOZ";
 
-                VarScriptDisplayControl(scripts[39].variables);
+                VarScriptDisplayControl(scripts[37].variables);
 
                 ExtraVariablesControl(false, false, false, false, false, true);
 
-                ApplyScript(scripts[39]);
+                ApplyScript(scripts[37]);
             }
             // ----------------------------------------------------------------------------------------------------------------------
             else if ((routerType == RouterType.Nokia) && (activityType == ActivityType.BLDcomBGP) && backboneOrNot == true && logOrNot == true)
             {
                 Script_ProcedureName.Text = "LOG BACKBONE - NOKIA - BLD com BGP";
 
-                VarScriptDisplayControl(scripts[40].variables);
+                VarScriptDisplayControl(scripts[38].variables);
 
                 ExtraVariablesControl(false, false, false, false, false, true);
 
-                ApplyScript(scripts[40]);
+                ApplyScript(scripts[38]);
 
                 // Extra Options
+                if (Script_VarRouteI1.Text != string.Empty)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("VarRouteI1", Script_VarRouteI1.Text);
+                }
+                else
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("VarRouteI1", "");
+                }
+                if (Script_VarRouteI2.Text != string.Empty)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("VarRouteI2", Script_VarRouteI2.Text);
+                }
+                else
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("VarRouteI2", "");
+                }
+                if (Script_VarRouteE1.Text != string.Empty)
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("VarRouteE1", Script_VarRouteE1.Text);
+                }
+                else
+                {
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("VarRouteE1", "");
+                }
                 if (Script_VarRouteE2.Text != string.Empty)
                 {
                     Script_TextBox.Text = Script_TextBox.Text.Replace("policyExport2", "show router policy " + Script_VarRouteE2.Text + "\r\n" + "\r\n");
@@ -1633,12 +2124,29 @@ namespace MasterSheetNew
                 Script_TextBox.Text = "";
             }
             
+            // Check if User inserted LAN or LAN IP before applyng the Final Log Script
+            if (finalsOrNot)
+            {
+                if (Script_VarText09.Text == string.Empty || Script_VarText05.Text == string.Empty)
+                {
+                    MessageBox.Show("Logs Finais precisam ser coletadas com Interface LAN + Source no Ping");
+                }
+            }
+
+            // Switch to Script Tab only after the Var UI construction
+            if (tabControl2.SelectedTab != tabScript)
+            {
+                tabControl2.SelectedTab = tabScript;
+            }
+
+            // Others
             GetDesignacao(Script_VarText01.Text);
+            ChangeWANTextBox();
         }
         #endregion
 
         // ---------------------------
-        // Apply Script to Text Box
+        // Apply Script to TextBox
         // ---------------------------
         #region
         private void ApplyScript(Script script)
@@ -1660,7 +2168,16 @@ namespace MasterSheetNew
                         {
                             Script_TextBox.Text = Script_TextBox.Text.Replace("mascaraLAN", mascaraStr);
                         }
-                        Script_TextBox.Text = Script_TextBox.Text.Replace("var" + variable, box.Text);
+                        if (variable == "03" && backboneOrNot)
+                        {
+                            Script_TextBox.Text = Script_TextBox.Text.Replace("var03", Script_VarText03b.Text);
+                        }
+                        else
+                        {
+                            Script_TextBox.Text = Script_TextBox.Text.Replace("var" + variable, box.Text);
+                        }
+
+
                     }
                 }             
             }
@@ -1792,8 +2309,7 @@ namespace MasterSheetNew
                     }
                 }
             }
-
-            // Script_Hint1.Location = new System.Drawing.Point(54, varEx[anterior].Location.Y + 40);
+            Script_Hint1.Location = new System.Drawing.Point(54, varEx[anterior].Location.Y + 40);
         }
         #endregion
 
@@ -1935,7 +2451,7 @@ namespace MasterSheetNew
 
         public void ApplyVozVariables()
         {
-            if (activityType == ActivityType.VOZ)
+            if (activityType == ActivityType.VOZ && !logOrNot)
             {
                 Script_VozTitleLabel.Show();
                 Script_SinalizSubTitle.Show();
@@ -2043,6 +2559,27 @@ namespace MasterSheetNew
             }
         }
 
+        public void ChangeWANTextBox()
+        {
+            Script_VarText03b.Location = Script_VarText03.Location;
+
+            if (backboneOrNot)
+            {
+                Script_VarText03b.Show();
+                Script_VarText03.Hide();
+            }
+            else
+            {
+                Script_VarText03b.Hide();
+                Script_VarText03.Show();
+            }
+            if (activityType == ActivityType.VOZ)
+            {
+                Script_VarText03b.Hide();
+                Script_VarText03.Hide();
+            }
+        }
+
         public void ChangeVlanNaWANVar()
         {
             if (logOrNot == true)
@@ -2098,110 +2635,143 @@ namespace MasterSheetNew
         private void Button_ImportSAIP_Click(object sender, EventArgs e)
         {
             string copiado = Clipboard.GetText();
-            string[] split = copiado.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            copiado = copiado.Replace("DADOS CLIENTE", ";");
+            string[] limpeza = copiado.Split(';');
+            string[] split = limpeza[1].Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
 
             // ------------------------------------------------
             try
             {
-                if (split[4].Contains("Business Link Direct"))
+                if (split[1].Contains("Business Link Direct"))
                 {
                     // Hostname / Description / Bandwidth
-                    split[28] = split[28].Replace("Domínio  ", string.Empty).Trim();
-                    Script_VarText00.Text = split[28] + "_BLD";
-                    Script_VarText01.Text = split[58].Replace("Description Roteador  ", string.Empty).Trim(); ;
-                    Script_VarText02.Text = split[40].Replace("Banda	", string.Empty).Trim(); ;
+                    split[23] = split[23].Replace("Domínio\t", string.Empty).Trim();
+                    Script_VarText00.Text = split[23] + "_BLD";
+                    Script_VarText01.Text = split[53].Replace("Description Roteador\t", string.Empty).Trim();
+                    Script_VarText02.Text = split[35].Replace("Banda\t", string.Empty).Trim();
 
                     // Porta da WAN
-                    Script_VarText03.Text = split[32].Replace("Porta  ", string.Empty).Trim();
+                    split[27] = split[27].Replace("Porta\t", string.Empty).Trim();
+                    Script_VarText03b.Text = GigaOrTenGiga(split[27]);
 
                     // IPs da WAN
-                    split[37] = split[37].Replace("IP Serial Usuário (IPv4)  ", string.Empty).Trim();
-                    string[] ipPE = split[37].Split('/');
+                    split[32] = split[32].Replace("IP Serial Usuário (IPv4)\t", string.Empty).Trim();
+                    string[] ipPE = split[32].Split('/');
                     Script_VarText07.Text = GetBackboneInterfaceIP(ipPE[0], true);               // IP da Porta
                     Script_VarText08.Text = ipPE[0];                                             // IP da Porta + 1 (bloco /30)
 
                     // IP de LAN
-                    split[54] = split[54].Replace("Blocos IPv4  ", string.Empty).Trim();
-                    string[] ipLan = split[54].Split('/');
+                    split[49] = split[49].Replace("Blocos IPv4\t", string.Empty).Trim();
+                    string[] ipLan = split[49].Split('/');
                     Script_VarText09.Text = GetBackboneInterfaceIP(ipLan[0], false);
                     MascaraLAN('/' + ipLan[1]);
 
                 }
                 // ------------------------------------------------
-                else if (split[4].Contains("IPVPN"))
+                else if (split[1].Contains("VPN"))
                 {
                     // Hostname / Description / Bandwidth
-                    split[59] = split[59].Replace("Description Roteador  ", string.Empty);
-                    string[] hostname = split[59].Split('|');
+                    split[56] = split[56].Replace("Description Roteador\t", string.Empty);
+                    string[] hostname = split[56].Split('|');
                     Script_VarText00.Text = hostname[0].Trim() + "_" + hostname[2].Trim();
-                    Script_VarText01.Text = split[59].Trim();
-                    Script_VarText02.Text = split[41].Replace("Banda  ", string.Empty).Trim();
+                    Script_VarText01.Text = split[56].Trim();
+                    Script_VarText02.Text = split[38].Replace("Banda\t", string.Empty).Trim();
 
                     // Porta da WAN
-                    Script_VarText03.Text = split[33].Replace("Porta  ", string.Empty).Trim();
+                    split[30] = split[30].Replace("Porta", string.Empty).Trim();
+                    Script_VarText03b.Text = GigaOrTenGiga(split[30]);
 
                     // IPs do PE
-                    split[38] = split[38].Replace("IP Serial Usuário (IPv4)  ", string.Empty).Trim();
-                    string[] ipPE = split[54].Split('/');
-                    Script_VarText07.Text = GetBackboneInterfaceIP(ipPE[0], true);              // IP da Porta
-                    Script_VarText08.Text = ipPE[0];                                            // IP da Porta + 1 (bloco /30)
+                    split[35] = split[35].Replace("IP Serial Usuário (IPv4)", string.Empty).Trim();
+                    string[] ipPE = split[35].Split('/');
+                    Script_VarText07.Text = GetBackboneInterfaceIP(ipPE[0], true);                // IP da Porta
+                    Script_VarText08.Text = removeZero(ipPE[0]);                                  // IP da Porta + 1 (bloco /30)
 
                     // IP de LAN
-                    split[55] = split[55].Replace("Blocos IPv4  ", string.Empty).Trim();
-                    string[] ipLan = split[55].Split('/');
+                    split[52] = split[52].Replace("Blocos IPv4", string.Empty).Trim();
+                    string[] ipLan = split[52].Split('/');
+                    MessageBox.Show("Ok");
                     Script_VarText09.Text = GetBackboneInterfaceIP(ipLan[0], false);
+                    MessageBox.Show("Ok");
                     MascaraLAN(ipLan[1]);
 
                     // VRF
-                    Script_VarText14.Text = split[30].Replace("Vrf  ", string.Empty).Trim();
-                    Script_VarText15.Text = split[31].Replace("SERVICE_ID  ", string.Empty).Trim();
+                    Script_VarText14.Text = split[27].Replace("Vrf", string.Empty).Trim();
+                    Script_VarText15.Text = split[33].Replace("SERVICE_ID", string.Empty).Trim();
                 }
                 // ------------------------------------------------
-                else if (split[4].Contains("Voice"))
+                else if (split[1].Contains("Tronco"))
                 {
                     // Hostname / Description / Bandwidth
-                    split[17] = split[17].Replace("Designação IP  ", string.Empty).Trim();
-                    split[76] = split[76].Replace("Description Roteador  ", string.Empty).Trim();
-                    string[] numero = split[17].Split('/');
-                    string[] name = split[76].Split('|');
+                    split[9] = split[9].Replace("Designação IP", string.Empty).Trim();
+                    split[69] = split[69].Replace("Description Roteador", string.Empty).Trim();
+                    string[] numero = split[9].Split('/');
+                    string[] name = split[69].Split('|');
                     // --------
                     Script_VarText00.Text = name[0].Trim() + "-" + numero[2];
-                    Script_VarText01.Text = split[76];
-                    Script_VarText02.Text = split[58].Replace("Banda  ", string.Empty).Trim();
+                    Script_VarText01.Text = split[69];
+                    Script_VarText02.Text = split[51].Replace("Banda", string.Empty).Trim();
 
                     // Porta da WAN
-                    Script_VarText03.Text = split[49].Replace("Porta  ", string.Empty).Trim();
+                    split[42] = split[42].Replace("Porta", string.Empty).Trim();
+                    Script_VarText03b.Text = GigaOrTenGiga(split[42]);
 
                     // IPs do PE
-                    split[40] = split[40].Replace("IP Wan:  ", string.Empty).Trim();
-                    string[] ipPE = split[40].Split('/');
+                    split[48] = split[48].Replace("IP Serial Usuário (IPv4)", string.Empty).Trim();
+                    string[] ipPE = split[48].Split('/');
                     Script_VarText07.Text = GetBackboneInterfaceIP(ipPE[0], true).Trim();      // IP da Porta
-                    Script_VarText08.Text = ipPE[0];                                           // IP da Porta + 1 (bloco /30)
+                    Script_VarText08.Text = removeZero(ipPE[0]);                                           // IP da Porta + 1 (bloco /30)
 
                     // IP de LAN
-                    split[41] = split[41].Replace("IP PABX:  ", string.Empty).Trim();
-                    string[] ipLan = split[41].Split('/');
-                    Script_VarText09.Text = GetBackboneInterfaceIP(ipLan[0], false).Trim();
+                    split[33] = split[33].Replace("IP PABX:", string.Empty).Trim();
+                    string[] ipLan = split[33].Split('/');
+                    Script_VarText09.Text = GetBackboneInterfaceIP(ipLan[0], true).Trim();
 
-                    // IP do SIP Server
-                    Script_VarText16.Text = split[43].Replace("IP SIP Acesso: 	", string.Empty);
+                    // IP do SIP Server e Regras
+                    split[35] = split[35].Replace("IP SIP Acesso:", string.Empty).Trim();
+                    Script_VarText16.Text = removeZero(split[35]);
                     Script_VarText17.Text = numero[2];
                     Script_VarText18.Text = numero[2].Remove(2, 8);
                     Script_VarText19.Text = numero[2];
-                    
+
+                    // Sinalizaçäo 
+                    if (split[38].Contains("PABX"))
+                    {
+                        Script_SinalizBox.SelectedIndex = 2;
+                    }
+                    else if (split[38].Contains("R2"))
+                    {
+                        Script_SinalizBox.SelectedIndex = 0;
+                    }
+                    else if (split[38].Contains("ISDN"))
+                    {
+                        Script_SinalizBox.SelectedIndex = 1;
+                    }
+
                     // N de Canais
-                    if (int.Parse(Script_VarText02.Text) >= 1500)
+                    if (Script_SinalizBox.SelectedIndex != 2)
                     {
                         if (Script_SinalizBox.SelectedIndex == 0)
                         {
-                            Script_VarText18.Text = "1-5,17-31";
+                            Script_VarText20.Text = "1-5,17-31";
                         }
                         else
                         {
-                            Script_VarText18.Text = "1-31";
+                            Script_VarText20.Text = "1-31";
+                        }
+                        if (int.Parse(Script_VarText02.Text) >= 1500)
+                        {
+                            MessageBox.Show("Possui mais de uma E1");
                         }
                     }
-                    
+                    else
+                    {
+                        Script_LANMascaraBox.SelectedIndex = 0;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Não foi possivel Importar");
                 }
             }
             catch (Exception exc)
@@ -2210,8 +2780,35 @@ namespace MasterSheetNew
             }
         }
 
+        public string GigaOrTenGiga(string str)
+        {
+            if (str.Contains("TENGIGA"))
+            {
+                str = str.Replace("TENGIGA", string.Empty).Trim();
+                str = "Te" + str;
+            }
+            else if (str.Contains("GIGA"))
+            {
+                str = str.Replace("GIGA", string.Empty).Trim();
+                str = "Gi" + str;
+            }
+            else if (str.Contains("FAST"))
+            {
+                str = str.Replace("FAST", string.Empty).Trim();
+                str = "FastEthernet" + str;
+            }
+            else if (str.Contains("ESAT"))
+            {
+                str = str.Replace("ESAT", string.Empty).Trim();
+            }
+
+            return str;
+        }
+
         public string GetBackboneInterfaceIP(string ip, bool minus)
         {
+            ip = removeZero(ip);
+
             int x;
 
             if (minus)
@@ -2221,21 +2818,42 @@ namespace MasterSheetNew
 
             string[] ipSplit = ip.Split('.');
 
-            for (int i = 0; i < ipSplit.Length; i++)
+            if (ipSplit.Length > 1)
             {
-                char a = ipSplit[i][0];
-                if (a == '0')
+                int finalOctet = int.Parse(ipSplit[3]) + x;
+                return ipSplit[0] + "." + ipSplit[1] + "." + ipSplit[2] + "." + finalOctet.ToString();
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
+        public string removeZero(string ip)
+        {
+            string[] ipSplit = ip.Split('.');
+
+            if (ipSplit.Length >= 4)
+            {
+                for (int i = 0; i < ipSplit.Length; i++)
                 {
-                    ipSplit[i] = ipSplit[i].Remove(0, 1);
-                    if (ipSplit[i].Substring(0) == "0")
+                    char a = ipSplit[i][0];
+                    if (a == '0')
                     {
                         ipSplit[i] = ipSplit[i].Remove(0, 1);
+                        if (ipSplit[i].Substring(0) == "0")
+                        {
+                            ipSplit[i] = ipSplit[i].Remove(0, 1);
+                        }
                     }
                 }
-            }
 
-            int finalOctet = int.Parse(ipSplit[3]) + x;
-            return ipSplit[0] + "." + ipSplit[1] + "." + ipSplit[2] + "." + finalOctet.ToString();
+                return ipSplit[0] + "." + ipSplit[1] + "." + ipSplit[2] + "." + ipSplit[3];
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
 
         public void MascaraLAN(string mascara)
@@ -2270,7 +2888,7 @@ namespace MasterSheetNew
             }
             else
             {
-                MessageBox.Show("IP de LAN out of range");
+                Script_LANMascaraBox.SelectedIndex = -1;
             }
         }
 
@@ -2612,164 +3230,8 @@ namespace MasterSheetNew
 
         private void Ligacoes_BDebug_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("                 ************************\r\n" +
-"                           HPE           \r\n" +
-"                 ************************\r\n" +
-"\r\n" +
-"###############\r\n" +
-"   DEBUG HP    \r\n" +
-"###############\r\n" +
-"\r\n" +
-"- DEBUG ISDN -\r\n" +
-"DEBUG VOICE SIP message\r\n" +
-"debug isdn\r\n" +
-"terminal monitor\r\n" +
-"terminal debugging\r\n" +
-"\r\n" +
-"----------\r\n" +
-"\r\n" +
-"- DEBUG R2 -\r\n" +
-"debug voice R2 ALL\r\n" +
-"debugging voice r2 event\r\n" +
-"terminal monitor\r\n" +
-"terminal debugging\r\n" +
-"\r\n" +
-"----------\r\n" +
-"\r\n" +
-"- DEBUG SIP -\r\n" +
-"DEBUG VOICE SIP message\r\n" +
-"terminal monitor\r\n" +
-"terminal debugging\r\n" +
-"\r\n" +
-"----------\r\n" +
-"\r\n" +
-"- Desabilitar DEBUG -\r\n" +
-"undo DEBUG VOICE SIP message\r\n" +
-"undo terminal monitor\r\n" +
-"undo terminal debugging\r\n" +
-"\r\n" +
-"*********************************************\r\n" +
-"                 ************************\r\n" +
-"                           CISCO         \r\n" +
-"                 ************************\r\n" +
-"\r\n" +
-"#############\r\n" +
-"DEBUG CISCO\r\n" +
-"#############\r\n" +
-"!DEBUG SIP\r\n" +
-"terminal monitor\r\n" +
-"debug ccsip messages\r\n" +
-"debug voice ccapi inout\r\n" +
-"debug translation detail\r\n" +
-"!\r\n" +
-"----------\r\n" +
-"\r\n" +
-"terminal monitor\r\n" +
-"debug ccsip messages\r\n" +
-"- Habilita visualização das dial-peers (entrada e saída)\r\n" +
-"terminal no monitor\r\n" +
-"no debug ccsip messages\r\n" +
-"no debug voice ccapi inout\r\n" +
-"no debug translation detail\r\n" +
-"\r\n" +
-"----------\r\n" +
-"\r\n" +
-"-DEBUG R2 CISCO-\r\n" +
-"terminal monitor\r\n" +
-"debug ccsip messages\r\n" +
-"debug vpm signal\r\n" +
-"\r\n" +
-"----------\r\n" +
-"\r\n" +
-"-DESATIVA O DEBUG CISCO-\r\n" +
-"terminal no monitor\r\n" +
-"no debug ccsip messages\r\n" +
-"no debug vpm signal\r\n" +
-"\r\n" +
-"----------\r\n" +
-"\r\n" +
-"**Ver se está registrado\r\n" +
-"sh sip register status\r\n" +
-"sh sip-ua register status\r\n" +
-"\r\n" +
-"----------\r\n" +
-"\r\n" +
-"sh dial-peer voice sum\r\n" +
-"\r\n" +
-"**************Habilitar E1/T1\r\n" +
-"#\r\n" +
-"card type e1 0 2\r\n" +
-"Placa de voz -> PVDM (Memoria para suportar a placa E1, PVDM 32 para 30 channels.\r\n" +
-"Forçar chamada placa FXS, FXO\r\n" +
-"CSIM START <número a ser discado>\r\n" +
-"\r\n" +
-"==================================================\r\n" +
-"                 ************************\r\n" +
-"                          ALIGERA        \r\n" +
-"                 ************************\r\n" +
-"\r\n" +
-"################\r\n" +
-"DEBUG ALIGERA\r\n" +
-"################\r\n" +
-"\r\n" +
-"DEBUG - com sip\r\n" +
-"debug\r\n" +
-"core set debug 5\r\n" +
-"core set verbose 5\r\n" +
-"sip set debug on\r\n" +
-"\r\n" +
-"----------\r\n" +
-"\r\n" +
-"-Debug SIP-\r\n" +
-"debug vip sip on\r\n" +
-"\r\n" +
-"----------\r\n" +
-"\r\n" +
-"-Debug R2-\r\n" +
-"debug\r\n" +
-"core set debug 5\r\n" +
-"core set verbose 5\r\n" +
-"mfcr2 set debug all\r\n" +
-"debug mfcr2 on\r\n" +
-"\r\n" +
-"----------\r\n" +
-"\r\n" +
-"-Debug ISDN-\r\n" +
-"debug\r\n" +
-"core set debug 5\r\n" +
-"core set verbose 5\r\n" +
-"pri set debug on span 1\r\n" +
-"\r\n" +
-"==================================================\r\n" +
-"                 ************************\r\n" +
-"                        Digistar\r\n" +
-"                 ************************\r\n" +
-"\r\n" +
-"################\r\n" +
-"DEBUG DIGISTAR\r\n" +
-"################\r\n" +
-"\r\n" +
-"!DEBUG SIP\r\n" +
-"terminal monitor\r\n" +
-"!\r\n" +
-"conf t\r\n" +
-"logging on\r\n" +
-"debug pbx loglevel 5\r\n" +
-"debug sip loglevel 5\r\n" +
-"!\r\n" +
-"end\r\n" +
-"\r\n" +
-"- Desabilitar DEBUG -\r\n" +
-"terminal no monitor\r\n" +
-"configure terminal\r\n" +
-"no debug pbx loglevel\r\n" +
-"no debug sip loglevel\r\n" +
-"!\r\n" +
-"\r\n" +
-"############\r\n" +
-"E1 ALINHADA\r\n" +
-"############\r\n" +
-"show pbx digital-line status\r\n");
+            FormVoiceDebug debugForm = new FormVoiceDebug();
+            debugForm.Show(Owner);
         }
 
         public void ApplyLigacoesRestore()
@@ -3320,18 +3782,18 @@ namespace MasterSheetNew
         // ---------------------------------------------------------------------------
         // ---------------------------------------------------------------------------
         #region
-        public void ApplyScriptOutros()
+        public void ApplytOutrosSNMP()
         {
             if (Outros_TypeComboBox.SelectedIndex == 0)
             {
                 if (Outros_VarText01.Text == string.Empty)
                 {
-                    Outros_FinalTextBox.Text = scripts[65].scriptString.Replace("VarCom", Outros_VarText00.Text);
+                    Outros_FinalTextBox.Text = scripts[39].scriptString.Replace("VarCom", Outros_VarText00.Text);
                     Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarTipo", Outros_VarText02.Text);
                 }
                 else
                 {
-                    Outros_FinalTextBox.Text = scripts[66].scriptString.Replace("VarCom", Outros_VarText00.Text);
+                    Outros_FinalTextBox.Text = scripts[40].scriptString.Replace("VarCom", Outros_VarText00.Text);
                     Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarHost", Outros_VarText01.Text);
                     Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarTipo", Outros_VarText02.Text);
                 }
@@ -3351,12 +3813,12 @@ namespace MasterSheetNew
                 }
                 if (Outros_VarText01.Text == string.Empty)
                 {
-                    Outros_FinalTextBox.Text = scripts[67].scriptString.Replace("VarCom", Outros_VarText00.Text);
+                    Outros_FinalTextBox.Text = scripts[41].scriptString.Replace("VarCom", Outros_VarText00.Text);
                     Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarTipo", typeSNMP);
                 }
                 else
                 {
-                    Outros_FinalTextBox.Text = scripts[68].scriptString.Replace("VarCom", Outros_VarText00.Text);
+                    Outros_FinalTextBox.Text = scripts[42].scriptString.Replace("VarCom", Outros_VarText00.Text);
                     Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarHost", Outros_VarText01.Text);
                     Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarTipo", typeSNMP);
                 }
@@ -3366,21 +3828,81 @@ namespace MasterSheetNew
             {
                 if (Outros_VarText01.Text == string.Empty)
                 {
-                    Outros_FinalTextBox.Text = scripts[69].scriptString.Replace("VarCom", Outros_VarText00.Text);
+                    Outros_FinalTextBox.Text = scripts[43].scriptString.Replace("VarCom", Outros_VarText00.Text);
                 }
                 else
                 {
-                    Outros_FinalTextBox.Text = scripts[70].scriptString.Replace("VarCom", Outros_VarText00.Text);
+                    Outros_FinalTextBox.Text = scripts[44].scriptString.Replace("VarCom", Outros_VarText00.Text);
                     Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarHost", Outros_VarText01.Text);
                 }
             }
             if (Outros_TypeComboBox.SelectedIndex == 3)
             {
-                Outros_FinalTextBox.Text = scripts[71].scriptString.Replace("VarCom", Outros_VarText00.Text);
+                Outros_FinalTextBox.Text = scripts[45].scriptString.Replace("VarCom", Outros_VarText00.Text);
                 Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarHost", Outros_VarText01.Text);
             }
         }
 
+        public void ApplyOutrosRegraAdc()
+        {
+            // UI
+            Outros_TypeComboBox.Hide();
+            Outros_TypeLabel.Hide();
+
+            Outros_VarText00.Show();
+            Outros_VarText01.Show();
+            Outros_VarText02.Show();
+            Outros_VarText03.Hide();
+            Outros_VarText04.Hide();
+
+            Outros_VarName0.Show();
+            Outros_VarName1.Show();
+            Outros_VarName2.Show();
+            Outros_VarName3.Hide();
+            Outros_VarName4.Hide();
+
+            Outros_VarEx0.Show();
+            Outros_VarEx1.Show();
+            Outros_VarEx2.Show();
+            Outros_VarEx3.Hide();
+            Outros_VarEx4.Hide();
+
+            Outros_VarDelete0.Hide();
+            Outros_VarDelete1.Hide();
+            Outros_VarDelete2.Hide();
+            Outros_VarDelete3.Hide();
+            Outros_VarDelete4.Hide();
+
+            Outros_ExSubTitle.Hide();
+            Outros_VarEx0.Hide();
+            Outros_VarEx1.Hide();
+            Outros_VarEx2.Hide();
+            Outros_VarEx3.Hide();
+            Outros_VarEx4.Hide();
+
+            Outros_VarName0.Text = "Tronco-Chave";
+            Outros_VarName1.Text = "DDD";
+            Outros_VarName2.Text = "Regra Adicional";
+
+            Outros_NumDaRegra.Show();
+            Outros_NumRegraLabel.Show();
+
+            Outros_VarText00.Text = Script_VarText17.Text;
+            Outros_VarText00.Text = Script_VarText18.Text;
+
+
+            // Script
+            // Outros_FinalTextBox.Text = scripts[43].scriptString.Replace("VarDDD", Outros_VarText00.Text);
+            // Outros_FinalTextBox.Text = scripts[43].scriptString.Replace("VarTronco", Outros_VarText01.Text);
+            // Outros_FinalTextBox.Text = scripts[43].scriptString.Replace("VarRegra", Outros_VarText02.Text);
+
+        }
+
+
+        // ---------------------------
+        // UI Buttons
+        // ---------------------------
+        #region
         private void Outros_VarDelete0_Click(object sender, EventArgs e)
         {
             Outros_VarText00.Text = string.Empty;
@@ -3417,24 +3939,27 @@ namespace MasterSheetNew
 
         private void Outros_TypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ApplyScriptOutros();
+            ApplytOutrosSNMP();
         }
 
         private void Outros_ButtonForCopy_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(Outros_FinalTextBox.Text);
-            ApplyScriptOutros();
+            ApplytOutrosSNMP();
         }
 
         private void Outros_ButtonFormat_Click(object sender, EventArgs e)
         {
-            ApplyScriptOutros();
+            ApplytOutrosSNMP();
         }
 
         private void Outros_ButtonCopy_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(Outros_FinalTextBox.Text);
         }
+        #endregion
+
+        // ---------------------------------------------------------------------------
         #endregion
 
 
@@ -3455,25 +3980,14 @@ namespace MasterSheetNew
         }
 
         // -------------------------------
-        // Habilita Edição de Scripts
+        // Night Mode
         // -------------------------------
-
-        private void Button_EnableEdit_Click(object sender, EventArgs e)
-        {
-            FormEnableEdit passwordForm = new FormEnableEdit(this);
-            passwordForm.Show();
-        }
-
-        // -------------------------------
-        // Dark Theme
-        // -------------------------------
-
         private void Button_DarkMode_Click(object sender, EventArgs e)
         {
-            SwitchDarkTheme();
+            SwitchNightMode();
         }
 
-        public void SwitchDarkTheme()
+        public void SwitchNightMode()
         {
             nightMode = !nightMode;
             ApplyNightMode(this, nightMode);
@@ -3485,7 +3999,7 @@ namespace MasterSheetNew
 
         public void ApplyNightMode(Control ctr, bool darkMode)
         {
-            Button_DarkMode.Text = nightMode ? "Light Mode" : "Night Mode";
+            Button_NightMode.Text = nightMode ? "Light Mode" : "Night Mode";
 
             if (darkMode)
             {
@@ -3510,6 +4024,11 @@ namespace MasterSheetNew
                     {
                         ImageLogo.Image = Properties.Resources.logo_hitss_white;
                     }
+                }
+                if (ctr.Name.Contains("tab"))
+                {
+                    //ctr.BackColor = Color.Black;
+                    //ctr.ForeColor = Color.Black;
                 }
             }
             else
@@ -3540,10 +4059,11 @@ namespace MasterSheetNew
             {
                 ctr.BackColor = Color.DodgerBlue;
                 ctr.ForeColor = Color.White;
+
             }
             if (ctr.Name.Contains("MainTitle"))
             {
-                ctr.BackColor = Color.Red;
+                ctr.BackColor = Color.FromArgb(255, 212, 0, 0);
                 ctr.ForeColor = Color.White;
             }
             if (ctr.Name.Contains("TemplatesLabel"))
@@ -3575,7 +4095,8 @@ namespace MasterSheetNew
             }
             else
             {
-                MessageBox.Show("Sem Autorização");
+                FormEnableEdit passwordForm = new FormEnableEdit(this);
+                passwordForm.Show();
             }
 
         }
@@ -3684,9 +4205,25 @@ namespace MasterSheetNew
             Script_LANMascaraBox.SelectedIndex = 2;
         }
 
+
+
+
         #endregion
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string copiado = Clipboard.GetText().Replace("DADOS CLIENTE", ";");
+            string[] limpeza = copiado.Split(';');
+            string[] teste = limpeza[1].Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+            string novo = "";
 
+            for (int i = 0; i < teste.Length; i++)
+            {
+                novo = novo + i + " - " + teste[i] + "\r\n";
+            }
+
+            Script_TextBox.Text = novo;
+        }
     }
 
 }
