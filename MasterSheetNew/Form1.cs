@@ -1,7 +1,9 @@
-﻿using Microsoft.Win32;
+﻿using Google.Protobuf.WellKnownTypes;
+using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using Mysqlx.Crud;
 using Mysqlx.Session;
+using MySqlX.XDevAPI;
 using MySqlX.XDevAPI.Relational;
 using Org.BouncyCastle.Crypto.Generators;
 using System;
@@ -69,11 +71,15 @@ namespace MasterSheetNew
         List<TextBox> varText = new List<TextBox>();
         List<Button> varDelete = new List<Button>();
         List<Label> varEx = new List<Label>();
+        List<WindowsFormsApp1.Entitys.Client> clients = new List<WindowsFormsApp1.Entitys.Client>();
+        List<Step> steps = new List<Step>();
 
         // Sounds
         SoundPlayer player = new SoundPlayer(Properties.Resources.Perdemo);
 
-
+        // Clients
+        int step;
+        WindowsFormsApp1.Entitys.Client client;
 
         // ------------------------------------------------------------------------------------------------------------------------------------
         // ------------------------------------------------------------------------------------------------------------------------------------
@@ -99,6 +105,9 @@ namespace MasterSheetNew
             // Start Up Info
             //---------------------
 
+            HideAllUIOutros();
+            ListAllClients();
+
             // List Script and Routers 
             LoadRouterList();
             ListAllScriptVars();
@@ -118,6 +127,7 @@ namespace MasterSheetNew
             Script_ComboBox.SelectedIndex = 0;
             Script_ISRBox.SelectedIndex = 1;
             Script_XRBox.SelectedIndex = 1;
+            Script_LANMascaraBox.SelectedIndex = 2;
 
             tabControl2.SelectedTab = tabMainPage;
 
@@ -182,6 +192,19 @@ namespace MasterSheetNew
                 Button_ApplyTestValues.Hide();
                 button_TesteImport.Hide();
             }
+        }
+
+        public void ListAllClients()
+        {
+            Step testStep = new Step(0, "Passo a Passo OK","Script OK", null);
+            Step testStep2 = new Step(1, "Passo a Passo Pagina 2", "Script 2 OK", null);
+
+            List<Step> testSteps = new List<Step>();
+
+            testSteps.Add(testStep);
+            testSteps.Add(testStep2);
+
+            clients.Add(new WindowsFormsApp1.Entitys.Client("Teste", true, Criticality.Critical, ClientType.Prod, testSteps));
         }
 
         public void ListAllScriptVars()
@@ -362,7 +385,17 @@ namespace MasterSheetNew
             BackButton_Script.Hide();
             BackButton_Script3.Hide();
 
+            logOrNot = true;
             backboneOrNot = true;
+        }
+
+        // ------------------------
+        // Clients
+        // ------------------------
+
+        private void AllClients_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            tabControl2.SelectedTab = tabSelectClient;
         }
 
         // ------------------------
@@ -399,31 +432,13 @@ namespace MasterSheetNew
 
         private void buttonOC_SNMP_Click(object sender, EventArgs e)
         {
-            tabControl2.SelectedTab = tabOutros;
-            OutrosTitle.Text = "SNMP";
-
-            Outros_VarName4.Hide();
-            Outros_VarName3.Hide();
-            Outros_VarText03.Hide();
-            Outros_VarText04.Hide();
-            Outros_VarDelete3.Hide();
-            Outros_VarDelete4.Hide();
-            Outros_VarEx3.Hide();
-            Outros_VarEx4.Hide();
-
-            Outros_NumDaRegra.Hide();
-            Outros_NumRegraLabel.Hide();
+            OpenOutrosSNMP();
         }
-
-
-        // -------------------------------------------------------------------
-        // TEST
-        private void Logs_VOZ_Cisco_Click_1(object sender, EventArgs e)
+        private void buttonOC_QoS_Click(object sender, EventArgs e)
         {
-            activityType = ActivityType.VOZ;
-            tabControl2.SelectedTab = tabScript;
-            ScriptDispatch(RouterType.Cisco, activityType, false, false);
+            OpenOutrosQoS();
         }
+
 
         // ---------------------------------------------------------------------------
         #endregion
@@ -557,6 +572,7 @@ namespace MasterSheetNew
         // ---------------------------
         private void Logs_VOZ_Cisco_Click(object sender, EventArgs e)
         {
+            Script_TextBox.SelectionStart = 0;
             routerType = RouterType.Cisco;
             activityType = ActivityType.VOZ;
             OpenScriptLogTab(routerType, activityType);
@@ -598,10 +614,6 @@ namespace MasterSheetNew
         {
             tabControl2.SelectedTab = tabLigacoes;
             ApplyLogsDeLigacao();
-        }
-        private void WizGat_LogButton_Click(object sender, EventArgs e)
-        {
-            ApplyLogType();
         }
 
         #endregion
@@ -790,7 +802,7 @@ namespace MasterSheetNew
             tabControl2.SelectedTab = tabOutros;
             OutrosTitle.Text = "Regras Adicionais - VOZ";
 
-            ApplyOutrosRegraAdc();
+            OpenOutrosRegraAdc();
         }
 
         // --- Delete Individually ---
@@ -874,6 +886,30 @@ namespace MasterSheetNew
         private void Script_DeleteRouteE2_Click(object sender, EventArgs e)
         {
             Script_VarRouteE2.Text = string.Empty;
+        }
+        private void Script_VarDelete21_Click(object sender, EventArgs e)
+        {
+            Script_VarText21.Text = string.Empty;
+        }
+        private void Script_VarDelete17_Click(object sender, EventArgs e)
+        {
+            Script_VarText17.Text = string.Empty;
+        }
+        private void Script_VarDelete18_Click(object sender, EventArgs e)
+        {
+            Script_VarText18.Text = string.Empty;
+        }
+        private void Script_VarDelete19_Click(object sender, EventArgs e)
+        {
+            Script_VarText19.Text = string.Empty;
+        }
+        private void Script_VarDelete20_Click(object sender, EventArgs e)
+        {
+            Script_VarText20.Text = string.Empty;
+        }
+        private void Script_VarDelete16_Click(object sender, EventArgs e)
+        {
+            Script_VarText16.Text = string.Empty;
         }
         #endregion
 
@@ -1030,14 +1066,17 @@ namespace MasterSheetNew
                     Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "interface " + Script_VarText03.Text + "." + Script_VarText04.Text + "\r\n" +
                         " description " + Script_VarText01.Text + "\r\n" +
                         " dot1q termination vid " + Script_VarText04.Text + "\r\n" +
-                        " bandwidth " + Script_VarText02.Text + "\r\n");
+                        " bandwidth " + Script_VarText02.Text + 
+                        "#\r\n");
 
                     MessageBox.Show("Com Vlan");
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "." + Script_VarText04.Text);
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("telsource", "." + Script_VarText04.Text);
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("infosource", "." + Script_VarText04.Text);
                 }
                 else
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("telsource", "");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("infosource", "");
                     Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "#\r\n");
                 }
 
@@ -1189,16 +1228,17 @@ namespace MasterSheetNew
                     Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "interface " + Script_VarText03.Text + "." + Script_VarText04.Text + "\r\n" +
                         " description " + Script_VarText01.Text + "\r\n" +
                         " dot1q termination vid " + Script_VarText04.Text + "\r\n" +
-                        " bandwidth " + Script_VarText02.Text + "\r\n");
+                        " bandwidth " + Script_VarText02.Text + 
+                        "#\r\n");
 
                     MessageBox.Show("Com Vlan");
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("VlanTelnet", "." + Script_VarText04.Text);
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("VlanInfo", "." + Script_VarText04.Text);
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("telsource", "." + Script_VarText04.Text);
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("infosource", "." + Script_VarText04.Text);
                 }
                 else
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("VlanTelnet", "");
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("VlanInfo", "");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("telsource", "");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("infosource", "");
                     Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "#\r\n");
                 }
 
@@ -1509,34 +1549,39 @@ namespace MasterSheetNew
                 // Vlan na WAN
                 if (Script_VarText04.Text != string.Empty)
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("vlanNaWAN", "display interface " + Script_VarText04.Text + "\r\n" +
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "display interface " + Script_VarText04.Text + "\r\n" +
                     "#\r\n" +
-                    "#########################\r\n");
+                    "#\r\n" +
+                    "#\r\n");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("outVlan", Script_VarText04.Text);
                 }
                 else
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("vlanNaWAN", "#\r\n");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("outVlan", Script_VarText03.Text);
                 }
                 // Porta LAN
                 if (Script_VarText05.Text != string.Empty)
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("intLan", "display interface " + Script_VarText05.Text + "\r\n" +
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withLan", "display interface " + Script_VarText05.Text + "\r\n" +
                     "#\r\n" +
-                    "#########################\r\n");
+                    "#\r\n" +
+                    "#\r\n");
                 }
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("intLan", "#\r\n");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withLan", "#\r\n");
                 }
                 // VLAN na LAN
                 if (Script_VarText06.Text != string.Empty)
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("vlanLan", "display interface " + Script_VarText06.Text + "\r\n" +
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("lanWithVlan", "display interface " + Script_VarText06.Text + "\r\n" +
                     "#\r\n" +
-                    "#########################\r\n");
+                    "#\r\n" +
+                    "#\r\n");
                 }
                 else
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("vlanLan", "#\r\n");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("lanWithVlan", "#\r\n");
                 }
                 // Source LAN
                 if (Script_VarText09.Text != string.Empty)
@@ -1547,7 +1592,6 @@ namespace MasterSheetNew
                 {
                     Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "");
                 }
-
             }
 
             // ----------------------------------------------------------------------------------------------------------------------
@@ -1710,55 +1754,51 @@ namespace MasterSheetNew
 
                 Script_ProcedureName.Text = "LOGS - HUAWEI - MPLS";
 
-                VarScriptDisplayControl(scripts[24].variables);
+                VarScriptDisplayControl(scripts[26].variables);
 
                 ExtraVariablesControl(false, false, false, false, false, false);
 
-                ApplyScript(scripts[24]);
+                ApplyScript(scripts[26]);
 
                 // Extra Options
                 // Vlan na WAN
                 if (Script_VarText04.Text != string.Empty)
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "#########################\r\n" +
-                        "display interface " + Script_VarText04.Text + "\r\n" +
-                        "#\r\n" +
-                        "#\r\n" +
-                        "#");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "display interface " + Script_VarText04.Text + "\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("outVlan", Script_VarText04.Text);
                 }
                 else
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "#");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("outVlan", Script_VarText03.Text);
                 }
-
-                // Possui Interface LAN
+                // Porta LAN
                 if (Script_VarText05.Text != string.Empty)
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("withLan", "#########################\r\n" +
-                        "display interface " + Script_VarText05.Text + "\r\n" +
-                        "#\r\n" +
-                        "#\r\n" +
-                        "#");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withLan", "display interface " + Script_VarText05.Text + "\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n");
                 }
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("withLan", "#");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withLan", "#\r\n");
                 }
-
-                // Vlan na LAN
+                // VLAN na LAN
                 if (Script_VarText06.Text != string.Empty)
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("LanWithVlan", "#########################\r\n" +
-                        "display interface " + Script_VarText06.Text + "\r\n" +
-                        "#\r\n" +
-                        "#\r\n" +
-                        "#");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("lanWithVlan", "display interface " + Script_VarText06.Text + "\r\n" +
+                    "#\r\n" +
+                    "#\r\n" +
+                    "#\r\n");
                 }
                 else
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("LanWithVlan", "#");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("lanWithVlan", "#\r\n");
                 }
-
-                // Source da Lan no Ping 
+                // Source LAN
                 if (Script_VarText09.Text != string.Empty)
                 {
                     Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "-a " + Script_VarText09.Text + " ");
@@ -2573,7 +2613,7 @@ namespace MasterSheetNew
                 Script_VarText03b.Hide();
                 Script_VarText03.Show();
             }
-            if (activityType == ActivityType.VOZ)
+            if (activityType == ActivityType.VOZ && !backboneOrNot)
             {
                 Script_VarText03b.Hide();
                 Script_VarText03.Hide();
@@ -3782,8 +3822,34 @@ namespace MasterSheetNew
         // ---------------------------------------------------------------------------
         // ---------------------------------------------------------------------------
         #region
+        public void OpenOutrosSNMP()
+        {
+            tabControl2.SelectedTab = tabOutros;
+            OutrosTitle.Text = "SNMP";
+
+            Outros_ExSubTitle.Show();
+            Outros_VarSubTitle.Show();
+
+            Outros_VarName0.Show();
+            Outros_VarName1.Show();
+            Outros_VarName2.Show();
+            Outros_VarText00.Show();
+            Outros_VarText01.Show();
+            Outros_VarText02.Show();
+            Outros_VarEx0.Show();
+            Outros_VarEx1.Show();
+            Outros_VarEx2.Show();
+            Outros_VarDelete0.Show();
+            Outros_VarDelete1.Show();
+            Outros_VarDelete2.Show();
+            Outros_VarDeleteAll.Show();
+
+            ApplytOutrosSNMP();
+        }
+
         public void ApplytOutrosSNMP()
         {
+
             if (Outros_TypeComboBox.SelectedIndex == 0)
             {
                 if (Outros_VarText01.Text == string.Empty)
@@ -3843,27 +3909,203 @@ namespace MasterSheetNew
             }
         }
 
-        public void ApplyOutrosRegraAdc()
+        public void OpenOutrosQoS()
+        {
+            tabControl2.SelectedTab = tabOutros;
+            OutrosTitle.Text = "QoS";
+
+            Outros_QoSCalcEx.Show();
+            Outros_QoSCalcLabel.Show();
+            Outros_QoSCalcText.Show();
+            Outros_QoSCalcEx.Show();
+            Outros_VarDeleteQoS.Show();
+            Outros_VarDeleteQoS0.Show();
+            Outros_VarDeleteQoS1.Show();
+            Outros_VarDeleteQoS2.Show();
+            Outros_VarDeleteQoS3.Show();
+            Outros_VarDeleteQoS4.Show();
+            Outros_VarDeleteQoS5.Show();
+            Outros_VarDeleteQoS6.Show();
+            Outros_VarDeleteQoS7.Show();
+            Outros_VarTextQoS00.Show();
+            Outros_VarTextQoS01.Show();
+            Outros_VarTextQoS02.Show();
+            Outros_VarTextQoS03.Show();
+            Outros_VarTextQoS04.Show();
+            Outros_VarTextQoS05.Show();
+            Outros_VarTextQoS06.Show();
+            Outros_VarTextQoS07.Show();
+            Outros_VarNameQoS0.Show();
+            Outros_VarNameQoS1.Show();
+            Outros_VarNameQoS2.Show();
+            Outros_VarNameQoS3.Show();
+            Outros_VarNameQoS4.Show();
+            Outros_VarNameQoS5.Show();
+            Outros_VarNameQoS6.Show();
+            Outros_VarNameQoS7.Show();
+            Outros_QoSDispTotal.Show();
+
+            ApplyOutrosQoS();
+        }
+
+        public void ApplyOutrosQoS()
+        {
+            float voz = 0;
+            float video = 0;
+            float bulk = 0;
+            float missao = 0;
+            float network = 0;
+            float sobra = 0;
+
+            CalcQoSTotal(voz,video,bulk,missao,network,sobra);
+
+            Outros_FinalTextBox.Text = scripts[0].scriptString;
+
+            if (Outros_TypeComboBox.SelectedIndex == 0)
+            {
+                // Values
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarVoz", voz.ToString());
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarVideo", video.ToString());
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarBulk", bulk.ToString());
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarMissao", missao.ToString());
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarNetwork", network.ToString());
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarSobra", sobra.ToString());
+                // Total
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarTotal", Outros_QoSCalcText.Text);
+                // Interfaces
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("varWan", Outros_VarTextQoS06.Text);
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("varLAN", Outros_VarTextQoS07.Text);
+            }
+            if (Outros_TypeComboBox.SelectedIndex == 1)
+            {
+                
+            }
+            if (Outros_TypeComboBox.SelectedIndex == 2)
+            {
+
+            }
+            if (Outros_TypeComboBox.SelectedIndex == 3)
+            {
+
+            }
+        }
+
+        public void CalcQoSTotal(float Voz,float Video,float Bulk,float Missao,float Network,float Sobra)
+        {
+
+            // Check if total value is empty
+            if (Outros_QoSCalcText.Text != string.Empty)
+            {
+                // Alter all the values to %
+                if (Outros_VarTextQoS00.Text != string.Empty)
+                {
+                    Voz = float.Parse(Outros_VarTextQoS00.Text) / float.Parse(Outros_QoSCalcText.Text);
+                }
+                if (Outros_VarTextQoS01.Text != string.Empty)
+                {
+                    Video = float.Parse(Outros_VarTextQoS01.Text) / int.Parse(Outros_QoSCalcText.Text);
+                }
+                if (Outros_VarTextQoS02.Text != string.Empty)
+                {
+                    Bulk = float.Parse(Outros_VarTextQoS02.Text) / float.Parse(Outros_QoSCalcText.Text);
+                }
+                if (Outros_VarTextQoS03.Text != string.Empty)
+                {
+                    Missao = float.Parse(Outros_VarTextQoS03.Text) / float.Parse(Outros_QoSCalcText.Text);
+                }
+                if (Outros_VarTextQoS04.Text != string.Empty)
+                {
+                    Network = float.Parse(Outros_VarTextQoS04.Text) / float.Parse(Outros_QoSCalcText.Text);
+                }
+                if (Outros_VarTextQoS05.Text != string.Empty)
+                {
+                    Sobra = float.Parse(Outros_VarTextQoS05.Text) / float.Parse(Outros_QoSCalcText.Text);
+                }
+
+                // Sum all the values
+                float total = (Voz + Video + Bulk + Missao + Network + Sobra) * 100 ;
+
+                // Check if is above 99%
+                if (total >= 99)
+                {
+                    // Make it Red if does
+                    Outros_QoSDispTotal.ForeColor = Color.Red;
+                }
+                else
+                {
+                    if (nightMode)
+                    {
+                        Outros_QoSDispTotal.ForeColor = Color.White;
+                    }
+                    else
+                    {
+                        Outros_QoSDispTotal.ForeColor = Color.Black;
+                    }
+                }
+                // Display on Screen
+                Outros_QoSDispTotal.Text = Math.Ceiling(total).ToString();
+            }
+        }
+
+        public void OpenOutrosRegraAdc()
         {
             // UI
-            Outros_TypeComboBox.Hide();
-            Outros_TypeLabel.Hide();
-
             Outros_VarText00.Show();
             Outros_VarText01.Show();
             Outros_VarText02.Show();
-            Outros_VarText03.Hide();
-            Outros_VarText04.Hide();
 
             Outros_VarName0.Show();
             Outros_VarName1.Show();
             Outros_VarName2.Show();
+
+            Outros_VarDelete0.Show();
+            Outros_VarDelete1.Show();
+            Outros_VarDelete2.Show();
+
+            Outros_VarName0.Text = "Tronco-Chave";
+            Outros_VarName1.Text = "DDD";
+            Outros_VarName2.Text = "Regra Adicional";
+
+            Outros_NumDaRegraComboBox.Show();
+            Outros_NumRegraLabel.Show();
+
+            Outros_VarText00.Text = Script_VarText17.Text;
+            Outros_VarText00.Text = Script_VarText18.Text;
+
+            ApplyOutrosRegraAdc();
+        }
+
+        public void ApplyOutrosRegraAdc()
+        {
+            // Script
+            // Outros_FinalTextBox.Text = scripts[43].scriptString.Replace("VarDDD", Outros_VarText00.Text);
+            // Outros_FinalTextBox.Text = scripts[43].scriptString.Replace("VarTronco", Outros_VarText01.Text);
+            // Outros_FinalTextBox.Text = scripts[43].scriptString.Replace("VarRegra", Outros_VarText02.Text);
+        }
+
+        public void HideAllUIOutros()
+        {
+            Outros_ExSubTitle.Hide();
+            Outros_VarSubTitle.Hide();
+
+            Outros_NumDaRegraComboBox.Hide();
+            Outros_NumRegraLabel.Hide();
+
+            Outros_VarName0.Hide();
+            Outros_VarName1.Hide();
+            Outros_VarName2.Hide();
             Outros_VarName3.Hide();
             Outros_VarName4.Hide();
 
-            Outros_VarEx0.Show();
-            Outros_VarEx1.Show();
-            Outros_VarEx2.Show();
+            Outros_VarText00.Hide();
+            Outros_VarText01.Hide();
+            Outros_VarText02.Hide();
+            Outros_VarText03.Hide();
+            Outros_VarText04.Hide();
+
+            Outros_VarEx0.Hide();
+            Outros_VarEx1.Hide();
+            Outros_VarEx2.Hide();
             Outros_VarEx3.Hide();
             Outros_VarEx4.Hide();
 
@@ -3872,30 +4114,39 @@ namespace MasterSheetNew
             Outros_VarDelete2.Hide();
             Outros_VarDelete3.Hide();
             Outros_VarDelete4.Hide();
+            Outros_VarDeleteAll.Hide();
 
-            Outros_ExSubTitle.Hide();
-            Outros_VarEx0.Hide();
-            Outros_VarEx1.Hide();
-            Outros_VarEx2.Hide();
-            Outros_VarEx3.Hide();
-            Outros_VarEx4.Hide();
+            Outros_QoSDispTotal.Hide();
 
-            Outros_VarName0.Text = "Tronco-Chave";
-            Outros_VarName1.Text = "DDD";
-            Outros_VarName2.Text = "Regra Adicional";
-
-            Outros_NumDaRegra.Show();
-            Outros_NumRegraLabel.Show();
-
-            Outros_VarText00.Text = Script_VarText17.Text;
-            Outros_VarText00.Text = Script_VarText18.Text;
-
-
-            // Script
-            // Outros_FinalTextBox.Text = scripts[43].scriptString.Replace("VarDDD", Outros_VarText00.Text);
-            // Outros_FinalTextBox.Text = scripts[43].scriptString.Replace("VarTronco", Outros_VarText01.Text);
-            // Outros_FinalTextBox.Text = scripts[43].scriptString.Replace("VarRegra", Outros_VarText02.Text);
-
+            Outros_QoSCalcEx.Hide();
+            Outros_QoSCalcLabel.Hide();
+            Outros_QoSCalcText.Hide();
+            Outros_QoSCalcEx.Hide();
+            Outros_VarDeleteQoS.Hide();
+            Outros_VarDeleteQoS0.Hide();
+            Outros_VarDeleteQoS1.Hide();
+            Outros_VarDeleteQoS2.Hide();
+            Outros_VarDeleteQoS3.Hide();
+            Outros_VarDeleteQoS4.Hide();
+            Outros_VarDeleteQoS5.Hide();
+            Outros_VarDeleteQoS6.Hide();
+            Outros_VarDeleteQoS7.Hide();
+            Outros_VarTextQoS00.Hide();
+            Outros_VarTextQoS01.Hide();
+            Outros_VarTextQoS02.Hide();
+            Outros_VarTextQoS03.Hide();
+            Outros_VarTextQoS04.Hide();
+            Outros_VarTextQoS05.Hide();
+            Outros_VarTextQoS06.Hide();
+            Outros_VarTextQoS07.Hide();
+            Outros_VarNameQoS0.Hide();
+            Outros_VarNameQoS1.Hide();
+            Outros_VarNameQoS2.Hide();
+            Outros_VarNameQoS3.Hide();
+            Outros_VarNameQoS4.Hide();
+            Outros_VarNameQoS5.Hide();
+            Outros_VarNameQoS6.Hide();
+            Outros_VarNameQoS7.Hide();
         }
 
 
@@ -3957,6 +4208,174 @@ namespace MasterSheetNew
         {
             Clipboard.SetText(Outros_FinalTextBox.Text);
         }
+        private void HomeButton_Outros_Click(object sender, EventArgs e)
+        {
+            HomeButton_Script_Click(sender, e);
+            HideAllUIOutros();
+        }
+
+        private void Outros_VarDeleteQoS0_Click(object sender, EventArgs e)
+        {
+            Outros_VarTextQoS00.Text = string.Empty;
+        }
+        private void Outros_VarDeleteQoS1_Click(object sender, EventArgs e)
+        {
+            Outros_VarTextQoS01.Text = string.Empty;
+        }
+        private void Outros_VarDeleteQoS2_Click(object sender, EventArgs e)
+        {
+            Outros_VarTextQoS02.Text = string.Empty;
+        }
+        private void Outros_VarDeleteQoS3_Click(object sender, EventArgs e)
+        {
+            Outros_VarTextQoS03.Text = string.Empty;
+        }
+        private void Outros_VarDeleteQoS4_Click(object sender, EventArgs e)
+        {
+            Outros_VarTextQoS04.Text = string.Empty;
+        }
+        private void Outros_VarDeleteQoS5_Click(object sender, EventArgs e)
+        {
+            Outros_VarTextQoS05.Text = string.Empty;
+        }
+        private void Outros_VarDeleteQoS6_Click(object sender, EventArgs e)
+        {
+            Outros_VarTextQoS06.Text = string.Empty;
+        }
+        private void Outros_VarDeleteQoS7_Click(object sender, EventArgs e)
+        {
+            Outros_VarTextQoS07.Text = string.Empty;
+        }
+
+        #endregion
+
+        // ---------------------------------------------------------------------------
+        #endregion
+
+        // ---------------------------------------------------------------------------
+        // ---------------------------------------------------------------------------
+        // ----------------------------- Clients -------------------------------------
+        // ---------------------------------------------------------------------------
+        // ---------------------------------------------------------------------------
+        #region
+        public void OpenClient(WindowsFormsApp1.Entitys.Client Client)
+        {
+            tabControl2.SelectedTab = tabClient;
+
+            step = 0;
+            client = Client;
+
+            Client_NameTitle.Text = client.name;
+            Client_StepPicture = client.steps[0].image;
+            Client_StepText.Text = client.steps[0].description;
+            Client_StepScript.Text = client.steps[0].script;
+
+            CheckSteps();
+        }
+
+        public void CheckSteps()
+        {
+            if (step == 0)
+            {
+                Client_BackStep.Hide();
+            }
+            else
+            {
+                Client_BackStep.Show();
+            }
+            if (step >= (client.steps.Count - 1))
+            {
+                Client_NextStep.Hide();
+            }
+            else
+            {
+                Client_NextStep.Show();
+            }
+        }
+
+        // ---------------------------
+        // UI Buttons
+        // ---------------------------
+        #region
+        private void Client_NextStep_Click(object sender, EventArgs e)
+        {
+            step = step + 1;
+
+            Client_StepPicture = client.steps[step].image;
+            Client_StepText.Text = client.steps[step].description;
+            Client_StepScript.Text = client.steps[step].script;
+
+            CheckSteps();
+        }
+
+        private void Client_BackStep_Click(object sender, EventArgs e)
+        {
+            step = step - 1;
+
+            Client_StepPicture = client.steps[step].image;
+            Client_StepText.Text = client.steps[step].description;
+            Client_StepScript.Text = client.steps[step].script;
+
+            CheckSteps();
+        }
+
+        private void BackButton_ClientSteps_Click(object sender, EventArgs e)
+        {
+            tabControl2.SelectedTab = tabSelectClient;
+        }
+        private void Client_DeleteAll_Click(object sender, EventArgs e)
+        {
+            Client_VarText00.Text = string.Empty;
+            Client_VarText01.Text = string.Empty;
+            Client_VarText02.Text = string.Empty;
+            Client_VarText03.Text = string.Empty;
+            Client_VarText04.Text = string.Empty;
+            Client_VarText05.Text = string.Empty;
+            Client_VarText06.Text = string.Empty;
+            Client_VarText07.Text = string.Empty;
+            Client_VarText08.Text = string.Empty;
+            Client_VarText09.Text = string.Empty;
+        }
+        private void Client_VarDelete00_Click(object sender, EventArgs e)
+        {
+            Client_VarText00.Text = string.Empty;
+        }
+        private void Client_VarDelete01_Click(object sender, EventArgs e)
+        {
+            Client_VarText01.Text = string.Empty;
+        }
+        private void Client_VarDelete02_Click(object sender, EventArgs e)
+        {
+            Client_VarText02.Text = string.Empty;
+        }
+        private void Client_VarDelete03_Click(object sender, EventArgs e)
+        {
+            Client_VarText03.Text = string.Empty;
+        }
+        private void Client_VarDelete04_Click(object sender, EventArgs e)
+        {
+            Client_VarText04.Text = string.Empty;
+        }
+        private void Client_VarDelete05_Click(object sender, EventArgs e)
+        {
+            Client_VarText05.Text = string.Empty;
+        }
+        private void Client_VarDelete06_Click(object sender, EventArgs e)
+        {
+            Client_VarText06.Text = string.Empty;
+        }
+        private void Client_VarDelete07_Click(object sender, EventArgs e)
+        {
+            Client_VarText07.Text = string.Empty;
+        }
+        private void Client_VarDelete08_Click(object sender, EventArgs e)
+        {
+            Client_VarText08.Text = string.Empty;
+        }
+        private void Client_VarDelete09_Click(object sender, EventArgs e)
+        {
+            Client_VarText09.Text = string.Empty;
+        }
         #endregion
 
         // ---------------------------------------------------------------------------
@@ -3969,7 +4388,6 @@ namespace MasterSheetNew
         // ---------------------------------------------------------------------------
         // ---------------------------------------------------------------------------
         #region
-
         // ----------------------
         // Versionamento
         // ----------------------
@@ -4004,7 +4422,7 @@ namespace MasterSheetNew
             if (darkMode)
             {
                 // ------ DARK THEME ------
-                if (!ctr.Name.Contains("MainTitle") || !ctr.Name.Contains("TemplatesLabel"))
+                if (!ctr.Name.Contains("MainTitle") || !ctr.Name.Contains("TemplatesLabel") || !ctr.Name.Contains("Home"))
                 {
                     if (!ctr.Name.Contains("Text") || !ctr.Name.Contains("Script_Var"))
                     {
@@ -4034,7 +4452,7 @@ namespace MasterSheetNew
             else
             {
                 // ------ LIGHT THEME -----
-                if (!ctr.Name.Contains("MainTitle") || !ctr.Name.Contains("TemplatesLabel"))
+                if (!ctr.Name.Contains("MainTitle") || !ctr.Name.Contains("TemplatesLabel") || !ctr.Name.Contains("HomeButton"))
                 {
                     ctr.BackColor = SystemColors.Control;
                     ctr.ForeColor = SystemColors.ControlText;
@@ -4205,11 +4623,6 @@ namespace MasterSheetNew
             Script_LANMascaraBox.SelectedIndex = 2;
         }
 
-
-
-
-        #endregion
-
         private void button2_Click(object sender, EventArgs e)
         {
             string copiado = Clipboard.GetText().Replace("DADOS CLIENTE", ";");
@@ -4224,6 +4637,14 @@ namespace MasterSheetNew
 
             Script_TextBox.Text = novo;
         }
+
+        #endregion
+
+        private void Client_TesteClient_Click(object sender, EventArgs e)
+        {
+            OpenClient(clients[0]);
+        }
+
     }
 
 }

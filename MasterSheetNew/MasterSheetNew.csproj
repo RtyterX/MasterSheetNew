@@ -105,7 +105,7 @@
     <Compile Include="Entitys\Procedure.cs" />
     <Compile Include="Entitys\Router.cs" />
     <Compile Include="Entitys\Script.cs" />
-    <Compile Include="Entitys\Steps.cs" />
+    <Compile Include="Entitys\Step.cs" />
     <Compile Include="Entitys\Version.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

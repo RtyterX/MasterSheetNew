@@ -493,7 +493,7 @@ namespace WindowsFormsApp1.Entitys
             #endregion
             // ------------------------------------------- Config - Huawei - BLD -----------------------------------------------------
             #region
-            string huaweiBLD = "sys\r\n#\r\n#\r\nsysname var00\r\n#\r\n#\r\n header login information \"\r\n||========================================||  \r\n||===========CLARO Brasil S.A.============||  \r\n||========================================||  \r\n                                              \r\n        SOMENTE USUARIOS AUTORIZADOS          \r\n           AUTHORIZED USERS ONLY              \r\n                                              \r\n        OS ACESSOS SERAO MONITORADOS          \r\n         ACCESSES WILL BE MONITORED           \r\n                                              \r\n||========================================||  \r\n\"\r\n#\r\n#\r\n#\r\n#\r\naaa\r\nundo local-aaa-user password policy access-user\r\nundo local-aaa-user password policy administrator\r\nlocal-user EBT password irreversible-cipher PRO1AN@1\r\nPRO1AN@1\r\nlocal-user EBT service-type telnet terminal ssh\r\nlocal-user EBT privilege level 15 \r\n#\r\nundo local-user admin\r\nquit\r\n#\r\n#\r\n#\r\nundo http secure-server ssl-policy\r\ny\r\n#\r\n#\r\nundo http secure-server enable\r\ny\r\n#\r\n#\r\nundo http server permit interface\r\ny\r\n#\r\n#\r\n#\r\ninterface Vlanif1\r\nundo ip address\r\n#\r\n#\r\n#\r\n#\r\nacl 3000\r\nrule permit ip source var10 0\r\nrule permit ip destination var10 0\r\n#\r\nrule permit ip source var07 0\r\nrule permit ip destination var07 0\r\n#\r\nrule permit ip destination 200.255.156.192 0.0.0.63\r\nrule permit ip source 200.255.156.192 0.0.0.63\r\n#\r\n#\r\n#\r\n#\r\ntraffic classifier var02 operator or\r\nif-match any\r\n# \r\ntraffic behavior var02\r\ncar cir var02\r\n#\r\ntraffic policy var02\r\nclassifier var02 behavior var02 precedence 5\r\n#\r\n#\r\n#\r\ninterface var03\r\n description  var01\r\n bandwidth var02\r\n qos gts cir var02\r\n undo virtualbaudrate\r\n traffic-policy var02 inbound\r\n traffic-policy var02 outbound\r\n#\r\n#\r\n#\r\nwithVlan\r\n#\r\n#\r\n#\r\ninterface var05\r\n description  **LAN**\r\n ip address var09 mascaraLAN\r\n#\r\n#\r\n#\r\n#\r\nip route-static 0.0.0.0 0.0.0.0 var07\r\n#\r\n#\r\n#\r\n#\r\nfib regularly-refresh disable\r\ny\r\n#\r\n#\r\ninfo-center loghost source var03sourceLan\r\ninfo-center loghost var07\r\ninfo-center loghost var09\r\ninfo-center logbuffer size 1024\r\n#\r\n#\r\nundo icmp name timestamp-request receive\r\n#\r\n#\r\n#\r\ntelnet server enable\r\ntelnet server permit interface var03\r\n#\r\n#\r\n#\r\n#\r\nuser-interface con 0\r\n authentication-mode aaa\r\nuser-interface vty 0 4\r\n acl 3000 inbound\r\n authentication-mode aaa\r\n protocol inbound telnet\r\n#\r\n#\r\n#\r\nntp-service refclock-master 12\r\nntp-service unicast-server 200.20.186.94 source-interface var05\r\nntp-service unicast-server 200.20.186.75 source-interface var05 preference\r\n#\r\n#\r\n#\r\nreturn\r\n\r\n";
+            string huaweiBLD = "system-view\r\n#\r\n#\r\nsysname var00\r\n#\r\n#\r\n#\r\nheader login information \"\r\n||========================================||\r\n||=========== CLARO Brasil S.A. ==========||\r\n||========================================||\r\n\r\n        SOMENTE USUARIOS AUTORIZADOS\r\n           AUTHORIZED USERS ONLY\r\n\r\n        OS ACESSOS SERAO MONITORADOS\r\n         ACCESSES WILL BE MONITORED\r\n\r\n||========================================||\r\n\"\r\n#\r\n#\r\n#\r\n#\r\naaa\r\nundo local-aaa-user password policy access-user\r\nundo local-aaa-user password policy administrator\r\nlocal-user EBT password irreversible-cipher PRO1AN@1\r\nPRO1AN@1\r\nlocal-user EBT service-type telnet terminal ssh\r\nlocal-user EBT privilege level 15\r\n#\r\nundo local-user admin\r\nquit\r\n#\r\n#\r\n#\r\nundo http secure-server ssl-policy\r\ny\r\n#\r\n#\r\nundo http secure-server enable\r\ny\r\n#\r\n#\r\nundo http server permit interface\r\n#\r\n#\r\n#\r\ninterface Vlanif1\r\n undo ip address\r\n#\r\n#\r\n#\r\ndns resolve\r\ndns proxy enable\r\ny\r\n#\r\n#\r\n#\r\ndhcp enable \r\n#\r\n#\r\n#\r\nacl 3000\r\nrule permit ip source var10 0\r\nrule permit ip destination var10 0\r\n#\r\nrule permit ip source var07 0\r\nrule permit ip destination var07 0\r\n#\r\nrule permit ip destination 200.255.156.192 0.0.0.63\r\nrule permit ip source 200.255.156.192 0.0.0.63\r\n#\r\n#\r\n#\r\n#\r\ntraffic classifier var02 operator or\r\nif-match any\r\n#\r\ntraffic behavior var02\r\ncar cir  var02\r\n#\r\ntraffic policy var02\r\nclassifier var02 behavior var02 precedence 5\r\n#\r\n#\r\n#\r\n# \r\ninterface var03\r\ndescription var01 \r\nbandwidth var02\r\nqos gts cir var02\r\ntraffic-policy var02 inbound\r\ntraffic-policy var02 outbound\r\n#\r\n#\r\nwithVlan\r\n#\r\ninterface var05\r\ndescription  **LAN**\r\nip address var09 mascaraLAN\r\n#\r\n#\r\n#\r\n#\r\n#\r\nip route-static 0.0.0.0 0.0.0.0 var07\r\n# \r\n#\r\n#\r\n#\r\n#\r\nfib regularly-refresh disable\r\ny\r\n#\r\n#\r\ninfo-center loghost source var03infosource\r\ninfo-center loghost var07\r\ninfo-center loghost var09\r\ninfo-center logbuffer size 1024\r\n#\r\n#\r\nundo icmp name timestamp-request receive\r\n#\r\n#\r\n#\r\ntelnet server enable\r\ntelnet server permit interface var03telsource\r\n#\r\n#\r\n#\r\n#\r\nuser-interface con 0 \r\n authentication-mode aaa \r\nuser-interface vty 0 4 \r\n acl 3000 inbound \r\n authentication-mode aaa \r\n user privilege level 15\r\n protocol inbound telnet \r\n# \r\n#\r\n#\r\n#\r\n#\r\n ntp-service refclock-master 12 \r\n ntp-service unicast-server 200.20.186.94 source-interface var05\r\n ntp-service unicast-server 200.20.186.75 source-interface var05 preference\r\n# \r\n#\r\n#\r\n#\r\nreturn\r\n";
             #endregion
             // ------------------------------------------- Config - Cisco - MPLS -----------------------------------------------------
             #region
@@ -509,7 +509,7 @@ namespace WindowsFormsApp1.Entitys
             #endregion
             // ------------------------------------------- Config - Huawei - MPLS ----------------------------------------------------
             #region
-            string huaweiMPLS = "#\r\nsys\r\n#\r\n#\r\nsysname var00\r\n#\r\n#\r\n#\r\n#\r\nheader login information \"\r\n||========================================||\r\n||=============CLARO Brasil S.A.============||\r\n||========================================||\r\n\r\n        SOMENTE USUARIOS AUTORIZADOS\r\n           AUTHORIZED USERS ONLY\r\n\r\n        OS ACESSOS SERAO MONITORADOS\r\n         ACCESSES WILL BE MONITORED\r\n\r\n||========================================||\r\n\"\r\n#\r\n#\r\n#\r\n#\r\naaa\r\nundo local-aaa-user password policy access-user\r\nundo local-aaa-user password policy administrator\r\nlocal-user EBT password irreversible-cipher PRO1AN@1\r\nPRO1AN@1\r\nlocal-user EBT service-type telnet terminal ssh\r\ny\r\nlocal-user EBT privilege level 15\r\n#\r\nundo local-user admin\r\nquit\r\n#\r\n#\r\n#\r\nundo http secure-server ssl-policy\r\ny\r\n#\r\n#\r\nundo http secure-server enable\r\ny\r\n#\r\n#\r\nundo http server permit interface\r\n#\r\n#\r\n#\r\ninterface Vlanif1\r\n undo ip address\r\n#\r\n#\r\n#\r\ndns resolve\r\ndns proxy enable\r\ny\r\n#\r\ndhcp enable\r\n#\r\n#\r\n#\r\ndrop illegal-mac alarm\r\n#\r\n#\r\nauthentication-profile name default_authen_profile\r\nauthentication-profile name dot1x_authen_profile\r\nauthentication-profile name dot1xmac_authen_profile\r\nauthentication-profile name mac_authen_profile\r\nauthentication-profile name multi_authen_profile\r\nauthentication-profile name portal_authen_profile\r\nquit\r\n#\r\n#\r\n#\r\nradius-server template default\r\nquit\r\n#\r\n#\r\npki realm default\r\n certificate-check none\r\nquit\r\n#\r\n#\r\n#\r\nike proposal default\r\n#\r\n#\r\nssl policy default_policy type server\r\n pki-realm default\r\n version tls1.2\r\n ciphersuite rsa_aes_128_sha256 rsa_aes_256_sha256 ecdhe_rsa_aes128_gcm_sha256 ecdhe_rsa_aes256_gcm_sha384\r\ny\r\nquit\r\n encryption-algorithm aes-256 aes-192 aes-128\r\n dh group14\r\n authentication-algorithm sha2-512 sha2-384 sha2-256\r\n authentication-method pre-share\r\n integrity-algorithm hmac-sha2-256\r\n prf hmac-sha2-256\r\nquit\r\n#\r\n#\r\n#\r\nfree-rule-template name default_free_rule\r\n#\r\nportal-access-profile name portal_access_profile\r\nquit\r\n#\r\nweb\r\n set fast-configuration state disable\r\n#\r\n#\r\n#\r\ncellular profile default\r\n modem auto-recovery dial action modem-reboot fail-times 128\r\n modem auto-recovery icmp-unreachable action modem-reboot\r\n modem auto-recovery services-unavailable action modem-reboot test-times 0 interval 3600\r\n#\r\n#\r\n#\r\n# \r\n# \r\ninterface var03\r\ndescription var01\r\nbandwidth var02\r\n# \r\n# \r\nwithVlan\r\n# \r\ninterface var05\r\ndescription  **LAN**\r\nip address var09 mascaraLAN\r\n#\r\n#\r\n# \r\n#\r\n#\r\n#\r\nbgp var12\r\n router-id var08\r\n peer var07 as-number 4230\r\n peer var07 description designacao\r\n #\r\n ipv4-family unicast\r\n  undo synchronization\r\n  import-route direct\r\n  import-route static\r\n  peer var07 enable\r\n  peer var07 allow-as-loop 10\r\n#\r\n#\r\n#\r\n#\r\nfib regularly-refresh disable\r\ny\r\n#\r\n#\r\ninfo-center loghost source var03VlanInfo\r\ninfo-center loghost var07\r\ninfo-center loghost var07\r\ninfo-center logbuffer size 1024\r\n#\r\n#\r\nundo icmp name timestamp-request receive\r\n#\r\n#\r\n#\r\ntelnet server enable\r\ntelnet server permit interface var03VlanTelnet\r\n#\r\n#\r\n#\r\nuser-interface con 0 \r\n authentication-mode aaa \r\nuser-interface vty 0 4 \r\n acl 3000 inbound \r\n authentication-mode aaa \r\n user privilege level 15\r\n protocol inbound telnet \r\n#\r\n#\r\n# \r\n#\r\n#\r\nreturn";
+            string huaweiMPLS = "system-view\r\n#\r\n#\r\nsysname var00\r\n#\r\n#\r\n#\r\nheader login information \"\r\n||========================================||\r\n||=========== CLARO Brasil S.A. ==========||\r\n||========================================||\r\n\r\n        SOMENTE USUARIOS AUTORIZADOS\r\n           AUTHORIZED USERS ONLY\r\n\r\n        OS ACESSOS SERAO MONITORADOS\r\n         ACCESSES WILL BE MONITORED\r\n\r\n||========================================||\r\n\"\r\n#\r\n#\r\n#\r\n#\r\naaa\r\nundo local-aaa-user password policy access-user\r\nundo local-aaa-user password policy administrator\r\nlocal-user EBT password irreversible-cipher PRO1AN@1\r\nPRO1AN@1\r\nlocal-user EBT service-type telnet terminal ssh\r\nlocal-user EBT privilege level 15\r\n#\r\nundo local-user admin\r\nquit\r\n#\r\n#\r\n#\r\nundo http secure-server ssl-policy\r\ny\r\n#\r\n#\r\nundo http secure-server enable\r\ny\r\n#\r\n#\r\nundo http server permit interface\r\n#\r\n#\r\n#\r\ninterface Vlanif1\r\n undo ip address\r\n#\r\n#\r\n#\r\ndns resolve\r\ndns proxy enable\r\ny\r\n#\r\n#\r\n#\r\ndhcp enable \r\n#\r\n#\r\n#\r\ndrop illegal-mac alarm\r\n#\r\nauthentication-profile name default_authen_profile\r\nauthentication-profile name dot1x_authen_profile\r\nauthentication-profile name dot1xmac_authen_profile\r\nauthentication-profile name mac_authen_profile\r\nauthentication-profile name multi_authen_profile\r\nauthentication-profile name portal_authen_profile\r\nquit\r\n#\r\n#\r\n#\r\nradius-server template default\r\nquit\r\n#\r\n#\r\npki realm default\r\n certificate-check none\r\nquit\r\n#\r\n#\r\n#\r\n#\r\n#\r\nssl policy default_policy type server\r\n pki-realm default\r\n version tls1.2\r\n ciphersuite rsa_aes_128_sha256 rsa_aes_256_sha256 ecdhe_rsa_aes128_gcm_sha256 ecdhe_rsa_aes256_gcm_sha384\r\ny\r\nquit\r\n#\r\n#\r\n#\r\nike proposal default\r\nencryption-algorithm aes-256 aes-192 aes-128\r\ny\r\n dh group14\r\n authentication-algorithm sha2-512 sha2-384 sha2-256\r\n authentication-method pre-share\r\n integrity-algorithm hmac-sha2-256\r\n prf hmac-sha2-256\r\nquit\r\n#\r\n#\r\n#\r\n#\r\nfree-rule-template name default_free_rule\r\n#\r\n#\r\n#\r\nportal-access-profile name portal_access_profile\r\n#\r\n#\r\n#\r\nweb\r\n set fast-configuration state disable\r\n#\r\n#\r\n#\r\ncellular profile default\r\n modem auto-recovery dial action modem-reboot fail-times 128\r\n modem auto-recovery icmp-unreachable action modem-reboot\r\n modem auto-recovery services-unavailable action modem-reboot test-times 0 interval 3600\r\n#\r\n#\r\n#\r\n# \r\n# \r\ninterface var03\r\ndescription var01 \r\nbandwidth var02\r\n# \r\n# \r\n#\r\n# \r\nwithVlan\r\n#\r\ninterface var05\r\ndescription  **LAN**\r\nip address var09 mascaraLAN\r\n#\r\n#\r\n#\r\n#\r\nundo ip route-static 0.0.0.0 0.0.0.0 var07\r\n# \r\n#\r\n#\r\n#\r\nbgp var12\r\n router-id var08\r\n peer var07 as-number 4230\r\n peer var07 description designacao\r\n #\r\n ipv4-family unicast\r\n  undo synchronization\r\n  import-route direct\r\n  import-route static\r\n  peer var07 enable\r\n  peer var07 allow-as-loop 10\r\n#\r\n#\r\n#\r\n#\r\nfib regularly-refresh disable\r\ny\r\n#\r\n#\r\ninfo-center loghost source var03infosource\r\ninfo-center loghost var07\r\ninfo-center loghost var09\r\ninfo-center logbuffer size 1024\r\n#\r\n#\r\nundo icmp name timestamp-request receive\r\n#\r\n#\r\n#\r\ntelnet server enable\r\ntelnet server permit interface var03telsource\r\n#\r\n#\r\n#\r\nuser-interface con 0 \r\n authentication-mode aaa \r\nuser-interface vty 0 4 \r\n acl 3000 inbound \r\n authentication-mode aaa \r\n user privilege level 15\r\n protocol inbound telnet \r\n#\r\n#\r\n#\r\n#\r\n#\r\nreturn";
             #endregion
             // ------------------------------------------- Config - Fortigate - MPLS -------------------------------------------------
             #region
@@ -525,7 +525,7 @@ namespace WindowsFormsApp1.Entitys
             #endregion
             // -------------------------------------------------------------------
             #region
-            string ciscoPABX = "";
+            string ciscoPABX = "conf t \r\n!\r\n!\r\nhostname var00\r\n!\r\nip domain name embratel \r\n!\r\n!\r\n###################################################### \r\n# CONFIGURACOES DE USUARIO # \r\n###################################################### \r\n!\r\nservice password-encryption\r\nusername EBT privilege 10 password 0 CQMR\r\nenable secret PRO1AN\r\nlogging buffered 4096 debugging\r\n!\r\n!\r\n!\r\n!\r\n!###################################################### \r\n!# LIMPEZA \r\n!###################################################### \r\n!\r\nno ip domain name yourdomain.com \r\nno ip domain lookup \r\n!\r\n!\r\nconfig-register 0x2102\r\nno username cisco\r\nno username admin\r\n!\r\n!\r\nno ip dhcp excluded-address 10.10.10.1 \r\nno ip dhcp pool ccp-pool \r\n!\r\n!\r\nno ip ssh version 1 \r\nip ssh version 2 \r\n!\r\n!\r\nno boot host \r\nno boot network  \r\n!\r\n!\r\nno ip finger \r\nno service pad \r\nno service tcp-small-servers \r\nno ip bootp server \r\nno ip source-route \r\nno cdp run \r\n!\r\n!\r\nno access-list 23 permit 10.10.10.0 0.0.0.7 \r\n!\r\n!\r\nno ip http server\r\nno ip http secure-server\r\nno ip http access-class 23\r\nno ip http authentication local\r\nno ip http timeout-policy idle 60 life 86400 requests 10000\r\nlogging buffered 51200 warnings \r\nno logging console \r\nno logging trap notifications\r\n!\r\n!\r\n!\r\n!\r\n!###################################################### \r\n!# POLICY MAP - QoS \r\n!###################################################### \r\n!\r\nclass-map match-any Voz_RealIp\r\n match  dscp cs3  ef \r\nclass-map match-any NetworkControl_RealIp\r\n match  dscp cs2  cs6  cs7 \r\nclass-map match-any MarcacaoVoz\r\n match any\r\n!\r\npolicy-map EntradaLanCE\r\n class MarcacaoVoz\r\n  set ip dscp ef\r\npolicy-map Voz_Ger\r\n class Voz_RealIp\r\npolice rate var02000 (-64)\r\n     conform-action transmit \r\n     exceed-action drop \r\n    priority\r\n class NetworkControl_RealIp\r\n    bandwidth 63\r\n    queue-limit 32 packets\r\n class class-default\r\n     random-detect\r\npolicy-map Saida_Voz\r\n class class-default\r\n shape average var02000\r\n  service-policy Voz_Ger\r\n!\r\n!\r\n!\r\n!\r\n!###################################################### \r\n!# CONFIGURACOES DE INTERFACES \r\n!###################################################### \r\n!\r\nInterface var03\r\ndescription var01\r\nbandwidth var01\r\n service-policy output Saida_Voz\r\nno shut\r\n!\r\n!\r\n!\r\nInterface var03.var04\r\ndescription var01\r\nbandwidth var01\r\nencapsulation dot1Q var04\r\n!\r\n!\r\n!\r\ninterface var05\r\n description *** REDE LAN - PORTA DE CONEXAO COM PABX IP ***\r\nip address var09 mascaraLAN\r\n duplex auto\r\n speed auto\r\n service-policy input EntradaLanCE\r\n no shut\r\n!\r\n!\r\n!\r\n!###################################################### \r\n!# ROTA ESTATICA \r\n!###################################################### \r\n!\r\nip route 0.0.0.0 0.0.0.0 var07\r\n!\r\n!\r\n!\r\n!\r\n!###################################################### \r\n!# BANNER - USER INTERFACE \r\n!###################################################### \r\n!\r\n!\r\nbanner motd ^\r\n||========================================||\r\n||========== CLARO Brasil S.A. ===========||\r\n||========================================||\r\n\r\n        SOMENTE USUARIOS AUTORIZADOS\r\n           AUTHORIZED USERS ONLY\r\n\r\n        OS ACESSOS SERAO MONITORADOS\r\n         ACCESSES WILL BE MONITORED\r\n\r\n||========================================||^\r\n!\r\n!\r\nno banner exec ^\r\nno banner login ^\r\n!\r\n!\r\n!\r\nline con 0\r\n no password\r\n login local\r\nline aux 0\r\n no password\r\n login local\r\nline vty 0 4\r\n no privilege level 15\r\n no password\r\n no access-class 23 in\r\n login local\r\n transport input all\r\nno line vty 5 15\r\n!\r\n!\r\n!\r\n!\r\nend\r\n";
             #endregion
             // ------------------------------------------- Config - HPE - VOZ --------------------------------------------------------
             #region
@@ -533,7 +533,7 @@ namespace WindowsFormsApp1.Entitys
             #endregion
             // -------------------------------------------------------------------
             #region
-            string hpePABX = "";
+            string hpePABX = "system-view \r\n#\r\nsysname var00\r\n# \r\n# \r\n###################################################### \r\n# CONFIGURACOES DE USUARIO # \r\n######################################################\r\n#\r\nlocal-user EBT\r\npassword simple PRO1AN\r\nauthorization-attribute level 3\r\nservice-type telnet\r\n#\r\n#\r\n#\r\n###################################################### \r\n# LIMPEZA # \r\n###################################################### \r\n#\r\nundo local-user admin class manage\r\nundo snmp-agent\r\n#\r\n#\r\n\"service-type telnet terminal\r\n\"service-type ftp\r\n\"telnet server enable\r\n\"password-recovery enable\r\n\"info-center logbuffer size 1024\r\nundo interface Vlan-interface1\r\n#\r\n#\r\nundo dhcp enable\r\nundo dhcp server always-broadcast\r\nundo dhcp server ip-pool lan1\r\nundo dns proxy enable\r\n#\r\n#\r\ntelnet server enable\r\n#\r\n#\r\ndomain system\r\naccess-limit disable\r\nstate active\r\nidle-cut disable\r\nself-service-url disable\r\n#\r\n#\r\n#\r\n###################################################### \r\n# CONFIGURACOES DE QoS # \r\n###################################################### \r\n#\r\ntraffic classifier class_default operator and\r\n if-match any\r\ntraffic classifier voz operator and\r\n if-match dscp ef\r\ntraffic classifier NetworkControl operator and\r\n if-match dscp cs2 cs6 cs7\r\ntraffic classifier ClassificaVoz operator and\r\n if-match any\r\n#\r\ntraffic behavior voz\r\nqueue ef bandwidth var02 - 64\r\ntraffic behavior NetworkControl\r\n queue af bandwidth 63\r\ntraffic behavior RemarkVoz\r\n remark dscp ef\r\n#\r\nqos policy Voz_Ger\r\n classifier voz behavior voz\r\n classifier NetworkControl behavior NetworkControl\r\n#\r\ntraffic behavior class_default\r\n gts cir var02\r\n traffic-policy Voz_Ger\r\n#\r\n#\r\nqos policy Saida_Voz\r\n classifier class_default behavior class_default\r\n#\r\nqos policy EntradaLanCE\r\n classifier ClassificaVoz behavior RemarkVoz\r\n#\r\n#\r\n#\r\n###################################################### \r\n# CONFIGURACOES DE INTERFACES # \r\n###################################################### \r\n#\r\ninterface var03\r\ndescription  var01\r\nport link-mode route\r\nundo virtualbaudrate\r\nbandwidth var02\r\nqos apply policy Saida_Voz outbound\r\n#\r\n#\r\n#\r\ninterface var03.var04\r\nvlan-type dot1q vid var04\r\ndescription  var01\r\nbandwidth var02\r\n#\r\n#\r\n#\r\ninterface var05\r\n port link-mode route\r\ndescription *** REDE LAN - PORTA DE CONEXAO COM PABX IP ***\r\nip address var09 mascaraLAN\r\nqos apply policy EntradaLanCE inbound\r\nundo shut\r\n#\r\n#\r\n#\r\n#\r\n###################################################### \r\n# ROTA ESTATICA # \r\n###################################################### \r\n#\r\nip route-static 0.0.0.0 0.0.0.0 var07\r\n#\r\n#\r\n#\r\n#\r\n#\r\n###################################################### \r\n# BANNER - USER INTERFACE \r\n###################################################### \r\n#\r\nuser-interface con 0\r\nuser-interface tty 13\r\nuser-interface aux 0\r\nuser-interface vty 0 4\r\nauthentication-mode scheme\r\n#\r\n#\r\nheader motd %\r\n||========================================||\r\n||=============CLARO Brasil S.A.==========||\r\n||========================================||\r\n\r\n        SOMENTE USUARIOS AUTORIZADOS\r\n           AUTHORIZED USERS ONLY\r\n\r\n        OS ACESSOS SERAO MONITORADOS\r\n         ACCESSES WILL BE MONITORED\r\n\r\n||========================================||\r\n%\r\n#\r\n#\r\n# \r\nreturn\r\n";
             #endregion
             // ------------------------------------------- Config - HPE Old - VOZ ----------------------------------------------------
             #region
@@ -1098,126 +1098,9 @@ namespace WindowsFormsApp1.Entitys
             #endregion
             // ------------------------------------------- Log - Huawei - BLD --------------------------------------------------------
             #region
-            string huaweiLogsBLD = "########### Configuracoes logType ############\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "screen-length 0 temporary\r\n" +
-                    "#\r\n" +
-                    "########################################################\r\n" +
-                    "#\r\n" +
-                    "display vrrp brief\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "display nat session all\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "display ospf peer\r\n" +
-                    "#\r\n" +
-                    "display ospf interface\r\n" +
-                    "#\r\n" +
-                    "display ospf lsdb\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "display rip 1 neighbor\r\n" +
-                    "#\r\n" +
-                    "display rip 1 database\r\n" +
-                    "#\r\n" +
-                    "display rip 1 route\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "save\r\n" +
-                    "y\r\n" +
-                    "#\r\n" +
-                    "########################################\r\n" +
-                    "# CONFIGURACOES \r\n" +
-                    "########################################\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "display saved-configuration\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "########################################\r\n" +
-                    "# INTERFACES \r\n" +
-                    "########################################\r\n" +
-                    "#\r\n" +
-                    "display ip interface brief\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "display interface var03\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "vlanNaWAN" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "display interface var05\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "vlanLan" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "########################################\r\n" +
-                    "# SYSTEM \r\n" +
-                    "########################################\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "display version\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "display sn\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "########################################\r\n" +
-                    "# POLICIES \r\n" +
-                    "########################################\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "display traffic-policy applied-record\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "display traffic policy statistics interface var03 outbound\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "display traffic policy user-defined\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "########################################\r\n" +
-                    "# Tabela de Roteamento \r\n" +
-                    "########################################\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "display ip routing-table protocol static\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "display ip routing-table\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "display ip routing-table statistics\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "ping -s 1500 -c 20 sourceLan var07\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "#\r\n" +
-                    "#\r\n";
+            string huaweiLogsBLD = "screen-length 0 temporary\r\n#\r\n#\r\n#\r\n#\r\n########### CONFIGURACOES INICIAIS ############\r\n#\r\n#\r\n#\r\ndisplay vrrp brief\r\n#\r\n#\r\ndisplay nat session all\r\n#\r\n#\r\ndisplay ospf peer\r\n#\r\ndisplay ospf interface\r\n#\r\ndisplay ospf lsdb\r\n#\r\n#\r\n#\r\ndisplay rip 1 neighbor\r\n#\r\ndisplay rip 1 database\r\n#\r\ndisplay rip 1 route\r\n#\r\n#\r\n#\r\n#\r\n#\r\nsave\r\ny\r\n#\r\n#\r\n#\r\n#\r\n########### CONFIGURACOES #############\r\n#\r\n#\r\n#\r\ndisplay saved-configuration\r\n#\r\n#\r\n#\r\n#\r\n#\r\n#\r\n########### INTERFACES #############\r\n#\r\n#\r\n#\r\ndisplay ip interface brief\r\n#\r\n#\r\n#\r\ndisplay interface var03\r\n#\r\n#\r\nwithVlanwithLanlanWithVlan########### SYSTEM ##############\r\n#\r\n#\r\n#\r\ndisplay version\r\n#\r\n#\r\ndisplay sn\r\n#\r\n#\r\n#\r\n#\r\n#\r\n########### POLICES ##############\r\n#\r\n#\r\n#\r\ndisplay traffic-policy applied-record\r\n#\r\n#\r\ndisplay traffic policy statistics interface outVlan outbound\r\n#\r\n#\r\ndisplay traffic policy user-defined\r\n#\r\n#\r\n#\r\n#\r\n#\r\n#\r\n########### TABELA DE ROTEAMENTO #############\r\n#\r\n#\r\n#\r\ndisplay ip routing-table protocol static\r\n#\r\n#\r\ndisplay ip routing-table\r\n#\r\n#\r\ndisplay ip routing-table statistics\r\n#\r\n#\r\n#\r\n#\r\n#\r\n########### PING #############\r\n#\r\n#\r\n#\r\nping -s 1500 -c 20 var09var07\r\n#\r\n#\r\n#\r\n#\r\n#\r\n\r\n";
             #endregion
-
+            //-------------------------------------------------------------------------------------------------------------------------
             // ------------------------------------------- Log - Cisco - MPLS --------------------------------------------------------
             #region
             string ciscoLogsMPLS = "terminal length 0 \r\n!\r\n!\r\nundebug all\r\nwr memory\r\n!\r\n!\r\n!############## CONFIGURACOES logType DO CPE ################ \r\n!\r\n!\r\n!#######################################\r\n!#            CONFIGURACOES            #\r\n!#######################################\r\n!\r\nshow startup-config\r\n!\r\n!\r\nshow ip interface brief\r\n!\r\n!\r\n!\r\n!#######################################\r\n!#            INTERFACES               #\r\n!#######################################\r\n!\r\nshow ip interface brief\r\n!\r\n!\r\n!\r\nshow interface var03\r\n!\r\n!\r\nwithVlan\r\nwithLan\r\nLanWithVlan\r\n!#######################################\r\n!#            SYSTEM INFO              #\r\n!#######################################\r\n!\r\nshow version\r\n!\r\n!\r\nshow inventory\r\n!\r\n!\r\n!\r\n!#######################################\r\n!#              POLICY-MAP             #\r\n!#######################################\r\n!\r\nshow policy-map\r\n!\r\n!\r\n!\r\nshow policy-map interface\r\n!\r\n!\r\n!\r\n!#######################################\r\n!#                BGP                  #\r\n!#######################################\r\n!\r\nshow ip route summary\r\n!\r\n!\r\n!#############################\r\n!\r\nshow ip bgp summary\r\n!\r\n!\r\n!#############################\r\n!\r\nshow ip bgp neighbors  var07 advertised-routes\r\n!\r\n!\r\n!\r\n!#######################################\r\n!#                PING                 #\r\n!#######################################\r\n!\r\nping var07 repeat 200 size 1500 isrdata 5050 sourceLan\r\n!\r\n!\r\n!\r\n!\r\n\r\n";
@@ -1428,11 +1311,11 @@ namespace WindowsFormsApp1.Entitys
                     "#\r\n" +
                     "#\r\n";
             #endregion
-            // ------------------------------------------- Log - Hauwei - MPLS -------------------------------------------------------
+            // ------------------------------------------- Log - Huawei - MPLS -------------------------------------------------------
             #region
-            string huaweiLogsMPLS = "########### CONFIGURACOES logType DO CPE ############\r\n#\r\n#\r\nscreen-length 0 temporary\r\n#\r\n########################################################\r\n#\r\ndisplay vrrp brief\r\n#\r\n#\r\ndisplay nat session all\r\n#\r\n#\r\ndisplay ospf peer\r\n#\r\ndisplay ospf interface\r\n#\r\ndisplay ospf lsdb\r\n#\r\n#\r\n#\r\ndisplay rip 1 neighbor\r\n#\r\ndisplay rip 1 database\r\n#\r\ndisplay rip 1 route\r\n#\r\n#\r\n#\r\nsave\r\ny\r\n#\r\n#\r\n########################################\r\n# CONFIGURACOES \r\n########################################\r\n#\r\n#\r\n#\r\n#\r\ndisplay saved-configuration\r\n#\r\n#\r\n#\r\n#\r\n########################################\r\n# INTERFACES \r\n########################################\r\n#\r\ndisplay ip interface brief\r\n#\r\n#\r\n#\r\ndisplay interface \r\n#\r\n#\r\n#\r\nwithVlan\r\nwithLan\r\nLanWithVlan\r\n########################################\r\n# SYSTEM \r\n########################################\r\n#\r\n#\r\n#\r\ndisplay version\r\n#\r\n#\r\ndisplay sn\r\n#\r\n#\r\n#\r\n#\r\n########################################\r\n# POLICIES \r\n########################################\r\n#\r\n#\r\n#\r\ndisplay traffic-policy applied-record\r\n#\r\n#\r\ndisplay traffic policy statistics interface var03 outbound\r\n#\r\n#\r\ndisplay traffic policy user-defined\r\n#\r\n#\r\n#\r\n########################################\r\n# BGP\r\n########################################\r\n#\r\ndisplay bgp peer\r\n#\r\n#\r\n#\r\n###################################\r\n#\r\ndisplay bgp routing-table peer var07 advertised-routes\r\n#\r\n#\r\n#\r\n########################################\r\n# Tabela de Roteamento \r\n########################################\r\n#\r\n#\r\n#\r\ndisplay ip routing-table protocol static\r\n#\r\n#\r\ndisplay ip routing-table\r\n#\r\n#\r\ndisplay ip routing-table statistics\r\n#\r\n#\r\n#\r\n#\r\nping var07 -s 1500 -c 20 sourceLAN  \r\n#\r\n#\r\n#\r\n#";
+            string huaweiLogsMPLS = "screen-length 0 temporary\r\n#\r\n#\r\n#\r\n#\r\n########### CONFIGURACOES INICIAIS ############\r\n#\r\n#\r\n#\r\ndisplay vrrp brief\r\n#\r\n#\r\ndisplay nat session all\r\n#\r\n#\r\ndisplay ospf peer\r\n#\r\ndisplay ospf interface\r\n#\r\ndisplay ospf lsdb\r\n#\r\n#\r\n#\r\ndisplay rip 1 neighbor\r\n#\r\ndisplay rip 1 database\r\n#\r\ndisplay rip 1 route\r\n#\r\n#\r\n#\r\n#\r\n#\r\nsave\r\ny\r\n#\r\n#\r\n#\r\n#\r\n########### CONFIGURACOES #############\r\n#\r\n#\r\n#\r\ndisplay saved-configuration\r\n#\r\n#\r\n#\r\n#\r\n#\r\n#\r\n########### INTERFACES #############\r\n#\r\n#\r\n#\r\ndisplay ip interface brief\r\n#\r\n#\r\n#\r\ndisplay interface var03\r\n#\r\n#\r\nwithVlanwithLanlanWithVlan########### SYSTEM ##############\r\n#\r\n#\r\n#\r\ndisplay version\r\n#\r\n#\r\ndisplay sn\r\n#\r\n#\r\n#\r\n#\r\n#\r\n########### POLICES ##############\r\n#\r\n#\r\n#\r\ndisplay traffic-policy applied-record\r\n#\r\n#\r\ndisplay traffic policy statistics interface outVlan outbound\r\n#\r\n#\r\ndisplay traffic policy user-defined\r\n#\r\n#\r\n#\r\n#\r\n#\r\n############## BGP ###############\r\n#\r\n#\r\n#\r\ndisplay bgp peer\r\n#\r\n#\r\n#\r\ndis bgp routing-table peer var07 ad\r\n#\r\n#\r\n#\r\n#\r\n#\r\n########### TABELA DE ROTEAMENTO #############\r\n#\r\n#\r\n#\r\ndisplay ip routing-table protocol static\r\n#\r\n#\r\ndisplay ip routing-table\r\n#\r\n#\r\ndisplay ip routing-table statistics\r\n#\r\n#\r\n#\r\n#\r\n#\r\n########### PING #############\r\n#\r\n#\r\n#\r\nping -s 1500 -c 20 var09var07\r\n#\r\n#\r\n#\r\n#\r\n#\r\n\r\n\r\n";
             #endregion
-
+            //-------------------------------------------------------------------------------------------------------------------------
             // ------------------------------------------- Log - Cisco - VOZ ---------------------------------------------------------
             #region
             string ciscoLogsVOZ = "terminal length 0 \r\n!\r\n!\r\nundebug all\r\nwr memory\r\n!\r\n!\r\n!############## CONFIGURACOES logType DO CPE ################ \r\n!\r\n!\r\n!#######################################\r\n!#            CONFIGURACOES            #\r\n!#######################################\r\n!\r\nshow startup-config\r\n!\r\n!\r\n!\r\n!#######################################\r\n!#            INTERFACES               #\r\n!#######################################\r\n!\r\nshow ip int brief\r\n!\r\n!\r\n!\r\nshow interface var03\r\n!\r\n!\r\nwithVlan\r\npabxip\r\nsinalizacao\r\n!#######################################\r\n!#            SYSTEM INFO              #\r\n!#######################################\r\n!\r\nshow version\r\n!\r\n!\r\nshow inventory\r\n!\r\n!\r\n!\r\n!#######################################\r\n!#              POLICY-MAP             #\r\n!#######################################\r\n!\r\nshow policy-map\r\n!\r\n!\r\n!\r\nshow policy-map interface \r\n!\r\n!\r\n!\r\n!#######################################\r\n!#         TABELA DE ROTEAMENTO        #\r\n!#######################################\r\n!\r\nshow ip route summary\r\n!\r\n!\r\n!\r\n!#######################################\r\n!#                PING                 #\r\n!#######################################\r\n!\r\nping var07 repeat 200 size 1500 isrdata 5050 sourceLan\r\n!\r\n!\r\n!\r\n!\r\n\r\n";
@@ -2059,7 +1942,21 @@ namespace WindowsFormsApp1.Entitys
                 "    next\r\n" +
                 "end\r\n";
             #endregion
-
+            // --------------------------------------------------- QoS ----------------------------------------------------------------
+            #region
+            string qosCisco = "NT";
+            string qosCiscoHost = "NT";
+            string qosHPE = "NT";
+            string qosHuawei = "NT";
+            string qosFortigate = "NT";
+            #endregion
+            // --------------------------------------------------- BGP ----------------------------------------------------------------
+            #region
+            string bgpCisco = "NT";
+            string bgpHPE = "NT";
+            string bgpHuawei = "NT";
+            string bgpFortigate = "NT";
+            #endregion
 
             //--------------------------------------------------------------------------------------------------------------------------------
             //--------------------------------------------------------------------------------------------------------------------------------
@@ -2165,6 +2062,7 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptGatNOKIABLDcomBGP);
 
             // Outros
+            // SNMP
             Script scriptSnmpv2Cisco = new Script(39, "snmpv2-Cisco", snmpv2Cisco, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
             Script scriptSnmpv2CiscoHost = new Script(40, "snmpv2-Cisco-Host", snmpv2CiscoHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
             Script scriptSnmpv2HPE = new Script(41, "snmpv2-HPE", snmpv2HPE, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
@@ -2192,6 +2090,15 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptHPELogsParte2);
             scriptList.Add(scriptHPELogsBLDLimpeza);
 
+            // QoS
+            Script scriptQosCisco = new Script(39, "QoS Cisco", qosCisco, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/1999"));
+
+            scriptList.Add(scriptQosCisco);
+
+            // BGP
+            Script scriptBgpCisco = new Script(39, "QoS Cisco",bgpCisco, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/1999"));
+
+            scriptList.Add(scriptBgpCisco);
 
             // -----------------------------------------------------
             return scriptList;

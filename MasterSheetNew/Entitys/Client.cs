@@ -18,12 +18,23 @@ namespace WindowsFormsApp1.Entitys
     }
 
 
-    internal class Client : Procedure
+    public class Client
     {
-        bool showOnScreen;
+        public string name;
+        public bool showOnScreen;
         public Criticality criticality;
         public ClientType clientType;
-        public Steps steps;
+        public List<Step> steps;
+
+        public Client(string Name, bool ShowOnScreen, Criticality Criticality, ClientType ClientType, List<Step> Steps)
+        {
+            name = Name;
+            showOnScreen = ShowOnScreen;
+            criticality = Criticality;
+            clientType = ClientType;
+            steps = Steps;
+        }
 
     }
+
 }
