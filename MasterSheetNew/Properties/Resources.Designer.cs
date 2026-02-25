@@ -22,7 +22,7 @@ namespace MasterSheetNew.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace MasterSheetNew.Properties {
         ///   Retorna a instância de ResourceManager armazenada em cache usada por essa classe.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MasterSheetNew.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace MasterSheetNew.Properties {
         ///   pesquisas de recursos que usam essa classe de recurso de tipo de alta segurança.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -83,7 +83,7 @@ namespace MasterSheetNew.Properties {
         ///service timestamps debug datetime msec localtime show-timezone
         ///service timestamps log datetime m [o restante da cadeia de caracteres foi truncado]&quot;;.
         /// </summary>
-        internal static string Cisco_Config_BLD {
+        public static string Cisco_Config_BLD {
             get {
                 return ResourceManager.GetString("Cisco-Config-BLD", resourceCulture);
             }
@@ -92,7 +92,7 @@ namespace MasterSheetNew.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap logo_hitss_black {
+        public static System.Drawing.Bitmap logo_hitss_black {
             get {
                 object obj = ResourceManager.GetObject("logo-hitss-black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -102,7 +102,7 @@ namespace MasterSheetNew.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap logo_hitss_white {
+        public static System.Drawing.Bitmap logo_hitss_white {
             get {
                 object obj = ResourceManager.GetObject("logo-hitss-white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -112,7 +112,7 @@ namespace MasterSheetNew.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.IO.UnmanagedMemoryStream semelhante a System.IO.MemoryStream.
         /// </summary>
-        internal static System.IO.UnmanagedMemoryStream Perdemo {
+        public static System.IO.UnmanagedMemoryStream Perdemo {
             get {
                 return ResourceManager.GetStream("Perdemo", resourceCulture);
             }

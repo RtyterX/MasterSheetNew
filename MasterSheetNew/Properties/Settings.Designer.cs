@@ -26,12 +26,108 @@ namespace MasterSheetNew.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool darkMode {
+        public bool nightMode {
             get {
-                return ((bool)(this["darkMode"]));
+                return ((bool)(this["nightMode"]));
             }
             set {
-                this["darkMode"] = value;
+                this["nightMode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("conf t \r\n!\r\n!\r\nhostname var00 \r\n!\r\nip domain name embratel \r\n!\r\n!\r\n##############" +
+            "######################################## \r\n# CONFIGURACOES DE USUARIO # \r\n######" +
+            "################################################ \r\n!\r\nservice password-encryptio" +
+            "n\r\nusername EBT privilege 10 password CQMR\r\nenable secret PRO1AN\r\nlogging buffer" +
+            "ed 4096 debugging\r\nservice tcp-keepalives-in\r\nservice tcp-keepalives-out\r\nno ena" +
+            "ble password\r\nservice timestamps debug datetime msec localtime show-timezone\r\nse" +
+            "rvice timestamps log datetime msec localtime show-timezone\r\n!\r\n!\r\n!\r\n!\r\n!#######" +
+            "############################################### \r\n!# LIMPEZA \r\n!################" +
+            "###################################### \r\n!\r\nno ip domain name yourdomain.com\r\nno" +
+            " ip domain lookup\r\n!\r\n!\r\nlogging buffered 51200 warnings\r\nno logging console\r\n!\r" +
+            "\n!\r\nno boot host\r\nno boot network \r\n!\r\n!\r\nno ip finger\r\nno service pad\r\nno servi" +
+            "ce tcp-small-servers\r\nno ip bootp server\r\nno ip source-route\r\nno cdp run\r\n!\r\n!\r\n" +
+            "no access-list 23 permit 10.10.10.0 0.0.0.7\r\n!\r\n!\r\nno ip http server\r\nno ip http" +
+            " access-class 23\r\nno ip http authentication local\r\nno ip http secure-server\r\nno " +
+            "ip http timeout-policy idle 60 life 86400 requests 10000\r\nno logging trap notifi" +
+            "cations\r\n!\r\n!\r\nno ip dhcp excluded-address 10.10.10.1\r\nno ip dhcp pool ccp-pool\r" +
+            "\n!\r\n!\r\nno ip ssh version 1\r\nip ssh version 2\r\n!\r\n!\r\n!\r\nno crypto pki trustpoint " +
+            "TP-self-signed-4256465151\r\n!\r\nyes \r\n!\r\n!\r\nno crypto pki certificate chain TP-sel" +
+            "f-signed-4256465151\r\n!\r\n!\r\n!\r\ncrypto pki token default removal timeout 0\r\n!\r\nno " +
+            "crypto key generate rsa\r\ncrypto key generate rsa\r\ny\r\n1024\r\n!\r\n!\r\n!\r\n!\r\n!########" +
+            "############################################## \r\n!# BLOQUEIO - ACCESS LIST \r\n!##" +
+            "#################################################### \r\n!\r\nip access-list extende" +
+            "d BLOQUEIO_TELNET\r\nremark IP LOOPBACK PE\r\npermit ip host var10 any\r\npermit ip an" +
+            "y host var10\r\n!\r\nremark IP PE - CCTO\r\npermit ip host var07 any\r\npermit ip any ho" +
+            "st var07\r\n!\r\nremark IP GERENCIA GCPE\r\npermit ip any 200.255.156.192 0.0.0.63\r\npe" +
+            "rmit ip 200.255.156.192 0.0.0.63 any\r\n!\r\n!\r\nline vty 0 4 \r\naccess-class BLOQUEIO" +
+            "_TELNET in\r\naccess-class BLOQUEIO_TELNET out\r\nexec-timeout 15 0\r\n!\r\n!\r\n!\r\n!#####" +
+            "################################################# \r\n!# POLICY MAP - QoS \r\n!#####" +
+            "################################################# \r\n!\r\npolicy-map SHAPE_OUT\r\ncla" +
+            "ss class-default\r\n shape average var02000\r\n!\r\n!\r\n!\r\n!###########################" +
+            "########################### \r\n!# CONFIGURACOES DE INTERFACES \r\n!################" +
+            "###################################### \r\n!\r\ninterface var03\r\n description var01\r" +
+            "\n bandwidth var02\r\n service-policy output SHAPE_OUT\r\n no shut\r\n!\r\n!\r\ninterface v" +
+            "ar03.var04\r\ndescription var01\r\nbandwidth var02\r\nencapsulation dot1Q var04\r\n!\r\n!\r" +
+            "\n!\r\ninterface var05\r\n description ** LAN **\r\n ip address var09 mascaraLAN\r\n no i" +
+            "p redirects\r\n no ip unreachables\r\n no ip proxy-arp\r\n duplex auto\r\n speed auto\r\n " +
+            "no shutdown\r\n no cdp enable\r\n!\r\n!\r\n!\r\n!\r\n!######################################" +
+            "################ \r\n!# ROTA ESTATICA \r\n!#########################################" +
+            "############# \r\n!\r\nip route 0.0.0.0 0.0.0.0 var07\r\n!\r\n!\r\n!\r\n!\r\n!################" +
+            "###################################### \r\n!# CONFIGURACOES DE SNMP \r\n!###########" +
+            "########################################### \r\n!\r\nsnmp-server community LIDER RO\r" +
+            "\nsnmp-server host 200.255.156.194 LIDER\r\n!\r\n!\r\n!\r\n##############################" +
+            "######################## \r\n# CONFIGURACOES DO RELOGIO INTERNO \r\n################" +
+            "###################################### \r\n!\r\nclock timezone BR -3 0\r\nclock summer" +
+            "-time BR recurring 1 Sun Oct 0:00 3 Sun Feb 0:00\r\n!\r\n!\r\n!\r\n!####################" +
+            "################################## \r\n!# CONFIGURACOES DE NTP \r\n!################" +
+            "###################################### \r\n!\r\nntp server 200.20.186.75 prefer sour" +
+            "ce var03.var04\r\nntp server 200.20.186.94 source var03.var04\r\n!\r\n!\r\n!\r\n!#########" +
+            "############################################# \r\n!# BANNER - USER INTERFACE \r\n!##" +
+            "#################################################### \r\n!\r\n!\r\nbanner motd ^C\r\n||=" +
+            "=======================================||  \r\n||========== CLARO Brasil S.A. ====" +
+            "==========||  \r\n||========================================||  \r\n                " +
+            "                              \r\n        SOMENTE USUARIOS AUTORIZADOS          \r\n" +
+            "           AUTHORIZED USERS ONLY              \r\n                                " +
+            "              \r\n        OS ACESSOS SERAO MONITORADOS          \r\n         ACCESSE" +
+            "S WILL BE MONITORED           \r\n                                              \r\n" +
+            "||========================================|| \r\n^\r\n!\r\n!\r\n!\r\nno banner exec ^C\r\nno" +
+            " banner login ^C\r\n!\r\n!\r\n!\r\nline con 0\r\nno password\r\nexec-timeout 15 0\r\nlogin loc" +
+            "al\r\nline aux 0\r\nno password\r\nlogin local\r\ntransport input none\r\nline vty 0 4\r\nno" +
+            " password\r\nexec-timeout 15 0\r\nlogin local\r\ntransport input telnet ssh\r\n!\r\n!\r\n!\r\n" +
+            "!\r\nend\r\n\r\n")]
+        public string ciscoBLD {
+            get {
+                return ((string)(this["ciscoBLD"]));
+            }
+            set {
+                this["ciscoBLD"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool enableEdit {
+            get {
+                return ((bool)(this["enableEdit"]));
+            }
+            set {
+                this["enableEdit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool canImportSAIP {
+            get {
+                return ((bool)(this["canImportSAIP"]));
+            }
+            set {
+                this["canImportSAIP"] = value;
             }
         }
     }

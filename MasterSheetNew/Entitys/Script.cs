@@ -12,6 +12,7 @@ namespace WindowsFormsApp1.Entitys
     {
         public int id;
         public string name;
+        public bool clientOrNot;
         public string scriptString;
         public string variables;
         public DateTime alterDate;
@@ -22,10 +23,11 @@ namespace WindowsFormsApp1.Entitys
             return name;
         }
 
-        public Script(int Id, string Name, string ScriptString, string Variables, DateTime AlterDate)
+        public Script(int Id, string Name, bool ClientOrNot, string ScriptString, string Variables, DateTime AlterDate)
         {
             id = Id;
             name = Name;
+            clientOrNot = ClientOrNot;
             scriptString = ScriptString;
             variables = Variables;
             alterDate = AlterDate;
@@ -33,7 +35,7 @@ namespace WindowsFormsApp1.Entitys
 
         public void AlterScript(Script alteredScript)
         {
-            Script script = new Script(99, "ScriptClass", "", "", DateTime.Parse("11/02/2026"));
+            Script script = new Script(99, "ScriptClass", false, "", "", DateTime.Parse("11/02/2026"));
             List<Script> allScripts = new List<Script>();
             foreach (Script s in allScripts)
             {
@@ -513,7 +515,7 @@ namespace WindowsFormsApp1.Entitys
             #endregion
             // ------------------------------------------- Config - Fortigate - MPLS -------------------------------------------------
             #region
-            string fortigateMPLS = "#\r\n# Jogar as configurações em blocos do 'edit' até o 'end' (Salva). \r\n#\r\n################# Configs - Hostname/Horario ################# \r\n#\r\nconfig system global\r\n   set hostname \"var00\"\r\n   set timezone 18\r\n   set dst disable\r\nend\r\n#\r\n#\r\n################# Deleta DHCP na LAN ################## \r\n#\r\nconfig system dhcp server\r\n   delete 1\r\n   delete 2\r\nend\r\n#\r\n#\r\n################# Limpar Firewall ####################### \r\n#\r\nconfig firewall policy\r\n    purge\r\n    y\r\nend\r\n#\r\n#\r\nconfig firewall address\r\ndelete \"lan\"\r\nend\r\n#\r\n#\r\n########### Remove as Interfaces do Virtual-Switch ########### \r\n#\r\nconfig system virtual-switch\r\n    edit lan\r\n        set physical-switch \"sw0\"\r\n        config port\r\n            delete lan1\r\n            delete lan2\r\n            delete lan3\r\n        end\r\n    next\r\nend\r\n# \r\n# \r\n############## Limpeza Interface LAN ################ \r\n#\r\nconfig system interface\r\n    edit lan\r\n       unset ip\r\n    next\r\nend\r\n#\r\n#\r\n############## Limpeza de Rota Estativa ############ \r\n#\r\nconfig router static\r\npurge\r\ny\r\nend\r\n#\r\n#\r\n################# Config - BANER ################### \r\n#\r\nconfig system replacemsg admin pre_admin-disclaimer-text\r\nset buffer \"\r\n||========================================||  \r\n||========== CLARO Brasil S.A. ===========||  \r\n||========================================||  \r\n                                              \r\n        SOMENTE USUARIOS AUTORIZADOS          \r\n           AUTHORIZED USERS ONLY              \r\n                                              \r\n        OS ACESSOS SERAO MONITORADOS          \r\n         ACCESSES WILL BE MONITORED           \r\n                                              \r\n||========================================||  \r\n\"\r\nend\r\nconfig system global\r\n     set pre-login-banner enable\r\nend\r\n#\r\n#\r\n################# Config - Usuario e Senha ################# \r\n#\r\nconfig system admin\r\nedit \"EBT\"\r\nset accprofile \"super_admin\"\r\nset vdom \"root\"\r\nset password PRO1AN\r\nnext\r\n#\r\n#\r\nedit \"admin\"\r\nset password PRO1AN\r\nnext\r\nend\r\n#\r\n#\r\n################# Config - Interfaces LAN / WAN ################### \r\n#\r\n#\r\n################# Configuracao de WAN ################## \r\n#\r\nconfig system interface\r\n    edit \"var03\"\r\n       set vdom \"root\"\r\n       set description \"var01\"\r\n       set allowaccess ping https ssh snmp http telnet\r\n       set inbandwidth var02\r\n       set outbandwidth var02\r\n       set alias \"WAN\"\r\n       set type physical\r\n       set role wan\r\n   next\r\n#\r\n#\r\nwithVlan\r\n#\r\n#\r\n################# Configuracao de LAN ################## \r\n#\r\n    edit \"var05\"\r\n        set vdom \"root\"\r\n        set speed auto\r\n        set description \"CONEXAO LAN\"\r\n        set ip var09 mascaraLAN\r\n        set allowaccess ping https ssh snmp http telnet\r\n        set type physical\r\n        set role lan\r\n    next\r\n#\r\n#\r\n#\r\nloopbackCliente\r\n#################  ROTEAMENTO BGP ################## \r\n#\r\nconfig router bgp\r\n    set as var12\r\n    set log-neighbour-changes enable\r\n    set router-id var07\r\n    config neighbor\r\n    edit \"var03\"\r\n        set allowas-in-enable enable\r\n        set description \"designacao\"\r\n        set soft-reconfiguration enable\r\n        set remote-as 4230\r\n    next\r\n    end\r\n#\r\n    config redistribute \"connected\"\r\n    set status enable\r\nend\r\nend\r\n#\r\n#\r\n############ POLICY PARA LIBERAR TODO O TRÁFEGO ############# \r\n#\r\nconfig firewall policy\r\n    edit 1\r\n        set name \"ANY\"\r\n        set srcintf \"any\"\r\n        set dstintf \"any\"\r\n        set srcaddr \"all\"\r\n        set dstaddr \"all\"\r\n        set action accept\r\n        set schedule \"always\"\r\n        set service \"ALL\"\r\n        set logtraffic disable\r\n        set diffserv-forward enable\r\n        set diffservcode-forward 000000\r\n    next\r\nend\r\n#\r\n#\r\n\r\n";
+            string fortigateMPLS = "#\r\n# Jogar as configurações em blocos do 'edit' até o 'end' (Salva). \r\n#\r\n################# Configs - Hostname/Horario ################# \r\n#\r\nconfig system global\r\n   set hostname \"var00\"\r\n   set timezone 18\r\n   set dst disable\r\nend\r\n#\r\n#\r\n################# Deleta DHCP na LAN ################## \r\n#\r\nconfig system dhcp server\r\n   delete 1\r\n   delete 2\r\nend\r\n#\r\n#\r\n################# Limpar Firewall ####################### \r\n#\r\nconfig firewall policy\r\n    purge\r\n    y\r\nend\r\n#\r\n#\r\nconfig firewall address\r\ndelete \"lan\"\r\nend\r\n#\r\n#\r\n########### Remove as Interfaces do Virtual-Switch ########### \r\n#\r\nconfig system virtual-switch\r\n    edit lan\r\n        set physical-switch \"sw0\"\r\n        config port\r\n            delete lan1\r\n            delete lan2\r\n            delete lan3\r\n        end\r\n    next\r\nend\r\n# \r\n# \r\n############## Limpeza Interface LAN ################ \r\n#\r\nconfig system interface\r\n    edit lan\r\n       unset ip\r\n    next\r\nend\r\n#\r\n#\r\n############## Limpeza de Rota Estativa ############ \r\n#\r\nconfig router static\r\npurge\r\ny\r\nend\r\n#\r\n#\r\n################# Config - BANER ################### \r\n#\r\nconfig system replacemsg admin pre_admin-disclaimer-text\r\nset buffer \"\r\n||========================================||  \r\n||========== CLARO Brasil S.A. ===========||  \r\n||========================================||  \r\n                                              \r\n        SOMENTE USUARIOS AUTORIZADOS          \r\n           AUTHORIZED USERS ONLY              \r\n                                              \r\n        OS ACESSOS SERAO MONITORADOS          \r\n         ACCESSES WILL BE MONITORED           \r\n                                              \r\n||========================================||  \r\n\"\r\nend\r\nconfig system global\r\n     set pre-login-banner enable\r\nend\r\n#\r\n#\r\n################# Config - Usuario e Senha ################# \r\n#\r\nconfig system admin\r\nedit \"EBT\"\r\nset accprofile \"super_admin\"\r\nset vdom \"root\"\r\nset password PRO1AN\r\nnext\r\n#\r\n#\r\nedit \"admin\"\r\nset password PRO1AN\r\nnext\r\nend\r\n#\r\n#\r\n################# Config - Interfaces LAN / WAN ################### \r\n#\r\n#\r\n################# Configuracao de WAN ################## \r\n#\r\nconfig system interface\r\n    edit \"var03\"\r\n       set vdom \"root\"\r\n       set description \"var01\"\r\n       set allowaccess ping https ssh snmp http telnet\r\n       set inbandwidth var02\r\n       set outbandwidth var02\r\n       set alias \"WAN\"\r\n       set type physical\r\n       set role wan\r\n   next\r\n#\r\n#\r\n################# Configuracao VLAN na WAN  ##################### \r\n#\r\n    edit \"var03.var04\"\r\n       set vdom \"root\"\r\n       set allowaccess ping https ssh telnet snmp\r\n       set description \"var01\"\r\n       set alias \"WAN\"\r\n       set role wan\r\n       set interface var03\r\n       set vlanid var04\r\n   next\r\n#\r\n#\r\n#\r\n\r\n#\r\n#\r\n################# Configuracao de LAN ################## \r\n#\r\n    edit \"var05\"\r\n        set vdom \"root\"\r\n        set speed auto\r\n        set description \"CONEXAO LAN\"\r\n        set ip var09 mascaraLAN\r\n        set allowaccess ping https ssh snmp http telnet\r\n        set type physical\r\n        set role lan\r\n    next\r\n#\r\n#\r\n#\r\n################# Loopback Cliente  ##################### \r\n#\r\nedit \"Loopback21\"\r\n        set vdom \"root\"\r\n        set ip var11  255.255.255.255\r\n        set allowaccess ping ssh snmp telnet probe-response\r\n        set icmp-send-redirect disable\r\n        set icmp-accept-redirect disable\r\n        set type loopback\r\n        set description \"Loopback21\"\r\n        next\r\nend\r\n#\r\n#\r\n#\r\n\r\n#################  ROTEAMENTO BGP ################## \r\n#\r\nconfig router bgp\r\n    set as var12\r\n    set log-neighbour-changes enable\r\n    set router-id var08\r\n    config neighbor\r\n    edit \"var07\"\r\n        set allowas-in-enable enable\r\n        set description \"designacao\"\r\n        set soft-reconfiguration enable\r\n        set remote-as 4230\r\n    next\r\n    end\r\n#\r\n    config redistribute \"connected\"\r\n    set status enable\r\nend\r\nend\r\n#\r\n#\r\n############ POLICY PARA LIBERAR TODO O TRÁFEGO ############# \r\n#\r\nconfig firewall policy\r\n    edit 1\r\n        set name \"ANY\"\r\n        set srcintf \"any\"\r\n        set dstintf \"any\"\r\n        set srcaddr \"all\"\r\n        set dstaddr \"all\"\r\n        set action accept\r\n        set schedule \"always\"\r\n        set service \"ALL\"\r\n        set logtraffic disable\r\n        set diffserv-forward enable\r\n        set diffservcode-forward 000000\r\n    next\r\nend\r\n#\r\n#\r\n\r\n";
             #endregion
             // ------------------------------------------- Config - Cisco - VOZ ------------------------------------------------------
             #region
@@ -1436,28 +1438,23 @@ namespace WindowsFormsApp1.Entitys
                 "!# BGP  \r\n" +
                 "!#######################################\r\n" +
                 " \r\n" +
-                "show running-config router bgp 4230 vrf var14 neighbor var08\r\n" +
-                " \r\n" +
-                " \r\n" +
-                " \r\n" +
-                "!################################## \r\n" +
-                " \r\n" +
-                "show ip bgp xr vrf var14.Text\r\n" +
+                "xv" +
+                "show ip bgpxr vrf var14\r\n" +
                 " \r\n" +
                 " \r\n" +
                 "!################################## \r\n" +
                 " \r\n" +
-                "show ip bgp xr vrf var14 sum | inc var08\r\n" +
+                "show ip bgpxr vrf var14 sum | inc var08\r\n" +
                 " \r\n" +
                 " \r\n" +
                 "!################################## \r\n" +
                 " \r\n" +
-                "show ip bgp xr vrf var14 nei var08 advertised-r | i xes r\n" +
+                "show ip bgpxr vrf var14 neighbor var08 advertised-routes | i xes \n" +
                 " \r\n" +
                 " \r\n" +
                 "!################################## \r\n" +
                 " \r\n" +
-                "show ip bgp xr vrf var14 nei var08 ro\r\n" +
+                "show ip bgpxr vrf var14 neighbor var08 routes\r\n" +
                 " \r\n" +
                 " \r\n" +
                 " \r\n" +
@@ -1924,28 +1921,42 @@ namespace WindowsFormsApp1.Entitys
                 "snmp-agent target-host trap-hostname host2 address VarHost trap-paramsnam SNMPV2\r\n";
 
             string snmpv2Fortgate = "config system snmp community\r\n" +
-                "    edit 0\r\n" +
-                "        set name " + '"' + "EBT" + '"' + "\r\n" +
-                "        config hosts\r\n" +
-                "        edit 0\r\n" +
-                "          set ip VarHost 255.255.255.255\r\n" +
-                "          next\r\n" +
-                "        end\r\n" +
-                "    next\r\n" +
-                "    end\r\n" +
-                "config system snmp sysinfo\r\n" +
-                "    set status enable\r\n" +
+                "edit 0\r\n" +
+                "set name " + '"' + "VarCom" + '"' + "\r\n" +
                 "end\r\n" +
-                "config system admin\r\n" +
-                "    edit " + '"' + "EBT" + '"' + "\r\n" +
-                "       set trusthost4 VarHost 255.255.255.2555\r\n" +
-                "    next\r\n" +
+                "\r\n" +
+                "\r\n" +
+                "config system snmp sysinfo\r\n" +
+                "set status enable\r\n" +
                 "end\r\n";
+
+            string snmpv2FortgatecomHost = "config system snmp community\r\n" +
+                "edit 0\r\n" +
+                "set name " + '"' + "VarCom" + '"' + "\r\n" +
+                "config hosts\r\n" +
+                "edit 0\r\n" +
+                "set ip VarHost 255.255.255.255\r\n" +
+                "end\r\n" +
+                "next\r\n" +
+                "end\r\n" +
+                "\r\n" +
+                "\r\n" +
+                "config system snmp sysinfo\r\n" +
+                "set status enable\r\n" +
+                "end\r\n" +
+                "\r\n" +
+                "\r\n" +
+                "config system admin\r\n" +
+                "edit " + '"' + "EBT" + '"' + "\r\n" +
+                "set trusthost4 VarHost 255.255.255.255\r\n" +
+                "next\r\n" +
+                "end\r\n"; ;
+
             #endregion
             // --------------------------------------------------- QoS ----------------------------------------------------------------
             #region
             string qosCisco = "NT";
-            string qosCiscoHost = "NT";
+            string qosCiscoNovo = "NT";
             string qosHPE = "NT";
             string qosHuawei = "NT";
             string qosFortigate = "NT";
@@ -1967,11 +1978,11 @@ namespace WindowsFormsApp1.Entitys
             List<Script> scriptList = new List<Script>();
 
             // Config
-            Script scriptCiscoBLD = new Script(0, "Cisco-Config-BLD", ciscoBLD, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
-            Script scriptHpeBLD = new Script(1, "HPE-Config-BLD", hpeBLD, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
-            Script scriptHpeOldBLD= new Script(2, "HPE_old-Config-BLD", hpeOldBLD, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
-            Script scriptHuaweiBLD = new Script(3, "Huawei-Config-BLD", huaweiBLD, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
-            Script scriptFortigateBLD = new Script(4, "Fortigate-Config-BLD", fortigateBLD, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
+            Script scriptCiscoBLD = new Script(0, "Cisco-Config-BLD", false, ciscoBLD, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
+            Script scriptHpeBLD = new Script(1, "HPE-Config-BLD", false, hpeBLD, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
+            Script scriptHpeOldBLD= new Script(2, "HPE_old-Config-BLD", false, hpeOldBLD, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
+            Script scriptHuaweiBLD = new Script(3, "Huawei-Config-BLD", false, huaweiBLD, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
+            Script scriptFortigateBLD = new Script(4, "Fortigate-Config-BLD", false, fortigateBLD, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
 
             scriptList.Add(scriptCiscoBLD);
             scriptList.Add(scriptHpeBLD);
@@ -1979,11 +1990,11 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptHuaweiBLD);
             scriptList.Add(scriptFortigateBLD);
 
-            Script scriptCiscoMPLS = new Script(5, "Cisco-Config-MPLS", ciscoMPLS, "00,01,02,03,04,05,07,09,12", DateTime.Parse("18/02/2026"));
-            Script scriptHpeMPLS = new Script(6, "HPE-Config-MPLS", hpeMPLS, "00,01,02,03,04,05,07,09,12", DateTime.Parse("18/02/2026"));
-            Script scriptHPEoldMPLS = new Script(7, "HPE_old-Config-MPLS", hpeOldMPLS, "00,01,02,03,04,05,07,09,12", DateTime.Parse("18/02/2026"));
-            Script scriptHuaweiMPLS = new Script(8, "Huawei-Config-MPLS", huaweiMPLS, "00,01,02,03,04,05,07,08,09,12", DateTime.Parse("18/02/2026"));
-            Script scriptFortigateMPLS = new Script(9, "Fortigate-Config-MPLS", fortigateMPLS, "00,01,02,03,04,05,07,09,11,12", DateTime.Parse("18/02/2026"));
+            Script scriptCiscoMPLS = new Script(5, "Cisco-Config-MPLS", false, ciscoMPLS, "00,01,02,03,04,05,07,09,12", DateTime.Parse("18/02/2026"));
+            Script scriptHpeMPLS = new Script(6, "HPE-Config-MPLS", false, hpeMPLS, "00,01,02,03,04,05,07,09,12", DateTime.Parse("18/02/2026"));
+            Script scriptHPEoldMPLS = new Script(7, "HPE_old-Config-MPLS", false, hpeOldMPLS, "00,01,02,03,04,05,07,09,12", DateTime.Parse("18/02/2026"));
+            Script scriptHuaweiMPLS = new Script(8, "Huawei-Config-MPLS", false, huaweiMPLS, "00,01,02,03,04,05,07,08,09,12", DateTime.Parse("18/02/2026"));
+            Script scriptFortigateMPLS = new Script(9, "Fortigate-Config-MPLS", false, fortigateMPLS, "00,01,02,03,04,05,07,09,11,12", DateTime.Parse("18/02/2026"));
 
             scriptList.Add(scriptCiscoMPLS);
             scriptList.Add(scriptHpeMPLS);
@@ -1991,15 +2002,15 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptHuaweiMPLS);
             scriptList.Add(scriptFortigateMPLS);
 
-            Script scriptCiscoR2 = new Script(10, "Cisco-Config-VOZ-R2", ciscoR2, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
-            Script scriptCiscoR2ISR = new Script(11, "Cisco-Config-VOZ-R2 (ISR)", ciscoR2ISR, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
-            Script scriptCiscoPABX = new Script(12, "Cisco-Config-VOZ-PABXIP", ciscoPABX, "00,01,02,03,04,05,07,09", DateTime.Parse("18/02/2026"));
-            Script scriptHpeR2 = new Script(13, "HPE-Config-VOZ-R2", hpeR2, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
-            Script scriptHpePABX = new Script(14, "HPE-Config-VOZ-PABXIP", hpePABX, "00,01,02,03,04,05,07,09", DateTime.Parse("18/02/2026"));
-            Script scriptHpeOldR2 = new Script(15, "HPE_old-Config-VOZ-R2", hpeOldR2, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
-            Script scriptDigistar = new Script(16, "Digistar-Config-VOZ", digistar, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
-            Script scriptAligera561 = new Script(17, "Aligera561-Config-VOZ", aligera561, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
-            Script scriptAligera1600 = new Script(18, "Aligera1600-Config-VOZ", aligera1600, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
+            Script scriptCiscoR2 = new Script(10, "Cisco-Config-VOZ-R2", false, ciscoR2, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
+            Script scriptCiscoR2ISR = new Script(11, "Cisco-Config-VOZ-R2 (ISR)", false, ciscoR2ISR, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
+            Script scriptCiscoPABX = new Script(12, "Cisco-Config-VOZ-PABXIP", false, ciscoPABX, "00,01,02,03,04,05,07,09", DateTime.Parse("18/02/2026"));
+            Script scriptHpeR2 = new Script(13, "HPE-Config-VOZ-R2", false, hpeR2, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
+            Script scriptHpePABX = new Script(14, "HPE-Config-VOZ-PABXIP", false, hpePABX, "00,01,02,03,04,05,07,09", DateTime.Parse("18/02/2026"));
+            Script scriptHpeOldR2 = new Script(15, "HPE_old-Config-VOZ-R2", false, hpeOldR2, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
+            Script scriptDigistar = new Script(16, "Digistar-Config-VOZ", false, digistar, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
+            Script scriptAligera561 = new Script(17, "Aligera561-Config-VOZ", false, aligera561, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
+            Script scriptAligera1600 = new Script(18, "Aligera1600-Config-VOZ", false, aligera1600, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
 
             scriptList.Add(scriptCiscoR2);
             scriptList.Add(scriptCiscoR2ISR);
@@ -2012,30 +2023,30 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptAligera1600);
 
             // Logs
-            Script scriptCiscoLogsBLD = new Script(19, "Cisco-Log-BLD", ciscoLogsBLD, "03,04,05,06,07", DateTime.Parse("11/02/2026"));
-            Script scriptHpeLogsBLD = new Script(20, "HPE-Log-BLD", hpeLogsBLD, "03,04,05,06,07,09", DateTime.Parse("11/02/2026"));
-            Script scriptFortigateLogsBLD = new Script(21, "Fortigate-Log-BLD", fortigateLogsBLD, "03,05,07,09", DateTime.Parse("11/02/2026"));
-            Script scriptHuaweiLogsBLD = new Script(22, "Huawei-Log-BLD", huaweiLogsBLD, "03,04,05,06,07,09", DateTime.Parse("11/02/2026"));
+            Script scriptCiscoLogsBLD = new Script(19, "Cisco-Log-BLD", false, ciscoLogsBLD, "03,04,05,06,07", DateTime.Parse("11/02/2026"));
+            Script scriptHpeLogsBLD = new Script(20, "HPE-Log-BLD", false, hpeLogsBLD, "03,04,05,06,07,09", DateTime.Parse("11/02/2026"));
+            Script scriptFortigateLogsBLD = new Script(21, "Fortigate-Log-BLD", false, fortigateLogsBLD, "03,05,07,09", DateTime.Parse("11/02/2026"));
+            Script scriptHuaweiLogsBLD = new Script(22, "Huawei-Log-BLD", false, huaweiLogsBLD, "03,04,05,06,07,09", DateTime.Parse("11/02/2026"));
 
             scriptList.Add(scriptCiscoLogsBLD);
             scriptList.Add(scriptHpeLogsBLD);
             scriptList.Add(scriptFortigateLogsBLD);
             scriptList.Add(scriptHuaweiLogsBLD);
 
-            Script scriptCiscoLogsMPLS = new Script(23, "Cisco-Log-MPLS", ciscoLogsMPLS, "03,04,05,06,07", DateTime.Parse("18/02/2026"));
-            Script scriptHpeLogsMPLS = new Script(24, "HPE-Log-MPLS", hpeLogsMPLS, "03,04,05,06,07,09", DateTime.Parse("18/02/2026"));
-            Script scriptFortigateLogsMPLS = new Script(25, "Fortigate-Log-MPLS", fortigateLogsMPLS, "03,05,07,09", DateTime.Parse("18/02/2026"));
-            Script scriptHuaweiLogsMPLS = new Script(26, "Huawei-Log-MPLS", huaweiLogsMPLS, "03,04,05,06,07,09", DateTime.Parse("18/02/2026"));
+            Script scriptCiscoLogsMPLS = new Script(23, "Cisco-Log-MPLS", false, ciscoLogsMPLS, "03,04,05,06,07", DateTime.Parse("18/02/2026"));
+            Script scriptHpeLogsMPLS = new Script(24, "HPE-Log-MPLS", false, hpeLogsMPLS, "03,04,05,06,07,09", DateTime.Parse("18/02/2026"));
+            Script scriptFortigateLogsMPLS = new Script(25, "Fortigate-Log-MPLS", false, fortigateLogsMPLS, "03,05,07,09", DateTime.Parse("18/02/2026"));
+            Script scriptHuaweiLogsMPLS = new Script(26, "Huawei-Log-MPLS", false, huaweiLogsMPLS, "03,04,05,06,07,09", DateTime.Parse("18/02/2026"));
 
             scriptList.Add(scriptCiscoLogsMPLS);
             scriptList.Add(scriptHpeLogsMPLS);
             scriptList.Add(scriptFortigateLogsMPLS);
             scriptList.Add(scriptHuaweiLogsMPLS);
 
-            Script scriptCiscoLogsVOZ_R2 = new Script(27, "Cisco-Log-VOZ-R2", ciscoLogsVOZ, "03,04,05,07", DateTime.Parse("18/02/2026"));
-            Script scriptHpeLogsVOZ_R2 = new Script(28, "HPE-Log-VOZ-R2", hpeLogsVOZ, "03,04,05,07,09", DateTime.Parse("18/02/2026"));
-            Script scriptAligeraLogs = new Script(29, "Aligera-Log-VOZ", aligeraLogs, "07", DateTime.Parse("18/02/2026"));
-            Script scriptDigistarLogs = new Script(30, "Digistar-Log-VOZ", digistarLogs, "07,03,04", DateTime.Parse("18/02/2026"));
+            Script scriptCiscoLogsVOZ_R2 = new Script(27, "Cisco-Log-VOZ-R2", false, ciscoLogsVOZ, "03,04,05,07", DateTime.Parse("18/02/2026"));
+            Script scriptHpeLogsVOZ_R2 = new Script(28, "HPE-Log-VOZ-R2", false, hpeLogsVOZ, "03,04,05,07,09", DateTime.Parse("18/02/2026"));
+            Script scriptAligeraLogs = new Script(29, "Aligera-Log-VOZ", false, aligeraLogs, "07", DateTime.Parse("18/02/2026"));
+            Script scriptDigistarLogs = new Script(30, "Digistar-Log-VOZ", false, digistarLogs, "07,03,04", DateTime.Parse("18/02/2026"));
 
             scriptList.Add(scriptCiscoLogsVOZ_R2);
             scriptList.Add(scriptHpeLogsVOZ_R2);
@@ -2043,14 +2054,14 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptDigistarLogs);
 
             // WizardGat
-            Script scriptGatCiscoBLD = new Script(31, "Gat-Cisco-BLD", gatCiscoBLD, "03,08", DateTime.Parse("11/02/2026"));
-            Script scriptGatCiscoMPLS = new Script(32, "Gat-Cisco-MPLS", gatCiscoMPLS, "03,08,14,15", DateTime.Parse("11/02/2026"));
-            Script scriptGatCiscoVOZ = new Script(33, "Gat-Cisco-VOZ", gatCiscoVOZ, "03,08", DateTime.Parse("11/02/2026"));
-            Script scriptGatCiscoBLDcomBGP = new Script(34, "Gat-Cisco-BLDcomBGP", gatCiscoBLDcomBGP, "03,08", DateTime.Parse("11/02/2026"));
-            Script scriptGatNOKIABLD = new Script(35, "Gat-NOKIA-BLD", gatNOKIABLD, "03,07,08,13", DateTime.Parse("11/02/2026"));
-            Script scriptGatNOKIAMPLS = new Script(36, "Gat-NOKIA-MPLS", gatNOKIAMPLS, "03,07,08,13,14,15", DateTime.Parse("11/02/2026"));
-            Script scriptGatNOKIAVOZ = new Script(37, "Gat-NOKIA-VOZ", gatNOKIAVOZ, "03,07,08,13", DateTime.Parse("11/02/2026"));
-            Script scriptGatNOKIABLDcomBGP = new Script(38, "Gat-NOKIA-BLDcomBGP", gatNOKIABLDcomBGP, "03,07,08,13", DateTime.Parse("11/02/2026"));
+            Script scriptGatCiscoBLD = new Script(31, "Gat-Cisco-BLD", false, gatCiscoBLD, "03,08", DateTime.Parse("11/02/2026"));
+            Script scriptGatCiscoMPLS = new Script(32, "Gat-Cisco-MPLS", false, gatCiscoMPLS, "03,08,14", DateTime.Parse("11/02/2026"));
+            Script scriptGatCiscoVOZ = new Script(33, "Gat-Cisco-VOZ", false, gatCiscoVOZ, "03,08", DateTime.Parse("11/02/2026"));
+            Script scriptGatCiscoBLDcomBGP = new Script(34, "Gat-Cisco-BLDcomBGP", false, gatCiscoBLDcomBGP, "03,08", DateTime.Parse("11/02/2026"));
+            Script scriptGatNOKIABLD = new Script(35, "Gat-NOKIA-BLD", false, gatNOKIABLD, "03,07,08,13", DateTime.Parse("11/02/2026"));
+            Script scriptGatNOKIAMPLS = new Script(36, "Gat-NOKIA-MPLS", false, gatNOKIAMPLS, "03,07,08,13,14,15", DateTime.Parse("11/02/2026"));
+            Script scriptGatNOKIAVOZ = new Script(37, "Gat-NOKIA-VOZ", false, gatNOKIAVOZ, "03,07,08,13", DateTime.Parse("11/02/2026"));
+            Script scriptGatNOKIABLDcomBGP = new Script(38, "Gat-NOKIA-BLDcomBGP", false, gatNOKIABLDcomBGP, "03,07,08,13", DateTime.Parse("11/02/2026"));
 
             scriptList.Add(scriptGatCiscoBLD);
             scriptList.Add(scriptGatCiscoMPLS);
@@ -2063,13 +2074,14 @@ namespace WindowsFormsApp1.Entitys
 
             // Outros
             // SNMP
-            Script scriptSnmpv2Cisco = new Script(39, "snmpv2-Cisco", snmpv2Cisco, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2CiscoHost = new Script(40, "snmpv2-Cisco-Host", snmpv2CiscoHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2HPE = new Script(41, "snmpv2-HPE", snmpv2HPE, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2HPEcomHost = new Script(42, "snmpv2-HPE-ComHost", snmpv2HPEcomHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2Huawei = new Script(43, "snmpv2-Huawei", snmpv2Huawei, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2HuaweicomHost = new Script(44, "snmpv2-Huawei-ComHost", snmpv2HuaweicomHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2Fortgate = new Script(45, "snmpv2-Fortgate", snmpv2Fortgate, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2Cisco = new Script(39, "snmpv2-Cisco", false, snmpv2Cisco, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2CiscoHost = new Script(40, "snmpv2-Cisco-Host", false, snmpv2CiscoHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2HPE = new Script(41, "snmpv2-HPE", false, snmpv2HPE, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2HPEcomHost = new Script(42, "snmpv2-HPE-ComHost", false, snmpv2HPEcomHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2Huawei = new Script(43, "snmpv2-Huawei", false, snmpv2Huawei, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2HuaweicomHost = new Script(44, "snmpv2-Huawei-ComHost", false, snmpv2HuaweicomHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2Fortgate = new Script(45, "snmpv2-Fortgate", false, snmpv2Fortgate, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2FortgatecomHost = new Script(46, "snmpv2-Fortgate-ComHost", false, snmpv2FortgatecomHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
 
             scriptList.Add(scriptSnmpv2Cisco);
             scriptList.Add(scriptSnmpv2CiscoHost);
@@ -2078,12 +2090,13 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptSnmpv2Huawei);
             scriptList.Add(scriptSnmpv2HuaweicomHost);
             scriptList.Add(scriptSnmpv2Fortgate);
+            scriptList.Add(scriptSnmpv2FortgatecomHost);
 
             // Extras
-            Script scriptCiscoLogsParte2 = new Script(46, "Cisco-Logs-Parte2", ciscoLogsParte2, "", DateTime.Parse("11/02/2026"));
-            Script scriptCiscoLogsBLDLimpeza = new Script(47, "Cisco-Logs-LimpezaBLD", ciscoLogsBLDLimpeza, "", DateTime.Parse("11/02/2026"));
-            Script scriptHPELogsParte2 = new Script(48, "HPE-Logs-Parte2", hpeLogsParte2, "", DateTime.Parse("11/02/2026"));
-            Script scriptHPELogsBLDLimpeza = new Script(49, "HPE-Logs-LimpezaBLD", hpeLogsBLDLimpeza, "", DateTime.Parse("11/02/2026"));
+            Script scriptCiscoLogsParte2 = new Script(47, "Cisco-Logs-Parte2", false, ciscoLogsParte2, "", DateTime.Parse("11/02/2026"));
+            Script scriptCiscoLogsBLDLimpeza = new Script(48, "Cisco-Logs-LimpezaBLD", false, ciscoLogsBLDLimpeza, "", DateTime.Parse("11/02/2026"));
+            Script scriptHPELogsParte2 = new Script(49, "HPE-Logs-Parte2", false, hpeLogsParte2, "", DateTime.Parse("11/02/2026"));
+            Script scriptHPELogsBLDLimpeza = new Script(50, "HPE-Logs-LimpezaBLD", false, hpeLogsBLDLimpeza, "", DateTime.Parse("11/02/2026"));
 
             scriptList.Add(scriptCiscoLogsParte2);
             scriptList.Add(scriptCiscoLogsBLDLimpeza);
@@ -2091,12 +2104,19 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptHPELogsBLDLimpeza);
 
             // QoS
-            Script scriptQosCisco = new Script(39, "QoS Cisco", qosCisco, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/1999"));
+            Script scriptQosCisco = new Script(51, "QoS Cisco", false, qosCisco, "", DateTime.Parse("23/02/2026"));
+            Script scriptQosCiscoNovo = new Script(52, "QoS Cisco Novo", false, qosCiscoNovo, "", DateTime.Parse("23/02/2026"));
+            Script scriptQosHPE = new Script(53, "QoS HPE", false, qosHPE, "", DateTime.Parse("23/02/2026"));
+            Script scriptQosHuawei = new Script(54, "QoS Huawei", false, qosHuawei, "", DateTime.Parse("23/02/2026"));
+            Script scriptQosFortigate = new Script(55, "QoS Fortigate", false, qosFortigate, "", DateTime.Parse("23/02/2026"));
 
             scriptList.Add(scriptQosCisco);
 
             // BGP
-            Script scriptBgpCisco = new Script(39, "QoS Cisco",bgpCisco, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/1999"));
+            Script scriptBgpCisco = new Script(56, "QoS Cisco", false, bgpCisco, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("24/02/2026"));
+            Script scriptBgpHPE = new Script(57, "QoS HPE", false, bgpHPE, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("24/02/2026"));
+            Script scriptBgpHuawei = new Script(58, "QoS Huawei", false, bgpHuawei, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("24/02/2026"));
+            Script scriptBgpFortigate = new Script(59, "QoS Fortigate", false, bgpFortigate, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("24/02/2026"));
 
             scriptList.Add(scriptBgpCisco);
 

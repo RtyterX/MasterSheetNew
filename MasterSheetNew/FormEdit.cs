@@ -15,9 +15,9 @@ namespace MasterSheetNew
     public partial class FormEdit : Form
     {
 
-        Script scriptClass = new Script(99, "ScriptClass", "", "", DateTime.Parse("11/02/2026"));
+        Script scriptClass = new Script(99, "ScriptClass", false, "", "", DateTime.Parse("11/02/2026"));
         List<Script> allScripts = new List<Script>();
-        Script selectedScript = new Script(99, "SelectedScript", "", "", DateTime.Parse("11/02/2026"));
+        Script selectedScript = new Script(99, "SelectedScript", false, "", "", DateTime.Parse("11/02/2026"));
 
         public FormEdit()
         {

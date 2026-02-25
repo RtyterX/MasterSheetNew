@@ -10,16 +10,18 @@ namespace WindowsFormsApp1.Entitys
     public class Step
     {
         public int number;
-        public string description;
+        public string text;
         public string script;
         public PictureBox image;
+        public int client_Id;
     
-        public Step(int number, string description, string script, PictureBox image)
+        public Step(int number, string text, string script, PictureBox image, int client_Id)
         {
             this.number = number;
-            this.description = description;
+            this.text = text;
             this.script = script;
             this.image = image;
+            this.client_Id = client_Id;
         }
     
     }
