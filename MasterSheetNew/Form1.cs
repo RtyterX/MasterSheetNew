@@ -2834,15 +2834,17 @@ namespace MasterSheetNew
         #region
         private void Button_ImportSAIP_Click(object sender, EventArgs e)
         {
+            bool banda = true;
+            bool porta = true;
+
             string copiado = Clipboard.GetText();
             copiado = copiado.Replace("DADOS CLIENTE", ";");
             string[] limpeza = copiado.Split(';');
-            string[] split = limpeza[1].Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
-
             // ------------------------------------------------
             try
             {
                 string var;
+                string[] split = limpeza[1].Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
 
                 if (split[1].Contains("Business Link Direct"))
                 {
@@ -2853,26 +2855,30 @@ namespace MasterSheetNew
                             // Hostname
                             var = s.Replace("Domínio", string.Empty).Trim();
                             Script_VarText00.Text = var + "_BLD";
-                            break;
                         }
                         if (s.Contains("Description Roteador"))
                         {
                             // Description 
                             Script_VarText01.Text = s.Replace("Description Roteador", string.Empty).Trim();
-                            break;
                         }
-                        if (s.Contains("Banda"))
+                        if (banda)
                         {
-                            // Bandwidth
-                            Script_VarText02.Text = s.Replace("Banda", string.Empty).Trim();
-                            break;
+                            if (s.Contains("Banda"))
+                            {
+                                // Bandwidth
+                                Script_VarText02.Text = s.Replace("Banda", string.Empty).Trim();
+                                banda = false;
+                            }
                         }
-                        if (s.Contains("Porta"))
+                        if (porta)
                         {
-                            // Porta da WAN
-                            var = s.Replace("Porta", string.Empty).Trim();
-                            Script_VarText03b.Text = GigaOrTenGiga(var);
-                            break;
+                            if (s.Contains("Porta"))
+                            {
+                                // Porta da WAN
+                                var = s.Replace("Porta", string.Empty).Trim();
+                                Script_VarText03b.Text = GigaOrTenGiga(var);
+                                porta = false;
+                            }
                         }
                         if (s.Contains("IP Serial Usuário(IPv4)"))
                         {
@@ -2881,7 +2887,6 @@ namespace MasterSheetNew
                             string[] ipPE = var.Split('/');
                             Script_VarText07.Text = GetBackboneInterfaceIP(ipPE[0], true);               // IP da Porta
                             Script_VarText08.Text = ipPE[0];                                             // IP da Porta + 1 (bloco /30)
-                            break;
                         }
                         if (s.Contains("Blocos IPv4"))
                         {
@@ -2890,7 +2895,14 @@ namespace MasterSheetNew
                             string[] ipLan = var.Split('/');
                             Script_VarText09.Text = GetBackboneInterfaceIP(ipLan[0], false);
                             MascaraLAN('/' + ipLan[1]);
-                            break;
+                        }
+                        if (s.Contains(""))
+                        {
+                            // IP de LAN
+                            var = s.Replace("Blocos IPv4", string.Empty).Trim();
+                            string[] ipLan = var.Split('/');
+                            Script_VarText09.Text = GetBackboneInterfaceIP(ipLan[0], false);
+                            MascaraLAN('/' + ipLan[1]);
                         }
                     }
 
@@ -2900,6 +2912,7 @@ namespace MasterSheetNew
                 {
                     foreach (string s in split)
                     {
+                        bool qos = false;
                         if (s.Contains("Description Roteador"))
                         {
                             // Hostname / Description
@@ -2907,20 +2920,27 @@ namespace MasterSheetNew
                             string[] hostname = var.Split('|');
                             Script_VarText00.Text = hostname[0].Trim() + "_" + hostname[2].Trim();
                             Script_VarText01.Text = var.Trim();
-                            break;
                         }
-                        if (s.Contains("Banda"))
+                        if (banda)
                         {
-                            // Bandwidth
-                            Script_VarText02.Text = s.Replace("Banda", string.Empty).Trim();
-                            break;
+                            if (s.Contains("Banda"))
+                            {
+                                MessageBox.Show("Teste Banda - Linha: " + s);
+                                // Bandwidth
+                                Script_VarText02.Text = s.Replace("Banda", string.Empty).Trim();
+                                banda = false;
+                            }
                         }
-                        if (s.Contains("Porta"))
+                        if (porta)
                         {
-                            // Porta da WAN
-                            var = s.Replace("Porta", string.Empty).Trim();
-                            Script_VarText03b.Text = GigaOrTenGiga(split[30]);
-                            break;
+                            if (s.Contains("Porta"))
+                            {
+                                MessageBox.Show("Teste Porta - Linha: " + s);
+                                // Porta da WAN
+                                var = s.Replace("Porta", string.Empty).Trim();
+                                Script_VarText03b.Text = GigaOrTenGiga(var);
+                                porta = false;
+                            }
                         }
                         if (s.Contains("IP Serial Usuário (IPv4)"))
                         {
@@ -2929,7 +2949,6 @@ namespace MasterSheetNew
                             string[] ipPE = var.Split('/');
                             Script_VarText07.Text = GetBackboneInterfaceIP(ipPE[0], true);                // IP da Porta
                             Script_VarText08.Text = removeZero(ipPE[0]);                                  // IP da Porta + 1 (bloco /30)
-                            break;
                         }
                         if (s.Contains("Blocos IPv4"))
                         {
@@ -2938,19 +2957,51 @@ namespace MasterSheetNew
                             string[] ipLan = var.Split('/');
                             Script_VarText09.Text = GetBackboneInterfaceIP(ipLan[0], false);
                             MascaraLAN(ipLan[1]);
-                            break;
                         }
                         if (s.Contains("Vrf"))
                         {
                             // VRF Name
                             Script_VarText14.Text = s.Replace("Vrf", string.Empty).Trim();
-                            break;
                         }
                         if (s.Contains("SERVICE_ID"))
                         {
                             // VRF Service ID
                             Script_VarText15.Text = s.Replace("SERVICE_ID", string.Empty).Trim();
-                            break;
+                        }
+                        // ------------------------------------------
+                        // QoS
+                        if (s.Contains("Dados de QoS\t: CANAIS"))
+                        {
+                            qos = true;
+                        }
+                        if (s.Contains("VOZ"))
+                        {
+                            Outros_VarTextQoS00.Text = s.Replace("VOZ :", string.Empty).Replace("Kbps", string.Empty).Trim();
+                        }
+                        if (s.Contains("VIDEO"))
+                        {
+                            Outros_VarTextQoS01.Text = s.Replace("VIDEO :", string.Empty).Replace("Kbps", string.Empty).Trim();
+                        }
+                        if (s.Contains("MISSÃO"))
+                        {
+                            Outros_VarTextQoS02.Text = s.Replace("MISSÃO CRÍTICA :", string.Empty).Replace("Kbps", string.Empty).Trim();
+                        }
+                        if (s.Contains("INTERATIVA"))
+                        {
+                            Outros_VarTextQoS03.Text = s.Replace("INTERATIVA :", string.Empty).Replace("Kbps", string.Empty).Trim();
+                        }
+                        if (s.Contains("BULK"))
+                        {
+                            Outros_VarTextQoS04.Text = s.Replace("BULK :", string.Empty).Replace("Kbps", string.Empty).Trim();
+                        }
+                        if (s.Contains("NETWORK CONTROL"))
+                        {
+                            Outros_VarTextQoS05.Text = s.Replace("NETWORK CONTROL :", string.Empty).Replace("Kbps", string.Empty).Trim();
+                        }
+                        if (s.Contains("BEST EFFORT"))
+                        {
+                            Outros_VarTextQoS06.Text = s.Replace("BEST EFFORT :", string.Empty).Replace("Kbps", string.Empty).Trim();
+                            qos = false;
                         }
                     }
                 }
@@ -2960,6 +3011,8 @@ namespace MasterSheetNew
                     string[] numero = split;
                     string[] name = split;
 
+                    MessageBox.Show("Import SAIP - VOZ");
+
                     foreach (string s in split)
                     {
                         if (s.Contains(""))
@@ -2967,7 +3020,6 @@ namespace MasterSheetNew
                             // Description
                             Script_VarText01.Text = s.Replace("Description Roteador", string.Empty).Trim();
                             name = Script_VarText01.Text.Split('|');
-                            break;
                         }
                         if (s.Contains("Designação IP"))
                         {
@@ -2977,20 +3029,25 @@ namespace MasterSheetNew
                             // ---------------
                             // Name Final
                             Script_VarText00.Text = name[0].Trim() + "-" + numero[2];
-                            break;
                         }
-                        if (s.Contains("Banda"))
+                        if (banda)
                         {
-                            // Bandwidth
-                            Script_VarText02.Text = s.Replace("Banda", string.Empty).Trim();
-                            break;
+                            if (s.Contains("Banda"))
+                            {
+                                // Bandwidth
+                                Script_VarText02.Text = s.Replace("Banda", string.Empty).Trim();
+                                banda = false;
+                            }
                         }
-                        if (s.Contains("Porta"))
+                        if (porta)
                         {
-                            // Porta da WAN
-                            var = s.Replace("Porta", string.Empty).Trim();
-                            Script_VarText03b.Text = GigaOrTenGiga(var);
-                            break;
+                            if (s.Contains("Porta"))
+                            {
+                                // Porta da WAN
+                                var = s.Replace("Porta", string.Empty).Trim();
+                                Script_VarText03b.Text = GigaOrTenGiga(var);
+                                porta = false;
+                            }
                         }
                         if (s.Contains("IP Serial Usuário (IPv4)"))
                         {
@@ -2999,7 +3056,6 @@ namespace MasterSheetNew
                             string[] ipPE = var.Split('/');
                             Script_VarText07.Text = GetBackboneInterfaceIP(ipPE[0], true).Trim();      // IP da Porta
                             Script_VarText08.Text = removeZero(ipPE[0]);                                           // IP da Porta + 1 (bloco /30)
-                            break;
                         }
                         if (s.Contains("IP PABX"))
                         {
@@ -3007,7 +3063,6 @@ namespace MasterSheetNew
                             var = s.Replace("IP PABX", string.Empty).Trim();
                             string[] ipLan = var.Split('/');
                             Script_VarText09.Text = GetBackboneInterfaceIP(ipLan[0], true).Trim();
-                            break;
                         }
                         if (s.Contains("IP SIP Acesso"))
                         {
@@ -3017,12 +3072,11 @@ namespace MasterSheetNew
                             Script_VarText17.Text = numero[2];
                             Script_VarText18.Text = numero[2].Remove(2, 8);
                             Script_VarText19.Text = numero[2];
-                            break;
                         }
-                        if (s.Contains("Sinalização"))
+                        if (s.Contains("SINALIZAÇÃO"))
                         {
                             // Sinalizaçäo 
-                            if (s.Contains("PABX"))
+                            if (s.Contains("IP"))
                             {
                                 Script_SinalizBox.SelectedIndex = 2;
                             }
@@ -3034,7 +3088,6 @@ namespace MasterSheetNew
                             {
                                 Script_SinalizBox.SelectedIndex = 1;
                             }
-                            break;
                         }
 
                         // N de Canais
@@ -3057,6 +3110,7 @@ namespace MasterSheetNew
                         {
                             Script_LANMascaraBox.SelectedIndex = 0;
                         }
+                        
                     }
                 }
                 else
@@ -3066,7 +3120,7 @@ namespace MasterSheetNew
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Erro: " + exc.Message);
+                MessageBox.Show("Import Incorreto");
             }
         }
 
@@ -3075,12 +3129,12 @@ namespace MasterSheetNew
             if (str.Contains("TENGIGA"))
             {
                 str = str.Replace("TENGIGA", string.Empty).Trim();
-                str = "Te" + str;
+                str = "TenGigaEthernet" + str;
             }
             else if (str.Contains("GIGA"))
             {
                 str = str.Replace("GIGA", string.Empty).Trim();
-                str = "Gi" + str;
+                str = "GigaEthernet" + str;
             }
             else if (str.Contains("FAST"))
             {
@@ -4194,6 +4248,10 @@ namespace MasterSheetNew
             tabControl2.SelectedTab = tabOutros;
             OutrosTitle.Text = "QoS";
 
+            Outros_QoSCalcText.Text = Script_VarText02.Text;
+            Outros_VarTextQoS07.Text = Script_VarText03.Text;
+            Outros_VarTextQoS08.Text = Script_VarText05.Text;
+
             Outros_QoSCalcEx.Show();
             Outros_QoSCalcLabel.Show();
             Outros_QoSCalcText.Show();
@@ -4367,7 +4425,6 @@ namespace MasterSheetNew
             tabControl2.SelectedTab = tabOutros;
             OutrosTitle.Text = "BGP";
 
-            Outros_ExSubTitle.Show();
             Outros_VarSubTitle.Show();
 
             Outros_VarName0.Show();
@@ -4375,22 +4432,27 @@ namespace MasterSheetNew
             Outros_VarName2.Show();
             Outros_VarName3.Show();
             Outros_VarName4.Show();
+            Outros_VarName5.Show();
             Outros_VarText00.Show();
             Outros_VarText01.Show();
             Outros_VarText02.Show();
             Outros_VarText03.Show();
             Outros_VarText04.Show();
-            Outros_VarEx0.Show();
-            Outros_VarEx1.Show();
-            Outros_VarEx2.Show();
-            Outros_VarEx3.Show();
-            Outros_VarEx4.Show();
+            Outros_VarText05.Show();
             Outros_VarDelete0.Show();
             Outros_VarDelete1.Show();
             Outros_VarDelete2.Show();
             Outros_VarDelete3.Show();
             Outros_VarDelete4.Show();
+            Outros_VarDelete5.Show();
             Outros_VarDeleteAll.Show();
+
+            Outros_VarName0.Text = "AS do BGP";
+            Outros_VarName1.Text = "IP do PE";
+            Outros_VarName2.Text = "Designacao";
+            Outros_VarName3.Text = "Remote AS";
+            Outros_VarName4.Text = "Host";
+            Outros_VarName5.Text = "Password";
 
             ApplyOutrosBGP();
         }
@@ -4399,26 +4461,145 @@ namespace MasterSheetNew
         {
             if (Outros_TypeComboBox.SelectedIndex == 0 || Outros_TypeComboBox.SelectedIndex == 1)   // Cisco
             {
+                MessageBox.Show("" + scripts.Count);
                 Outros_FinalTextBox.Text = scripts[56].scriptString;
+
+
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarAS", Outros_VarText00.Text);
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarIP", Outros_VarText01.Text);
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("designacao", Outros_VarText02.Text);
+                if (Outros_VarText03.Text != string.Empty)
+                {
+                    Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarRemote", "neighbor VarHost remote-as VarRemote\r\nneighbor VarHost send-community ** Cliente **\r\nneighbor VarHost allowas-in\r\nneighbor VarHost description designacao\r\nneighbor VarHost soft-reconfiguration inbound");
+                    // ------------------------------------------------------------------------------------------------------------
+                    Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarRemote", Outros_VarText03.Text);
+                    if (Outros_VarText03.Text != string.Empty)
+                    {
+                        Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarHost", Outros_VarText04.Text);
+                    }
+                    else
+                    {
+                        Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarHost", "");
+                    }
+                    if (Outros_VarText04.Text != string.Empty)
+                    {
+                        Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarPassword", "set password " + Outros_VarText05.Text);
+                    }
+                    else
+                    {
+                        Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarPassword", "");
+                    }
+                }
+                else
+                {
+                    Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarRemote", "");
+                }
             }
             if (Outros_TypeComboBox.SelectedIndex == 2)   // HPE
             {
                 Outros_FinalTextBox.Text = scripts[57].scriptString;
+
+
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarAS", Outros_VarText00.Text);
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarIP", Outros_VarText01.Text);
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("designacao", Outros_VarText02.Text);
+                if (Outros_VarText03.Text != string.Empty)
+                {
+                    Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarRemote", "peer VarHost as-number VarRemote\r\npeer VarHost description ** Cliente **\r\naddress-family ipv4 unicast\r\nimport-route direct\r\npeer VarHost enable\r\npeer VarHost allow-as-loop 10\r\npeer VarHost advertise-community");
+                    // ------------------------------------------------------------------------------------------------------------
+                    Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarRemote", Outros_VarText03.Text);
+                    if (Outros_VarText03.Text != string.Empty)
+                    {
+                        Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarHost", Outros_VarText04.Text);
+                    }
+                    else
+                    {
+                        Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarHost", "");
+                    }
+                    if (Outros_VarText04.Text != string.Empty)
+                    {
+                        Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarPassword", "set password " + Outros_VarText05.Text);
+                    }
+                    else
+                    {
+                        Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarPassword", "");
+                    }
+                }
+                else
+                {
+                    Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarRemote", "");
+                }
             }
             if (Outros_TypeComboBox.SelectedIndex == 3)   // Huawei
             {
                 Outros_FinalTextBox.Text = scripts[58].scriptString;
+
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarAS", Outros_VarText00.Text);
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarIP", Outros_VarText01.Text);
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("designacao", Outros_VarText02.Text);
+                if (Outros_VarText03.Text != string.Empty)
+                {
+                    Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarRemote", "peer VarHost as-number VarRemote\r\n peer VarHost description ** Cliente **\r\n ipv4-family unicast\r\n peer VarHost enable\r\n  peer VarHost allow-as-loop 10");
+                    // ------------------------------------------------------------------------------------------------------------
+                    Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarRemote", Outros_VarText03.Text);
+                    if (Outros_VarText03.Text != string.Empty)
+                    {
+                        Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarHost", Outros_VarText04.Text);
+                    }
+                    else
+                    {
+                        Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarHost", "");
+                    }
+                    if (Outros_VarText04.Text != string.Empty)
+                    {
+                        Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarPassword", "set password " + Outros_VarText05.Text);
+                    }
+                    else
+                    {
+                        Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarPassword", "");
+                    }
+                }
+                else
+                {
+                    Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarRemote", "");
+                }
             }
             if (Outros_TypeComboBox.SelectedIndex == 4)    // Fortigate
             {
                 Outros_FinalTextBox.Text = scripts[59].scriptString;
+
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarAS", Outros_VarText00.Text);
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarIP", Outros_VarText01.Text);
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("designacao", Outros_VarText02.Text);
+                if (Outros_VarText03.Text != string.Empty)
+                {
+                    Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarRemote", "edit \"VarHost\"\r\nset allowas-in-enable enable\r\nset description \"** Cliente **\"\r\nset soft-reconfiguration enable\r\nset remote-as VarRemote\r\nVarPassword");
+                    // ------------------------------------------------------------------------------------------------------------
+                    Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarRemote", Outros_VarText03.Text);
+                    if (Outros_VarText03.Text != string.Empty)
+                    {
+                        Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarHost", Outros_VarText04.Text);
+                    }
+                    else
+                    {
+                        Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarHost", "");
+                    }
+                    if (Outros_VarText04.Text != string.Empty)
+                    {
+                        Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarPassword", "set password " + Outros_VarText05.Text);
+                    }
+                    else
+                    {
+                        Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarPassword", "");
+                    }
+                }
+                else
+                {
+                    Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarRemote", "");
+                }
+
             }
 
-            Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarAS", Outros_VarText00.Text);
-            Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarIP", Outros_VarText01.Text);
-            Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarDescription", Outros_VarText02.Text);
-            Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarRemoteAS", Outros_VarText03.Text);
-            Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarPassword", Outros_VarText04.Text);
         }
 
         #endregion
@@ -4501,24 +4682,28 @@ namespace MasterSheetNew
             Outros_VarName2.Hide();
             Outros_VarName3.Hide();
             Outros_VarName4.Hide();
+            Outros_VarName5.Hide();
 
             Outros_VarText00.Hide();
             Outros_VarText01.Hide();
             Outros_VarText02.Hide();
             Outros_VarText03.Hide();
             Outros_VarText04.Hide();
+            Outros_VarText05.Hide();
 
             Outros_VarEx0.Hide();
             Outros_VarEx1.Hide();
             Outros_VarEx2.Hide();
             Outros_VarEx3.Hide();
             Outros_VarEx4.Hide();
+            Outros_VarEx5.Hide();
 
             Outros_VarDelete0.Hide();
             Outros_VarDelete1.Hide();
             Outros_VarDelete2.Hide();
             Outros_VarDelete3.Hide();
             Outros_VarDelete4.Hide();
+            Outros_VarDelete5.Hide();
             Outros_VarDeleteAll.Hide();
 
             Outros_QoSDispTotal.Hide();
@@ -5017,7 +5202,7 @@ namespace MasterSheetNew
             enableEdit = true;
             canImportSAIP = true;
             Properties.Settings.Default.enableEdit = enableEdit;
-            Properties.Settings.Default.enableEdit = canImportSAIP;
+            Properties.Settings.Default.canImportSAIP = canImportSAIP;
             Properties.Settings.Default.Save();
         }
 
@@ -5130,18 +5315,22 @@ namespace MasterSheetNew
         {
             string copiado = Clipboard.GetText().Replace("DADOS CLIENTE", ";");
             string[] limpeza = copiado.Split(';');
-            string[] teste = limpeza[1].Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
-            string novo = "";
-
-            for (int i = 0; i < teste.Length; i++)
+            try
             {
-                novo = novo + i + " - " + teste[i] + "\r\n";
+                string[] teste = limpeza[1].Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+                string novo = "";
+
+                for (int i = 0; i < teste.Length; i++)
+                {
+                    novo = novo + i + " - " + teste[i] + "\r\n";
+                }
+                Script_TextBox.Text = novo;
             }
-
-            Script_TextBox.Text = novo;
+            catch
+            {
+                MessageBox.Show("Import Incorreto");
+            }
         }
-
-
 
 
         public void TesteFillClientList()
