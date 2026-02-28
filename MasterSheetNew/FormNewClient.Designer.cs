@@ -59,7 +59,7 @@
             this.NewClient_Title.Location = new System.Drawing.Point(0, 0);
             this.NewClient_Title.Name = "NewClient_Title";
             this.NewClient_Title.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
-            this.NewClient_Title.Size = new System.Drawing.Size(552, 71);
+            this.NewClient_Title.Size = new System.Drawing.Size(501, 71);
             this.NewClient_Title.TabIndex = 22;
             this.NewClient_Title.Text = "Novo Cliente";
             this.NewClient_Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -86,7 +86,7 @@
             // NewClient_ButtonSave
             // 
             this.NewClient_ButtonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.NewClient_ButtonSave.Location = new System.Drawing.Point(315, 320);
+            this.NewClient_ButtonSave.Location = new System.Drawing.Point(363, 364);
             this.NewClient_ButtonSave.Name = "NewClient_ButtonSave";
             this.NewClient_ButtonSave.Size = new System.Drawing.Size(105, 44);
             this.NewClient_ButtonSave.TabIndex = 24;
@@ -98,7 +98,7 @@
             // 
             this.NewClient_CriticalBox.AutoSize = true;
             this.NewClient_CriticalBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.NewClient_CriticalBox.Location = new System.Drawing.Point(79, 282);
+            this.NewClient_CriticalBox.Location = new System.Drawing.Point(84, 291);
             this.NewClient_CriticalBox.Name = "NewClient_CriticalBox";
             this.NewClient_CriticalBox.Size = new System.Drawing.Size(144, 28);
             this.NewClient_CriticalBox.TabIndex = 25;
@@ -140,7 +140,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(552, 455);
+            this.ClientSize = new System.Drawing.Size(501, 433);
             this.Controls.Add(this.NewClient_ShowOnScreenBox);
             this.Controls.Add(this.NewClient_StepsLabel);
             this.Controls.Add(this.NewClient_StepsBox);

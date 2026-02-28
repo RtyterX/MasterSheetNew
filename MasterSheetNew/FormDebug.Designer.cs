@@ -1,6 +1,6 @@
 ﻿namespace MasterSheetNew
 {
-    partial class FormVoiceDebug
+    partial class FormDebug
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVoiceDebug));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDebug));
             this.Debug_TextBox = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 

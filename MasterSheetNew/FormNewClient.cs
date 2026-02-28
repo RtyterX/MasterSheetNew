@@ -30,44 +30,48 @@ namespace MasterSheetNew.Entitys
             bool critical;
             bool showOnScreen;
 
-            if (steps != null)
+            if (NewClient_Name.Text != string.Empty)
             {
-                if (NewClient_ShowOnScreenBox.Checked)
+                if (steps.Count != 0)
                 {
-                    critical = true;
+                    if (NewClient_ShowOnScreenBox.Checked)
+                    {
+                        critical = true;
+                    }
+                    else
+                    {
+                        critical = false;
+                    }
+                    if (NewClient_CriticalBox.Checked)
+                    {
+                        showOnScreen = true;
+                    }
+                    else
+                    {
+                        showOnScreen = false;
+                    }
+
+                    WindowsFormsApp1.Entitys.Client newClient = new WindowsFormsApp1.Entitys.Client(NewClient_Name.Text, critical, showOnScreen, steps);
+                    mainPage.clients.Add(newClient);
+                    mainPage.AllClientsButtonBuilder();
+                    mainPage.FillClientButtons();
+
+                    this.Close();
                 }
                 else
                 {
-                    critical = false;
+                    MessageBox.Show("Erro: Não foi configurado nenhum Passo");
                 }
-                if (NewClient_CriticalBox.Checked)
-                {
-                    showOnScreen = true;
-                }
-                else
-                {
-                    showOnScreen = false;
-                }
-
-                WindowsFormsApp1.Entitys.Client newClient = new WindowsFormsApp1.Entitys.Client(NewClient_Name.Text, critical, showOnScreen, steps);
-                mainPage.clients.Add(newClient);
-                mainPage.AllClientsButtonBuilder();
-                mainPage.FillClientButtons();
-
-                this.Close();
             }
             else
             {
-                MessageBox.Show("Erro: Não foi configurado nenhum Passo");
+                MessageBox.Show("Erro: Cliente precisa ter um Nome");
             }
         }
 
         private void NewClient_ButtonNewStep_Click(object sender, EventArgs e)
         {
             int stepsNumber = steps.Count;
-
-            MessageBox.Show("Numero de Steps = " + steps.Count);
-
             FormNewStep newClientForm = new FormNewStep(this, stepsNumber, client_Id);
             newClientForm.Show();
         }

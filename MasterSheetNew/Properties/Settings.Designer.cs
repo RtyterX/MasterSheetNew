@@ -130,5 +130,139 @@ namespace MasterSheetNew.Properties {
                 this["canImportSAIP"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\"                 ************************\\r\\n\" +\r\n\"                           HP" +
+            "E           \\r\\n\" +\r\n\"                 ************************\\r\\n\" +\r\n\"\\r\\n\" +" +
+            "\r\n\"###############\\r\\n\" +\r\n\"   DEBUG HP    \\r\\n\" +\r\n\"###############\\r\\n\" +\r\n\"\\r" +
+            "\\n\" +\r\n\"- DEBUG ISDN -\\r\\n\" +\r\n\"DEBUG VOICE SIP message\\r\\n\" +\r\n\"debug isdn\\r\\n\"" +
+            " +\r\n\"terminal monitor\\r\\n\" +\r\n\"terminal debugging\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"----------\\" +
+            "r\\n\" +\r\n\"\\r\\n\" +\r\n\"- DEBUG R2 -\\r\\n\" +\r\n\"debug voice R2 ALL\\r\\n\" +\r\n\"debugging v" +
+            "oice r2 event\\r\\n\" +\r\n\"terminal monitor\\r\\n\" +\r\n\"terminal debugging\\r\\n\" +\r\n\"\\r\\" +
+            "n\" +\r\n\"----------\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"- DEBUG SIP -\\r\\n\" +\r\n\"DEBUG VOICE SIP mess" +
+            "age\\r\\n\" +\r\n\"terminal monitor\\r\\n\" +\r\n\"terminal debugging\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"---" +
+            "-------\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"- Desabilitar DEBUG -\\r\\n\" +\r\n\"undo DEBUG VOICE SIP m" +
+            "essage\\r\\n\" +\r\n\"undo terminal monitor\\r\\n\" +\r\n\"undo terminal debugging\\r\\n\" +\r\n\"" +
+            "\\r\\n\" +\r\n\"*********************************************\\r\\n\" +\r\n\"               " +
+            "  ************************\\r\\n\" +\r\n\"                           CISCO         \\r\\" +
+            "n\" +\r\n\"                 ************************\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"############" +
+            "#\\r\\n\" +\r\n\"DEBUG CISCO\\r\\n\" +\r\n\"#############\\r\\n\" +\r\n\"!DEBUG SIP\\r\\n\" +\r\n\"termi" +
+            "nal monitor\\r\\n\" +\r\n\"debug ccsip messages\\r\\n\" +\r\n\"debug voice ccapi inout\\r\\n\" " +
+            "+\r\n\"debug translation detail\\r\\n\" +\r\n\"!\\r\\n\" +\r\n\"----------\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"t" +
+            "erminal monitor\\r\\n\" +\r\n\"debug ccsip messages\\r\\n\" +\r\n\"- Habilita visualização d" +
+            "as dial-peers (entrada e saída)\\r\\n\" +\r\n\"terminal no monitor\\r\\n\" +\r\n\"no debug c" +
+            "csip messages\\r\\n\" +\r\n\"no debug voice ccapi inout\\r\\n\" +\r\n\"no debug translation " +
+            "detail\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"----------\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"-DEBUG R2 CISCO-\\r\\n\" +\r" +
+            "\n\"terminal monitor\\r\\n\" +\r\n\"debug ccsip messages\\r\\n\" +\r\n\"debug vpm signal\\r\\n\" " +
+            "+\r\n\"\\r\\n\" +\r\n\"----------\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"-DESATIVA O DEBUG CISCO-\\r\\n\" +\r\n\"te" +
+            "rminal no monitor\\r\\n\" +\r\n\"no debug ccsip messages\\r\\n\" +\r\n\"no debug vpm signal\\" +
+            "r\\n\" +\r\n\"\\r\\n\" +\r\n\"----------\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"**Ver se está registrado\\r\\n\" +" +
+            "\r\n\"sh sip register status\\r\\n\" +\r\n\"sh sip-ua register status\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"" +
+            "----------\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"sh dial-peer voice sum\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"********" +
+            "******Habilitar E1/T1\\r\\n\" +\r\n\"#\\r\\n\" +\r\n\"card type e1 0 2\\r\\n\" +\r\n\"Placa de voz" +
+            " -> PVDM (Memoria para suportar a placa E1, PVDM 32 para 30 channels.\\r\\n\" +\r\n\"F" +
+            "orçar chamada placa FXS, FXO\\r\\n\" +\r\n\"CSIM START <número a ser discado>\\r\\n\" +\r\n" +
+            "\"\\r\\n\" +\r\n\"==================================================\\r\\n\" +\r\n\"         " +
+            "        ************************\\r\\n\" +\r\n\"                          ALIGERA     " +
+            "   \\r\\n\" +\r\n\"                 ************************\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"######" +
+            "##########\\r\\n\" +\r\n\"DEBUG ALIGERA\\r\\n\" +\r\n\"################\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"D" +
+            "EBUG - com sip\\r\\n\" +\r\n\"debug\\r\\n\" +\r\n\"core set debug 5\\r\\n\" +\r\n\"core set verbos" +
+            "e 5\\r\\n\" +\r\n\"sip set debug on\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"----------\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"-" +
+            "Debug SIP-\\r\\n\" +\r\n\"debug vip sip on\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"----------\\r\\n\" +\r\n\"\\r\\n" +
+            "\" +\r\n\"-Debug R2-\\r\\n\" +\r\n\"debug\\r\\n\" +\r\n\"core set debug 5\\r\\n\" +\r\n\"core set verb" +
+            "ose 5\\r\\n\" +\r\n\"mfcr2 set debug all\\r\\n\" +\r\n\"debug mfcr2 on\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"--" +
+            "--------\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"-Debug ISDN-\\r\\n\" +\r\n\"debug\\r\\n\" +\r\n\"core set debug " +
+            "5\\r\\n\" +\r\n\"core set verbose 5\\r\\n\" +\r\n\"pri set debug on span 1\\r\\n\" +\r\n\"\\r\\n\" +\r" +
+            "\n\"==================================================\\r\\n\" +\r\n\"                 *" +
+            "***********************\\r\\n\" +\r\n\"                        Digistar\\r\\n\" +\r\n\"     " +
+            "            ************************\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"################\\r\\n\" +\r" +
+            "\n\"DEBUG DIGISTAR\\r\\n\" +\r\n\"################\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"!DEBUG SIP\\r\\n\" +\r" +
+            "\n\"terminal monitor\\r\\n\" +\r\n\"!\\r\\n\" +\r\n\"conf t\\r\\n\" +\r\n\"logging on\\r\\n\" +\r\n\"debug" +
+            " pbx loglevel 5\\r\\n\" +\r\n\"debug sip loglevel 5\\r\\n\" +\r\n\"!\\r\\n\" +\r\n\"end\\r\\n\" +\r\n\"\\" +
+            "r\\n\" +\r\n\"- Desabilitar DEBUG -\\r\\n\" +\r\n\"terminal no monitor\\r\\n\" +\r\n\"configure t" +
+            "erminal\\r\\n\" +\r\n\"no debug pbx loglevel\\r\\n\" +\r\n\"no debug sip loglevel\\r\\n\" +\r\n\"!" +
+            "\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"############\\r\\n\" +\r\n\"E1 ALINHADA\\r\\n\" +\r\n\"############\\r\\n\"" +
+            " +\r\n\"show pbx digital-line status\\r\\n\"")]
+        public string debugVoz {
+            get {
+                return ((string)(this["debugVoz"]));
+            }
+            set {
+                this["debugVoz"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Debug Backbone Cisco")]
+        public string debugBBCisco {
+            get {
+                return ((string)(this["debugBBCisco"]));
+            }
+            set {
+                this["debugBBCisco"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Debug Backbone Nokia")]
+        public string debugBBNokia {
+            get {
+                return ((string)(this["debugBBNokia"]));
+            }
+            set {
+                this["debugBBNokia"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Debug Cisco here")]
+        public string debugCisco {
+            get {
+                return ((string)(this["debugCisco"]));
+            }
+            set {
+                this["debugCisco"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Debug HPE here")]
+        public string debugHPE {
+            get {
+                return ((string)(this["debugHPE"]));
+            }
+            set {
+                this["debugHPE"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Debug Fortigate Huawei")]
+        public string debugHuawei {
+            get {
+                return ((string)(this["debugHuawei"]));
+            }
+            set {
+                this["debugHuawei"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Debug Fortigate here")]
+        public string debugFortigate {
+            get {
+                return ((string)(this["debugFortigate"]));
+            }
+            set {
+                this["debugFortigate"] = value;
+            }
+        }
     }
 }

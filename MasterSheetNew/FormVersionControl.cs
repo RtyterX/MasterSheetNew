@@ -30,6 +30,8 @@ namespace MasterSheetNew
         public void GetAllVersionsList()
         {
             // Versions
+            versionList.Add(new WindowsFormsApp1.Entitys.Version("1.8.4", "Adicionado Botões de Telnet e Debug", DateTime.Parse("28/02/2026")));
+            versionList.Add(new WindowsFormsApp1.Entitys.Version("1.8.3", "Adicionado Criação de Passo ao Criar Clientes", DateTime.Parse("27/02/2026")));
             versionList.Add(new WindowsFormsApp1.Entitys.Version("1.8.2", "Adicionado Config - QoS e BGP", DateTime.Parse("25/02/2026")));
             versionList.Add(new WindowsFormsApp1.Entitys.Version("1.8.1", "Adicionado Criação de Novos Clientes", DateTime.Parse("24/02/2026")));
             versionList.Add(new WindowsFormsApp1.Entitys.Version("1.8.0", "Adicionado Procedimento para Clientes Específicos", DateTime.Parse("22/02/2026")));

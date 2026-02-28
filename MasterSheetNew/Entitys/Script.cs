@@ -8,13 +8,14 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Entitys
 {
-    internal class Script : Object
+    public class Script : Object
     {
         public int id;
         public string name;
         public bool clientOrNot;
         public string scriptString;
         public string variables;
+        public string variableNames;
         public DateTime alterDate;
 
         // Used to Display the correct name on DataSource
@@ -23,19 +24,20 @@ namespace WindowsFormsApp1.Entitys
             return name;
         }
 
-        public Script(int Id, string Name, bool ClientOrNot, string ScriptString, string Variables, DateTime AlterDate)
+        public Script(int Id, string Name, bool ClientOrNot, string ScriptString, string Variables, string VariableNames, DateTime AlterDate)
         {
             id = Id;
             name = Name;
             clientOrNot = ClientOrNot;
             scriptString = ScriptString;
             variables = Variables;
+            variableNames = VariableNames;
             alterDate = AlterDate;
         }
 
         public void AlterScript(Script alteredScript)
         {
-            Script script = new Script(99, "ScriptClass", false, "", "", DateTime.Parse("11/02/2026"));
+            Script script = new Script(99, "ScriptClass", false, "", "", "", DateTime.Parse("11/02/2026"));
             List<Script> allScripts = new List<Script>();
             foreach (Script s in allScripts)
             {
@@ -1963,7 +1965,7 @@ namespace WindowsFormsApp1.Entitys
             #endregion
             // --------------------------------------------------- BGP ----------------------------------------------------------------
             #region
-            string bgpCisco = "router bgp VarAS\r\nno synchronization \r\nbgp log-neighbor-changes \r\nredistribute connected \r\nneighbor VarIP remote-as 4230\r\nneighbor VarIP send-community\r\nVarRemote\r\nneighbor VarIP allowas-in\r\nneighbor VarIP description designacao\r\nneighbor VarIP soft-reconfiguration inbound\r\nno auto-summary ";
+            string bgpCisco = "router bgp VarAS\r\nno synchronization \r\nbgp log-neighbor-changes \r\nredistribute connected \r\nneighbor VarIP remote-as 4230\r\nneighbor VarIP send-community\r\nneighbor VarIP allowas-in\r\nneighbor VarIP description designacao\r\nneighbor VarIP soft-reconfiguration inbound\r\nno auto-summary\r\nVarRemote";
             string bgpHPE = "bgp VarAS\r\npeer VarIP as-number 4230\r\npeer VarIP description designacao\r\nVarRemote\r\n#\r\naddress-family ipv4 unicast\r\nimport-route direct\r\npeer VarIP enable\r\npeer VarIP allow-as-loop 10\r\npeer VarIP advertise-community\r\n#";
             string bgpHuawei = "bgp VarAS\r\n router-id VarCPE\r\n peer VarIP as-number 4230\r\n peer VarIP description designacao\r\n VarRemote\r\n #\r\n ipv4-family unicast\r\n  undo synchronization\r\n  import-route direct\r\n  import-route static\r\n  peer VarIP enable\r\n  peer VarIP allow-as-loop 10\r\n#\r\n#\r\n";
             string bgpFortigate = "config router bgp\r\nset as VarAS\r\nset log-neighbour-changes enable\r\nset router-id VarCPE\r\nconfig neighbor\r\nedit \"VarIP\"\r\nset allowas-in-enable enable\r\nset description \"designacao\"\r\nset soft-reconfiguration enable\r\nset remote-as 4230\r\nnext\r\nVarRemote\r\nend\r\n#\r\nconfig redistribute \"connected\"\r\nset status enable\r\nend\r\nend\r\n#\r\n#\r\n";
@@ -1978,11 +1980,11 @@ namespace WindowsFormsApp1.Entitys
             List<Script> scriptList = new List<Script>();
 
             // Config
-            Script scriptCiscoBLD = new Script(0, "Cisco-Config-BLD", false, ciscoBLD, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
-            Script scriptHpeBLD = new Script(1, "HPE-Config-BLD", false, hpeBLD, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
-            Script scriptHpeOldBLD= new Script(2, "HPE_old-Config-BLD", false, hpeOldBLD, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
-            Script scriptHuaweiBLD = new Script(3, "Huawei-Config-BLD", false, huaweiBLD, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
-            Script scriptFortigateBLD = new Script(4, "Fortigate-Config-BLD", false, fortigateBLD, "00,01,02,03,04,05,07,09,10", DateTime.Parse("11/02/2026"));
+            Script scriptCiscoBLD = new Script(0, "Cisco-Config-BLD", false, ciscoBLD, "00,01,02,03,04,05,07,09,10", "", DateTime.Parse("11/02/2026"));
+            Script scriptHpeBLD = new Script(1, "HPE-Config-BLD", false, hpeBLD, "00,01,02,03,04,05,07,09,10", "", DateTime.Parse("11/02/2026"));
+            Script scriptHpeOldBLD= new Script(2, "HPE_old-Config-BLD", false, hpeOldBLD, "00,01,02,03,04,05,07,09,10", "", DateTime.Parse("11/02/2026"));
+            Script scriptHuaweiBLD = new Script(3, "Huawei-Config-BLD", false, huaweiBLD, "00,01,02,03,04,05,07,09,10", "", DateTime.Parse("11/02/2026"));
+            Script scriptFortigateBLD = new Script(4, "Fortigate-Config-BLD", false, fortigateBLD, "00,01,02,03,04,05,07,09,10", "", DateTime.Parse("11/02/2026"));
 
             scriptList.Add(scriptCiscoBLD);
             scriptList.Add(scriptHpeBLD);
@@ -1990,11 +1992,11 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptHuaweiBLD);
             scriptList.Add(scriptFortigateBLD);
 
-            Script scriptCiscoMPLS = new Script(5, "Cisco-Config-MPLS", false, ciscoMPLS, "00,01,02,03,04,05,07,09,12", DateTime.Parse("18/02/2026"));
-            Script scriptHpeMPLS = new Script(6, "HPE-Config-MPLS", false, hpeMPLS, "00,01,02,03,04,05,07,09,12", DateTime.Parse("18/02/2026"));
-            Script scriptHPEoldMPLS = new Script(7, "HPE_old-Config-MPLS", false, hpeOldMPLS, "00,01,02,03,04,05,07,09,12", DateTime.Parse("18/02/2026"));
-            Script scriptHuaweiMPLS = new Script(8, "Huawei-Config-MPLS", false, huaweiMPLS, "00,01,02,03,04,05,07,08,09,12", DateTime.Parse("18/02/2026"));
-            Script scriptFortigateMPLS = new Script(9, "Fortigate-Config-MPLS", false, fortigateMPLS, "00,01,02,03,04,05,07,09,11,12", DateTime.Parse("18/02/2026"));
+            Script scriptCiscoMPLS = new Script(5, "Cisco-Config-MPLS", false, ciscoMPLS, "00,01,02,03,04,05,07,09,12", "", DateTime.Parse("18/02/2026"));
+            Script scriptHpeMPLS = new Script(6, "HPE-Config-MPLS", false, hpeMPLS, "00,01,02,03,04,05,07,09,12", "", DateTime.Parse("18/02/2026"));
+            Script scriptHPEoldMPLS = new Script(7, "HPE_old-Config-MPLS", false, hpeOldMPLS, "00,01,02,03,04,05,07,09,12", "", DateTime.Parse("18/02/2026"));
+            Script scriptHuaweiMPLS = new Script(8, "Huawei-Config-MPLS", false, huaweiMPLS, "00,01,02,03,04,05,07,08,09,12", "", DateTime.Parse("18/02/2026"));
+            Script scriptFortigateMPLS = new Script(9, "Fortigate-Config-MPLS", false, fortigateMPLS, "00,01,02,03,04,05,07,09,11,12", "", DateTime.Parse("18/02/2026"));
 
             scriptList.Add(scriptCiscoMPLS);
             scriptList.Add(scriptHpeMPLS);
@@ -2002,15 +2004,15 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptHuaweiMPLS);
             scriptList.Add(scriptFortigateMPLS);
 
-            Script scriptCiscoR2 = new Script(10, "Cisco-Config-VOZ-R2", false, ciscoR2, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
-            Script scriptCiscoR2ISR = new Script(11, "Cisco-Config-VOZ-R2 (ISR)", false, ciscoR2ISR, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
-            Script scriptCiscoPABX = new Script(12, "Cisco-Config-VOZ-PABXIP", false, ciscoPABX, "00,01,02,03,04,05,07,09", DateTime.Parse("18/02/2026"));
-            Script scriptHpeR2 = new Script(13, "HPE-Config-VOZ-R2", false, hpeR2, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
-            Script scriptHpePABX = new Script(14, "HPE-Config-VOZ-PABXIP", false, hpePABX, "00,01,02,03,04,05,07,09", DateTime.Parse("18/02/2026"));
-            Script scriptHpeOldR2 = new Script(15, "HPE_old-Config-VOZ-R2", false, hpeOldR2, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
-            Script scriptDigistar = new Script(16, "Digistar-Config-VOZ", false, digistar, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
-            Script scriptAligera561 = new Script(17, "Aligera561-Config-VOZ", false, aligera561, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
-            Script scriptAligera1600 = new Script(18, "Aligera1600-Config-VOZ", false, aligera1600, "00,01,02,03,04,05,07,09", DateTime.Parse("11/02/1999"));
+            Script scriptCiscoR2 = new Script(10, "Cisco-Config-VOZ-R2", false, ciscoR2, "00,01,02,03,04,05,07,09", "", DateTime.Parse("11/02/1999"));
+            Script scriptCiscoR2ISR = new Script(11, "Cisco-Config-VOZ-R2 (ISR)", false, ciscoR2ISR, "00,01,02,03,04,05,07,09", "", DateTime.Parse("11/02/1999"));
+            Script scriptCiscoPABX = new Script(12, "Cisco-Config-VOZ-PABXIP", false, ciscoPABX, "00,01,02,03,04,05,07,09", "", DateTime.Parse("18/02/2026"));
+            Script scriptHpeR2 = new Script(13, "HPE-Config-VOZ-R2", false, hpeR2, "00,01,02,03,04,05,07,09", "", DateTime.Parse("11/02/1999"));
+            Script scriptHpePABX = new Script(14, "HPE-Config-VOZ-PABXIP", false, hpePABX, "00,01,02,03,04,05,07,09", "", DateTime.Parse("18/02/2026"));
+            Script scriptHpeOldR2 = new Script(15, "HPE_old-Config-VOZ-R2", false, hpeOldR2, "00,01,02,03,04,05,07,09", "", DateTime.Parse("11/02/1999"));
+            Script scriptDigistar = new Script(16, "Digistar-Config-VOZ", false, digistar, "00,01,02,03,04,05,07,09", "", DateTime.Parse("11/02/1999"));
+            Script scriptAligera561 = new Script(17, "Aligera561-Config-VOZ", false, aligera561, "00,01,02,03,04,05,07,09", "", DateTime.Parse("11/02/1999"));
+            Script scriptAligera1600 = new Script(18, "Aligera1600-Config-VOZ", false, aligera1600, "00,01,02,03,04,05,07,09", "", DateTime.Parse("11/02/1999"));
 
             scriptList.Add(scriptCiscoR2);
             scriptList.Add(scriptCiscoR2ISR);
@@ -2023,30 +2025,30 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptAligera1600);
 
             // Logs
-            Script scriptCiscoLogsBLD = new Script(19, "Cisco-Log-BLD", false, ciscoLogsBLD, "03,04,05,06,07", DateTime.Parse("11/02/2026"));
-            Script scriptHpeLogsBLD = new Script(20, "HPE-Log-BLD", false, hpeLogsBLD, "03,04,05,06,07,09", DateTime.Parse("11/02/2026"));
-            Script scriptFortigateLogsBLD = new Script(21, "Fortigate-Log-BLD", false, fortigateLogsBLD, "03,05,07,09", DateTime.Parse("11/02/2026"));
-            Script scriptHuaweiLogsBLD = new Script(22, "Huawei-Log-BLD", false, huaweiLogsBLD, "03,04,05,06,07,09", DateTime.Parse("11/02/2026"));
+            Script scriptCiscoLogsBLD = new Script(19, "Cisco-Log-BLD", false, ciscoLogsBLD, "03,04,05,06,07", "", DateTime.Parse("11/02/2026"));
+            Script scriptHpeLogsBLD = new Script(20, "HPE-Log-BLD", false, hpeLogsBLD, "03,04,05,06,07,09", "", DateTime.Parse("11/02/2026"));
+            Script scriptFortigateLogsBLD = new Script(21, "Fortigate-Log-BLD", false, fortigateLogsBLD, "03,05,07,09", "", DateTime.Parse("11/02/2026"));
+            Script scriptHuaweiLogsBLD = new Script(22, "Huawei-Log-BLD", false, huaweiLogsBLD, "03,04,05,06,07,09", "", DateTime.Parse("11/02/2026"));
 
             scriptList.Add(scriptCiscoLogsBLD);
             scriptList.Add(scriptHpeLogsBLD);
             scriptList.Add(scriptFortigateLogsBLD);
             scriptList.Add(scriptHuaweiLogsBLD);
 
-            Script scriptCiscoLogsMPLS = new Script(23, "Cisco-Log-MPLS", false, ciscoLogsMPLS, "03,04,05,06,07", DateTime.Parse("18/02/2026"));
-            Script scriptHpeLogsMPLS = new Script(24, "HPE-Log-MPLS", false, hpeLogsMPLS, "03,04,05,06,07,09", DateTime.Parse("18/02/2026"));
-            Script scriptFortigateLogsMPLS = new Script(25, "Fortigate-Log-MPLS", false, fortigateLogsMPLS, "03,05,07,09", DateTime.Parse("18/02/2026"));
-            Script scriptHuaweiLogsMPLS = new Script(26, "Huawei-Log-MPLS", false, huaweiLogsMPLS, "03,04,05,06,07,09", DateTime.Parse("18/02/2026"));
+            Script scriptCiscoLogsMPLS = new Script(23, "Cisco-Log-MPLS", false, ciscoLogsMPLS, "03,04,05,06,07", "", DateTime.Parse("18/02/2026"));
+            Script scriptHpeLogsMPLS = new Script(24, "HPE-Log-MPLS", false, hpeLogsMPLS, "03,04,05,06,07,09", "", DateTime.Parse("18/02/2026"));
+            Script scriptFortigateLogsMPLS = new Script(25, "Fortigate-Log-MPLS", false, fortigateLogsMPLS, "03,05,07,09", "", DateTime.Parse("18/02/2026"));
+            Script scriptHuaweiLogsMPLS = new Script(26, "Huawei-Log-MPLS", false, huaweiLogsMPLS, "03,04,05,06,07,09", "", DateTime.Parse("18/02/2026"));
 
             scriptList.Add(scriptCiscoLogsMPLS);
             scriptList.Add(scriptHpeLogsMPLS);
             scriptList.Add(scriptFortigateLogsMPLS);
             scriptList.Add(scriptHuaweiLogsMPLS);
 
-            Script scriptCiscoLogsVOZ_R2 = new Script(27, "Cisco-Log-VOZ-R2", false, ciscoLogsVOZ, "03,04,05,07", DateTime.Parse("18/02/2026"));
-            Script scriptHpeLogsVOZ_R2 = new Script(28, "HPE-Log-VOZ-R2", false, hpeLogsVOZ, "03,04,05,07,09", DateTime.Parse("18/02/2026"));
-            Script scriptAligeraLogs = new Script(29, "Aligera-Log-VOZ", false, aligeraLogs, "07", DateTime.Parse("18/02/2026"));
-            Script scriptDigistarLogs = new Script(30, "Digistar-Log-VOZ", false, digistarLogs, "07,03,04", DateTime.Parse("18/02/2026"));
+            Script scriptCiscoLogsVOZ_R2 = new Script(27, "Cisco-Log-VOZ-R2", false, ciscoLogsVOZ, "03,04,05,07", "", DateTime.Parse("18/02/2026"));
+            Script scriptHpeLogsVOZ_R2 = new Script(28, "HPE-Log-VOZ-R2", false, hpeLogsVOZ, "03,04,05,07,09", "", DateTime.Parse("18/02/2026"));
+            Script scriptAligeraLogs = new Script(29, "Aligera-Log-VOZ", false, aligeraLogs, "07", "", DateTime.Parse("18/02/2026"));
+            Script scriptDigistarLogs = new Script(30, "Digistar-Log-VOZ", false, digistarLogs, "07,03,04", "", DateTime.Parse("18/02/2026"));
 
             scriptList.Add(scriptCiscoLogsVOZ_R2);
             scriptList.Add(scriptHpeLogsVOZ_R2);
@@ -2054,14 +2056,14 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptDigistarLogs);
 
             // WizardGat
-            Script scriptGatCiscoBLD = new Script(31, "Gat-Cisco-BLD", false, gatCiscoBLD, "03,08", DateTime.Parse("11/02/2026"));
-            Script scriptGatCiscoMPLS = new Script(32, "Gat-Cisco-MPLS", false, gatCiscoMPLS, "03,08,14", DateTime.Parse("11/02/2026"));
-            Script scriptGatCiscoVOZ = new Script(33, "Gat-Cisco-VOZ", false, gatCiscoVOZ, "03,08", DateTime.Parse("11/02/2026"));
-            Script scriptGatCiscoBLDcomBGP = new Script(34, "Gat-Cisco-BLDcomBGP", false, gatCiscoBLDcomBGP, "03,08", DateTime.Parse("11/02/2026"));
-            Script scriptGatNOKIABLD = new Script(35, "Gat-NOKIA-BLD", false, gatNOKIABLD, "03,07,08,13", DateTime.Parse("11/02/2026"));
-            Script scriptGatNOKIAMPLS = new Script(36, "Gat-NOKIA-MPLS", false, gatNOKIAMPLS, "03,07,08,13,14,15", DateTime.Parse("11/02/2026"));
-            Script scriptGatNOKIAVOZ = new Script(37, "Gat-NOKIA-VOZ", false, gatNOKIAVOZ, "03,07,08,13", DateTime.Parse("11/02/2026"));
-            Script scriptGatNOKIABLDcomBGP = new Script(38, "Gat-NOKIA-BLDcomBGP", false, gatNOKIABLDcomBGP, "03,07,08,13", DateTime.Parse("11/02/2026"));
+            Script scriptGatCiscoBLD = new Script(31, "Gat-Cisco-BLD", false, gatCiscoBLD, "03,08", "", DateTime.Parse("11/02/2026"));
+            Script scriptGatCiscoMPLS = new Script(32, "Gat-Cisco-MPLS", false, gatCiscoMPLS, "03,08,14", "", DateTime.Parse("11/02/2026"));
+            Script scriptGatCiscoVOZ = new Script(33, "Gat-Cisco-VOZ", false, gatCiscoVOZ, "03,08", "", DateTime.Parse("11/02/2026"));
+            Script scriptGatCiscoBLDcomBGP = new Script(34, "Gat-Cisco-BLDcomBGP", false, gatCiscoBLDcomBGP, "03,08", "", DateTime.Parse("11/02/2026"));
+            Script scriptGatNOKIABLD = new Script(35, "Gat-NOKIA-BLD", false, gatNOKIABLD, "03,07,08,13", "", DateTime.Parse("11/02/2026"));
+            Script scriptGatNOKIAMPLS = new Script(36, "Gat-NOKIA-MPLS", false, gatNOKIAMPLS, "03,07,08,14,15,13", "", DateTime.Parse("11/02/2026"));
+            Script scriptGatNOKIAVOZ = new Script(37, "Gat-NOKIA-VOZ", false, gatNOKIAVOZ, "03,07,08,13", "", DateTime.Parse("11/02/2026"));
+            Script scriptGatNOKIABLDcomBGP = new Script(38, "Gat-NOKIA-BLDcomBGP", false, gatNOKIABLDcomBGP, "03,07,08,13", "", DateTime.Parse("11/02/2026"));
 
             scriptList.Add(scriptGatCiscoBLD);
             scriptList.Add(scriptGatCiscoMPLS);
@@ -2074,14 +2076,14 @@ namespace WindowsFormsApp1.Entitys
 
             // Outros
             // SNMP
-            Script scriptSnmpv2Cisco = new Script(39, "snmpv2-Cisco", false, snmpv2Cisco, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2CiscoHost = new Script(40, "snmpv2-Cisco-Host", false, snmpv2CiscoHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2HPE = new Script(41, "snmpv2-HPE", false, snmpv2HPE, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2HPEcomHost = new Script(42, "snmpv2-HPE-ComHost", false, snmpv2HPEcomHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2Huawei = new Script(43, "snmpv2-Huawei", false, snmpv2Huawei, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2HuaweicomHost = new Script(44, "snmpv2-Huawei-ComHost", false, snmpv2HuaweicomHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2Fortgate = new Script(45, "snmpv2-Fortgate", false, snmpv2Fortgate, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
-            Script scriptSnmpv2FortgatecomHost = new Script(46, "snmpv2-Fortgate-ComHost", false, snmpv2FortgatecomHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2Cisco = new Script(39, "snmpv2-Cisco", false, snmpv2Cisco, "Outros_VarText00,Outros_VarText01, Outros_VarText03", "", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2CiscoHost = new Script(40, "snmpv2-Cisco-Host", false, snmpv2CiscoHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", "", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2HPE = new Script(41, "snmpv2-HPE", false, snmpv2HPE, "Outros_VarText00,Outros_VarText01, Outros_VarText03", "", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2HPEcomHost = new Script(42, "snmpv2-HPE-ComHost", false, snmpv2HPEcomHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", "", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2Huawei = new Script(43, "snmpv2-Huawei", false, snmpv2Huawei, "Outros_VarText00,Outros_VarText01, Outros_VarText03", "", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2HuaweicomHost = new Script(44, "snmpv2-Huawei-ComHost", false, snmpv2HuaweicomHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", "", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2Fortgate = new Script(45, "snmpv2-Fortgate", false, snmpv2Fortgate, "Outros_VarText00,Outros_VarText01, Outros_VarText03", "", DateTime.Parse("11/02/2026"));
+            Script scriptSnmpv2FortgatecomHost = new Script(46, "snmpv2-Fortgate-ComHost", false, snmpv2FortgatecomHost, "Outros_VarText00,Outros_VarText01, Outros_VarText03", "", DateTime.Parse("11/02/2026"));
 
             scriptList.Add(scriptSnmpv2Cisco);
             scriptList.Add(scriptSnmpv2CiscoHost);
@@ -2093,10 +2095,10 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptSnmpv2FortgatecomHost);
 
             // Extras
-            Script scriptCiscoLogsParte2 = new Script(47, "Cisco-Logs-Parte2", false, ciscoLogsParte2, "", DateTime.Parse("11/02/2026"));
-            Script scriptCiscoLogsBLDLimpeza = new Script(48, "Cisco-Logs-LimpezaBLD", false, ciscoLogsBLDLimpeza, "", DateTime.Parse("11/02/2026"));
-            Script scriptHPELogsParte2 = new Script(49, "HPE-Logs-Parte2", false, hpeLogsParte2, "", DateTime.Parse("11/02/2026"));
-            Script scriptHPELogsBLDLimpeza = new Script(50, "HPE-Logs-LimpezaBLD", false, hpeLogsBLDLimpeza, "", DateTime.Parse("11/02/2026"));
+            Script scriptCiscoLogsParte2 = new Script(47, "Cisco-Logs-Parte2", false, ciscoLogsParte2, "", "", DateTime.Parse("11/02/2026"));
+            Script scriptCiscoLogsBLDLimpeza = new Script(48, "Cisco-Logs-LimpezaBLD", false, ciscoLogsBLDLimpeza, "", "", DateTime.Parse("11/02/2026"));
+            Script scriptHPELogsParte2 = new Script(49, "HPE-Logs-Parte2", false, hpeLogsParte2, "", "", DateTime.Parse("11/02/2026"));
+            Script scriptHPELogsBLDLimpeza = new Script(50, "HPE-Logs-LimpezaBLD", false, hpeLogsBLDLimpeza, "", "", DateTime.Parse("11/02/2026"));
 
             scriptList.Add(scriptCiscoLogsParte2);
             scriptList.Add(scriptCiscoLogsBLDLimpeza);
@@ -2104,11 +2106,11 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptHPELogsBLDLimpeza);
 
             // QoS
-            Script scriptQosCisco = new Script(51, "QoS Cisco", false, qosCisco, "", DateTime.Parse("23/02/2026"));
-            Script scriptQosCiscoNovo = new Script(52, "QoS Cisco Novo", false, qosCiscoNovo, "", DateTime.Parse("23/02/2026"));
-            Script scriptQosHPE = new Script(53, "QoS HPE", false, qosHPE, "", DateTime.Parse("23/02/2026"));
-            Script scriptQosHuawei = new Script(54, "QoS Huawei", false, qosHuawei, "", DateTime.Parse("23/02/2026"));
-            Script scriptQosFortigate = new Script(55, "QoS Fortigate", false, qosFortigate, "", DateTime.Parse("23/02/2026"));
+            Script scriptQosCisco = new Script(51, "QoS Cisco", false, qosCisco, "", "", DateTime.Parse("23/02/2026"));
+            Script scriptQosCiscoNovo = new Script(52, "QoS Cisco Novo", false, qosCiscoNovo, "", "", DateTime.Parse("23/02/2026"));
+            Script scriptQosHPE = new Script(53, "QoS HPE", false, qosHPE, "", "", DateTime.Parse("23/02/2026"));
+            Script scriptQosHuawei = new Script(54, "QoS Huawei", false, qosHuawei, "", "", DateTime.Parse("23/02/2026"));
+            Script scriptQosFortigate = new Script(55, "QoS Fortigate", false, qosFortigate, "", "", DateTime.Parse("23/02/2026"));
 
             scriptList.Add(scriptQosCisco);
             scriptList.Add(scriptQosCiscoNovo);
@@ -2117,10 +2119,10 @@ namespace WindowsFormsApp1.Entitys
             scriptList.Add(scriptQosFortigate);
 
             // BGP
-            Script scriptBgpCisco = new Script(56, "QoS Cisco", false, bgpCisco, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("24/02/2026"));
-            Script scriptBgpHPE = new Script(57, "QoS HPE", false, bgpHPE, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("24/02/2026"));
-            Script scriptBgpHuawei = new Script(58, "QoS Huawei", false, bgpHuawei, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("24/02/2026"));
-            Script scriptBgpFortigate = new Script(59, "QoS Fortigate", false, bgpFortigate, "Outros_VarText00,Outros_VarText01, Outros_VarText03", DateTime.Parse("24/02/2026"));
+            Script scriptBgpCisco = new Script(56, "QoS Cisco", false, bgpCisco, "Outros_VarText00,Outros_VarText01, Outros_VarText03", "", DateTime.Parse("24/02/2026"));
+            Script scriptBgpHPE = new Script(57, "QoS HPE", false, bgpHPE, "Outros_VarText00,Outros_VarText01, Outros_VarText03", "", DateTime.Parse("24/02/2026"));
+            Script scriptBgpHuawei = new Script(58, "QoS Huawei", false, bgpHuawei, "Outros_VarText00,Outros_VarText01, Outros_VarText03", "", DateTime.Parse("24/02/2026"));
+            Script scriptBgpFortigate = new Script(59, "QoS Fortigate", false, bgpFortigate, "Outros_VarText00,Outros_VarText01, Outros_VarText03", "", DateTime.Parse("24/02/2026"));
 
             scriptList.Add(scriptBgpCisco);
             scriptList.Add(scriptBgpHPE);

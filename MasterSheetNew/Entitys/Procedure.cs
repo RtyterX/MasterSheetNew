@@ -16,7 +16,6 @@ public enum ActivityType
 
 namespace WindowsFormsApp1.Entitys
 {
-
     internal class Procedure
     {
         public string name;

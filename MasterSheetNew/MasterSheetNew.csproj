@@ -158,11 +158,11 @@
     <Compile Include="FormEnableEdit.Designer.cs">
       <DependentUpon>FormEnableEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormVoiceDebug.cs">
+    <Compile Include="FormDebug.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormVoiceDebug.Designer.cs">
-      <DependentUpon>FormVoiceDebug.cs</DependentUpon>
+    <Compile Include="FormDebug.Designer.cs">
+      <DependentUpon>FormDebug.cs</DependentUpon>
     </Compile>
     <Compile Include="IPCalculator.cs" />
     <Compile Include="Program.cs" />
@@ -185,8 +185,8 @@
     <EmbeddedResource Include="FormEnableEdit.resx">
       <DependentUpon>FormEnableEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormVoiceDebug.resx">
-      <DependentUpon>FormVoiceDebug.cs</DependentUpon>
+    <EmbeddedResource Include="FormDebug.resx">
+      <DependentUpon>FormDebug.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

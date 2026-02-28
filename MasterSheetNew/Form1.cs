@@ -9,6 +9,7 @@ using MySqlX.XDevAPI.Relational;
 using Org.BouncyCastle.Crypto.Engines;
 using Org.BouncyCastle.Crypto.Generators;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -68,6 +69,9 @@ namespace MasterSheetNew
         // Log de Ligacao
         string ligacaoRestore;
 
+        // Outros 
+        string outros;
+
         // UI Lists
         List<Label> varName = new List<Label>();
         List<TextBox> varText = new List<TextBox>();
@@ -81,8 +85,12 @@ namespace MasterSheetNew
 
         // Clients
         int step;
-        WindowsFormsApp1.Entitys.Client client;
-
+        WindowsFormsApp1.Entitys.Client usingClient;
+        List<Label> clientVarName = new List<Label>();
+        List<TextBox> clientVarText = new List<TextBox>();
+        List<Button> clientVarDelete = new List<Button>();
+        List<Label> clientVarEx = new List<Label>();
+        
         // ------------------------------------------------------------------------------------------------------------------------------------
         // ------------------------------------------------------------------------------------------------------------------------------------
         // ------------------------------------------------------------------------------------------------------------------------------------
@@ -109,6 +117,7 @@ namespace MasterSheetNew
 
             HideAllUIOutros();
             GetAllClients();
+            ListAllClientVarUI();
             FillClientButtons();
 
             // List Script and Routers 
@@ -122,7 +131,7 @@ namespace MasterSheetNew
             ApplyNightMode(this, nightMode);
 
             // Load all Scripts
-            Script scriptClass = new Script(99,"Teste", false, "", "", DateTime.Parse("11/02/2026"));
+            Script scriptClass = new Script(99, "Teste", false, "", "", "", DateTime.Parse("11/02/2026"));
             scripts = scriptClass.AddScripts();
 
             // Startup ComboBox Options
@@ -182,7 +191,7 @@ namespace MasterSheetNew
 
         public void CheckCanImportFromSAIP()
         {
-            if (canImportSAIP) 
+            if (canImportSAIP)
             {
                 Button_ImportSAIP.Show();
                 Button_ApplyTestValues.Show();
@@ -305,6 +314,55 @@ namespace MasterSheetNew
             varEx.Add(Script_VarEx14);
             varEx.Add(Script_VarEx15);
         }
+
+        public void ListAllClientVarUI()
+        {
+            clientVarName.Add(Client_NameVar00);
+            clientVarName.Add(Client_NameVar01);
+            clientVarName.Add(Client_NameVar02);
+            clientVarName.Add(Client_NameVar03);
+            clientVarName.Add(Client_NameVar04);
+            clientVarName.Add(Client_NameVar05);
+            clientVarName.Add(Client_NameVar06);
+            clientVarName.Add(Client_NameVar07);
+            clientVarName.Add(Client_NameVar08);
+            clientVarName.Add(Client_NameVar09);
+
+            clientVarText.Add(Client_VarText00);
+            clientVarText.Add(Client_VarText01);
+            clientVarText.Add(Client_VarText02);
+            clientVarText.Add(Client_VarText03);
+            clientVarText.Add(Client_VarText04);
+            clientVarText.Add(Client_VarText05);
+            clientVarText.Add(Client_VarText06);
+            clientVarText.Add(Client_VarText07);
+            clientVarText.Add(Client_VarText08);
+            clientVarText.Add(Client_VarText09);
+
+            clientVarDelete.Add(Client_VarDelete00);
+            clientVarDelete.Add(Client_VarDelete01);
+            clientVarDelete.Add(Client_VarDelete02);
+            clientVarDelete.Add(Client_VarDelete03);
+            clientVarDelete.Add(Client_VarDelete04);
+            clientVarDelete.Add(Client_VarDelete05);
+            clientVarDelete.Add(Client_VarDelete06);
+            clientVarDelete.Add(Client_VarDelete07);
+            clientVarDelete.Add(Client_VarDelete08);
+            clientVarDelete.Add(Client_VarDelete09);
+
+            clientVarEx.Add(Client_VarEx00);
+            clientVarEx.Add(Client_VarEx01);
+            clientVarEx.Add(Client_VarEx02);
+            clientVarEx.Add(Client_VarEx03);
+            clientVarEx.Add(Client_VarEx04);
+            clientVarEx.Add(Client_VarEx05);
+            clientVarEx.Add(Client_VarEx06);
+            clientVarEx.Add(Client_VarEx07);
+            clientVarEx.Add(Client_VarEx08);
+            clientVarEx.Add(Client_VarEx09);
+
+        }
+
         #endregion
 
 
@@ -440,7 +498,7 @@ namespace MasterSheetNew
         {
             AllClientsButtonBuilder();
             tabControl2.SelectedTab = tabSelectClient;
-            
+
         }
 
         private void OpenClickClient(object sender, EventArgs e)
@@ -487,20 +545,18 @@ namespace MasterSheetNew
         private void buttonOC_SNMP_Click(object sender, EventArgs e)
         {
             OpenOutrosSNMP();
-            Outros_ButtonFormat.Click += Outros_ButtonFormat_Click;
-            Outros_ButtonFormat.Click -= FormatQoS_Click;
+            outros = "snmp";
         }
         private void buttonOC_QoS_Click(object sender, EventArgs e)
         {
             OpenOutrosQoS();
-            Outros_ButtonFormat.Click -= Outros_ButtonFormat_Click;
-            Outros_ButtonFormat.Click += FormatQoS_Click;
+            outros = "qos";
         }
         private void buttonOC_BGP_Click(object sender, EventArgs e)
         {
             OpenOutrosBGP();
+            outros = "bgp";
         }
-
 
         // ---------------------------------------------------------------------------
         #endregion
@@ -886,6 +942,50 @@ namespace MasterSheetNew
             OpenOutrosRegraAdc();
         }
 
+        private void Script_DebugButton_Click(object sender, EventArgs e)
+        {
+            if (logOrNot)
+            {
+                if (backboneOrNot)
+                {
+                    if (routerType == RouterType.Cisco)
+                    {
+                        FormDebug debugForm = new FormDebug(Properties.Settings.Default.debugBBCisco);
+                        debugForm.Show(Owner);
+                    }
+                    else    // NOKIA
+                    {
+                        FormDebug debugForm = new FormDebug(Properties.Settings.Default.debugBBNokia);
+                        debugForm.Show(Owner);
+                    }
+                }
+                else    // CPE
+                {
+                    if (routerType == RouterType.Cisco)
+                    {
+                        FormDebug debugForm = new FormDebug(Properties.Settings.Default.debugCisco);
+                        debugForm.Show(Owner);
+                    }
+                    if (routerType == RouterType.HPE)
+                    {
+                        FormDebug debugForm = new FormDebug(Properties.Settings.Default.debugHPE);
+                        debugForm.Show(Owner);
+                    }
+                    if (routerType == RouterType.Huawei)
+                    {
+                        FormDebug debugForm = new FormDebug(Properties.Settings.Default.debugHuawei);
+                        debugForm.Show(Owner);
+                    }
+                    if (routerType == RouterType.Fortigate)
+                    {
+                        FormDebug debugForm = new FormDebug(Properties.Settings.Default.debugFortigate);
+                        debugForm.Show(Owner);
+                    }
+                }
+            }
+
+        }
+
         // --- Delete Individually ---
         #region
         private void Script_DeleteVar0_Click(object sender, EventArgs e)
@@ -903,6 +1003,10 @@ namespace MasterSheetNew
         private void Script_DeleteVar3_Click(object sender, EventArgs e)
         {
             Script_VarText03.Text = string.Empty;
+        }
+        private void Script_DeleteVar03b_Click(object sender, EventArgs e)
+        {
+            Script_VarText03b.Text = string.Empty;
         }
         private void Script_DeleteVar4_Click(object sender, EventArgs e)
         {
@@ -1000,7 +1104,6 @@ namespace MasterSheetNew
         // ---------------------------
         // Script Dispatcher
         // ---------------------------
-        // NEW 
         #region
         public void ScriptDispatch(RouterType routerType, ActivityType activityType, bool logOrNot, bool backboneOrNot)
         {
@@ -1010,11 +1113,7 @@ namespace MasterSheetNew
             ChangeVlanNaWANVar();
             ChangeLANIPTextBoxSize();
 
-            if (Script_ComboBox.Text == null)
-            {
-                Script_ComboBox.Text = "INICIAIS";
-            }
-
+            // Switch Label Hide/Show
             if (logOrNot && backboneOrNot == false)
             {
                 SwitchLabel.Show();
@@ -1026,19 +1125,20 @@ namespace MasterSheetNew
                 buttonSwitchScriptLog.Hide();
             }
 
+            // Log Type Box
             if (backboneOrNot)
             {
-                SwitchLabel.Hide();
-                logType = Script_ComboBox.Text;
+                Script_ComboBox.Show();
             }
             else
             {
-                if (logOrNot)
-                {
-                    SwitchLabel.Show();
-                    logType = SwitchLabel.Text;
-                }
+                Script_ComboBox.Hide();
             }
+            if (Script_ComboBox.Text == null)
+            {
+                Script_ComboBox.Text = "INICIAIS";
+            }
+            logType = Script_ComboBox.Text;
 
             // ----------------------------------------------------------------------------------------------------------------------
             // ------------------------------------------------ CONFIGS -------------------------------------------------------------
@@ -1593,7 +1693,6 @@ namespace MasterSheetNew
                 // ---------------------------------------------------
                 scriptLimpeza = scripts[48].scriptString;
             }
-
             // ------------------------------------------- Logs - HPE - BLD ---------------------------------------------------------
             else if ((routerType == RouterType.HPE) && (activityType == ActivityType.BLD) && backboneOrNot == false && logOrNot == true)
             {
@@ -1663,30 +1762,8 @@ namespace MasterSheetNew
                 // ---------------------------------------------------
                 scriptLimpeza = scripts[50].scriptString;
             }
-
             // ------------------------------------------- Log - Fortigate - BLD ----------------------------------------------------
-            else if ((routerType == RouterType.Fortigate) && (activityType == ActivityType.BLD) && backboneOrNot == false && logOrNot == true)
-            {
-                Script_ProcedureName.Text = "LOGS - FORTIGATE - BLD";
-
-                VarScriptDisplayControl(scripts[21].variables);
-
-                ExtraVariablesControl(true, false, false, false, false, false);
-
-                ApplyScript(scripts[21]);
-
-                // Extra Options
-                if (Script_VarText09.Text != string.Empty)
-                {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "execute ping-options source " + Script_VarText09.Text + "\r\n");
-                }
-                else
-                {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "");
-                }
-
-            }
-
+            else if ((routerType == RouterType.Fortigate) && (activityType == ActivityType.BLD) && backboneOrNot == false && logOrNot == true) ;
             // ------------------------------------------- Log - Huawei - BLD -------------------------------------------------------
             else if ((routerType == RouterType.Huawei) && (activityType == ActivityType.BLD) && backboneOrNot == false && logOrNot == true)
             {
@@ -1747,6 +1824,8 @@ namespace MasterSheetNew
                 }
             }
 
+            // ----------------------------------------------------------------------------------------------------------------------
+            // ---------------------------------------------- MPLS -------------------------------------------------------------------
             // ----------------------------------------------------------------------------------------------------------------------
             // ------------------------------------------- Log - Cisco - MPLS -------------------------------------------------------
             else if ((routerType == RouterType.Cisco) && (activityType == ActivityType.MPLS) && backboneOrNot == false && logOrNot == true)
@@ -1825,7 +1904,6 @@ namespace MasterSheetNew
                 // ---------------------------------------------------
                 scriptLimpeza = scripts[48].scriptString;
             }
-
             // ------------------------------------------- Log - HPE - MPLS ---------------------------------------------------------
             else if ((routerType == RouterType.HPE) && (activityType == ActivityType.MPLS) && backboneOrNot == false && logOrNot == true)
             {
@@ -1900,7 +1978,6 @@ namespace MasterSheetNew
                 // ---------------------------------------------------
                 scriptLimpeza = scripts[50].scriptString;
             }
-
             // ------------------------------------------- Log - Huawei - MPLS ------------------------------------------------------
             else if ((routerType == RouterType.Huawei) && (activityType == ActivityType.MPLS) && backboneOrNot == false && logOrNot == true)
             {
@@ -1961,7 +2038,6 @@ namespace MasterSheetNew
                     Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "");
                 }
             }
-
             // ------------------------------------------- Log - Fortigate - MPLS ---------------------------------------------------
             else if ((routerType == RouterType.Fortigate) && (activityType == ActivityType.MPLS) && backboneOrNot == false && logOrNot == true)
             {
@@ -1985,6 +2061,8 @@ namespace MasterSheetNew
 
             }
 
+            // ----------------------------------------------------------------------------------------------------------------------
+            // ---------------------------------------------- VOZ -------------------------------------------------------------------
             // ----------------------------------------------------------------------------------------------------------------------
             // ------------------------------------------- Log - Cisco - VOZ --------------------------------------------------------
             else if ((routerType == RouterType.Cisco) && (activityType == ActivityType.VOZ) && backboneOrNot == false && logOrNot == true)
@@ -2043,7 +2121,6 @@ namespace MasterSheetNew
                 }
 
             }
-
             // ------------------------------------------- Log - HPE - VOZ ----------------------------------------------------------
             else if ((routerType == RouterType.HPE) && (activityType == ActivityType.VOZ) && backboneOrNot == false && logOrNot == true)
             {
@@ -2091,7 +2168,6 @@ namespace MasterSheetNew
                 }
 
             }
-
             // ------------------------------------------- Log CPE Aligera ----------------------------------------------------------
             else if ((routerType == RouterType.Aligera) && (activityType == ActivityType.VOZ) && backboneOrNot == false && logOrNot == true)
             {
@@ -2103,7 +2179,6 @@ namespace MasterSheetNew
 
                 ApplyScript(scripts[29]);
             }
-
             // ------------------------------------------- Log CPE Digistar ----------------------------------------------------------
             else if ((routerType == RouterType.Digistar) && (activityType == ActivityType.VOZ) && backboneOrNot == false && logOrNot == true)
             {
@@ -2136,7 +2211,7 @@ namespace MasterSheetNew
             // ----------------------------------------------------------------------------------------------------------------------
             else if ((routerType == RouterType.Cisco) && (activityType == ActivityType.BLD) && backboneOrNot == true && logOrNot == true)
             {
-                Script_ProcedureName.Text = "LOG BACKBONE - CISCO - BLD";
+                Script_ProcedureName.Text = "BACKBONE - CISCO - BLD";
 
                 VarScriptDisplayControl(scripts[31].variables);
 
@@ -2147,7 +2222,7 @@ namespace MasterSheetNew
             // ----------------------------------------------------------------------------------------------------------------------
             else if ((routerType == RouterType.Cisco) && (activityType == ActivityType.MPLS) && backboneOrNot == true && logOrNot == true)
             {
-                Script_ProcedureName.Text = "LOG BACKBONE - CISCO - MPLS";
+                Script_ProcedureName.Text = "BACKBONE - CISCO - MPLS";
 
                 VarScriptDisplayControl(scripts[32].variables);
 
@@ -2175,7 +2250,7 @@ namespace MasterSheetNew
             // ----------------------------------------------------------------------------------------------------------------------
             else if ((routerType == RouterType.Cisco) && (activityType == ActivityType.VOZ) && backboneOrNot == true && logOrNot == true)
             {
-                Script_ProcedureName.Text = "LOG BACKBONE - CISCO - VOZ";
+                Script_ProcedureName.Text = "BACKBONE - CISCO - VOZ";
 
                 VarScriptDisplayControl(scripts[33].variables);
 
@@ -2186,7 +2261,7 @@ namespace MasterSheetNew
             // ----------------------------------------------------------------------------------------------------------------------
             else if ((routerType == RouterType.Cisco) && (activityType == ActivityType.BLDcomBGP) && backboneOrNot == true && logOrNot == true)
             {
-                Script_ProcedureName.Text = "LOG BACKBONE - CISCO - BLD com BGP";
+                Script_ProcedureName.Text = "BACKBONE - CISCO - BLD com BGP";
 
                 VarScriptDisplayControl(scripts[34].variables);
 
@@ -2200,7 +2275,7 @@ namespace MasterSheetNew
             // ----------------------------------------------------------------------------------------------------------------------
             else if ((routerType == RouterType.Nokia) && (activityType == ActivityType.BLD) && backboneOrNot == true && logOrNot == true)
             {
-                Script_ProcedureName.Text = "LOG BACKBONE - NOKIA - BLD";
+                Script_ProcedureName.Text = "BACKBONE - NOKIA - BLD";
 
                 VarScriptDisplayControl(scripts[35].variables);
 
@@ -2211,7 +2286,7 @@ namespace MasterSheetNew
             // ----------------------------------------------------------------------------------------------------------------------
             else if ((routerType == RouterType.Nokia) && (activityType == ActivityType.MPLS) && backboneOrNot == true && logOrNot == true)
             {
-                Script_ProcedureName.Text = "LOG BACKBONE - NOKIA - MPLS";
+                Script_ProcedureName.Text = "BACKBONE - NOKIA - MPLS";
 
                 VarScriptDisplayControl(scripts[36].variables);
 
@@ -2232,7 +2307,7 @@ namespace MasterSheetNew
             // ----------------------------------------------------------------------------------------------------------------------
             else if ((routerType == RouterType.Nokia) && (activityType == ActivityType.VOZ) && backboneOrNot == true && logOrNot == true)
             {
-                Script_ProcedureName.Text = "LOG BACKBONE - NOKIA - VOZ";
+                Script_ProcedureName.Text = "BACKBONE - NOKIA - VOZ";
 
                 VarScriptDisplayControl(scripts[37].variables);
 
@@ -2243,7 +2318,7 @@ namespace MasterSheetNew
             // ----------------------------------------------------------------------------------------------------------------------
             else if ((routerType == RouterType.Nokia) && (activityType == ActivityType.BLDcomBGP) && backboneOrNot == true && logOrNot == true)
             {
-                Script_ProcedureName.Text = "LOG BACKBONE - NOKIA - BLD com BGP";
+                Script_ProcedureName.Text = "BACKBONE - NOKIA - BLD com BGP";
 
                 VarScriptDisplayControl(scripts[38].variables);
 
@@ -2323,15 +2398,7 @@ namespace MasterSheetNew
 
                 Script_TextBox.Text = "";
             }
-            
-            // Check if User inserted LAN or LAN IP before applyng the Final Log Script
-            if (finalsOrNot)
-            {
-                if (Script_VarText09.Text == string.Empty || Script_VarText05.Text == string.Empty)
-                {
-                    MessageBox.Show("Logs Finais precisam ser coletadas com Interface LAN + Source no Ping");
-                }
-            }
+
 
             // Switch to Script Tab only after the Var UI construction
             if (tabControl2.SelectedTab != tabScript)
@@ -2357,7 +2424,7 @@ namespace MasterSheetNew
 
             string variables = script.variables;
             string[] split = variables.Split(',');
-            
+
             foreach (string variable in split)
             {
                 foreach (TextBox box in varText)
@@ -2379,7 +2446,7 @@ namespace MasterSheetNew
 
 
                     }
-                }             
+                }
             }
             Script_TextBox.Text = Script_TextBox.Text.Replace("logType", logType);
         }
@@ -2590,7 +2657,7 @@ namespace MasterSheetNew
                 finalsOrNot = true;
                 logType = "FINAIS";
                 SwitchLabel.Text = "FINAIS";
-                buttonSwitchVeloLog.Text= "INICIAIS"; // Inverted
+                buttonSwitchVeloLog.Text = "INICIAIS"; // Inverted
             }
             else
             {
@@ -2766,17 +2833,17 @@ namespace MasterSheetNew
             if (backboneOrNot)
             {
                 Script_VarText03b.Show();
+                Script_DeleteVar03b.Show();
                 Script_VarText03.Hide();
+                Script_DeleteVar03.Hide();
+                Script_DeleteVar03b.Location = Script_DeleteVar03.Location;
             }
             else
             {
                 Script_VarText03b.Hide();
+                Script_DeleteVar03b.Hide();
                 Script_VarText03.Show();
-            }
-            if (activityType == ActivityType.VOZ && !backboneOrNot)
-            {
-                Script_VarText03b.Hide();
-                Script_VarText03.Hide();
+                Script_DeleteVar03.Show();
             }
         }
 
@@ -2848,6 +2915,8 @@ namespace MasterSheetNew
 
                 if (split[1].Contains("Business Link Direct"))
                 {
+                    MessageBox.Show("Import BLD OK");
+
                     foreach (string s in split)
                     {
                         if (s.Contains("Domínio"))
@@ -2856,18 +2925,37 @@ namespace MasterSheetNew
                             var = s.Replace("Domínio", string.Empty).Trim();
                             Script_VarText00.Text = var + "_BLD";
                         }
-                        if (s.Contains("Description Roteador"))
+                        else if (s.Contains("Description Roteador"))
                         {
                             // Description 
                             Script_VarText01.Text = s.Replace("Description Roteador", string.Empty).Trim();
                         }
+                        else if (s.Contains("Serial Usuário (IPv4"))
+                        {
+                            // IPs da WAN
+                            var = s.Replace("IP Serial Usuário (IPv4)", string.Empty).Trim();
+                            string[] ipPE = var.Split('/');
+                            Script_VarText07.Text = GetBackboneInterfaceIP(ipPE[0], true);               // IP da Porta
+                            Script_VarText08.Text = removeZero(ipPE[0]);                                             // IP da Porta + 1 (bloco /30)
+                        }
+                        else if (s.Contains("Blocos IPv4"))
+                        {
+                            // IP de LAN
+                            var = s.Replace("Blocos IPv4", string.Empty).Trim();
+                            string[] ipLan = var.Split('/');
+                            Script_VarText09.Text = GetBackboneInterfaceIP(ipLan[0], false);
+                            MascaraLAN('/' + ipLan[1]);
+                        }
                         if (banda)
                         {
-                            if (s.Contains("Banda"))
+                            if (!s.Contains("IP Banda Larga"))
                             {
-                                // Bandwidth
-                                Script_VarText02.Text = s.Replace("Banda", string.Empty).Trim();
-                                banda = false;
+                                if (s.Contains("Banda"))
+                                {
+                                    // Bandwidth
+                                    Script_VarText02.Text = s.Replace("Banda", string.Empty).Trim();
+                                    banda = false;
+                                }
                             }
                         }
                         if (porta)
@@ -2880,52 +2968,33 @@ namespace MasterSheetNew
                                 porta = false;
                             }
                         }
-                        if (s.Contains("IP Serial Usuário(IPv4)"))
-                        {
-                            // IPs da WAN
-                            var = s.Replace("IP Serial Usuário (IPv4)", string.Empty).Trim();
-                            string[] ipPE = var.Split('/');
-                            Script_VarText07.Text = GetBackboneInterfaceIP(ipPE[0], true);               // IP da Porta
-                            Script_VarText08.Text = ipPE[0];                                             // IP da Porta + 1 (bloco /30)
-                        }
-                        if (s.Contains("Blocos IPv4"))
-                        {
-                            // IP de LAN
-                            var = s.Replace("Blocos IPv4", string.Empty).Trim();
-                            string[] ipLan = var.Split('/');
-                            Script_VarText09.Text = GetBackboneInterfaceIP(ipLan[0], false);
-                            MascaraLAN('/' + ipLan[1]);
-                        }
-                        if (s.Contains(""))
-                        {
-                            // IP de LAN
-                            var = s.Replace("Blocos IPv4", string.Empty).Trim();
-                            string[] ipLan = var.Split('/');
-                            Script_VarText09.Text = GetBackboneInterfaceIP(ipLan[0], false);
-                            MascaraLAN('/' + ipLan[1]);
-                        }
+
                     }
 
                 }
                 // ------------------------------------------------
                 else if (split[1].Contains("VPN"))
                 {
+                    int i = 0;
+                    MessageBox.Show("Import MPLS OK");
+
+                    bool qos = false;
                     foreach (string s in split)
                     {
-                        bool qos = false;
                         if (s.Contains("Description Roteador"))
                         {
                             // Hostname / Description
                             var = s.Replace("Description Roteador", string.Empty);
                             string[] hostname = var.Split('|');
-                            Script_VarText00.Text = hostname[0].Trim() + "_" + hostname[2].Trim();
+                            string[] hostSplit = hostname[2].Trim().Split('/');
+                            hostname[2] = hostSplit[0] + "-" + hostSplit[1] + "-" + hostSplit[2];
+                            Script_VarText00.Text = hostname[0].Trim() + "_" + hostname[2];
                             Script_VarText01.Text = var.Trim();
                         }
                         if (banda)
                         {
                             if (s.Contains("Banda"))
                             {
-                                MessageBox.Show("Teste Banda - Linha: " + s);
                                 // Bandwidth
                                 Script_VarText02.Text = s.Replace("Banda", string.Empty).Trim();
                                 banda = false;
@@ -2935,7 +3004,6 @@ namespace MasterSheetNew
                         {
                             if (s.Contains("Porta"))
                             {
-                                MessageBox.Show("Teste Porta - Linha: " + s);
                                 // Porta da WAN
                                 var = s.Replace("Porta", string.Empty).Trim();
                                 Script_VarText03b.Text = GigaOrTenGiga(var);
@@ -3003,6 +3071,7 @@ namespace MasterSheetNew
                             Outros_VarTextQoS06.Text = s.Replace("BEST EFFORT :", string.Empty).Replace("Kbps", string.Empty).Trim();
                             qos = false;
                         }
+
                     }
                 }
                 // ------------------------------------------------
@@ -3015,7 +3084,7 @@ namespace MasterSheetNew
 
                     foreach (string s in split)
                     {
-                        if (s.Contains(""))
+                        if (s.Contains("Description Roteador"))
                         {
                             // Description
                             Script_VarText01.Text = s.Replace("Description Roteador", string.Empty).Trim();
@@ -3054,8 +3123,8 @@ namespace MasterSheetNew
                             // IPs do PE
                             var = s.Replace("IP Serial Usuário (IPv4)", string.Empty).Trim();
                             string[] ipPE = var.Split('/');
-                            Script_VarText07.Text = GetBackboneInterfaceIP(ipPE[0], true).Trim();      // IP da Porta
-                            Script_VarText08.Text = removeZero(ipPE[0]);                                           // IP da Porta + 1 (bloco /30)
+                            Script_VarText07.Text = GetBackboneInterfaceIP(ipPE[0], true).Trim();          // IP da Porta
+                            Script_VarText08.Text = removeZero(ipPE[0]);                                   // IP da Porta + 1 (bloco /30)
                         }
                         if (s.Contains("IP PABX"))
                         {
@@ -3110,7 +3179,7 @@ namespace MasterSheetNew
                         {
                             Script_LANMascaraBox.SelectedIndex = 0;
                         }
-                        
+
                     }
                 }
                 else
@@ -3120,7 +3189,7 @@ namespace MasterSheetNew
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Import Incorreto");
+                MessageBox.Show("Import Incorreto - " + e);
             }
         }
 
@@ -3141,9 +3210,13 @@ namespace MasterSheetNew
                 str = str.Replace("FAST", string.Empty).Trim();
                 str = "FastEthernet" + str;
             }
-            else if (str.Contains("ESAT"))
+            else
             {
-                str = str.Replace("ESAT", string.Empty).Trim();
+                if (str.Contains("ESAT"))
+                {
+                    str = str.Replace("ESAT", "Gige").Trim();
+                }
+
             }
 
             return str;
@@ -3185,7 +3258,9 @@ namespace MasterSheetNew
                     if (a == '0')
                     {
                         ipSplit[i] = ipSplit[i].Remove(0, 1);
-                        if (ipSplit[i].Substring(0) == "0")
+
+                        char b = ipSplit[i][0];
+                        if (b == '0')
                         {
                             ipSplit[i] = ipSplit[i].Remove(0, 1);
                         }
@@ -3237,7 +3312,88 @@ namespace MasterSheetNew
         }
 
         #endregion
-        
+
+        // ---------------------------
+        // Telnet Button
+        // ---------------------------
+        #region
+        private void Script_TelnetButton_Click(object sender, EventArgs e)
+        {
+            if (activityType == ActivityType.MPLS)
+            {
+                if (Script_VarText08.Text != string.Empty && Script_VarText03b.Text != string.Empty && Script_VarText14.Text != string.Empty)
+                {
+                    if (routerType == RouterType.Cisco)
+                    {
+                        if (Script_XRBox.SelectedIndex == 0)
+                        {
+                            Clipboard.SetText("telnet " + Script_VarText08.Text + " /vrf REALIP:551 /source " + Script_VarText03b.Text);
+                        }
+                        else
+                        {
+                            Clipboard.SetText("telnet vrf REALIP:551 " + Script_VarText08.Text + " source " + Script_VarText03b.Text);
+                        }
+                    }
+                    else
+                    {
+                        Clipboard.SetText("telnet service-name " + Script_VarText14.Text + " " + Script_VarText08.Text);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("IP do CPE, Interace WAN ou VRF não preenchidas");
+                }
+            }
+            else
+            {
+                if (Script_VarText08.Text != string.Empty && Script_VarText03b.Text != string.Empty)
+                {
+                    if (activityType == ActivityType.VOZ)
+                    {
+                        if (routerType == RouterType.Cisco)
+                        {
+                            if (Script_XRBox.SelectedIndex == 0)
+                            {
+                                Clipboard.SetText("telnet " + Script_VarText08.Text + " /vrf " + Script_VarText14.Text + " /source " + Script_VarText03b.Text);
+                            }
+                            else
+                            {
+                                Clipboard.SetText("telnet vrf " + Script_VarText14.Text + " " + Script_VarText08.Text + " source " + Script_VarText03b.Text);
+                            }
+                        }
+                        else
+                        {
+                            Clipboard.SetText("telnet service-name 1000 " + Script_VarText08.Text);
+                        }
+
+                    }
+                    else
+                    {
+                        if (routerType == RouterType.Cisco)
+                        {
+                            if (Script_XRBox.SelectedIndex == 0)
+                            {
+                                Clipboard.SetText("telnet " + Script_VarText08.Text + " /source " + Script_VarText03b.Text);
+                            }
+                            else
+                            {
+                                Clipboard.SetText("telnet " + Script_VarText08.Text + " source " + Script_VarText03b.Text);
+                            }
+                        }
+                        else
+                        {
+                            Clipboard.SetText("telnet " + Script_VarText08.Text);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("IP do CPE ou Interace WAN preenchidas");
+                }
+            }
+        }
+        #endregion
+
         // ---------------------------------------------------------------------------
         #endregion
 
@@ -3256,7 +3412,7 @@ namespace MasterSheetNew
             routerType = RouterType.Velocloud;
             backboneOrNot = false;
             logOrNot = true;
-            
+
             if (finalsOrNot)
             {
                 buttonSwitchVeloLog.Text = "FINAIS";
@@ -3520,7 +3676,6 @@ namespace MasterSheetNew
         // ---------------------------------------------------------------------------
         // ---------------------------------------------------------------------------
         #region
-
         private void Ligacoes_BCopy_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(Ligacoes_FinalTextBox.Text);
@@ -3583,7 +3738,7 @@ namespace MasterSheetNew
 
         private void Ligacoes_BDebug_Click(object sender, EventArgs e)
         {
-            FormVoiceDebug debugForm = new FormVoiceDebug();
+            FormDebug debugForm = new FormDebug(Properties.Settings.Default.debugVoz);
             debugForm.Show(Owner);
         }
 
@@ -3688,6 +3843,10 @@ namespace MasterSheetNew
         // ---------------------------------------------------------------------------
         // ---------------------------------------------------------------------------
         #region
+        // -----------------
+        // Pendencia
+        // -----------------
+        #region
         public void ApplyLogTools()
         {
             Log_FinalTextBox.Text = "==================" + " \r\n" +
@@ -3773,12 +3932,12 @@ namespace MasterSheetNew
         {
             tabControlLogTools.SelectedTab = tabSuporte;
         }
-
+        #endregion
 
         // -----------------
         // Fechamento
         // -----------------
-
+        #region
         private void LTFechamento_ButtonClear_Click(object sender, EventArgs e)
         {
             LTFechamento_ValidacaoTextBox.Text = "";
@@ -4016,11 +4175,12 @@ namespace MasterSheetNew
         {
             Clipboard.SetText(LTFechamento_TextBox.Text);
         }
-
+        #endregion
 
         // -----------------
         // Suporte LT
         // -----------------
+        #region
         private void ButtonLogTools_Suporte_Click(object sender, EventArgs e)
         {
             commandStr = LT_SuporteComTextBox.Text;
@@ -4066,7 +4226,6 @@ namespace MasterSheetNew
                     "\r\n " +
                     commandStr;
 
-
                 // commandStr = commandStr +
                 //    "\r\n " +
                 //   "\r\n " +
@@ -4074,7 +4233,6 @@ namespace MasterSheetNew
                 //   LT_SuporteCom.Text;
 
             }
-
         }
 
         private void ButtonLT_ResetCommand_Click(object sender, EventArgs e)
@@ -4105,10 +4263,12 @@ namespace MasterSheetNew
 
             LTSuporteFinalTextBox.Text = suporteTitle + commandStr;
         }
+        #endregion
 
         // ----------------------
         // Calculo de Subrede
         // ----------------------
+        #region
         private void button4_Click(object sender, EventArgs e)
         {
             tabControlLogTools.SelectedTab = tabCalculadoraDeIP;
@@ -4126,6 +4286,13 @@ namespace MasterSheetNew
         {
             LTCalc_Result.Text = ipCalculator.ApplyIPCalculator(LTCalc_IPTextBox.Text);
         }
+        private void LTCalc_ButtonCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(LTCalc_Result.Text);
+        }
+        #endregion
+
+        // ---------------------------------------------------------------------------
         #endregion
 
 
@@ -4161,6 +4328,10 @@ namespace MasterSheetNew
             Outros_VarDelete1.Show();
             Outros_VarDelete2.Show();
             Outros_VarDeleteAll.Show();
+
+            Outros_VarName0.Text = "Community:";
+            Outros_VarName1.Text = "Host:";
+            Outros_VarName2.Text = "Leitura ou Escrita:";
 
             ApplytOutrosSNMP();
         }
@@ -4238,11 +4409,6 @@ namespace MasterSheetNew
         // QoS
         // ---------------------------
         #region
-        private void FormatQoS_Click(object sender, EventArgs e)
-        {
-            ApplyOutrosQoS();
-        }
-
         public void OpenOutrosQoS()
         {
             tabControl2.SelectedTab = tabOutros;
@@ -4298,15 +4464,7 @@ namespace MasterSheetNew
 
         public void ApplyOutrosQoS()
         {
-            float voz = 0;
-            float video = 0;   
-            float missao = 0;
-            float interativa = 0;
-            float bulk = 0;
-            float network = 0;
-            float best = 0;
-
-            CalcQoSTotal(voz,video,missao,interativa,bulk,network,best);
+            CalcQoSTotal();
 
             Outros_FinalTextBox.Text = scripts[0].scriptString;
 
@@ -4330,15 +4488,19 @@ namespace MasterSheetNew
             {
                 Outros_FinalTextBox.Text = scripts[55].scriptString;
             }
+            else
+            {
+                Outros_FinalTextBox.Text = "";
+            }
 
             // Values
-            Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarVoz", voz.ToString());
-            Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarVideo", video.ToString());
-            Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarMissao", missao.ToString());
-            Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarInterativa", interativa.ToString());
-            Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarBulk", bulk.ToString());
-            Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarNetwork", network.ToString());
-            Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarBest", best.ToString());
+            Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarVoz", Outros_VarTextQoS00.Text);
+            Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarVideo", Outros_VarTextQoS01.Text);
+            Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarMissao", Outros_VarTextQoS02.Text);
+            Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarInterativa", Outros_VarTextQoS03.Text);
+            Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarBulk", Outros_VarTextQoS04.Text);
+            Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarNetwork", Outros_VarTextQoS05.Text);
+            Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarBest", Outros_VarTextQoS06.Text);
             // Total
             Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarTotal", Outros_QoSCalcText.Text);
             // Interfaces
@@ -4347,8 +4509,15 @@ namespace MasterSheetNew
 
         }
 
-        public void CalcQoSTotal(float Voz,float Video,float Missao,float Interativa, float Bulk, float Network,float BestEffort)
+        public void CalcQoSTotal()
         {
+            float voz = 0;
+            float video = 0;
+            float missao = 0;
+            float interativa = 0;
+            float bulk = 0;
+            float network = 0;
+            float best = 0;
 
             // Check if total value is empty
             if (Outros_QoSCalcText.Text != string.Empty)
@@ -4356,42 +4525,44 @@ namespace MasterSheetNew
                 // Alter all the values to %
                 if (Outros_VarTextQoS00.Text != string.Empty)
                 {
-                    Voz = float.Parse(Outros_VarTextQoS00.Text) / float.Parse(Outros_QoSCalcText.Text);
-                    Outros_VarTextPercQoS00.Text = Voz.ToString();
+                    voz = (float)Math.Ceiling(float.Parse(Outros_VarTextQoS00.Text) / float.Parse(Outros_QoSCalcText.Text)) * 100;
+                    Outros_VarTextPercQoS00.Text = voz.ToString();
                 }
                 if (Outros_VarTextQoS01.Text != string.Empty)
                 {
-                    Video = float.Parse(Outros_VarTextQoS01.Text) / int.Parse(Outros_QoSCalcText.Text);
-                    Outros_VarTextPercQoS01.Text = Video.ToString();
+                    video = (float)Math.Ceiling(float.Parse(Outros_VarTextQoS01.Text) / int.Parse(Outros_QoSCalcText.Text)) * 100;
+                    Outros_VarTextPercQoS01.Text = video.ToString();
                 }
                 if (Outros_VarTextQoS02.Text != string.Empty)
                 {
-                    Missao = float.Parse(Outros_VarTextQoS02.Text) / float.Parse(Outros_QoSCalcText.Text);
-                    Outros_VarTextPercQoS02.Text = Missao.ToString();
+                    missao = (float)Math.Ceiling(float.Parse(Outros_VarTextQoS02.Text) / float.Parse(Outros_QoSCalcText.Text)) * 100;
+                    Outros_VarTextPercQoS02.Text = missao.ToString();
                 }
                 if (Outros_VarTextQoS03.Text != string.Empty)
                 {
-                    Interativa = float.Parse(Outros_VarTextQoS03.Text) / float.Parse(Outros_QoSCalcText.Text);
-                    Outros_VarTextPercQoS03.Text = Interativa.ToString();
+                    interativa = (float)Math.Ceiling(float.Parse(Outros_VarTextQoS03.Text) / float.Parse(Outros_QoSCalcText.Text)) * 100;
+                    Outros_VarTextPercQoS03.Text = interativa.ToString();
                 }
                 if (Outros_VarTextQoS04.Text != string.Empty)
                 {
-                    Bulk = float.Parse(Outros_VarTextQoS04.Text) / float.Parse(Outros_QoSCalcText.Text);
-                    Outros_VarTextPercQoS04.Text = Bulk.ToString();
+                    bulk = (float)Math.Ceiling(float.Parse(Outros_VarTextQoS04.Text) / float.Parse(Outros_QoSCalcText.Text)) * 100;
+                    Outros_VarTextPercQoS04.Text = bulk.ToString();
                 }
                 if (Outros_VarTextQoS05.Text != string.Empty)
                 {
-                    Network = float.Parse(Outros_VarTextQoS05.Text) / float.Parse(Outros_QoSCalcText.Text);
-                    Outros_VarTextPercQoS05.Text = Network.ToString();
+                    network = (float)Math.Ceiling(float.Parse(Outros_VarTextQoS05.Text) / float.Parse(Outros_QoSCalcText.Text)) * 100;
+                    Outros_VarTextPercQoS05.Text = network.ToString();
                 }
                 if (Outros_VarTextQoS06.Text != string.Empty)
                 {
-                    BestEffort = float.Parse(Outros_VarTextQoS06.Text) / float.Parse(Outros_QoSCalcText.Text);
-                    Outros_VarTextPercQoS06.Text = BestEffort.ToString();
+                    best = (float)Math.Ceiling(float.Parse(Outros_VarTextQoS06.Text) / float.Parse(Outros_QoSCalcText.Text)) * 100;
+                    Outros_VarTextPercQoS06.Text = best.ToString();
                 }
 
+                MessageBox.Show("QoS: " + voz + video + missao + interativa + bulk + network + best);
+
                 // Sum all the values
-                float total = (Voz + Video + Missao + Interativa + Bulk + Network + BestEffort) * 100 ;
+                float total = voz + video + missao + interativa + bulk + network + best;
 
                 // Check if is above 99%
                 if (total >= 99)
@@ -4423,9 +4594,8 @@ namespace MasterSheetNew
         public void OpenOutrosBGP()
         {
             tabControl2.SelectedTab = tabOutros;
-            OutrosTitle.Text = "BGP";
 
-            Outros_VarSubTitle.Show();
+            OutrosTitle.Text = "BGP";
 
             Outros_VarName0.Show();
             Outros_VarName1.Show();
@@ -4449,9 +4619,9 @@ namespace MasterSheetNew
 
             Outros_VarName0.Text = "AS do BGP";
             Outros_VarName1.Text = "IP do PE";
-            Outros_VarName2.Text = "Designacao";
+            Outros_VarName2.Text = "Designação";
             Outros_VarName3.Text = "Remote AS";
-            Outros_VarName4.Text = "Host";
+            Outros_VarName4.Text = "IP de Host";
             Outros_VarName5.Text = "Password";
 
             ApplyOutrosBGP();
@@ -4461,9 +4631,7 @@ namespace MasterSheetNew
         {
             if (Outros_TypeComboBox.SelectedIndex == 0 || Outros_TypeComboBox.SelectedIndex == 1)   // Cisco
             {
-                MessageBox.Show("" + scripts.Count);
                 Outros_FinalTextBox.Text = scripts[56].scriptString;
-
 
                 Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarAS", Outros_VarText00.Text);
                 Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarIP", Outros_VarText01.Text);
@@ -4495,10 +4663,9 @@ namespace MasterSheetNew
                     Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarRemote", "");
                 }
             }
-            if (Outros_TypeComboBox.SelectedIndex == 2)   // HPE
+            else if (Outros_TypeComboBox.SelectedIndex == 2)   // HPE
             {
                 Outros_FinalTextBox.Text = scripts[57].scriptString;
-
 
                 Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarAS", Outros_VarText00.Text);
                 Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarIP", Outros_VarText01.Text);
@@ -4530,7 +4697,7 @@ namespace MasterSheetNew
                     Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarRemote", "");
                 }
             }
-            if (Outros_TypeComboBox.SelectedIndex == 3)   // Huawei
+            else if (Outros_TypeComboBox.SelectedIndex == 3)   // Huawei
             {
                 Outros_FinalTextBox.Text = scripts[58].scriptString;
 
@@ -4564,12 +4731,13 @@ namespace MasterSheetNew
                     Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarRemote", "");
                 }
             }
-            if (Outros_TypeComboBox.SelectedIndex == 4)    // Fortigate
+            else if (Outros_TypeComboBox.SelectedIndex == 4)    // Fortigate
             {
                 Outros_FinalTextBox.Text = scripts[59].scriptString;
 
                 Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarAS", Outros_VarText00.Text);
                 Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarIP", Outros_VarText01.Text);
+                Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("VarCPE", GetBackboneInterfaceIP(Outros_VarText01.Text, false));
                 Outros_FinalTextBox.Text = Outros_FinalTextBox.Text.Replace("designacao", Outros_VarText02.Text);
                 if (Outros_VarText03.Text != string.Empty)
                 {
@@ -4599,7 +4767,10 @@ namespace MasterSheetNew
                 }
 
             }
-
+            else
+            {
+                Outros_FinalTextBox.Text = "";
+            }
         }
 
         #endregion
@@ -4754,6 +4925,22 @@ namespace MasterSheetNew
         // UI Buttons
         // ---------------------------
         #region
+        public void FormatScriptOutrosDispatch(string type)
+        {
+            if (type == "snmp")
+            {
+                ApplytOutrosSNMP();
+            }
+            if (type == "bgp")
+            {
+                ApplyOutrosBGP();
+            }
+            if (type == "qos")
+            {
+                ApplyOutrosQoS();
+            }
+        }
+
         private void Outros_VarDelete0_Click(object sender, EventArgs e)
         {
             Outros_VarText00.Text = string.Empty;
@@ -4790,18 +4977,18 @@ namespace MasterSheetNew
 
         private void Outros_TypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ApplytOutrosSNMP();
+            FormatScriptOutrosDispatch(outros);
         }
 
         private void Outros_ButtonForCopy_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(Outros_FinalTextBox.Text);
-            ApplytOutrosSNMP();
+            FormatScriptOutrosDispatch(outros);
         }
 
         private void Outros_ButtonFormat_Click(object sender, EventArgs e)
         {
-            ApplytOutrosSNMP();
+            FormatScriptOutrosDispatch(outros);
         }
 
         private void Outros_ButtonCopy_Click(object sender, EventArgs e)
@@ -4882,14 +5069,18 @@ namespace MasterSheetNew
             tabControl2.SelectedTab = tabClient;
 
             step = 0;
-            client = Client;
+            usingClient = Client;
+            try
+            {
+                OpenClientStep(Client.steps[step]);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro: " + ex);
+            }
 
-            Client_NameTitle.Text = client.name;
-            Client_StepPicture = client.steps[0].image;
-            Client_StepText.Text = client.steps[0].text;
-            Client_StepScript.Text = client.steps[0].script;
 
-            if (client.criticality)
+            if (usingClient.criticality)
             {
                 Client_CriticalyLabel.Show();
             }
@@ -4911,7 +5102,7 @@ namespace MasterSheetNew
             {
                 Client_BackStep.Show();
             }
-            if (step >= (client.steps.Count - 1))
+            if (step >= (usingClient.steps.Count - 1))
             {
                 Client_NextStep.Hide();
             }
@@ -4959,18 +5150,237 @@ namespace MasterSheetNew
             }
         }
 
+        public void ApplyStepScript()
+        {
+            foreach(TextBox t in clientVarText)
+            {
+                if (t.Text != string.Empty)
+                {
+                    string name = t.Name.Replace("Client_", "");
+                    name = name.Replace("Text", "");
+                    Client_StepScript.Text = Client_StepScript.Text.Replace(name, t.Text);
+                }
+            }
+        }
+
+        // ---------------------------
+        // Steps UI Build
+        // ---------------------------
+        #region
+        public void OpenClientStep(Step selectedStep)
+        {
+            deleteAllClientVar();
+
+            Client_StepPicture = selectedStep.image;
+            Client_StepText.Text = selectedStep.text;
+            Client_StepScript.Text = selectedStep.script.scriptString;
+
+
+            // Check if has Restore
+            if (usingClient.steps[0].restore)
+            {
+                Client_ButtonRestore.Show();
+            }
+            else
+            {
+                Client_ButtonRestore.Hide();
+            }
+
+            // Check if has Script
+            if (selectedStep.script.scriptString == string.Empty)
+            {
+                Client_StepScript.Hide();
+                Client_ButtonCopy.Hide();
+                Client_ButtonFormat.Hide();
+                Client_ButtonCopyForm.Hide();
+                Client_ButtonRestore.Hide();
+
+                CloseAllClientVar();
+            }
+            else
+            {
+                Client_StepScript.Show();
+                Client_ButtonCopy.Show();
+                Client_ButtonFormat.Show();
+                Client_ButtonCopyForm.Show();
+                Client_ButtonRestore.Show();
+
+                BuildClientVarUI(selectedStep.script.variables, selectedStep.script.variableNames);
+            }
+
+        }
+
+
+        public void BuildClientVarUI(string variableNumber, string variableNames)
+        {
+            MessageBox.Show("N: " + variableNumber + " | Nome: " + variableNames);
+            string[] split = variableNumber.Split(',');
+
+            // Clear Variable Name
+            for (int i = 0; i <= variableNumber.Length; i++)
+            {
+                split[i] = split[i].Replace("Client_VarText", "");
+                MessageBox.Show(split[i]);
+            }
+
+            int anterior = 99;
+
+            for (int i = 0; i < clientVarName.Count; i++)
+            {
+                foreach (string s in split)
+                {
+                    if (clientVarName[i].Name.Contains(s))
+                    {
+                        clientVarName[i].Show();
+
+                        if (anterior == 99)
+                        {
+                            clientVarName[i].Location = new System.Drawing.Point(clientVarName[i].Location.X, 152);
+                        }
+                        else
+                        {
+                            clientVarName[i].Location = new System.Drawing.Point(clientVarName[i].Location.X, clientVarName[anterior].Location.Y + 30);
+                        }
+
+                        anterior = i;
+                        break;
+                    }
+                    else
+                    {
+                        clientVarName[i].Hide();
+                    }
+                }
+            }
+
+            anterior = 99;
+
+            for (int i = 0; i < clientVarText.Count; i++)
+            {
+                foreach (string s in split)
+                {
+                    if (clientVarText[i].Name.Contains(s))
+                    {
+                        clientVarText[i].Show();
+                        if (s == "09")
+                        {
+                            // Client_LANMascaraBox.Location = new System.Drawing.Point(258, clientVarText[anterior].Location.Y + 30);
+                        }
+                        if (anterior == 99)
+                        {
+                            clientVarText[i].Location = new System.Drawing.Point(clientVarText[i].Location.X, 150);
+                        }
+                        else
+                        {
+                            clientVarText[i].Location = new System.Drawing.Point(clientVarText[i].Location.X, clientVarText[anterior].Location.Y + 30);
+                        }
+
+                        anterior = i;
+                        break;
+                    }
+                    else
+                    {
+                        clientVarText[i].Hide();
+                    }
+                }
+            }
+
+            anterior = 99;
+
+            for (int i = 0; i < clientVarDelete.Count; i++)
+            {
+                foreach (string s in split)
+                {
+                    if (clientVarDelete[i].Name.Contains(s))
+                    {
+                        clientVarDelete[i].Show();
+                        if (anterior == 99)
+                        {
+                            clientVarDelete[i].Location = new System.Drawing.Point(clientVarDelete[i].Location.X, 150);
+                        }
+                        else
+                        {
+                            clientVarDelete[i].Location = new System.Drawing.Point(clientVarDelete[i].Location.X, clientVarDelete[anterior].Location.Y + 30);
+                        }
+
+                        anterior = i;
+                        break;
+                    }
+                    else
+                    {
+                        clientVarDelete[i].Hide();
+                    }
+                }
+            }
+
+            ChangeClientVarNames(variableNames);
+
+        }
+
+        public void ChangeClientVarNames(string names)
+        {
+            string[] split = names.Split(',');
+
+            int i = 0;
+            foreach (string s in split)
+            {
+                clientVarName[i].Text = split[i];
+                i = i + 1;
+            }
+        }
+
+        public void CloseAllClientVar()
+        {
+            Client_VarSubTitle.Hide();
+            Client_ButtonDeleteAll.Hide();
+            Client_ExSubTitle.Hide();
+
+            foreach (Label l in clientVarName)
+            {
+                l.Hide();
+            }
+            foreach (TextBox t in clientVarText)
+            {
+                t.Hide();
+            }
+            foreach (Button b in clientVarDelete)
+            {
+                b.Hide();
+            }
+            foreach (Label l in clientVarEx)
+            {
+                l.Hide();
+            }
+        }
+
+        #endregion
 
         // ---------------------------
         // UI Buttons
         // ---------------------------
         #region
+        private void Client_Restore_Click(object sender, EventArgs e)
+        {
+            string contentToSave = Client_StepScript.Text;
+            string filePath = @"C:\Users\Z410854\OneDrive - HITSS DO BRASIL SERVIÇOS TECNOLOGICOS LTDA\Área de Trabalho";
+            //string filePath = @"C:\Users\Ricardo";
+
+            try
+            {
+                // +usingClient.name + ".conf"
+                File.WriteAllText(filePath, contentToSave);
+
+                MessageBox.Show("Restore salvo na Área de Trabalho");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving file: " + ex.Message);
+            }
+        }
+
         private void Client_NextStep_Click(object sender, EventArgs e)
         {
             step = step + 1;
-
-            Client_StepPicture = client.steps[step].image;
-            Client_StepText.Text = client.steps[step].text;
-            Client_StepScript.Text = client.steps[step].script;
+            OpenClientStep(usingClient.steps[step]);
 
             CheckSteps();
         }
@@ -4978,12 +5388,25 @@ namespace MasterSheetNew
         private void Client_BackStep_Click(object sender, EventArgs e)
         {
             step = step - 1;
-
-            Client_StepPicture = client.steps[step].image;
-            Client_StepText.Text = client.steps[step].text;
-            Client_StepScript.Text = client.steps[step].script;
+            OpenClientStep(usingClient.steps[step]);
 
             CheckSteps();
+        }
+
+        private void Client_ButtonCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(Client_StepScript.Text);
+        }
+
+        private void Client_ButtonFormat_Click(object sender, EventArgs e)
+        {
+            ApplyStepScript();
+        }
+
+        private void Client_ButtonCopyForm_Click(object sender, EventArgs e)
+        {
+            ApplyStepScript();
+            Clipboard.SetText(Client_StepScript.Text);
         }
 
         private void BackButton_ClientSteps_Click(object sender, EventArgs e)
@@ -5002,6 +5425,11 @@ namespace MasterSheetNew
         }
 
         private void Client_DeleteAll_Click(object sender, EventArgs e)
+        {
+            deleteAllClientVar();
+
+        }
+        public void deleteAllClientVar()
         {
             Client_VarText00.Text = string.Empty;
             Client_VarText01.Text = string.Empty;
@@ -5295,10 +5723,11 @@ namespace MasterSheetNew
             Script_VarText00.Text = "Teste_NAME";
             Script_VarText01.Text = "TESTE | nao sei | PNIS/IP/00024";
             Script_VarText02.Text = "50000";
-            Script_VarText03.Text = "G0/0";
+            Script_VarText03.Text = "GigaEthernet0/0";
+            Script_VarText03b.Text = "Giga12/2/0.57";
             Script_VarText04.Text = "5";
-            Script_VarText05.Text = "G0/1";
-            Script_VarText06.Text = "G0/1.12";
+            Script_VarText05.Text = "GigaEthernet0/1";
+            Script_VarText06.Text = "GigaEthernet0/1.12";
             Script_VarText07.Text = "192.168.1.1";
             Script_VarText08.Text = "192.168.1.2";
             Script_VarText09.Text = "10.10.10.1";
@@ -5335,15 +5764,16 @@ namespace MasterSheetNew
 
         public void TesteFillClientList()
         {
-            Step testStep = new Step(0, "Passo a Passo OK", "Script OK", null, 1);
-            Step testStep2 = new Step(1, "Passo a Passo Pagina 2", "Script 2 OK", null, 1);
+            Script newScript = new Script(999, "script", true, "Script de Teste", "00,01,02,03,04,05", "Teste,Deu Certo, Opa, Vlw, Nao sei", DateTime.Now);
+            Step testStep = new Step(0, "Passo a Passo OK", newScript, null, false, 1);
+            Step testStep2 = new Step(1, "Passo a Passo Pagina 2", newScript, null, false, 1);
 
             List<Step> testSteps = new List<Step>();
 
             testSteps.Add(testStep);
             testSteps.Add(testStep2);
 
-            clients.Add(new WindowsFormsApp1.Entitys.Client("Teste", true, false,  testSteps));
+            clients.Add(new WindowsFormsApp1.Entitys.Client("Teste", true, false, testSteps));
             clients.Add(new WindowsFormsApp1.Entitys.Client("Novo Teste", false, false, testSteps));
         }
 
@@ -5356,9 +5786,14 @@ namespace MasterSheetNew
 
 
 
+
+
+
+
+
         #endregion
 
 
-    }
 
+    }
 }
