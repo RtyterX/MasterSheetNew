@@ -14,6 +14,12 @@ public enum ActivityType
     Backbone
 }
 
+public enum ProcedureType
+{
+    Config,
+    Logs
+}
+
 namespace WindowsFormsApp1.Entitys
 {
     internal class Procedure

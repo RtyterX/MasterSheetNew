@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,14 +20,26 @@ namespace MasterSheetNew
         string scriptText;
         bool restore;
         int client_Id;
+        Bitmap image;
         FormNewClient newClientForm = new FormNewClient(new Form1(),0);
         List<TextBox> varText = new List<TextBox>();
 
-        public FormNewStep(FormNewClient NewClientForm, int Number, int Client_Id)
+        public FormNewStep(FormNewClient NewClientForm, Step step)
         {
             InitializeComponent();
-            number = Number;
-            client_Id = Client_Id;
+            number = step.number;
+            client_Id = step.client_Id;
+            NewStep_Imagem.Image = step.image;
+            if (step.script != null)
+            {
+                NewStep_Script.Text = step.script.scriptString;
+                ApplyEditVarNames(step.script.variables, step.script.variableNames);
+            }
+            else
+            {
+                NewStep_Script.Text = string.Empty;
+            }
+            NewStep_Texto.Text = step.text;
             newClientForm = NewClientForm;
             ListAllTextUI();
         }
@@ -72,9 +85,9 @@ namespace MasterSheetNew
             }
 
             Script newScript = new Script(999, "script", true, scriptText, variables, varNames, DateTime.Now);
-            Step newStep = new Step(number, NewStep_Texto.Text, newScript, NewStep_Imagem, restore, client_Id);
+            Step newStep = new Step(number, NewStep_Texto.Text, newScript, image, restore, client_Id);
             newClientForm.steps.Add(newStep);
-
+            newClientForm.LoadStepsDatabox();
             this.Close();
         }
 
@@ -90,6 +103,70 @@ namespace MasterSheetNew
             varText.Add(Client_VarText07);
             varText.Add(Client_VarText08);
             varText.Add(Client_VarText09);
+        }
+
+        private void NewStep_ButtonUpload_Click(object sender, EventArgs e)
+        {
+            // Set the filter to allow only image file types
+            openFileDialog1.Filter = "Image Files(*.jpeg;*.bmp;*.png;*.jpg)|*.jpeg;*.bmp;*.png;*.jpg|All files (*.*)|*.*";
+            // Set the filter index to default to image files
+            openFileDialog1.FilterIndex = 1;
+            // Do not allow the user to select multiple files
+            openFileDialog1.Multiselect = false;
+
+            // Show the dialog box
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // Get the path of the selected file
+                    string selectedFilePath = openFileDialog1.FileName;
+
+                    // Load the image from the file path and display it in the PictureBox
+                    // Using FileStream can prevent the file from being locked
+                    using (FileStream fs = new FileStream(selectedFilePath, FileMode.Open, FileAccess.Read))
+                    {
+                        NewStep_Imagem.Image = System.Drawing.Bitmap.FromStream(fs);
+                        image = new Bitmap(NewStep_Imagem.Image);
+                    }
+
+                    // Optional: Adjust the PictureBox SizeMode (e.g., Zoom, StretchImage, AutoSize)
+                    NewStep_Imagem.SizeMode = PictureBoxSizeMode.Zoom;
+
+                    MessageBox.Show("Image successfully loaded.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    // Handle any errors that might occur during file loading
+                    MessageBox.Show("Error loading image: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public void ApplyEditVarNames(string variables, string names)
+        {
+            string[] split = variables.Split(',');
+            string[] namesSplit = names.Split(',');
+
+            
+            for (int i = 0; i < split.Length; i++)
+            {
+                foreach (TextBox t in varText)
+                {
+                    MessageBox.Show(split[i]);
+                    if (t.Name.Contains(split[i]))
+                    {
+                        t.Text = namesSplit[i];
+                    }
+                }
+            }
+        }
+
+        // ------------------------------------------------------------------------------------------------------
+
+        private void NewStep_ButtonDeleteImage_Click(object sender, EventArgs e)
+        {
+            NewStep_Imagem.Image = null;
         }
 
         private void Client_VarDelete09_Click(object sender, EventArgs e)
@@ -141,5 +218,6 @@ namespace MasterSheetNew
         {
             Client_VarText00.Text = string.Empty;
         }
+
     }
 }

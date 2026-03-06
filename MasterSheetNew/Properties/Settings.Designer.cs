@@ -264,5 +264,17 @@ namespace MasterSheetNew.Properties {
                 this["debugFortigate"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool enableTest {
+            get {
+                return ((bool)(this["enableTest"]));
+            }
+            set {
+                this["enableTest"] = value;
+            }
+        }
     }
 }

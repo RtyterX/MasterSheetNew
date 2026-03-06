@@ -23,6 +23,8 @@ namespace MasterSheetNew.Entitys
             InitializeComponent();
             client_Id = Client_Id;
             mainPage = MainPage;
+
+
         }
 
         private void NewClient_ButtonSave_Click(object sender, EventArgs e)
@@ -69,11 +71,39 @@ namespace MasterSheetNew.Entitys
             }
         }
 
+        private void NewClient_ButtonEditStep_Click(object sender, EventArgs e)
+        {
+            if (steps.Count > 0)
+            {
+                Step selectedStep = NewClient_StepsBox.SelectedItem as Step;
+
+                FormNewStep newStepForm = new FormNewStep(this, selectedStep);
+                newStepForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Cliente ainda não possui nenhum Passo");
+            }
+
+        }
+
+
         private void NewClient_ButtonNewStep_Click(object sender, EventArgs e)
         {
-            int stepsNumber = steps.Count;
-            FormNewStep newClientForm = new FormNewStep(this, stepsNumber, client_Id);
-            newClientForm.Show();
+            Step newStep = new Step(steps.Count, null, null, null, false, client_Id);
+            FormNewStep newStepForm = new FormNewStep(this, newStep);
+            newStepForm.Show();
         }
+
+        public void LoadStepsDatabox()
+        {
+            if (steps.Count > 0)
+            {
+                NewClient_StepsBox.DataSource = steps;
+                NewClient_StepsBox.DisplayMember = "number";
+            }
+        }
+
+
     }
 }

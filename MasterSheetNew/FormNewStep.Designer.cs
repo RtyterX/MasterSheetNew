@@ -69,6 +69,8 @@
             this.Client_VarName00 = new System.Windows.Forms.Label();
             this.Client_VarText00 = new System.Windows.Forms.TextBox();
             this.NewStep_HintLabel = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.NewStep_ButtonDeleteImage = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.NewStep_Imagem)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,12 +118,13 @@
             // NewStep_ButtonUpload
             // 
             this.NewStep_ButtonUpload.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.NewStep_ButtonUpload.Location = new System.Drawing.Point(76, 110);
+            this.NewStep_ButtonUpload.Location = new System.Drawing.Point(32, 120);
             this.NewStep_ButtonUpload.Name = "NewStep_ButtonUpload";
             this.NewStep_ButtonUpload.Size = new System.Drawing.Size(98, 49);
             this.NewStep_ButtonUpload.TabIndex = 19;
             this.NewStep_ButtonUpload.Text = "Upload Image";
             this.NewStep_ButtonUpload.UseVisualStyleBackColor = true;
+            this.NewStep_ButtonUpload.Click += new System.EventHandler(this.NewStep_ButtonUpload_Click);
             // 
             // NewStep_TextoLabel
             // 
@@ -461,12 +464,28 @@
             this.NewStep_HintLabel.TabIndex = 188;
             this.NewStep_HintLabel.Text = "Preencha os campos apenas com as Variaveis que seráo Utilizadas\r\n";
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // NewStep_ButtonDeleteImage
+            // 
+            this.NewStep_ButtonDeleteImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.NewStep_ButtonDeleteImage.Location = new System.Drawing.Point(136, 120);
+            this.NewStep_ButtonDeleteImage.Name = "NewStep_ButtonDeleteImage";
+            this.NewStep_ButtonDeleteImage.Size = new System.Drawing.Size(76, 49);
+            this.NewStep_ButtonDeleteImage.TabIndex = 189;
+            this.NewStep_ButtonDeleteImage.Text = "Delete";
+            this.NewStep_ButtonDeleteImage.UseVisualStyleBackColor = true;
+            this.NewStep_ButtonDeleteImage.Click += new System.EventHandler(this.NewStep_ButtonDeleteImage_Click);
+            // 
             // FormNewStep
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(969, 516);
+            this.Controls.Add(this.NewStep_ButtonDeleteImage);
             this.Controls.Add(this.NewStep_HintLabel);
             this.Controls.Add(this.Client_VarDelete09);
             this.Controls.Add(this.Client_VarName09);
@@ -557,5 +576,7 @@
         private System.Windows.Forms.Label Client_VarName00;
         private System.Windows.Forms.TextBox Client_VarText00;
         private System.Windows.Forms.Label NewStep_HintLabel;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button NewStep_ButtonDeleteImage;
     }
 }

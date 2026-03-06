@@ -38,12 +38,13 @@
             this.NewClient_StepsBox = new System.Windows.Forms.ComboBox();
             this.NewClient_StepsLabel = new System.Windows.Forms.Label();
             this.NewClient_ShowOnScreenBox = new System.Windows.Forms.CheckBox();
+            this.NewClient_ButtonEditStep = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // NewClient_ButtonNewStep
             // 
             this.NewClient_ButtonNewStep.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.NewClient_ButtonNewStep.Location = new System.Drawing.Point(322, 175);
+            this.NewClient_ButtonNewStep.Location = new System.Drawing.Point(325, 270);
             this.NewClient_ButtonNewStep.Name = "NewClient_ButtonNewStep";
             this.NewClient_ButtonNewStep.Size = new System.Drawing.Size(98, 49);
             this.NewClient_ButtonNewStep.TabIndex = 23;
@@ -136,11 +137,23 @@
             this.NewClient_ShowOnScreenBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.NewClient_ShowOnScreenBox.UseVisualStyleBackColor = true;
             // 
+            // NewClient_ButtonEditStep
+            // 
+            this.NewClient_ButtonEditStep.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.NewClient_ButtonEditStep.Location = new System.Drawing.Point(325, 198);
+            this.NewClient_ButtonEditStep.Name = "NewClient_ButtonEditStep";
+            this.NewClient_ButtonEditStep.Size = new System.Drawing.Size(98, 49);
+            this.NewClient_ButtonEditStep.TabIndex = 29;
+            this.NewClient_ButtonEditStep.Text = "Editar Passo";
+            this.NewClient_ButtonEditStep.UseVisualStyleBackColor = true;
+            this.NewClient_ButtonEditStep.Click += new System.EventHandler(this.NewClient_ButtonEditStep_Click);
+            // 
             // FormNewClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(501, 433);
+            this.Controls.Add(this.NewClient_ButtonEditStep);
             this.Controls.Add(this.NewClient_ShowOnScreenBox);
             this.Controls.Add(this.NewClient_StepsLabel);
             this.Controls.Add(this.NewClient_StepsBox);
@@ -169,5 +182,6 @@
         private System.Windows.Forms.ComboBox NewClient_StepsBox;
         private System.Windows.Forms.Label NewClient_StepsLabel;
         private System.Windows.Forms.CheckBox NewClient_ShowOnScreenBox;
+        private System.Windows.Forms.Button NewClient_ButtonEditStep;
     }
 }

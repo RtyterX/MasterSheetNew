@@ -33,7 +33,7 @@ namespace MasterSheetNew
         {
             System.Windows.Forms.TabControl tabControl3;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.Button_IOS = new System.Windows.Forms.Button();
             this.labelRouterInfo = new System.Windows.Forms.Label();
@@ -67,7 +67,7 @@ namespace MasterSheetNew
             this.buttonOC_User = new System.Windows.Forms.Button();
             this.buttonOC_DHCP = new System.Windows.Forms.Button();
             this.buttonOC_IPsecundario = new System.Windows.Forms.Button();
-            this.buttonOC_RotaEstatica = new System.Windows.Forms.Button();
+            this.buttonOC_RegraAdicional = new System.Windows.Forms.Button();
             this.buttonOC_Tacacs = new System.Windows.Forms.Button();
             this.buttonOC_SNMP = new System.Windows.Forms.Button();
             this.buttonOC_BlocPort = new System.Windows.Forms.Button();
@@ -91,6 +91,8 @@ namespace MasterSheetNew
             this.MPLS_button = new System.Windows.Forms.Button();
             this.BLD_button = new System.Windows.Forms.Button();
             this.tabScript = new System.Windows.Forms.TabPage();
+            this.Script_TelnetButtonPlus = new System.Windows.Forms.Button();
+            this.Script_TelnetButtonTACACS = new System.Windows.Forms.Button();
             this.Script_DeleteVar03b = new System.Windows.Forms.Button();
             this.Script_Row = new System.Windows.Forms.PictureBox();
             this.button_TesteImport = new System.Windows.Forms.Button();
@@ -204,11 +206,8 @@ namespace MasterSheetNew
             this.Script_VarText07 = new System.Windows.Forms.TextBox();
             this.Script_VarName07 = new System.Windows.Forms.Label();
             this.Script_LANMascaraBox = new System.Windows.Forms.ComboBox();
-            this.BackButton_Script3 = new System.Windows.Forms.Button();
-            this.BackButton_Script2 = new System.Windows.Forms.Button();
             this.Script_TypeLabel = new System.Windows.Forms.Label();
             this.Button_FormatarScript = new System.Windows.Forms.Button();
-            this.BackButton_Script = new System.Windows.Forms.Button();
             this.Script_VarText06 = new System.Windows.Forms.TextBox();
             this.Script_VarName06 = new System.Windows.Forms.Label();
             this.ClearButton = new System.Windows.Forms.Button();
@@ -229,14 +228,15 @@ namespace MasterSheetNew
             this.Script_VarText00 = new System.Windows.Forms.TextBox();
             this.Script_XRLabel = new System.Windows.Forms.Label();
             this.Script_XRBox = new System.Windows.Forms.ComboBox();
-            this.Script_ProcedureName = new System.Windows.Forms.Label();
             this.Script_TelnetButton = new System.Windows.Forms.Button();
             this.SwitchLabel = new System.Windows.Forms.Label();
             this.Script_ComboBox = new System.Windows.Forms.ComboBox();
             this.Script_DebugButton = new System.Windows.Forms.Button();
+            this.BackButton_Script = new System.Windows.Forms.Button();
+            this.BackButton_Script3 = new System.Windows.Forms.Button();
+            this.BackButton_Script2 = new System.Windows.Forms.Button();
+            this.Script_ProcedureName = new System.Windows.Forms.Label();
             this.tabSelectRouter = new System.Windows.Forms.TabPage();
-            this.Config_Digistar = new System.Windows.Forms.Button();
-            this.Config_Aligera = new System.Windows.Forms.Button();
             this.SelectRouter_LogButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.Config_ChangeVOZ = new System.Windows.Forms.Button();
@@ -250,6 +250,8 @@ namespace MasterSheetNew
             this.HomeButton_SelectRouter = new System.Windows.Forms.Button();
             this.Config_HPE = new System.Windows.Forms.Button();
             this.Config_Cisco = new System.Windows.Forms.Button();
+            this.Config_Aligera = new System.Windows.Forms.Button();
+            this.Config_Digistar = new System.Windows.Forms.Button();
             this.ClientStepsPage = new System.Windows.Forms.TabPage();
             this.tabWizGat = new System.Windows.Forms.TabPage();
             this.WizGat_Row = new System.Windows.Forms.PictureBox();
@@ -273,7 +275,6 @@ namespace MasterSheetNew
             this.Logs_VOZ_Cisco = new System.Windows.Forms.Button();
             this.Logs_MPLS_Huawei = new System.Windows.Forms.Button();
             this.Logs_Ligacao = new System.Windows.Forms.Button();
-            this.Logs_BLD_Huawei = new System.Windows.Forms.Button();
             this.Logs_MPLS_Fortigate = new System.Windows.Forms.Button();
             this.Logs_SubTitle2 = new System.Windows.Forms.Label();
             this.Logs_BLD_Fortigate = new System.Windows.Forms.Button();
@@ -288,9 +289,10 @@ namespace MasterSheetNew
             this.Logs_HomeButton = new System.Windows.Forms.Button();
             this.Logs_Title = new System.Windows.Forms.Label();
             this.Logs_Cisco_BLD = new System.Windows.Forms.Button();
-            this.row6 = new System.Windows.Forms.PictureBox();
+            this.LogsRow2 = new System.Windows.Forms.PictureBox();
             this.LogsRow1 = new System.Windows.Forms.PictureBox();
             this.LogsRow0 = new System.Windows.Forms.PictureBox();
+            this.Logs_BLD_Huawei = new System.Windows.Forms.Button();
             this.tabVelocloud = new System.Windows.Forms.TabPage();
             this.veloDeleteButton4 = new System.Windows.Forms.Button();
             this.veloDeleteButton3 = new System.Windows.Forms.Button();
@@ -386,7 +388,6 @@ namespace MasterSheetNew
             this.Ligacoes_SubTitle1 = new System.Windows.Forms.Label();
             this.Ligacoes_FinalTextBox = new System.Windows.Forms.RichTextBox();
             this.tabOutros = new System.Windows.Forms.TabPage();
-            this.Outros_DebugButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.Outros_VarEx5 = new System.Windows.Forms.Label();
             this.Outros_VarDelete5 = new System.Windows.Forms.Button();
@@ -633,7 +634,7 @@ namespace MasterSheetNew
             this.tabWizGat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WizGat_Row)).BeginInit();
             this.tabLogs.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.row6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogsRow2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LogsRow1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LogsRow0)).BeginInit();
             this.tabVelocloud.SuspendLayout();
@@ -716,14 +717,14 @@ namespace MasterSheetNew
             this.DataGridRouters.AllowUserToDeleteRows = false;
             this.DataGridRouters.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.DataGridRouters.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridRouters.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridRouters.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DataGridRouters.Location = new System.Drawing.Point(0, 114);
             this.DataGridRouters.Name = "DataGridRouters";
             this.DataGridRouters.ReadOnly = true;
@@ -797,7 +798,7 @@ namespace MasterSheetNew
             this.tabMaster.Padding = new System.Windows.Forms.Padding(3);
             this.tabMaster.Size = new System.Drawing.Size(1123, 568);
             this.tabMaster.TabIndex = 0;
-            this.tabMaster.Text = "Home";
+            this.tabMaster.Text = "Master";
             this.tabMaster.UseVisualStyleBackColor = true;
             // 
             // tabControl2
@@ -828,6 +829,7 @@ namespace MasterSheetNew
             // 
             this.tabMainPage.BackColor = System.Drawing.SystemColors.Control;
             this.tabMainPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tabMainPage.Controls.Add(this.BLD_button);
             this.tabMainPage.Controls.Add(this.ClienteButton_Test5);
             this.tabMainPage.Controls.Add(this.ClienteButton_Test6);
             this.tabMainPage.Controls.Add(this.Version);
@@ -849,7 +851,7 @@ namespace MasterSheetNew
             this.tabMainPage.Controls.Add(this.buttonOC_User);
             this.tabMainPage.Controls.Add(this.buttonOC_DHCP);
             this.tabMainPage.Controls.Add(this.buttonOC_IPsecundario);
-            this.tabMainPage.Controls.Add(this.buttonOC_RotaEstatica);
+            this.tabMainPage.Controls.Add(this.buttonOC_RegraAdicional);
             this.tabMainPage.Controls.Add(this.buttonOC_Tacacs);
             this.tabMainPage.Controls.Add(this.buttonOC_SNMP);
             this.tabMainPage.Controls.Add(this.buttonOC_BlocPort);
@@ -871,7 +873,6 @@ namespace MasterSheetNew
             this.tabMainPage.Controls.Add(this.TemplatesLabelBG);
             this.tabMainPage.Controls.Add(this.VOZ_Button);
             this.tabMainPage.Controls.Add(this.MPLS_button);
-            this.tabMainPage.Controls.Add(this.BLD_button);
             this.tabMainPage.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
             this.tabMainPage.Location = new System.Drawing.Point(4, 5);
             this.tabMainPage.Name = "tabMainPage";
@@ -908,7 +909,7 @@ namespace MasterSheetNew
             this.Version.Name = "Version";
             this.Version.Size = new System.Drawing.Size(110, 17);
             this.Version.TabIndex = 7;
-            this.Version.Text = "Versão: 1.8.4";
+            this.Version.Text = "Versão: 1.8.6";
             this.Version.Click += new System.EventHandler(this.Version_Click);
             // 
             // CreatedLabel
@@ -935,6 +936,7 @@ namespace MasterSheetNew
             // 
             // Button_NightMode
             // 
+            this.Button_NightMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Button_NightMode.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Button_NightMode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_NightMode.Location = new System.Drawing.Point(833, 348);
@@ -973,57 +975,62 @@ namespace MasterSheetNew
             // 
             // buttonOC_IOSInstal
             // 
+            this.buttonOC_IOSInstal.BackColor = System.Drawing.Color.DarkGray;
             this.buttonOC_IOSInstal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOC_IOSInstal.Location = new System.Drawing.Point(197, 370);
             this.buttonOC_IOSInstal.Name = "buttonOC_IOSInstal";
             this.buttonOC_IOSInstal.Size = new System.Drawing.Size(90, 40);
             this.buttonOC_IOSInstal.TabIndex = 41;
             this.buttonOC_IOSInstal.Text = "Instalar IOS";
-            this.buttonOC_IOSInstal.UseVisualStyleBackColor = true;
+            this.buttonOC_IOSInstal.UseVisualStyleBackColor = false;
             this.buttonOC_IOSInstal.Click += new System.EventHandler(this.NotImplemented);
             // 
             // buttonOC_Balanceamento
             // 
+            this.buttonOC_Balanceamento.BackColor = System.Drawing.Color.DarkGray;
             this.buttonOC_Balanceamento.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOC_Balanceamento.Location = new System.Drawing.Point(284, 370);
             this.buttonOC_Balanceamento.Name = "buttonOC_Balanceamento";
             this.buttonOC_Balanceamento.Size = new System.Drawing.Size(178, 40);
             this.buttonOC_Balanceamento.TabIndex = 40;
             this.buttonOC_Balanceamento.Text = "Balanceamento";
-            this.buttonOC_Balanceamento.UseVisualStyleBackColor = true;
+            this.buttonOC_Balanceamento.UseVisualStyleBackColor = false;
             this.buttonOC_Balanceamento.Click += new System.EventHandler(this.NotImplemented);
             // 
             // buttonOC_EIGRP
             // 
+            this.buttonOC_EIGRP.BackColor = System.Drawing.Color.DarkGray;
             this.buttonOC_EIGRP.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOC_EIGRP.Location = new System.Drawing.Point(372, 332);
             this.buttonOC_EIGRP.Name = "buttonOC_EIGRP";
             this.buttonOC_EIGRP.Size = new System.Drawing.Size(90, 40);
             this.buttonOC_EIGRP.TabIndex = 39;
             this.buttonOC_EIGRP.Text = "EIGRP";
-            this.buttonOC_EIGRP.UseVisualStyleBackColor = true;
+            this.buttonOC_EIGRP.UseVisualStyleBackColor = false;
             this.buttonOC_EIGRP.Click += new System.EventHandler(this.NotImplemented);
             // 
             // buttonOC_GLBP
             // 
+            this.buttonOC_GLBP.BackColor = System.Drawing.Color.DarkGray;
             this.buttonOC_GLBP.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOC_GLBP.Location = new System.Drawing.Point(197, 332);
             this.buttonOC_GLBP.Name = "buttonOC_GLBP";
             this.buttonOC_GLBP.Size = new System.Drawing.Size(90, 40);
             this.buttonOC_GLBP.TabIndex = 38;
             this.buttonOC_GLBP.Text = "GLBP";
-            this.buttonOC_GLBP.UseVisualStyleBackColor = true;
+            this.buttonOC_GLBP.UseVisualStyleBackColor = false;
             this.buttonOC_GLBP.Click += new System.EventHandler(this.NotImplemented);
             // 
             // buttonOC_IPFlow
             // 
+            this.buttonOC_IPFlow.BackColor = System.Drawing.Color.DarkGray;
             this.buttonOC_IPFlow.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOC_IPFlow.Location = new System.Drawing.Point(110, 370);
             this.buttonOC_IPFlow.Name = "buttonOC_IPFlow";
             this.buttonOC_IPFlow.Size = new System.Drawing.Size(90, 40);
             this.buttonOC_IPFlow.TabIndex = 37;
             this.buttonOC_IPFlow.Text = "IP FLOW";
-            this.buttonOC_IPFlow.UseVisualStyleBackColor = true;
+            this.buttonOC_IPFlow.UseVisualStyleBackColor = false;
             this.buttonOC_IPFlow.Click += new System.EventHandler(this.NotImplemented);
             // 
             // buttonOC_BGP
@@ -1039,101 +1046,110 @@ namespace MasterSheetNew
             // 
             // buttonOC_HSRP
             // 
+            this.buttonOC_HSRP.BackColor = System.Drawing.Color.DarkGray;
             this.buttonOC_HSRP.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOC_HSRP.Location = new System.Drawing.Point(284, 332);
             this.buttonOC_HSRP.Name = "buttonOC_HSRP";
             this.buttonOC_HSRP.Size = new System.Drawing.Size(90, 40);
             this.buttonOC_HSRP.TabIndex = 35;
             this.buttonOC_HSRP.Text = "HSRP";
-            this.buttonOC_HSRP.UseVisualStyleBackColor = true;
+            this.buttonOC_HSRP.UseVisualStyleBackColor = false;
             this.buttonOC_HSRP.Click += new System.EventHandler(this.NotImplemented);
             // 
             // buttonOC_VRRP
             // 
+            this.buttonOC_VRRP.BackColor = System.Drawing.Color.DarkGray;
             this.buttonOC_VRRP.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOC_VRRP.Location = new System.Drawing.Point(110, 332);
             this.buttonOC_VRRP.Name = "buttonOC_VRRP";
             this.buttonOC_VRRP.Size = new System.Drawing.Size(90, 40);
             this.buttonOC_VRRP.TabIndex = 34;
             this.buttonOC_VRRP.Text = "VRRP";
-            this.buttonOC_VRRP.UseVisualStyleBackColor = true;
+            this.buttonOC_VRRP.UseVisualStyleBackColor = false;
             this.buttonOC_VRRP.Click += new System.EventHandler(this.NotImplemented);
             // 
             // buttonOC_OSPF
             // 
+            this.buttonOC_OSPF.BackColor = System.Drawing.Color.DarkGray;
             this.buttonOC_OSPF.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOC_OSPF.Location = new System.Drawing.Point(23, 332);
             this.buttonOC_OSPF.Name = "buttonOC_OSPF";
             this.buttonOC_OSPF.Size = new System.Drawing.Size(90, 40);
             this.buttonOC_OSPF.TabIndex = 33;
             this.buttonOC_OSPF.Text = "OSPF";
-            this.buttonOC_OSPF.UseVisualStyleBackColor = true;
+            this.buttonOC_OSPF.UseVisualStyleBackColor = false;
             this.buttonOC_OSPF.Click += new System.EventHandler(this.NotImplemented);
             // 
             // buttonOC_RIP
             // 
+            this.buttonOC_RIP.BackColor = System.Drawing.Color.DarkGray;
             this.buttonOC_RIP.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOC_RIP.Location = new System.Drawing.Point(23, 369);
             this.buttonOC_RIP.Name = "buttonOC_RIP";
             this.buttonOC_RIP.Size = new System.Drawing.Size(90, 40);
             this.buttonOC_RIP.TabIndex = 32;
             this.buttonOC_RIP.Text = "RIP";
-            this.buttonOC_RIP.UseVisualStyleBackColor = true;
+            this.buttonOC_RIP.UseVisualStyleBackColor = false;
             this.buttonOC_RIP.Click += new System.EventHandler(this.NotImplemented);
             // 
             // buttonOC_User
             // 
+            this.buttonOC_User.BackColor = System.Drawing.Color.DarkGray;
             this.buttonOC_User.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOC_User.Location = new System.Drawing.Point(372, 294);
             this.buttonOC_User.Name = "buttonOC_User";
             this.buttonOC_User.Size = new System.Drawing.Size(90, 40);
             this.buttonOC_User.TabIndex = 31;
             this.buttonOC_User.Text = "Usuário";
-            this.buttonOC_User.UseVisualStyleBackColor = true;
+            this.buttonOC_User.UseVisualStyleBackColor = false;
             this.buttonOC_User.Click += new System.EventHandler(this.NotImplemented);
             // 
             // buttonOC_DHCP
             // 
+            this.buttonOC_DHCP.BackColor = System.Drawing.Color.DarkGray;
             this.buttonOC_DHCP.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOC_DHCP.Location = new System.Drawing.Point(284, 258);
             this.buttonOC_DHCP.Name = "buttonOC_DHCP";
             this.buttonOC_DHCP.Size = new System.Drawing.Size(90, 40);
             this.buttonOC_DHCP.TabIndex = 30;
             this.buttonOC_DHCP.Text = "DHCP";
-            this.buttonOC_DHCP.UseVisualStyleBackColor = true;
+            this.buttonOC_DHCP.UseVisualStyleBackColor = false;
             this.buttonOC_DHCP.Click += new System.EventHandler(this.NotImplemented);
             // 
             // buttonOC_IPsecundario
             // 
+            this.buttonOC_IPsecundario.BackColor = System.Drawing.Color.DarkGray;
             this.buttonOC_IPsecundario.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOC_IPsecundario.Location = new System.Drawing.Point(197, 295);
             this.buttonOC_IPsecundario.Name = "buttonOC_IPsecundario";
             this.buttonOC_IPsecundario.Size = new System.Drawing.Size(90, 40);
             this.buttonOC_IPsecundario.TabIndex = 29;
             this.buttonOC_IPsecundario.Text = "IP Secundario";
-            this.buttonOC_IPsecundario.UseVisualStyleBackColor = true;
+            this.buttonOC_IPsecundario.UseVisualStyleBackColor = false;
             this.buttonOC_IPsecundario.Click += new System.EventHandler(this.NotImplemented);
             // 
-            // buttonOC_RotaEstatica
+            // buttonOC_RegraAdicional
             // 
-            this.buttonOC_RotaEstatica.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonOC_RotaEstatica.Location = new System.Drawing.Point(110, 295);
-            this.buttonOC_RotaEstatica.Name = "buttonOC_RotaEstatica";
-            this.buttonOC_RotaEstatica.Size = new System.Drawing.Size(90, 40);
-            this.buttonOC_RotaEstatica.TabIndex = 28;
-            this.buttonOC_RotaEstatica.Text = "Rota Estática";
-            this.buttonOC_RotaEstatica.UseVisualStyleBackColor = true;
-            this.buttonOC_RotaEstatica.Click += new System.EventHandler(this.NotImplemented);
+            this.buttonOC_RegraAdicional.BackColor = System.Drawing.Color.DarkGray;
+            this.buttonOC_RegraAdicional.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonOC_RegraAdicional.Location = new System.Drawing.Point(110, 295);
+            this.buttonOC_RegraAdicional.Name = "buttonOC_RegraAdicional";
+            this.buttonOC_RegraAdicional.Size = new System.Drawing.Size(90, 40);
+            this.buttonOC_RegraAdicional.TabIndex = 28;
+            this.buttonOC_RegraAdicional.Text = "Regra Adicional";
+            this.buttonOC_RegraAdicional.UseVisualStyleBackColor = false;
+            this.buttonOC_RegraAdicional.Click += new System.EventHandler(this.NotImplemented);
             // 
             // buttonOC_Tacacs
             // 
+            this.buttonOC_Tacacs.BackColor = System.Drawing.Color.DarkGray;
             this.buttonOC_Tacacs.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOC_Tacacs.Location = new System.Drawing.Point(284, 294);
             this.buttonOC_Tacacs.Name = "buttonOC_Tacacs";
             this.buttonOC_Tacacs.Size = new System.Drawing.Size(90, 40);
             this.buttonOC_Tacacs.TabIndex = 27;
             this.buttonOC_Tacacs.Text = "TACAC\'S";
-            this.buttonOC_Tacacs.UseVisualStyleBackColor = true;
+            this.buttonOC_Tacacs.UseVisualStyleBackColor = false;
             this.buttonOC_Tacacs.Click += new System.EventHandler(this.NotImplemented);
             // 
             // buttonOC_SNMP
@@ -1149,24 +1165,26 @@ namespace MasterSheetNew
             // 
             // buttonOC_BlocPort
             // 
+            this.buttonOC_BlocPort.BackColor = System.Drawing.Color.DarkGray;
             this.buttonOC_BlocPort.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOC_BlocPort.Location = new System.Drawing.Point(23, 295);
             this.buttonOC_BlocPort.Name = "buttonOC_BlocPort";
             this.buttonOC_BlocPort.Size = new System.Drawing.Size(90, 40);
             this.buttonOC_BlocPort.TabIndex = 25;
             this.buttonOC_BlocPort.Text = "Bloqueio de Porta";
-            this.buttonOC_BlocPort.UseVisualStyleBackColor = true;
+            this.buttonOC_BlocPort.UseVisualStyleBackColor = false;
             this.buttonOC_BlocPort.Click += new System.EventHandler(this.NotImplemented);
             // 
             // buttonOC_VLAN
             // 
+            this.buttonOC_VLAN.BackColor = System.Drawing.Color.DarkGray;
             this.buttonOC_VLAN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOC_VLAN.Location = new System.Drawing.Point(23, 258);
             this.buttonOC_VLAN.Name = "buttonOC_VLAN";
             this.buttonOC_VLAN.Size = new System.Drawing.Size(90, 40);
             this.buttonOC_VLAN.TabIndex = 24;
             this.buttonOC_VLAN.Text = "VLAN";
-            this.buttonOC_VLAN.UseVisualStyleBackColor = true;
+            this.buttonOC_VLAN.UseVisualStyleBackColor = false;
             this.buttonOC_VLAN.Click += new System.EventHandler(this.NotImplemented);
             // 
             // WizGat_Open
@@ -1370,6 +1388,8 @@ namespace MasterSheetNew
             this.tabScript.AutoScroll = true;
             this.tabScript.AutoScrollMinSize = new System.Drawing.Size(0, 100);
             this.tabScript.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.tabScript.Controls.Add(this.Script_TelnetButtonPlus);
+            this.tabScript.Controls.Add(this.Script_TelnetButtonTACACS);
             this.tabScript.Controls.Add(this.Script_DeleteVar03b);
             this.tabScript.Controls.Add(this.Script_Row);
             this.tabScript.Controls.Add(this.button_TesteImport);
@@ -1483,11 +1503,8 @@ namespace MasterSheetNew
             this.tabScript.Controls.Add(this.Script_VarText07);
             this.tabScript.Controls.Add(this.Script_VarName07);
             this.tabScript.Controls.Add(this.Script_LANMascaraBox);
-            this.tabScript.Controls.Add(this.BackButton_Script3);
-            this.tabScript.Controls.Add(this.BackButton_Script2);
             this.tabScript.Controls.Add(this.Script_TypeLabel);
             this.tabScript.Controls.Add(this.Button_FormatarScript);
-            this.tabScript.Controls.Add(this.BackButton_Script);
             this.tabScript.Controls.Add(this.Script_VarText06);
             this.tabScript.Controls.Add(this.Script_VarName06);
             this.tabScript.Controls.Add(this.ClearButton);
@@ -1508,11 +1525,14 @@ namespace MasterSheetNew
             this.tabScript.Controls.Add(this.Script_VarText00);
             this.tabScript.Controls.Add(this.Script_XRLabel);
             this.tabScript.Controls.Add(this.Script_XRBox);
-            this.tabScript.Controls.Add(this.Script_ProcedureName);
             this.tabScript.Controls.Add(this.Script_TelnetButton);
             this.tabScript.Controls.Add(this.SwitchLabel);
             this.tabScript.Controls.Add(this.Script_ComboBox);
             this.tabScript.Controls.Add(this.Script_DebugButton);
+            this.tabScript.Controls.Add(this.BackButton_Script);
+            this.tabScript.Controls.Add(this.BackButton_Script3);
+            this.tabScript.Controls.Add(this.BackButton_Script2);
+            this.tabScript.Controls.Add(this.Script_ProcedureName);
             this.tabScript.Location = new System.Drawing.Point(4, 5);
             this.tabScript.Margin = new System.Windows.Forms.Padding(86, 87, 86, 87);
             this.tabScript.Name = "tabScript";
@@ -1520,6 +1540,28 @@ namespace MasterSheetNew
             this.tabScript.Size = new System.Drawing.Size(1109, 482);
             this.tabScript.TabIndex = 1;
             this.tabScript.Text = "tabScript";
+            // 
+            // Script_TelnetButtonPlus
+            // 
+            this.Script_TelnetButtonPlus.Font = new System.Drawing.Font("Segoe UI", 13.25F);
+            this.Script_TelnetButtonPlus.Location = new System.Drawing.Point(820, 439);
+            this.Script_TelnetButtonPlus.Name = "Script_TelnetButtonPlus";
+            this.Script_TelnetButtonPlus.Size = new System.Drawing.Size(104, 43);
+            this.Script_TelnetButtonPlus.TabIndex = 158;
+            this.Script_TelnetButtonPlus.Text = "Telnet+";
+            this.Script_TelnetButtonPlus.UseVisualStyleBackColor = true;
+            this.Script_TelnetButtonPlus.Click += new System.EventHandler(this.Script_TelnetButtonPlus_Click);
+            // 
+            // Script_TelnetButtonTACACS
+            // 
+            this.Script_TelnetButtonTACACS.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.Script_TelnetButtonTACACS.Location = new System.Drawing.Point(930, 439);
+            this.Script_TelnetButtonTACACS.Name = "Script_TelnetButtonTACACS";
+            this.Script_TelnetButtonTACACS.Size = new System.Drawing.Size(104, 43);
+            this.Script_TelnetButtonTACACS.TabIndex = 157;
+            this.Script_TelnetButtonTACACS.Text = "com TACACS";
+            this.Script_TelnetButtonTACACS.UseVisualStyleBackColor = true;
+            this.Script_TelnetButtonTACACS.Click += new System.EventHandler(this.Script_TelnetButtonTACACS_Click);
             // 
             // Script_DeleteVar03b
             // 
@@ -1537,18 +1579,19 @@ namespace MasterSheetNew
             this.Script_Row.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Script_Row.BackColor = System.Drawing.Color.Gray;
-            this.Script_Row.Location = new System.Drawing.Point(45, 69);
+            this.Script_Row.Location = new System.Drawing.Point(48, 69);
             this.Script_Row.MaximumSize = new System.Drawing.Size(2000, 1);
             this.Script_Row.MinimumSize = new System.Drawing.Size(500, 1);
             this.Script_Row.Name = "Script_Row";
-            this.Script_Row.Size = new System.Drawing.Size(1060, 1);
+            this.Script_Row.Size = new System.Drawing.Size(1038, 1);
             this.Script_Row.TabIndex = 155;
             this.Script_Row.TabStop = false;
             // 
             // button_TesteImport
             // 
+            this.button_TesteImport.AutoSize = true;
             this.button_TesteImport.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_TesteImport.Location = new System.Drawing.Point(720, 22);
+            this.button_TesteImport.Location = new System.Drawing.Point(326, 15);
             this.button_TesteImport.Name = "button_TesteImport";
             this.button_TesteImport.Size = new System.Drawing.Size(75, 36);
             this.button_TesteImport.TabIndex = 152;
@@ -1851,8 +1894,9 @@ namespace MasterSheetNew
             // 
             // Button_ImportSAIP
             // 
+            this.Button_ImportSAIP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Button_ImportSAIP.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button_ImportSAIP.Location = new System.Drawing.Point(801, 21);
+            this.Button_ImportSAIP.Location = new System.Drawing.Point(805, 16);
             this.Button_ImportSAIP.Name = "Button_ImportSAIP";
             this.Button_ImportSAIP.Size = new System.Drawing.Size(138, 37);
             this.Button_ImportSAIP.TabIndex = 122;
@@ -2115,7 +2159,7 @@ namespace MasterSheetNew
             // 
             this.Script_VarName15.AutoSize = true;
             this.Script_VarName15.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Script_VarName15.Location = new System.Drawing.Point(23, 599);
+            this.Script_VarName15.Location = new System.Drawing.Point(17, 599);
             this.Script_VarName15.Name = "Script_VarName15";
             this.Script_VarName15.Size = new System.Drawing.Size(68, 17);
             this.Script_VarName15.TabIndex = 96;
@@ -2145,7 +2189,7 @@ namespace MasterSheetNew
             // 
             this.Script_VarName14.AutoSize = true;
             this.Script_VarName14.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Script_VarName14.Location = new System.Drawing.Point(23, 569);
+            this.Script_VarName14.Location = new System.Drawing.Point(17, 569);
             this.Script_VarName14.Name = "Script_VarName14";
             this.Script_VarName14.Size = new System.Drawing.Size(92, 17);
             this.Script_VarName14.TabIndex = 93;
@@ -2175,7 +2219,7 @@ namespace MasterSheetNew
             // 
             this.Script_VarName13.AutoSize = true;
             this.Script_VarName13.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Script_VarName13.Location = new System.Drawing.Point(23, 539);
+            this.Script_VarName13.Location = new System.Drawing.Point(17, 539);
             this.Script_VarName13.Name = "Script_VarName13";
             this.Script_VarName13.Size = new System.Drawing.Size(52, 17);
             this.Script_VarName13.TabIndex = 90;
@@ -2205,7 +2249,7 @@ namespace MasterSheetNew
             // 
             this.Script_VarName12.AutoSize = true;
             this.Script_VarName12.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Script_VarName12.Location = new System.Drawing.Point(23, 509);
+            this.Script_VarName12.Location = new System.Drawing.Point(17, 509);
             this.Script_VarName12.Name = "Script_VarName12";
             this.Script_VarName12.Size = new System.Drawing.Size(73, 17);
             this.Script_VarName12.TabIndex = 87;
@@ -2214,7 +2258,7 @@ namespace MasterSheetNew
             // Script_DeleteRouteE2
             // 
             this.Script_DeleteRouteE2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Script_DeleteRouteE2.Location = new System.Drawing.Point(319, 510);
+            this.Script_DeleteRouteE2.Location = new System.Drawing.Point(323, 458);
             this.Script_DeleteRouteE2.Name = "Script_DeleteRouteE2";
             this.Script_DeleteRouteE2.Size = new System.Drawing.Size(20, 20);
             this.Script_DeleteRouteE2.TabIndex = 86;
@@ -2226,7 +2270,7 @@ namespace MasterSheetNew
             // 
             this.Script_VarRouteE2Label.AutoSize = true;
             this.Script_VarRouteE2Label.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Script_VarRouteE2Label.Location = new System.Drawing.Point(70, 490);
+            this.Script_VarRouteE2Label.Location = new System.Drawing.Point(71, 439);
             this.Script_VarRouteE2Label.Name = "Script_VarRouteE2Label";
             this.Script_VarRouteE2Label.Size = new System.Drawing.Size(129, 17);
             this.Script_VarRouteE2Label.TabIndex = 85;
@@ -2235,16 +2279,16 @@ namespace MasterSheetNew
             // Script_VarRouteE2
             // 
             this.Script_VarRouteE2.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Script_VarRouteE2.Location = new System.Drawing.Point(81, 510);
+            this.Script_VarRouteE2.Location = new System.Drawing.Point(83, 458);
             this.Script_VarRouteE2.Name = "Script_VarRouteE2";
-            this.Script_VarRouteE2.Size = new System.Drawing.Size(233, 20);
+            this.Script_VarRouteE2.Size = new System.Drawing.Size(235, 20);
             this.Script_VarRouteE2.TabIndex = 84;
             this.Script_VarRouteE2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BLD_Var0_KeyDown);
             // 
             // Script_DeleteRouteE1
             // 
             this.Script_DeleteRouteE1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Script_DeleteRouteE1.Location = new System.Drawing.Point(320, 465);
+            this.Script_DeleteRouteE1.Location = new System.Drawing.Point(323, 414);
             this.Script_DeleteRouteE1.Name = "Script_DeleteRouteE1";
             this.Script_DeleteRouteE1.Size = new System.Drawing.Size(20, 20);
             this.Script_DeleteRouteE1.TabIndex = 83;
@@ -2256,7 +2300,7 @@ namespace MasterSheetNew
             // 
             this.Script_VarRouteE1Label.AutoSize = true;
             this.Script_VarRouteE1Label.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Script_VarRouteE1Label.Location = new System.Drawing.Point(71, 445);
+            this.Script_VarRouteE1Label.Location = new System.Drawing.Point(72, 394);
             this.Script_VarRouteE1Label.Name = "Script_VarRouteE1Label";
             this.Script_VarRouteE1Label.Size = new System.Drawing.Size(129, 17);
             this.Script_VarRouteE1Label.TabIndex = 82;
@@ -2265,16 +2309,16 @@ namespace MasterSheetNew
             // Script_VarRouteE1
             // 
             this.Script_VarRouteE1.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Script_VarRouteE1.Location = new System.Drawing.Point(82, 465);
+            this.Script_VarRouteE1.Location = new System.Drawing.Point(83, 414);
             this.Script_VarRouteE1.Name = "Script_VarRouteE1";
-            this.Script_VarRouteE1.Size = new System.Drawing.Size(233, 20);
+            this.Script_VarRouteE1.Size = new System.Drawing.Size(235, 20);
             this.Script_VarRouteE1.TabIndex = 81;
             this.Script_VarRouteE1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BLD_Var0_KeyDown);
             // 
             // Script_DeleteRouteI2
             // 
             this.Script_DeleteRouteI2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Script_DeleteRouteI2.Location = new System.Drawing.Point(318, 420);
+            this.Script_DeleteRouteI2.Location = new System.Drawing.Point(323, 369);
             this.Script_DeleteRouteI2.Name = "Script_DeleteRouteI2";
             this.Script_DeleteRouteI2.Size = new System.Drawing.Size(20, 20);
             this.Script_DeleteRouteI2.TabIndex = 80;
@@ -2286,7 +2330,7 @@ namespace MasterSheetNew
             // 
             this.Script_VarRouteI2Label.AutoSize = true;
             this.Script_VarRouteI2Label.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Script_VarRouteI2Label.Location = new System.Drawing.Point(69, 403);
+            this.Script_VarRouteI2Label.Location = new System.Drawing.Point(70, 352);
             this.Script_VarRouteI2Label.Name = "Script_VarRouteI2Label";
             this.Script_VarRouteI2Label.Size = new System.Drawing.Size(130, 17);
             this.Script_VarRouteI2Label.TabIndex = 79;
@@ -2295,16 +2339,16 @@ namespace MasterSheetNew
             // Script_VarRouteI2
             // 
             this.Script_VarRouteI2.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Script_VarRouteI2.Location = new System.Drawing.Point(82, 420);
+            this.Script_VarRouteI2.Location = new System.Drawing.Point(83, 369);
             this.Script_VarRouteI2.Name = "Script_VarRouteI2";
-            this.Script_VarRouteI2.Size = new System.Drawing.Size(233, 20);
+            this.Script_VarRouteI2.Size = new System.Drawing.Size(235, 20);
             this.Script_VarRouteI2.TabIndex = 78;
             this.Script_VarRouteI2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BLD_Var0_KeyDown);
             // 
             // Script_DeleteRouteI1
             // 
             this.Script_DeleteRouteI1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Script_DeleteRouteI1.Location = new System.Drawing.Point(320, 379);
+            this.Script_DeleteRouteI1.Location = new System.Drawing.Point(323, 328);
             this.Script_DeleteRouteI1.Name = "Script_DeleteRouteI1";
             this.Script_DeleteRouteI1.Size = new System.Drawing.Size(20, 20);
             this.Script_DeleteRouteI1.TabIndex = 77;
@@ -2316,7 +2360,7 @@ namespace MasterSheetNew
             // 
             this.Script_VarRouteI1Label.AutoSize = true;
             this.Script_VarRouteI1Label.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Script_VarRouteI1Label.Location = new System.Drawing.Point(71, 359);
+            this.Script_VarRouteI1Label.Location = new System.Drawing.Point(72, 308);
             this.Script_VarRouteI1Label.Name = "Script_VarRouteI1Label";
             this.Script_VarRouteI1Label.Size = new System.Drawing.Size(130, 17);
             this.Script_VarRouteI1Label.TabIndex = 76;
@@ -2325,18 +2369,19 @@ namespace MasterSheetNew
             // Script_VarRouteI1
             // 
             this.Script_VarRouteI1.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Script_VarRouteI1.Location = new System.Drawing.Point(81, 379);
+            this.Script_VarRouteI1.Location = new System.Drawing.Point(83, 328);
             this.Script_VarRouteI1.Name = "Script_VarRouteI1";
-            this.Script_VarRouteI1.Size = new System.Drawing.Size(233, 20);
+            this.Script_VarRouteI1.Size = new System.Drawing.Size(235, 20);
             this.Script_VarRouteI1.TabIndex = 75;
             this.Script_VarRouteI1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BLD_Var0_KeyDown);
             // 
             // Script_RouteLabelHint
             // 
             this.Script_RouteLabelHint.AutoSize = true;
-            this.Script_RouteLabelHint.Location = new System.Drawing.Point(91, 336);
+            this.Script_RouteLabelHint.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_RouteLabelHint.Location = new System.Drawing.Point(62, 288);
             this.Script_RouteLabelHint.Name = "Script_RouteLabelHint";
-            this.Script_RouteLabelHint.Size = new System.Drawing.Size(310, 17);
+            this.Script_RouteLabelHint.Size = new System.Drawing.Size(294, 17);
             this.Script_RouteLabelHint.TabIndex = 74;
             this.Script_RouteLabelHint.Text = "Valores de Route-map estão no 1 comando de BGP";
             this.Script_RouteLabelHint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2520,10 +2565,11 @@ namespace MasterSheetNew
             // Script_Hint1
             // 
             this.Script_Hint1.AutoSize = true;
+            this.Script_Hint1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Script_Hint1.Location = new System.Drawing.Point(54, 627);
             this.Script_Hint1.Name = "Script_Hint1";
             this.Script_Hint1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
-            this.Script_Hint1.Size = new System.Drawing.Size(296, 54);
+            this.Script_Hint1.Size = new System.Drawing.Size(282, 54);
             this.Script_Hint1.TabIndex = 52;
             this.Script_Hint1.Text = "Pressionar ENTER dentro de uma Caixa de Texto \n Já aplica formatação";
             this.Script_Hint1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2552,7 +2598,7 @@ namespace MasterSheetNew
             // 
             this.Script_VarName11.AutoSize = true;
             this.Script_VarName11.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Script_VarName11.Location = new System.Drawing.Point(23, 479);
+            this.Script_VarName11.Location = new System.Drawing.Point(17, 479);
             this.Script_VarName11.Name = "Script_VarName11";
             this.Script_VarName11.Size = new System.Drawing.Size(111, 17);
             this.Script_VarName11.TabIndex = 46;
@@ -2571,7 +2617,7 @@ namespace MasterSheetNew
             // 
             this.Script_VarName10.AutoSize = true;
             this.Script_VarName10.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Script_VarName10.Location = new System.Drawing.Point(23, 449);
+            this.Script_VarName10.Location = new System.Drawing.Point(17, 449);
             this.Script_VarName10.Name = "Script_VarName10";
             this.Script_VarName10.Size = new System.Drawing.Size(106, 17);
             this.Script_VarName10.TabIndex = 44;
@@ -2592,7 +2638,7 @@ namespace MasterSheetNew
             // ButtonLimpeza
             // 
             this.ButtonLimpeza.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonLimpeza.Location = new System.Drawing.Point(809, 283);
+            this.ButtonLimpeza.Location = new System.Drawing.Point(809, 271);
             this.ButtonLimpeza.Name = "ButtonLimpeza";
             this.ButtonLimpeza.Size = new System.Drawing.Size(104, 34);
             this.ButtonLimpeza.TabIndex = 40;
@@ -2603,7 +2649,7 @@ namespace MasterSheetNew
             // ButtonParte2
             // 
             this.ButtonParte2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonParte2.Location = new System.Drawing.Point(809, 242);
+            this.ButtonParte2.Location = new System.Drawing.Point(809, 230);
             this.ButtonParte2.Name = "ButtonParte2";
             this.ButtonParte2.Size = new System.Drawing.Size(104, 34);
             this.ButtonParte2.TabIndex = 39;
@@ -2624,7 +2670,7 @@ namespace MasterSheetNew
             // 
             this.Script_VarName09.AutoSize = true;
             this.Script_VarName09.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Script_VarName09.Location = new System.Drawing.Point(23, 418);
+            this.Script_VarName09.Location = new System.Drawing.Point(17, 418);
             this.Script_VarName09.Name = "Script_VarName09";
             this.Script_VarName09.Size = new System.Drawing.Size(68, 17);
             this.Script_VarName09.TabIndex = 37;
@@ -2643,7 +2689,7 @@ namespace MasterSheetNew
             // 
             this.Script_VarName08.AutoSize = true;
             this.Script_VarName08.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Script_VarName08.Location = new System.Drawing.Point(23, 388);
+            this.Script_VarName08.Location = new System.Drawing.Point(17, 388);
             this.Script_VarName08.Name = "Script_VarName08";
             this.Script_VarName08.Size = new System.Drawing.Size(67, 17);
             this.Script_VarName08.TabIndex = 35;
@@ -2662,7 +2708,7 @@ namespace MasterSheetNew
             // 
             this.Script_VarName07.AutoSize = true;
             this.Script_VarName07.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Script_VarName07.Location = new System.Drawing.Point(23, 358);
+            this.Script_VarName07.Location = new System.Drawing.Point(17, 358);
             this.Script_VarName07.Name = "Script_VarName07";
             this.Script_VarName07.Size = new System.Drawing.Size(59, 17);
             this.Script_VarName07.TabIndex = 33;
@@ -2686,30 +2732,6 @@ namespace MasterSheetNew
             this.Script_LANMascaraBox.TabIndex = 31;
             this.Script_LANMascaraBox.SelectedIndexChanged += new System.EventHandler(this.Script_LANMascara_SelectedIndexChanged);
             // 
-            // BackButton_Script3
-            // 
-            this.BackButton_Script3.BackColor = System.Drawing.SystemColors.Control;
-            this.BackButton_Script3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackButton_Script3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.BackButton_Script3.Location = new System.Drawing.Point(965, 13);
-            this.BackButton_Script3.Name = "BackButton_Script3";
-            this.BackButton_Script3.Size = new System.Drawing.Size(104, 43);
-            this.BackButton_Script3.TabIndex = 30;
-            this.BackButton_Script3.Text = "Voltar";
-            this.BackButton_Script3.UseVisualStyleBackColor = false;
-            this.BackButton_Script3.Click += new System.EventHandler(this.BackButton_Script3_Click_Click);
-            // 
-            // BackButton_Script2
-            // 
-            this.BackButton_Script2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackButton_Script2.Location = new System.Drawing.Point(965, 11);
-            this.BackButton_Script2.Name = "BackButton_Script2";
-            this.BackButton_Script2.Size = new System.Drawing.Size(104, 43);
-            this.BackButton_Script2.TabIndex = 29;
-            this.BackButton_Script2.Text = "Voltar";
-            this.BackButton_Script2.UseVisualStyleBackColor = true;
-            this.BackButton_Script2.Click += new System.EventHandler(this.BackButton_Script2_Click);
-            // 
             // Script_TypeLabel
             // 
             this.Script_TypeLabel.AutoSize = true;
@@ -2731,17 +2753,6 @@ namespace MasterSheetNew
             this.Button_FormatarScript.UseVisualStyleBackColor = true;
             this.Button_FormatarScript.Click += new System.EventHandler(this.Button_FormatarScript_Click);
             // 
-            // BackButton_Script
-            // 
-            this.BackButton_Script.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackButton_Script.Location = new System.Drawing.Point(965, 13);
-            this.BackButton_Script.Name = "BackButton_Script";
-            this.BackButton_Script.Size = new System.Drawing.Size(104, 43);
-            this.BackButton_Script.TabIndex = 26;
-            this.BackButton_Script.Text = "Voltar";
-            this.BackButton_Script.UseVisualStyleBackColor = true;
-            this.BackButton_Script.Click += new System.EventHandler(this.BackButton1_Click);
-            // 
             // Script_VarText06
             // 
             this.Script_VarText06.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2755,7 +2766,7 @@ namespace MasterSheetNew
             // 
             this.Script_VarName06.AutoSize = true;
             this.Script_VarName06.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Script_VarName06.Location = new System.Drawing.Point(23, 328);
+            this.Script_VarName06.Location = new System.Drawing.Point(17, 328);
             this.Script_VarName06.Name = "Script_VarName06";
             this.Script_VarName06.Size = new System.Drawing.Size(131, 17);
             this.Script_VarName06.TabIndex = 21;
@@ -2831,7 +2842,7 @@ namespace MasterSheetNew
             // 
             this.Script_VarName05.AutoSize = true;
             this.Script_VarName05.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Script_VarName05.Location = new System.Drawing.Point(23, 298);
+            this.Script_VarName05.Location = new System.Drawing.Point(17, 298);
             this.Script_VarName05.Name = "Script_VarName05";
             this.Script_VarName05.Size = new System.Drawing.Size(89, 17);
             this.Script_VarName05.TabIndex = 12;
@@ -2841,7 +2852,7 @@ namespace MasterSheetNew
             // 
             this.Script_VarName03.AutoSize = true;
             this.Script_VarName03.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Script_VarName03.Location = new System.Drawing.Point(23, 238);
+            this.Script_VarName03.Location = new System.Drawing.Point(17, 238);
             this.Script_VarName03.Name = "Script_VarName03";
             this.Script_VarName03.Size = new System.Drawing.Size(94, 17);
             this.Script_VarName03.TabIndex = 11;
@@ -2851,7 +2862,7 @@ namespace MasterSheetNew
             // 
             this.Script_VarName04.AutoSize = true;
             this.Script_VarName04.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Script_VarName04.Location = new System.Drawing.Point(23, 268);
+            this.Script_VarName04.Location = new System.Drawing.Point(17, 268);
             this.Script_VarName04.Name = "Script_VarName04";
             this.Script_VarName04.Size = new System.Drawing.Size(82, 17);
             this.Script_VarName04.TabIndex = 10;
@@ -2861,7 +2872,7 @@ namespace MasterSheetNew
             // 
             this.Script_VarName02.AutoSize = true;
             this.Script_VarName02.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Script_VarName02.Location = new System.Drawing.Point(23, 208);
+            this.Script_VarName02.Location = new System.Drawing.Point(17, 208);
             this.Script_VarName02.Name = "Script_VarName02";
             this.Script_VarName02.Size = new System.Drawing.Size(71, 17);
             this.Script_VarName02.TabIndex = 9;
@@ -2871,7 +2882,7 @@ namespace MasterSheetNew
             // 
             this.Script_VarName01.AutoSize = true;
             this.Script_VarName01.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Script_VarName01.Location = new System.Drawing.Point(23, 176);
+            this.Script_VarName01.Location = new System.Drawing.Point(17, 176);
             this.Script_VarName01.Name = "Script_VarName01";
             this.Script_VarName01.Size = new System.Drawing.Size(77, 17);
             this.Script_VarName01.TabIndex = 8;
@@ -2904,7 +2915,7 @@ namespace MasterSheetNew
             // 
             this.Script_VarName00.AutoSize = true;
             this.Script_VarName00.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Script_VarName00.Location = new System.Drawing.Point(23, 146);
+            this.Script_VarName00.Location = new System.Drawing.Point(17, 146);
             this.Script_VarName00.Name = "Script_VarName00";
             this.Script_VarName00.Size = new System.Drawing.Size(70, 17);
             this.Script_VarName00.TabIndex = 2;
@@ -2942,25 +2953,10 @@ namespace MasterSheetNew
             this.Script_XRBox.TabIndex = 72;
             this.Script_XRBox.SelectedIndexChanged += new System.EventHandler(this.Script_XRBox_SelectedIndexChanged);
             // 
-            // Script_ProcedureName
-            // 
-            this.Script_ProcedureName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Script_ProcedureName.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Script_ProcedureName.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Script_ProcedureName.Location = new System.Drawing.Point(3, 12);
-            this.Script_ProcedureName.Margin = new System.Windows.Forms.Padding(0);
-            this.Script_ProcedureName.Name = "Script_ProcedureName";
-            this.Script_ProcedureName.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Script_ProcedureName.Size = new System.Drawing.Size(1128, 45);
-            this.Script_ProcedureName.TabIndex = 5;
-            this.Script_ProcedureName.Text = "Procedure Name";
-            this.Script_ProcedureName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Script_TelnetButton
             // 
             this.Script_TelnetButton.Font = new System.Drawing.Font("Segoe UI", 13.25F);
-            this.Script_TelnetButton.Location = new System.Drawing.Point(809, 371);
+            this.Script_TelnetButton.Location = new System.Drawing.Point(809, 328);
             this.Script_TelnetButton.Name = "Script_TelnetButton";
             this.Script_TelnetButton.Size = new System.Drawing.Size(104, 43);
             this.Script_TelnetButton.TabIndex = 153;
@@ -2970,10 +2966,10 @@ namespace MasterSheetNew
             // 
             // SwitchLabel
             // 
-            this.SwitchLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SwitchLabel.Location = new System.Drawing.Point(606, 84);
+            this.SwitchLabel.Font = new System.Drawing.Font("Segoe UI", 14.75F, System.Drawing.FontStyle.Bold);
+            this.SwitchLabel.Location = new System.Drawing.Point(598, 82);
             this.SwitchLabel.Name = "SwitchLabel";
-            this.SwitchLabel.Size = new System.Drawing.Size(81, 30);
+            this.SwitchLabel.Size = new System.Drawing.Size(97, 30);
             this.SwitchLabel.TabIndex = 118;
             this.SwitchLabel.Text = "Iniciais";
             this.SwitchLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2996,7 +2992,7 @@ namespace MasterSheetNew
             // Script_DebugButton
             // 
             this.Script_DebugButton.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
-            this.Script_DebugButton.Location = new System.Drawing.Point(808, 438);
+            this.Script_DebugButton.Location = new System.Drawing.Point(238, 17);
             this.Script_DebugButton.Name = "Script_DebugButton";
             this.Script_DebugButton.Size = new System.Drawing.Size(80, 32);
             this.Script_DebugButton.TabIndex = 154;
@@ -3004,10 +3000,61 @@ namespace MasterSheetNew
             this.Script_DebugButton.UseVisualStyleBackColor = true;
             this.Script_DebugButton.Click += new System.EventHandler(this.Script_DebugButton_Click);
             // 
+            // BackButton_Script
+            // 
+            this.BackButton_Script.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BackButton_Script.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BackButton_Script.Location = new System.Drawing.Point(992, 13);
+            this.BackButton_Script.Name = "BackButton_Script";
+            this.BackButton_Script.Size = new System.Drawing.Size(104, 43);
+            this.BackButton_Script.TabIndex = 26;
+            this.BackButton_Script.Text = "Voltar";
+            this.BackButton_Script.UseVisualStyleBackColor = true;
+            this.BackButton_Script.Click += new System.EventHandler(this.BackButton1_Click);
+            // 
+            // BackButton_Script3
+            // 
+            this.BackButton_Script3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BackButton_Script3.BackColor = System.Drawing.SystemColors.Control;
+            this.BackButton_Script3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BackButton_Script3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BackButton_Script3.Location = new System.Drawing.Point(992, 13);
+            this.BackButton_Script3.Name = "BackButton_Script3";
+            this.BackButton_Script3.Size = new System.Drawing.Size(104, 43);
+            this.BackButton_Script3.TabIndex = 30;
+            this.BackButton_Script3.Text = "Voltar";
+            this.BackButton_Script3.UseVisualStyleBackColor = false;
+            this.BackButton_Script3.Click += new System.EventHandler(this.BackButton_Script3_Click_Click);
+            // 
+            // BackButton_Script2
+            // 
+            this.BackButton_Script2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BackButton_Script2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BackButton_Script2.Location = new System.Drawing.Point(992, 13);
+            this.BackButton_Script2.Name = "BackButton_Script2";
+            this.BackButton_Script2.Size = new System.Drawing.Size(104, 43);
+            this.BackButton_Script2.TabIndex = 29;
+            this.BackButton_Script2.Text = "Voltar";
+            this.BackButton_Script2.UseVisualStyleBackColor = true;
+            this.BackButton_Script2.Click += new System.EventHandler(this.BackButton_Script2_Click);
+            // 
+            // Script_ProcedureName
+            // 
+            this.Script_ProcedureName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Script_ProcedureName.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Script_ProcedureName.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Script_ProcedureName.Location = new System.Drawing.Point(3, 12);
+            this.Script_ProcedureName.Margin = new System.Windows.Forms.Padding(0);
+            this.Script_ProcedureName.Name = "Script_ProcedureName";
+            this.Script_ProcedureName.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Script_ProcedureName.Size = new System.Drawing.Size(1109, 45);
+            this.Script_ProcedureName.TabIndex = 5;
+            this.Script_ProcedureName.Text = "Procedure Name";
+            this.Script_ProcedureName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // tabSelectRouter
             // 
-            this.tabSelectRouter.Controls.Add(this.Config_Digistar);
-            this.tabSelectRouter.Controls.Add(this.Config_Aligera);
             this.tabSelectRouter.Controls.Add(this.SelectRouter_LogButton);
             this.tabSelectRouter.Controls.Add(this.label4);
             this.tabSelectRouter.Controls.Add(this.Config_ChangeVOZ);
@@ -3021,6 +3068,8 @@ namespace MasterSheetNew
             this.tabSelectRouter.Controls.Add(this.HomeButton_SelectRouter);
             this.tabSelectRouter.Controls.Add(this.Config_HPE);
             this.tabSelectRouter.Controls.Add(this.Config_Cisco);
+            this.tabSelectRouter.Controls.Add(this.Config_Aligera);
+            this.tabSelectRouter.Controls.Add(this.Config_Digistar);
             this.tabSelectRouter.Location = new System.Drawing.Point(4, 5);
             this.tabSelectRouter.Name = "tabSelectRouter";
             this.tabSelectRouter.Padding = new System.Windows.Forms.Padding(3);
@@ -3028,32 +3077,11 @@ namespace MasterSheetNew
             this.tabSelectRouter.TabIndex = 2;
             this.tabSelectRouter.Text = "tabPage4";
             this.tabSelectRouter.UseVisualStyleBackColor = true;
-            this.tabSelectRouter.Click += new System.EventHandler(this.VOZ_Button_Click);
-            // 
-            // Config_Digistar
-            // 
-            this.Config_Digistar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Config_Digistar.Location = new System.Drawing.Point(572, 264);
-            this.Config_Digistar.Name = "Config_Digistar";
-            this.Config_Digistar.Size = new System.Drawing.Size(171, 60);
-            this.Config_Digistar.TabIndex = 17;
-            this.Config_Digistar.Text = "Digistar";
-            this.Config_Digistar.UseVisualStyleBackColor = true;
-            this.Config_Digistar.Click += new System.EventHandler(this.Config_Digistar_Click);
-            // 
-            // Config_Aligera
-            // 
-            this.Config_Aligera.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Config_Aligera.Location = new System.Drawing.Point(350, 264);
-            this.Config_Aligera.Name = "Config_Aligera";
-            this.Config_Aligera.Size = new System.Drawing.Size(171, 60);
-            this.Config_Aligera.TabIndex = 16;
-            this.Config_Aligera.Text = "Aligera";
-            this.Config_Aligera.UseVisualStyleBackColor = true;
-            this.Config_Aligera.Click += new System.EventHandler(this.Config_Aligera_Click);
             // 
             // SelectRouter_LogButton
             // 
+            this.SelectRouter_LogButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SelectRouter_LogButton.AutoSize = true;
             this.SelectRouter_LogButton.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectRouter_LogButton.Location = new System.Drawing.Point(970, 15);
             this.SelectRouter_LogButton.Name = "SelectRouter_LogButton";
@@ -3065,6 +3093,7 @@ namespace MasterSheetNew
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(996, 101);
@@ -3075,6 +3104,7 @@ namespace MasterSheetNew
             // 
             // Config_ChangeVOZ
             // 
+            this.Config_ChangeVOZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Config_ChangeVOZ.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Config_ChangeVOZ.Location = new System.Drawing.Point(961, 294);
             this.Config_ChangeVOZ.Name = "Config_ChangeVOZ";
@@ -3086,6 +3116,7 @@ namespace MasterSheetNew
             // 
             // Config_ChangeMPLS
             // 
+            this.Config_ChangeMPLS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Config_ChangeMPLS.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Config_ChangeMPLS.Location = new System.Drawing.Point(961, 216);
             this.Config_ChangeMPLS.Name = "Config_ChangeMPLS";
@@ -3097,6 +3128,7 @@ namespace MasterSheetNew
             // 
             // Config_ChangeBLD
             // 
+            this.Config_ChangeBLD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Config_ChangeBLD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Config_ChangeBLD.Location = new System.Drawing.Point(961, 138);
             this.Config_ChangeBLD.Name = "Config_ChangeBLD";
@@ -3108,8 +3140,7 @@ namespace MasterSheetNew
             // 
             // ConfiguracaoCPE_SubTitle
             // 
-            this.ConfiguracaoCPE_SubTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ConfiguracaoCPE_SubTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.ConfiguracaoCPE_SubTitle.AutoSize = true;
             this.ConfiguracaoCPE_SubTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConfiguracaoCPE_SubTitle.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -3122,6 +3153,8 @@ namespace MasterSheetNew
             // 
             // Config_Fortigate
             // 
+            this.Config_Fortigate.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Config_Fortigate.AutoSize = true;
             this.Config_Fortigate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Config_Fortigate.Location = new System.Drawing.Point(572, 264);
             this.Config_Fortigate.Name = "Config_Fortigate";
@@ -3133,6 +3166,8 @@ namespace MasterSheetNew
             // 
             // Config_Huawei
             // 
+            this.Config_Huawei.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Config_Huawei.AutoSize = true;
             this.Config_Huawei.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Config_Huawei.Location = new System.Drawing.Point(350, 264);
             this.Config_Huawei.Name = "Config_Huawei";
@@ -3144,6 +3179,8 @@ namespace MasterSheetNew
             // 
             // Config_HPE_old
             // 
+            this.Config_HPE_old.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Config_HPE_old.AutoSize = true;
             this.Config_HPE_old.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Config_HPE_old.Location = new System.Drawing.Point(664, 162);
             this.Config_HPE_old.Name = "Config_HPE_old";
@@ -3181,6 +3218,8 @@ namespace MasterSheetNew
             // 
             // Config_HPE
             // 
+            this.Config_HPE.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Config_HPE.AutoSize = true;
             this.Config_HPE.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Config_HPE.Location = new System.Drawing.Point(455, 162);
             this.Config_HPE.Name = "Config_HPE";
@@ -3192,6 +3231,8 @@ namespace MasterSheetNew
             // 
             // Config_Cisco
             // 
+            this.Config_Cisco.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Config_Cisco.AutoSize = true;
             this.Config_Cisco.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Config_Cisco.Location = new System.Drawing.Point(249, 162);
             this.Config_Cisco.Name = "Config_Cisco";
@@ -3200,6 +3241,32 @@ namespace MasterSheetNew
             this.Config_Cisco.Text = "Cisco";
             this.Config_Cisco.UseVisualStyleBackColor = true;
             this.Config_Cisco.Click += new System.EventHandler(this.Cisco_Button_Click);
+            // 
+            // Config_Aligera
+            // 
+            this.Config_Aligera.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Config_Aligera.AutoSize = true;
+            this.Config_Aligera.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Config_Aligera.Location = new System.Drawing.Point(350, 264);
+            this.Config_Aligera.Name = "Config_Aligera";
+            this.Config_Aligera.Size = new System.Drawing.Size(171, 60);
+            this.Config_Aligera.TabIndex = 16;
+            this.Config_Aligera.Text = "Aligera";
+            this.Config_Aligera.UseVisualStyleBackColor = true;
+            this.Config_Aligera.Click += new System.EventHandler(this.Config_Aligera_Click);
+            // 
+            // Config_Digistar
+            // 
+            this.Config_Digistar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Config_Digistar.AutoSize = true;
+            this.Config_Digistar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Config_Digistar.Location = new System.Drawing.Point(572, 264);
+            this.Config_Digistar.Name = "Config_Digistar";
+            this.Config_Digistar.Size = new System.Drawing.Size(171, 60);
+            this.Config_Digistar.TabIndex = 17;
+            this.Config_Digistar.Text = "Digistar";
+            this.Config_Digistar.UseVisualStyleBackColor = true;
+            this.Config_Digistar.Click += new System.EventHandler(this.Config_Digistar_Click);
             // 
             // ClientStepsPage
             // 
@@ -3239,7 +3306,7 @@ namespace MasterSheetNew
             this.WizGat_Row.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.WizGat_Row.BackColor = System.Drawing.Color.Gray;
-            this.WizGat_Row.Location = new System.Drawing.Point(175, 241);
+            this.WizGat_Row.Location = new System.Drawing.Point(175, 239);
             this.WizGat_Row.MaximumSize = new System.Drawing.Size(2000, 1);
             this.WizGat_Row.MinimumSize = new System.Drawing.Size(500, 1);
             this.WizGat_Row.Name = "WizGat_Row";
@@ -3249,6 +3316,8 @@ namespace MasterSheetNew
             // 
             // WizGat_LogButton
             // 
+            this.WizGat_LogButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.WizGat_LogButton.AutoSize = true;
             this.WizGat_LogButton.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WizGat_LogButton.Location = new System.Drawing.Point(976, 9);
             this.WizGat_LogButton.Name = "WizGat_LogButton";
@@ -3401,7 +3470,6 @@ namespace MasterSheetNew
             this.tabLogs.Controls.Add(this.Logs_VOZ_Cisco);
             this.tabLogs.Controls.Add(this.Logs_MPLS_Huawei);
             this.tabLogs.Controls.Add(this.Logs_Ligacao);
-            this.tabLogs.Controls.Add(this.Logs_BLD_Huawei);
             this.tabLogs.Controls.Add(this.Logs_MPLS_Fortigate);
             this.tabLogs.Controls.Add(this.Logs_SubTitle2);
             this.tabLogs.Controls.Add(this.Logs_BLD_Fortigate);
@@ -3416,9 +3484,10 @@ namespace MasterSheetNew
             this.tabLogs.Controls.Add(this.Logs_HomeButton);
             this.tabLogs.Controls.Add(this.Logs_Title);
             this.tabLogs.Controls.Add(this.Logs_Cisco_BLD);
-            this.tabLogs.Controls.Add(this.row6);
+            this.tabLogs.Controls.Add(this.LogsRow2);
             this.tabLogs.Controls.Add(this.LogsRow1);
             this.tabLogs.Controls.Add(this.LogsRow0);
+            this.tabLogs.Controls.Add(this.Logs_BLD_Huawei);
             this.tabLogs.Location = new System.Drawing.Point(4, 5);
             this.tabLogs.Name = "tabLogs";
             this.tabLogs.Padding = new System.Windows.Forms.Padding(3);
@@ -3429,6 +3498,7 @@ namespace MasterSheetNew
             // 
             // Logs_WizGat
             // 
+            this.Logs_WizGat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Logs_WizGat.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logs_WizGat.Location = new System.Drawing.Point(946, 21);
             this.Logs_WizGat.Name = "Logs_WizGat";
@@ -3440,8 +3510,10 @@ namespace MasterSheetNew
             // 
             // Logs_VOZ_Broadsoft
             // 
+            this.Logs_VOZ_Broadsoft.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_VOZ_Broadsoft.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logs_VOZ_Broadsoft.Location = new System.Drawing.Point(780, 281);
+            this.Logs_VOZ_Broadsoft.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_VOZ_Broadsoft.Name = "Logs_VOZ_Broadsoft";
             this.Logs_VOZ_Broadsoft.Size = new System.Drawing.Size(171, 60);
             this.Logs_VOZ_Broadsoft.TabIndex = 31;
@@ -3451,8 +3523,10 @@ namespace MasterSheetNew
             // 
             // Logs_VOZ_Digistar
             // 
+            this.Logs_VOZ_Digistar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_VOZ_Digistar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logs_VOZ_Digistar.Location = new System.Drawing.Point(574, 350);
+            this.Logs_VOZ_Digistar.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_VOZ_Digistar.Name = "Logs_VOZ_Digistar";
             this.Logs_VOZ_Digistar.Size = new System.Drawing.Size(171, 60);
             this.Logs_VOZ_Digistar.TabIndex = 30;
@@ -3462,8 +3536,10 @@ namespace MasterSheetNew
             // 
             // Logs_VOZ_HPE
             // 
+            this.Logs_VOZ_HPE.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_VOZ_HPE.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logs_VOZ_HPE.Location = new System.Drawing.Point(574, 213);
+            this.Logs_VOZ_HPE.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_VOZ_HPE.Name = "Logs_VOZ_HPE";
             this.Logs_VOZ_HPE.Size = new System.Drawing.Size(171, 60);
             this.Logs_VOZ_HPE.TabIndex = 29;
@@ -3473,8 +3549,11 @@ namespace MasterSheetNew
             // 
             // Logs_VOZ_Cisco
             // 
+            this.Logs_VOZ_Cisco.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Logs_VOZ_Cisco.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Logs_VOZ_Cisco.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logs_VOZ_Cisco.Location = new System.Drawing.Point(574, 144);
+            this.Logs_VOZ_Cisco.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_VOZ_Cisco.Name = "Logs_VOZ_Cisco";
             this.Logs_VOZ_Cisco.Size = new System.Drawing.Size(171, 60);
             this.Logs_VOZ_Cisco.TabIndex = 28;
@@ -3484,8 +3563,10 @@ namespace MasterSheetNew
             // 
             // Logs_MPLS_Huawei
             // 
+            this.Logs_MPLS_Huawei.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_MPLS_Huawei.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_MPLS_Huawei.Location = new System.Drawing.Point(363, 350);
+            this.Logs_MPLS_Huawei.Location = new System.Drawing.Point(363, 281);
+            this.Logs_MPLS_Huawei.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_MPLS_Huawei.Name = "Logs_MPLS_Huawei";
             this.Logs_MPLS_Huawei.Size = new System.Drawing.Size(171, 60);
             this.Logs_MPLS_Huawei.TabIndex = 27;
@@ -3495,8 +3576,10 @@ namespace MasterSheetNew
             // 
             // Logs_Ligacao
             // 
+            this.Logs_Ligacao.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Ligacao.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logs_Ligacao.Location = new System.Drawing.Point(780, 144);
+            this.Logs_Ligacao.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_Ligacao.Name = "Logs_Ligacao";
             this.Logs_Ligacao.Size = new System.Drawing.Size(171, 60);
             this.Logs_Ligacao.TabIndex = 26;
@@ -3504,21 +3587,12 @@ namespace MasterSheetNew
             this.Logs_Ligacao.UseVisualStyleBackColor = true;
             this.Logs_Ligacao.Click += new System.EventHandler(this.Logs_Ligacao_Click);
             // 
-            // Logs_BLD_Huawei
-            // 
-            this.Logs_BLD_Huawei.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_BLD_Huawei.Location = new System.Drawing.Point(147, 350);
-            this.Logs_BLD_Huawei.Name = "Logs_BLD_Huawei";
-            this.Logs_BLD_Huawei.Size = new System.Drawing.Size(171, 60);
-            this.Logs_BLD_Huawei.TabIndex = 25;
-            this.Logs_BLD_Huawei.Text = "Huawei";
-            this.Logs_BLD_Huawei.UseVisualStyleBackColor = true;
-            this.Logs_BLD_Huawei.Click += new System.EventHandler(this.Logs_BLD_Huawei_Click);
-            // 
             // Logs_MPLS_Fortigate
             // 
+            this.Logs_MPLS_Fortigate.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_MPLS_Fortigate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_MPLS_Fortigate.Location = new System.Drawing.Point(363, 281);
+            this.Logs_MPLS_Fortigate.Location = new System.Drawing.Point(363, 350);
+            this.Logs_MPLS_Fortigate.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_MPLS_Fortigate.Name = "Logs_MPLS_Fortigate";
             this.Logs_MPLS_Fortigate.Size = new System.Drawing.Size(171, 60);
             this.Logs_MPLS_Fortigate.TabIndex = 24;
@@ -3528,6 +3602,7 @@ namespace MasterSheetNew
             // 
             // Logs_SubTitle2
             // 
+            this.Logs_SubTitle2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_SubTitle2.AutoSize = true;
             this.Logs_SubTitle2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logs_SubTitle2.Location = new System.Drawing.Point(639, 101);
@@ -3538,8 +3613,10 @@ namespace MasterSheetNew
             // 
             // Logs_BLD_Fortigate
             // 
+            this.Logs_BLD_Fortigate.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_BLD_Fortigate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_BLD_Fortigate.Location = new System.Drawing.Point(147, 281);
+            this.Logs_BLD_Fortigate.Location = new System.Drawing.Point(147, 350);
+            this.Logs_BLD_Fortigate.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_BLD_Fortigate.Name = "Logs_BLD_Fortigate";
             this.Logs_BLD_Fortigate.Size = new System.Drawing.Size(171, 60);
             this.Logs_BLD_Fortigate.TabIndex = 21;
@@ -3549,8 +3626,10 @@ namespace MasterSheetNew
             // 
             // Logs_Velo
             // 
+            this.Logs_Velo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Velo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logs_Velo.Location = new System.Drawing.Point(780, 213);
+            this.Logs_Velo.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_Velo.Name = "Logs_Velo";
             this.Logs_Velo.Size = new System.Drawing.Size(171, 60);
             this.Logs_Velo.TabIndex = 18;
@@ -3560,6 +3639,7 @@ namespace MasterSheetNew
             // 
             // Logs_SubTitle4
             // 
+            this.Logs_SubTitle4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_SubTitle4.AutoSize = true;
             this.Logs_SubTitle4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logs_SubTitle4.Location = new System.Drawing.Point(820, 101);
@@ -3570,6 +3650,7 @@ namespace MasterSheetNew
             // 
             // Logs_SubTitle1
             // 
+            this.Logs_SubTitle1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_SubTitle1.AutoSize = true;
             this.Logs_SubTitle1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logs_SubTitle1.Location = new System.Drawing.Point(416, 101);
@@ -3580,6 +3661,7 @@ namespace MasterSheetNew
             // 
             // Logs_SubTitle0
             // 
+            this.Logs_SubTitle0.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_SubTitle0.AutoSize = true;
             this.Logs_SubTitle0.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logs_SubTitle0.Location = new System.Drawing.Point(206, 101);
@@ -3590,8 +3672,10 @@ namespace MasterSheetNew
             // 
             // Logs_HPE_MPLS
             // 
+            this.Logs_HPE_MPLS.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_HPE_MPLS.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logs_HPE_MPLS.Location = new System.Drawing.Point(363, 213);
+            this.Logs_HPE_MPLS.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_HPE_MPLS.Name = "Logs_HPE_MPLS";
             this.Logs_HPE_MPLS.Size = new System.Drawing.Size(171, 60);
             this.Logs_HPE_MPLS.TabIndex = 14;
@@ -3601,8 +3685,10 @@ namespace MasterSheetNew
             // 
             // Logs_Cisco_MPLS
             // 
+            this.Logs_Cisco_MPLS.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Cisco_MPLS.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logs_Cisco_MPLS.Location = new System.Drawing.Point(363, 144);
+            this.Logs_Cisco_MPLS.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_Cisco_MPLS.Name = "Logs_Cisco_MPLS";
             this.Logs_Cisco_MPLS.Size = new System.Drawing.Size(171, 60);
             this.Logs_Cisco_MPLS.TabIndex = 13;
@@ -3612,8 +3698,10 @@ namespace MasterSheetNew
             // 
             // Logs_VOZ_Aligera
             // 
+            this.Logs_VOZ_Aligera.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_VOZ_Aligera.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logs_VOZ_Aligera.Location = new System.Drawing.Point(574, 281);
+            this.Logs_VOZ_Aligera.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_VOZ_Aligera.Name = "Logs_VOZ_Aligera";
             this.Logs_VOZ_Aligera.Size = new System.Drawing.Size(171, 60);
             this.Logs_VOZ_Aligera.TabIndex = 10;
@@ -3623,8 +3711,10 @@ namespace MasterSheetNew
             // 
             // Logs_HPE_BLD
             // 
+            this.Logs_HPE_BLD.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_HPE_BLD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logs_HPE_BLD.Location = new System.Drawing.Point(147, 213);
+            this.Logs_HPE_BLD.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_HPE_BLD.Name = "Logs_HPE_BLD";
             this.Logs_HPE_BLD.Size = new System.Drawing.Size(171, 60);
             this.Logs_HPE_BLD.TabIndex = 9;
@@ -3660,8 +3750,11 @@ namespace MasterSheetNew
             // 
             // Logs_Cisco_BLD
             // 
+            this.Logs_Cisco_BLD.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Logs_Cisco_BLD.AutoSize = true;
             this.Logs_Cisco_BLD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logs_Cisco_BLD.Location = new System.Drawing.Point(147, 144);
+            this.Logs_Cisco_BLD.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_Cisco_BLD.Name = "Logs_Cisco_BLD";
             this.Logs_Cisco_BLD.Size = new System.Drawing.Size(171, 60);
             this.Logs_Cisco_BLD.TabIndex = 2;
@@ -3669,17 +3762,19 @@ namespace MasterSheetNew
             this.Logs_Cisco_BLD.UseVisualStyleBackColor = true;
             this.Logs_Cisco_BLD.Click += new System.EventHandler(this.Logs_Cisco_BLD_Click);
             // 
-            // row6
+            // LogsRow2
             // 
-            this.row6.BackColor = System.Drawing.Color.Gray;
-            this.row6.Location = new System.Drawing.Point(762, 121);
-            this.row6.Name = "row6";
-            this.row6.Size = new System.Drawing.Size(1, 303);
-            this.row6.TabIndex = 23;
-            this.row6.TabStop = false;
+            this.LogsRow2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.LogsRow2.BackColor = System.Drawing.Color.Gray;
+            this.LogsRow2.Location = new System.Drawing.Point(762, 121);
+            this.LogsRow2.Name = "LogsRow2";
+            this.LogsRow2.Size = new System.Drawing.Size(1, 303);
+            this.LogsRow2.TabIndex = 23;
+            this.LogsRow2.TabStop = false;
             // 
             // LogsRow1
             // 
+            this.LogsRow1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.LogsRow1.BackColor = System.Drawing.Color.Gray;
             this.LogsRow1.Location = new System.Drawing.Point(555, 121);
             this.LogsRow1.Name = "LogsRow1";
@@ -3689,12 +3784,26 @@ namespace MasterSheetNew
             // 
             // LogsRow0
             // 
+            this.LogsRow0.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.LogsRow0.BackColor = System.Drawing.Color.Gray;
             this.LogsRow0.Location = new System.Drawing.Point(340, 121);
             this.LogsRow0.Name = "LogsRow0";
             this.LogsRow0.Size = new System.Drawing.Size(1, 303);
             this.LogsRow0.TabIndex = 11;
             this.LogsRow0.TabStop = false;
+            // 
+            // Logs_BLD_Huawei
+            // 
+            this.Logs_BLD_Huawei.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Logs_BLD_Huawei.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Logs_BLD_Huawei.Location = new System.Drawing.Point(147, 281);
+            this.Logs_BLD_Huawei.MaximumSize = new System.Drawing.Size(242, 120);
+            this.Logs_BLD_Huawei.Name = "Logs_BLD_Huawei";
+            this.Logs_BLD_Huawei.Size = new System.Drawing.Size(171, 60);
+            this.Logs_BLD_Huawei.TabIndex = 25;
+            this.Logs_BLD_Huawei.Text = "Huawei";
+            this.Logs_BLD_Huawei.UseVisualStyleBackColor = true;
+            this.Logs_BLD_Huawei.Click += new System.EventHandler(this.Logs_BLD_Huawei_Click);
             // 
             // tabVelocloud
             // 
@@ -4758,7 +4867,6 @@ namespace MasterSheetNew
             // 
             // tabOutros
             // 
-            this.tabOutros.Controls.Add(this.Outros_DebugButton);
             this.tabOutros.Controls.Add(this.button2);
             this.tabOutros.Controls.Add(this.Outros_VarEx5);
             this.tabOutros.Controls.Add(this.Outros_VarDelete5);
@@ -4780,7 +4888,6 @@ namespace MasterSheetNew
             this.tabOutros.Controls.Add(this.Outros_QoSCalcEx);
             this.tabOutros.Controls.Add(this.Outros_QoSCalcLabel);
             this.tabOutros.Controls.Add(this.Outros_QoSCalcText);
-            this.tabOutros.Controls.Add(this.Outros_VarDeleteQoS);
             this.tabOutros.Controls.Add(this.Outros_VarDeleteQoS8);
             this.tabOutros.Controls.Add(this.Outros_VarTextQoS08);
             this.tabOutros.Controls.Add(this.Outros_VarNameQoS8);
@@ -4794,7 +4901,6 @@ namespace MasterSheetNew
             this.tabOutros.Controls.Add(this.Outros_VarDeleteQoS2);
             this.tabOutros.Controls.Add(this.Outros_VarDeleteQoS4);
             this.tabOutros.Controls.Add(this.Outros_VarDeleteQoS1);
-            this.tabOutros.Controls.Add(this.Outros_VarDeleteQoS0);
             this.tabOutros.Controls.Add(this.Outros_VarTextQoS05);
             this.tabOutros.Controls.Add(this.Outros_VarTextQoS02);
             this.tabOutros.Controls.Add(this.Outros_VarTextQoS04);
@@ -4839,6 +4945,8 @@ namespace MasterSheetNew
             this.tabOutros.Controls.Add(this.Outros_VarText00);
             this.tabOutros.Controls.Add(this.Outros_FinalTextBox);
             this.tabOutros.Controls.Add(this.OutrosTitle);
+            this.tabOutros.Controls.Add(this.Outros_VarDeleteQoS);
+            this.tabOutros.Controls.Add(this.Outros_VarDeleteQoS0);
             this.tabOutros.Location = new System.Drawing.Point(4, 5);
             this.tabOutros.Name = "tabOutros";
             this.tabOutros.Padding = new System.Windows.Forms.Padding(3);
@@ -4847,20 +4955,11 @@ namespace MasterSheetNew
             this.tabOutros.Text = "Outras Configuracoes";
             this.tabOutros.UseVisualStyleBackColor = true;
             // 
-            // Outros_DebugButton
-            // 
-            this.Outros_DebugButton.Font = new System.Drawing.Font("Segoe UI Semibold", 13.25F, System.Drawing.FontStyle.Bold);
-            this.Outros_DebugButton.Location = new System.Drawing.Point(237, 32);
-            this.Outros_DebugButton.Name = "Outros_DebugButton";
-            this.Outros_DebugButton.Size = new System.Drawing.Size(104, 43);
-            this.Outros_DebugButton.TabIndex = 194;
-            this.Outros_DebugButton.Text = "Debug";
-            this.Outros_DebugButton.UseVisualStyleBackColor = true;
-            // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(951, 21);
+            this.button2.Location = new System.Drawing.Point(960, 13);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(138, 37);
             this.button2.TabIndex = 193;
@@ -4870,6 +4969,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarEx5
             // 
+            this.Outros_VarEx5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarEx5.AutoSize = true;
             this.Outros_VarEx5.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarEx5.Location = new System.Drawing.Point(518, 337);
@@ -4880,6 +4980,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarDelete5
             // 
+            this.Outros_VarDelete5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarDelete5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarDelete5.Location = new System.Drawing.Point(486, 331);
             this.Outros_VarDelete5.Name = "Outros_VarDelete5";
@@ -4890,6 +4991,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarText05
             // 
+            this.Outros_VarText05.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarText05.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarText05.Location = new System.Drawing.Point(351, 330);
             this.Outros_VarText05.Name = "Outros_VarText05";
@@ -4898,6 +5000,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarName5
             // 
+            this.Outros_VarName5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarName5.AutoSize = true;
             this.Outros_VarName5.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Outros_VarName5.Location = new System.Drawing.Point(236, 334);
@@ -4908,6 +5011,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarTextPercQoS03
             // 
+            this.Outros_VarTextPercQoS03.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarTextPercQoS03.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarTextPercQoS03.Location = new System.Drawing.Point(367, 289);
             this.Outros_VarTextPercQoS03.Name = "Outros_VarTextPercQoS03";
@@ -4917,6 +5021,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarTextPercQoS06
             // 
+            this.Outros_VarTextPercQoS06.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarTextPercQoS06.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarTextPercQoS06.Location = new System.Drawing.Point(367, 381);
             this.Outros_VarTextPercQoS06.Name = "Outros_VarTextPercQoS06";
@@ -4926,6 +5031,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarTextPercQoS05
             // 
+            this.Outros_VarTextPercQoS05.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarTextPercQoS05.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarTextPercQoS05.Location = new System.Drawing.Point(367, 350);
             this.Outros_VarTextPercQoS05.Name = "Outros_VarTextPercQoS05";
@@ -4935,6 +5041,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarTextPercQoS02
             // 
+            this.Outros_VarTextPercQoS02.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarTextPercQoS02.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarTextPercQoS02.Location = new System.Drawing.Point(367, 259);
             this.Outros_VarTextPercQoS02.Name = "Outros_VarTextPercQoS02";
@@ -4944,6 +5051,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarTextPercQoS04
             // 
+            this.Outros_VarTextPercQoS04.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarTextPercQoS04.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarTextPercQoS04.Location = new System.Drawing.Point(367, 320);
             this.Outros_VarTextPercQoS04.Name = "Outros_VarTextPercQoS04";
@@ -4953,6 +5061,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarTextPercQoS01
             // 
+            this.Outros_VarTextPercQoS01.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarTextPercQoS01.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarTextPercQoS01.Location = new System.Drawing.Point(367, 228);
             this.Outros_VarTextPercQoS01.Name = "Outros_VarTextPercQoS01";
@@ -4962,6 +5071,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarTextPercQoS00
             // 
+            this.Outros_VarTextPercQoS00.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarTextPercQoS00.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarTextPercQoS00.Location = new System.Drawing.Point(367, 198);
             this.Outros_VarTextPercQoS00.Name = "Outros_VarTextPercQoS00";
@@ -4971,6 +5081,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarDeleteQoS3
             // 
+            this.Outros_VarDeleteQoS3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarDeleteQoS3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarDeleteQoS3.Location = new System.Drawing.Point(485, 290);
             this.Outros_VarDeleteQoS3.Name = "Outros_VarDeleteQoS3";
@@ -4982,6 +5093,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarTextQoS03
             // 
+            this.Outros_VarTextQoS03.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarTextQoS03.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarTextQoS03.Location = new System.Drawing.Point(404, 289);
             this.Outros_VarTextQoS03.Name = "Outros_VarTextQoS03";
@@ -4991,6 +5103,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarNameQoS3
             // 
+            this.Outros_VarNameQoS3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarNameQoS3.AutoSize = true;
             this.Outros_VarNameQoS3.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Outros_VarNameQoS3.Location = new System.Drawing.Point(280, 293);
@@ -5001,6 +5114,7 @@ namespace MasterSheetNew
             // 
             // Outros_QoSDispTotal
             // 
+            this.Outros_QoSDispTotal.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_QoSDispTotal.AutoSize = true;
             this.Outros_QoSDispTotal.Location = new System.Drawing.Point(328, 171);
             this.Outros_QoSDispTotal.Name = "Outros_QoSDispTotal";
@@ -5020,8 +5134,6 @@ namespace MasterSheetNew
             // 
             // label6
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(62, 82);
@@ -5033,6 +5145,7 @@ namespace MasterSheetNew
             // 
             // Outros_QoSCalcEx
             // 
+            this.Outros_QoSCalcEx.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_QoSCalcEx.AutoSize = true;
             this.Outros_QoSCalcEx.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_QoSCalcEx.Location = new System.Drawing.Point(368, 116);
@@ -5043,6 +5156,7 @@ namespace MasterSheetNew
             // 
             // Outros_QoSCalcLabel
             // 
+            this.Outros_QoSCalcLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_QoSCalcLabel.AutoSize = true;
             this.Outros_QoSCalcLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Outros_QoSCalcLabel.Location = new System.Drawing.Point(260, 137);
@@ -5053,6 +5167,7 @@ namespace MasterSheetNew
             // 
             // Outros_QoSCalcText
             // 
+            this.Outros_QoSCalcText.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_QoSCalcText.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_QoSCalcText.Location = new System.Drawing.Point(367, 134);
             this.Outros_QoSCalcText.Name = "Outros_QoSCalcText";
@@ -5062,6 +5177,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarDeleteQoS
             // 
+            this.Outros_VarDeleteQoS.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarDeleteQoS.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarDeleteQoS.Location = new System.Drawing.Point(404, 166);
             this.Outros_VarDeleteQoS.Name = "Outros_VarDeleteQoS";
@@ -5102,6 +5218,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarDeleteQoS7
             // 
+            this.Outros_VarDeleteQoS7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarDeleteQoS7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarDeleteQoS7.Location = new System.Drawing.Point(484, 413);
             this.Outros_VarDeleteQoS7.Name = "Outros_VarDeleteQoS7";
@@ -5113,6 +5230,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarTextQoS07
             // 
+            this.Outros_VarTextQoS07.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarTextQoS07.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarTextQoS07.Location = new System.Drawing.Point(342, 412);
             this.Outros_VarTextQoS07.Name = "Outros_VarTextQoS07";
@@ -5122,6 +5240,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarNameQoS7
             // 
+            this.Outros_VarNameQoS7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarNameQoS7.AutoSize = true;
             this.Outros_VarNameQoS7.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Outros_VarNameQoS7.Location = new System.Drawing.Point(260, 417);
@@ -5132,6 +5251,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarDeleteQoS6
             // 
+            this.Outros_VarDeleteQoS6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarDeleteQoS6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarDeleteQoS6.Location = new System.Drawing.Point(485, 382);
             this.Outros_VarDeleteQoS6.Name = "Outros_VarDeleteQoS6";
@@ -5143,6 +5263,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarTextQoS06
             // 
+            this.Outros_VarTextQoS06.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarTextQoS06.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarTextQoS06.Location = new System.Drawing.Point(404, 381);
             this.Outros_VarTextQoS06.Name = "Outros_VarTextQoS06";
@@ -5152,6 +5273,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarNameQoS6
             // 
+            this.Outros_VarNameQoS6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarNameQoS6.AutoSize = true;
             this.Outros_VarNameQoS6.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Outros_VarNameQoS6.Location = new System.Drawing.Point(279, 385);
@@ -5162,6 +5284,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarDeleteQoS5
             // 
+            this.Outros_VarDeleteQoS5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarDeleteQoS5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarDeleteQoS5.Location = new System.Drawing.Point(485, 351);
             this.Outros_VarDeleteQoS5.Name = "Outros_VarDeleteQoS5";
@@ -5173,6 +5296,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarDeleteQoS2
             // 
+            this.Outros_VarDeleteQoS2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarDeleteQoS2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarDeleteQoS2.Location = new System.Drawing.Point(485, 259);
             this.Outros_VarDeleteQoS2.Name = "Outros_VarDeleteQoS2";
@@ -5184,6 +5308,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarDeleteQoS4
             // 
+            this.Outros_VarDeleteQoS4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarDeleteQoS4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarDeleteQoS4.Location = new System.Drawing.Point(485, 321);
             this.Outros_VarDeleteQoS4.Name = "Outros_VarDeleteQoS4";
@@ -5195,6 +5320,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarDeleteQoS1
             // 
+            this.Outros_VarDeleteQoS1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarDeleteQoS1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarDeleteQoS1.Location = new System.Drawing.Point(485, 229);
             this.Outros_VarDeleteQoS1.Name = "Outros_VarDeleteQoS1";
@@ -5206,6 +5332,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarDeleteQoS0
             // 
+            this.Outros_VarDeleteQoS0.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarDeleteQoS0.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarDeleteQoS0.Location = new System.Drawing.Point(485, 199);
             this.Outros_VarDeleteQoS0.Name = "Outros_VarDeleteQoS0";
@@ -5217,6 +5344,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarTextQoS05
             // 
+            this.Outros_VarTextQoS05.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarTextQoS05.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarTextQoS05.Location = new System.Drawing.Point(404, 350);
             this.Outros_VarTextQoS05.Name = "Outros_VarTextQoS05";
@@ -5226,6 +5354,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarTextQoS02
             // 
+            this.Outros_VarTextQoS02.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarTextQoS02.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarTextQoS02.Location = new System.Drawing.Point(404, 259);
             this.Outros_VarTextQoS02.Name = "Outros_VarTextQoS02";
@@ -5235,6 +5364,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarTextQoS04
             // 
+            this.Outros_VarTextQoS04.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarTextQoS04.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarTextQoS04.Location = new System.Drawing.Point(404, 320);
             this.Outros_VarTextQoS04.Name = "Outros_VarTextQoS04";
@@ -5244,6 +5374,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarTextQoS01
             // 
+            this.Outros_VarTextQoS01.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarTextQoS01.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarTextQoS01.Location = new System.Drawing.Point(404, 228);
             this.Outros_VarTextQoS01.Name = "Outros_VarTextQoS01";
@@ -5253,6 +5384,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarNameQoS2
             // 
+            this.Outros_VarNameQoS2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarNameQoS2.AutoSize = true;
             this.Outros_VarNameQoS2.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Outros_VarNameQoS2.Location = new System.Drawing.Point(269, 262);
@@ -5263,6 +5395,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarNameQoS5
             // 
+            this.Outros_VarNameQoS5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarNameQoS5.AutoSize = true;
             this.Outros_VarNameQoS5.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Outros_VarNameQoS5.Location = new System.Drawing.Point(264, 354);
@@ -5273,6 +5406,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarNameQoS4
             // 
+            this.Outros_VarNameQoS4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarNameQoS4.AutoSize = true;
             this.Outros_VarNameQoS4.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Outros_VarNameQoS4.Location = new System.Drawing.Point(294, 324);
@@ -5283,6 +5417,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarNameQoS1
             // 
+            this.Outros_VarNameQoS1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarNameQoS1.AutoSize = true;
             this.Outros_VarNameQoS1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Outros_VarNameQoS1.Location = new System.Drawing.Point(290, 231);
@@ -5293,6 +5428,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarNameQoS0
             // 
+            this.Outros_VarNameQoS0.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarNameQoS0.AutoSize = true;
             this.Outros_VarNameQoS0.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarNameQoS0.Location = new System.Drawing.Point(297, 200);
@@ -5303,6 +5439,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarTextQoS00
             // 
+            this.Outros_VarTextQoS00.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarTextQoS00.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarTextQoS00.Location = new System.Drawing.Point(404, 198);
             this.Outros_VarTextQoS00.Name = "Outros_VarTextQoS00";
@@ -5312,6 +5449,7 @@ namespace MasterSheetNew
             // 
             // Outros_NumRegraLabel
             // 
+            this.Outros_NumRegraLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_NumRegraLabel.AutoSize = true;
             this.Outros_NumRegraLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_NumRegraLabel.Location = new System.Drawing.Point(245, 149);
@@ -5322,6 +5460,7 @@ namespace MasterSheetNew
             // 
             // Outros_NumDaRegraComboBox
             // 
+            this.Outros_NumDaRegraComboBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_NumDaRegraComboBox.FormattingEnabled = true;
             this.Outros_NumDaRegraComboBox.Items.AddRange(new object[] {
             "1",
@@ -5345,6 +5484,7 @@ namespace MasterSheetNew
             // 
             // Outros_TypeLabel
             // 
+            this.Outros_TypeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Outros_TypeLabel.AutoSize = true;
             this.Outros_TypeLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_TypeLabel.Location = new System.Drawing.Point(612, 117);
@@ -5355,6 +5495,7 @@ namespace MasterSheetNew
             // 
             // Outros_TypeComboBox
             // 
+            this.Outros_TypeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Outros_TypeComboBox.FormattingEnabled = true;
             this.Outros_TypeComboBox.Items.AddRange(new object[] {
             "Cisco",
@@ -5370,6 +5511,7 @@ namespace MasterSheetNew
             // 
             // Outros_ExSubTitle
             // 
+            this.Outros_ExSubTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_ExSubTitle.AutoSize = true;
             this.Outros_ExSubTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_ExSubTitle.Location = new System.Drawing.Point(517, 149);
@@ -5380,6 +5522,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarEx4
             // 
+            this.Outros_VarEx4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarEx4.AutoSize = true;
             this.Outros_VarEx4.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarEx4.Location = new System.Drawing.Point(518, 306);
@@ -5390,6 +5533,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarEx3
             // 
+            this.Outros_VarEx3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarEx3.AutoSize = true;
             this.Outros_VarEx3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarEx3.Location = new System.Drawing.Point(517, 278);
@@ -5400,6 +5544,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarEx2
             // 
+            this.Outros_VarEx2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarEx2.AutoSize = true;
             this.Outros_VarEx2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarEx2.Location = new System.Drawing.Point(517, 247);
@@ -5410,6 +5555,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarEx1
             // 
+            this.Outros_VarEx1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarEx1.AutoSize = true;
             this.Outros_VarEx1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarEx1.Location = new System.Drawing.Point(517, 212);
@@ -5420,6 +5566,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarEx0
             // 
+            this.Outros_VarEx0.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarEx0.AutoSize = true;
             this.Outros_VarEx0.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarEx0.Location = new System.Drawing.Point(517, 182);
@@ -5430,6 +5577,7 @@ namespace MasterSheetNew
             // 
             // Outros_ButtonForCopy
             // 
+            this.Outros_ButtonForCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Outros_ButtonForCopy.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_ButtonForCopy.Location = new System.Drawing.Point(636, 143);
             this.Outros_ButtonForCopy.Name = "Outros_ButtonForCopy";
@@ -5441,6 +5589,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarDelete4
             // 
+            this.Outros_VarDelete4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarDelete4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarDelete4.Location = new System.Drawing.Point(486, 300);
             this.Outros_VarDelete4.Name = "Outros_VarDelete4";
@@ -5452,6 +5601,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarDelete3
             // 
+            this.Outros_VarDelete3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarDelete3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarDelete3.Location = new System.Drawing.Point(486, 270);
             this.Outros_VarDelete3.Name = "Outros_VarDelete3";
@@ -5463,6 +5613,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarDelete2
             // 
+            this.Outros_VarDelete2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarDelete2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarDelete2.Location = new System.Drawing.Point(486, 240);
             this.Outros_VarDelete2.Name = "Outros_VarDelete2";
@@ -5474,6 +5625,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarDelete1
             // 
+            this.Outros_VarDelete1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarDelete1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarDelete1.Location = new System.Drawing.Point(486, 210);
             this.Outros_VarDelete1.Name = "Outros_VarDelete1";
@@ -5485,6 +5637,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarDelete0
             // 
+            this.Outros_VarDelete0.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarDelete0.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarDelete0.Location = new System.Drawing.Point(486, 180);
             this.Outros_VarDelete0.Name = "Outros_VarDelete0";
@@ -5496,6 +5649,7 @@ namespace MasterSheetNew
             // 
             // Outros_ButtonCopy
             // 
+            this.Outros_ButtonCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Outros_ButtonCopy.Font = new System.Drawing.Font("Segoe UI", 12.25F);
             this.Outros_ButtonCopy.Location = new System.Drawing.Point(636, 256);
             this.Outros_ButtonCopy.Name = "Outros_ButtonCopy";
@@ -5507,6 +5661,7 @@ namespace MasterSheetNew
             // 
             // Outros_ButtonFormat
             // 
+            this.Outros_ButtonFormat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Outros_ButtonFormat.Font = new System.Drawing.Font("Segoe UI", 12.25F);
             this.Outros_ButtonFormat.Location = new System.Drawing.Point(636, 199);
             this.Outros_ButtonFormat.Name = "Outros_ButtonFormat";
@@ -5518,6 +5673,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarDeleteAll
             // 
+            this.Outros_VarDeleteAll.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarDeleteAll.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarDeleteAll.Location = new System.Drawing.Point(427, 144);
             this.Outros_VarDeleteAll.Name = "Outros_VarDeleteAll";
@@ -5529,6 +5685,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarSubTitle
             // 
+            this.Outros_VarSubTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarSubTitle.AutoSize = true;
             this.Outros_VarSubTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarSubTitle.Location = new System.Drawing.Point(240, 137);
@@ -5539,6 +5696,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarText04
             // 
+            this.Outros_VarText04.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarText04.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarText04.Location = new System.Drawing.Point(351, 299);
             this.Outros_VarText04.Name = "Outros_VarText04";
@@ -5547,6 +5705,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarText03
             // 
+            this.Outros_VarText03.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarText03.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarText03.Location = new System.Drawing.Point(351, 270);
             this.Outros_VarText03.Name = "Outros_VarText03";
@@ -5555,6 +5714,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarText02
             // 
+            this.Outros_VarText02.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarText02.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarText02.Location = new System.Drawing.Point(351, 239);
             this.Outros_VarText02.Name = "Outros_VarText02";
@@ -5563,6 +5723,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarText01
             // 
+            this.Outros_VarText01.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarText01.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarText01.Location = new System.Drawing.Point(351, 209);
             this.Outros_VarText01.Name = "Outros_VarText01";
@@ -5571,6 +5732,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarName3
             // 
+            this.Outros_VarName3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarName3.AutoSize = true;
             this.Outros_VarName3.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Outros_VarName3.Location = new System.Drawing.Point(236, 274);
@@ -5581,6 +5743,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarName4
             // 
+            this.Outros_VarName4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarName4.AutoSize = true;
             this.Outros_VarName4.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Outros_VarName4.Location = new System.Drawing.Point(236, 303);
@@ -5591,6 +5754,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarName2
             // 
+            this.Outros_VarName2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarName2.AutoSize = true;
             this.Outros_VarName2.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Outros_VarName2.Location = new System.Drawing.Point(236, 243);
@@ -5601,6 +5765,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarName1
             // 
+            this.Outros_VarName1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarName1.AutoSize = true;
             this.Outros_VarName1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Outros_VarName1.Location = new System.Drawing.Point(236, 213);
@@ -5615,7 +5780,7 @@ namespace MasterSheetNew
             this.HomeButton_Outros.BackColor = System.Drawing.SystemColors.Highlight;
             this.HomeButton_Outros.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HomeButton_Outros.ForeColor = System.Drawing.Color.White;
-            this.HomeButton_Outros.Location = new System.Drawing.Point(16, 15);
+            this.HomeButton_Outros.Location = new System.Drawing.Point(13, 10);
             this.HomeButton_Outros.MaximumSize = new System.Drawing.Size(208, 86);
             this.HomeButton_Outros.Name = "HomeButton_Outros";
             this.HomeButton_Outros.Size = new System.Drawing.Size(104, 43);
@@ -5626,8 +5791,7 @@ namespace MasterSheetNew
             // 
             // label21
             // 
-            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.Location = new System.Drawing.Point(869, 82);
@@ -5638,6 +5802,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarName0
             // 
+            this.Outros_VarName0.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarName0.AutoSize = true;
             this.Outros_VarName0.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarName0.Location = new System.Drawing.Point(236, 182);
@@ -5648,6 +5813,7 @@ namespace MasterSheetNew
             // 
             // Outros_VarText00
             // 
+            this.Outros_VarText00.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_VarText00.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Outros_VarText00.Location = new System.Drawing.Point(351, 179);
             this.Outros_VarText00.Name = "Outros_VarText00";
@@ -5656,6 +5822,7 @@ namespace MasterSheetNew
             // 
             // Outros_FinalTextBox
             // 
+            this.Outros_FinalTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Outros_FinalTextBox.Location = new System.Drawing.Point(732, 144);
             this.Outros_FinalTextBox.Name = "Outros_FinalTextBox";
             this.Outros_FinalTextBox.Size = new System.Drawing.Size(350, 371);
@@ -5666,13 +5833,13 @@ namespace MasterSheetNew
             // 
             this.OutrosTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.OutrosTitle.AutoSize = true;
             this.OutrosTitle.Font = new System.Drawing.Font("Segoe UI", 22.75F, System.Drawing.FontStyle.Bold);
-            this.OutrosTitle.Location = new System.Drawing.Point(507, 28);
+            this.OutrosTitle.Location = new System.Drawing.Point(6, 10);
             this.OutrosTitle.Name = "OutrosTitle";
-            this.OutrosTitle.Size = new System.Drawing.Size(104, 42);
+            this.OutrosTitle.Size = new System.Drawing.Size(1097, 42);
             this.OutrosTitle.TabIndex = 0;
             this.OutrosTitle.Text = "Titulo";
+            this.OutrosTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tabSelectClient
             // 
@@ -6959,7 +7126,7 @@ namespace MasterSheetNew
             // LTCalc_Hint
             // 
             this.LTCalc_Hint.AutoSize = true;
-            this.LTCalc_Hint.Location = new System.Drawing.Point(343, 121);
+            this.LTCalc_Hint.Location = new System.Drawing.Point(330, 118);
             this.LTCalc_Hint.Name = "LTCalc_Hint";
             this.LTCalc_Hint.Size = new System.Drawing.Size(112, 17);
             this.LTCalc_Hint.TabIndex = 3;
@@ -7379,10 +7546,11 @@ namespace MasterSheetNew
             this.tabSelectRouter.ResumeLayout(false);
             this.tabSelectRouter.PerformLayout();
             this.tabWizGat.ResumeLayout(false);
+            this.tabWizGat.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WizGat_Row)).EndInit();
             this.tabLogs.ResumeLayout(false);
             this.tabLogs.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.row6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogsRow2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LogsRow1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LogsRow0)).EndInit();
             this.tabVelocloud.ResumeLayout(false);
@@ -7561,7 +7729,7 @@ namespace MasterSheetNew
         private Button buttonOC_User;
         private Button buttonOC_DHCP;
         private Button buttonOC_IPsecundario;
-        private Button buttonOC_RotaEstatica;
+        private Button buttonOC_RegraAdicional;
         private Button buttonOC_Tacacs;
         private Button buttonOC_SNMP;
         private Button buttonOC_QoS;
@@ -7625,7 +7793,7 @@ namespace MasterSheetNew
         private Button Button_IOS;
         private TabPage tabPage2;
         private Button Logs_MPLS_Fortigate;
-        private PictureBox row6;
+        private PictureBox LogsRow2;
         private Label Logs_SubTitle2;
         private Button Logs_BLD_Fortigate;
         private Label Script_ModelLabel;
@@ -7996,7 +8164,6 @@ namespace MasterSheetNew
         private Button Client_ButtonRestore;
         private Button Script_DebugButton;
         private Button Script_TelnetButton;
-        private Button Outros_DebugButton;
         private Button LTCalc_ButtonCopy;
         private PictureBox Script_Row;
         private Button Script_DeleteVar03b;
@@ -8004,6 +8171,8 @@ namespace MasterSheetNew
         private Button Client_ButtonCopyForm;
         private Button Client_ButtonCopy;
         private Button Client_ButtonFormat;
+        private Button Script_TelnetButtonPlus;
+        private Button Script_TelnetButtonTACACS;
     }
 }
 

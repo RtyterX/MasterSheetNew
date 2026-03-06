@@ -23,7 +23,6 @@ namespace MasterSheetNew
 
         public void DebugText()
         {
-            MessageBox.Show(debugText);
             Debug_TextBox.Text = debugText;
         }
     }

@@ -54,9 +54,9 @@
             // 
             this.Scripts_BoxList.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Scripts_BoxList.FormattingEnabled = true;
-            this.Scripts_BoxList.Location = new System.Drawing.Point(386, 221);
+            this.Scripts_BoxList.Location = new System.Drawing.Point(402, 221);
             this.Scripts_BoxList.Name = "Scripts_BoxList";
-            this.Scripts_BoxList.Size = new System.Drawing.Size(423, 26);
+            this.Scripts_BoxList.Size = new System.Drawing.Size(388, 26);
             this.Scripts_BoxList.TabIndex = 1;
             this.Scripts_BoxList.SelectedIndexChanged += new System.EventHandler(this.Scripts_BoxList_SelectedIndexChanged);
             // 

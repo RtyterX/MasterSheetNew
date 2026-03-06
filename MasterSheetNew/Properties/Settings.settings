@@ -428,5 +428,8 @@ end
     <Setting Name="debugFortigate" Type="System.String" Scope="User">
       <Value Profile="(Default)">Debug Fortigate here</Value>
     </Setting>
+    <Setting Name="enableTest" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

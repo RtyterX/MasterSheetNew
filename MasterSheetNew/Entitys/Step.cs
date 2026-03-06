@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +13,11 @@ namespace WindowsFormsApp1.Entitys
         public int number;
         public string text;
         public Script script;
-        public PictureBox image;
+        public Bitmap image;
         public bool restore;
         public int client_Id;
     
-        public Step(int number, string text, Script script, PictureBox image, bool restore, int client_Id)
+        public Step(int number, string text, Script script, Bitmap image, bool restore, int client_Id)
         {
             this.number = number;
             this.text = text;

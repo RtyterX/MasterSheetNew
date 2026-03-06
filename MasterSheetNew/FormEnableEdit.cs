@@ -24,11 +24,27 @@ namespace MasterSheetNew
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if(PasswordTextBox.Text == "Nicholas67")
+                if (PasswordTextBox.Text == "KauanGostoso")
+                {
+                    mainPage.EnableImportSAIP();
+                    mainPage.CheckCanImportFromSAIP();
+                    MessageBox.Show("Import SAIP Habilitado");
+                    this.Close();
+                }
+                else if (PasswordTextBox.Text == "Nicholas67")
                 {
                     mainPage.EnableEditing();
                     mainPage.CheckCanImportFromSAIP();
                     MessageBox.Show("Edição de Scripts Habilitada");
+                    this.Close();
+                }
+                else if (PasswordTextBox.Text == "JohnMemesJohn")
+                {
+                    mainPage.EnableTesting();
+                    mainPage.EnableEditing();
+                    mainPage.CheckCanImportFromSAIP();
+                    mainPage.CheckCanTestUI();
+                    MessageBox.Show("Botões para Teste Habilitados");
                     this.Close();
                 }
                 else
