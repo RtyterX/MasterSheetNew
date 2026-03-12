@@ -1,34 +1,13 @@
-﻿using Google.Protobuf.WellKnownTypes;
-using MasterSheetNew.Entitys;
-using Microsoft.Win32;
-using MySql.Data.MySqlClient;
-using Mysqlx.Crud;
-using Mysqlx.Session;
+﻿using MasterSheetNew.Entitys;
 using MySqlX.XDevAPI;
-using MySqlX.XDevAPI.Relational;
-using Org.BouncyCastle.Crypto.Engines;
-using Org.BouncyCastle.Crypto.Generators;
 using System;
 using System.IO;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Media;
-using System.Net;
-using System.Runtime.ConstrainedExecution;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 using WindowsFormsApp1.Entitys;
-using static Org.BouncyCastle.Math.EC.ECCurve;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 
 namespace MasterSheetNew
@@ -1266,7 +1245,7 @@ namespace MasterSheetNew
                 {
                     Script_TextBox.Text = Script_TextBox.Text.Replace("telsource", "");
                     Script_TextBox.Text = Script_TextBox.Text.Replace("infosource", "");
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "#\r\n");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "#");
                 }
 
                 buttonSwitchScriptLog.Hide();
@@ -1306,7 +1285,7 @@ namespace MasterSheetNew
                 }
                 else
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "#\r\n");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "#");
                     Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "");
                 }
 
@@ -1367,7 +1346,7 @@ namespace MasterSheetNew
                 }
                 else
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "#\r\n");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "#");
                 }
 
             }
@@ -1394,7 +1373,7 @@ namespace MasterSheetNew
                 }
                 else
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "#\r\n");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "#");
                 }
 
             }
@@ -1426,7 +1405,7 @@ namespace MasterSheetNew
                 {
                     Script_TextBox.Text = Script_TextBox.Text.Replace("telsource", "");
                     Script_TextBox.Text = Script_TextBox.Text.Replace("infosource", "");
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "#\r\n");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "#");
                 }
             }
             // ------------------------------------------- Config - Fortigate - MPLS ------------------------------------------------
@@ -1462,7 +1441,7 @@ namespace MasterSheetNew
                 }
                 else
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "# \r\n");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "#");
                 }
 
                 Script_TextBox.Text = Script_TextBox.Text.Replace("var08", GetBackboneInterfaceIP(Script_VarText07.Text, false));
@@ -1502,22 +1481,31 @@ namespace MasterSheetNew
             // ------------------------------------------- Config - Cisco - VOZ -----------------------------------------------------
             else if ((routerType == RouterType.Cisco) && (activityType == ActivityType.VOZ) && backboneOrNot == false && procedureType == ProcedureType.Config)
             {
-                MessageBox.Show("Config  de Voz não Implementada");
                 Script_ProcedureName.Text = "CONFIG - CISCO - VOZ";
 
                 VarScriptDisplayControl(scripts[10].variables);
 
-                ExtraVariablesControl(false, false, false, false, false, false);
-
-                ApplyScript(scripts[10]);
+                ExtraVariablesControl(false, false, true, false, false, false);
 
                 // Sinalização
                 if (Script_SinalizBox.SelectedIndex == 0 || Script_SinalizBox.SelectedIndex == 1)
                 {
                     MessageBox.Show("R2 e ISDN ainda em desenvolvimento");
-                    string sinalizacao = "";
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("sinalizacao", sinalizacao);
+                    if (Script_ISRBox.SelectedIndex == 1)
+                    {
+                        ApplyScript(scripts[10]);
 
+                        string sinalizacao = "";
+                        Script_TextBox.Text = Script_TextBox.Text.Replace("sinalizacao", sinalizacao);
+                    }
+                    else
+                    {
+                        ApplyScript(scripts[11]);
+
+                        string sinalizacao = "";
+                        Script_TextBox.Text = Script_TextBox.Text.Replace("sinalizacao", sinalizacao);
+                    }
+                    
                 }
                 else if (Script_SinalizBox.SelectedIndex == 2)
                 {
@@ -1532,7 +1520,7 @@ namespace MasterSheetNew
                         "show interface " + Script_VarText04.Text + "\r\n" +
                         "!\r\n" +
                         "!\r\n" +
-                        "!\r\n");
+                        "!");
                 }
                 else
                 {
@@ -1543,17 +1531,17 @@ namespace MasterSheetNew
             else if ((routerType == RouterType.HPE) && (activityType == ActivityType.VOZ) && backboneOrNot == false && procedureType == ProcedureType.Config)
             {
                 Script_ProcedureName.Text = "CONFIG - HPE - VOZ";
-                MessageBox.Show("Config  de Voz não Implementada");
+ 
                 VarScriptDisplayControl(scripts[11].variables);
 
-                ExtraVariablesControl(false, false, false, false, false, false);
-
-                ApplyScript(scripts[13]);
+                ExtraVariablesControl(false, false, false, false, false, false); 
 
                 // Sinalização
                 if (Script_SinalizBox.SelectedIndex == 0 || Script_SinalizBox.SelectedIndex == 1)
                 {
                     MessageBox.Show("R2 e ISDN ainda em desenvolvimento");
+                    ApplyScript(scripts[13]);
+
                     string sinalizacao = "";
                     Script_TextBox.Text = Script_TextBox.Text.Replace("sinalizacao", sinalizacao);
 
@@ -2204,7 +2192,7 @@ namespace MasterSheetNew
                 else
                 {
                     Script_TextBox.Text = Script_TextBox.Text.Replace("pabxip", "!");
-                    string sinalizacao = "\r\n!#######################################\r\n!#             STATUS E1               #\r\n!#######################################\r\n!\r\nshow controller e1\r\n!\r\n!\r\n!";
+                    string sinalizacao = "!#######################################\r\n!#             STATUS E1               #\r\n!#######################################\r\n!\r\nshow controller e1\r\n!\r\n!\r\n!";
                     Script_TextBox.Text = Script_TextBox.Text.Replace("sinalizacao", sinalizacao);
                     Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "");
                 }
@@ -2239,11 +2227,11 @@ namespace MasterSheetNew
                         "display interface " + Script_VarText04.Text + "\r\n" +
                         "#\r\n" +
                         "#\r\n" +
-                        "#\r\n");
+                        "#");
                 }
                 else
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("vlanWan", "!\r\n");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("withVlan", "#");
                 }
 
                 // Sinalização
@@ -2256,11 +2244,11 @@ namespace MasterSheetNew
                         "#\r\n" +
                         "#");
                     Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "-a " + Script_VarText09.Text);
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("sinalizacao", "");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("sinalizacao", "#");
                 }
                 else
                 {
-                    Script_TextBox.Text = Script_TextBox.Text.Replace("pabxip", "!");
+                    Script_TextBox.Text = Script_TextBox.Text.Replace("pabxip", "#");
                     string sinalizacao = "########################################\r\n#              STATUS E1               #\r\n########################################\r\n#\r\ndisplay controller e1\r\n#\r\n#\r\n#";
                     Script_TextBox.Text = Script_TextBox.Text.Replace("sinalizacao", sinalizacao);
                     Script_TextBox.Text = Script_TextBox.Text.Replace("sourceLan", "");
@@ -2831,7 +2819,7 @@ namespace MasterSheetNew
 
         public void ApplyVozVariables()
         {
-            if (activityType == ActivityType.VOZ && procedureType != procedureType)
+            if (activityType == ActivityType.VOZ && procedureType == ProcedureType.Config)
             {
                 Script_VozTitleLabel.Show();
                 Script_SinalizSubTitle.Show();
@@ -3210,13 +3198,13 @@ namespace MasterSheetNew
                             MessageBox.Show(name[0].Trim());
                             Script_VarText00.Text = DoHostname(name[0]) + "-" + numero[2].Trim();
                         }
-                        else if (s.Contains("Designação IP"))
+                        if (s.Contains("Designação IP"))
                         {
                             // Designacação / Tronco-chave 
                             var = s.Replace("Designação IP", string.Empty).Trim();
                             numero = s.Split('/');
                         }
-                        else if (banda)
+                        if (banda)
                         {
                             if (s.Contains("Banda"))
                             {
@@ -3225,7 +3213,7 @@ namespace MasterSheetNew
                                 banda = false;
                             }
                         }
-                        else if (porta)
+                        if (porta)
                         {
                             if (s.Contains("Porta"))
                             {
@@ -3235,7 +3223,7 @@ namespace MasterSheetNew
                                 porta = false;
                             }
                         }
-                        else if (s.Contains("IP Serial Usuário (IPv4)"))
+                        if (s.Contains("IP Serial Usuário (IPv4)"))
                         {
                             // IPs do PE
                             var = s.Replace("IP Serial Usuário (IPv4)", string.Empty).Trim();
@@ -3243,7 +3231,7 @@ namespace MasterSheetNew
                             Script_VarText07.Text = GetBackboneInterfaceIP(ipPE[0], true).Trim();          // IP da Porta
                             Script_VarText08.Text = removeZero(ipPE[0]);                                   // IP da Porta + 1 (bloco /30)
                         }
-                        else if (s.Contains("IP SIP Acesso"))
+                        if (s.Contains("IP SIP Acesso"))
                         {
                             // IP do SIP Server e Regras
                             var = s.Replace("IP SIP Acesso:", string.Empty).Trim();
@@ -3252,7 +3240,7 @@ namespace MasterSheetNew
                             Script_VarText18.Text = numero[2].Remove(2, 8).Trim();
                             Script_VarText19.Text = numero[2].Remove(0, 2).Trim();
                         }
-                        else if (s.Contains("Sinalização:"))
+                        if (s.Contains("Sinalização:"))
                         {
                             // Sinalizaçäo 
                             if (s.Contains("PABX IP"))
@@ -3268,7 +3256,7 @@ namespace MasterSheetNew
                                 Script_SinalizBox.SelectedIndex = 1;
                             }
                         }
-                        else if (s.Contains("IP PABX"))
+                        if (s.Contains("IP PABX"))
                         {
                             if (Script_SinalizBox.SelectedIndex == 2)
                             {
@@ -3340,6 +3328,7 @@ namespace MasterSheetNew
             if (hostname.Length > 10)
             {
                 hostname = hostname.Remove(11);
+                MessageBox.Show("Hostname Maior que 10 --> " + hostname);
             }
             if (hostname.Contains('.'))
             {
@@ -3411,7 +3400,7 @@ namespace MasterSheetNew
             {
                 if (str.Contains("ESAT"))
                 {
-                    str = str.Replace("ESAT", "Gigaesat").Trim();
+                    str = str.Replace("ESAT", "Gigaesat-").Trim();
                 }
 
             }
@@ -6597,8 +6586,16 @@ namespace MasterSheetNew
 
 
 
+
         #endregion
 
+        private void WizGat_Open_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.W)
+            {
+                WizGat_Open1(this, e);
+            }
+        }
 
     }
 }

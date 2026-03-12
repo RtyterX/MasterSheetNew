@@ -33,7 +33,7 @@ namespace MasterSheetNew
         {
             System.Windows.Forms.TabControl tabControl3;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.Button_IOS = new System.Windows.Forms.Button();
             this.labelRouterInfo = new System.Windows.Forms.Label();
@@ -46,6 +46,7 @@ namespace MasterSheetNew
             this.tabMaster = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabMainPage = new System.Windows.Forms.TabPage();
+            this.BLD_button = new System.Windows.Forms.Button();
             this.ClienteButton_Test5 = new System.Windows.Forms.Button();
             this.ClienteButton_Test6 = new System.Windows.Forms.Button();
             this.Version = new System.Windows.Forms.Label();
@@ -89,7 +90,6 @@ namespace MasterSheetNew
             this.TemplatesLabelBG = new System.Windows.Forms.PictureBox();
             this.VOZ_Button = new System.Windows.Forms.Button();
             this.MPLS_button = new System.Windows.Forms.Button();
-            this.BLD_button = new System.Windows.Forms.Button();
             this.tabScript = new System.Windows.Forms.TabPage();
             this.Script_TelnetButtonPlus = new System.Windows.Forms.Button();
             this.Script_TelnetButtonTACACS = new System.Windows.Forms.Button();
@@ -409,7 +409,6 @@ namespace MasterSheetNew
             this.Outros_QoSCalcEx = new System.Windows.Forms.Label();
             this.Outros_QoSCalcLabel = new System.Windows.Forms.Label();
             this.Outros_QoSCalcText = new System.Windows.Forms.TextBox();
-            this.Outros_VarDeleteQoS = new System.Windows.Forms.Button();
             this.Outros_VarDeleteQoS8 = new System.Windows.Forms.Button();
             this.Outros_VarTextQoS08 = new System.Windows.Forms.TextBox();
             this.Outros_VarNameQoS8 = new System.Windows.Forms.Label();
@@ -423,7 +422,6 @@ namespace MasterSheetNew
             this.Outros_VarDeleteQoS2 = new System.Windows.Forms.Button();
             this.Outros_VarDeleteQoS4 = new System.Windows.Forms.Button();
             this.Outros_VarDeleteQoS1 = new System.Windows.Forms.Button();
-            this.Outros_VarDeleteQoS0 = new System.Windows.Forms.Button();
             this.Outros_VarTextQoS05 = new System.Windows.Forms.TextBox();
             this.Outros_VarTextQoS02 = new System.Windows.Forms.TextBox();
             this.Outros_VarTextQoS04 = new System.Windows.Forms.TextBox();
@@ -468,6 +466,8 @@ namespace MasterSheetNew
             this.Outros_VarText00 = new System.Windows.Forms.TextBox();
             this.Outros_FinalTextBox = new System.Windows.Forms.RichTextBox();
             this.OutrosTitle = new System.Windows.Forms.Label();
+            this.Outros_VarDeleteQoS = new System.Windows.Forms.Button();
+            this.Outros_VarDeleteQoS0 = new System.Windows.Forms.Button();
             this.tabSelectClient = new System.Windows.Forms.TabPage();
             this.Client_NovoButton = new System.Windows.Forms.Button();
             this.Client_TesteClient = new System.Windows.Forms.Button();
@@ -717,14 +717,14 @@ namespace MasterSheetNew
             this.DataGridRouters.AllowUserToDeleteRows = false;
             this.DataGridRouters.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.DataGridRouters.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridRouters.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridRouters.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DataGridRouters.Location = new System.Drawing.Point(0, 114);
             this.DataGridRouters.Name = "DataGridRouters";
             this.DataGridRouters.ReadOnly = true;
@@ -880,6 +880,17 @@ namespace MasterSheetNew
             this.tabMainPage.Size = new System.Drawing.Size(1109, 482);
             this.tabMainPage.TabIndex = 0;
             this.tabMainPage.Text = "tabPage4";
+            // 
+            // BLD_button
+            // 
+            this.BLD_button.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BLD_button.Location = new System.Drawing.Point(47, 141);
+            this.BLD_button.Name = "BLD_button";
+            this.BLD_button.Size = new System.Drawing.Size(120, 55);
+            this.BLD_button.TabIndex = 3;
+            this.BLD_button.Text = "BLD";
+            this.BLD_button.UseVisualStyleBackColor = true;
+            this.BLD_button.Click += new System.EventHandler(this.BLD_button_Click);
             // 
             // ClienteButton_Test5
             // 
@@ -1197,6 +1208,7 @@ namespace MasterSheetNew
             this.WizGat_Open.Text = "Abrir";
             this.WizGat_Open.UseVisualStyleBackColor = true;
             this.WizGat_Open.Click += new System.EventHandler(this.WizGat_Open1);
+
             // 
             // WizardGatLabel
             // 
@@ -1372,17 +1384,6 @@ namespace MasterSheetNew
             this.MPLS_button.UseVisualStyleBackColor = true;
             this.MPLS_button.Click += new System.EventHandler(this.MPLS_button_Click);
             // 
-            // BLD_button
-            // 
-            this.BLD_button.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BLD_button.Location = new System.Drawing.Point(47, 141);
-            this.BLD_button.Name = "BLD_button";
-            this.BLD_button.Size = new System.Drawing.Size(120, 55);
-            this.BLD_button.TabIndex = 3;
-            this.BLD_button.Text = "BLD";
-            this.BLD_button.UseVisualStyleBackColor = true;
-            this.BLD_button.Click += new System.EventHandler(this.BLD_button_Click);
-            // 
             // tabScript
             // 
             this.tabScript.AutoScroll = true;
@@ -1550,7 +1551,7 @@ namespace MasterSheetNew
             this.Script_TelnetButtonPlus.TabIndex = 158;
             this.Script_TelnetButtonPlus.Text = "Telnet+";
             this.Script_TelnetButtonPlus.UseVisualStyleBackColor = true;
-            this.Script_TelnetButtonPlus.Click += new System.EventHandler(this.Script_TelnetButtonPlus_Click);
+            
             // 
             // Script_TelnetButtonTACACS
             // 
@@ -1561,7 +1562,7 @@ namespace MasterSheetNew
             this.Script_TelnetButtonTACACS.TabIndex = 157;
             this.Script_TelnetButtonTACACS.Text = "com TACACS";
             this.Script_TelnetButtonTACACS.UseVisualStyleBackColor = true;
-            this.Script_TelnetButtonTACACS.Click += new System.EventHandler(this.Script_TelnetButtonTACACS_Click);
+            
             // 
             // Script_DeleteVar03b
             // 
@@ -1583,7 +1584,7 @@ namespace MasterSheetNew
             this.Script_Row.MaximumSize = new System.Drawing.Size(2000, 1);
             this.Script_Row.MinimumSize = new System.Drawing.Size(500, 1);
             this.Script_Row.Name = "Script_Row";
-            this.Script_Row.Size = new System.Drawing.Size(1038, 1);
+            this.Script_Row.Size = new System.Drawing.Size(1076, 1);
             this.Script_Row.TabIndex = 155;
             this.Script_Row.TabStop = false;
             // 
@@ -1626,9 +1627,9 @@ namespace MasterSheetNew
             "R2",
             "ISDN",
             "PABXIP"});
-            this.Script_SinalizBox.Location = new System.Drawing.Point(987, 189);
+            this.Script_SinalizBox.Location = new System.Drawing.Point(981, 189);
             this.Script_SinalizBox.Name = "Script_SinalizBox";
-            this.Script_SinalizBox.Size = new System.Drawing.Size(58, 25);
+            this.Script_SinalizBox.Size = new System.Drawing.Size(72, 25);
             this.Script_SinalizBox.TabIndex = 149;
             // 
             // Script_SinalizSubTitle
@@ -1896,7 +1897,7 @@ namespace MasterSheetNew
             // 
             this.Button_ImportSAIP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Button_ImportSAIP.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button_ImportSAIP.Location = new System.Drawing.Point(805, 16);
+            this.Button_ImportSAIP.Location = new System.Drawing.Point(843, 16);
             this.Button_ImportSAIP.Name = "Button_ImportSAIP";
             this.Button_ImportSAIP.Size = new System.Drawing.Size(138, 37);
             this.Button_ImportSAIP.TabIndex = 122;
@@ -3004,7 +3005,7 @@ namespace MasterSheetNew
             // 
             this.BackButton_Script.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BackButton_Script.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackButton_Script.Location = new System.Drawing.Point(992, 13);
+            this.BackButton_Script.Location = new System.Drawing.Point(1030, 13);
             this.BackButton_Script.Name = "BackButton_Script";
             this.BackButton_Script.Size = new System.Drawing.Size(104, 43);
             this.BackButton_Script.TabIndex = 26;
@@ -3018,7 +3019,7 @@ namespace MasterSheetNew
             this.BackButton_Script3.BackColor = System.Drawing.SystemColors.Control;
             this.BackButton_Script3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BackButton_Script3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.BackButton_Script3.Location = new System.Drawing.Point(992, 13);
+            this.BackButton_Script3.Location = new System.Drawing.Point(1030, 13);
             this.BackButton_Script3.Name = "BackButton_Script3";
             this.BackButton_Script3.Size = new System.Drawing.Size(104, 43);
             this.BackButton_Script3.TabIndex = 30;
@@ -3030,7 +3031,7 @@ namespace MasterSheetNew
             // 
             this.BackButton_Script2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BackButton_Script2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackButton_Script2.Location = new System.Drawing.Point(992, 13);
+            this.BackButton_Script2.Location = new System.Drawing.Point(1030, 13);
             this.BackButton_Script2.Name = "BackButton_Script2";
             this.BackButton_Script2.Size = new System.Drawing.Size(104, 43);
             this.BackButton_Script2.TabIndex = 29;
@@ -3048,7 +3049,7 @@ namespace MasterSheetNew
             this.Script_ProcedureName.Margin = new System.Windows.Forms.Padding(0);
             this.Script_ProcedureName.Name = "Script_ProcedureName";
             this.Script_ProcedureName.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Script_ProcedureName.Size = new System.Drawing.Size(1109, 45);
+            this.Script_ProcedureName.Size = new System.Drawing.Size(1147, 45);
             this.Script_ProcedureName.TabIndex = 5;
             this.Script_ProcedureName.Text = "Procedure Name";
             this.Script_ProcedureName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -5175,17 +5176,6 @@ namespace MasterSheetNew
             this.Outros_QoSCalcText.TabIndex = 173;
             this.Outros_QoSCalcText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Outros_VarTextQoS00_KeyDown);
             // 
-            // Outros_VarDeleteQoS
-            // 
-            this.Outros_VarDeleteQoS.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarDeleteQoS.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarDeleteQoS.Location = new System.Drawing.Point(404, 166);
-            this.Outros_VarDeleteQoS.Name = "Outros_VarDeleteQoS";
-            this.Outros_VarDeleteQoS.Size = new System.Drawing.Size(100, 26);
-            this.Outros_VarDeleteQoS.TabIndex = 172;
-            this.Outros_VarDeleteQoS.Text = "Limpar";
-            this.Outros_VarDeleteQoS.UseVisualStyleBackColor = true;
-            // 
             // Outros_VarDeleteQoS8
             // 
             this.Outros_VarDeleteQoS8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -5329,18 +5319,6 @@ namespace MasterSheetNew
             this.Outros_VarDeleteQoS1.Text = "-";
             this.Outros_VarDeleteQoS1.UseVisualStyleBackColor = true;
             this.Outros_VarDeleteQoS1.Click += new System.EventHandler(this.Outros_VarDeleteQoS1_Click);
-            // 
-            // Outros_VarDeleteQoS0
-            // 
-            this.Outros_VarDeleteQoS0.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarDeleteQoS0.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarDeleteQoS0.Location = new System.Drawing.Point(485, 199);
-            this.Outros_VarDeleteQoS0.Name = "Outros_VarDeleteQoS0";
-            this.Outros_VarDeleteQoS0.Size = new System.Drawing.Size(20, 25);
-            this.Outros_VarDeleteQoS0.TabIndex = 158;
-            this.Outros_VarDeleteQoS0.Text = "-";
-            this.Outros_VarDeleteQoS0.UseVisualStyleBackColor = true;
-            this.Outros_VarDeleteQoS0.Click += new System.EventHandler(this.Outros_VarDeleteQoS0_Click);
             // 
             // Outros_VarTextQoS05
             // 
@@ -5840,6 +5818,29 @@ namespace MasterSheetNew
             this.OutrosTitle.TabIndex = 0;
             this.OutrosTitle.Text = "Titulo";
             this.OutrosTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Outros_VarDeleteQoS
+            // 
+            this.Outros_VarDeleteQoS.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_VarDeleteQoS.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_VarDeleteQoS.Location = new System.Drawing.Point(404, 166);
+            this.Outros_VarDeleteQoS.Name = "Outros_VarDeleteQoS";
+            this.Outros_VarDeleteQoS.Size = new System.Drawing.Size(100, 26);
+            this.Outros_VarDeleteQoS.TabIndex = 172;
+            this.Outros_VarDeleteQoS.Text = "Limpar";
+            this.Outros_VarDeleteQoS.UseVisualStyleBackColor = true;
+            // 
+            // Outros_VarDeleteQoS0
+            // 
+            this.Outros_VarDeleteQoS0.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_VarDeleteQoS0.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_VarDeleteQoS0.Location = new System.Drawing.Point(485, 199);
+            this.Outros_VarDeleteQoS0.Name = "Outros_VarDeleteQoS0";
+            this.Outros_VarDeleteQoS0.Size = new System.Drawing.Size(20, 25);
+            this.Outros_VarDeleteQoS0.TabIndex = 158;
+            this.Outros_VarDeleteQoS0.Text = "-";
+            this.Outros_VarDeleteQoS0.UseVisualStyleBackColor = true;
+            this.Outros_VarDeleteQoS0.Click += new System.EventHandler(this.Outros_VarDeleteQoS0_Click);
             // 
             // tabSelectClient
             // 

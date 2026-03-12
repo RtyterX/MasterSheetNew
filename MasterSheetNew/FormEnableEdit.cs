@@ -26,7 +26,7 @@ namespace MasterSheetNew
             {
                 if (PasswordTextBox.Text == "KauanGostoso")
                 {
-                    mainPage.EnableImportSAIP();
+                    //mainPage.EnableImportSAIP();
                     mainPage.CheckCanImportFromSAIP();
                     MessageBox.Show("Import SAIP Habilitado");
                     this.Close();
@@ -40,10 +40,10 @@ namespace MasterSheetNew
                 }
                 else if (PasswordTextBox.Text == "JohnMemesJohn")
                 {
-                    mainPage.EnableTesting();
+                   // mainPage.EnableTesting();
                     mainPage.EnableEditing();
                     mainPage.CheckCanImportFromSAIP();
-                    mainPage.CheckCanTestUI();
+                    //mainPage.CheckCanTestUI();
                     MessageBox.Show("Botões para Teste Habilitados");
                     this.Close();
                 }
