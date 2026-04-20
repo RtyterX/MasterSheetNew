@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -10,9 +11,10 @@ namespace MasterSheetNew
 {
     internal class IPCalculator
     {
-
         public string ApplyIPCalculator(string enterString)
         {
+            Debug.WriteLine("\r\n--> Applying IP Calculator...");
+
             try
             {
                 string[] SplitString = enterString.Split('/');
@@ -157,10 +159,12 @@ namespace MasterSheetNew
                     subnet = string.Empty;
                 }
 
+                Debug.WriteLine("\r\n--> ... IP: " + CalculateIP(ipStr, subnet));
                 return CalculateIP(ipStr, subnet);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
+                Debug.WriteLine("ERROR - " + ex.Message);
                 MessageBox.Show("IP + Máscara incorretos");
 
                 return "Erro";

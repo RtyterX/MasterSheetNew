@@ -17,7 +17,7 @@ public enum RouterType
     Velocloud
 }
 
-namespace WindowsFormsApp1.Entitys
+namespace MasterSheetNew.Entitys
 {
     internal class Router
     {

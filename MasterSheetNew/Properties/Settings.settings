@@ -5,245 +5,6 @@
     <Setting Name="nightMode" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="ciscoBLD" Type="System.String" Scope="User">
-      <Value Profile="(Default)">conf t 
-!
-!
-hostname var00 
-!
-ip domain name embratel 
-!
-!
-###################################################### 
-# CONFIGURACOES DE USUARIO # 
-###################################################### 
-!
-service password-encryption
-username EBT privilege 10 password CQMR
-enable secret PRO1AN
-logging buffered 4096 debugging
-service tcp-keepalives-in
-service tcp-keepalives-out
-no enable password
-service timestamps debug datetime msec localtime show-timezone
-service timestamps log datetime msec localtime show-timezone
-!
-!
-!
-!
-!###################################################### 
-!# LIMPEZA 
-!###################################################### 
-!
-no ip domain name yourdomain.com
-no ip domain lookup
-!
-!
-logging buffered 51200 warnings
-no logging console
-!
-!
-no boot host
-no boot network 
-!
-!
-no ip finger
-no service pad
-no service tcp-small-servers
-no ip bootp server
-no ip source-route
-no cdp run
-!
-!
-no access-list 23 permit 10.10.10.0 0.0.0.7
-!
-!
-no ip http server
-no ip http access-class 23
-no ip http authentication local
-no ip http secure-server
-no ip http timeout-policy idle 60 life 86400 requests 10000
-no logging trap notifications
-!
-!
-no ip dhcp excluded-address 10.10.10.1
-no ip dhcp pool ccp-pool
-!
-!
-no ip ssh version 1
-ip ssh version 2
-!
-!
-!
-no crypto pki trustpoint TP-self-signed-4256465151
-!
-yes 
-!
-!
-no crypto pki certificate chain TP-self-signed-4256465151
-!
-!
-!
-crypto pki token default removal timeout 0
-!
-no crypto key generate rsa
-crypto key generate rsa
-y
-1024
-!
-!
-!
-!
-!###################################################### 
-!# BLOQUEIO - ACCESS LIST 
-!###################################################### 
-!
-ip access-list extended BLOQUEIO_TELNET
-remark IP LOOPBACK PE
-permit ip host var10 any
-permit ip any host var10
-!
-remark IP PE - CCTO
-permit ip host var07 any
-permit ip any host var07
-!
-remark IP GERENCIA GCPE
-permit ip any 200.255.156.192 0.0.0.63
-permit ip 200.255.156.192 0.0.0.63 any
-!
-!
-line vty 0 4 
-access-class BLOQUEIO_TELNET in
-access-class BLOQUEIO_TELNET out
-exec-timeout 15 0
-!
-!
-!
-!###################################################### 
-!# POLICY MAP - QoS 
-!###################################################### 
-!
-policy-map SHAPE_OUT
-class class-default
- shape average var02000
-!
-!
-!
-!###################################################### 
-!# CONFIGURACOES DE INTERFACES 
-!###################################################### 
-!
-interface var03
- description var01
- bandwidth var02
- service-policy output SHAPE_OUT
- no shut
-!
-!
-interface var03.var04
-description var01
-bandwidth var02
-encapsulation dot1Q var04
-!
-!
-!
-interface var05
- description ** LAN **
- ip address var09 mascaraLAN
- no ip redirects
- no ip unreachables
- no ip proxy-arp
- duplex auto
- speed auto
- no shutdown
- no cdp enable
-!
-!
-!
-!
-!###################################################### 
-!# ROTA ESTATICA 
-!###################################################### 
-!
-ip route 0.0.0.0 0.0.0.0 var07
-!
-!
-!
-!
-!###################################################### 
-!# CONFIGURACOES DE SNMP 
-!###################################################### 
-!
-snmp-server community LIDER RO
-snmp-server host 200.255.156.194 LIDER
-!
-!
-!
-###################################################### 
-# CONFIGURACOES DO RELOGIO INTERNO 
-###################################################### 
-!
-clock timezone BR -3 0
-clock summer-time BR recurring 1 Sun Oct 0:00 3 Sun Feb 0:00
-!
-!
-!
-!###################################################### 
-!# CONFIGURACOES DE NTP 
-!###################################################### 
-!
-ntp server 200.20.186.75 prefer source var03.var04
-ntp server 200.20.186.94 source var03.var04
-!
-!
-!
-!###################################################### 
-!# BANNER - USER INTERFACE 
-!###################################################### 
-!
-!
-banner motd ^C
-||========================================||  
-||========== CLARO Brasil S.A. ==============||  
-||========================================||  
-                                              
-        SOMENTE USUARIOS AUTORIZADOS          
-           AUTHORIZED USERS ONLY              
-                                              
-        OS ACESSOS SERAO MONITORADOS          
-         ACCESSES WILL BE MONITORED           
-                                              
-||========================================|| 
-^
-!
-!
-!
-no banner exec ^C
-no banner login ^C
-!
-!
-!
-line con 0
-no password
-exec-timeout 15 0
-login local
-line aux 0
-no password
-login local
-transport input none
-line vty 0 4
-no password
-exec-timeout 15 0
-login local
-transport input telnet ssh
-!
-!
-!
-!
-end
-
-</Value>
-    </Setting>
     <Setting Name="enableEdit" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
@@ -251,164 +12,516 @@ end
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="debugVoz" Type="System.String" Scope="User">
-      <Value Profile="(Default)">"                 ************************\r\n" +
-"                           HPE           \r\n" +
-"                 ************************\r\n" +
-"\r\n" +
-"###############\r\n" +
-"   DEBUG HP    \r\n" +
-"###############\r\n" +
-"\r\n" +
-"- DEBUG ISDN -\r\n" +
-"DEBUG VOICE SIP message\r\n" +
-"debug isdn\r\n" +
-"terminal monitor\r\n" +
-"terminal debugging\r\n" +
-"\r\n" +
-"----------\r\n" +
-"\r\n" +
-"- DEBUG R2 -\r\n" +
-"debug voice R2 ALL\r\n" +
-"debugging voice r2 event\r\n" +
-"terminal monitor\r\n" +
-"terminal debugging\r\n" +
-"\r\n" +
-"----------\r\n" +
-"\r\n" +
-"- DEBUG SIP -\r\n" +
-"DEBUG VOICE SIP message\r\n" +
-"terminal monitor\r\n" +
-"terminal debugging\r\n" +
-"\r\n" +
-"----------\r\n" +
-"\r\n" +
-"- Desabilitar DEBUG -\r\n" +
-"undo DEBUG VOICE SIP message\r\n" +
-"undo terminal monitor\r\n" +
-"undo terminal debugging\r\n" +
-"\r\n" +
-"*********************************************\r\n" +
-"                 ************************\r\n" +
-"                           CISCO         \r\n" +
-"                 ************************\r\n" +
-"\r\n" +
-"#############\r\n" +
-"DEBUG CISCO\r\n" +
-"#############\r\n" +
-"!DEBUG SIP\r\n" +
-"terminal monitor\r\n" +
-"debug ccsip messages\r\n" +
-"debug voice ccapi inout\r\n" +
-"debug translation detail\r\n" +
-"!\r\n" +
-"----------\r\n" +
-"\r\n" +
-"terminal monitor\r\n" +
-"debug ccsip messages\r\n" +
-"- Habilita visualização das dial-peers (entrada e saída)\r\n" +
-"terminal no monitor\r\n" +
-"no debug ccsip messages\r\n" +
-"no debug voice ccapi inout\r\n" +
-"no debug translation detail\r\n" +
-"\r\n" +
-"----------\r\n" +
-"\r\n" +
-"-DEBUG R2 CISCO-\r\n" +
-"terminal monitor\r\n" +
-"debug ccsip messages\r\n" +
-"debug vpm signal\r\n" +
-"\r\n" +
-"----------\r\n" +
-"\r\n" +
-"-DESATIVA O DEBUG CISCO-\r\n" +
-"terminal no monitor\r\n" +
-"no debug ccsip messages\r\n" +
-"no debug vpm signal\r\n" +
-"\r\n" +
-"----------\r\n" +
-"\r\n" +
-"**Ver se está registrado\r\n" +
-"sh sip register status\r\n" +
-"sh sip-ua register status\r\n" +
-"\r\n" +
-"----------\r\n" +
-"\r\n" +
-"sh dial-peer voice sum\r\n" +
-"\r\n" +
-"**************Habilitar E1/T1\r\n" +
-"#\r\n" +
-"card type e1 0 2\r\n" +
-"Placa de voz -&gt; PVDM (Memoria para suportar a placa E1, PVDM 32 para 30 channels.\r\n" +
-"Forçar chamada placa FXS, FXO\r\n" +
-"CSIM START &lt;número a ser discado&gt;\r\n" +
-"\r\n" +
-"==================================================\r\n" +
-"                 ************************\r\n" +
-"                          ALIGERA        \r\n" +
-"                 ************************\r\n" +
-"\r\n" +
-"################\r\n" +
-"DEBUG ALIGERA\r\n" +
-"################\r\n" +
-"\r\n" +
-"DEBUG - com sip\r\n" +
-"debug\r\n" +
-"core set debug 5\r\n" +
-"core set verbose 5\r\n" +
-"sip set debug on\r\n" +
-"\r\n" +
-"----------\r\n" +
-"\r\n" +
-"-Debug SIP-\r\n" +
-"debug vip sip on\r\n" +
-"\r\n" +
-"----------\r\n" +
-"\r\n" +
-"-Debug R2-\r\n" +
-"debug\r\n" +
-"core set debug 5\r\n" +
-"core set verbose 5\r\n" +
-"mfcr2 set debug all\r\n" +
-"debug mfcr2 on\r\n" +
-"\r\n" +
-"----------\r\n" +
-"\r\n" +
-"-Debug ISDN-\r\n" +
-"debug\r\n" +
-"core set debug 5\r\n" +
-"core set verbose 5\r\n" +
-"pri set debug on span 1\r\n" +
-"\r\n" +
-"==================================================\r\n" +
-"                 ************************\r\n" +
-"                        Digistar\r\n" +
-"                 ************************\r\n" +
-"\r\n" +
-"################\r\n" +
-"DEBUG DIGISTAR\r\n" +
-"################\r\n" +
-"\r\n" +
-"!DEBUG SIP\r\n" +
-"terminal monitor\r\n" +
-"!\r\n" +
-"conf t\r\n" +
-"logging on\r\n" +
-"debug pbx loglevel 5\r\n" +
-"debug sip loglevel 5\r\n" +
-"!\r\n" +
-"end\r\n" +
-"\r\n" +
-"- Desabilitar DEBUG -\r\n" +
-"terminal no monitor\r\n" +
-"configure terminal\r\n" +
-"no debug pbx loglevel\r\n" +
-"no debug sip loglevel\r\n" +
-"!\r\n" +
-"\r\n" +
-"############\r\n" +
-"E1 ALINHADA\r\n" +
-"############\r\n" +
-"show pbx digital-line status\r\n"</Value>
+      <Value Profile="(Default)">***********************
+
+          HP
+
+***********************
+
+###############
+   DEBUG HP 
+###############
+
+- DEBUG ISDN -
+DEBUG VOICE SIP message
+debug isdn
+terminal monitor
+terminal debugging
+
+----------
+
+- DEBUG R2 -
+debug voice R2 ALL
+debugging voice r2 event
+terminal monitor
+terminal debugging
+
+----------
+
+- DEBUG SIP -
+DEBUG VOICE SIP message
+terminal monitor
+terminal debugging
+
+----------
+
+- Desabilitar DEBUG -
+undo DEBUG VOICE SIP message
+undo terminal monitor
+undo terminal debugging
+
+
+*********************************************
+
+##########################
+ HP NOVO - LOG DE LIGAÇÃO 
+##########################
+
+ - R2 -
+
+display voice sip call
+#
+display voice call 
+#
+display voice call-info all
+#
+display voice subscriber-line 1/0:1
+#
+
+----------
+
+ - ISDN -
+
+display voice sip call
+#
+display voice call 
+#
+display voice call-info all
+#
+display voice subscriber-line 1/0:15
+#
+
+
+*********************************************
+
+############################
+ HP ANTIGO - LOG DE LIGAÇÃO 
+############################
+
+ 
+display controller E1
+
+----------
+ - R2 -
+
+Display voice statistics call-active all
+#
+Display voice cmc ccb
+#
+Display voice subscriber-line 1/0:1
+#
+
+----------
+
+ - ISDN - 
+
+display voice statistics call-active all
+#
+display voice cmc ccb
+#
+display voice subscriber-line 1/0:15
+#
+
+----------
+
+ - LOG LIGAÇÃO 2 E1 -
+
+display voice subscriber-line 5/1:15 | inc TALKING
+display voice subscriber-line 7/0:15 | inc TALKING
+
+
+=============================================================
+
+************************
+
+         CISCO
+
+************************
+
+
+sh controller E1
+
+########################
+ CISCO - LOG DE LIGAÇÃO 
+########################
+
+terminal length 0
+sh voice port summ
+!
+sh voice call status
+!
+sh voice call summ
+!
+
+----------
+
+-R2-
+
+terminal length 0
+SH VOICE PORT SUMmary | inc answered
+sh voice call status
+SH VOICE CALL SUMMARY | inc ANSWER
+
+----------
+
+-ISDN-
+
+terminal length 0
+SH VOICE PORT SUMmary
+sh voice call status
+SH VOICE CALL SUMMARY | inc CONNECT
+
+
+#############
+ DEBUG CISCO
+#############
+
+!DEBUG SIP
+terminal monitor
+debug ccsip messages 
+debug voice ccapi inout
+debug translation detail
+!
+!
+!
+
+----------
+
+terminal monitor
+debug ccsip messages
+
+- Habilita visualização das dial-peers (entrada e saída)
+
+terminal no monitor
+no debug ccsip messages
+no debug voice ccapi inout
+no debug translation detail
+
+----------
+
+-DEBUG R2 CISCO-
+terminal monitor
+debug ccsip messages
+debug vpm signal
+
+----------
+
+-DESATIVA O DEBUG CISCO-
+terminal no monitor
+no debug ccsip messages
+no debug vpm signal
+
+----------
+
+**Ver se está registrado
+sh sip register status
+sh sip-ua register status
+
+----------
+
+sh dial-peer voice sum
+
+
+**************Habilitar E1/T1
+
+#
+card type e1 0 2
+Placa de voz -&gt; PVDM (Memoria para suportar a placa E1, PVDM 32 para 30 channels.
+
+Forçar chamada placa FXS, FXO
+CSIM START &lt;número a ser discado&gt;
+
+=============================================================
+
+************************
+
+        ALIGERA
+
+************************
+
+user:
+admin
+aligera
+
+
+################
+ DEBUG ALIGERA
+################
+
+DEBUG - com sip
+
+debug
+ core set debug 5
+ core set verbose 5
+ sip set debug on
+
+----------
+
+-Debug R2-
+
+debug
+core set debug 5
+core set verbose 5
+mfcr2 set debug all
+
+debug mfcr2 on
+
+----------
+
+-Debug ISDN-
+
+debug
+ core set debug 5
+ core set verbose 5
+ pri set debug on span 1
+
+
+############
+E1 ALINHADA
+############
+
+status tdm
+
+
+########################
+LOG DA LIGAÇÃO ALIGERA
+########################
+
+debug
+! 
+sip show channels
+sip show channel  &lt;CALL ID&gt;
+
+
+=============================================================
+
+************************
+
+       Digistar
+
+************************
+
+
+################
+ DEBUG DIGISTAR
+################
+
+!DEBUG SIP
+terminal monitor
+!
+conf t
+logging on
+debug pbx loglevel 5
+debug sip loglevel 5
+!
+end
+
+
+- Desabilitar DEBUG -
+
+terminal no monitor
+configure terminal
+no debug pbx loglevel
+no debug sip loglevel
+!
+
+
+########################
+LOG DA LIGAÇÃO DIGISTAR
+########################
+
+show voip sip channel
+show pbx group status tdm
+!
+
+############
+E1 ALINHADA
+############
+
+show pbx group status tdm
+
+#######################
+Verificar Erros na E1
+#######################
+
+show pbx digital-line 1 status
+
+-------------------------------
+
+DIGISTAR - ** ISDN **
+
+Teste#configure terminal
+Teste(config)#pbx
+Teste(config-pbx)#digital-line
+Teste(config-pbx-dline)#dialling-mode enblock
+
+
+=============================================================
+
+************************
+
+       BROADSOFT
+
+************************
+
+#################
+ DEBUG Broadsoft
+#################
+
+
+Debug IAD digistar
+
+
+configure terminal
+logging on
+debug sip loglevel 1
+exit
+terminal monitor
+
+
+#######################################
+Verificar se está registrado os ramais
+#######################################
+
+digistar#show voip sip vsp
+
+
+=============================================================
+
+************************
+
+         OUTROS
+
+************************
+
+#######################
+PABX ALCATEL / siemens
+#######################
+
+HP
+-&gt; Problemas com ligações de entrada que duram 2 minutos.
+
+interface Serial0/2/0:15 
+isdn ignore connect-ack incoming 
+isdn bch-local-manage exclusive
+
+Router Cisco com ISDN
+
+interface Serial1/0:15
+link-protocol ppp
+isdn protocol-type qsig
+isdn overlap-sending
+isdn protocol-mode network
+isdn bch-select-way descending
+
+=============================================================
+
+
+#####################
+ADICIONAR NÚMERO 0800
+#####################
+
+HP ##
+
+entity 20 pots
+   line 1/0:1
+   send-number 4
+   description Ramais PABX
+   match-template 08005910
+   send-ring
+!
+!
+  entity 21 pots
+   line 1/0:1
+   send-number 4
+   description Ramais PABX
+   match-template 0800??? (mudar mcdu)
+   send-ring
+
+
+CISCO
+
+dial-peer voice 15 pots
+ trunkgroup troncor2
+ description INBOUND  Rede Publica para tronco Vipline
+ destination-pattern 0800????$
+ progress_ind alert strip 8
+ direct-inward-dial
+ forward-digits 4
+
+
+DIGISTAR
+
+
+redirection input voip-operator groups 0 from * to 9090210736[0-9][0-9]$ output e1 groups 0 from {From} to {To:8}	
+redirection input voip-operator groups 0 from * to 902121210736[0-9][0-9]$ output e1 groups 0 from {From} to {To:8}	
+redirection input e1 groups 0 from ^210736[0-9][0-9]$ to * output voip-operator groups 0 from {From} to {To}	
+redirection input e1 groups 0 from ^36[0-9][0-9]$ to * output voip-operator groups 0 from 2107{From} to {To}	
+
+redirection input e1 groups 0 from * to * output voip-operator groups 0 from 21374900 to {To}
+
+
+==================================================================
+
+
+VOZ --&gt; Problemas para audio HP 1002
+
+voice-setup
+sip
+  rel1xx disable
+
+
+==================================================================
+
+[IMSL-E1 1/0]dis this
+
+
+
+==================================================================
+
+
+
+Mandar 8 digitos (PADRÃO 4)
+
+entity 10 pots
+   send-number 8
+
+
+BROADSOFT
+
+BEGBOO_2135755055#telnet 189.16.135.50 /vrf UNIF
+
+################################
+Verificar terminais registrados
+################################
+
+ping -vpn-instance UNIF 201.64.111.50
+
+show voip sip vsp
+show voip sip channel
+show provision
+
+
+
+########################
+
+---------------------
+TESTE FXO - VOIP
+---------------------
+
+DEBUG
+terminal monitor
+debug voice translation
+
+
+######################
+Ver a ligação em curso
+######################
+
+sh voice call status
+
+----------
+
+show gatekeeper stats -&gt; log ligação site central
+
+################
+#Gerar ligação para outra localidade.
+################
+Ex: csim start 31000
+
+csim start &lt;14&gt;DDD &lt;...&gt; Numero de digitos aplicado na VOICE.
+
+</Value>
     </Setting>
     <Setting Name="debugBBCisco" Type="System.String" Scope="User">
       <Value Profile="(Default)">Debug Backbone Cisco</Value>
@@ -430,6 +543,77 @@ end
     </Setting>
     <Setting Name="enableTest" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="firstAccess" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="userPE" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="tacacsPE" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="puttyPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="configWiseVoz" Type="System.String" Scope="User">
+      <Value Profile="(Default)">R2 Digital
+---------------------------------------
+Após ligar o equipamento vá a MODULE, encontre a opção CAS MFC-R2 e selecione-a. 
+Verifique as seguintes configurações:
+1º Pagina selecione as seguintes opções:
+1)    Mode: Selecione “SIMULATOR”,
+2)    PCM: PCM30
+3)    Termination: 75  UNBAL
+4)    Line Code: HDB3
+5)    Polarity: NORMAL ou INVERTIDO para HP
+6)    Country: Brasil
+2º Pagina selecione as seguintes opções:
+1)   Level: -10dBm
+2)   Interdigit time: 000 ms;
+3º Pagina FORWARD selecione as opções:
+1)   Ist Digit: 000 ms
+2)   Channel: 01
+3)   DID (B): Coloque o nº que deseja chamar
+4)   ANI (A): Tronco Chave
+5)   Category: II-1
+6)   Forcd AB: 11
+4º Pagina 
+1)   Number of DID: 01
+2)   Number of ANIS: 20
+3)   Final de status: B-1
+4)   ASK First for DID (B)
+ Com as verificações feitas aperte os seguintes botões nessa ordem START/STOP, STATE e CALL. Sua chamada será realizada
+► Para receber chamadas configure o equipamento e aperte START/STOP.
+
+
+ISDN
+---------------------------------------
+Após ligar o equipamento aperte MODULE, encontre a opção ISDN e selecione-a. 
+Configuração do equipamento:
+1º Pagina selecione as seguintes opções:
+1)    Emulation: TERMINAL
+2)   Interface: G.703 2M
+3)    Termination: 75  UNBAL
+4)    Line Code: HDB3
+5)    PCM: PCM31C com CRC4 (Padrão EBT) e PCM31 caso deseje sem
+6)    Tx Clk Source: FROM RX
+2º Pagina selecione as seguintes opções:
+1)   Calling (A): Tronco Chave
+2)   Called (B): Coloque o nº que deseja chamar
+3)   Service: Selecione o tipo de serviço (caso não saiba coloque  “SPEECH”)
+4)   B Channel: 31
+5)   D Channel: 16
+6)   TEI: 000
+
+► Para realizar chamada aperte STAR/STOP para iniciar o alinhamento
+► Pressione Call para realizar a chamada.
+► Para receber chamada basta apertar START/STOP.
+
+
+
+
+</Value>
     </Setting>
   </Settings>
 </SettingsFile>

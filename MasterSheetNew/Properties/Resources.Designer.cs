@@ -61,6 +61,15 @@ namespace MasterSheetNew.Properties {
         }
         
         /// <summary>
+        ///   Consulta um recurso localizado do tipo System.IO.UnmanagedMemoryStream semelhante a System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream Bury_the_Light {
+            get {
+                return ResourceManager.GetStream("Bury-the-Light", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a conf t 
         ///!
         ///!
@@ -86,6 +95,15 @@ namespace MasterSheetNew.Properties {
         public static string Cisco_Config_BLD {
             get {
                 return ResourceManager.GetString("Cisco-Config-BLD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.IO.UnmanagedMemoryStream semelhante a System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream fah {
+            get {
+                return ResourceManager.GetStream("fah", resourceCulture);
             }
         }
         

@@ -1,4 +1,4 @@
-﻿namespace MasterSheetNew.Entitys
+﻿namespace MasterSheetNew
 {
     partial class FormNewClient
     {

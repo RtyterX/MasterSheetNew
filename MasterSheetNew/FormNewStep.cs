@@ -1,16 +1,9 @@
 ﻿using MasterSheetNew.Entitys;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.Entitys;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace MasterSheetNew
 {
@@ -21,7 +14,7 @@ namespace MasterSheetNew
         bool restore;
         int client_Id;
         Bitmap image;
-        FormNewClient newClientForm = new FormNewClient(new Form1(),0);
+        FormNewClient newClientForm = new FormNewClient(new Form1(), 0);
         List<TextBox> varText = new List<TextBox>();
 
         public FormNewStep(FormNewClient NewClientForm, Step step)
@@ -148,7 +141,7 @@ namespace MasterSheetNew
             string[] split = variables.Split(',');
             string[] namesSplit = names.Split(',');
 
-            
+
             for (int i = 0; i < split.Length; i++)
             {
                 foreach (TextBox t in varText)
@@ -218,6 +211,5 @@ namespace MasterSheetNew
         {
             Client_VarText00.Text = string.Empty;
         }
-
     }
 }

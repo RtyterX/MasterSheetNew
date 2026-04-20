@@ -1,16 +1,9 @@
-﻿using MySqlX.XDevAPI;
+﻿using MasterSheetNew.Entitys;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.Entitys;
 
-namespace MasterSheetNew.Entitys
+namespace MasterSheetNew
 {
     public partial class FormNewClient : Form
     {
@@ -23,8 +16,6 @@ namespace MasterSheetNew.Entitys
             InitializeComponent();
             client_Id = Client_Id;
             mainPage = MainPage;
-
-
         }
 
         private void NewClient_ButtonSave_Click(object sender, EventArgs e)
@@ -53,7 +44,7 @@ namespace MasterSheetNew.Entitys
                         showOnScreen = false;
                     }
 
-                    WindowsFormsApp1.Entitys.Client newClient = new WindowsFormsApp1.Entitys.Client(NewClient_Name.Text, critical, showOnScreen, steps);
+                    Client newClient = new Client(NewClient_Name.Text, critical, showOnScreen, steps);
                     mainPage.clients.Add(newClient);
                     mainPage.AllClientsButtonBuilder();
                     mainPage.FillClientButtons();
@@ -103,7 +94,5 @@ namespace MasterSheetNew.Entitys
                 NewClient_StepsBox.DisplayMember = "number";
             }
         }
-
-
     }
 }

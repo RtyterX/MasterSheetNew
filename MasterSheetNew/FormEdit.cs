@@ -1,20 +1,12 @@
-﻿using System;
+﻿using MasterSheetNew.Entitys;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.Entitys;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MasterSheetNew
 {
     public partial class FormEdit : Form
     {
-
         Script scriptClass = new Script(99, "ScriptClass", false, "", "", "", DateTime.Parse("11/02/2026"));
         List<Script> allScripts = new List<Script>();
         Script selectedScript = new Script(99, "SelectedScript", false, "", "", "", DateTime.Parse("11/02/2026"));

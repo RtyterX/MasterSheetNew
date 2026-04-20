@@ -20,7 +20,7 @@ public enum ProcedureType
     Logs
 }
 
-namespace WindowsFormsApp1.Entitys
+namespace MasterSheetNew.Entitys
 {
     internal class Procedure
     {

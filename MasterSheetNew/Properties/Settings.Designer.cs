@@ -12,7 +12,7 @@ namespace MasterSheetNew.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.14.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "18.4.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -32,78 +32,6 @@ namespace MasterSheetNew.Properties {
             }
             set {
                 this["nightMode"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("conf t \r\n!\r\n!\r\nhostname var00 \r\n!\r\nip domain name embratel \r\n!\r\n!\r\n##############" +
-            "######################################## \r\n# CONFIGURACOES DE USUARIO # \r\n######" +
-            "################################################ \r\n!\r\nservice password-encryptio" +
-            "n\r\nusername EBT privilege 10 password CQMR\r\nenable secret PRO1AN\r\nlogging buffer" +
-            "ed 4096 debugging\r\nservice tcp-keepalives-in\r\nservice tcp-keepalives-out\r\nno ena" +
-            "ble password\r\nservice timestamps debug datetime msec localtime show-timezone\r\nse" +
-            "rvice timestamps log datetime msec localtime show-timezone\r\n!\r\n!\r\n!\r\n!\r\n!#######" +
-            "############################################### \r\n!# LIMPEZA \r\n!################" +
-            "###################################### \r\n!\r\nno ip domain name yourdomain.com\r\nno" +
-            " ip domain lookup\r\n!\r\n!\r\nlogging buffered 51200 warnings\r\nno logging console\r\n!\r" +
-            "\n!\r\nno boot host\r\nno boot network \r\n!\r\n!\r\nno ip finger\r\nno service pad\r\nno servi" +
-            "ce tcp-small-servers\r\nno ip bootp server\r\nno ip source-route\r\nno cdp run\r\n!\r\n!\r\n" +
-            "no access-list 23 permit 10.10.10.0 0.0.0.7\r\n!\r\n!\r\nno ip http server\r\nno ip http" +
-            " access-class 23\r\nno ip http authentication local\r\nno ip http secure-server\r\nno " +
-            "ip http timeout-policy idle 60 life 86400 requests 10000\r\nno logging trap notifi" +
-            "cations\r\n!\r\n!\r\nno ip dhcp excluded-address 10.10.10.1\r\nno ip dhcp pool ccp-pool\r" +
-            "\n!\r\n!\r\nno ip ssh version 1\r\nip ssh version 2\r\n!\r\n!\r\n!\r\nno crypto pki trustpoint " +
-            "TP-self-signed-4256465151\r\n!\r\nyes \r\n!\r\n!\r\nno crypto pki certificate chain TP-sel" +
-            "f-signed-4256465151\r\n!\r\n!\r\n!\r\ncrypto pki token default removal timeout 0\r\n!\r\nno " +
-            "crypto key generate rsa\r\ncrypto key generate rsa\r\ny\r\n1024\r\n!\r\n!\r\n!\r\n!\r\n!########" +
-            "############################################## \r\n!# BLOQUEIO - ACCESS LIST \r\n!##" +
-            "#################################################### \r\n!\r\nip access-list extende" +
-            "d BLOQUEIO_TELNET\r\nremark IP LOOPBACK PE\r\npermit ip host var10 any\r\npermit ip an" +
-            "y host var10\r\n!\r\nremark IP PE - CCTO\r\npermit ip host var07 any\r\npermit ip any ho" +
-            "st var07\r\n!\r\nremark IP GERENCIA GCPE\r\npermit ip any 200.255.156.192 0.0.0.63\r\npe" +
-            "rmit ip 200.255.156.192 0.0.0.63 any\r\n!\r\n!\r\nline vty 0 4 \r\naccess-class BLOQUEIO" +
-            "_TELNET in\r\naccess-class BLOQUEIO_TELNET out\r\nexec-timeout 15 0\r\n!\r\n!\r\n!\r\n!#####" +
-            "################################################# \r\n!# POLICY MAP - QoS \r\n!#####" +
-            "################################################# \r\n!\r\npolicy-map SHAPE_OUT\r\ncla" +
-            "ss class-default\r\n shape average var02000\r\n!\r\n!\r\n!\r\n!###########################" +
-            "########################### \r\n!# CONFIGURACOES DE INTERFACES \r\n!################" +
-            "###################################### \r\n!\r\ninterface var03\r\n description var01\r" +
-            "\n bandwidth var02\r\n service-policy output SHAPE_OUT\r\n no shut\r\n!\r\n!\r\ninterface v" +
-            "ar03.var04\r\ndescription var01\r\nbandwidth var02\r\nencapsulation dot1Q var04\r\n!\r\n!\r" +
-            "\n!\r\ninterface var05\r\n description ** LAN **\r\n ip address var09 mascaraLAN\r\n no i" +
-            "p redirects\r\n no ip unreachables\r\n no ip proxy-arp\r\n duplex auto\r\n speed auto\r\n " +
-            "no shutdown\r\n no cdp enable\r\n!\r\n!\r\n!\r\n!\r\n!######################################" +
-            "################ \r\n!# ROTA ESTATICA \r\n!#########################################" +
-            "############# \r\n!\r\nip route 0.0.0.0 0.0.0.0 var07\r\n!\r\n!\r\n!\r\n!\r\n!################" +
-            "###################################### \r\n!# CONFIGURACOES DE SNMP \r\n!###########" +
-            "########################################### \r\n!\r\nsnmp-server community LIDER RO\r" +
-            "\nsnmp-server host 200.255.156.194 LIDER\r\n!\r\n!\r\n!\r\n##############################" +
-            "######################## \r\n# CONFIGURACOES DO RELOGIO INTERNO \r\n################" +
-            "###################################### \r\n!\r\nclock timezone BR -3 0\r\nclock summer" +
-            "-time BR recurring 1 Sun Oct 0:00 3 Sun Feb 0:00\r\n!\r\n!\r\n!\r\n!####################" +
-            "################################## \r\n!# CONFIGURACOES DE NTP \r\n!################" +
-            "###################################### \r\n!\r\nntp server 200.20.186.75 prefer sour" +
-            "ce var03.var04\r\nntp server 200.20.186.94 source var03.var04\r\n!\r\n!\r\n!\r\n!#########" +
-            "############################################# \r\n!# BANNER - USER INTERFACE \r\n!##" +
-            "#################################################### \r\n!\r\n!\r\nbanner motd ^C\r\n||=" +
-            "=======================================||  \r\n||========== CLARO Brasil S.A. ====" +
-            "==========||  \r\n||========================================||  \r\n                " +
-            "                              \r\n        SOMENTE USUARIOS AUTORIZADOS          \r\n" +
-            "           AUTHORIZED USERS ONLY              \r\n                                " +
-            "              \r\n        OS ACESSOS SERAO MONITORADOS          \r\n         ACCESSE" +
-            "S WILL BE MONITORED           \r\n                                              \r\n" +
-            "||========================================|| \r\n^\r\n!\r\n!\r\n!\r\nno banner exec ^C\r\nno" +
-            " banner login ^C\r\n!\r\n!\r\n!\r\nline con 0\r\nno password\r\nexec-timeout 15 0\r\nlogin loc" +
-            "al\r\nline aux 0\r\nno password\r\nlogin local\r\ntransport input none\r\nline vty 0 4\r\nno" +
-            " password\r\nexec-timeout 15 0\r\nlogin local\r\ntransport input telnet ssh\r\n!\r\n!\r\n!\r\n" +
-            "!\r\nend\r\n\r\n")]
-        public string ciscoBLD {
-            get {
-                return ((string)(this["ciscoBLD"]));
-            }
-            set {
-                this["ciscoBLD"] = value;
             }
         }
         
@@ -133,57 +61,108 @@ namespace MasterSheetNew.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\"                 ************************\\r\\n\" +\r\n\"                           HP" +
-            "E           \\r\\n\" +\r\n\"                 ************************\\r\\n\" +\r\n\"\\r\\n\" +" +
-            "\r\n\"###############\\r\\n\" +\r\n\"   DEBUG HP    \\r\\n\" +\r\n\"###############\\r\\n\" +\r\n\"\\r" +
-            "\\n\" +\r\n\"- DEBUG ISDN -\\r\\n\" +\r\n\"DEBUG VOICE SIP message\\r\\n\" +\r\n\"debug isdn\\r\\n\"" +
-            " +\r\n\"terminal monitor\\r\\n\" +\r\n\"terminal debugging\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"----------\\" +
-            "r\\n\" +\r\n\"\\r\\n\" +\r\n\"- DEBUG R2 -\\r\\n\" +\r\n\"debug voice R2 ALL\\r\\n\" +\r\n\"debugging v" +
-            "oice r2 event\\r\\n\" +\r\n\"terminal monitor\\r\\n\" +\r\n\"terminal debugging\\r\\n\" +\r\n\"\\r\\" +
-            "n\" +\r\n\"----------\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"- DEBUG SIP -\\r\\n\" +\r\n\"DEBUG VOICE SIP mess" +
-            "age\\r\\n\" +\r\n\"terminal monitor\\r\\n\" +\r\n\"terminal debugging\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"---" +
-            "-------\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"- Desabilitar DEBUG -\\r\\n\" +\r\n\"undo DEBUG VOICE SIP m" +
-            "essage\\r\\n\" +\r\n\"undo terminal monitor\\r\\n\" +\r\n\"undo terminal debugging\\r\\n\" +\r\n\"" +
-            "\\r\\n\" +\r\n\"*********************************************\\r\\n\" +\r\n\"               " +
-            "  ************************\\r\\n\" +\r\n\"                           CISCO         \\r\\" +
-            "n\" +\r\n\"                 ************************\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"############" +
-            "#\\r\\n\" +\r\n\"DEBUG CISCO\\r\\n\" +\r\n\"#############\\r\\n\" +\r\n\"!DEBUG SIP\\r\\n\" +\r\n\"termi" +
-            "nal monitor\\r\\n\" +\r\n\"debug ccsip messages\\r\\n\" +\r\n\"debug voice ccapi inout\\r\\n\" " +
-            "+\r\n\"debug translation detail\\r\\n\" +\r\n\"!\\r\\n\" +\r\n\"----------\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"t" +
-            "erminal monitor\\r\\n\" +\r\n\"debug ccsip messages\\r\\n\" +\r\n\"- Habilita visualização d" +
-            "as dial-peers (entrada e saída)\\r\\n\" +\r\n\"terminal no monitor\\r\\n\" +\r\n\"no debug c" +
-            "csip messages\\r\\n\" +\r\n\"no debug voice ccapi inout\\r\\n\" +\r\n\"no debug translation " +
-            "detail\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"----------\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"-DEBUG R2 CISCO-\\r\\n\" +\r" +
-            "\n\"terminal monitor\\r\\n\" +\r\n\"debug ccsip messages\\r\\n\" +\r\n\"debug vpm signal\\r\\n\" " +
-            "+\r\n\"\\r\\n\" +\r\n\"----------\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"-DESATIVA O DEBUG CISCO-\\r\\n\" +\r\n\"te" +
-            "rminal no monitor\\r\\n\" +\r\n\"no debug ccsip messages\\r\\n\" +\r\n\"no debug vpm signal\\" +
-            "r\\n\" +\r\n\"\\r\\n\" +\r\n\"----------\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"**Ver se está registrado\\r\\n\" +" +
-            "\r\n\"sh sip register status\\r\\n\" +\r\n\"sh sip-ua register status\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"" +
-            "----------\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"sh dial-peer voice sum\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"********" +
-            "******Habilitar E1/T1\\r\\n\" +\r\n\"#\\r\\n\" +\r\n\"card type e1 0 2\\r\\n\" +\r\n\"Placa de voz" +
-            " -> PVDM (Memoria para suportar a placa E1, PVDM 32 para 30 channels.\\r\\n\" +\r\n\"F" +
-            "orçar chamada placa FXS, FXO\\r\\n\" +\r\n\"CSIM START <número a ser discado>\\r\\n\" +\r\n" +
-            "\"\\r\\n\" +\r\n\"==================================================\\r\\n\" +\r\n\"         " +
-            "        ************************\\r\\n\" +\r\n\"                          ALIGERA     " +
-            "   \\r\\n\" +\r\n\"                 ************************\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"######" +
-            "##########\\r\\n\" +\r\n\"DEBUG ALIGERA\\r\\n\" +\r\n\"################\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"D" +
-            "EBUG - com sip\\r\\n\" +\r\n\"debug\\r\\n\" +\r\n\"core set debug 5\\r\\n\" +\r\n\"core set verbos" +
-            "e 5\\r\\n\" +\r\n\"sip set debug on\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"----------\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"-" +
-            "Debug SIP-\\r\\n\" +\r\n\"debug vip sip on\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"----------\\r\\n\" +\r\n\"\\r\\n" +
-            "\" +\r\n\"-Debug R2-\\r\\n\" +\r\n\"debug\\r\\n\" +\r\n\"core set debug 5\\r\\n\" +\r\n\"core set verb" +
-            "ose 5\\r\\n\" +\r\n\"mfcr2 set debug all\\r\\n\" +\r\n\"debug mfcr2 on\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"--" +
-            "--------\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"-Debug ISDN-\\r\\n\" +\r\n\"debug\\r\\n\" +\r\n\"core set debug " +
-            "5\\r\\n\" +\r\n\"core set verbose 5\\r\\n\" +\r\n\"pri set debug on span 1\\r\\n\" +\r\n\"\\r\\n\" +\r" +
-            "\n\"==================================================\\r\\n\" +\r\n\"                 *" +
-            "***********************\\r\\n\" +\r\n\"                        Digistar\\r\\n\" +\r\n\"     " +
-            "            ************************\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"################\\r\\n\" +\r" +
-            "\n\"DEBUG DIGISTAR\\r\\n\" +\r\n\"################\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"!DEBUG SIP\\r\\n\" +\r" +
-            "\n\"terminal monitor\\r\\n\" +\r\n\"!\\r\\n\" +\r\n\"conf t\\r\\n\" +\r\n\"logging on\\r\\n\" +\r\n\"debug" +
-            " pbx loglevel 5\\r\\n\" +\r\n\"debug sip loglevel 5\\r\\n\" +\r\n\"!\\r\\n\" +\r\n\"end\\r\\n\" +\r\n\"\\" +
-            "r\\n\" +\r\n\"- Desabilitar DEBUG -\\r\\n\" +\r\n\"terminal no monitor\\r\\n\" +\r\n\"configure t" +
-            "erminal\\r\\n\" +\r\n\"no debug pbx loglevel\\r\\n\" +\r\n\"no debug sip loglevel\\r\\n\" +\r\n\"!" +
-            "\\r\\n\" +\r\n\"\\r\\n\" +\r\n\"############\\r\\n\" +\r\n\"E1 ALINHADA\\r\\n\" +\r\n\"############\\r\\n\"" +
-            " +\r\n\"show pbx digital-line status\\r\\n\"")]
+        [global::System.Configuration.DefaultSettingValueAttribute("***********************\r\n\r\n          HP\r\n\r\n***********************\r\n\r\n###########" +
+            "####\r\n   DEBUG HP \r\n###############\r\n\r\n- DEBUG ISDN -\r\nDEBUG VOICE SIP message\r\n" +
+            "debug isdn\r\nterminal monitor\r\nterminal debugging\r\n\r\n----------\r\n\r\n- DEBUG R2 -\r\n" +
+            "debug voice R2 ALL\r\ndebugging voice r2 event\r\nterminal monitor\r\nterminal debuggi" +
+            "ng\r\n\r\n----------\r\n\r\n- DEBUG SIP -\r\nDEBUG VOICE SIP message\r\nterminal monitor\r\nte" +
+            "rminal debugging\r\n\r\n----------\r\n\r\n- Desabilitar DEBUG -\r\nundo DEBUG VOICE SIP me" +
+            "ssage\r\nundo terminal monitor\r\nundo terminal debugging\r\n\r\n\r\n*********************" +
+            "************************\r\n\r\n##########################\r\n HP NOVO - LOG DE LIGAÇÃ" +
+            "O \r\n##########################\r\n\r\n - R2 -\r\n\r\ndisplay voice sip call\r\n#\r\ndisplay " +
+            "voice call \r\n#\r\ndisplay voice call-info all\r\n#\r\ndisplay voice subscriber-line 1/" +
+            "0:1\r\n#\r\n\r\n----------\r\n\r\n - ISDN -\r\n\r\ndisplay voice sip call\r\n#\r\ndisplay voice ca" +
+            "ll \r\n#\r\ndisplay voice call-info all\r\n#\r\ndisplay voice subscriber-line 1/0:15\r\n#\r" +
+            "\n\r\n\r\n*********************************************\r\n\r\n##########################" +
+            "##\r\n HP ANTIGO - LOG DE LIGAÇÃO \r\n############################\r\n\r\n \r\ndisplay con" +
+            "troller E1\r\n\r\n----------\r\n - R2 -\r\n\r\nDisplay voice statistics call-active all\r\n#" +
+            "\r\nDisplay voice cmc ccb\r\n#\r\nDisplay voice subscriber-line 1/0:1\r\n#\r\n\r\n----------" +
+            "\r\n\r\n - ISDN - \r\n\r\ndisplay voice statistics call-active all\r\n#\r\ndisplay voice cmc" +
+            " ccb\r\n#\r\ndisplay voice subscriber-line 1/0:15\r\n#\r\n\r\n----------\r\n\r\n - LOG LIGAÇÃO" +
+            " 2 E1 -\r\n\r\ndisplay voice subscriber-line 5/1:15 | inc TALKING\r\ndisplay voice sub" +
+            "scriber-line 7/0:15 | inc TALKING\r\n\r\n\r\n=========================================" +
+            "====================\r\n\r\n************************\r\n\r\n         CISCO\r\n\r\n**********" +
+            "**************\r\n\r\n\r\nsh controller E1\r\n\r\n########################\r\n CISCO - LOG D" +
+            "E LIGAÇÃO \r\n########################\r\n\r\nterminal length 0\r\nsh voice port summ\r\n!" +
+            "\r\nsh voice call status\r\n!\r\nsh voice call summ\r\n!\r\n\r\n----------\r\n\r\n-R2-\r\n\r\ntermin" +
+            "al length 0\r\nSH VOICE PORT SUMmary | inc answered\r\nsh voice call status\r\nSH VOIC" +
+            "E CALL SUMMARY | inc ANSWER\r\n\r\n----------\r\n\r\n-ISDN-\r\n\r\nterminal length 0\r\nSH VOI" +
+            "CE PORT SUMmary\r\nsh voice call status\r\nSH VOICE CALL SUMMARY | inc CONNECT\r\n\r\n\r\n" +
+            "#############\r\n DEBUG CISCO\r\n#############\r\n\r\n!DEBUG SIP\r\nterminal monitor\r\ndebu" +
+            "g ccsip messages \r\ndebug voice ccapi inout\r\ndebug translation detail\r\n!\r\n!\r\n!\r\n\r" +
+            "\n----------\r\n\r\nterminal monitor\r\ndebug ccsip messages\r\n\r\n- Habilita visualização" +
+            " das dial-peers (entrada e saída)\r\n\r\nterminal no monitor\r\nno debug ccsip message" +
+            "s\r\nno debug voice ccapi inout\r\nno debug translation detail\r\n\r\n----------\r\n\r\n-DEB" +
+            "UG R2 CISCO-\r\nterminal monitor\r\ndebug ccsip messages\r\ndebug vpm signal\r\n\r\n------" +
+            "----\r\n\r\n-DESATIVA O DEBUG CISCO-\r\nterminal no monitor\r\nno debug ccsip messages\r\n" +
+            "no debug vpm signal\r\n\r\n----------\r\n\r\n**Ver se está registrado\r\nsh sip register s" +
+            "tatus\r\nsh sip-ua register status\r\n\r\n----------\r\n\r\nsh dial-peer voice sum\r\n\r\n\r\n**" +
+            "************Habilitar E1/T1\r\n\r\n#\r\ncard type e1 0 2\r\nPlaca de voz -> PVDM (Memori" +
+            "a para suportar a placa E1, PVDM 32 para 30 channels.\r\n\r\nForçar chamada placa FX" +
+            "S, FXO\r\nCSIM START <número a ser discado>\r\n\r\n===================================" +
+            "==========================\r\n\r\n************************\r\n\r\n        ALIGERA\r\n\r\n***" +
+            "*********************\r\n\r\nuser:\r\nadmin\r\naligera\r\n\r\n\r\n################\r\n DEBUG ALI" +
+            "GERA\r\n################\r\n\r\nDEBUG - com sip\r\n\r\ndebug\r\n core set debug 5\r\n core set" +
+            " verbose 5\r\n sip set debug on\r\n\r\n----------\r\n\r\n-Debug R2-\r\n\r\ndebug\r\ncore set deb" +
+            "ug 5\r\ncore set verbose 5\r\nmfcr2 set debug all\r\n\r\ndebug mfcr2 on\r\n\r\n----------\r\n\r" +
+            "\n-Debug ISDN-\r\n\r\ndebug\r\n core set debug 5\r\n core set verbose 5\r\n pri set debug o" +
+            "n span 1\r\n\r\n\r\n############\r\nE1 ALINHADA\r\n############\r\n\r\nstatus tdm\r\n\r\n\r\n#######" +
+            "#################\r\nLOG DA LIGAÇÃO ALIGERA\r\n########################\r\n\r\ndebug\r\n! " +
+            "\r\nsip show channels\r\nsip show channel  <CALL ID>\r\n\r\n\r\n==========================" +
+            "===================================\r\n\r\n************************\r\n\r\n       Digist" +
+            "ar\r\n\r\n************************\r\n\r\n\r\n################\r\n DEBUG DIGISTAR\r\n#########" +
+            "#######\r\n\r\n!DEBUG SIP\r\nterminal monitor\r\n!\r\nconf t\r\nlogging on\r\ndebug pbx loglev" +
+            "el 5\r\ndebug sip loglevel 5\r\n!\r\nend\r\n\r\n\r\n- Desabilitar DEBUG -\r\n\r\nterminal no mon" +
+            "itor\r\nconfigure terminal\r\nno debug pbx loglevel\r\nno debug sip loglevel\r\n!\r\n\r\n\r\n#" +
+            "#######################\r\nLOG DA LIGAÇÃO DIGISTAR\r\n########################\r\n\r\nsh" +
+            "ow voip sip channel\r\nshow pbx group status tdm\r\n!\r\n\r\n############\r\nE1 ALINHADA\r\n" +
+            "############\r\n\r\nshow pbx group status tdm\r\n\r\n#######################\r\nVerificar " +
+            "Erros na E1\r\n#######################\r\n\r\nshow pbx digital-line 1 status\r\n\r\n------" +
+            "-------------------------\r\n\r\nDIGISTAR - ** ISDN **\r\n\r\nTeste#configure terminal\r\n" +
+            "Teste(config)#pbx\r\nTeste(config-pbx)#digital-line\r\nTeste(config-pbx-dline)#diall" +
+            "ing-mode enblock\r\n\r\n\r\n==========================================================" +
+            "===\r\n\r\n************************\r\n\r\n       BROADSOFT\r\n\r\n************************\r" +
+            "\n\r\n#################\r\n DEBUG Broadsoft\r\n#################\r\n\r\n\r\nDebug IAD digista" +
+            "r\r\n\r\n\r\nconfigure terminal\r\nlogging on\r\ndebug sip loglevel 1\r\nexit\r\nterminal moni" +
+            "tor\r\n\r\n\r\n#######################################\r\nVerificar se está registrado o" +
+            "s ramais\r\n#######################################\r\n\r\ndigistar#show voip sip vsp\r" +
+            "\n\r\n\r\n=============================================================\r\n\r\n**********" +
+            "**************\r\n\r\n         OUTROS\r\n\r\n************************\r\n\r\n###############" +
+            "########\r\nPABX ALCATEL / siemens\r\n#######################\r\n\r\nHP\r\n-> Problemas co" +
+            "m ligações de entrada que duram 2 minutos.\r\n\r\ninterface Serial0/2/0:15 \r\nisdn ig" +
+            "nore connect-ack incoming \r\nisdn bch-local-manage exclusive\r\n\r\nRouter Cisco com " +
+            "ISDN\r\n\r\ninterface Serial1/0:15\r\nlink-protocol ppp\r\nisdn protocol-type qsig\r\nisdn" +
+            " overlap-sending\r\nisdn protocol-mode network\r\nisdn bch-select-way descending\r\n\r\n" +
+            "=============================================================\r\n\r\n\r\n#############" +
+            "########\r\nADICIONAR NÚMERO 0800\r\n#####################\r\n\r\nHP ##\r\n\r\nentity 20 pot" +
+            "s\r\n   line 1/0:1\r\n   send-number 4\r\n   description Ramais PABX\r\n   match-templat" +
+            "e 08005910\r\n   send-ring\r\n!\r\n!\r\n  entity 21 pots\r\n   line 1/0:1\r\n   send-number " +
+            "4\r\n   description Ramais PABX\r\n   match-template 0800??? (mudar mcdu)\r\n   send-r" +
+            "ing\r\n\r\n\r\nCISCO\r\n\r\ndial-peer voice 15 pots\r\n trunkgroup troncor2\r\n description IN" +
+            "BOUND  Rede Publica para tronco Vipline\r\n destination-pattern 0800????$\r\n progre" +
+            "ss_ind alert strip 8\r\n direct-inward-dial\r\n forward-digits 4\r\n\r\n\r\nDIGISTAR\r\n\r\n\r\n" +
+            "redirection input voip-operator groups 0 from * to 9090210736[0-9][0-9]$ output " +
+            "e1 groups 0 from {From} to {To:8}\t\r\nredirection input voip-operator groups 0 fro" +
+            "m * to 902121210736[0-9][0-9]$ output e1 groups 0 from {From} to {To:8}\t\r\nredire" +
+            "ction input e1 groups 0 from ^210736[0-9][0-9]$ to * output voip-operator groups" +
+            " 0 from {From} to {To}\t\r\nredirection input e1 groups 0 from ^36[0-9][0-9]$ to * " +
+            "output voip-operator groups 0 from 2107{From} to {To}\t\r\n\r\nredirection input e1 g" +
+            "roups 0 from * to * output voip-operator groups 0 from 21374900 to {To}\r\n\r\n\r\n===" +
+            "===============================================================\r\n\r\n\r\nVOZ --> Pro" +
+            "blemas para audio HP 1002\r\n\r\nvoice-setup\r\nsip\r\n  rel1xx disable\r\n\r\n\r\n===========" +
+            "=======================================================\r\n\r\n[IMSL-E1 1/0]dis this" +
+            "\r\n\r\n\r\n\r\n==================================================================\r\n\r\n\r\n" +
+            "\r\nMandar 8 digitos (PADRÃO 4)\r\n\r\nentity 10 pots\r\n   send-number 8\r\n\r\n\r\nBROADSOFT" +
+            "\r\n\r\nBEGBOO_2135755055#telnet 189.16.135.50 /vrf UNIF\r\n\r\n########################" +
+            "########\r\nVerificar terminais registrados\r\n################################\r\n\r\np" +
+            "ing -vpn-instance UNIF 201.64.111.50\r\n\r\nshow voip sip vsp\r\nshow voip sip channel" +
+            "\r\nshow provision\r\n\r\n\r\n\r\n########################\r\n\r\n---------------------\r\nTESTE" +
+            " FXO - VOIP\r\n---------------------\r\n\r\nDEBUG\r\nterminal monitor\r\ndebug voice trans" +
+            "lation\r\n\r\n\r\n######################\r\nVer a ligação em curso\r\n####################" +
+            "##\r\n\r\nsh voice call status\r\n\r\n----------\r\n\r\nshow gatekeeper stats -> log ligação" +
+            " site central\r\n\r\n################\r\n#Gerar ligação para outra localidade.\r\n######" +
+            "##########\r\nEx: csim start 31000\r\n\r\ncsim start <14>DDD <...> Numero de digitos a" +
+            "plicado na VOICE.\r\n\r\n")]
         public string debugVoz {
             get {
                 return ((string)(this["debugVoz"]));
@@ -274,6 +253,88 @@ namespace MasterSheetNew.Properties {
             }
             set {
                 this["enableTest"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool firstAccess {
+            get {
+                return ((bool)(this["firstAccess"]));
+            }
+            set {
+                this["firstAccess"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string userPE {
+            get {
+                return ((string)(this["userPE"]));
+            }
+            set {
+                this["userPE"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string tacacsPE {
+            get {
+                return ((string)(this["tacacsPE"]));
+            }
+            set {
+                this["tacacsPE"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string puttyPath {
+            get {
+                return ((string)(this["puttyPath"]));
+            }
+            set {
+                this["puttyPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("R2 Digital\r\n---------------------------------------\r\nApós ligar o equipamento vá " +
+            "a MODULE, encontre a opção CAS MFC-R2 e selecione-a. \r\nVerifique as seguintes co" +
+            "nfigurações:\r\n1º Pagina selecione as seguintes opções:\r\n1)    Mode: Selecione “S" +
+            "IMULATOR”,\r\n2)    PCM: PCM30\r\n3)    Termination: 75  UNBAL\r\n4)    Line Code: HDB" +
+            "3\r\n5)    Polarity: NORMAL ou INVERTIDO para HP\r\n6)    Country: Brasil\r\n2º Pagina" +
+            " selecione as seguintes opções:\r\n1)   Level: -10dBm\r\n2)   Interdigit time: 000 m" +
+            "s;\r\n3º Pagina FORWARD selecione as opções:\r\n1)   Ist Digit: 000 ms\r\n2)   Channel" +
+            ": 01\r\n3)   DID (B): Coloque o nº que deseja chamar\r\n4)   ANI (A): Tronco Chave\r\n" +
+            "5)   Category: II-1\r\n6)   Forcd AB: 11\r\n4º Pagina \r\n1)   Number of DID: 01\r\n2)  " +
+            " Number of ANIS: 20\r\n3)   Final de status: B-1\r\n4)   ASK First for DID (B)\r\n Com" +
+            " as verificações feitas aperte os seguintes botões nessa ordem START/STOP, STATE" +
+            " e CALL. Sua chamada será realizada\r\n► Para receber chamadas configure o equipam" +
+            "ento e aperte START/STOP.\r\n\r\n\r\nISDN\r\n---------------------------------------\r\nAp" +
+            "ós ligar o equipamento aperte MODULE, encontre a opção ISDN e selecione-a. \r\nCon" +
+            "figuração do equipamento:\r\n1º Pagina selecione as seguintes opções:\r\n1)    Emula" +
+            "tion: TERMINAL\r\n2)   Interface: G.703 2M\r\n3)    Termination: 75  UNBAL\r\n4)    Li" +
+            "ne Code: HDB3\r\n5)    PCM: PCM31C com CRC4 (Padrão EBT) e PCM31 caso deseje sem\r\n" +
+            "6)    Tx Clk Source: FROM RX\r\n2º Pagina selecione as seguintes opções:\r\n1)   Cal" +
+            "ling (A): Tronco Chave\r\n2)   Called (B): Coloque o nº que deseja chamar\r\n3)   Se" +
+            "rvice: Selecione o tipo de serviço (caso não saiba coloque  “SPEECH”)\r\n4)   B Ch" +
+            "annel: 31\r\n5)   D Channel: 16\r\n6)   TEI: 000\r\n\r\n► Para realizar chamada aperte S" +
+            "TAR/STOP para iniciar o alinhamento\r\n► Pressione Call para realizar a chamada.\r\n" +
+            "► Para receber chamada basta apertar START/STOP.\r\n\r\n\r\n\r\n\r\n")]
+        public string configWiseVoz {
+            get {
+                return ((string)(this["configWiseVoz"]));
+            }
+            set {
+                this["configWiseVoz"] = value;
             }
         }
     }
