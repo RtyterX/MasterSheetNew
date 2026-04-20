@@ -33,7 +33,7 @@ namespace MasterSheetNew
         {
             System.Windows.Forms.TabControl tabControl3;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.Button_IOS = new System.Windows.Forms.Button();
             this.labelRouterInfo = new System.Windows.Forms.Label();
@@ -717,14 +717,14 @@ namespace MasterSheetNew
             this.DataGridRouters.AllowUserToDeleteRows = false;
             this.DataGridRouters.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.DataGridRouters.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridRouters.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridRouters.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DataGridRouters.Location = new System.Drawing.Point(0, 114);
             this.DataGridRouters.Name = "DataGridRouters";
             this.DataGridRouters.ReadOnly = true;
@@ -1208,7 +1208,6 @@ namespace MasterSheetNew
             this.WizGat_Open.Text = "Abrir";
             this.WizGat_Open.UseVisualStyleBackColor = true;
             this.WizGat_Open.Click += new System.EventHandler(this.WizGat_Open1);
-
             // 
             // WizardGatLabel
             // 
@@ -1288,6 +1287,7 @@ namespace MasterSheetNew
             // 
             // Logs_Finais
             // 
+            this.Logs_Finais.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Finais.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logs_Finais.Location = new System.Drawing.Point(618, 138);
             this.Logs_Finais.Name = "Logs_Finais";
@@ -1551,7 +1551,6 @@ namespace MasterSheetNew
             this.Script_TelnetButtonPlus.TabIndex = 158;
             this.Script_TelnetButtonPlus.Text = "Telnet+";
             this.Script_TelnetButtonPlus.UseVisualStyleBackColor = true;
-            
             // 
             // Script_TelnetButtonTACACS
             // 
@@ -1562,7 +1561,6 @@ namespace MasterSheetNew
             this.Script_TelnetButtonTACACS.TabIndex = 157;
             this.Script_TelnetButtonTACACS.Text = "com TACACS";
             this.Script_TelnetButtonTACACS.UseVisualStyleBackColor = true;
-            
             // 
             // Script_DeleteVar03b
             // 
@@ -1584,7 +1582,7 @@ namespace MasterSheetNew
             this.Script_Row.MaximumSize = new System.Drawing.Size(2000, 1);
             this.Script_Row.MinimumSize = new System.Drawing.Size(500, 1);
             this.Script_Row.Name = "Script_Row";
-            this.Script_Row.Size = new System.Drawing.Size(1076, 1);
+            this.Script_Row.Size = new System.Drawing.Size(1095, 1);
             this.Script_Row.TabIndex = 155;
             this.Script_Row.TabStop = false;
             // 
@@ -1897,7 +1895,7 @@ namespace MasterSheetNew
             // 
             this.Button_ImportSAIP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Button_ImportSAIP.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button_ImportSAIP.Location = new System.Drawing.Point(843, 16);
+            this.Button_ImportSAIP.Location = new System.Drawing.Point(862, 16);
             this.Button_ImportSAIP.Name = "Button_ImportSAIP";
             this.Button_ImportSAIP.Size = new System.Drawing.Size(138, 37);
             this.Button_ImportSAIP.TabIndex = 122;
@@ -3005,7 +3003,7 @@ namespace MasterSheetNew
             // 
             this.BackButton_Script.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BackButton_Script.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackButton_Script.Location = new System.Drawing.Point(1030, 13);
+            this.BackButton_Script.Location = new System.Drawing.Point(1049, 13);
             this.BackButton_Script.Name = "BackButton_Script";
             this.BackButton_Script.Size = new System.Drawing.Size(104, 43);
             this.BackButton_Script.TabIndex = 26;
@@ -3019,7 +3017,7 @@ namespace MasterSheetNew
             this.BackButton_Script3.BackColor = System.Drawing.SystemColors.Control;
             this.BackButton_Script3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BackButton_Script3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.BackButton_Script3.Location = new System.Drawing.Point(1030, 13);
+            this.BackButton_Script3.Location = new System.Drawing.Point(1049, 13);
             this.BackButton_Script3.Name = "BackButton_Script3";
             this.BackButton_Script3.Size = new System.Drawing.Size(104, 43);
             this.BackButton_Script3.TabIndex = 30;
@@ -3031,7 +3029,7 @@ namespace MasterSheetNew
             // 
             this.BackButton_Script2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BackButton_Script2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackButton_Script2.Location = new System.Drawing.Point(1030, 13);
+            this.BackButton_Script2.Location = new System.Drawing.Point(1049, 13);
             this.BackButton_Script2.Name = "BackButton_Script2";
             this.BackButton_Script2.Size = new System.Drawing.Size(104, 43);
             this.BackButton_Script2.TabIndex = 29;
@@ -3049,7 +3047,7 @@ namespace MasterSheetNew
             this.Script_ProcedureName.Margin = new System.Windows.Forms.Padding(0);
             this.Script_ProcedureName.Name = "Script_ProcedureName";
             this.Script_ProcedureName.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Script_ProcedureName.Size = new System.Drawing.Size(1147, 45);
+            this.Script_ProcedureName.Size = new System.Drawing.Size(1166, 45);
             this.Script_ProcedureName.TabIndex = 5;
             this.Script_ProcedureName.Text = "Procedure Name";
             this.Script_ProcedureName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
