@@ -32,11 +32,11 @@ namespace MasterSheetNew
         private void InitializeComponent()
         {
             System.Windows.Forms.TabControl tabControl3;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.IOS_Button = new System.Windows.Forms.Button();
             this.IOS_Label0 = new System.Windows.Forms.Label();
+            this.IOS_Button = new System.Windows.Forms.Button();
             this.IOS_LinkLabel = new System.Windows.Forms.LinkLabel();
             this.IOS_LabelInfo = new System.Windows.Forms.Label();
             this.IOS_DataGrid_Routers = new System.Windows.Forms.DataGridView();
@@ -46,6 +46,7 @@ namespace MasterSheetNew
             this.ToolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabMaster = new System.Windows.Forms.TabPage();
+            this.Automation_Button = new System.Windows.Forms.Button();
             this.OpenPE_ComboBox = new System.Windows.Forms.ComboBox();
             this.OpenPE_Label = new System.Windows.Forms.Label();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -94,6 +95,7 @@ namespace MasterSheetNew
             this.MainPage_Button_Voz = new System.Windows.Forms.Button();
             this.MainPage_Button_MPLS = new System.Windows.Forms.Button();
             this.tabScript = new System.Windows.Forms.TabPage();
+            this.Script_Button_SSH = new System.Windows.Forms.Button();
             this.Test_CheckBox_ShowVarOnScript = new System.Windows.Forms.CheckBox();
             this.Script_Row = new System.Windows.Forms.PictureBox();
             this.Script_Button_TACACS = new System.Windows.Forms.Button();
@@ -130,6 +132,7 @@ namespace MasterSheetNew
             this.Script_ProcedureName = new System.Windows.Forms.Label();
             this.tabControl4 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.Script_Button_ShowRun = new System.Windows.Forms.Button();
             this.Script_Button_ClearPortas = new System.Windows.Forms.Button();
             this.Script_Button_Inverter = new System.Windows.Forms.Button();
             this.Script_VarSubTab = new System.Windows.Forms.TabControl();
@@ -265,7 +268,7 @@ namespace MasterSheetNew
             this.Config_SubTitle = new System.Windows.Forms.Label();
             this.Config_Button_HPE_old = new System.Windows.Forms.Button();
             this.Config_Title = new System.Windows.Forms.Label();
-            this.HomeButton_SelectRouter = new System.Windows.Forms.Button();
+            this.HomeButton_Config = new System.Windows.Forms.Button();
             this.Config_Button_HPE = new System.Windows.Forms.Button();
             this.Config_Button_Huawei = new System.Windows.Forms.Button();
             this.Config_Button_Fortigate = new System.Windows.Forms.Button();
@@ -418,7 +421,6 @@ namespace MasterSheetNew
             this.LigacoesRow2 = new System.Windows.Forms.PictureBox();
             this.LigacoesRow1 = new System.Windows.Forms.PictureBox();
             this.tabOutros = new System.Windows.Forms.TabPage();
-            this.Outros_CheckBox_ShowTrueScript = new System.Windows.Forms.CheckBox();
             this.Outros_Button_Logs = new System.Windows.Forms.Button();
             this.Outros_Button_ApplyTestValues = new System.Windows.Forms.Button();
             this.Outros_TypeLabel = new System.Windows.Forms.Label();
@@ -432,48 +434,47 @@ namespace MasterSheetNew
             this.Outros_Title = new System.Windows.Forms.Label();
             this.TabSubOutros = new System.Windows.Forms.TabControl();
             this.Outros_TabQoS = new System.Windows.Forms.TabPage();
-            this.Outros_VarDeleteCalc = new System.Windows.Forms.Button();
-            this.Outros_QoS_CiscoCheckBox = new System.Windows.Forms.CheckBox();
-            this.Outros_VarDeleteQoS8 = new System.Windows.Forms.Button();
-            this.Outros_VarDeleteQoS7 = new System.Windows.Forms.Button();
-            this.Outros_VarDeleteQoS3 = new System.Windows.Forms.Button();
-            this.Outros_VarDeleteQoS2 = new System.Windows.Forms.Button();
-            this.Outros_VarDeleteQoS4 = new System.Windows.Forms.Button();
-            this.Outros_VarDeleteQoS1 = new System.Windows.Forms.Button();
-            this.Outros_VarDeleteQoS0 = new System.Windows.Forms.Button();
-            this.Outros_QoSCalcLabel = new System.Windows.Forms.Label();
+            this.Outros_QoS_DeleteButton0 = new System.Windows.Forms.Button();
+            this.Outros_QoS_DeleteButton9 = new System.Windows.Forms.Button();
+            this.Outros_QoS_DeleteButton8 = new System.Windows.Forms.Button();
+            this.Outros_QoS_DeleteButton4 = new System.Windows.Forms.Button();
+            this.Outros_QoS_DeleteButton3 = new System.Windows.Forms.Button();
+            this.Outros_QoS_DeleteButton5 = new System.Windows.Forms.Button();
+            this.Outros_QoS_DeleteButton2 = new System.Windows.Forms.Button();
+            this.Outros_QoS_DeleteButton1 = new System.Windows.Forms.Button();
+            this.Outros_QoS_Label0 = new System.Windows.Forms.Label();
             this.Outros_QoS_ClearButton = new System.Windows.Forms.Button();
             this.Outros_QoS_Guide = new System.Windows.Forms.Label();
-            this.Outros_VarTextPercQoS03 = new System.Windows.Forms.TextBox();
-            this.Outros_VarTextPercQoS06 = new System.Windows.Forms.TextBox();
-            this.Outros_VarTextPercQoS05 = new System.Windows.Forms.TextBox();
-            this.Outros_VarTextPercQoS02 = new System.Windows.Forms.TextBox();
-            this.Outros_VarTextPercQoS04 = new System.Windows.Forms.TextBox();
-            this.Outros_VarTextPercQoS01 = new System.Windows.Forms.TextBox();
-            this.Outros_VarTextPercQoS00 = new System.Windows.Forms.TextBox();
-            this.Outros_VarTextQoS03 = new System.Windows.Forms.TextBox();
-            this.Outros_VarNameQoS3 = new System.Windows.Forms.Label();
-            this.Outros_QoSDispTotal = new System.Windows.Forms.Label();
-            this.Outros_QoSCalcEx = new System.Windows.Forms.Label();
-            this.Outros_QoSCalcText = new System.Windows.Forms.TextBox();
-            this.Outros_VarTextQoS08 = new System.Windows.Forms.TextBox();
-            this.Outros_VarNameQoS8 = new System.Windows.Forms.Label();
-            this.Outros_VarTextQoS07 = new System.Windows.Forms.TextBox();
-            this.Outros_VarNameQoS7 = new System.Windows.Forms.Label();
-            this.Outros_VarDeleteQoS6 = new System.Windows.Forms.Button();
-            this.Outros_VarTextQoS06 = new System.Windows.Forms.TextBox();
-            this.Outros_VarNameQoS6 = new System.Windows.Forms.Label();
-            this.Outros_VarDeleteQoS5 = new System.Windows.Forms.Button();
-            this.Outros_VarTextQoS05 = new System.Windows.Forms.TextBox();
-            this.Outros_VarTextQoS02 = new System.Windows.Forms.TextBox();
-            this.Outros_VarTextQoS04 = new System.Windows.Forms.TextBox();
-            this.Outros_VarTextQoS01 = new System.Windows.Forms.TextBox();
-            this.Outros_VarNameQoS2 = new System.Windows.Forms.Label();
-            this.Outros_VarNameQoS5 = new System.Windows.Forms.Label();
-            this.Outros_VarNameQoS4 = new System.Windows.Forms.Label();
-            this.Outros_VarNameQoS1 = new System.Windows.Forms.Label();
-            this.Outros_VarNameQoS0 = new System.Windows.Forms.Label();
-            this.Outros_VarTextQoS00 = new System.Windows.Forms.TextBox();
+            this.Outros_QoS_VarTextShow4 = new System.Windows.Forms.TextBox();
+            this.Outros_QoS_VarTextShow7 = new System.Windows.Forms.TextBox();
+            this.Outros_QoS_VarTextShow6 = new System.Windows.Forms.TextBox();
+            this.Outros_QoS_VarTextShow3 = new System.Windows.Forms.TextBox();
+            this.Outros_QoS_VarTextShow5 = new System.Windows.Forms.TextBox();
+            this.Outros_QoS_VarTextShow2 = new System.Windows.Forms.TextBox();
+            this.Outros_QoS_VarTextShow1 = new System.Windows.Forms.TextBox();
+            this.Outros_QoS_VarText04 = new System.Windows.Forms.TextBox();
+            this.Outros_QoS_Label4 = new System.Windows.Forms.Label();
+            this.Outros_QoS_TextCalcTotal = new System.Windows.Forms.Label();
+            this.Outros_QoS_ExLabel0 = new System.Windows.Forms.Label();
+            this.Outros_QoS_VarText00 = new System.Windows.Forms.TextBox();
+            this.Outros_QoS_VarText09 = new System.Windows.Forms.TextBox();
+            this.Outros_QoS_Label9 = new System.Windows.Forms.Label();
+            this.Outros_QoS_VarText08 = new System.Windows.Forms.TextBox();
+            this.Outros_QoS_Label8 = new System.Windows.Forms.Label();
+            this.Outros_QoS_DeleteButton7 = new System.Windows.Forms.Button();
+            this.Outros_QoS_VarText07 = new System.Windows.Forms.TextBox();
+            this.Outros_QoS_Label7 = new System.Windows.Forms.Label();
+            this.Outros_QoS_DeleteButton6 = new System.Windows.Forms.Button();
+            this.Outros_QoS_VarText06 = new System.Windows.Forms.TextBox();
+            this.Outros_QoS_VarText03 = new System.Windows.Forms.TextBox();
+            this.Outros_QoS_VarText05 = new System.Windows.Forms.TextBox();
+            this.Outros_QoS_VarText02 = new System.Windows.Forms.TextBox();
+            this.Outros_QoS_Label3 = new System.Windows.Forms.Label();
+            this.Outros_QoS_Label6 = new System.Windows.Forms.Label();
+            this.Outros_QoS_Label5 = new System.Windows.Forms.Label();
+            this.Outros_QoS_Label2 = new System.Windows.Forms.Label();
+            this.Outros_QoS_Label1 = new System.Windows.Forms.Label();
+            this.Outros_QoS_VarText01 = new System.Windows.Forms.TextBox();
             this.Outros_TabSNMP = new System.Windows.Forms.TabPage();
             this.Outros_SNMP_VarLabel2 = new System.Windows.Forms.Label();
             this.Outros_SNMP_VarPrivComboBox = new System.Windows.Forms.ComboBox();
@@ -551,46 +552,40 @@ namespace MasterSheetNew
             this.Outros_TabDHCP = new System.Windows.Forms.TabPage();
             this.Outros_DHCP_ExLabel5 = new System.Windows.Forms.Label();
             this.Outros_DHCP_ExLabel4 = new System.Windows.Forms.Label();
-            this.Outros_DHCP_DelButton0 = new System.Windows.Forms.Button();
-            this.Outros_DHCP_VarText0 = new System.Windows.Forms.TextBox();
+            this.Outros_DHCP_DelButton1 = new System.Windows.Forms.Button();
+            this.Outros_DHCP_VarText1 = new System.Windows.Forms.TextBox();
             this.Outros_DHCP_MascaraBox = new System.Windows.Forms.ComboBox();
             this.Outros_DHCP_DelButton5 = new System.Windows.Forms.Button();
-            this.Outros_DHCP_VarText10 = new System.Windows.Forms.TextBox();
+            this.Outros_DHCP_VarText5 = new System.Windows.Forms.TextBox();
             this.Outros_DHCP_Label5 = new System.Windows.Forms.Label();
             this.Outros_DHCP_DelButton4 = new System.Windows.Forms.Button();
-            this.Outros_DHCP_VarText9 = new System.Windows.Forms.TextBox();
+            this.Outros_DHCP_VarText4 = new System.Windows.Forms.TextBox();
             this.Outros_DHCP_Label4 = new System.Windows.Forms.Label();
-            this.Outros_DHCP_SubTitle = new System.Windows.Forms.Label();
-            this.Outros_DHCP_DelButton8 = new System.Windows.Forms.Button();
-            this.Outros_DHCP_ExLabel8 = new System.Windows.Forms.Label();
-            this.Outros_DHCP_VarText7 = new System.Windows.Forms.TextBox();
-            this.Outros_DHCP_Label8 = new System.Windows.Forms.Label();
             this.Outros_DHCP_DelButton7 = new System.Windows.Forms.Button();
             this.Outros_DHCP_ExLabel7 = new System.Windows.Forms.Label();
-            this.Outros_DHCP_VarText6 = new System.Windows.Forms.TextBox();
+            this.Outros_DHCP_VarText7 = new System.Windows.Forms.TextBox();
             this.Outros_DHCP_Label7 = new System.Windows.Forms.Label();
             this.Outros_DHCP_DelButton6 = new System.Windows.Forms.Button();
-            this.Outros_DHCP_ExLabel6 = new System.Windows.Forms.Label();
-            this.Outros_DHCP_VarText5 = new System.Windows.Forms.TextBox();
+            this.Outros_DHCP_VarText6 = new System.Windows.Forms.TextBox();
             this.Outros_DHCP_Label6 = new System.Windows.Forms.Label();
             this.Outros_DHCP_DelButton3 = new System.Windows.Forms.Button();
             this.Outros_DHCP_ExLabel3 = new System.Windows.Forms.Label();
-            this.Outros_DHCP_VarText4 = new System.Windows.Forms.TextBox();
+            this.Outros_DHCP_VarText3 = new System.Windows.Forms.TextBox();
             this.Outros_DHCP_Label3 = new System.Windows.Forms.Label();
             this.Outros_DHCP_DelButton2 = new System.Windows.Forms.Button();
             this.Outros_DHCP_ExLabel2 = new System.Windows.Forms.Label();
-            this.Outros_DHCP_VarText3 = new System.Windows.Forms.TextBox();
+            this.Outros_DHCP_VarText2 = new System.Windows.Forms.TextBox();
             this.Outros_DHCP_Label2 = new System.Windows.Forms.Label();
             this.Outros_DHCP_Guide = new System.Windows.Forms.Label();
-            this.Outros_DHCP_DelButton1 = new System.Windows.Forms.Button();
+            this.Outros_DHCP_DelButton0 = new System.Windows.Forms.Button();
             this.Outros_DHCP_DelButton9 = new System.Windows.Forms.Button();
             this.Outros_DHCP_ExTitle = new System.Windows.Forms.Label();
             this.Outros_DHCP_ExLabel1 = new System.Windows.Forms.Label();
             this.Outros_DHCP_ExLabel9 = new System.Windows.Forms.Label();
             this.Outros_DHCP_ExLabel0 = new System.Windows.Forms.Label();
             this.Outros_DHCP_ClearButton = new System.Windows.Forms.Button();
-            this.Outros_DHCP_VarText1 = new System.Windows.Forms.TextBox();
-            this.Outros_DHCP_VarText8 = new System.Windows.Forms.TextBox();
+            this.Outros_DHCP_VarText0 = new System.Windows.Forms.TextBox();
+            this.Outros_DHCP_VarText9 = new System.Windows.Forms.TextBox();
             this.Outros_DHCP_Label1 = new System.Windows.Forms.Label();
             this.Outros_DHCP_Label9 = new System.Windows.Forms.Label();
             this.Outros_DHCP_Label0 = new System.Windows.Forms.Label();
@@ -606,10 +601,10 @@ namespace MasterSheetNew
             this.Outros_VLAN_ExLabel0 = new System.Windows.Forms.Label();
             this.Outros_VLAN_VarDel0 = new System.Windows.Forms.Button();
             this.Outros_VLAN_ClearAllButton = new System.Windows.Forms.Button();
-            this.Outros_VLAN_VarText1 = new System.Windows.Forms.TextBox();
+            this.Outros_VLAN_VarText0 = new System.Windows.Forms.TextBox();
             this.Outros_VLAN_VarLabel1 = new System.Windows.Forms.Label();
             this.Outros_VLAN_VarLabel0 = new System.Windows.Forms.Label();
-            this.Outros_VLAN_VarText0 = new System.Windows.Forms.TextBox();
+            this.Outros_VLAN_VarText1 = new System.Windows.Forms.TextBox();
             this.Outros_VLAN_LabelTitle = new System.Windows.Forms.Label();
             this.Outros_TabUSUARIOS = new System.Windows.Forms.TabPage();
             this.Outros_User_Hint = new System.Windows.Forms.Label();
@@ -633,6 +628,7 @@ namespace MasterSheetNew
             this.Outros_TabFortiExtras = new System.Windows.Forms.TabPage();
             this.label72 = new System.Windows.Forms.Label();
             this.Outros_TabIPFLow = new System.Windows.Forms.TabPage();
+            this.Outros_IPFlow_ISRCheckBox = new System.Windows.Forms.CheckBox();
             this.Outros_IPFlow_DelButton2 = new System.Windows.Forms.Button();
             this.Outros_IPFlow_DelButton1 = new System.Windows.Forms.Button();
             this.Outros_IPFlow_ExTitle = new System.Windows.Forms.Label();
@@ -848,11 +844,11 @@ namespace MasterSheetNew
             this.Button_ImportSAIP = new System.Windows.Forms.Button();
             this.tabLogTools = new System.Windows.Forms.TabPage();
             this.LogTools_MainRow = new System.Windows.Forms.PictureBox();
-            this.LogTools_DBScriptButton = new System.Windows.Forms.Button();
-            this.LogToolsCalc = new System.Windows.Forms.Button();
-            this.LogToolsSuporte = new System.Windows.Forms.Button();
-            this.LogToolsFechamento = new System.Windows.Forms.Button();
-            this.LogToolsPendencia = new System.Windows.Forms.Button();
+            this.LogTools_DBScript = new System.Windows.Forms.Button();
+            this.LogTools_Calc = new System.Windows.Forms.Button();
+            this.LogTools_Suporte = new System.Windows.Forms.Button();
+            this.LogTools_Fechamento = new System.Windows.Forms.Button();
+            this.LogTools_Pendencia = new System.Windows.Forms.Button();
             this.tabControlLogTools = new System.Windows.Forms.TabControl();
             this.tabPendencia = new System.Windows.Forms.TabPage();
             this.Log_TextBox2 = new System.Windows.Forms.RichTextBox();
@@ -930,6 +926,7 @@ namespace MasterSheetNew
             this.Script_DB_TextBox2 = new System.Windows.Forms.TextBox();
             this.tabRouters = new System.Windows.Forms.TabPage();
             this.tabPreferencias = new System.Windows.Forms.TabPage();
+            this.Pref_Button_ResetAll = new System.Windows.Forms.Button();
             this.Prefs_Row0 = new System.Windows.Forms.PictureBox();
             this.Prefs_Row1 = new System.Windows.Forms.PictureBox();
             this.Prefs_Row2 = new System.Windows.Forms.PictureBox();
@@ -939,7 +936,7 @@ namespace MasterSheetNew
             this.Pref_Putty_SearchButton = new System.Windows.Forms.Button();
             this.Pref_Putty_SaveButton = new System.Windows.Forms.Button();
             this.Pref_Putty_PathTextBox = new System.Windows.Forms.TextBox();
-            this.ResetValue_Button = new System.Windows.Forms.Button();
+            this.Pref_Button_ResetPasswords = new System.Windows.Forms.Button();
             this.Pref_Putty_TitleLabel = new System.Windows.Forms.Label();
             this.Pref_TACACS_TitleLabel = new System.Windows.Forms.Label();
             this.Pref_TACACS_SubLabel2 = new System.Windows.Forms.Label();
@@ -953,6 +950,13 @@ namespace MasterSheetNew
             this.Pref_User_NameTextBox = new System.Windows.Forms.TextBox();
             this.Button_PassWordForm = new System.Windows.Forms.Button();
             this.Version = new System.Windows.Forms.Label();
+            this.Outros_QoS_TotalLabel = new System.Windows.Forms.Label();
+            this.Outros_DHCP_ExLabel6 = new System.Windows.Forms.Label();
+            this.Outros_DHCP_Label8 = new System.Windows.Forms.Label();
+            this.Outros_DHCP_VarText8 = new System.Windows.Forms.TextBox();
+            this.Outros_DHCP_ExLabel8 = new System.Windows.Forms.Label();
+            this.Outros_DHCP_DelButton8 = new System.Windows.Forms.Button();
+            this.Outros_DHCP_SubTitle = new System.Windows.Forms.Label();
             tabControl3 = new System.Windows.Forms.TabControl();
             tabControl3.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1048,24 +1052,33 @@ namespace MasterSheetNew
             tabControl3.Padding = new System.Drawing.Point(0, 0);
             tabControl3.SelectedIndex = 0;
             tabControl3.ShowToolTips = true;
-            tabControl3.Size = new System.Drawing.Size(1120, 593);
+            tabControl3.Size = new System.Drawing.Size(1120, 543);
             tabControl3.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             tabControl3.TabIndex = 0;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.IOS_Button);
             this.tabPage1.Controls.Add(this.IOS_Label0);
+            this.tabPage1.Controls.Add(this.IOS_Button);
             this.tabPage1.Controls.Add(this.IOS_LinkLabel);
             this.tabPage1.Controls.Add(this.IOS_LabelInfo);
             this.tabPage1.Controls.Add(this.IOS_DataGrid_Routers);
             this.tabPage1.Location = new System.Drawing.Point(4, 5);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1112, 584);
+            this.tabPage1.Size = new System.Drawing.Size(1112, 534);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // IOS_Label0
+            // 
+            this.IOS_Label0.AutoSize = true;
+            this.IOS_Label0.Location = new System.Drawing.Point(3, 64);
+            this.IOS_Label0.Name = "IOS_Label0";
+            this.IOS_Label0.Size = new System.Drawing.Size(582, 57);
+            this.IOS_Label0.TabIndex = 9;
+            this.IOS_Label0.Text = resources.GetString("IOS_Label0.Text");
             // 
             // IOS_Button
             // 
@@ -1078,14 +1091,6 @@ namespace MasterSheetNew
             this.IOS_Button.UseVisualStyleBackColor = true;
             this.IOS_Button.Click += new System.EventHandler(this.Button_IOS_Click);
             // 
-            // IOS_Label0
-            // 
-            this.IOS_Label0.AutoSize = true;
-            this.IOS_Label0.Location = new System.Drawing.Point(6, 60);
-            this.IOS_Label0.Name = "IOS_Label0";
-            this.IOS_Label0.Size = new System.Drawing.Size(0, 19);
-            this.IOS_Label0.TabIndex = 8;
-            // 
             // IOS_LinkLabel
             // 
             this.IOS_LinkLabel.Location = new System.Drawing.Point(5, 25);
@@ -1093,6 +1098,7 @@ namespace MasterSheetNew
             this.IOS_LinkLabel.Size = new System.Drawing.Size(1090, 43);
             this.IOS_LinkLabel.TabIndex = 7;
             this.IOS_LinkLabel.TabStop = true;
+            this.IOS_LinkLabel.Text = resources.GetString("IOS_LinkLabel.Text");
             this.IOS_LinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked);
             // 
             // IOS_LabelInfo
@@ -1120,11 +1126,11 @@ namespace MasterSheetNew
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.IOS_DataGrid_Routers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.IOS_DataGrid_Routers.Location = new System.Drawing.Point(0, 114);
+            this.IOS_DataGrid_Routers.Location = new System.Drawing.Point(0, 124);
             this.IOS_DataGrid_Routers.Name = "IOS_DataGrid_Routers";
             this.IOS_DataGrid_Routers.ReadOnly = true;
             this.IOS_DataGrid_Routers.RowHeadersVisible = false;
-            this.IOS_DataGrid_Routers.Size = new System.Drawing.Size(1095, 384);
+            this.IOS_DataGrid_Routers.Size = new System.Drawing.Size(1112, 410);
             this.IOS_DataGrid_Routers.TabIndex = 4;
             // 
             // tabPage2
@@ -1132,7 +1138,7 @@ namespace MasterSheetNew
             this.tabPage2.Location = new System.Drawing.Point(4, 5);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1112, 584);
+            this.tabPage2.Size = new System.Drawing.Size(1112, 534);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1154,7 +1160,7 @@ namespace MasterSheetNew
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 639);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 589);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 12, 0);
             this.statusStrip1.Size = new System.Drawing.Size(1134, 22);
@@ -1180,12 +1186,13 @@ namespace MasterSheetNew
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(0, 0);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1134, 639);
+            this.tabControl1.Size = new System.Drawing.Size(1134, 589);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.tabControl1.TabIndex = 0;
             // 
             // tabMaster
             // 
+            this.tabMaster.Controls.Add(this.Automation_Button);
             this.tabMaster.Controls.Add(this.OpenPE_ComboBox);
             this.tabMaster.Controls.Add(this.OpenPE_Label);
             this.tabMaster.Controls.Add(this.tabControl2);
@@ -1196,10 +1203,22 @@ namespace MasterSheetNew
             this.tabMaster.Location = new System.Drawing.Point(4, 36);
             this.tabMaster.Name = "tabMaster";
             this.tabMaster.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMaster.Size = new System.Drawing.Size(1126, 599);
+            this.tabMaster.Size = new System.Drawing.Size(1126, 549);
             this.tabMaster.TabIndex = 0;
             this.tabMaster.Text = "Master";
             this.tabMaster.UseVisualStyleBackColor = true;
+            // 
+            // Automation_Button
+            // 
+            this.Automation_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Automation_Button.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.Automation_Button.Location = new System.Drawing.Point(849, 18);
+            this.Automation_Button.Name = "Automation_Button";
+            this.Automation_Button.Size = new System.Drawing.Size(110, 37);
+            this.Automation_Button.TabIndex = 123;
+            this.Automation_Button.Text = "Automações";
+            this.Automation_Button.UseVisualStyleBackColor = true;
+            this.Automation_Button.Click += new System.EventHandler(this.Automation_Button_Click);
             // 
             // OpenPE_ComboBox
             // 
@@ -2423,7 +2442,7 @@ namespace MasterSheetNew
             this.tabControl2.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(1120, 522);
+            this.tabControl2.Size = new System.Drawing.Size(1120, 472);
             this.tabControl2.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl2.TabIndex = 0;
             // 
@@ -2478,7 +2497,7 @@ namespace MasterSheetNew
             this.tabMainPage.Location = new System.Drawing.Point(4, 5);
             this.tabMainPage.Name = "tabMainPage";
             this.tabMainPage.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMainPage.Size = new System.Drawing.Size(1112, 513);
+            this.tabMainPage.Size = new System.Drawing.Size(1112, 463);
             this.tabMainPage.TabIndex = 0;
             this.tabMainPage.Text = "tabPage4";
             // 
@@ -2486,7 +2505,7 @@ namespace MasterSheetNew
             // 
             this.MainPage_ColetaLigacoes_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.MainPage_ColetaLigacoes_Button.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MainPage_ColetaLigacoes_Button.Location = new System.Drawing.Point(976, 382);
+            this.MainPage_ColetaLigacoes_Button.Location = new System.Drawing.Point(976, 332);
             this.MainPage_ColetaLigacoes_Button.MaximumSize = new System.Drawing.Size(242, 120);
             this.MainPage_ColetaLigacoes_Button.Name = "MainPage_ColetaLigacoes_Button";
             this.MainPage_ColetaLigacoes_Button.Size = new System.Drawing.Size(121, 37);
@@ -2499,7 +2518,7 @@ namespace MasterSheetNew
             // 
             this.MainPage_Velo_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.MainPage_Velo_Button.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MainPage_Velo_Button.Location = new System.Drawing.Point(843, 382);
+            this.MainPage_Velo_Button.Location = new System.Drawing.Point(843, 332);
             this.MainPage_Velo_Button.MaximumSize = new System.Drawing.Size(242, 120);
             this.MainPage_Velo_Button.Name = "MainPage_Velo_Button";
             this.MainPage_Velo_Button.Size = new System.Drawing.Size(121, 37);
@@ -2561,7 +2580,7 @@ namespace MasterSheetNew
             this.CreatedLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.CreatedLabel.AutoSize = true;
             this.CreatedLabel.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreatedLabel.Location = new System.Drawing.Point(502, 493);
+            this.CreatedLabel.Location = new System.Drawing.Point(502, 443);
             this.CreatedLabel.Name = "CreatedLabel";
             this.CreatedLabel.Size = new System.Drawing.Size(200, 17);
             this.CreatedLabel.TabIndex = 43;
@@ -2572,7 +2591,7 @@ namespace MasterSheetNew
             this.ImageLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ImageLogo.Image = ((System.Drawing.Image)(resources.GetObject("ImageLogo.Image")));
             this.ImageLogo.InitialImage = null;
-            this.ImageLogo.Location = new System.Drawing.Point(831, 425);
+            this.ImageLogo.Location = new System.Drawing.Point(831, 375);
             this.ImageLogo.Name = "ImageLogo";
             this.ImageLogo.Size = new System.Drawing.Size(275, 85);
             this.ImageLogo.TabIndex = 4;
@@ -3033,6 +3052,7 @@ namespace MasterSheetNew
             this.tabScript.AutoScroll = true;
             this.tabScript.AutoScrollMinSize = new System.Drawing.Size(0, 100);
             this.tabScript.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.tabScript.Controls.Add(this.Script_Button_SSH);
             this.tabScript.Controls.Add(this.Test_CheckBox_ShowVarOnScript);
             this.tabScript.Controls.Add(this.Script_Row);
             this.tabScript.Controls.Add(this.Script_Button_TACACS);
@@ -3064,9 +3084,21 @@ namespace MasterSheetNew
             this.tabScript.Margin = new System.Windows.Forms.Padding(86, 87, 86, 87);
             this.tabScript.Name = "tabScript";
             this.tabScript.Padding = new System.Windows.Forms.Padding(3);
-            this.tabScript.Size = new System.Drawing.Size(1112, 513);
+            this.tabScript.Size = new System.Drawing.Size(1112, 463);
             this.tabScript.TabIndex = 1;
             this.tabScript.Text = "Script";
+            // 
+            // Script_Button_SSH
+            // 
+            this.Script_Button_SSH.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Script_Button_SSH.Font = new System.Drawing.Font("Segoe UI", 13.25F);
+            this.Script_Button_SSH.Location = new System.Drawing.Point(1027, 367);
+            this.Script_Button_SSH.Name = "Script_Button_SSH";
+            this.Script_Button_SSH.Size = new System.Drawing.Size(74, 43);
+            this.Script_Button_SSH.TabIndex = 173;
+            this.Script_Button_SSH.Text = "SSH";
+            this.Script_Button_SSH.UseVisualStyleBackColor = true;
+            this.Script_Button_SSH.Click += new System.EventHandler(this.Script_Button_SSH_Click);
             // 
             // Test_CheckBox_ShowVarOnScript
             // 
@@ -3120,7 +3152,7 @@ namespace MasterSheetNew
             // 
             this.Script_AlterDate.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Script_AlterDate.AutoSize = true;
-            this.Script_AlterDate.Location = new System.Drawing.Point(912, 477);
+            this.Script_AlterDate.Location = new System.Drawing.Point(912, 439);
             this.Script_AlterDate.Name = "Script_AlterDate";
             this.Script_AlterDate.Size = new System.Drawing.Size(38, 19);
             this.Script_AlterDate.TabIndex = 120;
@@ -3130,7 +3162,7 @@ namespace MasterSheetNew
             // 
             this.Script_AlterDate_Label.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Script_AlterDate_Label.AutoSize = true;
-            this.Script_AlterDate_Label.Location = new System.Drawing.Point(908, 455);
+            this.Script_AlterDate_Label.Location = new System.Drawing.Point(908, 419);
             this.Script_AlterDate_Label.Name = "Script_AlterDate_Label";
             this.Script_AlterDate_Label.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.Script_AlterDate_Label.Size = new System.Drawing.Size(121, 29);
@@ -3144,9 +3176,9 @@ namespace MasterSheetNew
             this.Script_Button_Config.Name = "Script_Button_Config";
             this.Script_Button_Config.Size = new System.Drawing.Size(104, 43);
             this.Script_Button_Config.TabIndex = 117;
-            this.Script_Button_Config.Text = "Config";
+            this.Script_Button_Config.Text = "Switch";
             this.Script_Button_Config.UseVisualStyleBackColor = true;
-            this.Script_Button_Config.Click += new System.EventHandler(this.Button_SwitchLog_Click);
+            this.Script_Button_Config.Click += new System.EventHandler(this.SwitchConfAndLogs);
             // 
             // Script_Button_Copy
             // 
@@ -3239,7 +3271,7 @@ namespace MasterSheetNew
             // Script_Button_Debug
             // 
             this.Script_Button_Debug.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Script_Button_Debug.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
+            this.Script_Button_Debug.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Script_Button_Debug.Location = new System.Drawing.Point(916, 367);
             this.Script_Button_Debug.Name = "Script_Button_Debug";
             this.Script_Button_Debug.Size = new System.Drawing.Size(104, 42);
@@ -3441,7 +3473,7 @@ namespace MasterSheetNew
             this.Script_TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.Script_TextBox.Location = new System.Drawing.Point(528, 141);
             this.Script_TextBox.Name = "Script_TextBox";
-            this.Script_TextBox.Size = new System.Drawing.Size(378, 361);
+            this.Script_TextBox.Size = new System.Drawing.Size(378, 322);
             this.Script_TextBox.TabIndex = 116;
             this.Script_TextBox.Text = "";
             this.Script_TextBox.WordWrap = false;
@@ -3488,13 +3520,14 @@ namespace MasterSheetNew
             this.tabControl4.Name = "tabControl4";
             this.tabControl4.Padding = new System.Drawing.Point(0, 0);
             this.tabControl4.SelectedIndex = 0;
-            this.tabControl4.Size = new System.Drawing.Size(487, 443);
+            this.tabControl4.Size = new System.Drawing.Size(500, 388);
             this.tabControl4.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl4.TabIndex = 170;
             // 
             // tabPage4
             // 
             this.tabPage4.AutoScroll = true;
+            this.tabPage4.Controls.Add(this.Script_Button_ShowRun);
             this.tabPage4.Controls.Add(this.Script_Button_ClearPortas);
             this.tabPage4.Controls.Add(this.Script_Button_Inverter);
             this.tabPage4.Controls.Add(this.Script_VarSubTab);
@@ -3577,10 +3610,21 @@ namespace MasterSheetNew
             this.tabPage4.Location = new System.Drawing.Point(4, 5);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(479, 434);
+            this.tabPage4.Size = new System.Drawing.Size(492, 379);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // Script_Button_ShowRun
+            // 
+            this.Script_Button_ShowRun.Font = new System.Drawing.Font("Segoe UI", 8.75F);
+            this.Script_Button_ShowRun.Location = new System.Drawing.Point(100, -1);
+            this.Script_Button_ShowRun.Name = "Script_Button_ShowRun";
+            this.Script_Button_ShowRun.Size = new System.Drawing.Size(89, 26);
+            this.Script_Button_ShowRun.TabIndex = 267;
+            this.Script_Button_ShowRun.Text = "Show Run";
+            this.Script_Button_ShowRun.UseVisualStyleBackColor = true;
+            this.Script_Button_ShowRun.Click += new System.EventHandler(this.NotImplemented);
             // 
             // Script_Button_ClearPortas
             // 
@@ -3616,7 +3660,7 @@ namespace MasterSheetNew
             this.Script_VarSubTab.Multiline = true;
             this.Script_VarSubTab.Name = "Script_VarSubTab";
             this.Script_VarSubTab.SelectedIndex = 0;
-            this.Script_VarSubTab.Size = new System.Drawing.Size(414, 234);
+            this.Script_VarSubTab.Size = new System.Drawing.Size(400, 234);
             this.Script_VarSubTab.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.Script_VarSubTab.TabIndex = 264;
             // 
@@ -3652,7 +3696,7 @@ namespace MasterSheetNew
             this.Script_SubTab_VozVar.Location = new System.Drawing.Point(4, 5);
             this.Script_SubTab_VozVar.Name = "Script_SubTab_VozVar";
             this.Script_SubTab_VozVar.Padding = new System.Windows.Forms.Padding(3);
-            this.Script_SubTab_VozVar.Size = new System.Drawing.Size(406, 225);
+            this.Script_SubTab_VozVar.Size = new System.Drawing.Size(392, 225);
             this.Script_SubTab_VozVar.TabIndex = 0;
             this.Script_SubTab_VozVar.Text = "Script_SubTab_Voz";
             this.Script_SubTab_VozVar.UseVisualStyleBackColor = true;
@@ -3949,7 +3993,7 @@ namespace MasterSheetNew
             this.Script_SubTab_RouteMap.Location = new System.Drawing.Point(4, 5);
             this.Script_SubTab_RouteMap.Name = "Script_SubTab_RouteMap";
             this.Script_SubTab_RouteMap.Padding = new System.Windows.Forms.Padding(3);
-            this.Script_SubTab_RouteMap.Size = new System.Drawing.Size(406, 225);
+            this.Script_SubTab_RouteMap.Size = new System.Drawing.Size(392, 225);
             this.Script_SubTab_RouteMap.TabIndex = 1;
             this.Script_SubTab_RouteMap.Text = "Script_VarSubTab_RouteMap";
             this.Script_SubTab_RouteMap.UseVisualStyleBackColor = true;
@@ -4087,7 +4131,7 @@ namespace MasterSheetNew
             this.Script_VarSubTab_Hollow.Location = new System.Drawing.Point(4, 5);
             this.Script_VarSubTab_Hollow.Name = "Script_VarSubTab_Hollow";
             this.Script_VarSubTab_Hollow.Padding = new System.Windows.Forms.Padding(3);
-            this.Script_VarSubTab_Hollow.Size = new System.Drawing.Size(406, 225);
+            this.Script_VarSubTab_Hollow.Size = new System.Drawing.Size(392, 225);
             this.Script_VarSubTab_Hollow.TabIndex = 2;
             this.Script_VarSubTab_Hollow.Text = "Hollow";
             this.Script_VarSubTab_Hollow.UseVisualStyleBackColor = true;
@@ -4363,9 +4407,9 @@ namespace MasterSheetNew
             this.Script_VarEx04.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Script_VarEx04.Location = new System.Drawing.Point(350, 199);
             this.Script_VarEx04.Name = "Script_VarEx04";
-            this.Script_VarEx04.Size = new System.Drawing.Size(14, 15);
+            this.Script_VarEx04.Size = new System.Drawing.Size(118, 15);
             this.Script_VarEx04.TabIndex = 235;
-            this.Script_VarEx04.Text = "5";
+            this.Script_VarEx04.Text = "GigabitEthernet0/0.5";
             // 
             // Script_VarEx03
             // 
@@ -4796,9 +4840,9 @@ namespace MasterSheetNew
             this.Script_VarName04.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Script_VarName04.Location = new System.Drawing.Point(17, 197);
             this.Script_VarName04.Name = "Script_VarName04";
-            this.Script_VarName04.Size = new System.Drawing.Size(82, 17);
+            this.Script_VarName04.Size = new System.Drawing.Size(136, 17);
             this.Script_VarName04.TabIndex = 174;
-            this.Script_VarName04.Text = "Nº da VLAN:";
+            this.Script_VarName04.Text = "Interface Logica WAN:";
             // 
             // Script_VarName02
             // 
@@ -4920,7 +4964,7 @@ namespace MasterSheetNew
             this.tabSelectRouter.Controls.Add(this.Config_SubTitle);
             this.tabSelectRouter.Controls.Add(this.Config_Button_HPE_old);
             this.tabSelectRouter.Controls.Add(this.Config_Title);
-            this.tabSelectRouter.Controls.Add(this.HomeButton_SelectRouter);
+            this.tabSelectRouter.Controls.Add(this.HomeButton_Config);
             this.tabSelectRouter.Controls.Add(this.Config_Button_HPE);
             this.tabSelectRouter.Controls.Add(this.Config_Button_Huawei);
             this.tabSelectRouter.Controls.Add(this.Config_Button_Fortigate);
@@ -4930,9 +4974,9 @@ namespace MasterSheetNew
             this.tabSelectRouter.Location = new System.Drawing.Point(4, 5);
             this.tabSelectRouter.Name = "tabSelectRouter";
             this.tabSelectRouter.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSelectRouter.Size = new System.Drawing.Size(1112, 513);
+            this.tabSelectRouter.Size = new System.Drawing.Size(1112, 463);
             this.tabSelectRouter.TabIndex = 2;
-            this.tabSelectRouter.Text = "tabPage4";
+            this.tabSelectRouter.Text = "Config";
             this.tabSelectRouter.UseVisualStyleBackColor = true;
             // 
             // Config_Button_WizGat
@@ -5062,19 +5106,19 @@ namespace MasterSheetNew
             this.Config_Title.Text = "Configuração CPE";
             this.Config_Title.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // HomeButton_SelectRouter
+            // HomeButton_Config
             // 
-            this.HomeButton_SelectRouter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.HomeButton_SelectRouter.BackColor = System.Drawing.Color.DodgerBlue;
-            this.HomeButton_SelectRouter.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HomeButton_SelectRouter.ForeColor = System.Drawing.Color.White;
-            this.HomeButton_SelectRouter.Location = new System.Drawing.Point(973, 23);
-            this.HomeButton_SelectRouter.Name = "HomeButton_SelectRouter";
-            this.HomeButton_SelectRouter.Size = new System.Drawing.Size(120, 48);
-            this.HomeButton_SelectRouter.TabIndex = 5;
-            this.HomeButton_SelectRouter.Text = "Home";
-            this.HomeButton_SelectRouter.UseVisualStyleBackColor = false;
-            this.HomeButton_SelectRouter.Click += new System.EventHandler(this.HomeButton_Script_Click);
+            this.HomeButton_Config.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.HomeButton_Config.BackColor = System.Drawing.Color.DodgerBlue;
+            this.HomeButton_Config.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HomeButton_Config.ForeColor = System.Drawing.Color.White;
+            this.HomeButton_Config.Location = new System.Drawing.Point(973, 23);
+            this.HomeButton_Config.Name = "HomeButton_Config";
+            this.HomeButton_Config.Size = new System.Drawing.Size(120, 48);
+            this.HomeButton_Config.TabIndex = 5;
+            this.HomeButton_Config.Text = "Home";
+            this.HomeButton_Config.UseVisualStyleBackColor = false;
+            this.HomeButton_Config.Click += new System.EventHandler(this.HomeButton_Script_Click);
             // 
             // Config_Button_HPE
             // 
@@ -5167,7 +5211,7 @@ namespace MasterSheetNew
             this.ClientStepsPage.Location = new System.Drawing.Point(4, 5);
             this.ClientStepsPage.Name = "ClientStepsPage";
             this.ClientStepsPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ClientStepsPage.Size = new System.Drawing.Size(1112, 513);
+            this.ClientStepsPage.Size = new System.Drawing.Size(1112, 463);
             this.ClientStepsPage.TabIndex = 3;
             this.ClientStepsPage.Text = "ClientStepsPage";
             this.ClientStepsPage.UseVisualStyleBackColor = true;
@@ -5191,7 +5235,7 @@ namespace MasterSheetNew
             this.tabWizGat.Location = new System.Drawing.Point(4, 5);
             this.tabWizGat.Name = "tabWizGat";
             this.tabWizGat.Padding = new System.Windows.Forms.Padding(3);
-            this.tabWizGat.Size = new System.Drawing.Size(1112, 513);
+            this.tabWizGat.Size = new System.Drawing.Size(1112, 463);
             this.tabWizGat.TabIndex = 4;
             this.tabWizGat.Text = "WizGat";
             this.tabWizGat.UseVisualStyleBackColor = true;
@@ -5212,7 +5256,7 @@ namespace MasterSheetNew
             // 
             this.WizGat_Row.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.WizGat_Row.BackColor = System.Drawing.Color.Gray;
-            this.WizGat_Row.Location = new System.Drawing.Point(175, 265);
+            this.WizGat_Row.Location = new System.Drawing.Point(175, 255);
             this.WizGat_Row.MaximumSize = new System.Drawing.Size(2000, 1);
             this.WizGat_Row.MinimumSize = new System.Drawing.Size(500, 1);
             this.WizGat_Row.Name = "WizGat_Row";
@@ -5250,7 +5294,7 @@ namespace MasterSheetNew
             // 
             this.WizGat_Button_CiscoBLDcBGP.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.WizGat_Button_CiscoBLDcBGP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WizGat_Button_CiscoBLDcBGP.Location = new System.Drawing.Point(716, 165);
+            this.WizGat_Button_CiscoBLDcBGP.Location = new System.Drawing.Point(716, 155);
             this.WizGat_Button_CiscoBLDcBGP.Name = "WizGat_Button_CiscoBLDcBGP";
             this.WizGat_Button_CiscoBLDcBGP.Size = new System.Drawing.Size(140, 55);
             this.WizGat_Button_CiscoBLDcBGP.TabIndex = 9;
@@ -5262,7 +5306,7 @@ namespace MasterSheetNew
             // 
             this.WizGat_Button_CiscoVoz.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.WizGat_Button_CiscoVoz.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WizGat_Button_CiscoVoz.Location = new System.Drawing.Point(570, 165);
+            this.WizGat_Button_CiscoVoz.Location = new System.Drawing.Point(570, 155);
             this.WizGat_Button_CiscoVoz.Name = "WizGat_Button_CiscoVoz";
             this.WizGat_Button_CiscoVoz.Size = new System.Drawing.Size(140, 55);
             this.WizGat_Button_CiscoVoz.TabIndex = 8;
@@ -5274,7 +5318,7 @@ namespace MasterSheetNew
             // 
             this.WizGat_Button_CiscoMPLS.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.WizGat_Button_CiscoMPLS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WizGat_Button_CiscoMPLS.Location = new System.Drawing.Point(424, 165);
+            this.WizGat_Button_CiscoMPLS.Location = new System.Drawing.Point(424, 155);
             this.WizGat_Button_CiscoMPLS.Name = "WizGat_Button_CiscoMPLS";
             this.WizGat_Button_CiscoMPLS.Size = new System.Drawing.Size(140, 55);
             this.WizGat_Button_CiscoMPLS.TabIndex = 7;
@@ -5286,7 +5330,7 @@ namespace MasterSheetNew
             // 
             this.WizGat_Button_CiscoBLD.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.WizGat_Button_CiscoBLD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WizGat_Button_CiscoBLD.Location = new System.Drawing.Point(278, 165);
+            this.WizGat_Button_CiscoBLD.Location = new System.Drawing.Point(278, 155);
             this.WizGat_Button_CiscoBLD.Name = "WizGat_Button_CiscoBLD";
             this.WizGat_Button_CiscoBLD.Size = new System.Drawing.Size(140, 55);
             this.WizGat_Button_CiscoBLD.TabIndex = 6;
@@ -5298,7 +5342,7 @@ namespace MasterSheetNew
             // 
             this.WizGat_CiscoTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.WizGat_CiscoTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WizGat_CiscoTitle.Location = new System.Drawing.Point(501, 99);
+            this.WizGat_CiscoTitle.Location = new System.Drawing.Point(501, 89);
             this.WizGat_CiscoTitle.Name = "WizGat_CiscoTitle";
             this.WizGat_CiscoTitle.Size = new System.Drawing.Size(139, 39);
             this.WizGat_CiscoTitle.TabIndex = 5;
@@ -5312,7 +5356,7 @@ namespace MasterSheetNew
             this.WizGat_NokiaTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WizGat_NokiaTitle.ForeColor = System.Drawing.SystemColors.ControlText;
             this.WizGat_NokiaTitle.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.WizGat_NokiaTitle.Location = new System.Drawing.Point(512, 298);
+            this.WizGat_NokiaTitle.Location = new System.Drawing.Point(512, 288);
             this.WizGat_NokiaTitle.Name = "WizGat_NokiaTitle";
             this.WizGat_NokiaTitle.Size = new System.Drawing.Size(129, 39);
             this.WizGat_NokiaTitle.TabIndex = 4;
@@ -5323,7 +5367,7 @@ namespace MasterSheetNew
             // 
             this.WizGat_Button_NokiaBLDcBGP.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.WizGat_Button_NokiaBLDcBGP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WizGat_Button_NokiaBLDcBGP.Location = new System.Drawing.Point(716, 359);
+            this.WizGat_Button_NokiaBLDcBGP.Location = new System.Drawing.Point(716, 349);
             this.WizGat_Button_NokiaBLDcBGP.Name = "WizGat_Button_NokiaBLDcBGP";
             this.WizGat_Button_NokiaBLDcBGP.Size = new System.Drawing.Size(140, 55);
             this.WizGat_Button_NokiaBLDcBGP.TabIndex = 3;
@@ -5335,7 +5379,7 @@ namespace MasterSheetNew
             // 
             this.WizGat_Button_NokiaVoz.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.WizGat_Button_NokiaVoz.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WizGat_Button_NokiaVoz.Location = new System.Drawing.Point(570, 359);
+            this.WizGat_Button_NokiaVoz.Location = new System.Drawing.Point(570, 349);
             this.WizGat_Button_NokiaVoz.Name = "WizGat_Button_NokiaVoz";
             this.WizGat_Button_NokiaVoz.Size = new System.Drawing.Size(140, 55);
             this.WizGat_Button_NokiaVoz.TabIndex = 2;
@@ -5347,7 +5391,7 @@ namespace MasterSheetNew
             // 
             this.WizGat_Button_NokiaMPLS.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.WizGat_Button_NokiaMPLS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WizGat_Button_NokiaMPLS.Location = new System.Drawing.Point(424, 359);
+            this.WizGat_Button_NokiaMPLS.Location = new System.Drawing.Point(424, 349);
             this.WizGat_Button_NokiaMPLS.Name = "WizGat_Button_NokiaMPLS";
             this.WizGat_Button_NokiaMPLS.Size = new System.Drawing.Size(140, 55);
             this.WizGat_Button_NokiaMPLS.TabIndex = 1;
@@ -5359,7 +5403,7 @@ namespace MasterSheetNew
             // 
             this.WizGat_Button_NokiaBLD.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.WizGat_Button_NokiaBLD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WizGat_Button_NokiaBLD.Location = new System.Drawing.Point(278, 359);
+            this.WizGat_Button_NokiaBLD.Location = new System.Drawing.Point(278, 349);
             this.WizGat_Button_NokiaBLD.Name = "WizGat_Button_NokiaBLD";
             this.WizGat_Button_NokiaBLD.Size = new System.Drawing.Size(140, 55);
             this.WizGat_Button_NokiaBLD.TabIndex = 0;
@@ -5398,7 +5442,7 @@ namespace MasterSheetNew
             this.tabLogs.Location = new System.Drawing.Point(4, 5);
             this.tabLogs.Name = "tabLogs";
             this.tabLogs.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLogs.Size = new System.Drawing.Size(1112, 513);
+            this.tabLogs.Size = new System.Drawing.Size(1112, 463);
             this.tabLogs.TabIndex = 5;
             this.tabLogs.Text = "tabLogs";
             this.tabLogs.UseVisualStyleBackColor = true;
@@ -5429,7 +5473,7 @@ namespace MasterSheetNew
             // 
             this.Logs_Button_Broadsoft.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Button_Broadsoft.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_Button_Broadsoft.Location = new System.Drawing.Point(782, 308);
+            this.Logs_Button_Broadsoft.Location = new System.Drawing.Point(782, 302);
             this.Logs_Button_Broadsoft.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_Button_Broadsoft.Name = "Logs_Button_Broadsoft";
             this.Logs_Button_Broadsoft.Size = new System.Drawing.Size(171, 60);
@@ -5442,7 +5486,7 @@ namespace MasterSheetNew
             // 
             this.Logs_Button_VOZ_Digistar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Button_VOZ_Digistar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_Button_VOZ_Digistar.Location = new System.Drawing.Point(576, 377);
+            this.Logs_Button_VOZ_Digistar.Location = new System.Drawing.Point(576, 371);
             this.Logs_Button_VOZ_Digistar.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_Button_VOZ_Digistar.Name = "Logs_Button_VOZ_Digistar";
             this.Logs_Button_VOZ_Digistar.Size = new System.Drawing.Size(171, 60);
@@ -5455,7 +5499,7 @@ namespace MasterSheetNew
             // 
             this.Logs_Button_VOZ_HPE.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Button_VOZ_HPE.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_Button_VOZ_HPE.Location = new System.Drawing.Point(576, 240);
+            this.Logs_Button_VOZ_HPE.Location = new System.Drawing.Point(576, 234);
             this.Logs_Button_VOZ_HPE.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_Button_VOZ_HPE.Name = "Logs_Button_VOZ_HPE";
             this.Logs_Button_VOZ_HPE.Size = new System.Drawing.Size(171, 60);
@@ -5469,7 +5513,7 @@ namespace MasterSheetNew
             this.Logs_Button_VOZ_Cisco.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Button_VOZ_Cisco.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Logs_Button_VOZ_Cisco.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_Button_VOZ_Cisco.Location = new System.Drawing.Point(576, 171);
+            this.Logs_Button_VOZ_Cisco.Location = new System.Drawing.Point(576, 165);
             this.Logs_Button_VOZ_Cisco.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_Button_VOZ_Cisco.Name = "Logs_Button_VOZ_Cisco";
             this.Logs_Button_VOZ_Cisco.Size = new System.Drawing.Size(171, 60);
@@ -5482,7 +5526,7 @@ namespace MasterSheetNew
             // 
             this.Logs_Button_MPLS_Huawei.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Button_MPLS_Huawei.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_Button_MPLS_Huawei.Location = new System.Drawing.Point(365, 308);
+            this.Logs_Button_MPLS_Huawei.Location = new System.Drawing.Point(365, 302);
             this.Logs_Button_MPLS_Huawei.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_Button_MPLS_Huawei.Name = "Logs_Button_MPLS_Huawei";
             this.Logs_Button_MPLS_Huawei.Size = new System.Drawing.Size(171, 60);
@@ -5495,7 +5539,7 @@ namespace MasterSheetNew
             // 
             this.Logs_Button_Ligacoes.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Button_Ligacoes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_Button_Ligacoes.Location = new System.Drawing.Point(782, 171);
+            this.Logs_Button_Ligacoes.Location = new System.Drawing.Point(782, 165);
             this.Logs_Button_Ligacoes.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_Button_Ligacoes.Name = "Logs_Button_Ligacoes";
             this.Logs_Button_Ligacoes.Size = new System.Drawing.Size(171, 60);
@@ -5508,7 +5552,7 @@ namespace MasterSheetNew
             // 
             this.Logs_Button_MPLS_Fortigate.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Button_MPLS_Fortigate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_Button_MPLS_Fortigate.Location = new System.Drawing.Point(365, 377);
+            this.Logs_Button_MPLS_Fortigate.Location = new System.Drawing.Point(365, 371);
             this.Logs_Button_MPLS_Fortigate.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_Button_MPLS_Fortigate.Name = "Logs_Button_MPLS_Fortigate";
             this.Logs_Button_MPLS_Fortigate.Size = new System.Drawing.Size(171, 60);
@@ -5522,7 +5566,7 @@ namespace MasterSheetNew
             this.Logs_Label_SubTitle2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Label_SubTitle2.AutoSize = true;
             this.Logs_Label_SubTitle2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_Label_SubTitle2.Location = new System.Drawing.Point(638, 128);
+            this.Logs_Label_SubTitle2.Location = new System.Drawing.Point(638, 122);
             this.Logs_Label_SubTitle2.Name = "Logs_Label_SubTitle2";
             this.Logs_Label_SubTitle2.Size = new System.Drawing.Size(51, 25);
             this.Logs_Label_SubTitle2.TabIndex = 22;
@@ -5532,7 +5576,7 @@ namespace MasterSheetNew
             // 
             this.Logs_Button_BLD_Fortigate.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Button_BLD_Fortigate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_Button_BLD_Fortigate.Location = new System.Drawing.Point(149, 377);
+            this.Logs_Button_BLD_Fortigate.Location = new System.Drawing.Point(149, 371);
             this.Logs_Button_BLD_Fortigate.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_Button_BLD_Fortigate.Name = "Logs_Button_BLD_Fortigate";
             this.Logs_Button_BLD_Fortigate.Size = new System.Drawing.Size(171, 60);
@@ -5545,7 +5589,7 @@ namespace MasterSheetNew
             // 
             this.Logs_Button_Velo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Button_Velo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_Button_Velo.Location = new System.Drawing.Point(782, 240);
+            this.Logs_Button_Velo.Location = new System.Drawing.Point(782, 234);
             this.Logs_Button_Velo.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_Button_Velo.Name = "Logs_Button_Velo";
             this.Logs_Button_Velo.Size = new System.Drawing.Size(171, 60);
@@ -5559,7 +5603,7 @@ namespace MasterSheetNew
             this.Logs_Label_SubTitle3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Label_SubTitle3.AutoSize = true;
             this.Logs_Label_SubTitle3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_Label_SubTitle3.Location = new System.Drawing.Point(835, 128);
+            this.Logs_Label_SubTitle3.Location = new System.Drawing.Point(835, 122);
             this.Logs_Label_SubTitle3.Name = "Logs_Label_SubTitle3";
             this.Logs_Label_SubTitle3.Size = new System.Drawing.Size(73, 25);
             this.Logs_Label_SubTitle3.TabIndex = 17;
@@ -5570,7 +5614,7 @@ namespace MasterSheetNew
             this.Logs_Label_SubTitle1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Label_SubTitle1.AutoSize = true;
             this.Logs_Label_SubTitle1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_Label_SubTitle1.Location = new System.Drawing.Point(418, 128);
+            this.Logs_Label_SubTitle1.Location = new System.Drawing.Point(418, 122);
             this.Logs_Label_SubTitle1.Name = "Logs_Label_SubTitle1";
             this.Logs_Label_SubTitle1.Size = new System.Drawing.Size(63, 25);
             this.Logs_Label_SubTitle1.TabIndex = 16;
@@ -5581,7 +5625,7 @@ namespace MasterSheetNew
             this.Logs_Label_SubTitle0.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Label_SubTitle0.AutoSize = true;
             this.Logs_Label_SubTitle0.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_Label_SubTitle0.Location = new System.Drawing.Point(208, 128);
+            this.Logs_Label_SubTitle0.Location = new System.Drawing.Point(208, 122);
             this.Logs_Label_SubTitle0.Name = "Logs_Label_SubTitle0";
             this.Logs_Label_SubTitle0.Size = new System.Drawing.Size(48, 25);
             this.Logs_Label_SubTitle0.TabIndex = 15;
@@ -5591,7 +5635,7 @@ namespace MasterSheetNew
             // 
             this.Logs_Button_MPLS_HPE.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Button_MPLS_HPE.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_Button_MPLS_HPE.Location = new System.Drawing.Point(365, 240);
+            this.Logs_Button_MPLS_HPE.Location = new System.Drawing.Point(365, 234);
             this.Logs_Button_MPLS_HPE.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_Button_MPLS_HPE.Name = "Logs_Button_MPLS_HPE";
             this.Logs_Button_MPLS_HPE.Size = new System.Drawing.Size(171, 60);
@@ -5604,7 +5648,7 @@ namespace MasterSheetNew
             // 
             this.Logs_Button_MPLS_Cisco.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Button_MPLS_Cisco.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_Button_MPLS_Cisco.Location = new System.Drawing.Point(365, 171);
+            this.Logs_Button_MPLS_Cisco.Location = new System.Drawing.Point(365, 165);
             this.Logs_Button_MPLS_Cisco.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_Button_MPLS_Cisco.Name = "Logs_Button_MPLS_Cisco";
             this.Logs_Button_MPLS_Cisco.Size = new System.Drawing.Size(171, 60);
@@ -5617,7 +5661,7 @@ namespace MasterSheetNew
             // 
             this.Logs_Button_VOZ_Aligera.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Button_VOZ_Aligera.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_Button_VOZ_Aligera.Location = new System.Drawing.Point(576, 308);
+            this.Logs_Button_VOZ_Aligera.Location = new System.Drawing.Point(576, 302);
             this.Logs_Button_VOZ_Aligera.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_Button_VOZ_Aligera.Name = "Logs_Button_VOZ_Aligera";
             this.Logs_Button_VOZ_Aligera.Size = new System.Drawing.Size(171, 60);
@@ -5630,7 +5674,7 @@ namespace MasterSheetNew
             // 
             this.Logs_Button_BLD_HPE.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Button_BLD_HPE.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_Button_BLD_HPE.Location = new System.Drawing.Point(149, 240);
+            this.Logs_Button_BLD_HPE.Location = new System.Drawing.Point(149, 234);
             this.Logs_Button_BLD_HPE.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_Button_BLD_HPE.Name = "Logs_Button_BLD_HPE";
             this.Logs_Button_BLD_HPE.Size = new System.Drawing.Size(171, 60);
@@ -5671,7 +5715,7 @@ namespace MasterSheetNew
             this.Logs_Button_CiscoBLD.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Button_CiscoBLD.AutoSize = true;
             this.Logs_Button_CiscoBLD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_Button_CiscoBLD.Location = new System.Drawing.Point(149, 171);
+            this.Logs_Button_CiscoBLD.Location = new System.Drawing.Point(149, 165);
             this.Logs_Button_CiscoBLD.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_Button_CiscoBLD.Name = "Logs_Button_CiscoBLD";
             this.Logs_Button_CiscoBLD.Size = new System.Drawing.Size(171, 60);
@@ -5684,7 +5728,7 @@ namespace MasterSheetNew
             // 
             this.Logs_Button_BLD_Huawei.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Button_BLD_Huawei.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logs_Button_BLD_Huawei.Location = new System.Drawing.Point(149, 308);
+            this.Logs_Button_BLD_Huawei.Location = new System.Drawing.Point(149, 302);
             this.Logs_Button_BLD_Huawei.MaximumSize = new System.Drawing.Size(242, 120);
             this.Logs_Button_BLD_Huawei.Name = "Logs_Button_BLD_Huawei";
             this.Logs_Button_BLD_Huawei.Size = new System.Drawing.Size(171, 60);
@@ -5697,7 +5741,7 @@ namespace MasterSheetNew
             // 
             this.Logs_Row2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Row2.BackColor = System.Drawing.Color.Gray;
-            this.Logs_Row2.Location = new System.Drawing.Point(764, 148);
+            this.Logs_Row2.Location = new System.Drawing.Point(764, 142);
             this.Logs_Row2.Name = "Logs_Row2";
             this.Logs_Row2.Size = new System.Drawing.Size(1, 303);
             this.Logs_Row2.TabIndex = 23;
@@ -5707,7 +5751,7 @@ namespace MasterSheetNew
             // 
             this.Logs_Row1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Row1.BackColor = System.Drawing.Color.Gray;
-            this.Logs_Row1.Location = new System.Drawing.Point(557, 148);
+            this.Logs_Row1.Location = new System.Drawing.Point(557, 142);
             this.Logs_Row1.Name = "Logs_Row1";
             this.Logs_Row1.Size = new System.Drawing.Size(1, 303);
             this.Logs_Row1.TabIndex = 12;
@@ -5717,7 +5761,7 @@ namespace MasterSheetNew
             // 
             this.Logs_Row0.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logs_Row0.BackColor = System.Drawing.Color.Gray;
-            this.Logs_Row0.Location = new System.Drawing.Point(342, 148);
+            this.Logs_Row0.Location = new System.Drawing.Point(342, 142);
             this.Logs_Row0.Name = "Logs_Row0";
             this.Logs_Row0.Size = new System.Drawing.Size(1, 303);
             this.Logs_Row0.TabIndex = 11;
@@ -5738,7 +5782,7 @@ namespace MasterSheetNew
             this.tabVelocloud.Location = new System.Drawing.Point(4, 5);
             this.tabVelocloud.Name = "tabVelocloud";
             this.tabVelocloud.Padding = new System.Windows.Forms.Padding(3);
-            this.tabVelocloud.Size = new System.Drawing.Size(1112, 513);
+            this.tabVelocloud.Size = new System.Drawing.Size(1112, 463);
             this.tabVelocloud.TabIndex = 6;
             this.tabVelocloud.Text = "tabPage1";
             this.tabVelocloud.UseVisualStyleBackColor = true;
@@ -5747,7 +5791,7 @@ namespace MasterSheetNew
             // 
             this.veloRestoreButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.veloRestoreButton.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.veloRestoreButton.Location = new System.Drawing.Point(752, 464);
+            this.veloRestoreButton.Location = new System.Drawing.Point(698, 464);
             this.veloRestoreButton.Name = "veloRestoreButton";
             this.veloRestoreButton.Size = new System.Drawing.Size(166, 39);
             this.veloRestoreButton.TabIndex = 169;
@@ -5762,11 +5806,11 @@ namespace MasterSheetNew
             this.tabControl6.Controls.Add(this.tab_VeloVars);
             this.tabControl6.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControl6.ItemSize = new System.Drawing.Size(0, 1);
-            this.tabControl6.Location = new System.Drawing.Point(26, 88);
+            this.tabControl6.Location = new System.Drawing.Point(-28, 88);
             this.tabControl6.Multiline = true;
             this.tabControl6.Name = "tabControl6";
             this.tabControl6.SelectedIndex = 0;
-            this.tabControl6.Size = new System.Drawing.Size(697, 425);
+            this.tabControl6.Size = new System.Drawing.Size(697, 375);
             this.tabControl6.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl6.TabIndex = 168;
             // 
@@ -5831,7 +5875,7 @@ namespace MasterSheetNew
             this.tab_VeloVars.Location = new System.Drawing.Point(4, 5);
             this.tab_VeloVars.Name = "tab_VeloVars";
             this.tab_VeloVars.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_VeloVars.Size = new System.Drawing.Size(689, 416);
+            this.tab_VeloVars.Size = new System.Drawing.Size(689, 366);
             this.tab_VeloVars.TabIndex = 0;
             this.tab_VeloVars.Text = "tab_VeloVars";
             // 
@@ -6402,7 +6446,7 @@ namespace MasterSheetNew
             // 
             this.Velo_TypeLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Velo_TypeLabel.Font = new System.Drawing.Font("Segoe UI", 16.75F, System.Drawing.FontStyle.Bold);
-            this.Velo_TypeLabel.Location = new System.Drawing.Point(782, 83);
+            this.Velo_TypeLabel.Location = new System.Drawing.Point(728, 83);
             this.Velo_TypeLabel.Name = "Velo_TypeLabel";
             this.Velo_TypeLabel.Size = new System.Drawing.Size(109, 30);
             this.Velo_TypeLabel.TabIndex = 119;
@@ -6413,7 +6457,7 @@ namespace MasterSheetNew
             // 
             this.veloDeleteButtonAll.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.veloDeleteButtonAll.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.veloDeleteButtonAll.Location = new System.Drawing.Point(941, 88);
+            this.veloDeleteButtonAll.Location = new System.Drawing.Point(887, 88);
             this.veloDeleteButtonAll.Name = "veloDeleteButtonAll";
             this.veloDeleteButtonAll.Size = new System.Drawing.Size(144, 34);
             this.veloDeleteButtonAll.TabIndex = 71;
@@ -6425,7 +6469,7 @@ namespace MasterSheetNew
             // 
             this.buttonSwitchVeloLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSwitchVeloLog.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSwitchVeloLog.Location = new System.Drawing.Point(861, 21);
+            this.buttonSwitchVeloLog.Location = new System.Drawing.Point(759, 21);
             this.buttonSwitchVeloLog.Name = "buttonSwitchVeloLog";
             this.buttonSwitchVeloLog.Size = new System.Drawing.Size(104, 43);
             this.buttonSwitchVeloLog.TabIndex = 69;
@@ -6438,7 +6482,7 @@ namespace MasterSheetNew
             this.labelVelocloudTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelVelocloudTitle.AutoSize = true;
             this.labelVelocloudTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelVelocloudTitle.Location = new System.Drawing.Point(275, 21);
+            this.labelVelocloudTitle.Location = new System.Drawing.Point(221, 21);
             this.labelVelocloudTitle.Name = "labelVelocloudTitle";
             this.labelVelocloudTitle.Size = new System.Drawing.Size(172, 37);
             this.labelVelocloudTitle.TabIndex = 68;
@@ -6451,7 +6495,7 @@ namespace MasterSheetNew
             this.HomeButton_Velo.BackColor = System.Drawing.SystemColors.Highlight;
             this.HomeButton_Velo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HomeButton_Velo.ForeColor = System.Drawing.Color.White;
-            this.HomeButton_Velo.Location = new System.Drawing.Point(971, 21);
+            this.HomeButton_Velo.Location = new System.Drawing.Point(869, 21);
             this.HomeButton_Velo.Name = "HomeButton_Velo";
             this.HomeButton_Velo.Size = new System.Drawing.Size(104, 43);
             this.HomeButton_Velo.TabIndex = 32;
@@ -6463,7 +6507,7 @@ namespace MasterSheetNew
             // 
             this.buttonVeloCopie.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.buttonVeloCopie.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
-            this.buttonVeloCopie.Location = new System.Drawing.Point(925, 464);
+            this.buttonVeloCopie.Location = new System.Drawing.Point(871, 464);
             this.buttonVeloCopie.Name = "buttonVeloCopie";
             this.buttonVeloCopie.Size = new System.Drawing.Size(162, 39);
             this.buttonVeloCopie.TabIndex = 0;
@@ -6475,9 +6519,9 @@ namespace MasterSheetNew
             // 
             this.veloTextBoxFinal.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.veloTextBoxFinal.Font = new System.Drawing.Font("Segoe UI", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.veloTextBoxFinal.Location = new System.Drawing.Point(752, 131);
+            this.veloTextBoxFinal.Location = new System.Drawing.Point(698, 131);
             this.veloTextBoxFinal.Name = "veloTextBoxFinal";
-            this.veloTextBoxFinal.Size = new System.Drawing.Size(335, 328);
+            this.veloTextBoxFinal.Size = new System.Drawing.Size(335, 327);
             this.veloTextBoxFinal.TabIndex = 88;
             this.veloTextBoxFinal.Text = "";
             this.veloTextBoxFinal.WordWrap = false;
@@ -6523,13 +6567,14 @@ namespace MasterSheetNew
             this.tabLigacoes.Location = new System.Drawing.Point(4, 5);
             this.tabLigacoes.Name = "tabLigacoes";
             this.tabLigacoes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLigacoes.Size = new System.Drawing.Size(1112, 513);
+            this.tabLigacoes.Size = new System.Drawing.Size(1112, 463);
             this.tabLigacoes.TabIndex = 7;
             this.tabLigacoes.Text = "tabLigacoes";
             this.tabLigacoes.UseVisualStyleBackColor = true;
             // 
             // Ligacoes_ConfigWiseButton
             // 
+            this.Ligacoes_ConfigWiseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Ligacoes_ConfigWiseButton.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Ligacoes_ConfigWiseButton.ForeColor = System.Drawing.Color.DarkRed;
             this.Ligacoes_ConfigWiseButton.Location = new System.Drawing.Point(689, 19);
@@ -6701,7 +6746,7 @@ namespace MasterSheetNew
             // Ligacoes_Clear3
             // 
             this.Ligacoes_Clear3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Ligacoes_Clear3.Location = new System.Drawing.Point(234, 234);
+            this.Ligacoes_Clear3.Location = new System.Drawing.Point(224, 216);
             this.Ligacoes_Clear3.Name = "Ligacoes_Clear3";
             this.Ligacoes_Clear3.Size = new System.Drawing.Size(67, 24);
             this.Ligacoes_Clear3.TabIndex = 18;
@@ -6712,7 +6757,7 @@ namespace MasterSheetNew
             // Ligacoes_Clear2
             // 
             this.Ligacoes_Clear2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Ligacoes_Clear2.Location = new System.Drawing.Point(524, 118);
+            this.Ligacoes_Clear2.Location = new System.Drawing.Point(514, 100);
             this.Ligacoes_Clear2.Name = "Ligacoes_Clear2";
             this.Ligacoes_Clear2.Size = new System.Drawing.Size(67, 24);
             this.Ligacoes_Clear2.TabIndex = 17;
@@ -6723,7 +6768,7 @@ namespace MasterSheetNew
             // Ligacoes_Clear1
             // 
             this.Ligacoes_Clear1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Ligacoes_Clear1.Location = new System.Drawing.Point(234, 118);
+            this.Ligacoes_Clear1.Location = new System.Drawing.Point(224, 100);
             this.Ligacoes_Clear1.Name = "Ligacoes_Clear1";
             this.Ligacoes_Clear1.Size = new System.Drawing.Size(67, 24);
             this.Ligacoes_Clear1.TabIndex = 16;
@@ -6734,7 +6779,7 @@ namespace MasterSheetNew
             // Ligacoes_Clear4
             // 
             this.Ligacoes_Clear4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Ligacoes_Clear4.Location = new System.Drawing.Point(524, 234);
+            this.Ligacoes_Clear4.Location = new System.Drawing.Point(514, 216);
             this.Ligacoes_Clear4.Name = "Ligacoes_Clear4";
             this.Ligacoes_Clear4.Size = new System.Drawing.Size(67, 24);
             this.Ligacoes_Clear4.TabIndex = 15;
@@ -6745,7 +6790,7 @@ namespace MasterSheetNew
             // Ligacoes_Clear5
             // 
             this.Ligacoes_Clear5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Ligacoes_Clear5.Location = new System.Drawing.Point(234, 353);
+            this.Ligacoes_Clear5.Location = new System.Drawing.Point(224, 335);
             this.Ligacoes_Clear5.Name = "Ligacoes_Clear5";
             this.Ligacoes_Clear5.Size = new System.Drawing.Size(67, 24);
             this.Ligacoes_Clear5.TabIndex = 14;
@@ -6756,7 +6801,7 @@ namespace MasterSheetNew
             // Ligacoes_Clear6
             // 
             this.Ligacoes_Clear6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Ligacoes_Clear6.Location = new System.Drawing.Point(524, 352);
+            this.Ligacoes_Clear6.Location = new System.Drawing.Point(514, 334);
             this.Ligacoes_Clear6.Name = "Ligacoes_Clear6";
             this.Ligacoes_Clear6.Size = new System.Drawing.Size(67, 24);
             this.Ligacoes_Clear6.TabIndex = 13;
@@ -6767,8 +6812,8 @@ namespace MasterSheetNew
             // Ligacoes_TextBox5
             // 
             this.Ligacoes_TextBox5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Ligacoes_TextBox5.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Ligacoes_TextBox5.Location = new System.Drawing.Point(39, 377);
+            this.Ligacoes_TextBox5.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.Ligacoes_TextBox5.Location = new System.Drawing.Point(29, 359);
             this.Ligacoes_TextBox5.Multiline = true;
             this.Ligacoes_TextBox5.Name = "Ligacoes_TextBox5";
             this.Ligacoes_TextBox5.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -6781,7 +6826,7 @@ namespace MasterSheetNew
             this.Ligacoes_SubTitle5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Ligacoes_SubTitle5.AutoSize = true;
             this.Ligacoes_SubTitle5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Ligacoes_SubTitle5.Location = new System.Drawing.Point(128, 353);
+            this.Ligacoes_SubTitle5.Location = new System.Drawing.Point(118, 335);
             this.Ligacoes_SubTitle5.Name = "Ligacoes_SubTitle5";
             this.Ligacoes_SubTitle5.Size = new System.Drawing.Size(78, 21);
             this.Ligacoes_SubTitle5.TabIndex = 11;
@@ -6790,8 +6835,8 @@ namespace MasterSheetNew
             // Ligacoes_TextBox6
             // 
             this.Ligacoes_TextBox6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Ligacoes_TextBox6.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Ligacoes_TextBox6.Location = new System.Drawing.Point(329, 376);
+            this.Ligacoes_TextBox6.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.Ligacoes_TextBox6.Location = new System.Drawing.Point(319, 358);
             this.Ligacoes_TextBox6.Multiline = true;
             this.Ligacoes_TextBox6.Name = "Ligacoes_TextBox6";
             this.Ligacoes_TextBox6.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -6804,7 +6849,7 @@ namespace MasterSheetNew
             this.Ligacoes_SubTitle6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Ligacoes_SubTitle6.AutoSize = true;
             this.Ligacoes_SubTitle6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Ligacoes_SubTitle6.Location = new System.Drawing.Point(422, 352);
+            this.Ligacoes_SubTitle6.Location = new System.Drawing.Point(412, 334);
             this.Ligacoes_SubTitle6.Name = "Ligacoes_SubTitle6";
             this.Ligacoes_SubTitle6.Size = new System.Drawing.Size(69, 21);
             this.Ligacoes_SubTitle6.TabIndex = 7;
@@ -6813,8 +6858,8 @@ namespace MasterSheetNew
             // Ligacoes_TextBox4
             // 
             this.Ligacoes_TextBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Ligacoes_TextBox4.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Ligacoes_TextBox4.Location = new System.Drawing.Point(329, 258);
+            this.Ligacoes_TextBox4.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.Ligacoes_TextBox4.Location = new System.Drawing.Point(319, 240);
             this.Ligacoes_TextBox4.Multiline = true;
             this.Ligacoes_TextBox4.Name = "Ligacoes_TextBox4";
             this.Ligacoes_TextBox4.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -6827,7 +6872,7 @@ namespace MasterSheetNew
             this.Ligacoes_SubTitle4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Ligacoes_SubTitle4.AutoSize = true;
             this.Ligacoes_SubTitle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Ligacoes_SubTitle4.Location = new System.Drawing.Point(431, 234);
+            this.Ligacoes_SubTitle4.Location = new System.Drawing.Point(421, 216);
             this.Ligacoes_SubTitle4.Name = "Ligacoes_SubTitle4";
             this.Ligacoes_SubTitle4.Size = new System.Drawing.Size(46, 21);
             this.Ligacoes_SubTitle4.TabIndex = 9;
@@ -6836,8 +6881,8 @@ namespace MasterSheetNew
             // Ligacoes_TextBox3
             // 
             this.Ligacoes_TextBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Ligacoes_TextBox3.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Ligacoes_TextBox3.Location = new System.Drawing.Point(39, 258);
+            this.Ligacoes_TextBox3.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.Ligacoes_TextBox3.Location = new System.Drawing.Point(29, 240);
             this.Ligacoes_TextBox3.Multiline = true;
             this.Ligacoes_TextBox3.Name = "Ligacoes_TextBox3";
             this.Ligacoes_TextBox3.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -6850,7 +6895,7 @@ namespace MasterSheetNew
             this.Ligacoes_SubTitle3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Ligacoes_SubTitle3.AutoSize = true;
             this.Ligacoes_SubTitle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Ligacoes_SubTitle3.Location = new System.Drawing.Point(127, 234);
+            this.Ligacoes_SubTitle3.Location = new System.Drawing.Point(117, 216);
             this.Ligacoes_SubTitle3.Name = "Ligacoes_SubTitle3";
             this.Ligacoes_SubTitle3.Size = new System.Drawing.Size(64, 21);
             this.Ligacoes_SubTitle3.TabIndex = 5;
@@ -6859,8 +6904,8 @@ namespace MasterSheetNew
             // Ligacoes_TextBox2
             // 
             this.Ligacoes_TextBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Ligacoes_TextBox2.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Ligacoes_TextBox2.Location = new System.Drawing.Point(329, 142);
+            this.Ligacoes_TextBox2.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.Ligacoes_TextBox2.Location = new System.Drawing.Point(319, 124);
             this.Ligacoes_TextBox2.Multiline = true;
             this.Ligacoes_TextBox2.Name = "Ligacoes_TextBox2";
             this.Ligacoes_TextBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -6873,7 +6918,7 @@ namespace MasterSheetNew
             this.Ligacoes_SubTitle2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Ligacoes_SubTitle2.AutoSize = true;
             this.Ligacoes_SubTitle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Ligacoes_SubTitle2.Location = new System.Drawing.Point(431, 118);
+            this.Ligacoes_SubTitle2.Location = new System.Drawing.Point(421, 100);
             this.Ligacoes_SubTitle2.Name = "Ligacoes_SubTitle2";
             this.Ligacoes_SubTitle2.Size = new System.Drawing.Size(46, 21);
             this.Ligacoes_SubTitle2.TabIndex = 3;
@@ -6882,8 +6927,8 @@ namespace MasterSheetNew
             // Ligacoes_TextBox1
             // 
             this.Ligacoes_TextBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Ligacoes_TextBox1.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Ligacoes_TextBox1.Location = new System.Drawing.Point(39, 142);
+            this.Ligacoes_TextBox1.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.Ligacoes_TextBox1.Location = new System.Drawing.Point(29, 124);
             this.Ligacoes_TextBox1.Multiline = true;
             this.Ligacoes_TextBox1.Name = "Ligacoes_TextBox1";
             this.Ligacoes_TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -6896,7 +6941,7 @@ namespace MasterSheetNew
             this.Ligacoes_SubTitle1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Ligacoes_SubTitle1.AutoSize = true;
             this.Ligacoes_SubTitle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Ligacoes_SubTitle1.Location = new System.Drawing.Point(121, 118);
+            this.Ligacoes_SubTitle1.Location = new System.Drawing.Point(111, 100);
             this.Ligacoes_SubTitle1.Name = "Ligacoes_SubTitle1";
             this.Ligacoes_SubTitle1.Size = new System.Drawing.Size(86, 21);
             this.Ligacoes_SubTitle1.TabIndex = 0;
@@ -6905,9 +6950,10 @@ namespace MasterSheetNew
             // Ligacoes_FinalTextBox
             // 
             this.Ligacoes_FinalTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Ligacoes_FinalTextBox.Font = new System.Drawing.Font("Segoe UI Semibold", 7F, System.Drawing.FontStyle.Bold);
             this.Ligacoes_FinalTextBox.Location = new System.Drawing.Point(689, 135);
             this.Ligacoes_FinalTextBox.Name = "Ligacoes_FinalTextBox";
-            this.Ligacoes_FinalTextBox.Size = new System.Drawing.Size(407, 360);
+            this.Ligacoes_FinalTextBox.Size = new System.Drawing.Size(407, 322);
             this.Ligacoes_FinalTextBox.TabIndex = 35;
             this.Ligacoes_FinalTextBox.Text = "";
             this.Ligacoes_FinalTextBox.WordWrap = false;
@@ -6948,7 +6994,6 @@ namespace MasterSheetNew
             // 
             // tabOutros
             // 
-            this.tabOutros.Controls.Add(this.Outros_CheckBox_ShowTrueScript);
             this.tabOutros.Controls.Add(this.Outros_Button_Logs);
             this.tabOutros.Controls.Add(this.Outros_Button_ApplyTestValues);
             this.tabOutros.Controls.Add(this.Outros_TypeLabel);
@@ -6964,22 +7009,10 @@ namespace MasterSheetNew
             this.tabOutros.Location = new System.Drawing.Point(4, 5);
             this.tabOutros.Name = "tabOutros";
             this.tabOutros.Padding = new System.Windows.Forms.Padding(3);
-            this.tabOutros.Size = new System.Drawing.Size(1112, 513);
+            this.tabOutros.Size = new System.Drawing.Size(1112, 463);
             this.tabOutros.TabIndex = 8;
             this.tabOutros.Text = "Outras Configuracoes";
             this.tabOutros.UseVisualStyleBackColor = true;
-            // 
-            // Outros_CheckBox_ShowTrueScript
-            // 
-            this.Outros_CheckBox_ShowTrueScript.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Outros_CheckBox_ShowTrueScript.AutoSize = true;
-            this.Outros_CheckBox_ShowTrueScript.Location = new System.Drawing.Point(839, 29);
-            this.Outros_CheckBox_ShowTrueScript.Name = "Outros_CheckBox_ShowTrueScript";
-            this.Outros_CheckBox_ShowTrueScript.Size = new System.Drawing.Size(135, 23);
-            this.Outros_CheckBox_ShowTrueScript.TabIndex = 196;
-            this.Outros_CheckBox_ShowTrueScript.Text = "Show True Script";
-            this.Outros_CheckBox_ShowTrueScript.UseVisualStyleBackColor = true;
-            this.Outros_CheckBox_ShowTrueScript.CheckedChanged += new System.EventHandler(this.Test_CheckBox_ShowVarOnScript_CheckedChanged);
             // 
             // Outros_Button_Logs
             // 
@@ -7037,7 +7070,7 @@ namespace MasterSheetNew
             // 
             this.Outros_ButtonForCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Outros_ButtonForCopy.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_ButtonForCopy.Location = new System.Drawing.Point(639, 143);
+            this.Outros_ButtonForCopy.Location = new System.Drawing.Point(639, 145);
             this.Outros_ButtonForCopy.Name = "Outros_ButtonForCopy";
             this.Outros_ButtonForCopy.Size = new System.Drawing.Size(90, 47);
             this.Outros_ButtonForCopy.TabIndex = 137;
@@ -7049,7 +7082,7 @@ namespace MasterSheetNew
             // 
             this.Outros_ButtonCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Outros_ButtonCopy.Font = new System.Drawing.Font("Segoe UI", 12.25F);
-            this.Outros_ButtonCopy.Location = new System.Drawing.Point(639, 256);
+            this.Outros_ButtonCopy.Location = new System.Drawing.Point(639, 258);
             this.Outros_ButtonCopy.Name = "Outros_ButtonCopy";
             this.Outros_ButtonCopy.Size = new System.Drawing.Size(90, 47);
             this.Outros_ButtonCopy.TabIndex = 131;
@@ -7061,7 +7094,7 @@ namespace MasterSheetNew
             // 
             this.Outros_ButtonFormat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Outros_ButtonFormat.Font = new System.Drawing.Font("Segoe UI", 12.25F);
-            this.Outros_ButtonFormat.Location = new System.Drawing.Point(639, 199);
+            this.Outros_ButtonFormat.Location = new System.Drawing.Point(639, 201);
             this.Outros_ButtonFormat.Name = "Outros_ButtonFormat";
             this.Outros_ButtonFormat.Size = new System.Drawing.Size(90, 47);
             this.Outros_ButtonFormat.TabIndex = 130;
@@ -7101,7 +7134,7 @@ namespace MasterSheetNew
             this.Outros_FinalTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Outros_FinalTextBox.Location = new System.Drawing.Point(735, 144);
             this.Outros_FinalTextBox.Name = "Outros_FinalTextBox";
-            this.Outros_FinalTextBox.Size = new System.Drawing.Size(350, 349);
+            this.Outros_FinalTextBox.Size = new System.Drawing.Size(350, 313);
             this.Outros_FinalTextBox.TabIndex = 1;
             this.Outros_FinalTextBox.Text = "";
             this.Outros_FinalTextBox.WordWrap = false;
@@ -7146,177 +7179,167 @@ namespace MasterSheetNew
             this.TabSubOutros.Name = "TabSubOutros";
             this.TabSubOutros.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.TabSubOutros.SelectedIndex = 0;
-            this.TabSubOutros.Size = new System.Drawing.Size(637, 445);
+            this.TabSubOutros.Size = new System.Drawing.Size(637, 393);
             this.TabSubOutros.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.TabSubOutros.TabIndex = 0;
             // 
             // Outros_TabQoS
             // 
             this.Outros_TabQoS.BackColor = System.Drawing.SystemColors.Control;
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarDeleteCalc);
-            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_CiscoCheckBox);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarDeleteQoS8);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarDeleteQoS7);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarDeleteQoS3);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarDeleteQoS2);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarDeleteQoS4);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarDeleteQoS1);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarDeleteQoS0);
-            this.Outros_TabQoS.Controls.Add(this.Outros_QoSCalcLabel);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_TotalLabel);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_DeleteButton0);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_DeleteButton9);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_DeleteButton8);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_DeleteButton4);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_DeleteButton3);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_DeleteButton5);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_DeleteButton2);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_DeleteButton1);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_Label0);
             this.Outros_TabQoS.Controls.Add(this.Outros_QoS_ClearButton);
             this.Outros_TabQoS.Controls.Add(this.Outros_QoS_Guide);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarTextPercQoS03);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarTextPercQoS06);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarTextPercQoS05);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarTextPercQoS02);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarTextPercQoS04);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarTextPercQoS01);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarTextPercQoS00);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarTextQoS03);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarNameQoS3);
-            this.Outros_TabQoS.Controls.Add(this.Outros_QoSDispTotal);
-            this.Outros_TabQoS.Controls.Add(this.Outros_QoSCalcEx);
-            this.Outros_TabQoS.Controls.Add(this.Outros_QoSCalcText);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarTextQoS08);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarNameQoS8);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarTextQoS07);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarNameQoS7);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarDeleteQoS6);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarTextQoS06);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarNameQoS6);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarDeleteQoS5);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarTextQoS05);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarTextQoS02);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarTextQoS04);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarTextQoS01);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarNameQoS2);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarNameQoS5);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarNameQoS4);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarNameQoS1);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarNameQoS0);
-            this.Outros_TabQoS.Controls.Add(this.Outros_VarTextQoS00);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_VarTextShow4);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_VarTextShow7);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_VarTextShow6);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_VarTextShow3);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_VarTextShow5);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_VarTextShow2);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_VarTextShow1);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_VarText04);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_Label4);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_TextCalcTotal);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_ExLabel0);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_VarText00);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_VarText09);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_Label9);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_VarText08);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_Label8);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_DeleteButton7);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_VarText07);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_Label7);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_DeleteButton6);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_VarText06);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_VarText03);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_VarText05);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_VarText02);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_Label3);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_Label6);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_Label5);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_Label2);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_Label1);
+            this.Outros_TabQoS.Controls.Add(this.Outros_QoS_VarText01);
             this.Outros_TabQoS.Location = new System.Drawing.Point(4, 5);
             this.Outros_TabQoS.Name = "Outros_TabQoS";
             this.Outros_TabQoS.Padding = new System.Windows.Forms.Padding(3);
-            this.Outros_TabQoS.Size = new System.Drawing.Size(629, 436);
+            this.Outros_TabQoS.Size = new System.Drawing.Size(629, 384);
             this.Outros_TabQoS.TabIndex = 1;
             this.Outros_TabQoS.Text = "QoS";
             // 
-            // Outros_VarDeleteCalc
+            // Outros_QoS_DeleteButton0
             // 
-            this.Outros_VarDeleteCalc.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarDeleteCalc.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarDeleteCalc.Location = new System.Drawing.Point(580, 45);
-            this.Outros_VarDeleteCalc.Name = "Outros_VarDeleteCalc";
-            this.Outros_VarDeleteCalc.Size = new System.Drawing.Size(20, 25);
-            this.Outros_VarDeleteCalc.TabIndex = 239;
-            this.Outros_VarDeleteCalc.Text = "-";
-            this.Outros_VarDeleteCalc.UseVisualStyleBackColor = true;
-            this.Outros_VarDeleteCalc.Click += new System.EventHandler(this.Outros_VarDeleteCalc_Click);
+            this.Outros_QoS_DeleteButton0.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_DeleteButton0.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_DeleteButton0.Location = new System.Drawing.Point(579, 45);
+            this.Outros_QoS_DeleteButton0.Name = "Outros_QoS_DeleteButton0";
+            this.Outros_QoS_DeleteButton0.Size = new System.Drawing.Size(20, 25);
+            this.Outros_QoS_DeleteButton0.TabIndex = 239;
+            this.Outros_QoS_DeleteButton0.Text = "-";
+            this.Outros_QoS_DeleteButton0.UseVisualStyleBackColor = true;
+            this.Outros_QoS_DeleteButton0.Click += new System.EventHandler(this.Outros_VarDeleteCalc_Click);
             // 
-            // Outros_QoS_CiscoCheckBox
+            // Outros_QoS_DeleteButton9
             // 
-            this.Outros_QoS_CiscoCheckBox.AutoSize = true;
-            this.Outros_QoS_CiscoCheckBox.Location = new System.Drawing.Point(249, 47);
-            this.Outros_QoS_CiscoCheckBox.Name = "Outros_QoS_CiscoCheckBox";
-            this.Outros_QoS_CiscoCheckBox.Size = new System.Drawing.Size(100, 23);
-            this.Outros_QoS_CiscoCheckBox.TabIndex = 238;
-            this.Outros_QoS_CiscoCheckBox.Text = "Cisco Novo";
-            this.Outros_QoS_CiscoCheckBox.UseVisualStyleBackColor = true;
+            this.Outros_QoS_DeleteButton9.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_DeleteButton9.Location = new System.Drawing.Point(579, 319);
+            this.Outros_QoS_DeleteButton9.Name = "Outros_QoS_DeleteButton9";
+            this.Outros_QoS_DeleteButton9.Size = new System.Drawing.Size(20, 25);
+            this.Outros_QoS_DeleteButton9.TabIndex = 237;
+            this.Outros_QoS_DeleteButton9.Text = "-";
+            this.Outros_QoS_DeleteButton9.UseVisualStyleBackColor = true;
+            this.Outros_QoS_DeleteButton9.Click += new System.EventHandler(this.Outros_VarDeleteQoS8_Click);
             // 
-            // Outros_VarDeleteQoS8
+            // Outros_QoS_DeleteButton8
             // 
-            this.Outros_VarDeleteQoS8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarDeleteQoS8.Location = new System.Drawing.Point(579, 319);
-            this.Outros_VarDeleteQoS8.Name = "Outros_VarDeleteQoS8";
-            this.Outros_VarDeleteQoS8.Size = new System.Drawing.Size(20, 25);
-            this.Outros_VarDeleteQoS8.TabIndex = 237;
-            this.Outros_VarDeleteQoS8.Text = "-";
-            this.Outros_VarDeleteQoS8.UseVisualStyleBackColor = true;
-            this.Outros_VarDeleteQoS8.Click += new System.EventHandler(this.Outros_VarDeleteQoS8_Click);
+            this.Outros_QoS_DeleteButton8.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_DeleteButton8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_DeleteButton8.Location = new System.Drawing.Point(579, 288);
+            this.Outros_QoS_DeleteButton8.Name = "Outros_QoS_DeleteButton8";
+            this.Outros_QoS_DeleteButton8.Size = new System.Drawing.Size(20, 25);
+            this.Outros_QoS_DeleteButton8.TabIndex = 236;
+            this.Outros_QoS_DeleteButton8.Text = "-";
+            this.Outros_QoS_DeleteButton8.UseVisualStyleBackColor = true;
+            this.Outros_QoS_DeleteButton8.Click += new System.EventHandler(this.Outros_VarDeleteQoS7_Click);
             // 
-            // Outros_VarDeleteQoS7
+            // Outros_QoS_DeleteButton4
             // 
-            this.Outros_VarDeleteQoS7.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarDeleteQoS7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarDeleteQoS7.Location = new System.Drawing.Point(579, 288);
-            this.Outros_VarDeleteQoS7.Name = "Outros_VarDeleteQoS7";
-            this.Outros_VarDeleteQoS7.Size = new System.Drawing.Size(20, 25);
-            this.Outros_VarDeleteQoS7.TabIndex = 236;
-            this.Outros_VarDeleteQoS7.Text = "-";
-            this.Outros_VarDeleteQoS7.UseVisualStyleBackColor = true;
-            this.Outros_VarDeleteQoS7.Click += new System.EventHandler(this.Outros_VarDeleteQoS7_Click);
+            this.Outros_QoS_DeleteButton4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_DeleteButton4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_DeleteButton4.Location = new System.Drawing.Point(579, 166);
+            this.Outros_QoS_DeleteButton4.Name = "Outros_QoS_DeleteButton4";
+            this.Outros_QoS_DeleteButton4.Size = new System.Drawing.Size(20, 25);
+            this.Outros_QoS_DeleteButton4.TabIndex = 235;
+            this.Outros_QoS_DeleteButton4.Text = "-";
+            this.Outros_QoS_DeleteButton4.UseVisualStyleBackColor = true;
+            this.Outros_QoS_DeleteButton4.Click += new System.EventHandler(this.Outros_VarDeleteQoS3_Click);
             // 
-            // Outros_VarDeleteQoS3
+            // Outros_QoS_DeleteButton3
             // 
-            this.Outros_VarDeleteQoS3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarDeleteQoS3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarDeleteQoS3.Location = new System.Drawing.Point(580, 164);
-            this.Outros_VarDeleteQoS3.Name = "Outros_VarDeleteQoS3";
-            this.Outros_VarDeleteQoS3.Size = new System.Drawing.Size(20, 25);
-            this.Outros_VarDeleteQoS3.TabIndex = 235;
-            this.Outros_VarDeleteQoS3.Text = "-";
-            this.Outros_VarDeleteQoS3.UseVisualStyleBackColor = true;
-            this.Outros_VarDeleteQoS3.Click += new System.EventHandler(this.Outros_VarDeleteQoS3_Click);
+            this.Outros_QoS_DeleteButton3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_DeleteButton3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_DeleteButton3.Location = new System.Drawing.Point(579, 136);
+            this.Outros_QoS_DeleteButton3.Name = "Outros_QoS_DeleteButton3";
+            this.Outros_QoS_DeleteButton3.Size = new System.Drawing.Size(20, 25);
+            this.Outros_QoS_DeleteButton3.TabIndex = 234;
+            this.Outros_QoS_DeleteButton3.Text = "-";
+            this.Outros_QoS_DeleteButton3.UseVisualStyleBackColor = true;
+            this.Outros_QoS_DeleteButton3.Click += new System.EventHandler(this.Outros_VarDeleteQoS2_Click);
             // 
-            // Outros_VarDeleteQoS2
+            // Outros_QoS_DeleteButton5
             // 
-            this.Outros_VarDeleteQoS2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarDeleteQoS2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarDeleteQoS2.Location = new System.Drawing.Point(580, 136);
-            this.Outros_VarDeleteQoS2.Name = "Outros_VarDeleteQoS2";
-            this.Outros_VarDeleteQoS2.Size = new System.Drawing.Size(20, 25);
-            this.Outros_VarDeleteQoS2.TabIndex = 234;
-            this.Outros_VarDeleteQoS2.Text = "-";
-            this.Outros_VarDeleteQoS2.UseVisualStyleBackColor = true;
-            this.Outros_VarDeleteQoS2.Click += new System.EventHandler(this.Outros_VarDeleteQoS2_Click);
+            this.Outros_QoS_DeleteButton5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_DeleteButton5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_DeleteButton5.Location = new System.Drawing.Point(579, 197);
+            this.Outros_QoS_DeleteButton5.Name = "Outros_QoS_DeleteButton5";
+            this.Outros_QoS_DeleteButton5.Size = new System.Drawing.Size(20, 25);
+            this.Outros_QoS_DeleteButton5.TabIndex = 233;
+            this.Outros_QoS_DeleteButton5.Text = "-";
+            this.Outros_QoS_DeleteButton5.UseVisualStyleBackColor = true;
+            this.Outros_QoS_DeleteButton5.Click += new System.EventHandler(this.Outros_VarDeleteQoS4_Click);
             // 
-            // Outros_VarDeleteQoS4
+            // Outros_QoS_DeleteButton2
             // 
-            this.Outros_VarDeleteQoS4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarDeleteQoS4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarDeleteQoS4.Location = new System.Drawing.Point(580, 197);
-            this.Outros_VarDeleteQoS4.Name = "Outros_VarDeleteQoS4";
-            this.Outros_VarDeleteQoS4.Size = new System.Drawing.Size(20, 25);
-            this.Outros_VarDeleteQoS4.TabIndex = 233;
-            this.Outros_VarDeleteQoS4.Text = "-";
-            this.Outros_VarDeleteQoS4.UseVisualStyleBackColor = true;
-            this.Outros_VarDeleteQoS4.Click += new System.EventHandler(this.Outros_VarDeleteQoS4_Click);
+            this.Outros_QoS_DeleteButton2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_DeleteButton2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_DeleteButton2.Location = new System.Drawing.Point(579, 105);
+            this.Outros_QoS_DeleteButton2.Name = "Outros_QoS_DeleteButton2";
+            this.Outros_QoS_DeleteButton2.Size = new System.Drawing.Size(20, 25);
+            this.Outros_QoS_DeleteButton2.TabIndex = 232;
+            this.Outros_QoS_DeleteButton2.Text = "-";
+            this.Outros_QoS_DeleteButton2.UseVisualStyleBackColor = true;
+            this.Outros_QoS_DeleteButton2.Click += new System.EventHandler(this.Outros_VarDeleteQoS1_Click);
             // 
-            // Outros_VarDeleteQoS1
+            // Outros_QoS_DeleteButton1
             // 
-            this.Outros_VarDeleteQoS1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarDeleteQoS1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarDeleteQoS1.Location = new System.Drawing.Point(580, 105);
-            this.Outros_VarDeleteQoS1.Name = "Outros_VarDeleteQoS1";
-            this.Outros_VarDeleteQoS1.Size = new System.Drawing.Size(20, 25);
-            this.Outros_VarDeleteQoS1.TabIndex = 232;
-            this.Outros_VarDeleteQoS1.Text = "-";
-            this.Outros_VarDeleteQoS1.UseVisualStyleBackColor = true;
-            this.Outros_VarDeleteQoS1.Click += new System.EventHandler(this.Outros_VarDeleteQoS1_Click);
+            this.Outros_QoS_DeleteButton1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_DeleteButton1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_DeleteButton1.Location = new System.Drawing.Point(579, 75);
+            this.Outros_QoS_DeleteButton1.Name = "Outros_QoS_DeleteButton1";
+            this.Outros_QoS_DeleteButton1.Size = new System.Drawing.Size(20, 25);
+            this.Outros_QoS_DeleteButton1.TabIndex = 231;
+            this.Outros_QoS_DeleteButton1.Text = "-";
+            this.Outros_QoS_DeleteButton1.UseVisualStyleBackColor = true;
+            this.Outros_QoS_DeleteButton1.Click += new System.EventHandler(this.Outros_VarDeleteQoS0_Click);
             // 
-            // Outros_VarDeleteQoS0
+            // Outros_QoS_Label0
             // 
-            this.Outros_VarDeleteQoS0.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarDeleteQoS0.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarDeleteQoS0.Location = new System.Drawing.Point(580, 74);
-            this.Outros_VarDeleteQoS0.Name = "Outros_VarDeleteQoS0";
-            this.Outros_VarDeleteQoS0.Size = new System.Drawing.Size(20, 25);
-            this.Outros_VarDeleteQoS0.TabIndex = 231;
-            this.Outros_VarDeleteQoS0.Text = "-";
-            this.Outros_VarDeleteQoS0.UseVisualStyleBackColor = true;
-            this.Outros_VarDeleteQoS0.Click += new System.EventHandler(this.Outros_VarDeleteQoS0_Click);
-            // 
-            // Outros_QoSCalcLabel
-            // 
-            this.Outros_QoSCalcLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_QoSCalcLabel.AutoSize = true;
-            this.Outros_QoSCalcLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Outros_QoSCalcLabel.Location = new System.Drawing.Point(355, 49);
-            this.Outros_QoSCalcLabel.Name = "Outros_QoSCalcLabel";
-            this.Outros_QoSCalcLabel.Size = new System.Drawing.Size(103, 17);
-            this.Outros_QoSCalcLabel.TabIndex = 230;
-            this.Outros_QoSCalcLabel.Text = "Bandwidth Total:";
+            this.Outros_QoS_Label0.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_Label0.AutoSize = true;
+            this.Outros_QoS_Label0.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Outros_QoS_Label0.Location = new System.Drawing.Point(355, 49);
+            this.Outros_QoS_Label0.Name = "Outros_QoS_Label0";
+            this.Outros_QoS_Label0.Size = new System.Drawing.Size(103, 17);
+            this.Outros_QoS_Label0.TabIndex = 230;
+            this.Outros_QoS_Label0.Text = "Bandwidth Total:";
             // 
             // Outros_QoS_ClearButton
             // 
@@ -7340,301 +7363,315 @@ namespace MasterSheetNew
             this.Outros_QoS_Guide.TabIndex = 228;
             this.Outros_QoS_Guide.Text = "Guia aqui";
             // 
-            // Outros_VarTextPercQoS03
+            // Outros_QoS_VarTextShow4
             // 
-            this.Outros_VarTextPercQoS03.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarTextPercQoS03.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarTextPercQoS03.Location = new System.Drawing.Point(462, 166);
-            this.Outros_VarTextPercQoS03.Name = "Outros_VarTextPercQoS03";
-            this.Outros_VarTextPercQoS03.Size = new System.Drawing.Size(33, 25);
-            this.Outros_VarTextPercQoS03.TabIndex = 225;
+            this.Outros_QoS_VarTextShow4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_VarTextShow4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_VarTextShow4.Location = new System.Drawing.Point(462, 166);
+            this.Outros_QoS_VarTextShow4.Name = "Outros_QoS_VarTextShow4";
+            this.Outros_QoS_VarTextShow4.Size = new System.Drawing.Size(33, 25);
+            this.Outros_QoS_VarTextShow4.TabIndex = 225;
+            this.Outros_QoS_VarTextShow4.Text = "0";
+            this.Outros_QoS_VarTextShow4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Outros_VarTextPercQoS06
+            // Outros_QoS_VarTextShow7
             // 
-            this.Outros_VarTextPercQoS06.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarTextPercQoS06.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarTextPercQoS06.Location = new System.Drawing.Point(462, 258);
-            this.Outros_VarTextPercQoS06.Name = "Outros_VarTextPercQoS06";
-            this.Outros_VarTextPercQoS06.Size = new System.Drawing.Size(33, 25);
-            this.Outros_VarTextPercQoS06.TabIndex = 224;
+            this.Outros_QoS_VarTextShow7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_VarTextShow7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_VarTextShow7.Location = new System.Drawing.Point(462, 258);
+            this.Outros_QoS_VarTextShow7.Name = "Outros_QoS_VarTextShow7";
+            this.Outros_QoS_VarTextShow7.Size = new System.Drawing.Size(33, 25);
+            this.Outros_QoS_VarTextShow7.TabIndex = 224;
+            this.Outros_QoS_VarTextShow7.Text = "0";
+            this.Outros_QoS_VarTextShow7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Outros_VarTextPercQoS05
+            // Outros_QoS_VarTextShow6
             // 
-            this.Outros_VarTextPercQoS05.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarTextPercQoS05.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarTextPercQoS05.Location = new System.Drawing.Point(462, 227);
-            this.Outros_VarTextPercQoS05.Name = "Outros_VarTextPercQoS05";
-            this.Outros_VarTextPercQoS05.Size = new System.Drawing.Size(33, 25);
-            this.Outros_VarTextPercQoS05.TabIndex = 223;
+            this.Outros_QoS_VarTextShow6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_VarTextShow6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_VarTextShow6.Location = new System.Drawing.Point(462, 227);
+            this.Outros_QoS_VarTextShow6.Name = "Outros_QoS_VarTextShow6";
+            this.Outros_QoS_VarTextShow6.Size = new System.Drawing.Size(33, 25);
+            this.Outros_QoS_VarTextShow6.TabIndex = 223;
+            this.Outros_QoS_VarTextShow6.Text = "0";
+            this.Outros_QoS_VarTextShow6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Outros_VarTextPercQoS02
+            // Outros_QoS_VarTextShow3
             // 
-            this.Outros_VarTextPercQoS02.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarTextPercQoS02.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarTextPercQoS02.Location = new System.Drawing.Point(462, 136);
-            this.Outros_VarTextPercQoS02.Name = "Outros_VarTextPercQoS02";
-            this.Outros_VarTextPercQoS02.Size = new System.Drawing.Size(33, 25);
-            this.Outros_VarTextPercQoS02.TabIndex = 222;
+            this.Outros_QoS_VarTextShow3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_VarTextShow3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_VarTextShow3.Location = new System.Drawing.Point(462, 136);
+            this.Outros_QoS_VarTextShow3.Name = "Outros_QoS_VarTextShow3";
+            this.Outros_QoS_VarTextShow3.Size = new System.Drawing.Size(33, 25);
+            this.Outros_QoS_VarTextShow3.TabIndex = 222;
+            this.Outros_QoS_VarTextShow3.Text = "0";
+            this.Outros_QoS_VarTextShow3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Outros_VarTextPercQoS04
+            // Outros_QoS_VarTextShow5
             // 
-            this.Outros_VarTextPercQoS04.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarTextPercQoS04.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarTextPercQoS04.Location = new System.Drawing.Point(462, 197);
-            this.Outros_VarTextPercQoS04.Name = "Outros_VarTextPercQoS04";
-            this.Outros_VarTextPercQoS04.Size = new System.Drawing.Size(33, 25);
-            this.Outros_VarTextPercQoS04.TabIndex = 221;
+            this.Outros_QoS_VarTextShow5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_VarTextShow5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_VarTextShow5.Location = new System.Drawing.Point(462, 197);
+            this.Outros_QoS_VarTextShow5.Name = "Outros_QoS_VarTextShow5";
+            this.Outros_QoS_VarTextShow5.Size = new System.Drawing.Size(33, 25);
+            this.Outros_QoS_VarTextShow5.TabIndex = 221;
+            this.Outros_QoS_VarTextShow5.Text = "0";
+            this.Outros_QoS_VarTextShow5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Outros_VarTextPercQoS01
+            // Outros_QoS_VarTextShow2
             // 
-            this.Outros_VarTextPercQoS01.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarTextPercQoS01.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarTextPercQoS01.Location = new System.Drawing.Point(462, 105);
-            this.Outros_VarTextPercQoS01.Name = "Outros_VarTextPercQoS01";
-            this.Outros_VarTextPercQoS01.Size = new System.Drawing.Size(33, 25);
-            this.Outros_VarTextPercQoS01.TabIndex = 220;
+            this.Outros_QoS_VarTextShow2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_VarTextShow2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_VarTextShow2.Location = new System.Drawing.Point(462, 105);
+            this.Outros_QoS_VarTextShow2.Name = "Outros_QoS_VarTextShow2";
+            this.Outros_QoS_VarTextShow2.Size = new System.Drawing.Size(33, 25);
+            this.Outros_QoS_VarTextShow2.TabIndex = 220;
+            this.Outros_QoS_VarTextShow2.Text = "0";
+            this.Outros_QoS_VarTextShow2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Outros_VarTextPercQoS00
+            // Outros_QoS_VarTextShow1
             // 
-            this.Outros_VarTextPercQoS00.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarTextPercQoS00.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarTextPercQoS00.Location = new System.Drawing.Point(462, 75);
-            this.Outros_VarTextPercQoS00.Name = "Outros_VarTextPercQoS00";
-            this.Outros_VarTextPercQoS00.Size = new System.Drawing.Size(33, 25);
-            this.Outros_VarTextPercQoS00.TabIndex = 219;
+            this.Outros_QoS_VarTextShow1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_VarTextShow1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_VarTextShow1.Location = new System.Drawing.Point(462, 75);
+            this.Outros_QoS_VarTextShow1.Name = "Outros_QoS_VarTextShow1";
+            this.Outros_QoS_VarTextShow1.Size = new System.Drawing.Size(33, 25);
+            this.Outros_QoS_VarTextShow1.TabIndex = 219;
+            this.Outros_QoS_VarTextShow1.Text = "0";
+            this.Outros_QoS_VarTextShow1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Outros_VarTextQoS03
+            // Outros_QoS_VarText04
             // 
-            this.Outros_VarTextQoS03.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarTextQoS03.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarTextQoS03.Location = new System.Drawing.Point(499, 166);
-            this.Outros_VarTextQoS03.Name = "Outros_VarTextQoS03";
-            this.Outros_VarTextQoS03.Size = new System.Drawing.Size(75, 25);
-            this.Outros_VarTextQoS03.TabIndex = 218;
+            this.Outros_QoS_VarText04.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_VarText04.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_VarText04.Location = new System.Drawing.Point(499, 166);
+            this.Outros_QoS_VarText04.Name = "Outros_QoS_VarText04";
+            this.Outros_QoS_VarText04.Size = new System.Drawing.Size(75, 25);
+            this.Outros_QoS_VarText04.TabIndex = 218;
             // 
-            // Outros_VarNameQoS3
+            // Outros_QoS_Label4
             // 
-            this.Outros_VarNameQoS3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarNameQoS3.AutoSize = true;
-            this.Outros_VarNameQoS3.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Outros_VarNameQoS3.Location = new System.Drawing.Point(375, 170);
-            this.Outros_VarNameQoS3.Name = "Outros_VarNameQoS3";
-            this.Outros_VarNameQoS3.Size = new System.Drawing.Size(61, 17);
-            this.Outros_VarNameQoS3.TabIndex = 217;
-            this.Outros_VarNameQoS3.Text = "Interativa";
+            this.Outros_QoS_Label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_Label4.AutoSize = true;
+            this.Outros_QoS_Label4.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Outros_QoS_Label4.Location = new System.Drawing.Point(375, 170);
+            this.Outros_QoS_Label4.Name = "Outros_QoS_Label4";
+            this.Outros_QoS_Label4.Size = new System.Drawing.Size(61, 17);
+            this.Outros_QoS_Label4.TabIndex = 217;
+            this.Outros_QoS_Label4.Text = "Interativa";
             // 
-            // Outros_QoSDispTotal
+            // Outros_QoS_TextCalcTotal
             // 
-            this.Outros_QoSDispTotal.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_QoSDispTotal.AutoSize = true;
-            this.Outros_QoSDispTotal.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            this.Outros_QoSDispTotal.Location = new System.Drawing.Point(259, 142);
-            this.Outros_QoSDispTotal.Name = "Outros_QoSDispTotal";
-            this.Outros_QoSDispTotal.Size = new System.Drawing.Size(95, 23);
-            this.Outros_QoSDispTotal.TabIndex = 216;
-            this.Outros_QoSDispTotal.Text = "TOTAL aqui";
+            this.Outros_QoS_TextCalcTotal.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_TextCalcTotal.AutoSize = true;
+            this.Outros_QoS_TextCalcTotal.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_TextCalcTotal.Location = new System.Drawing.Point(407, 11);
+            this.Outros_QoS_TextCalcTotal.Name = "Outros_QoS_TextCalcTotal";
+            this.Outros_QoS_TextCalcTotal.Size = new System.Drawing.Size(25, 30);
+            this.Outros_QoS_TextCalcTotal.TabIndex = 216;
+            this.Outros_QoS_TextCalcTotal.Text = "0";
             // 
-            // Outros_QoSCalcEx
+            // Outros_QoS_ExLabel0
             // 
-            this.Outros_QoSCalcEx.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_QoSCalcEx.AutoSize = true;
-            this.Outros_QoSCalcEx.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_QoSCalcEx.Location = new System.Drawing.Point(463, 27);
-            this.Outros_QoSCalcEx.Name = "Outros_QoSCalcEx";
-            this.Outros_QoSCalcEx.Size = new System.Drawing.Size(54, 15);
-            this.Outros_QoSCalcEx.TabIndex = 215;
-            this.Outros_QoSCalcEx.Text = "Ex: 50000";
+            this.Outros_QoS_ExLabel0.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_ExLabel0.AutoSize = true;
+            this.Outros_QoS_ExLabel0.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_ExLabel0.Location = new System.Drawing.Point(463, 26);
+            this.Outros_QoS_ExLabel0.Name = "Outros_QoS_ExLabel0";
+            this.Outros_QoS_ExLabel0.Size = new System.Drawing.Size(54, 15);
+            this.Outros_QoS_ExLabel0.TabIndex = 215;
+            this.Outros_QoS_ExLabel0.Text = "Ex: 50000";
             // 
-            // Outros_QoSCalcText
+            // Outros_QoS_VarText00
             // 
-            this.Outros_QoSCalcText.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_QoSCalcText.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_QoSCalcText.Location = new System.Drawing.Point(462, 45);
-            this.Outros_QoSCalcText.Name = "Outros_QoSCalcText";
-            this.Outros_QoSCalcText.Size = new System.Drawing.Size(112, 25);
-            this.Outros_QoSCalcText.TabIndex = 214;
+            this.Outros_QoS_VarText00.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_VarText00.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_VarText00.Location = new System.Drawing.Point(462, 45);
+            this.Outros_QoS_VarText00.Name = "Outros_QoS_VarText00";
+            this.Outros_QoS_VarText00.Size = new System.Drawing.Size(112, 25);
+            this.Outros_QoS_VarText00.TabIndex = 214;
             // 
-            // Outros_VarTextQoS08
+            // Outros_QoS_VarText09
             // 
-            this.Outros_VarTextQoS08.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarTextQoS08.Location = new System.Drawing.Point(438, 319);
-            this.Outros_VarTextQoS08.Name = "Outros_VarTextQoS08";
-            this.Outros_VarTextQoS08.Size = new System.Drawing.Size(136, 25);
-            this.Outros_VarTextQoS08.TabIndex = 213;
+            this.Outros_QoS_VarText09.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_VarText09.Location = new System.Drawing.Point(438, 319);
+            this.Outros_QoS_VarText09.Name = "Outros_QoS_VarText09";
+            this.Outros_QoS_VarText09.Size = new System.Drawing.Size(136, 25);
+            this.Outros_QoS_VarText09.TabIndex = 213;
             // 
-            // Outros_VarNameQoS8
+            // Outros_QoS_Label9
             // 
-            this.Outros_VarNameQoS8.AutoSize = true;
-            this.Outros_VarNameQoS8.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Outros_VarNameQoS8.Location = new System.Drawing.Point(356, 324);
-            this.Outros_VarNameQoS8.Name = "Outros_VarNameQoS8";
-            this.Outros_VarNameQoS8.Size = new System.Drawing.Size(67, 17);
-            this.Outros_VarNameQoS8.TabIndex = 212;
-            this.Outros_VarNameQoS8.Text = "Porta LAN";
+            this.Outros_QoS_Label9.AutoSize = true;
+            this.Outros_QoS_Label9.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Outros_QoS_Label9.Location = new System.Drawing.Point(356, 324);
+            this.Outros_QoS_Label9.Name = "Outros_QoS_Label9";
+            this.Outros_QoS_Label9.Size = new System.Drawing.Size(67, 17);
+            this.Outros_QoS_Label9.TabIndex = 212;
+            this.Outros_QoS_Label9.Text = "Porta LAN";
             // 
-            // Outros_VarTextQoS07
+            // Outros_QoS_VarText08
             // 
-            this.Outros_VarTextQoS07.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarTextQoS07.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarTextQoS07.Location = new System.Drawing.Point(438, 288);
-            this.Outros_VarTextQoS07.Name = "Outros_VarTextQoS07";
-            this.Outros_VarTextQoS07.Size = new System.Drawing.Size(136, 25);
-            this.Outros_VarTextQoS07.TabIndex = 211;
+            this.Outros_QoS_VarText08.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_VarText08.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_VarText08.Location = new System.Drawing.Point(438, 288);
+            this.Outros_QoS_VarText08.Name = "Outros_QoS_VarText08";
+            this.Outros_QoS_VarText08.Size = new System.Drawing.Size(136, 25);
+            this.Outros_QoS_VarText08.TabIndex = 211;
             // 
-            // Outros_VarNameQoS7
+            // Outros_QoS_Label8
             // 
-            this.Outros_VarNameQoS7.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarNameQoS7.AutoSize = true;
-            this.Outros_VarNameQoS7.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Outros_VarNameQoS7.Location = new System.Drawing.Point(356, 293);
-            this.Outros_VarNameQoS7.Name = "Outros_VarNameQoS7";
-            this.Outros_VarNameQoS7.Size = new System.Drawing.Size(72, 17);
-            this.Outros_VarNameQoS7.TabIndex = 210;
-            this.Outros_VarNameQoS7.Text = "Porta WAN";
+            this.Outros_QoS_Label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_Label8.AutoSize = true;
+            this.Outros_QoS_Label8.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Outros_QoS_Label8.Location = new System.Drawing.Point(356, 293);
+            this.Outros_QoS_Label8.Name = "Outros_QoS_Label8";
+            this.Outros_QoS_Label8.Size = new System.Drawing.Size(72, 17);
+            this.Outros_QoS_Label8.TabIndex = 210;
+            this.Outros_QoS_Label8.Text = "Porta WAN";
             // 
-            // Outros_VarDeleteQoS6
+            // Outros_QoS_DeleteButton7
             // 
-            this.Outros_VarDeleteQoS6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarDeleteQoS6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarDeleteQoS6.Location = new System.Drawing.Point(580, 259);
-            this.Outros_VarDeleteQoS6.Name = "Outros_VarDeleteQoS6";
-            this.Outros_VarDeleteQoS6.Size = new System.Drawing.Size(20, 25);
-            this.Outros_VarDeleteQoS6.TabIndex = 209;
-            this.Outros_VarDeleteQoS6.Text = "-";
-            this.Outros_VarDeleteQoS6.UseVisualStyleBackColor = true;
-            this.Outros_VarDeleteQoS6.Click += new System.EventHandler(this.Outros_VarDeleteQoS6_Click);
+            this.Outros_QoS_DeleteButton7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_DeleteButton7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_DeleteButton7.Location = new System.Drawing.Point(579, 259);
+            this.Outros_QoS_DeleteButton7.Name = "Outros_QoS_DeleteButton7";
+            this.Outros_QoS_DeleteButton7.Size = new System.Drawing.Size(20, 25);
+            this.Outros_QoS_DeleteButton7.TabIndex = 209;
+            this.Outros_QoS_DeleteButton7.Text = "-";
+            this.Outros_QoS_DeleteButton7.UseVisualStyleBackColor = true;
+            this.Outros_QoS_DeleteButton7.Click += new System.EventHandler(this.Outros_VarDeleteQoS6_Click);
             // 
-            // Outros_VarTextQoS06
+            // Outros_QoS_VarText07
             // 
-            this.Outros_VarTextQoS06.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarTextQoS06.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarTextQoS06.Location = new System.Drawing.Point(499, 258);
-            this.Outros_VarTextQoS06.Name = "Outros_VarTextQoS06";
-            this.Outros_VarTextQoS06.Size = new System.Drawing.Size(75, 25);
-            this.Outros_VarTextQoS06.TabIndex = 208;
+            this.Outros_QoS_VarText07.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_VarText07.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_VarText07.Location = new System.Drawing.Point(499, 258);
+            this.Outros_QoS_VarText07.Name = "Outros_QoS_VarText07";
+            this.Outros_QoS_VarText07.Size = new System.Drawing.Size(75, 25);
+            this.Outros_QoS_VarText07.TabIndex = 208;
             // 
-            // Outros_VarNameQoS6
+            // Outros_QoS_Label7
             // 
-            this.Outros_VarNameQoS6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarNameQoS6.AutoSize = true;
-            this.Outros_VarNameQoS6.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Outros_VarNameQoS6.Location = new System.Drawing.Point(374, 262);
-            this.Outros_VarNameQoS6.Name = "Outros_VarNameQoS6";
-            this.Outros_VarNameQoS6.Size = new System.Drawing.Size(68, 17);
-            this.Outros_VarNameQoS6.TabIndex = 207;
-            this.Outros_VarNameQoS6.Text = "Best Effort";
+            this.Outros_QoS_Label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_Label7.AutoSize = true;
+            this.Outros_QoS_Label7.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Outros_QoS_Label7.Location = new System.Drawing.Point(374, 262);
+            this.Outros_QoS_Label7.Name = "Outros_QoS_Label7";
+            this.Outros_QoS_Label7.Size = new System.Drawing.Size(68, 17);
+            this.Outros_QoS_Label7.TabIndex = 207;
+            this.Outros_QoS_Label7.Text = "Best Effort";
             // 
-            // Outros_VarDeleteQoS5
+            // Outros_QoS_DeleteButton6
             // 
-            this.Outros_VarDeleteQoS5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarDeleteQoS5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarDeleteQoS5.Location = new System.Drawing.Point(580, 228);
-            this.Outros_VarDeleteQoS5.Name = "Outros_VarDeleteQoS5";
-            this.Outros_VarDeleteQoS5.Size = new System.Drawing.Size(20, 25);
-            this.Outros_VarDeleteQoS5.TabIndex = 206;
-            this.Outros_VarDeleteQoS5.Text = "-";
-            this.Outros_VarDeleteQoS5.UseVisualStyleBackColor = true;
-            this.Outros_VarDeleteQoS5.Click += new System.EventHandler(this.Outros_VarDeleteQoS5_Click);
+            this.Outros_QoS_DeleteButton6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_DeleteButton6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_DeleteButton6.Location = new System.Drawing.Point(579, 228);
+            this.Outros_QoS_DeleteButton6.Name = "Outros_QoS_DeleteButton6";
+            this.Outros_QoS_DeleteButton6.Size = new System.Drawing.Size(20, 25);
+            this.Outros_QoS_DeleteButton6.TabIndex = 206;
+            this.Outros_QoS_DeleteButton6.Text = "-";
+            this.Outros_QoS_DeleteButton6.UseVisualStyleBackColor = true;
+            this.Outros_QoS_DeleteButton6.Click += new System.EventHandler(this.Outros_VarDeleteQoS5_Click);
             // 
-            // Outros_VarTextQoS05
+            // Outros_QoS_VarText06
             // 
-            this.Outros_VarTextQoS05.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarTextQoS05.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarTextQoS05.Location = new System.Drawing.Point(499, 227);
-            this.Outros_VarTextQoS05.Name = "Outros_VarTextQoS05";
-            this.Outros_VarTextQoS05.Size = new System.Drawing.Size(75, 25);
-            this.Outros_VarTextQoS05.TabIndex = 205;
+            this.Outros_QoS_VarText06.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_VarText06.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_VarText06.Location = new System.Drawing.Point(499, 227);
+            this.Outros_QoS_VarText06.Name = "Outros_QoS_VarText06";
+            this.Outros_QoS_VarText06.Size = new System.Drawing.Size(75, 25);
+            this.Outros_QoS_VarText06.TabIndex = 205;
             // 
-            // Outros_VarTextQoS02
+            // Outros_QoS_VarText03
             // 
-            this.Outros_VarTextQoS02.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarTextQoS02.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarTextQoS02.Location = new System.Drawing.Point(499, 136);
-            this.Outros_VarTextQoS02.Name = "Outros_VarTextQoS02";
-            this.Outros_VarTextQoS02.Size = new System.Drawing.Size(75, 25);
-            this.Outros_VarTextQoS02.TabIndex = 204;
+            this.Outros_QoS_VarText03.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_VarText03.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_VarText03.Location = new System.Drawing.Point(499, 136);
+            this.Outros_QoS_VarText03.Name = "Outros_QoS_VarText03";
+            this.Outros_QoS_VarText03.Size = new System.Drawing.Size(75, 25);
+            this.Outros_QoS_VarText03.TabIndex = 204;
             // 
-            // Outros_VarTextQoS04
+            // Outros_QoS_VarText05
             // 
-            this.Outros_VarTextQoS04.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarTextQoS04.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarTextQoS04.Location = new System.Drawing.Point(499, 197);
-            this.Outros_VarTextQoS04.Name = "Outros_VarTextQoS04";
-            this.Outros_VarTextQoS04.Size = new System.Drawing.Size(75, 25);
-            this.Outros_VarTextQoS04.TabIndex = 203;
+            this.Outros_QoS_VarText05.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_VarText05.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_VarText05.Location = new System.Drawing.Point(499, 197);
+            this.Outros_QoS_VarText05.Name = "Outros_QoS_VarText05";
+            this.Outros_QoS_VarText05.Size = new System.Drawing.Size(75, 25);
+            this.Outros_QoS_VarText05.TabIndex = 203;
             // 
-            // Outros_VarTextQoS01
+            // Outros_QoS_VarText02
             // 
-            this.Outros_VarTextQoS01.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarTextQoS01.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarTextQoS01.Location = new System.Drawing.Point(499, 105);
-            this.Outros_VarTextQoS01.Name = "Outros_VarTextQoS01";
-            this.Outros_VarTextQoS01.Size = new System.Drawing.Size(75, 25);
-            this.Outros_VarTextQoS01.TabIndex = 202;
+            this.Outros_QoS_VarText02.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_VarText02.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_VarText02.Location = new System.Drawing.Point(499, 105);
+            this.Outros_QoS_VarText02.Name = "Outros_QoS_VarText02";
+            this.Outros_QoS_VarText02.Size = new System.Drawing.Size(75, 25);
+            this.Outros_QoS_VarText02.TabIndex = 202;
             // 
-            // Outros_VarNameQoS2
+            // Outros_QoS_Label3
             // 
-            this.Outros_VarNameQoS2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarNameQoS2.AutoSize = true;
-            this.Outros_VarNameQoS2.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Outros_VarNameQoS2.Location = new System.Drawing.Point(364, 139);
-            this.Outros_VarNameQoS2.Name = "Outros_VarNameQoS2";
-            this.Outros_VarNameQoS2.Size = new System.Drawing.Size(90, 17);
-            this.Outros_VarNameQoS2.TabIndex = 201;
-            this.Outros_VarNameQoS2.Text = "Missao Critica";
+            this.Outros_QoS_Label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_Label3.AutoSize = true;
+            this.Outros_QoS_Label3.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Outros_QoS_Label3.Location = new System.Drawing.Point(364, 139);
+            this.Outros_QoS_Label3.Name = "Outros_QoS_Label3";
+            this.Outros_QoS_Label3.Size = new System.Drawing.Size(90, 17);
+            this.Outros_QoS_Label3.TabIndex = 201;
+            this.Outros_QoS_Label3.Text = "Missao Critica";
             // 
-            // Outros_VarNameQoS5
+            // Outros_QoS_Label6
             // 
-            this.Outros_VarNameQoS5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarNameQoS5.AutoSize = true;
-            this.Outros_VarNameQoS5.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Outros_VarNameQoS5.Location = new System.Drawing.Point(359, 231);
-            this.Outros_VarNameQoS5.Name = "Outros_VarNameQoS5";
-            this.Outros_VarNameQoS5.Size = new System.Drawing.Size(104, 17);
-            this.Outros_VarNameQoS5.TabIndex = 200;
-            this.Outros_VarNameQoS5.Text = "Network Control";
+            this.Outros_QoS_Label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_Label6.AutoSize = true;
+            this.Outros_QoS_Label6.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Outros_QoS_Label6.Location = new System.Drawing.Point(359, 231);
+            this.Outros_QoS_Label6.Name = "Outros_QoS_Label6";
+            this.Outros_QoS_Label6.Size = new System.Drawing.Size(104, 17);
+            this.Outros_QoS_Label6.TabIndex = 200;
+            this.Outros_QoS_Label6.Text = "Network Control";
             // 
-            // Outros_VarNameQoS4
+            // Outros_QoS_Label5
             // 
-            this.Outros_VarNameQoS4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarNameQoS4.AutoSize = true;
-            this.Outros_VarNameQoS4.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Outros_VarNameQoS4.Location = new System.Drawing.Point(389, 201);
-            this.Outros_VarNameQoS4.Name = "Outros_VarNameQoS4";
-            this.Outros_VarNameQoS4.Size = new System.Drawing.Size(31, 17);
-            this.Outros_VarNameQoS4.TabIndex = 199;
-            this.Outros_VarNameQoS4.Text = "Bulk";
+            this.Outros_QoS_Label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_Label5.AutoSize = true;
+            this.Outros_QoS_Label5.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Outros_QoS_Label5.Location = new System.Drawing.Point(389, 201);
+            this.Outros_QoS_Label5.Name = "Outros_QoS_Label5";
+            this.Outros_QoS_Label5.Size = new System.Drawing.Size(31, 17);
+            this.Outros_QoS_Label5.TabIndex = 199;
+            this.Outros_QoS_Label5.Text = "Bulk";
             // 
-            // Outros_VarNameQoS1
+            // Outros_QoS_Label2
             // 
-            this.Outros_VarNameQoS1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarNameQoS1.AutoSize = true;
-            this.Outros_VarNameQoS1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Outros_VarNameQoS1.Location = new System.Drawing.Point(385, 108);
-            this.Outros_VarNameQoS1.Name = "Outros_VarNameQoS1";
-            this.Outros_VarNameQoS1.Size = new System.Drawing.Size(42, 17);
-            this.Outros_VarNameQoS1.TabIndex = 198;
-            this.Outros_VarNameQoS1.Text = "Video";
+            this.Outros_QoS_Label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_Label2.AutoSize = true;
+            this.Outros_QoS_Label2.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Outros_QoS_Label2.Location = new System.Drawing.Point(385, 108);
+            this.Outros_QoS_Label2.Name = "Outros_QoS_Label2";
+            this.Outros_QoS_Label2.Size = new System.Drawing.Size(42, 17);
+            this.Outros_QoS_Label2.TabIndex = 198;
+            this.Outros_QoS_Label2.Text = "Video";
             // 
-            // Outros_VarNameQoS0
+            // Outros_QoS_Label1
             // 
-            this.Outros_VarNameQoS0.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarNameQoS0.AutoSize = true;
-            this.Outros_VarNameQoS0.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarNameQoS0.Location = new System.Drawing.Point(392, 77);
-            this.Outros_VarNameQoS0.Name = "Outros_VarNameQoS0";
-            this.Outros_VarNameQoS0.Size = new System.Drawing.Size(29, 17);
-            this.Outros_VarNameQoS0.TabIndex = 197;
-            this.Outros_VarNameQoS0.Text = "Voz";
+            this.Outros_QoS_Label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_Label1.AutoSize = true;
+            this.Outros_QoS_Label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_Label1.Location = new System.Drawing.Point(392, 77);
+            this.Outros_QoS_Label1.Name = "Outros_QoS_Label1";
+            this.Outros_QoS_Label1.Size = new System.Drawing.Size(29, 17);
+            this.Outros_QoS_Label1.TabIndex = 197;
+            this.Outros_QoS_Label1.Text = "Voz";
             // 
-            // Outros_VarTextQoS00
+            // Outros_QoS_VarText01
             // 
-            this.Outros_VarTextQoS00.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VarTextQoS00.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VarTextQoS00.Location = new System.Drawing.Point(499, 75);
-            this.Outros_VarTextQoS00.Name = "Outros_VarTextQoS00";
-            this.Outros_VarTextQoS00.Size = new System.Drawing.Size(75, 25);
-            this.Outros_VarTextQoS00.TabIndex = 196;
+            this.Outros_QoS_VarText01.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_VarText01.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_VarText01.Location = new System.Drawing.Point(499, 75);
+            this.Outros_QoS_VarText01.Name = "Outros_QoS_VarText01";
+            this.Outros_QoS_VarText01.Size = new System.Drawing.Size(75, 25);
+            this.Outros_QoS_VarText01.TabIndex = 196;
             // 
             // Outros_TabSNMP
             // 
@@ -7657,7 +7694,7 @@ namespace MasterSheetNew
             this.Outros_TabSNMP.Location = new System.Drawing.Point(4, 5);
             this.Outros_TabSNMP.Name = "Outros_TabSNMP";
             this.Outros_TabSNMP.Padding = new System.Windows.Forms.Padding(3);
-            this.Outros_TabSNMP.Size = new System.Drawing.Size(629, 436);
+            this.Outros_TabSNMP.Size = new System.Drawing.Size(629, 384);
             this.Outros_TabSNMP.TabIndex = 0;
             this.Outros_TabSNMP.Text = "SNMP";
             // 
@@ -7859,7 +7896,7 @@ namespace MasterSheetNew
             this.Outros_TabRegraAdc.Location = new System.Drawing.Point(4, 5);
             this.Outros_TabRegraAdc.Name = "Outros_TabRegraAdc";
             this.Outros_TabRegraAdc.Padding = new System.Windows.Forms.Padding(3);
-            this.Outros_TabRegraAdc.Size = new System.Drawing.Size(629, 436);
+            this.Outros_TabRegraAdc.Size = new System.Drawing.Size(629, 384);
             this.Outros_TabRegraAdc.TabIndex = 2;
             this.Outros_TabRegraAdc.Text = "Regras Adc";
             // 
@@ -8216,7 +8253,7 @@ namespace MasterSheetNew
             this.Outros_TabBGP.Location = new System.Drawing.Point(4, 5);
             this.Outros_TabBGP.Name = "Outros_TabBGP";
             this.Outros_TabBGP.Padding = new System.Windows.Forms.Padding(3);
-            this.Outros_TabBGP.Size = new System.Drawing.Size(629, 436);
+            this.Outros_TabBGP.Size = new System.Drawing.Size(629, 384);
             this.Outros_TabBGP.TabIndex = 3;
             this.Outros_TabBGP.Text = "BGP";
             // 
@@ -8527,54 +8564,54 @@ namespace MasterSheetNew
             this.Outros_TabDHCP.BackColor = System.Drawing.SystemColors.Control;
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_ExLabel5);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_ExLabel4);
-            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_DelButton0);
-            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_VarText0);
+            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_DelButton1);
+            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_VarText1);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_MascaraBox);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_DelButton5);
-            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_VarText10);
+            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_VarText5);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_Label5);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_DelButton4);
-            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_VarText9);
+            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_VarText4);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_Label4);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_SubTitle);
+            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_VarText9);
+            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_Label9);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_DelButton8);
+            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_ExLabel9);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_ExLabel8);
-            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_VarText7);
+            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_DelButton9);
+            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_VarText8);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_Label8);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_DelButton7);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_ExLabel7);
-            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_VarText6);
+            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_VarText7);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_Label7);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_DelButton6);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_ExLabel6);
-            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_VarText5);
+            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_VarText6);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_Label6);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_DelButton3);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_ExLabel3);
-            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_VarText4);
+            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_VarText3);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_Label3);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_DelButton2);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_ExLabel2);
-            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_VarText3);
+            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_VarText2);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_Label2);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_Guide);
-            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_DelButton1);
-            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_DelButton9);
+            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_DelButton0);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_ExTitle);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_ExLabel1);
-            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_ExLabel9);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_ExLabel0);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_ClearButton);
-            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_VarText1);
-            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_VarText8);
+            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_VarText0);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_Label1);
-            this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_Label9);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_Label0);
             this.Outros_TabDHCP.Controls.Add(this.Outros_DHCP_VarTitle);
             this.Outros_TabDHCP.Location = new System.Drawing.Point(4, 5);
             this.Outros_TabDHCP.Name = "Outros_TabDHCP";
             this.Outros_TabDHCP.Padding = new System.Windows.Forms.Padding(3);
-            this.Outros_TabDHCP.Size = new System.Drawing.Size(629, 436);
+            this.Outros_TabDHCP.Size = new System.Drawing.Size(629, 384);
             this.Outros_TabDHCP.TabIndex = 4;
             this.Outros_TabDHCP.Text = "DHCP";
             // 
@@ -8583,7 +8620,7 @@ namespace MasterSheetNew
             this.Outros_DHCP_ExLabel5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_ExLabel5.AutoSize = true;
             this.Outros_DHCP_ExLabel5.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_ExLabel5.Location = new System.Drawing.Point(517, 231);
+            this.Outros_DHCP_ExLabel5.Location = new System.Drawing.Point(518, 220);
             this.Outros_DHCP_ExLabel5.Name = "Outros_DHCP_ExLabel5";
             this.Outros_DHCP_ExLabel5.Size = new System.Drawing.Size(85, 15);
             this.Outros_DHCP_ExLabel5.TabIndex = 285;
@@ -8594,29 +8631,29 @@ namespace MasterSheetNew
             this.Outros_DHCP_ExLabel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_ExLabel4.AutoSize = true;
             this.Outros_DHCP_ExLabel4.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_ExLabel4.Location = new System.Drawing.Point(518, 202);
+            this.Outros_DHCP_ExLabel4.Location = new System.Drawing.Point(518, 189);
             this.Outros_DHCP_ExLabel4.Name = "Outros_DHCP_ExLabel4";
             this.Outros_DHCP_ExLabel4.Size = new System.Drawing.Size(78, 15);
             this.Outros_DHCP_ExLabel4.TabIndex = 284;
             this.Outros_DHCP_ExLabel4.Text = "200.183.111.2";
             // 
-            // Outros_DHCP_DelButton0
+            // Outros_DHCP_DelButton1
             // 
-            this.Outros_DHCP_DelButton0.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_DelButton0.Location = new System.Drawing.Point(485, 73);
-            this.Outros_DHCP_DelButton0.Name = "Outros_DHCP_DelButton0";
-            this.Outros_DHCP_DelButton0.Size = new System.Drawing.Size(20, 25);
-            this.Outros_DHCP_DelButton0.TabIndex = 283;
-            this.Outros_DHCP_DelButton0.Text = "-";
-            this.Outros_DHCP_DelButton0.UseVisualStyleBackColor = true;
+            this.Outros_DHCP_DelButton1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_DHCP_DelButton1.Location = new System.Drawing.Point(485, 91);
+            this.Outros_DHCP_DelButton1.Name = "Outros_DHCP_DelButton1";
+            this.Outros_DHCP_DelButton1.Size = new System.Drawing.Size(20, 25);
+            this.Outros_DHCP_DelButton1.TabIndex = 283;
+            this.Outros_DHCP_DelButton1.Text = "-";
+            this.Outros_DHCP_DelButton1.UseVisualStyleBackColor = true;
             // 
-            // Outros_DHCP_VarText0
+            // Outros_DHCP_VarText1
             // 
-            this.Outros_DHCP_VarText0.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_VarText0.Location = new System.Drawing.Point(317, 73);
-            this.Outros_DHCP_VarText0.Name = "Outros_DHCP_VarText0";
-            this.Outros_DHCP_VarText0.Size = new System.Drawing.Size(102, 25);
-            this.Outros_DHCP_VarText0.TabIndex = 282;
+            this.Outros_DHCP_VarText1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_DHCP_VarText1.Location = new System.Drawing.Point(319, 91);
+            this.Outros_DHCP_VarText1.Name = "Outros_DHCP_VarText1";
+            this.Outros_DHCP_VarText1.Size = new System.Drawing.Size(102, 25);
+            this.Outros_DHCP_VarText1.TabIndex = 282;
             // 
             // Outros_DHCP_MascaraBox
             // 
@@ -8630,7 +8667,7 @@ namespace MasterSheetNew
             "/26",
             "/25",
             "/24"});
-            this.Outros_DHCP_MascaraBox.Location = new System.Drawing.Point(424, 73);
+            this.Outros_DHCP_MascaraBox.Location = new System.Drawing.Point(426, 91);
             this.Outros_DHCP_MascaraBox.Name = "Outros_DHCP_MascaraBox";
             this.Outros_DHCP_MascaraBox.Size = new System.Drawing.Size(54, 25);
             this.Outros_DHCP_MascaraBox.TabIndex = 281;
@@ -8639,28 +8676,28 @@ namespace MasterSheetNew
             // 
             this.Outros_DHCP_DelButton5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_DelButton5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_DelButton5.Location = new System.Drawing.Point(485, 228);
+            this.Outros_DHCP_DelButton5.Location = new System.Drawing.Point(485, 215);
             this.Outros_DHCP_DelButton5.Name = "Outros_DHCP_DelButton5";
             this.Outros_DHCP_DelButton5.Size = new System.Drawing.Size(20, 25);
             this.Outros_DHCP_DelButton5.TabIndex = 280;
             this.Outros_DHCP_DelButton5.Text = "-";
             this.Outros_DHCP_DelButton5.UseVisualStyleBackColor = true;
             // 
-            // Outros_DHCP_VarText10
+            // Outros_DHCP_VarText5
             // 
-            this.Outros_DHCP_VarText10.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_DHCP_VarText10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_VarText10.Location = new System.Drawing.Point(374, 228);
-            this.Outros_DHCP_VarText10.Name = "Outros_DHCP_VarText10";
-            this.Outros_DHCP_VarText10.Size = new System.Drawing.Size(106, 25);
-            this.Outros_DHCP_VarText10.TabIndex = 278;
+            this.Outros_DHCP_VarText5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_DHCP_VarText5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_DHCP_VarText5.Location = new System.Drawing.Point(374, 215);
+            this.Outros_DHCP_VarText5.Name = "Outros_DHCP_VarText5";
+            this.Outros_DHCP_VarText5.Size = new System.Drawing.Size(106, 25);
+            this.Outros_DHCP_VarText5.TabIndex = 278;
             // 
             // Outros_DHCP_Label5
             // 
             this.Outros_DHCP_Label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_Label5.AutoSize = true;
             this.Outros_DHCP_Label5.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Outros_DHCP_Label5.Location = new System.Drawing.Point(252, 229);
+            this.Outros_DHCP_Label5.Location = new System.Drawing.Point(263, 218);
             this.Outros_DHCP_Label5.Name = "Outros_DHCP_Label5";
             this.Outros_DHCP_Label5.Size = new System.Drawing.Size(101, 17);
             this.Outros_DHCP_Label5.TabIndex = 277;
@@ -8670,91 +8707,38 @@ namespace MasterSheetNew
             // 
             this.Outros_DHCP_DelButton4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_DelButton4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_DelButton4.Location = new System.Drawing.Point(485, 197);
+            this.Outros_DHCP_DelButton4.Location = new System.Drawing.Point(485, 184);
             this.Outros_DHCP_DelButton4.Name = "Outros_DHCP_DelButton4";
             this.Outros_DHCP_DelButton4.Size = new System.Drawing.Size(20, 25);
             this.Outros_DHCP_DelButton4.TabIndex = 276;
             this.Outros_DHCP_DelButton4.Text = "-";
             this.Outros_DHCP_DelButton4.UseVisualStyleBackColor = true;
             // 
-            // Outros_DHCP_VarText9
+            // Outros_DHCP_VarText4
             // 
-            this.Outros_DHCP_VarText9.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_DHCP_VarText9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_VarText9.Location = new System.Drawing.Point(374, 197);
-            this.Outros_DHCP_VarText9.Name = "Outros_DHCP_VarText9";
-            this.Outros_DHCP_VarText9.Size = new System.Drawing.Size(106, 25);
-            this.Outros_DHCP_VarText9.TabIndex = 274;
+            this.Outros_DHCP_VarText4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_DHCP_VarText4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_DHCP_VarText4.Location = new System.Drawing.Point(374, 184);
+            this.Outros_DHCP_VarText4.Name = "Outros_DHCP_VarText4";
+            this.Outros_DHCP_VarText4.Size = new System.Drawing.Size(106, 25);
+            this.Outros_DHCP_VarText4.TabIndex = 274;
             // 
             // Outros_DHCP_Label4
             // 
             this.Outros_DHCP_Label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_Label4.AutoSize = true;
             this.Outros_DHCP_Label4.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Outros_DHCP_Label4.Location = new System.Drawing.Point(252, 200);
+            this.Outros_DHCP_Label4.Location = new System.Drawing.Point(252, 187);
             this.Outros_DHCP_Label4.Name = "Outros_DHCP_Label4";
             this.Outros_DHCP_Label4.Size = new System.Drawing.Size(112, 17);
             this.Outros_DHCP_Label4.TabIndex = 273;
             this.Outros_DHCP_Label4.Text = "Primeiro Excluido:";
             // 
-            // Outros_DHCP_SubTitle
-            // 
-            this.Outros_DHCP_SubTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_DHCP_SubTitle.AutoSize = true;
-            this.Outros_DHCP_SubTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.25F, System.Drawing.FontStyle.Bold);
-            this.Outros_DHCP_SubTitle.Location = new System.Drawing.Point(11, 310);
-            this.Outros_DHCP_SubTitle.Name = "Outros_DHCP_SubTitle";
-            this.Outros_DHCP_SubTitle.Size = new System.Drawing.Size(84, 17);
-            this.Outros_DHCP_SubTitle.TabIndex = 271;
-            this.Outros_DHCP_SubTitle.Text = "DHCP RELAY";
-            // 
-            // Outros_DHCP_DelButton8
-            // 
-            this.Outros_DHCP_DelButton8.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_DHCP_DelButton8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_DelButton8.Location = new System.Drawing.Point(263, 334);
-            this.Outros_DHCP_DelButton8.Name = "Outros_DHCP_DelButton8";
-            this.Outros_DHCP_DelButton8.Size = new System.Drawing.Size(20, 25);
-            this.Outros_DHCP_DelButton8.TabIndex = 270;
-            this.Outros_DHCP_DelButton8.Text = "-";
-            this.Outros_DHCP_DelButton8.UseVisualStyleBackColor = true;
-            // 
-            // Outros_DHCP_ExLabel8
-            // 
-            this.Outros_DHCP_ExLabel8.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_DHCP_ExLabel8.AutoSize = true;
-            this.Outros_DHCP_ExLabel8.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_ExLabel8.Location = new System.Drawing.Point(296, 339);
-            this.Outros_DHCP_ExLabel8.Name = "Outros_DHCP_ExLabel8";
-            this.Outros_DHCP_ExLabel8.Size = new System.Drawing.Size(57, 15);
-            this.Outros_DHCP_ExLabel8.TabIndex = 269;
-            this.Outros_DHCP_ExLabel8.Text = "10.10.10.1";
-            // 
-            // Outros_DHCP_VarText7
-            // 
-            this.Outros_DHCP_VarText7.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_DHCP_VarText7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_VarText7.Location = new System.Drawing.Point(128, 334);
-            this.Outros_DHCP_VarText7.Name = "Outros_DHCP_VarText7";
-            this.Outros_DHCP_VarText7.Size = new System.Drawing.Size(129, 25);
-            this.Outros_DHCP_VarText7.TabIndex = 268;
-            // 
-            // Outros_DHCP_Label8
-            // 
-            this.Outros_DHCP_Label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_DHCP_Label8.AutoSize = true;
-            this.Outros_DHCP_Label8.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Outros_DHCP_Label8.Location = new System.Drawing.Point(13, 338);
-            this.Outros_DHCP_Label8.Name = "Outros_DHCP_Label8";
-            this.Outros_DHCP_Label8.Size = new System.Drawing.Size(110, 17);
-            this.Outros_DHCP_Label8.TabIndex = 267;
-            this.Outros_DHCP_Label8.Text = "IP do DHCP Relay";
-            // 
             // Outros_DHCP_DelButton7
             // 
             this.Outros_DHCP_DelButton7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_DelButton7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_DelButton7.Location = new System.Drawing.Point(550, 273);
+            this.Outros_DHCP_DelButton7.Location = new System.Drawing.Point(550, 253);
             this.Outros_DHCP_DelButton7.Name = "Outros_DHCP_DelButton7";
             this.Outros_DHCP_DelButton7.Size = new System.Drawing.Size(20, 25);
             this.Outros_DHCP_DelButton7.TabIndex = 266;
@@ -8766,27 +8750,27 @@ namespace MasterSheetNew
             this.Outros_DHCP_ExLabel7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_ExLabel7.AutoSize = true;
             this.Outros_DHCP_ExLabel7.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_ExLabel7.Location = new System.Drawing.Point(508, 301);
+            this.Outros_DHCP_ExLabel7.Location = new System.Drawing.Point(508, 281);
             this.Outros_DHCP_ExLabel7.Name = "Outros_DHCP_ExLabel7";
             this.Outros_DHCP_ExLabel7.Size = new System.Drawing.Size(36, 15);
             this.Outros_DHCP_ExLabel7.TabIndex = 265;
             this.Outros_DHCP_ExLabel7.Text = "1.1.1.1";
             // 
-            // Outros_DHCP_VarText6
+            // Outros_DHCP_VarText7
             // 
-            this.Outros_DHCP_VarText6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_DHCP_VarText6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_VarText6.Location = new System.Drawing.Point(438, 273);
-            this.Outros_DHCP_VarText6.Name = "Outros_DHCP_VarText6";
-            this.Outros_DHCP_VarText6.Size = new System.Drawing.Size(106, 25);
-            this.Outros_DHCP_VarText6.TabIndex = 264;
+            this.Outros_DHCP_VarText7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_DHCP_VarText7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_DHCP_VarText7.Location = new System.Drawing.Point(438, 253);
+            this.Outros_DHCP_VarText7.Name = "Outros_DHCP_VarText7";
+            this.Outros_DHCP_VarText7.Size = new System.Drawing.Size(106, 25);
+            this.Outros_DHCP_VarText7.TabIndex = 264;
             // 
             // Outros_DHCP_Label7
             // 
             this.Outros_DHCP_Label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_Label7.AutoSize = true;
             this.Outros_DHCP_Label7.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Outros_DHCP_Label7.Location = new System.Drawing.Point(344, 276);
+            this.Outros_DHCP_Label7.Location = new System.Drawing.Point(344, 256);
             this.Outros_DHCP_Label7.Name = "Outros_DHCP_Label7";
             this.Outros_DHCP_Label7.Size = new System.Drawing.Size(89, 17);
             this.Outros_DHCP_Label7.TabIndex = 263;
@@ -8796,39 +8780,28 @@ namespace MasterSheetNew
             // 
             this.Outros_DHCP_DelButton6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_DelButton6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_DelButton6.Location = new System.Drawing.Point(313, 273);
+            this.Outros_DHCP_DelButton6.Location = new System.Drawing.Point(313, 253);
             this.Outros_DHCP_DelButton6.Name = "Outros_DHCP_DelButton6";
             this.Outros_DHCP_DelButton6.Size = new System.Drawing.Size(20, 25);
             this.Outros_DHCP_DelButton6.TabIndex = 262;
             this.Outros_DHCP_DelButton6.Text = "-";
             this.Outros_DHCP_DelButton6.UseVisualStyleBackColor = true;
             // 
-            // Outros_DHCP_ExLabel6
+            // Outros_DHCP_VarText6
             // 
-            this.Outros_DHCP_ExLabel6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_DHCP_ExLabel6.AutoSize = true;
-            this.Outros_DHCP_ExLabel6.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_ExLabel6.Location = new System.Drawing.Point(263, 301);
-            this.Outros_DHCP_ExLabel6.Name = "Outros_DHCP_ExLabel6";
-            this.Outros_DHCP_ExLabel6.Size = new System.Drawing.Size(44, 15);
-            this.Outros_DHCP_ExLabel6.TabIndex = 261;
-            this.Outros_DHCP_ExLabel6.Text = "8.8.8.8";
-            // 
-            // Outros_DHCP_VarText5
-            // 
-            this.Outros_DHCP_VarText5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_DHCP_VarText5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_VarText5.Location = new System.Drawing.Point(201, 273);
-            this.Outros_DHCP_VarText5.Name = "Outros_DHCP_VarText5";
-            this.Outros_DHCP_VarText5.Size = new System.Drawing.Size(106, 25);
-            this.Outros_DHCP_VarText5.TabIndex = 260;
+            this.Outros_DHCP_VarText6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_DHCP_VarText6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_DHCP_VarText6.Location = new System.Drawing.Point(201, 253);
+            this.Outros_DHCP_VarText6.Name = "Outros_DHCP_VarText6";
+            this.Outros_DHCP_VarText6.Size = new System.Drawing.Size(106, 25);
+            this.Outros_DHCP_VarText6.TabIndex = 260;
             // 
             // Outros_DHCP_Label6
             // 
             this.Outros_DHCP_Label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_Label6.AutoSize = true;
             this.Outros_DHCP_Label6.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Outros_DHCP_Label6.Location = new System.Drawing.Point(107, 277);
+            this.Outros_DHCP_Label6.Location = new System.Drawing.Point(107, 257);
             this.Outros_DHCP_Label6.Name = "Outros_DHCP_Label6";
             this.Outros_DHCP_Label6.Size = new System.Drawing.Size(89, 17);
             this.Outros_DHCP_Label6.TabIndex = 259;
@@ -8838,7 +8811,7 @@ namespace MasterSheetNew
             // 
             this.Outros_DHCP_DelButton3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_DelButton3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_DelButton3.Location = new System.Drawing.Point(485, 166);
+            this.Outros_DHCP_DelButton3.Location = new System.Drawing.Point(485, 153);
             this.Outros_DHCP_DelButton3.Name = "Outros_DHCP_DelButton3";
             this.Outros_DHCP_DelButton3.Size = new System.Drawing.Size(20, 25);
             this.Outros_DHCP_DelButton3.TabIndex = 258;
@@ -8850,37 +8823,37 @@ namespace MasterSheetNew
             this.Outros_DHCP_ExLabel3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_ExLabel3.AutoSize = true;
             this.Outros_DHCP_ExLabel3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_ExLabel3.Location = new System.Drawing.Point(518, 171);
+            this.Outros_DHCP_ExLabel3.Location = new System.Drawing.Point(518, 158);
             this.Outros_DHCP_ExLabel3.Name = "Outros_DHCP_ExLabel3";
             this.Outros_DHCP_ExLabel3.Size = new System.Drawing.Size(85, 15);
             this.Outros_DHCP_ExLabel3.TabIndex = 257;
             this.Outros_DHCP_ExLabel3.Text = "200.183.111.30";
             // 
-            // Outros_DHCP_VarText4
+            // Outros_DHCP_VarText3
             // 
-            this.Outros_DHCP_VarText4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_DHCP_VarText4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_VarText4.Location = new System.Drawing.Point(374, 166);
-            this.Outros_DHCP_VarText4.Name = "Outros_DHCP_VarText4";
-            this.Outros_DHCP_VarText4.Size = new System.Drawing.Size(106, 25);
-            this.Outros_DHCP_VarText4.TabIndex = 256;
+            this.Outros_DHCP_VarText3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_DHCP_VarText3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_DHCP_VarText3.Location = new System.Drawing.Point(374, 153);
+            this.Outros_DHCP_VarText3.Name = "Outros_DHCP_VarText3";
+            this.Outros_DHCP_VarText3.Size = new System.Drawing.Size(106, 25);
+            this.Outros_DHCP_VarText3.TabIndex = 256;
             // 
             // Outros_DHCP_Label3
             // 
             this.Outros_DHCP_Label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_Label3.AutoSize = true;
             this.Outros_DHCP_Label3.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Outros_DHCP_Label3.Location = new System.Drawing.Point(252, 169);
+            this.Outros_DHCP_Label3.Location = new System.Drawing.Point(252, 156);
             this.Outros_DHCP_Label3.Name = "Outros_DHCP_Label3";
-            this.Outros_DHCP_Label3.Size = new System.Drawing.Size(112, 17);
+            this.Outros_DHCP_Label3.Size = new System.Drawing.Size(113, 17);
             this.Outros_DHCP_Label3.TabIndex = 255;
-            this.Outros_DHCP_Label3.Text = "Ultimo disponìvel:";
+            this.Outros_DHCP_Label3.Text = "Ultimo Disponìvel:";
             // 
             // Outros_DHCP_DelButton2
             // 
             this.Outros_DHCP_DelButton2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_DelButton2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_DelButton2.Location = new System.Drawing.Point(485, 135);
+            this.Outros_DHCP_DelButton2.Location = new System.Drawing.Point(485, 122);
             this.Outros_DHCP_DelButton2.Name = "Outros_DHCP_DelButton2";
             this.Outros_DHCP_DelButton2.Size = new System.Drawing.Size(20, 25);
             this.Outros_DHCP_DelButton2.TabIndex = 254;
@@ -8892,31 +8865,32 @@ namespace MasterSheetNew
             this.Outros_DHCP_ExLabel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_ExLabel2.AutoSize = true;
             this.Outros_DHCP_ExLabel2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_ExLabel2.Location = new System.Drawing.Point(516, 140);
+            this.Outros_DHCP_ExLabel2.Location = new System.Drawing.Point(518, 127);
             this.Outros_DHCP_ExLabel2.Name = "Outros_DHCP_ExLabel2";
             this.Outros_DHCP_ExLabel2.Size = new System.Drawing.Size(78, 15);
             this.Outros_DHCP_ExLabel2.TabIndex = 253;
             this.Outros_DHCP_ExLabel2.Text = "200.183.111.2";
             // 
-            // Outros_DHCP_VarText3
+            // Outros_DHCP_VarText2
             // 
-            this.Outros_DHCP_VarText3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_DHCP_VarText3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_VarText3.Location = new System.Drawing.Point(374, 135);
-            this.Outros_DHCP_VarText3.Name = "Outros_DHCP_VarText3";
-            this.Outros_DHCP_VarText3.Size = new System.Drawing.Size(106, 25);
-            this.Outros_DHCP_VarText3.TabIndex = 252;
+            this.Outros_DHCP_VarText2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_DHCP_VarText2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_DHCP_VarText2.Location = new System.Drawing.Point(374, 122);
+            this.Outros_DHCP_VarText2.Name = "Outros_DHCP_VarText2";
+            this.Outros_DHCP_VarText2.Size = new System.Drawing.Size(106, 25);
+            this.Outros_DHCP_VarText2.TabIndex = 252;
             // 
             // Outros_DHCP_Label2
             // 
             this.Outros_DHCP_Label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_Label2.AutoSize = true;
             this.Outros_DHCP_Label2.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Outros_DHCP_Label2.Location = new System.Drawing.Point(248, 138);
+            this.Outros_DHCP_Label2.Location = new System.Drawing.Point(240, 125);
             this.Outros_DHCP_Label2.Name = "Outros_DHCP_Label2";
-            this.Outros_DHCP_Label2.Size = new System.Drawing.Size(120, 17);
+            this.Outros_DHCP_Label2.Size = new System.Drawing.Size(124, 17);
             this.Outros_DHCP_Label2.TabIndex = 251;
-            this.Outros_DHCP_Label2.Text = "Primeiro disponivel";
+            this.Outros_DHCP_Label2.Text = "Primeiro Disponivel:";
+            this.Outros_DHCP_Label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // Outros_DHCP_Guide
             // 
@@ -8928,22 +8902,22 @@ namespace MasterSheetNew
             this.Outros_DHCP_Guide.TabIndex = 250;
             this.Outros_DHCP_Guide.Text = "Guia aqui";
             // 
-            // Outros_DHCP_DelButton1
+            // Outros_DHCP_DelButton0
             // 
-            this.Outros_DHCP_DelButton1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_DHCP_DelButton1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_DelButton1.Location = new System.Drawing.Point(485, 104);
-            this.Outros_DHCP_DelButton1.Name = "Outros_DHCP_DelButton1";
-            this.Outros_DHCP_DelButton1.Size = new System.Drawing.Size(20, 25);
-            this.Outros_DHCP_DelButton1.TabIndex = 245;
-            this.Outros_DHCP_DelButton1.Text = "-";
-            this.Outros_DHCP_DelButton1.UseVisualStyleBackColor = true;
+            this.Outros_DHCP_DelButton0.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_DHCP_DelButton0.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_DHCP_DelButton0.Location = new System.Drawing.Point(485, 60);
+            this.Outros_DHCP_DelButton0.Name = "Outros_DHCP_DelButton0";
+            this.Outros_DHCP_DelButton0.Size = new System.Drawing.Size(20, 25);
+            this.Outros_DHCP_DelButton0.TabIndex = 245;
+            this.Outros_DHCP_DelButton0.Text = "-";
+            this.Outros_DHCP_DelButton0.UseVisualStyleBackColor = true;
             // 
             // Outros_DHCP_DelButton9
             // 
             this.Outros_DHCP_DelButton9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_DelButton9.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_DelButton9.Location = new System.Drawing.Point(263, 365);
+            this.Outros_DHCP_DelButton9.Location = new System.Drawing.Point(485, 305);
             this.Outros_DHCP_DelButton9.Name = "Outros_DHCP_DelButton9";
             this.Outros_DHCP_DelButton9.Size = new System.Drawing.Size(20, 25);
             this.Outros_DHCP_DelButton9.TabIndex = 244;
@@ -8955,7 +8929,7 @@ namespace MasterSheetNew
             this.Outros_DHCP_ExTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_ExTitle.AutoSize = true;
             this.Outros_DHCP_ExTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_ExTitle.Location = new System.Drawing.Point(516, 40);
+            this.Outros_DHCP_ExTitle.Location = new System.Drawing.Point(516, 27);
             this.Outros_DHCP_ExTitle.Name = "Outros_DHCP_ExTitle";
             this.Outros_DHCP_ExTitle.Size = new System.Drawing.Size(77, 20);
             this.Outros_DHCP_ExTitle.TabIndex = 242;
@@ -8966,7 +8940,7 @@ namespace MasterSheetNew
             this.Outros_DHCP_ExLabel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_ExLabel1.AutoSize = true;
             this.Outros_DHCP_ExLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_ExLabel1.Location = new System.Drawing.Point(516, 109);
+            this.Outros_DHCP_ExLabel1.Location = new System.Drawing.Point(518, 66);
             this.Outros_DHCP_ExLabel1.Name = "Outros_DHCP_ExLabel1";
             this.Outros_DHCP_ExLabel1.Size = new System.Drawing.Size(108, 15);
             this.Outros_DHCP_ExLabel1.TabIndex = 241;
@@ -8977,7 +8951,7 @@ namespace MasterSheetNew
             this.Outros_DHCP_ExLabel9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_ExLabel9.AutoSize = true;
             this.Outros_DHCP_ExLabel9.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_ExLabel9.Location = new System.Drawing.Point(296, 370);
+            this.Outros_DHCP_ExLabel9.Location = new System.Drawing.Point(516, 310);
             this.Outros_DHCP_ExLabel9.Name = "Outros_DHCP_ExLabel9";
             this.Outros_DHCP_ExLabel9.Size = new System.Drawing.Size(100, 15);
             this.Outros_DHCP_ExLabel9.TabIndex = 240;
@@ -8988,7 +8962,7 @@ namespace MasterSheetNew
             this.Outros_DHCP_ExLabel0.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_ExLabel0.AutoSize = true;
             this.Outros_DHCP_ExLabel0.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_ExLabel0.Location = new System.Drawing.Point(518, 76);
+            this.Outros_DHCP_ExLabel0.Location = new System.Drawing.Point(518, 96);
             this.Outros_DHCP_ExLabel0.Name = "Outros_DHCP_ExLabel0";
             this.Outros_DHCP_ExLabel0.Size = new System.Drawing.Size(76, 15);
             this.Outros_DHCP_ExLabel0.TabIndex = 239;
@@ -8998,37 +8972,37 @@ namespace MasterSheetNew
             // 
             this.Outros_DHCP_ClearButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_ClearButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_ClearButton.Location = new System.Drawing.Point(426, 35);
+            this.Outros_DHCP_ClearButton.Location = new System.Drawing.Point(426, 23);
             this.Outros_DHCP_ClearButton.Name = "Outros_DHCP_ClearButton";
             this.Outros_DHCP_ClearButton.Size = new System.Drawing.Size(79, 30);
             this.Outros_DHCP_ClearButton.TabIndex = 237;
             this.Outros_DHCP_ClearButton.Text = "Limpar";
             this.Outros_DHCP_ClearButton.UseVisualStyleBackColor = true;
             // 
-            // Outros_DHCP_VarText1
+            // Outros_DHCP_VarText0
             // 
-            this.Outros_DHCP_VarText1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_DHCP_VarText1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_VarText1.Location = new System.Drawing.Point(317, 103);
-            this.Outros_DHCP_VarText1.Name = "Outros_DHCP_VarText1";
-            this.Outros_DHCP_VarText1.Size = new System.Drawing.Size(161, 25);
-            this.Outros_DHCP_VarText1.TabIndex = 236;
+            this.Outros_DHCP_VarText0.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_DHCP_VarText0.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_DHCP_VarText0.Location = new System.Drawing.Point(319, 60);
+            this.Outros_DHCP_VarText0.Name = "Outros_DHCP_VarText0";
+            this.Outros_DHCP_VarText0.Size = new System.Drawing.Size(161, 25);
+            this.Outros_DHCP_VarText0.TabIndex = 236;
             // 
-            // Outros_DHCP_VarText8
+            // Outros_DHCP_VarText9
             // 
-            this.Outros_DHCP_VarText8.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_DHCP_VarText8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_VarText8.Location = new System.Drawing.Point(128, 365);
-            this.Outros_DHCP_VarText8.Name = "Outros_DHCP_VarText8";
-            this.Outros_DHCP_VarText8.Size = new System.Drawing.Size(129, 25);
-            this.Outros_DHCP_VarText8.TabIndex = 235;
+            this.Outros_DHCP_VarText9.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_DHCP_VarText9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_DHCP_VarText9.Location = new System.Drawing.Point(351, 305);
+            this.Outros_DHCP_VarText9.Name = "Outros_DHCP_VarText9";
+            this.Outros_DHCP_VarText9.Size = new System.Drawing.Size(129, 25);
+            this.Outros_DHCP_VarText9.TabIndex = 235;
             // 
             // Outros_DHCP_Label1
             // 
             this.Outros_DHCP_Label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_Label1.AutoSize = true;
             this.Outros_DHCP_Label1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Outros_DHCP_Label1.Location = new System.Drawing.Point(199, 106);
+            this.Outros_DHCP_Label1.Location = new System.Drawing.Point(201, 64);
             this.Outros_DHCP_Label1.Name = "Outros_DHCP_Label1";
             this.Outros_DHCP_Label1.Size = new System.Drawing.Size(108, 17);
             this.Outros_DHCP_Label1.TabIndex = 234;
@@ -9039,18 +9013,18 @@ namespace MasterSheetNew
             this.Outros_DHCP_Label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_Label9.AutoSize = true;
             this.Outros_DHCP_Label9.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.Outros_DHCP_Label9.Location = new System.Drawing.Point(13, 368);
+            this.Outros_DHCP_Label9.Location = new System.Drawing.Point(288, 308);
             this.Outros_DHCP_Label9.Name = "Outros_DHCP_Label9";
-            this.Outros_DHCP_Label9.Size = new System.Drawing.Size(57, 17);
+            this.Outros_DHCP_Label9.Size = new System.Drawing.Size(60, 17);
             this.Outros_DHCP_Label9.TabIndex = 233;
-            this.Outros_DHCP_Label9.Text = "Dominio";
+            this.Outros_DHCP_Label9.Text = "Dominio:";
             // 
             // Outros_DHCP_Label0
             // 
             this.Outros_DHCP_Label0.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_Label0.AutoSize = true;
             this.Outros_DHCP_Label0.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_Label0.Location = new System.Drawing.Point(199, 76);
+            this.Outros_DHCP_Label0.Location = new System.Drawing.Point(240, 94);
             this.Outros_DHCP_Label0.Name = "Outros_DHCP_Label0";
             this.Outros_DHCP_Label0.Size = new System.Drawing.Size(68, 17);
             this.Outros_DHCP_Label0.TabIndex = 232;
@@ -9061,7 +9035,7 @@ namespace MasterSheetNew
             this.Outros_DHCP_VarTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outros_DHCP_VarTitle.AutoSize = true;
             this.Outros_DHCP_VarTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_DHCP_VarTitle.Location = new System.Drawing.Point(210, 36);
+            this.Outros_DHCP_VarTitle.Location = new System.Drawing.Point(210, 23);
             this.Outros_DHCP_VarTitle.Name = "Outros_DHCP_VarTitle";
             this.Outros_DHCP_VarTitle.Size = new System.Drawing.Size(88, 25);
             this.Outros_DHCP_VarTitle.TabIndex = 230;
@@ -9080,15 +9054,15 @@ namespace MasterSheetNew
             this.Outros_TabVlan.Controls.Add(this.Outros_VLAN_ExLabel0);
             this.Outros_TabVlan.Controls.Add(this.Outros_VLAN_VarDel0);
             this.Outros_TabVlan.Controls.Add(this.Outros_VLAN_ClearAllButton);
-            this.Outros_TabVlan.Controls.Add(this.Outros_VLAN_VarText1);
+            this.Outros_TabVlan.Controls.Add(this.Outros_VLAN_VarText0);
             this.Outros_TabVlan.Controls.Add(this.Outros_VLAN_VarLabel1);
             this.Outros_TabVlan.Controls.Add(this.Outros_VLAN_VarLabel0);
-            this.Outros_TabVlan.Controls.Add(this.Outros_VLAN_VarText0);
+            this.Outros_TabVlan.Controls.Add(this.Outros_VLAN_VarText1);
             this.Outros_TabVlan.Controls.Add(this.Outros_VLAN_LabelTitle);
             this.Outros_TabVlan.Location = new System.Drawing.Point(4, 5);
             this.Outros_TabVlan.Name = "Outros_TabVlan";
             this.Outros_TabVlan.Padding = new System.Windows.Forms.Padding(3);
-            this.Outros_TabVlan.Size = new System.Drawing.Size(629, 436);
+            this.Outros_TabVlan.Size = new System.Drawing.Size(629, 384);
             this.Outros_TabVlan.TabIndex = 5;
             this.Outros_TabVlan.Text = "VLAN";
             // 
@@ -9210,14 +9184,14 @@ namespace MasterSheetNew
             this.Outros_VLAN_ClearAllButton.UseVisualStyleBackColor = true;
             this.Outros_VLAN_ClearAllButton.Click += new System.EventHandler(this.Outros_VLAN_ClearAllButton_Click);
             // 
-            // Outros_VLAN_VarText1
+            // Outros_VLAN_VarText0
             // 
-            this.Outros_VLAN_VarText1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VLAN_VarText1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VLAN_VarText1.Location = new System.Drawing.Point(312, 70);
-            this.Outros_VLAN_VarText1.Name = "Outros_VLAN_VarText1";
-            this.Outros_VLAN_VarText1.Size = new System.Drawing.Size(162, 25);
-            this.Outros_VLAN_VarText1.TabIndex = 235;
+            this.Outros_VLAN_VarText0.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_VLAN_VarText0.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_VLAN_VarText0.Location = new System.Drawing.Point(312, 70);
+            this.Outros_VLAN_VarText0.Name = "Outros_VLAN_VarText0";
+            this.Outros_VLAN_VarText0.Size = new System.Drawing.Size(162, 25);
+            this.Outros_VLAN_VarText0.TabIndex = 235;
             // 
             // Outros_VLAN_VarLabel1
             // 
@@ -9241,14 +9215,14 @@ namespace MasterSheetNew
             this.Outros_VLAN_VarLabel0.TabIndex = 232;
             this.Outros_VLAN_VarLabel0.Text = "Interface LAN:";
             // 
-            // Outros_VLAN_VarText0
+            // Outros_VLAN_VarText1
             // 
-            this.Outros_VLAN_VarText0.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Outros_VLAN_VarText0.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Outros_VLAN_VarText0.Location = new System.Drawing.Point(312, 104);
-            this.Outros_VLAN_VarText0.Name = "Outros_VLAN_VarText0";
-            this.Outros_VLAN_VarText0.Size = new System.Drawing.Size(102, 25);
-            this.Outros_VLAN_VarText0.TabIndex = 231;
+            this.Outros_VLAN_VarText1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_VLAN_VarText1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_VLAN_VarText1.Location = new System.Drawing.Point(312, 104);
+            this.Outros_VLAN_VarText1.Name = "Outros_VLAN_VarText1";
+            this.Outros_VLAN_VarText1.Size = new System.Drawing.Size(102, 25);
+            this.Outros_VLAN_VarText1.TabIndex = 231;
             // 
             // Outros_VLAN_LabelTitle
             // 
@@ -9283,7 +9257,7 @@ namespace MasterSheetNew
             this.Outros_TabUSUARIOS.Location = new System.Drawing.Point(4, 5);
             this.Outros_TabUSUARIOS.Name = "Outros_TabUSUARIOS";
             this.Outros_TabUSUARIOS.Padding = new System.Windows.Forms.Padding(3);
-            this.Outros_TabUSUARIOS.Size = new System.Drawing.Size(629, 436);
+            this.Outros_TabUSUARIOS.Size = new System.Drawing.Size(629, 384);
             this.Outros_TabUSUARIOS.TabIndex = 6;
             this.Outros_TabUSUARIOS.Text = "USUARIOS";
             // 
@@ -9468,7 +9442,7 @@ namespace MasterSheetNew
             this.Outros_Tab_FortiVlan.Location = new System.Drawing.Point(4, 5);
             this.Outros_Tab_FortiVlan.Name = "Outros_Tab_FortiVlan";
             this.Outros_Tab_FortiVlan.Padding = new System.Windows.Forms.Padding(3);
-            this.Outros_Tab_FortiVlan.Size = new System.Drawing.Size(629, 436);
+            this.Outros_Tab_FortiVlan.Size = new System.Drawing.Size(629, 384);
             this.Outros_Tab_FortiVlan.TabIndex = 7;
             this.Outros_Tab_FortiVlan.Text = "Vlan Fortigate";
             // 
@@ -9489,7 +9463,7 @@ namespace MasterSheetNew
             this.Outros_TabFortiExtras.Location = new System.Drawing.Point(4, 5);
             this.Outros_TabFortiExtras.Name = "Outros_TabFortiExtras";
             this.Outros_TabFortiExtras.Padding = new System.Windows.Forms.Padding(3);
-            this.Outros_TabFortiExtras.Size = new System.Drawing.Size(629, 436);
+            this.Outros_TabFortiExtras.Size = new System.Drawing.Size(629, 384);
             this.Outros_TabFortiExtras.TabIndex = 8;
             this.Outros_TabFortiExtras.Text = "Fortigate Extras";
             // 
@@ -9506,6 +9480,7 @@ namespace MasterSheetNew
             // Outros_TabIPFLow
             // 
             this.Outros_TabIPFLow.BackColor = System.Drawing.SystemColors.Control;
+            this.Outros_TabIPFLow.Controls.Add(this.Outros_IPFlow_ISRCheckBox);
             this.Outros_TabIPFLow.Controls.Add(this.Outros_IPFlow_DelButton2);
             this.Outros_TabIPFLow.Controls.Add(this.Outros_IPFlow_DelButton1);
             this.Outros_TabIPFLow.Controls.Add(this.Outros_IPFlow_ExTitle);
@@ -9525,9 +9500,19 @@ namespace MasterSheetNew
             this.Outros_TabIPFLow.Location = new System.Drawing.Point(4, 5);
             this.Outros_TabIPFLow.Name = "Outros_TabIPFLow";
             this.Outros_TabIPFLow.Padding = new System.Windows.Forms.Padding(3);
-            this.Outros_TabIPFLow.Size = new System.Drawing.Size(629, 436);
+            this.Outros_TabIPFLow.Size = new System.Drawing.Size(629, 384);
             this.Outros_TabIPFLow.TabIndex = 9;
             this.Outros_TabIPFLow.Text = "IP Flow";
+            // 
+            // Outros_IPFlow_ISRCheckBox
+            // 
+            this.Outros_IPFlow_ISRCheckBox.AutoSize = true;
+            this.Outros_IPFlow_ISRCheckBox.Location = new System.Drawing.Point(241, 168);
+            this.Outros_IPFlow_ISRCheckBox.Name = "Outros_IPFlow_ISRCheckBox";
+            this.Outros_IPFlow_ISRCheckBox.Size = new System.Drawing.Size(87, 23);
+            this.Outros_IPFlow_ISRCheckBox.TabIndex = 280;
+            this.Outros_IPFlow_ISRCheckBox.Text = "Cisco ISR";
+            this.Outros_IPFlow_ISRCheckBox.UseVisualStyleBackColor = true;
             // 
             // Outros_IPFlow_DelButton2
             // 
@@ -9705,7 +9690,7 @@ namespace MasterSheetNew
             this.Outros_TabRIP.Location = new System.Drawing.Point(4, 5);
             this.Outros_TabRIP.Name = "Outros_TabRIP";
             this.Outros_TabRIP.Padding = new System.Windows.Forms.Padding(3);
-            this.Outros_TabRIP.Size = new System.Drawing.Size(629, 436);
+            this.Outros_TabRIP.Size = new System.Drawing.Size(629, 384);
             this.Outros_TabRIP.TabIndex = 10;
             this.Outros_TabRIP.Text = "RIP";
             // 
@@ -9725,7 +9710,7 @@ namespace MasterSheetNew
             this.Outros_TabOSPF.Location = new System.Drawing.Point(4, 5);
             this.Outros_TabOSPF.Name = "Outros_TabOSPF";
             this.Outros_TabOSPF.Padding = new System.Windows.Forms.Padding(3);
-            this.Outros_TabOSPF.Size = new System.Drawing.Size(629, 436);
+            this.Outros_TabOSPF.Size = new System.Drawing.Size(629, 384);
             this.Outros_TabOSPF.TabIndex = 11;
             this.Outros_TabOSPF.Text = "OSPF";
             // 
@@ -9803,7 +9788,7 @@ namespace MasterSheetNew
             this.Outros_TabVRRP.Location = new System.Drawing.Point(4, 5);
             this.Outros_TabVRRP.Name = "Outros_TabVRRP";
             this.Outros_TabVRRP.Padding = new System.Windows.Forms.Padding(3);
-            this.Outros_TabVRRP.Size = new System.Drawing.Size(629, 436);
+            this.Outros_TabVRRP.Size = new System.Drawing.Size(629, 384);
             this.Outros_TabVRRP.TabIndex = 12;
             this.Outros_TabVRRP.Text = "VRRP";
             // 
@@ -10435,7 +10420,7 @@ namespace MasterSheetNew
             this.Outros_TabGLBP.Location = new System.Drawing.Point(4, 5);
             this.Outros_TabGLBP.Name = "Outros_TabGLBP";
             this.Outros_TabGLBP.Padding = new System.Windows.Forms.Padding(3);
-            this.Outros_TabGLBP.Size = new System.Drawing.Size(629, 436);
+            this.Outros_TabGLBP.Size = new System.Drawing.Size(629, 384);
             this.Outros_TabGLBP.TabIndex = 13;
             this.Outros_TabGLBP.Text = "GLBP";
             // 
@@ -10455,7 +10440,7 @@ namespace MasterSheetNew
             this.Outros_TabEIGRP.Location = new System.Drawing.Point(4, 5);
             this.Outros_TabEIGRP.Name = "Outros_TabEIGRP";
             this.Outros_TabEIGRP.Padding = new System.Windows.Forms.Padding(3);
-            this.Outros_TabEIGRP.Size = new System.Drawing.Size(629, 436);
+            this.Outros_TabEIGRP.Size = new System.Drawing.Size(629, 384);
             this.Outros_TabEIGRP.TabIndex = 14;
             this.Outros_TabEIGRP.Text = "EIGRP";
             // 
@@ -10475,7 +10460,7 @@ namespace MasterSheetNew
             this.Outros_TabHotline.Location = new System.Drawing.Point(4, 5);
             this.Outros_TabHotline.Name = "Outros_TabHotline";
             this.Outros_TabHotline.Padding = new System.Windows.Forms.Padding(3);
-            this.Outros_TabHotline.Size = new System.Drawing.Size(629, 436);
+            this.Outros_TabHotline.Size = new System.Drawing.Size(629, 384);
             this.Outros_TabHotline.TabIndex = 15;
             this.Outros_TabHotline.Text = "Hotline";
             // 
@@ -10495,7 +10480,7 @@ namespace MasterSheetNew
             this.Outros_Tab_HSRP.Location = new System.Drawing.Point(4, 5);
             this.Outros_Tab_HSRP.Name = "Outros_Tab_HSRP";
             this.Outros_Tab_HSRP.Padding = new System.Windows.Forms.Padding(3);
-            this.Outros_Tab_HSRP.Size = new System.Drawing.Size(629, 436);
+            this.Outros_Tab_HSRP.Size = new System.Drawing.Size(629, 384);
             this.Outros_Tab_HSRP.TabIndex = 16;
             this.Outros_Tab_HSRP.Text = "HSRP";
             this.Outros_Tab_HSRP.UseVisualStyleBackColor = true;
@@ -10569,7 +10554,7 @@ namespace MasterSheetNew
             this.Outros_TabPortBlock.Controls.Add(this.Outros_PortBlock_Label20);
             this.Outros_TabPortBlock.Location = new System.Drawing.Point(4, 5);
             this.Outros_TabPortBlock.Name = "Outros_TabPortBlock";
-            this.Outros_TabPortBlock.Size = new System.Drawing.Size(629, 436);
+            this.Outros_TabPortBlock.Size = new System.Drawing.Size(629, 384);
             this.Outros_TabPortBlock.TabIndex = 17;
             this.Outros_TabPortBlock.Text = "PortBlock";
             this.Outros_TabPortBlock.UseVisualStyleBackColor = true;
@@ -10631,7 +10616,7 @@ namespace MasterSheetNew
             // Outros_PortBlock_HPEold
             // 
             this.Outros_PortBlock_HPEold.AutoSize = true;
-            this.Outros_PortBlock_HPEold.Location = new System.Drawing.Point(18, 376);
+            this.Outros_PortBlock_HPEold.Location = new System.Drawing.Point(18, 362);
             this.Outros_PortBlock_HPEold.Name = "Outros_PortBlock_HPEold";
             this.Outros_PortBlock_HPEold.Size = new System.Drawing.Size(152, 23);
             this.Outros_PortBlock_HPEold.TabIndex = 300;
@@ -10727,7 +10712,7 @@ namespace MasterSheetNew
             // Outros_PortBlock_Label19
             // 
             this.Outros_PortBlock_Label19.AutoSize = true;
-            this.Outros_PortBlock_Label19.Location = new System.Drawing.Point(403, 359);
+            this.Outros_PortBlock_Label19.Location = new System.Drawing.Point(403, 341);
             this.Outros_PortBlock_Label19.Name = "Outros_PortBlock_Label19";
             this.Outros_PortBlock_Label19.Size = new System.Drawing.Size(41, 19);
             this.Outros_PortBlock_Label19.TabIndex = 291;
@@ -10740,7 +10725,7 @@ namespace MasterSheetNew
             this.Outros_PortBLock_ComboBox15.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.Outros_PortBLock_ComboBox15.Location = new System.Drawing.Point(531, 359);
+            this.Outros_PortBLock_ComboBox15.Location = new System.Drawing.Point(531, 341);
             this.Outros_PortBLock_ComboBox15.Name = "Outros_PortBLock_ComboBox15";
             this.Outros_PortBLock_ComboBox15.Size = new System.Drawing.Size(56, 20);
             this.Outros_PortBLock_ComboBox15.TabIndex = 290;
@@ -10752,7 +10737,7 @@ namespace MasterSheetNew
             this.Outros_PortBLock_ComboBox16.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.Outros_PortBLock_ComboBox16.Location = new System.Drawing.Point(531, 379);
+            this.Outros_PortBLock_ComboBox16.Location = new System.Drawing.Point(531, 361);
             this.Outros_PortBLock_ComboBox16.Name = "Outros_PortBLock_ComboBox16";
             this.Outros_PortBLock_ComboBox16.Size = new System.Drawing.Size(56, 20);
             this.Outros_PortBLock_ComboBox16.TabIndex = 288;
@@ -10760,7 +10745,7 @@ namespace MasterSheetNew
             // Outros_PortBlock_Label18
             // 
             this.Outros_PortBlock_Label18.AutoSize = true;
-            this.Outros_PortBlock_Label18.Location = new System.Drawing.Point(403, 339);
+            this.Outros_PortBlock_Label18.Location = new System.Drawing.Point(403, 321);
             this.Outros_PortBlock_Label18.Name = "Outros_PortBlock_Label18";
             this.Outros_PortBlock_Label18.Size = new System.Drawing.Size(41, 19);
             this.Outros_PortBlock_Label18.TabIndex = 287;
@@ -10773,7 +10758,7 @@ namespace MasterSheetNew
             this.Outros_PortBLock_ComboBox14.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.Outros_PortBLock_ComboBox14.Location = new System.Drawing.Point(531, 339);
+            this.Outros_PortBLock_ComboBox14.Location = new System.Drawing.Point(531, 321);
             this.Outros_PortBLock_ComboBox14.Name = "Outros_PortBLock_ComboBox14";
             this.Outros_PortBLock_ComboBox14.Size = new System.Drawing.Size(56, 20);
             this.Outros_PortBLock_ComboBox14.TabIndex = 286;
@@ -10781,7 +10766,7 @@ namespace MasterSheetNew
             // Outros_PortBlock_Label17
             // 
             this.Outros_PortBlock_Label17.AutoSize = true;
-            this.Outros_PortBlock_Label17.Location = new System.Drawing.Point(403, 319);
+            this.Outros_PortBlock_Label17.Location = new System.Drawing.Point(403, 301);
             this.Outros_PortBlock_Label17.Name = "Outros_PortBlock_Label17";
             this.Outros_PortBlock_Label17.Size = new System.Drawing.Size(72, 19);
             this.Outros_PortBlock_Label17.TabIndex = 285;
@@ -10794,7 +10779,7 @@ namespace MasterSheetNew
             this.Outros_PortBLock_ComboBox13.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.Outros_PortBLock_ComboBox13.Location = new System.Drawing.Point(531, 319);
+            this.Outros_PortBLock_ComboBox13.Location = new System.Drawing.Point(531, 301);
             this.Outros_PortBLock_ComboBox13.Name = "Outros_PortBLock_ComboBox13";
             this.Outros_PortBLock_ComboBox13.Size = new System.Drawing.Size(56, 20);
             this.Outros_PortBLock_ComboBox13.TabIndex = 284;
@@ -10802,7 +10787,7 @@ namespace MasterSheetNew
             // Outros_PortBlock_Label16
             // 
             this.Outros_PortBlock_Label16.AutoSize = true;
-            this.Outros_PortBlock_Label16.Location = new System.Drawing.Point(403, 299);
+            this.Outros_PortBlock_Label16.Location = new System.Drawing.Point(403, 281);
             this.Outros_PortBlock_Label16.Name = "Outros_PortBlock_Label16";
             this.Outros_PortBlock_Label16.Size = new System.Drawing.Size(89, 19);
             this.Outros_PortBlock_Label16.TabIndex = 283;
@@ -10811,7 +10796,7 @@ namespace MasterSheetNew
             // Outros_PortBlock_Label15
             // 
             this.Outros_PortBlock_Label15.AutoSize = true;
-            this.Outros_PortBlock_Label15.Location = new System.Drawing.Point(403, 278);
+            this.Outros_PortBlock_Label15.Location = new System.Drawing.Point(403, 260);
             this.Outros_PortBlock_Label15.Name = "Outros_PortBlock_Label15";
             this.Outros_PortBlock_Label15.Size = new System.Drawing.Size(33, 19);
             this.Outros_PortBlock_Label15.TabIndex = 282;
@@ -10820,7 +10805,7 @@ namespace MasterSheetNew
             // Outros_PortBlock_Label13
             // 
             this.Outros_PortBlock_Label13.AutoSize = true;
-            this.Outros_PortBlock_Label13.Location = new System.Drawing.Point(403, 238);
+            this.Outros_PortBlock_Label13.Location = new System.Drawing.Point(403, 220);
             this.Outros_PortBlock_Label13.Name = "Outros_PortBlock_Label13";
             this.Outros_PortBlock_Label13.Size = new System.Drawing.Size(83, 19);
             this.Outros_PortBlock_Label13.TabIndex = 280;
@@ -10829,7 +10814,7 @@ namespace MasterSheetNew
             // Outros_PortBlock_Label12
             // 
             this.Outros_PortBlock_Label12.AutoSize = true;
-            this.Outros_PortBlock_Label12.Location = new System.Drawing.Point(403, 219);
+            this.Outros_PortBlock_Label12.Location = new System.Drawing.Point(403, 201);
             this.Outros_PortBlock_Label12.Name = "Outros_PortBlock_Label12";
             this.Outros_PortBlock_Label12.Size = new System.Drawing.Size(72, 19);
             this.Outros_PortBlock_Label12.TabIndex = 279;
@@ -10838,7 +10823,7 @@ namespace MasterSheetNew
             // Outros_PortBlock_Label11
             // 
             this.Outros_PortBlock_Label11.AutoSize = true;
-            this.Outros_PortBlock_Label11.Location = new System.Drawing.Point(403, 199);
+            this.Outros_PortBlock_Label11.Location = new System.Drawing.Point(403, 181);
             this.Outros_PortBlock_Label11.Name = "Outros_PortBlock_Label11";
             this.Outros_PortBlock_Label11.Size = new System.Drawing.Size(73, 19);
             this.Outros_PortBlock_Label11.TabIndex = 278;
@@ -10847,7 +10832,7 @@ namespace MasterSheetNew
             // Outros_PortBlock_Label10
             // 
             this.Outros_PortBlock_Label10.AutoSize = true;
-            this.Outros_PortBlock_Label10.Location = new System.Drawing.Point(403, 182);
+            this.Outros_PortBlock_Label10.Location = new System.Drawing.Point(403, 164);
             this.Outros_PortBlock_Label10.Name = "Outros_PortBlock_Label10";
             this.Outros_PortBlock_Label10.Size = new System.Drawing.Size(62, 19);
             this.Outros_PortBlock_Label10.TabIndex = 277;
@@ -10856,7 +10841,7 @@ namespace MasterSheetNew
             // Outros_PortBlock_Label9
             // 
             this.Outros_PortBlock_Label9.AutoSize = true;
-            this.Outros_PortBlock_Label9.Location = new System.Drawing.Point(403, 158);
+            this.Outros_PortBlock_Label9.Location = new System.Drawing.Point(403, 140);
             this.Outros_PortBlock_Label9.Name = "Outros_PortBlock_Label9";
             this.Outros_PortBlock_Label9.Size = new System.Drawing.Size(83, 19);
             this.Outros_PortBlock_Label9.TabIndex = 276;
@@ -10865,7 +10850,7 @@ namespace MasterSheetNew
             // Outros_PortBlock_Label8
             // 
             this.Outros_PortBlock_Label8.AutoSize = true;
-            this.Outros_PortBlock_Label8.Location = new System.Drawing.Point(403, 138);
+            this.Outros_PortBlock_Label8.Location = new System.Drawing.Point(403, 120);
             this.Outros_PortBlock_Label8.Name = "Outros_PortBlock_Label8";
             this.Outros_PortBlock_Label8.Size = new System.Drawing.Size(82, 19);
             this.Outros_PortBlock_Label8.TabIndex = 275;
@@ -10874,7 +10859,7 @@ namespace MasterSheetNew
             // Outros_PortBlock_Label7
             // 
             this.Outros_PortBlock_Label7.AutoSize = true;
-            this.Outros_PortBlock_Label7.Location = new System.Drawing.Point(403, 118);
+            this.Outros_PortBlock_Label7.Location = new System.Drawing.Point(403, 100);
             this.Outros_PortBlock_Label7.Name = "Outros_PortBlock_Label7";
             this.Outros_PortBlock_Label7.Size = new System.Drawing.Size(68, 19);
             this.Outros_PortBlock_Label7.TabIndex = 274;
@@ -10883,7 +10868,7 @@ namespace MasterSheetNew
             // Outros_PortBlock_Label6
             // 
             this.Outros_PortBlock_Label6.AutoSize = true;
-            this.Outros_PortBlock_Label6.Location = new System.Drawing.Point(403, 101);
+            this.Outros_PortBlock_Label6.Location = new System.Drawing.Point(403, 83);
             this.Outros_PortBlock_Label6.Name = "Outros_PortBlock_Label6";
             this.Outros_PortBlock_Label6.Size = new System.Drawing.Size(65, 19);
             this.Outros_PortBlock_Label6.TabIndex = 273;
@@ -10892,7 +10877,7 @@ namespace MasterSheetNew
             // Outros_PortBlock_ChangeAllButton
             // 
             this.Outros_PortBlock_ChangeAllButton.Font = new System.Drawing.Font("Segoe UI", 7.75F);
-            this.Outros_PortBlock_ChangeAllButton.Location = new System.Drawing.Point(406, 32);
+            this.Outros_PortBlock_ChangeAllButton.Location = new System.Drawing.Point(406, 14);
             this.Outros_PortBlock_ChangeAllButton.Margin = new System.Windows.Forms.Padding(0);
             this.Outros_PortBlock_ChangeAllButton.Name = "Outros_PortBlock_ChangeAllButton";
             this.Outros_PortBlock_ChangeAllButton.Size = new System.Drawing.Size(181, 23);
@@ -10983,7 +10968,7 @@ namespace MasterSheetNew
             this.Outros_PortBLock_ComboBox12.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.Outros_PortBLock_ComboBox12.Location = new System.Drawing.Point(531, 299);
+            this.Outros_PortBLock_ComboBox12.Location = new System.Drawing.Point(531, 281);
             this.Outros_PortBLock_ComboBox12.Name = "Outros_PortBLock_ComboBox12";
             this.Outros_PortBLock_ComboBox12.Size = new System.Drawing.Size(56, 20);
             this.Outros_PortBLock_ComboBox12.TabIndex = 12;
@@ -10995,7 +10980,7 @@ namespace MasterSheetNew
             this.Outros_PortBLock_ComboBox11.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.Outros_PortBLock_ComboBox11.Location = new System.Drawing.Point(531, 279);
+            this.Outros_PortBLock_ComboBox11.Location = new System.Drawing.Point(531, 261);
             this.Outros_PortBLock_ComboBox11.Name = "Outros_PortBLock_ComboBox11";
             this.Outros_PortBLock_ComboBox11.Size = new System.Drawing.Size(56, 20);
             this.Outros_PortBLock_ComboBox11.TabIndex = 11;
@@ -11007,7 +10992,7 @@ namespace MasterSheetNew
             this.Outros_PortBLock_ComboBox10.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.Outros_PortBLock_ComboBox10.Location = new System.Drawing.Point(531, 259);
+            this.Outros_PortBLock_ComboBox10.Location = new System.Drawing.Point(531, 241);
             this.Outros_PortBLock_ComboBox10.Name = "Outros_PortBLock_ComboBox10";
             this.Outros_PortBLock_ComboBox10.Size = new System.Drawing.Size(56, 20);
             this.Outros_PortBLock_ComboBox10.TabIndex = 10;
@@ -11019,7 +11004,7 @@ namespace MasterSheetNew
             this.Outros_PortBLock_ComboBox9.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.Outros_PortBLock_ComboBox9.Location = new System.Drawing.Point(531, 239);
+            this.Outros_PortBLock_ComboBox9.Location = new System.Drawing.Point(531, 221);
             this.Outros_PortBLock_ComboBox9.Name = "Outros_PortBLock_ComboBox9";
             this.Outros_PortBLock_ComboBox9.Size = new System.Drawing.Size(56, 20);
             this.Outros_PortBLock_ComboBox9.TabIndex = 9;
@@ -11031,7 +11016,7 @@ namespace MasterSheetNew
             this.Outros_PortBLock_ComboBox8.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.Outros_PortBLock_ComboBox8.Location = new System.Drawing.Point(531, 219);
+            this.Outros_PortBLock_ComboBox8.Location = new System.Drawing.Point(531, 201);
             this.Outros_PortBLock_ComboBox8.Name = "Outros_PortBLock_ComboBox8";
             this.Outros_PortBLock_ComboBox8.Size = new System.Drawing.Size(56, 20);
             this.Outros_PortBLock_ComboBox8.TabIndex = 8;
@@ -11043,7 +11028,7 @@ namespace MasterSheetNew
             this.Outros_PortBLock_ComboBox7.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.Outros_PortBLock_ComboBox7.Location = new System.Drawing.Point(531, 199);
+            this.Outros_PortBLock_ComboBox7.Location = new System.Drawing.Point(531, 181);
             this.Outros_PortBLock_ComboBox7.Name = "Outros_PortBLock_ComboBox7";
             this.Outros_PortBLock_ComboBox7.Size = new System.Drawing.Size(56, 20);
             this.Outros_PortBLock_ComboBox7.TabIndex = 7;
@@ -11055,7 +11040,7 @@ namespace MasterSheetNew
             this.Outros_PortBLock_ComboBox6.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.Outros_PortBLock_ComboBox6.Location = new System.Drawing.Point(531, 179);
+            this.Outros_PortBLock_ComboBox6.Location = new System.Drawing.Point(531, 161);
             this.Outros_PortBLock_ComboBox6.Name = "Outros_PortBLock_ComboBox6";
             this.Outros_PortBLock_ComboBox6.Size = new System.Drawing.Size(56, 20);
             this.Outros_PortBLock_ComboBox6.TabIndex = 6;
@@ -11067,7 +11052,7 @@ namespace MasterSheetNew
             this.Outros_PortBLock_ComboBox5.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.Outros_PortBLock_ComboBox5.Location = new System.Drawing.Point(531, 159);
+            this.Outros_PortBLock_ComboBox5.Location = new System.Drawing.Point(531, 141);
             this.Outros_PortBLock_ComboBox5.Name = "Outros_PortBLock_ComboBox5";
             this.Outros_PortBLock_ComboBox5.Size = new System.Drawing.Size(56, 20);
             this.Outros_PortBLock_ComboBox5.TabIndex = 5;
@@ -11079,7 +11064,7 @@ namespace MasterSheetNew
             this.Outros_PortBLock_ComboBox4.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.Outros_PortBLock_ComboBox4.Location = new System.Drawing.Point(531, 139);
+            this.Outros_PortBLock_ComboBox4.Location = new System.Drawing.Point(531, 121);
             this.Outros_PortBLock_ComboBox4.Name = "Outros_PortBLock_ComboBox4";
             this.Outros_PortBLock_ComboBox4.Size = new System.Drawing.Size(56, 20);
             this.Outros_PortBLock_ComboBox4.TabIndex = 4;
@@ -11091,7 +11076,7 @@ namespace MasterSheetNew
             this.Outros_PortBLock_ComboBox3.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.Outros_PortBLock_ComboBox3.Location = new System.Drawing.Point(531, 119);
+            this.Outros_PortBLock_ComboBox3.Location = new System.Drawing.Point(531, 101);
             this.Outros_PortBLock_ComboBox3.Name = "Outros_PortBLock_ComboBox3";
             this.Outros_PortBLock_ComboBox3.Size = new System.Drawing.Size(56, 20);
             this.Outros_PortBLock_ComboBox3.TabIndex = 3;
@@ -11103,7 +11088,7 @@ namespace MasterSheetNew
             this.Outros_PortBLock_ComboBox2.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.Outros_PortBLock_ComboBox2.Location = new System.Drawing.Point(531, 99);
+            this.Outros_PortBLock_ComboBox2.Location = new System.Drawing.Point(531, 81);
             this.Outros_PortBLock_ComboBox2.Name = "Outros_PortBLock_ComboBox2";
             this.Outros_PortBLock_ComboBox2.Size = new System.Drawing.Size(56, 20);
             this.Outros_PortBLock_ComboBox2.TabIndex = 2;
@@ -11115,7 +11100,7 @@ namespace MasterSheetNew
             this.Outros_PortBLock_ComboBox1.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.Outros_PortBLock_ComboBox1.Location = new System.Drawing.Point(531, 79);
+            this.Outros_PortBLock_ComboBox1.Location = new System.Drawing.Point(531, 61);
             this.Outros_PortBLock_ComboBox1.Name = "Outros_PortBLock_ComboBox1";
             this.Outros_PortBLock_ComboBox1.Size = new System.Drawing.Size(56, 20);
             this.Outros_PortBLock_ComboBox1.TabIndex = 1;
@@ -11127,7 +11112,7 @@ namespace MasterSheetNew
             this.Outros_PortBLock_ComboBox0.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.Outros_PortBLock_ComboBox0.Location = new System.Drawing.Point(531, 59);
+            this.Outros_PortBLock_ComboBox0.Location = new System.Drawing.Point(531, 41);
             this.Outros_PortBLock_ComboBox0.Name = "Outros_PortBLock_ComboBox0";
             this.Outros_PortBLock_ComboBox0.Size = new System.Drawing.Size(56, 20);
             this.Outros_PortBLock_ComboBox0.TabIndex = 0;
@@ -11135,7 +11120,7 @@ namespace MasterSheetNew
             // Outros_PortBlock_Label4
             // 
             this.Outros_PortBlock_Label4.AutoSize = true;
-            this.Outros_PortBlock_Label4.Location = new System.Drawing.Point(403, 60);
+            this.Outros_PortBlock_Label4.Location = new System.Drawing.Point(403, 42);
             this.Outros_PortBlock_Label4.Name = "Outros_PortBlock_Label4";
             this.Outros_PortBlock_Label4.Size = new System.Drawing.Size(142, 19);
             this.Outros_PortBlock_Label4.TabIndex = 271;
@@ -11144,7 +11129,7 @@ namespace MasterSheetNew
             // Outros_PortBlock_Label5
             // 
             this.Outros_PortBlock_Label5.AutoSize = true;
-            this.Outros_PortBlock_Label5.Location = new System.Drawing.Point(403, 81);
+            this.Outros_PortBlock_Label5.Location = new System.Drawing.Point(403, 63);
             this.Outros_PortBlock_Label5.Name = "Outros_PortBlock_Label5";
             this.Outros_PortBlock_Label5.Size = new System.Drawing.Size(107, 19);
             this.Outros_PortBlock_Label5.TabIndex = 272;
@@ -11153,7 +11138,7 @@ namespace MasterSheetNew
             // Outros_PortBlock_Label14
             // 
             this.Outros_PortBlock_Label14.AutoSize = true;
-            this.Outros_PortBlock_Label14.Location = new System.Drawing.Point(403, 258);
+            this.Outros_PortBlock_Label14.Location = new System.Drawing.Point(403, 240);
             this.Outros_PortBlock_Label14.Name = "Outros_PortBlock_Label14";
             this.Outros_PortBlock_Label14.Size = new System.Drawing.Size(114, 19);
             this.Outros_PortBlock_Label14.TabIndex = 281;
@@ -11162,7 +11147,7 @@ namespace MasterSheetNew
             // Outros_PortBlock_Label20
             // 
             this.Outros_PortBlock_Label20.AutoSize = true;
-            this.Outros_PortBlock_Label20.Location = new System.Drawing.Point(403, 381);
+            this.Outros_PortBlock_Label20.Location = new System.Drawing.Point(403, 363);
             this.Outros_PortBlock_Label20.Name = "Outros_PortBlock_Label20";
             this.Outros_PortBlock_Label20.Size = new System.Drawing.Size(126, 19);
             this.Outros_PortBlock_Label20.TabIndex = 289;
@@ -11179,7 +11164,7 @@ namespace MasterSheetNew
             this.tabSelectClient.Location = new System.Drawing.Point(4, 5);
             this.tabSelectClient.Name = "tabSelectClient";
             this.tabSelectClient.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSelectClient.Size = new System.Drawing.Size(1112, 513);
+            this.tabSelectClient.Size = new System.Drawing.Size(1112, 463);
             this.tabSelectClient.TabIndex = 9;
             this.tabSelectClient.Text = "tabSelectClient";
             this.tabSelectClient.UseVisualStyleBackColor = true;
@@ -11306,7 +11291,7 @@ namespace MasterSheetNew
             this.tabClient.Location = new System.Drawing.Point(4, 5);
             this.tabClient.Name = "tabClient";
             this.tabClient.Padding = new System.Windows.Forms.Padding(3);
-            this.tabClient.Size = new System.Drawing.Size(1112, 513);
+            this.tabClient.Size = new System.Drawing.Size(1112, 463);
             this.tabClient.TabIndex = 10;
             this.tabClient.Text = "tabClient";
             this.tabClient.UseVisualStyleBackColor = true;
@@ -11359,7 +11344,7 @@ namespace MasterSheetNew
             this.Client_ButtonRestore.BackColor = System.Drawing.SystemColors.Control;
             this.Client_ButtonRestore.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Client_ButtonRestore.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Client_ButtonRestore.Location = new System.Drawing.Point(803, 454);
+            this.Client_ButtonRestore.Location = new System.Drawing.Point(803, 404);
             this.Client_ButtonRestore.Name = "Client_ButtonRestore";
             this.Client_ButtonRestore.Size = new System.Drawing.Size(104, 43);
             this.Client_ButtonRestore.TabIndex = 160;
@@ -11850,7 +11835,7 @@ namespace MasterSheetNew
             this.Client_StepScript.Font = new System.Drawing.Font("Segoe UI Semibold", 8.45F, System.Drawing.FontStyle.Bold);
             this.Client_StepScript.Location = new System.Drawing.Point(803, 122);
             this.Client_StepScript.Name = "Client_StepScript";
-            this.Client_StepScript.Size = new System.Drawing.Size(293, 326);
+            this.Client_StepScript.Size = new System.Drawing.Size(293, 276);
             this.Client_StepScript.TabIndex = 35;
             this.Client_StepScript.Text = "";
             this.Client_StepScript.WordWrap = false;
@@ -11908,7 +11893,7 @@ namespace MasterSheetNew
             // 
             this.Client_NextStep.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Client_NextStep.Font = new System.Drawing.Font("Segoe UI", 16.25F, System.Drawing.FontStyle.Bold);
-            this.Client_NextStep.Location = new System.Drawing.Point(1047, 454);
+            this.Client_NextStep.Location = new System.Drawing.Point(1048, 413);
             this.Client_NextStep.Name = "Client_NextStep";
             this.Client_NextStep.Size = new System.Drawing.Size(50, 42);
             this.Client_NextStep.TabIndex = 1;
@@ -11921,7 +11906,7 @@ namespace MasterSheetNew
             // 
             this.Client_BackStep.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Client_BackStep.Font = new System.Drawing.Font("Segoe UI", 16.25F, System.Drawing.FontStyle.Bold);
-            this.Client_BackStep.Location = new System.Drawing.Point(17, 448);
+            this.Client_BackStep.Location = new System.Drawing.Point(11, 413);
             this.Client_BackStep.Name = "Client_BackStep";
             this.Client_BackStep.Size = new System.Drawing.Size(50, 42);
             this.Client_BackStep.TabIndex = 0;
@@ -11996,15 +11981,15 @@ namespace MasterSheetNew
             // tabLogTools
             // 
             this.tabLogTools.Controls.Add(this.LogTools_MainRow);
-            this.tabLogTools.Controls.Add(this.LogTools_DBScriptButton);
-            this.tabLogTools.Controls.Add(this.LogToolsCalc);
-            this.tabLogTools.Controls.Add(this.LogToolsSuporte);
-            this.tabLogTools.Controls.Add(this.LogToolsFechamento);
-            this.tabLogTools.Controls.Add(this.LogToolsPendencia);
+            this.tabLogTools.Controls.Add(this.LogTools_DBScript);
+            this.tabLogTools.Controls.Add(this.LogTools_Calc);
+            this.tabLogTools.Controls.Add(this.LogTools_Suporte);
+            this.tabLogTools.Controls.Add(this.LogTools_Fechamento);
+            this.tabLogTools.Controls.Add(this.LogTools_Pendencia);
             this.tabLogTools.Controls.Add(this.tabControlLogTools);
             this.tabLogTools.Location = new System.Drawing.Point(4, 36);
             this.tabLogTools.Name = "tabLogTools";
-            this.tabLogTools.Size = new System.Drawing.Size(1126, 599);
+            this.tabLogTools.Size = new System.Drawing.Size(1126, 549);
             this.tabLogTools.TabIndex = 2;
             this.tabLogTools.Text = "LogTools";
             this.tabLogTools.UseVisualStyleBackColor = true;
@@ -12016,64 +12001,66 @@ namespace MasterSheetNew
             this.LogTools_MainRow.BackColor = System.Drawing.Color.Gray;
             this.LogTools_MainRow.Location = new System.Drawing.Point(152, -1);
             this.LogTools_MainRow.Name = "LogTools_MainRow";
-            this.LogTools_MainRow.Size = new System.Drawing.Size(1, 520);
+            this.LogTools_MainRow.Size = new System.Drawing.Size(1, 470);
             this.LogTools_MainRow.TabIndex = 17;
             this.LogTools_MainRow.TabStop = false;
             // 
-            // LogTools_DBScriptButton
+            // LogTools_DBScript
             // 
-            this.LogTools_DBScriptButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogTools_DBScriptButton.Location = new System.Drawing.Point(20, 335);
-            this.LogTools_DBScriptButton.Name = "LogTools_DBScriptButton";
-            this.LogTools_DBScriptButton.Size = new System.Drawing.Size(114, 54);
-            this.LogTools_DBScriptButton.TabIndex = 16;
-            this.LogTools_DBScriptButton.Text = "Script Banco de Dados";
-            this.LogTools_DBScriptButton.UseVisualStyleBackColor = true;
-            this.LogTools_DBScriptButton.Click += new System.EventHandler(this.LogTools_DBScriptButton_Click);
+            this.LogTools_DBScript.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogTools_DBScript.Location = new System.Drawing.Point(20, 335);
+            this.LogTools_DBScript.Name = "LogTools_DBScript";
+            this.LogTools_DBScript.Size = new System.Drawing.Size(114, 54);
+            this.LogTools_DBScript.TabIndex = 16;
+            this.LogTools_DBScript.Text = "Script Banco de Dados";
+            this.LogTools_DBScript.UseVisualStyleBackColor = true;
+            this.LogTools_DBScript.Click += new System.EventHandler(this.LogTools_DBScriptButton_Click);
             // 
-            // LogToolsCalc
+            // LogTools_Calc
             // 
-            this.LogToolsCalc.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogToolsCalc.Location = new System.Drawing.Point(20, 255);
-            this.LogToolsCalc.Name = "LogToolsCalc";
-            this.LogToolsCalc.Size = new System.Drawing.Size(114, 54);
-            this.LogToolsCalc.TabIndex = 15;
-            this.LogToolsCalc.Text = "Cálculo de Bloco de IP";
-            this.LogToolsCalc.UseVisualStyleBackColor = true;
-            this.LogToolsCalc.Click += new System.EventHandler(this.LT_IPCalculator_TabChange);
+            this.LogTools_Calc.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogTools_Calc.Location = new System.Drawing.Point(20, 255);
+            this.LogTools_Calc.Name = "LogTools_Calc";
+            this.LogTools_Calc.Size = new System.Drawing.Size(114, 54);
+            this.LogTools_Calc.TabIndex = 15;
+            this.LogTools_Calc.Text = "Cálculo de Bloco de IP";
+            this.LogTools_Calc.UseVisualStyleBackColor = true;
+            this.LogTools_Calc.Click += new System.EventHandler(this.LT_IPCalculator_TabChange);
             // 
-            // LogToolsSuporte
+            // LogTools_Suporte
             // 
-            this.LogToolsSuporte.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogToolsSuporte.Location = new System.Drawing.Point(20, 96);
-            this.LogToolsSuporte.Name = "LogToolsSuporte";
-            this.LogToolsSuporte.Size = new System.Drawing.Size(114, 54);
-            this.LogToolsSuporte.TabIndex = 14;
-            this.LogToolsSuporte.Text = "Suporte";
-            this.LogToolsSuporte.UseVisualStyleBackColor = true;
-            this.LogToolsSuporte.Click += new System.EventHandler(this.LogToolsSuporte_Click);
+            this.LogTools_Suporte.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogTools_Suporte.Location = new System.Drawing.Point(20, 96);
+            this.LogTools_Suporte.Name = "LogTools_Suporte";
+            this.LogTools_Suporte.Size = new System.Drawing.Size(114, 54);
+            this.LogTools_Suporte.TabIndex = 14;
+            this.LogTools_Suporte.Text = "Suporte";
+            this.LogTools_Suporte.UseVisualStyleBackColor = true;
+            this.LogTools_Suporte.Click += new System.EventHandler(this.LogToolsSuporte_Click);
             // 
-            // LogToolsFechamento
+            // LogTools_Fechamento
             // 
-            this.LogToolsFechamento.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogToolsFechamento.Location = new System.Drawing.Point(20, 176);
-            this.LogToolsFechamento.Name = "LogToolsFechamento";
-            this.LogToolsFechamento.Size = new System.Drawing.Size(114, 54);
-            this.LogToolsFechamento.TabIndex = 13;
-            this.LogToolsFechamento.Text = "Fechamento";
-            this.LogToolsFechamento.UseVisualStyleBackColor = true;
-            this.LogToolsFechamento.Click += new System.EventHandler(this.LogToolsFechamento_Click);
+            this.LogTools_Fechamento.BackColor = System.Drawing.Color.LightGray;
+            this.LogTools_Fechamento.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogTools_Fechamento.Location = new System.Drawing.Point(20, 176);
+            this.LogTools_Fechamento.Name = "LogTools_Fechamento";
+            this.LogTools_Fechamento.Size = new System.Drawing.Size(114, 54);
+            this.LogTools_Fechamento.TabIndex = 13;
+            this.LogTools_Fechamento.Text = "Fechamento";
+            this.LogTools_Fechamento.UseVisualStyleBackColor = false;
+            this.LogTools_Fechamento.Click += new System.EventHandler(this.LogToolsFechamento_Click);
             // 
-            // LogToolsPendencia
+            // LogTools_Pendencia
             // 
-            this.LogToolsPendencia.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogToolsPendencia.Location = new System.Drawing.Point(20, 22);
-            this.LogToolsPendencia.Name = "LogToolsPendencia";
-            this.LogToolsPendencia.Size = new System.Drawing.Size(114, 54);
-            this.LogToolsPendencia.TabIndex = 12;
-            this.LogToolsPendencia.Text = "Pendencia";
-            this.LogToolsPendencia.UseVisualStyleBackColor = true;
-            this.LogToolsPendencia.Click += new System.EventHandler(this.LogToolsPendencia_Click);
+            this.LogTools_Pendencia.BackColor = System.Drawing.Color.LightGray;
+            this.LogTools_Pendencia.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogTools_Pendencia.Location = new System.Drawing.Point(20, 22);
+            this.LogTools_Pendencia.Name = "LogTools_Pendencia";
+            this.LogTools_Pendencia.Size = new System.Drawing.Size(114, 54);
+            this.LogTools_Pendencia.TabIndex = 12;
+            this.LogTools_Pendencia.Text = "Pendencia";
+            this.LogTools_Pendencia.UseVisualStyleBackColor = false;
+            this.LogTools_Pendencia.Click += new System.EventHandler(this.LogToolsPendencia_Click);
             // 
             // tabControlLogTools
             // 
@@ -12091,7 +12078,7 @@ namespace MasterSheetNew
             this.tabControlLogTools.Location = new System.Drawing.Point(154, 3);
             this.tabControlLogTools.Name = "tabControlLogTools";
             this.tabControlLogTools.SelectedIndex = 0;
-            this.tabControlLogTools.Size = new System.Drawing.Size(972, 596);
+            this.tabControlLogTools.Size = new System.Drawing.Size(972, 546);
             this.tabControlLogTools.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControlLogTools.TabIndex = 11;
             // 
@@ -12116,7 +12103,7 @@ namespace MasterSheetNew
             this.tabPendencia.Name = "tabPendencia";
             this.tabPendencia.Padding = new System.Windows.Forms.Padding(3);
             this.tabPendencia.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabPendencia.Size = new System.Drawing.Size(964, 587);
+            this.tabPendencia.Size = new System.Drawing.Size(964, 537);
             this.tabPendencia.TabIndex = 0;
             this.tabPendencia.Text = "Pendencia";
             this.tabPendencia.UseVisualStyleBackColor = true;
@@ -12308,7 +12295,7 @@ namespace MasterSheetNew
             this.tabFechamento.Location = new System.Drawing.Point(4, 5);
             this.tabFechamento.Name = "tabFechamento";
             this.tabFechamento.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFechamento.Size = new System.Drawing.Size(964, 587);
+            this.tabFechamento.Size = new System.Drawing.Size(964, 537);
             this.tabFechamento.TabIndex = 1;
             this.tabFechamento.Text = "Fechamento";
             this.tabFechamento.UseVisualStyleBackColor = true;
@@ -12527,7 +12514,7 @@ namespace MasterSheetNew
             this.tabCalculadoraDeIP.Location = new System.Drawing.Point(4, 5);
             this.tabCalculadoraDeIP.Name = "tabCalculadoraDeIP";
             this.tabCalculadoraDeIP.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCalculadoraDeIP.Size = new System.Drawing.Size(964, 587);
+            this.tabCalculadoraDeIP.Size = new System.Drawing.Size(964, 537);
             this.tabCalculadoraDeIP.TabIndex = 3;
             this.tabCalculadoraDeIP.Text = "Calculadora de IP";
             this.tabCalculadoraDeIP.UseVisualStyleBackColor = true;
@@ -12622,7 +12609,7 @@ namespace MasterSheetNew
             this.tabSuporte.Location = new System.Drawing.Point(4, 5);
             this.tabSuporte.Name = "tabSuporte";
             this.tabSuporte.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSuporte.Size = new System.Drawing.Size(964, 587);
+            this.tabSuporte.Size = new System.Drawing.Size(964, 537);
             this.tabSuporte.TabIndex = 2;
             this.tabSuporte.Text = "Suporte";
             this.tabSuporte.UseVisualStyleBackColor = true;
@@ -12642,7 +12629,7 @@ namespace MasterSheetNew
             // LTSup_buttonForm
             // 
             this.LTSup_buttonForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LTSup_buttonForm.Location = new System.Drawing.Point(187, 411);
+            this.LTSup_buttonForm.Location = new System.Drawing.Point(187, 440);
             this.LTSup_buttonForm.Name = "LTSup_buttonForm";
             this.LTSup_buttonForm.Size = new System.Drawing.Size(127, 53);
             this.LTSup_buttonForm.TabIndex = 13;
@@ -12653,7 +12640,7 @@ namespace MasterSheetNew
             // ButtonLT_ClearCommand
             // 
             this.ButtonLT_ClearCommand.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonLT_ClearCommand.Location = new System.Drawing.Point(316, 322);
+            this.ButtonLT_ClearCommand.Location = new System.Drawing.Point(316, 351);
             this.ButtonLT_ClearCommand.Name = "ButtonLT_ClearCommand";
             this.ButtonLT_ClearCommand.Size = new System.Drawing.Size(60, 25);
             this.ButtonLT_ClearCommand.TabIndex = 11;
@@ -12664,7 +12651,7 @@ namespace MasterSheetNew
             // ButtonLT_ResetCommand
             // 
             this.ButtonLT_ResetCommand.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonLT_ResetCommand.Location = new System.Drawing.Point(250, 322);
+            this.ButtonLT_ResetCommand.Location = new System.Drawing.Point(250, 351);
             this.ButtonLT_ResetCommand.Name = "ButtonLT_ResetCommand";
             this.ButtonLT_ResetCommand.Size = new System.Drawing.Size(60, 25);
             this.ButtonLT_ResetCommand.TabIndex = 10;
@@ -12675,7 +12662,7 @@ namespace MasterSheetNew
             // LTSup_buttonClear
             // 
             this.LTSup_buttonClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LTSup_buttonClear.Location = new System.Drawing.Point(48, 411);
+            this.LTSup_buttonClear.Location = new System.Drawing.Point(48, 440);
             this.LTSup_buttonClear.Name = "LTSup_buttonClear";
             this.LTSup_buttonClear.Size = new System.Drawing.Size(135, 53);
             this.LTSup_buttonClear.TabIndex = 9;
@@ -12686,7 +12673,7 @@ namespace MasterSheetNew
             // ButtonLT_AdcCommand
             // 
             this.ButtonLT_AdcCommand.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonLT_AdcCommand.Location = new System.Drawing.Point(382, 322);
+            this.ButtonLT_AdcCommand.Location = new System.Drawing.Point(382, 351);
             this.ButtonLT_AdcCommand.Name = "ButtonLT_AdcCommand";
             this.ButtonLT_AdcCommand.Size = new System.Drawing.Size(60, 25);
             this.ButtonLT_AdcCommand.TabIndex = 7;
@@ -12708,7 +12695,7 @@ namespace MasterSheetNew
             // 
             this.LTSuporte_ComandoTitle.AutoSize = true;
             this.LTSuporte_ComandoTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LTSuporte_ComandoTitle.Location = new System.Drawing.Point(37, 189);
+            this.LTSuporte_ComandoTitle.Location = new System.Drawing.Point(37, 218);
             this.LTSuporte_ComandoTitle.Name = "LTSuporte_ComandoTitle";
             this.LTSuporte_ComandoTitle.Size = new System.Drawing.Size(82, 18);
             this.LTSuporte_ComandoTitle.TabIndex = 5;
@@ -12728,7 +12715,7 @@ namespace MasterSheetNew
             // LTSup_buttonCopyF
             // 
             this.LTSup_buttonCopyF.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LTSup_buttonCopyF.Location = new System.Drawing.Point(317, 411);
+            this.LTSup_buttonCopyF.Location = new System.Drawing.Point(317, 440);
             this.LTSup_buttonCopyF.Name = "LTSup_buttonCopyF";
             this.LTSup_buttonCopyF.Size = new System.Drawing.Size(127, 53);
             this.LTSup_buttonCopyF.TabIndex = 0;
@@ -12741,7 +12728,7 @@ namespace MasterSheetNew
             this.LT_SuporteTitleTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LT_SuporteTitleTextBox.Location = new System.Drawing.Point(48, 113);
             this.LT_SuporteTitleTextBox.Name = "LT_SuporteTitleTextBox";
-            this.LT_SuporteTitleTextBox.Size = new System.Drawing.Size(396, 48);
+            this.LT_SuporteTitleTextBox.Size = new System.Drawing.Size(396, 63);
             this.LT_SuporteTitleTextBox.TabIndex = 15;
             this.LT_SuporteTitleTextBox.Text = "";
             this.LT_SuporteTitleTextBox.WordWrap = false;
@@ -12749,7 +12736,7 @@ namespace MasterSheetNew
             // LT_SuporteComTextBox
             // 
             this.LT_SuporteComTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LT_SuporteComTextBox.Location = new System.Drawing.Point(48, 210);
+            this.LT_SuporteComTextBox.Location = new System.Drawing.Point(48, 239);
             this.LT_SuporteComTextBox.Name = "LT_SuporteComTextBox";
             this.LT_SuporteComTextBox.Size = new System.Drawing.Size(396, 106);
             this.LT_SuporteComTextBox.TabIndex = 16;
@@ -12761,17 +12748,18 @@ namespace MasterSheetNew
             this.LTSuporteFinalTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LTSuporteFinalTextBox.Location = new System.Drawing.Point(523, 113);
             this.LTSuporteFinalTextBox.Name = "LTSuporteFinalTextBox";
-            this.LTSuporteFinalTextBox.Size = new System.Drawing.Size(407, 437);
+            this.LTSuporteFinalTextBox.Size = new System.Drawing.Size(407, 397);
             this.LTSuporteFinalTextBox.TabIndex = 17;
             this.LTSuporteFinalTextBox.Text = "";
             this.LTSuporteFinalTextBox.WordWrap = false;
             // 
             // LT_Suporte_Row
             // 
+            this.LT_Suporte_Row.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.LT_Suporte_Row.BackColor = System.Drawing.Color.Gray;
             this.LT_Suporte_Row.Location = new System.Drawing.Point(480, 113);
             this.LT_Suporte_Row.Name = "LT_Suporte_Row";
-            this.LT_Suporte_Row.Size = new System.Drawing.Size(1, 430);
+            this.LT_Suporte_Row.Size = new System.Drawing.Size(1, 400);
             this.LT_Suporte_Row.TabIndex = 8;
             this.LT_Suporte_Row.TabStop = false;
             // 
@@ -12794,7 +12782,7 @@ namespace MasterSheetNew
             this.tabScriptDB.Location = new System.Drawing.Point(4, 5);
             this.tabScriptDB.Name = "tabScriptDB";
             this.tabScriptDB.Padding = new System.Windows.Forms.Padding(3);
-            this.tabScriptDB.Size = new System.Drawing.Size(964, 587);
+            this.tabScriptDB.Size = new System.Drawing.Size(964, 537);
             this.tabScriptDB.TabIndex = 4;
             this.tabScriptDB.Text = "tabPage3";
             this.tabScriptDB.UseVisualStyleBackColor = true;
@@ -12941,7 +12929,7 @@ namespace MasterSheetNew
             this.tabRouters.Location = new System.Drawing.Point(4, 36);
             this.tabRouters.Name = "tabRouters";
             this.tabRouters.Padding = new System.Windows.Forms.Padding(3);
-            this.tabRouters.Size = new System.Drawing.Size(1126, 599);
+            this.tabRouters.Size = new System.Drawing.Size(1126, 549);
             this.tabRouters.TabIndex = 1;
             this.tabRouters.Text = "Routers";
             this.tabRouters.UseVisualStyleBackColor = true;
@@ -12949,6 +12937,7 @@ namespace MasterSheetNew
             // tabPreferencias
             // 
             this.tabPreferencias.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPreferencias.Controls.Add(this.Pref_Button_ResetAll);
             this.tabPreferencias.Controls.Add(this.Prefs_Row0);
             this.tabPreferencias.Controls.Add(this.Prefs_Row1);
             this.tabPreferencias.Controls.Add(this.Prefs_Row2);
@@ -12958,7 +12947,7 @@ namespace MasterSheetNew
             this.tabPreferencias.Controls.Add(this.Pref_Putty_SearchButton);
             this.tabPreferencias.Controls.Add(this.Pref_Putty_SaveButton);
             this.tabPreferencias.Controls.Add(this.Pref_Putty_PathTextBox);
-            this.tabPreferencias.Controls.Add(this.ResetValue_Button);
+            this.tabPreferencias.Controls.Add(this.Pref_Button_ResetPasswords);
             this.tabPreferencias.Controls.Add(this.Pref_Putty_TitleLabel);
             this.tabPreferencias.Controls.Add(this.Pref_TACACS_TitleLabel);
             this.tabPreferencias.Controls.Add(this.Pref_TACACS_SubLabel2);
@@ -12973,9 +12962,21 @@ namespace MasterSheetNew
             this.tabPreferencias.Controls.Add(this.Button_PassWordForm);
             this.tabPreferencias.Location = new System.Drawing.Point(4, 36);
             this.tabPreferencias.Name = "tabPreferencias";
-            this.tabPreferencias.Size = new System.Drawing.Size(1126, 599);
+            this.tabPreferencias.Size = new System.Drawing.Size(1126, 549);
             this.tabPreferencias.TabIndex = 3;
             this.tabPreferencias.Text = "Preferências";
+            // 
+            // Pref_Button_ResetAll
+            // 
+            this.Pref_Button_ResetAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Pref_Button_ResetAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Pref_Button_ResetAll.Location = new System.Drawing.Point(817, 470);
+            this.Pref_Button_ResetAll.Name = "Pref_Button_ResetAll";
+            this.Pref_Button_ResetAll.Size = new System.Drawing.Size(140, 64);
+            this.Pref_Button_ResetAll.TabIndex = 136;
+            this.Pref_Button_ResetAll.Text = "Reset All ";
+            this.Pref_Button_ResetAll.UseVisualStyleBackColor = true;
+            this.Pref_Button_ResetAll.Click += new System.EventHandler(this.Pref_Button_ResetAll_Click);
             // 
             // Prefs_Row0
             // 
@@ -12984,7 +12985,7 @@ namespace MasterSheetNew
             this.Prefs_Row0.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Prefs_Row0.Location = new System.Drawing.Point(498, 0);
             this.Prefs_Row0.Name = "Prefs_Row0";
-            this.Prefs_Row0.Size = new System.Drawing.Size(1, 650);
+            this.Prefs_Row0.Size = new System.Drawing.Size(1, 600);
             this.Prefs_Row0.TabIndex = 135;
             this.Prefs_Row0.TabStop = false;
             // 
@@ -13010,7 +13011,7 @@ namespace MasterSheetNew
             // 
             this.List_All_Scritps.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.List_All_Scritps.Font = new System.Drawing.Font("Segoe UI", 10.25F);
-            this.List_All_Scritps.Location = new System.Drawing.Point(987, 454);
+            this.List_All_Scritps.Location = new System.Drawing.Point(987, 410);
             this.List_All_Scritps.Name = "List_All_Scritps";
             this.List_All_Scritps.Size = new System.Drawing.Size(90, 47);
             this.List_All_Scritps.TabIndex = 132;
@@ -13077,35 +13078,35 @@ namespace MasterSheetNew
             this.Pref_Putty_PathTextBox.Size = new System.Drawing.Size(378, 26);
             this.Pref_Putty_PathTextBox.TabIndex = 61;
             // 
-            // ResetValue_Button
+            // Pref_Button_ResetPasswords
             // 
-            this.ResetValue_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ResetValue_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ResetValue_Button.Location = new System.Drawing.Point(963, 514);
-            this.ResetValue_Button.Name = "ResetValue_Button";
-            this.ResetValue_Button.Size = new System.Drawing.Size(140, 64);
-            this.ResetValue_Button.TabIndex = 60;
-            this.ResetValue_Button.Text = "Reset";
-            this.ResetValue_Button.UseVisualStyleBackColor = true;
-            this.ResetValue_Button.Click += new System.EventHandler(this.ResetValues_Click);
+            this.Pref_Button_ResetPasswords.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Pref_Button_ResetPasswords.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Pref_Button_ResetPasswords.Location = new System.Drawing.Point(963, 470);
+            this.Pref_Button_ResetPasswords.Name = "Pref_Button_ResetPasswords";
+            this.Pref_Button_ResetPasswords.Size = new System.Drawing.Size(140, 64);
+            this.Pref_Button_ResetPasswords.TabIndex = 60;
+            this.Pref_Button_ResetPasswords.Text = "Reset de Senhas";
+            this.Pref_Button_ResetPasswords.UseVisualStyleBackColor = true;
+            this.Pref_Button_ResetPasswords.Click += new System.EventHandler(this.Button_ResetPassword_Click);
             // 
             // Pref_Putty_TitleLabel
             // 
             this.Pref_Putty_TitleLabel.AutoSize = true;
-            this.Pref_Putty_TitleLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Pref_Putty_TitleLabel.Location = new System.Drawing.Point(57, 361);
+            this.Pref_Putty_TitleLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            this.Pref_Putty_TitleLabel.Location = new System.Drawing.Point(44, 356);
             this.Pref_Putty_TitleLabel.Name = "Pref_Putty_TitleLabel";
-            this.Pref_Putty_TitleLabel.Size = new System.Drawing.Size(99, 17);
+            this.Pref_Putty_TitleLabel.Size = new System.Drawing.Size(116, 21);
             this.Pref_Putty_TitleLabel.TabIndex = 58;
             this.Pref_Putty_TitleLabel.Text = "Caminho Putty";
             // 
             // Pref_TACACS_TitleLabel
             // 
             this.Pref_TACACS_TitleLabel.AutoSize = true;
-            this.Pref_TACACS_TitleLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Pref_TACACS_TitleLabel.Location = new System.Drawing.Point(58, 200);
+            this.Pref_TACACS_TitleLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            this.Pref_TACACS_TitleLabel.Location = new System.Drawing.Point(44, 194);
             this.Pref_TACACS_TitleLabel.Name = "Pref_TACACS_TitleLabel";
-            this.Pref_TACACS_TitleLabel.Size = new System.Drawing.Size(58, 17);
+            this.Pref_TACACS_TitleLabel.Size = new System.Drawing.Size(73, 21);
             this.Pref_TACACS_TitleLabel.TabIndex = 55;
             this.Pref_TACACS_TitleLabel.Text = "TACAC\'S";
             // 
@@ -13145,10 +13146,10 @@ namespace MasterSheetNew
             // Pref_User_TitleLabel
             // 
             this.Pref_User_TitleLabel.AutoSize = true;
-            this.Pref_User_TitleLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Pref_User_TitleLabel.Location = new System.Drawing.Point(58, 49);
+            this.Pref_User_TitleLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            this.Pref_User_TitleLabel.Location = new System.Drawing.Point(44, 43);
             this.Pref_User_TitleLabel.Name = "Pref_User_TitleLabel";
-            this.Pref_User_TitleLabel.Size = new System.Drawing.Size(54, 17);
+            this.Pref_User_TitleLabel.Size = new System.Drawing.Size(64, 21);
             this.Pref_User_TitleLabel.TabIndex = 50;
             this.Pref_User_TitleLabel.Text = "User PE";
             // 
@@ -13202,18 +13203,93 @@ namespace MasterSheetNew
             // 
             this.Version.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Version.Font = new System.Drawing.Font("Segoe UI", 9.25F, System.Drawing.FontStyle.Italic);
-            this.Version.Location = new System.Drawing.Point(1030, 641);
+            this.Version.Location = new System.Drawing.Point(1030, 591);
             this.Version.Name = "Version";
             this.Version.Size = new System.Drawing.Size(88, 19);
             this.Version.TabIndex = 7;
-            this.Version.Text = "Versão: 1.9.3e";
+            this.Version.Text = "Versão: 1.9.3";
             this.Version.Click += new System.EventHandler(this.Version_Click);
+            // 
+            // Outros_QoS_TotalLabel
+            // 
+            this.Outros_QoS_TotalLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_QoS_TotalLabel.AutoSize = true;
+            this.Outros_QoS_TotalLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_QoS_TotalLabel.Location = new System.Drawing.Point(325, 11);
+            this.Outros_QoS_TotalLabel.Name = "Outros_QoS_TotalLabel";
+            this.Outros_QoS_TotalLabel.Size = new System.Drawing.Size(82, 30);
+            this.Outros_QoS_TotalLabel.TabIndex = 240;
+            this.Outros_QoS_TotalLabel.Text = "TOTAL:";
+            // 
+            // Outros_DHCP_ExLabel6
+            // 
+            this.Outros_DHCP_ExLabel6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_DHCP_ExLabel6.AutoSize = true;
+            this.Outros_DHCP_ExLabel6.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_DHCP_ExLabel6.Location = new System.Drawing.Point(263, 281);
+            this.Outros_DHCP_ExLabel6.Name = "Outros_DHCP_ExLabel6";
+            this.Outros_DHCP_ExLabel6.Size = new System.Drawing.Size(44, 15);
+            this.Outros_DHCP_ExLabel6.TabIndex = 261;
+            this.Outros_DHCP_ExLabel6.Text = "8.8.8.8";
+            // 
+            // Outros_DHCP_Label8
+            // 
+            this.Outros_DHCP_Label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_DHCP_Label8.AutoSize = true;
+            this.Outros_DHCP_Label8.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Outros_DHCP_Label8.Location = new System.Drawing.Point(13, 352);
+            this.Outros_DHCP_Label8.Name = "Outros_DHCP_Label8";
+            this.Outros_DHCP_Label8.Size = new System.Drawing.Size(110, 17);
+            this.Outros_DHCP_Label8.TabIndex = 267;
+            this.Outros_DHCP_Label8.Text = "IP do DHCP Relay";
+            // 
+            // Outros_DHCP_VarText8
+            // 
+            this.Outros_DHCP_VarText8.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_DHCP_VarText8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_DHCP_VarText8.Location = new System.Drawing.Point(128, 348);
+            this.Outros_DHCP_VarText8.Name = "Outros_DHCP_VarText8";
+            this.Outros_DHCP_VarText8.Size = new System.Drawing.Size(129, 25);
+            this.Outros_DHCP_VarText8.TabIndex = 268;
+            // 
+            // Outros_DHCP_ExLabel8
+            // 
+            this.Outros_DHCP_ExLabel8.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_DHCP_ExLabel8.AutoSize = true;
+            this.Outros_DHCP_ExLabel8.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_DHCP_ExLabel8.Location = new System.Drawing.Point(296, 353);
+            this.Outros_DHCP_ExLabel8.Name = "Outros_DHCP_ExLabel8";
+            this.Outros_DHCP_ExLabel8.Size = new System.Drawing.Size(57, 15);
+            this.Outros_DHCP_ExLabel8.TabIndex = 269;
+            this.Outros_DHCP_ExLabel8.Text = "10.10.10.1";
+            // 
+            // Outros_DHCP_DelButton8
+            // 
+            this.Outros_DHCP_DelButton8.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_DHCP_DelButton8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Outros_DHCP_DelButton8.Location = new System.Drawing.Point(263, 348);
+            this.Outros_DHCP_DelButton8.Name = "Outros_DHCP_DelButton8";
+            this.Outros_DHCP_DelButton8.Size = new System.Drawing.Size(20, 25);
+            this.Outros_DHCP_DelButton8.TabIndex = 270;
+            this.Outros_DHCP_DelButton8.Text = "-";
+            this.Outros_DHCP_DelButton8.UseVisualStyleBackColor = true;
+            // 
+            // Outros_DHCP_SubTitle
+            // 
+            this.Outros_DHCP_SubTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Outros_DHCP_SubTitle.AutoSize = true;
+            this.Outros_DHCP_SubTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.25F, System.Drawing.FontStyle.Bold);
+            this.Outros_DHCP_SubTitle.Location = new System.Drawing.Point(11, 324);
+            this.Outros_DHCP_SubTitle.Name = "Outros_DHCP_SubTitle";
+            this.Outros_DHCP_SubTitle.Size = new System.Drawing.Size(84, 17);
+            this.Outros_DHCP_SubTitle.TabIndex = 271;
+            this.Outros_DHCP_SubTitle.Text = "DHCP RELAY";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1134, 661);
+            this.ClientSize = new System.Drawing.Size(1134, 611);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.Version);
             this.Controls.Add(this.statusStrip1);
@@ -13358,7 +13434,7 @@ namespace MasterSheetNew
         private TabPage tabSelectRouter;
         private Button Config_Button_Cisco;
         private Button Config_Button_HPE;
-        private Button HomeButton_SelectRouter;
+        private Button HomeButton_Config;
         private PictureBox MainPage_TemplatesLabel_BG;
         private Label MainPage_TemplatesLabel;
         private Label MainPage_SubTitle2;
@@ -13401,9 +13477,9 @@ namespace MasterSheetNew
         private Label Log_StatusAnterior;
         private TabPage tabFechamento;
         private Button Log_ClearAll;
-        private Button LogToolsPendencia;
-        private Button LogToolsFechamento;
-        private Button LogToolsSuporte;
+        private Button LogTools_Pendencia;
+        private Button LogTools_Fechamento;
+        private Button LogTools_Suporte;
         private TabPage tabSuporte;
         private Button LTSup_buttonCopyF;
         private Label LogToolsSuporteTitle;
@@ -13493,7 +13569,7 @@ namespace MasterSheetNew
         private Button Log_Clear1;
         private Button LTFechamento_ButtonCopy;
         private Button LTFechamento_ButtonFormat;
-        private Button LogToolsCalc;
+        private Button LogTools_Calc;
         private TabPage tabCalculadoraDeIP;
         private Label LTCalc_SubTitle;
         private Button LTCalc_buttonCalc;
@@ -13657,7 +13733,7 @@ namespace MasterSheetNew
         private Button Client_ButtonCopyForm;
         private Button Client_ButtonCopy;
         private Button Client_ButtonFormat;
-        private Button LogTools_DBScriptButton;
+        private Button LogTools_DBScript;
         private TabPage tabScriptDB;
         private Label Script_DB_Label;
         private Button Script_DB_ClearButton1;
@@ -13676,39 +13752,39 @@ namespace MasterSheetNew
         private PictureBox LogTools_MainRow;
         private TabControl TabSubOutros;
         private TabPage Outros_TabQoS;
-        private Label Outros_QoSCalcLabel;
+        private Label Outros_QoS_Label0;
         private Button Outros_QoS_ClearButton;
         private Label Outros_QoS_Guide;
-        private TextBox Outros_VarTextPercQoS03;
-        private TextBox Outros_VarTextPercQoS06;
-        private TextBox Outros_VarTextPercQoS05;
-        private TextBox Outros_VarTextPercQoS02;
-        private TextBox Outros_VarTextPercQoS04;
-        private TextBox Outros_VarTextPercQoS01;
-        private TextBox Outros_VarTextPercQoS00;
-        private TextBox Outros_VarTextQoS03;
-        private Label Outros_VarNameQoS3;
-        private Label Outros_QoSDispTotal;
-        private Label Outros_QoSCalcEx;
-        private TextBox Outros_QoSCalcText;
-        private TextBox Outros_VarTextQoS08;
-        private Label Outros_VarNameQoS8;
-        private TextBox Outros_VarTextQoS07;
-        private Label Outros_VarNameQoS7;
-        private Button Outros_VarDeleteQoS6;
-        private TextBox Outros_VarTextQoS06;
-        private Label Outros_VarNameQoS6;
-        private Button Outros_VarDeleteQoS5;
-        private TextBox Outros_VarTextQoS05;
-        private TextBox Outros_VarTextQoS02;
-        private TextBox Outros_VarTextQoS04;
-        private TextBox Outros_VarTextQoS01;
-        private Label Outros_VarNameQoS2;
-        private Label Outros_VarNameQoS5;
-        private Label Outros_VarNameQoS4;
-        private Label Outros_VarNameQoS1;
-        private Label Outros_VarNameQoS0;
-        private TextBox Outros_VarTextQoS00;
+        private TextBox Outros_QoS_VarTextShow4;
+        private TextBox Outros_QoS_VarTextShow7;
+        private TextBox Outros_QoS_VarTextShow6;
+        private TextBox Outros_QoS_VarTextShow3;
+        private TextBox Outros_QoS_VarTextShow5;
+        private TextBox Outros_QoS_VarTextShow2;
+        private TextBox Outros_QoS_VarTextShow1;
+        private TextBox Outros_QoS_VarText04;
+        private Label Outros_QoS_Label4;
+        private Label Outros_QoS_TextCalcTotal;
+        private Label Outros_QoS_ExLabel0;
+        private TextBox Outros_QoS_VarText00;
+        private TextBox Outros_QoS_VarText09;
+        private Label Outros_QoS_Label9;
+        private TextBox Outros_QoS_VarText08;
+        private Label Outros_QoS_Label8;
+        private Button Outros_QoS_DeleteButton7;
+        private TextBox Outros_QoS_VarText07;
+        private Label Outros_QoS_Label7;
+        private Button Outros_QoS_DeleteButton6;
+        private TextBox Outros_QoS_VarText06;
+        private TextBox Outros_QoS_VarText03;
+        private TextBox Outros_QoS_VarText05;
+        private TextBox Outros_QoS_VarText02;
+        private Label Outros_QoS_Label3;
+        private Label Outros_QoS_Label6;
+        private Label Outros_QoS_Label5;
+        private Label Outros_QoS_Label2;
+        private Label Outros_QoS_Label1;
+        private TextBox Outros_QoS_VarText01;
         private TabPage Outros_TabSNMP;
         private Label Outros_SNMP_ExTitle;
         private Label Outros_SNMP_ExLabel1;
@@ -13720,13 +13796,13 @@ namespace MasterSheetNew
         private TextBox Outros_SNMP_VarText0;
         private Label Outros_SNMP_Guide;
         private Label Outros_SNMP_VarTitle;
-        private Button Outros_VarDeleteQoS8;
-        private Button Outros_VarDeleteQoS7;
-        private Button Outros_VarDeleteQoS3;
-        private Button Outros_VarDeleteQoS2;
-        private Button Outros_VarDeleteQoS4;
-        private Button Outros_VarDeleteQoS1;
-        private Button Outros_VarDeleteQoS0;
+        private Button Outros_QoS_DeleteButton9;
+        private Button Outros_QoS_DeleteButton8;
+        private Button Outros_QoS_DeleteButton4;
+        private Button Outros_QoS_DeleteButton3;
+        private Button Outros_QoS_DeleteButton5;
+        private Button Outros_QoS_DeleteButton2;
+        private Button Outros_QoS_DeleteButton1;
         private Button Outros_SNMP_VarDelete1;
         private Button Outros_SNMP_VarDelete0;
         private TabPage Outros_TabRegraAdc;
@@ -13762,15 +13838,15 @@ namespace MasterSheetNew
         private Label Outros_BGP_Label0;
         private TextBox Outros_BGP_VarText0;
         private Label Outros_BGP_VarTitle;
-        private Button Outros_DHCP_DelButton1;
+        private Button Outros_DHCP_DelButton0;
         private Button Outros_DHCP_DelButton9;
         private Label Outros_DHCP_ExTitle;
         private Label Outros_DHCP_ExLabel1;
         private Label Outros_DHCP_ExLabel9;
         private Label Outros_DHCP_ExLabel0;
         private Button Outros_DHCP_ClearButton;
-        private TextBox Outros_DHCP_VarText1;
-        private TextBox Outros_DHCP_VarText8;
+        private TextBox Outros_DHCP_VarText0;
+        private TextBox Outros_DHCP_VarText9;
         private Label Outros_DHCP_Label1;
         private Label Outros_DHCP_Label9;
         private Label Outros_DHCP_Label0;
@@ -13799,33 +13875,27 @@ namespace MasterSheetNew
         private Label Outros_VLAN_ExLabel0;
         private Button Outros_VLAN_VarDel0;
         private Button Outros_VLAN_ClearAllButton;
-        private TextBox Outros_VLAN_VarText1;
+        private TextBox Outros_VLAN_VarText0;
         private Label Outros_VLAN_VarLabel1;
         private Label Outros_VLAN_VarLabel0;
-        private TextBox Outros_VLAN_VarText0;
+        private TextBox Outros_VLAN_VarText1;
         private Label Outros_VLAN_LabelTitle;
         private Label Outros_RegraAdc_Label2;
-        private Button Outros_DHCP_DelButton8;
-        private Label Outros_DHCP_ExLabel8;
-        private TextBox Outros_DHCP_VarText7;
-        private Label Outros_DHCP_Label8;
         private Button Outros_DHCP_DelButton7;
         private Label Outros_DHCP_ExLabel7;
-        private TextBox Outros_DHCP_VarText6;
+        private TextBox Outros_DHCP_VarText7;
         private Label Outros_DHCP_Label7;
         private Button Outros_DHCP_DelButton6;
-        private Label Outros_DHCP_ExLabel6;
-        private TextBox Outros_DHCP_VarText5;
+        private TextBox Outros_DHCP_VarText6;
         private Label Outros_DHCP_Label6;
         private Button Outros_DHCP_DelButton3;
         private Label Outros_DHCP_ExLabel3;
-        private TextBox Outros_DHCP_VarText4;
+        private TextBox Outros_DHCP_VarText3;
         private Label Outros_DHCP_Label3;
         private Button Outros_DHCP_DelButton2;
         private Label Outros_DHCP_ExLabel2;
-        private TextBox Outros_DHCP_VarText3;
+        private TextBox Outros_DHCP_VarText2;
         private Label Outros_DHCP_Label2;
-        private Label Outros_DHCP_SubTitle;
         private PictureBox LigacoesRow1;
         private PictureBox LigacoesRow2;
         private TabPage Outros_TabUSUARIOS;
@@ -13845,18 +13915,17 @@ namespace MasterSheetNew
         private Label Outros_User_Label2;
         private ComboBox Outros_User_VarPrivBox;
         private Button Outros_DHCP_DelButton5;
-        private TextBox Outros_DHCP_VarText10;
+        private TextBox Outros_DHCP_VarText5;
         private Label Outros_DHCP_Label5;
         private Button Outros_DHCP_DelButton4;
-        private TextBox Outros_DHCP_VarText9;
+        private TextBox Outros_DHCP_VarText4;
         private Label Outros_DHCP_Label4;
-        private Button Outros_DHCP_DelButton0;
-        private TextBox Outros_DHCP_VarText0;
+        private Button Outros_DHCP_DelButton1;
+        private TextBox Outros_DHCP_VarText1;
         private ComboBox Outros_DHCP_MascaraBox;
         private ComboBox Outros_VLAN_MascaraBox;
         private Label Outros_DHCP_ExLabel5;
         private Label Outros_DHCP_ExLabel4;
-        private CheckBox Outros_QoS_CiscoCheckBox;
         private Label Outros_User_Guide;
         private CheckBox Outros_VLAN_CatalystCheckBox;
         private Button Outros_VLAN_FortigateButton;
@@ -13956,7 +14025,7 @@ namespace MasterSheetNew
         private Button Pref_Putty_SearchButton;
         private Button Pref_Putty_SaveButton;
         private TextBox Pref_Putty_PathTextBox;
-        private Button ResetValue_Button;
+        private Button Pref_Button_ResetPasswords;
         private Button OpenPE_Button;
         private Button Button_EditScript;
         private Button Button_NightMode;
@@ -13975,7 +14044,6 @@ namespace MasterSheetNew
         private TextBox Outro_VRRP_VarText6;
         private Label Outro_VRRP_Label6;
         private TabPage Outros_TabPortBlock;
-        private Label IOS_Label0;
         private LinkLabel IOS_LinkLabel;
         private ComboBox Outros_PortBLock_ComboBox12;
         private ComboBox Outros_PortBLock_ComboBox11;
@@ -14117,7 +14185,7 @@ namespace MasterSheetNew
         private Button MainPage_ColetaLigacoes_Button;
         private Button MainPage_Velo_Button;
         private Button veloRestoreButton;
-        private Button Outros_VarDeleteCalc;
+        private Button Outros_QoS_DeleteButton0;
         private Button Outros_RegraAdc_DelButton3;
         private Label Outros_RegraAdc_ExLabel3;
         private TextBox Outros_RegraAdc_VarText3;
@@ -14259,8 +14327,20 @@ namespace MasterSheetNew
         private Button Config_Button_WizGat;
         private Button Outros_Button_Logs;
         private Button WizGat_Button_Config;
-        private CheckBox Outros_CheckBox_ShowTrueScript;
         private Button Script_Button_ClearPortas;
+        private Button Pref_Button_ResetAll;
+        private Label IOS_Label0;
+        private Button Automation_Button;
+        private CheckBox Outros_IPFlow_ISRCheckBox;
+        private Button Script_Button_SSH;
+        private Button Script_Button_ShowRun;
+        private Label Outros_QoS_TotalLabel;
+        private Label Outros_DHCP_SubTitle;
+        private Button Outros_DHCP_DelButton8;
+        private Label Outros_DHCP_ExLabel8;
+        private TextBox Outros_DHCP_VarText8;
+        private Label Outros_DHCP_Label8;
+        private Label Outros_DHCP_ExLabel6;
     }
 }
 

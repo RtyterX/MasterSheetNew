@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MasterSheetNew.Entitys;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.PerformanceData;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MasterSheetNew.Entitys;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace MasterSheetNew
 {
@@ -109,9 +110,49 @@ namespace MasterSheetNew
             return scriptLimpeza;
         }
 
+        // ---------------------------------------------------------------------------------------------------------------
+        public string ShowInterface(RouterType routerType, bool backboneOrNot, string routerInterface)
+        {
+            /////////////////////////
+            ////// Need Rework //////
+            /////////////////////////
+            Debug.WriteLine("\r\n--> Show Port: " + routerType);
+
+            string show = string.Empty;
+
+            if (!backboneOrNot)
+            {
+                if (routerType == RouterType.Cisco)
+                {
+                    show = "show ip int brief\r\n";
+                }
+                else if (routerType == RouterType.HPE || routerType == RouterType.HPE_old || routerType == RouterType.Huawei)
+                {
+                    show = "display ip int brief\r\n";
+                }
+                else if (routerType == RouterType.Fortigate)
+                {
+                    show = "show system interface\r\n";
+                }
+            }
+            else
+            {
+                if (routerType == RouterType.Cisco)
+                {
+                    show = "show ip route\r\n";
+                }
+                else if (routerType == RouterType.Nokia)
+                {
+                    show = "admin display-config | match " + routerInterface + " get all\r\n";
+                }
+            }
+
+            return show;
+        }
+
 
         // ---------------------------------------------------------------------------------------------------------------
-        public string TelnetString(RouterType routerType, ActivityType activityType, ComboBox isXR, string ip, string sourcePE, string vrf)
+        public string TelnetString(RouterType backboneType, ActivityType activityType, bool isXR, string ip, string sourcePE, string vrf)
         {
             string telnetCommand = string.Empty;
 
@@ -120,9 +161,9 @@ namespace MasterSheetNew
             {
                 if (ip != string.Empty && sourcePE != string.Empty && vrf != string.Empty)
                 {
-                    if (routerType == RouterType.Cisco)
+                    if (backboneType == RouterType.Cisco)
                     {
-                        if (isXR.SelectedIndex == 0)
+                        if (isXR == true)
                         {
                             telnetCommand = "telnet " + ip + " /vrf " + vrf + " /source " + sourcePE + "\r\n";
                         }
@@ -138,7 +179,7 @@ namespace MasterSheetNew
                 }
                 else
                 {
-                    MessageBox.Show("IP do CPE, Interace WAN ou VRF não preenchidas");
+                    MessageBox.Show("Telnet Falha: IP do CPE, Interace WAN ou VRF não preenchidas");
                 }
             }
             else
@@ -148,9 +189,9 @@ namespace MasterSheetNew
                     // ---- VOZ ----
                     if (activityType == ActivityType.VOZ)
                     {
-                        if (routerType == RouterType.Cisco)
+                        if (backboneType == RouterType.Cisco)
                         {
-                            if (isXR.SelectedIndex == 0)
+                            if (isXR == true)
                             {
                                 telnetCommand = "telnet " + ip + " /vrf REALIP_CLIENTE:5581 /source " + sourcePE + "\r\n";
                             }
@@ -166,9 +207,9 @@ namespace MasterSheetNew
                     }
                     else // ---- BLD ----
                     {
-                        if (routerType == RouterType.Cisco)
+                        if (backboneType == RouterType.Cisco)
                         {
-                            if (isXR.SelectedIndex == 0)
+                            if (isXR == true)
                             {
                                 telnetCommand = "telnet " + ip + " /source " + sourcePE + "\r\n";
                             }
@@ -185,11 +226,138 @@ namespace MasterSheetNew
                 }
                 else
                 {
-                    MessageBox.Show("IP do CPE ou Interace WAN não preenchidas");
+                    MessageBox.Show("Telnet Falha: IP do CPE ou Interace WAN não preenchidas");
                 }
             }
             // -----------------------------
             return telnetCommand;
+        }
+
+        public string GetTelnetUser(RouterType routerType)
+        {
+            string user = string.Empty;
+
+            if (routerType == RouterType.Cisco)
+            {
+                user = "EBT\r\n" + "CQMR\r\n" + "EN\r\n" + "PRO1AN";
+            }
+            else if (routerType == RouterType.HPE)
+            {
+                user = "EBT\r\n" + "PRO1AN";
+            }
+            else if (routerType == RouterType.Huawei)
+            {
+                user = "EBT\r\n" + "PRO1AN@1";
+            }
+            else if (routerType == RouterType.Fortigate)
+            {
+                user = "EBT\r\n" + "PRO1AN\r\n" + "admin\r\n" + "PRO1AN";
+            }
+            else
+            {
+                MessageBox.Show("Usuário de Telnet não atribuido ao modelo: " + routerType);
+            }
+
+            return user;
+        }
+
+        public string TelnetCPE(RouterType backboneType, ActivityType activityType, bool isXR, string ip, string sourcePE, string vrf, RouterType routerType)
+        {
+            string user = string.Empty;
+
+            return TelnetString(backboneType, activityType, isXR, ip, sourcePE, vrf) + "\r\n" + GetTelnetUser(routerType) + "\r\n\r\n\r\n\r\n\r\n\r\n";
+        }
+
+        public string TelnetWithTACACS(RouterType backboneType, ActivityType activityType, bool isXR, string ip, string sourcePE, string vrf, string userTacacs)
+        {
+            return TelnetString(backboneType, activityType, isXR, ip, sourcePE, vrf) + "\r\n" + userTacacs + "\r\n\r\n\r\n\r\n\r\n\r\n";
+        }
+
+        public string TelnetWorkAround(RouterType backboneType, ActivityType activityType, bool isXR, string ip, string sourcePE, string vrf, RouterType routerType, string userTacacs)
+        {
+            return TelnetString(backboneType, activityType, isXR, ip, sourcePE, vrf) + "\r\n" + GetTelnetUser(routerType) + "\r\n" + userTacacs + "\r\n\r\n\r\n\r\n\r\n\r\n";
+        }
+
+        // ---------------------------------------------------------------------------------------------------------------
+        public string SSHString(RouterType backboneType, ActivityType activityType, bool isXR, string ip, string sourcePE, string vrf)
+        {
+            string sshCommand = string.Empty;
+
+            // ---- MPLS ----
+            if (activityType == ActivityType.MPLS)
+            {
+                if (ip != string.Empty && sourcePE != string.Empty && vrf != string.Empty)
+                {
+                    if (backboneType == RouterType.Cisco)
+                    {
+                        if (isXR == true)
+                        {
+                            sshCommand = "ssh " + ip + " /vrf " + vrf + " username EBT\r\n";
+                        }
+                        else
+                        {
+                            sshCommand = "ssh vrf " + vrf + " " + ip + " username EBT\r\n";
+                        }
+                    }
+                    else
+                    {
+                        sshCommand = "ssh service-name " + vrf + " " + ip + " -l EBT\r\n";
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("SSH Falha: IP do CPE, Interace WAN ou VRF não preenchidas");
+                }
+            }
+            else
+            {
+                if (ip != string.Empty && sourcePE != string.Empty)
+                {
+                    // ---- VOZ ----
+                    if (activityType == ActivityType.VOZ)
+                    {
+                        if (backboneType == RouterType.Cisco)
+                        {
+                            if (isXR == true)
+                            {
+                                sshCommand = "ssh " + ip + " /vrf REALIP_CLIENTE:5581 username EBT\r\n";
+                            }
+                            else
+                            {
+                                sshCommand = "ssh vrf REALIP_CLIENTE:5581 " + ip + " username EBT\r\n";
+                            }
+                        }
+                        else
+                        {
+                            sshCommand = "ssh service-name 1000 " + ip + " -l EBT\r\n";
+                        }
+                    }
+                    else // ---- BLD ----
+                    {
+                        if (backboneType == RouterType.Cisco)
+                        {
+                            if (isXR == true)
+                            {
+                                sshCommand = "ssh " + ip + " username EBT\r\n";
+                            }
+                            else
+                            {
+                                sshCommand = "ssh " + ip + " username EBT\r\n";
+                            }
+                        }
+                        else
+                        {
+                            sshCommand = "ssh " + ip + " -l EBT\r\n";
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("SSH Falha: IP do CPE ou Interace WAN não preenchidas");
+                }
+            }
+            // -----------------------------
+            return sshCommand;
         }
     }
 }

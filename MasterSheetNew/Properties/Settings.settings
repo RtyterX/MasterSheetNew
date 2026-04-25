@@ -550,7 +550,7 @@ csim start &lt;14&gt;DDD &lt;...&gt; Numero de digitos aplicado na VOICE.
     <Setting Name="userPE" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="tacacsPE" Type="System.String" Scope="User">
+    <Setting Name="userTacacs" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="puttyPath" Type="System.String" Scope="User">

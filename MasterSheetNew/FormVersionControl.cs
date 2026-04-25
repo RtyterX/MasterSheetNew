@@ -23,7 +23,7 @@ namespace MasterSheetNew
         public void GetAllVersionsList()
         {
             // Versions
-            versionList.Add(new Entitys.Version("1.9.3", "Correção de Scripts de Voz + Minor Bugs", DateTime.Parse("10/04/2026")));
+            versionList.Add(new Entitys.Version("1.9.3", "Correção de Scripts de Voz + Minor Bug Fixes", DateTime.Parse("10/04/2026")));
             versionList.Add(new Entitys.Version("1.9.2", "Adicionado Scripts de Voz R2 e ISDN + Regras Adicionais", DateTime.Parse("08/04/2026")));
             versionList.Add(new Entitys.Version("1.9.1", "Correção de Bugs Visuais + Seleção de PEs", DateTime.Parse("24/03/2026")));
             versionList.Add(new Entitys.Version("1.9.0", "Adicionado Aba Preferencia + Automação para Acesso ao PE via Putty", DateTime.Parse("21/03/2026")));
